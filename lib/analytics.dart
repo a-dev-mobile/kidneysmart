@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:nutrition/global.dart';
 
@@ -22,8 +21,6 @@ class Analytics {
     log('--');
 
     if (DartDefine.IS_ANALYTICS) {
-      await AppMetrica.reportEventWithMap(mainEvent, {subEvent: value});
-
       await FirebaseAnalytics.instance.logEvent(
         name: mainEvent,
         parameters: {subEvent: value},

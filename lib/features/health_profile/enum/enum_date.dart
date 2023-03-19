@@ -1,26 +1,27 @@
-enum LocaleEnum with Comparable<LocaleEnum> {
-  ru('ru_RU'),
-  en('en_EN');
+enum EnumDate with Comparable<EnumDate> {
+  day('day'),
+  month('month'),
+  year('year');
 
-  const LocaleEnum(this.value);
+  const EnumDate(this.value);
   final String value;
 
 // end
 
 //          --TURN_GEN--
-//             v0.4.1
+//             v0.4.7
 //  *************************************
 //           GENERATED CODE
 //  *************************************
 
-  /// Creates a new instance of [LocaleEnum] from a given String value.
+  /// Creates a new instance of [EnumDate] from a given String value.
   ///
-  /// If the given value matches one of the values defined in the [LocaleEnum] enumeration,
-  /// a corresponding instance of [LocaleEnum] is returned.
+  /// If the given value matches one of the values defined in the [EnumDate] enumeration,
+  /// a corresponding instance of [EnumDate] is returned.
   /// If the given value is null or does not match any of the enumeration values and a fallback
   /// value is not provided, an [ArgumentError] is thrown.
   ///
-  /// The `fallback` parameter is an optional [LocaleEnum] value that will be returned if the
+  /// The `fallback` parameter is an optional [EnumDate] value that will be returned if the
   /// given value does not match any of the enumeration values.
   ///
   /// Example usage:
@@ -28,25 +29,27 @@ enum LocaleEnum with Comparable<LocaleEnum> {
   /// LocaleEnum locale = LocaleEnum.fromValue('en', fallback: LocaleEnum.ru);
   /// print(locale); // Output: LocaleEnum.en(en)
   /// ```
-  static LocaleEnum fromValue(String? value, {LocaleEnum? fallback}) {
+  static EnumDate fromValue(String? value, {EnumDate? fallback}) {
     switch (value) {
-      case 'ru_RU':
-        return ru;
-      case 'en_EN':
-        return en;
+      case 'day':
+        return day;
+      case 'month':
+        return month;
+      case 'year':
+        return year;
       default:
         return fallback ??
             (throw ArgumentError.value(
               value,
               '',
-              'Value not found in LocaleEnum',
+              'Value not found in EnumDate',
             ));
     }
   }
 
-  /// Calls the appropriate function based on the value of this [LocaleEnum] instance.
+  /// Calls the appropriate function based on the value of this [EnumDate] instance.
   ///
-  /// This method returns the result of calling the appropriate function for the value of the current [LocaleEnum] instance.
+  /// This method returns the result of calling the appropriate function for the value of the current [EnumDate] instance.
   ///
   /// Example usage:
   /// ```dart
@@ -58,20 +61,23 @@ enum LocaleEnum with Comparable<LocaleEnum> {
   /// print(result); // Output: 'Привет!'
   /// ```
   T map<T>({
-    required T Function() ru,
-    required T Function() en,
+    required T Function() day,
+    required T Function() month,
+    required T Function() year,
   }) {
     switch (this) {
-      case LocaleEnum.ru:
-        return ru();
-      case LocaleEnum.en:
-        return en();
+      case EnumDate.day:
+        return day();
+      case EnumDate.month:
+        return month();
+      case EnumDate.year:
+        return year();
     }
   }
 
-  /// Calls the appropriate function based on the value of this [LocaleEnum] instance.
+  /// Calls the appropriate function based on the value of this [EnumDate] instance.
   ///
-  /// This method returns the appropriate value for the value of the current [LocaleEnum] instance.
+  /// This method returns the appropriate value for the value of the current [EnumDate] instance.
   ///
   /// Example usage:
   /// ```dart
@@ -83,22 +89,25 @@ enum LocaleEnum with Comparable<LocaleEnum> {
   /// print(result); // Output: 'Hello!'
   /// ```
   T mapValue<T>({
-    required T ru,
-    required T en,
+    required T day,
+    required T month,
+    required T year,
   }) {
     switch (this) {
-      case LocaleEnum.ru:
-        return ru;
-      case LocaleEnum.en:
-        return en;
+      case EnumDate.day:
+        return day;
+      case EnumDate.month:
+        return month;
+      case EnumDate.year:
+        return year;
     }
   }
 
-  /// Calls the appropriate function based on the value of this [LocaleEnum] instance.
+  /// Calls the appropriate function based on the value of this [EnumDate] instance.
   ///
-  /// If the corresponding function for the value of this [LocaleEnum] instance is not provided,
+  /// If the corresponding function for the value of this [EnumDate] instance is not provided,
   /// the `orElse` function will be called instead.
-  /// This method returns the value returned by the appropriate function for the value of this [LocaleEnum] instance.
+  /// This method returns the value returned by the appropriate function for the value of this [EnumDate] instance.
   ///
   /// Example usage:
   /// ```dart
@@ -111,20 +120,22 @@ enum LocaleEnum with Comparable<LocaleEnum> {
   /// ```
   T maybeMap<T>({
     required T Function() orElse,
-    T Function()? ru,
-    T Function()? en,
+    T Function()? day,
+    T Function()? month,
+    T Function()? year,
   }) =>
       map<T>(
-        ru: ru ?? orElse,
-        en: en ?? orElse,
+        day: day ?? orElse,
+        month: month ?? orElse,
+        year: year ?? orElse,
       );
 
-  /// Maps the value of this [LocaleEnum] to a new value of type [T], using the given
+  /// Maps the value of this [EnumDate] to a new value of type [T], using the given
   /// values to replace each possible value of the enumeration.
   ///
-  /// The value that corresponds to the value of this [LocaleEnum] is returned from this method.
+  /// The value that corresponds to the value of this [EnumDate] is returned from this method.
   ///
-  /// If no corresponding value is provided for the value of this [LocaleEnum], the
+  /// If no corresponding value is provided for the value of this [EnumDate], the
   /// `orElse` parameter is returned from this method.
   ///
   /// Example usage:
@@ -139,21 +150,23 @@ enum LocaleEnum with Comparable<LocaleEnum> {
   /// ```
   T maybeMapValue<T>({
     required T orElse,
-    T? ru,
-    T? en,
+    T? day,
+    T? month,
+    T? year,
   }) =>
       mapValue<T>(
-        ru: ru ?? orElse,
-        en: en ?? orElse,
+        day: day ?? orElse,
+        month: month ?? orElse,
+        year: year ?? orElse,
       );
 
-  /// Maps the value of this [LocaleEnum] to a new value of type [T], using the given
+  /// Maps the value of this [EnumDate] to a new value of type [T], using the given
   /// functions to replace each possible value of the enumeration.
   ///
   /// The function that corresponds to the value of this
-  /// [LocaleEnum] is called and its result is returned from this method.
+  /// [EnumDate] is called and its result is returned from this method.
   ///
-  /// If no corresponding function is provided for the value of this [LocaleEnum], `null`
+  /// If no corresponding function is provided for the value of this [EnumDate], `null`
   /// is returned from this method.
   ///
   /// Example usage:
@@ -165,21 +178,23 @@ enum LocaleEnum with Comparable<LocaleEnum> {
   /// print(message); // Output: 'Hello!'
   /// ```
   T? maybeMapOrNull<T>({
-    T Function()? ru,
-    T Function()? en,
+    T Function()? day,
+    T Function()? month,
+    T Function()? year,
   }) =>
       maybeMap<T?>(
         orElse: () => null,
-        ru: ru,
-        en: en,
+        day: day,
+        month: month,
+        year: year,
       );
 
-  /// Maps the value of this [LocaleEnum] to a new value of type [T], using the given
+  /// Maps the value of this [EnumDate] to a new value of type [T], using the given
   /// values to replace each possible value of the enumeration.
   ///
-  /// The value that corresponds to the value of this [LocaleEnum] is returned from this method.
+  /// The value that corresponds to the value of this [EnumDate] is returned from this method.
   ///
-  /// If no corresponding value is provided for the value of this [LocaleEnum], `null`
+  /// If no corresponding value is provided for the value of this [EnumDate], `null`
   /// is returned from this method.
   ///
   /// Example usage:
@@ -191,13 +206,15 @@ enum LocaleEnum with Comparable<LocaleEnum> {
   /// print(message); // Output: 'Hello!'
   /// ```
   T? maybeMapOrNullValue<T>({
-    T? ru,
-    T? en,
+    T? day,
+    T? month,
+    T? year,
   }) =>
       maybeMapValue<T?>(
         orElse: null,
-        ru: ru,
-        en: en,
+        day: day,
+        month: month,
+        year: year,
       );
 
   /// Returns a list of all possible values of this enumeration.
@@ -211,11 +228,11 @@ enum LocaleEnum with Comparable<LocaleEnum> {
   /// print(values); // Output: ['ru', 'en']
   /// ```
   static List<String> getValues() =>
-      LocaleEnum.values.map((e) => e.value).toList();
+      EnumDate.values.map((e) => e.value).toList();
 
   @override
-  int compareTo(LocaleEnum other) => index.compareTo(other.index);
+  int compareTo(EnumDate other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'LocaleEnum.$name($value)';
+  String toString() => 'EnumDate.$name($value)';
 }

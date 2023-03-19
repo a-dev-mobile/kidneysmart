@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, dead_code
 
 import 'dart:async';
 
@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nutrition/core/services/navigation/models/app_state.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
+import 'package:nutrition/features/health_profile/view/health_profile_page.dart';
 import 'package:nutrition/features/onboarding/vew/onboarding_page.dart';
 import 'package:nutrition/features/overlay_widget/view/view.dart';
 import 'package:nutrition/features/registration/name/name.dart';
@@ -33,6 +34,7 @@ class AppRouterService {
   final GoRouter router = GoRouter(
     // initialLocation: DashBoardPage.path,
     initialLocation: SplashPage.path,
+    // initialLocation: HealthProfilePage.path,
     observers: <NavigatorObserver>[
       FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
     ],
@@ -76,6 +78,14 @@ class AppRouterService {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const OnBoardingPage(),
+            ),
+          ),
+          GoRoute(
+            path: HealthProfilePage.path,
+            name: HealthProfilePage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const HealthProfilePage(),
             ),
           ),
         ],
@@ -132,6 +142,10 @@ class AppRouterService {
   );
 
   Future<void> nextPage(AppState appState) async {
+    router.goNamed(HealthProfilePage.name);
+
+    return;
+
     if (appState.isFirstTime || !appState.isOnboardingCompleted) {
       router.goNamed(OnBoardingPage.name);
       await _storage.setAppState(appState.copyWith(isFirstTime: false));

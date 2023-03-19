@@ -1,7 +1,7 @@
 //          --TURN_GEN--
-//             v0.4.1
+//           v0.5.1 (assets)
 //  *************************************
-//           GENERATED CODE
+//         GENERATED CODE
 //  *************************************
 
 // coverage:ignore-file
@@ -10,169 +10,82 @@
 
 class AppAssetsTTF {
   /// * Size:	8.8 KB
-  /// * File path: _assets/icons/app_icons.ttf
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-2-9
-  ///     * Modified: 2023-2-9
-  static const String appIcons = 'assets/icons/app_icons.ttf';
+  /// * File path: _ssets/icons/app_icons.ttf
+  static const String appIcons = 'ssets/icons/app_icons.ttf';
 
   /// List of all assets
   static const List<String> values = [appIcons];
 }
 
-class AppAssetsPNG {
-  /// * Size:	60.8 KB
-  /// * File path: _assets/image/splash.png
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-2-4
-  ///     * Modified: 2023-2-4
-  static const String splash = 'assets/image/splash.png';
-
-  /// List of all assets
-  static const List<String> values = [splash];
-}
-
-class AppAssetsJSON {
-  /// * Size:	4.8 KB
-  /// * File path: _assets/lottie/load_btn.json
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2022-12-25
-  static const String loadBtn = 'assets/lottie/load_btn.json';
-
-  /// * Size:	26.0 KB
-  /// * File path: _assets/lottie/load_page.json
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2022-12-25
-  static const String loadPage = 'assets/lottie/load_page.json';
-
-  /// * Size:	6.5 KB
-  /// * File path: _assets/lottie/water_down.json
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-18
-  static const String waterDown = 'assets/lottie/water_down.json';
-
-  /// * Size:	4.2 KB
-  /// * File path: _assets/lottie/water_up.json
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-18
-  static const String waterUp = 'assets/lottie/water_up.json';
-
-  /// List of all assets
-  static const List<String> values = [loadBtn, loadPage, waterDown, waterUp];
-}
-
 class AppAssetsSVG {
+  /// * Size:	24.6 KB
+  /// * File path: _ssets/image/onboarding_remind_you.svg
+  static const String onboardingRemindYou =
+      'ssets/image/onboarding_remind_you.svg';
+
   /// * Size:	746.0 B
-  /// * File path: _assets/svg/ic_error.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-23
-  static const String icError = 'assets/svg/ic_error.svg';
+  /// * File path: _ssets/svg/ic_error.svg
+  static const String icError = 'ssets/svg/ic_error.svg';
 
   /// * Size:	327.0 B
-  /// * File path: _assets/svg/ic_error_close.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-23
-  static const String icErrorClose = 'assets/svg/ic_error_close.svg';
+  /// * File path: _ssets/svg/ic_error_close.svg
+  static const String icErrorClose = 'ssets/svg/ic_error_close.svg';
 
   /// * Size:	311.0 B
-  /// * File path: _assets/svg/ic_info.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-23
-  static const String icInfo = 'assets/svg/ic_info.svg';
+  /// * File path: _ssets/svg/ic_info.svg
+  static const String icInfo = 'ssets/svg/ic_info.svg';
 
   /// * Size:	323.0 B
-  /// * File path: _assets/svg/ic_info_close.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-23
-  static const String icInfoClose = 'assets/svg/ic_info_close.svg';
+  /// * File path: _ssets/svg/ic_info_close.svg
+  static const String icInfoClose = 'ssets/svg/ic_info_close.svg';
 
   /// * Size:	352.0 B
-  /// * File path: _assets/svg/ic_success.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-23
-  static const String icSuccess = 'assets/svg/ic_success.svg';
+  /// * File path: _ssets/svg/ic_success.svg
+  static const String icSuccess = 'ssets/svg/ic_success.svg';
 
   /// * Size:	323.0 B
-  /// * File path: _assets/svg/ic_success_close.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-23
-  static const String icSuccessClose = 'assets/svg/ic_success_close.svg';
+  /// * File path: _ssets/svg/ic_success_close.svg
+  static const String icSuccessClose = 'ssets/svg/ic_success_close.svg';
 
   /// * Size:	979.0 B
-  /// * File path: _assets/svg/ic_warning.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-23
-  static const String icWarning = 'assets/svg/ic_warning.svg';
+  /// * File path: _ssets/svg/ic_warning.svg
+  static const String icWarning = 'ssets/svg/ic_warning.svg';
 
   /// * Size:	323.0 B
-  /// * File path: _assets/svg/ic_warning_close.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-1-23
-  static const String icWarningClose = 'assets/svg/ic_warning_close.svg';
+  /// * File path: _ssets/svg/ic_warning_close.svg
+  static const String icWarningClose = 'ssets/svg/ic_warning_close.svg';
 
   /// * Size:	13.7 KB
-  /// * File path: _assets/svg/logo.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2022-12-25
-  static const String logo = 'assets/svg/logo.svg';
+  /// * File path: _ssets/svg/logo.svg
+  static const String logo = 'ssets/svg/logo.svg';
 
   /// * Size:	930.0 B
-  /// * File path: _assets/svg/onb_1.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2022-12-25
-  static const String onb1 = 'assets/svg/onb_1.svg';
+  /// * File path: _ssets/svg/onb_1.svg
+  static const String onb1 = 'ssets/svg/onb_1.svg';
 
   /// * Size:	698.0 B
-  /// * File path: _assets/svg/onb_2.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2022-12-25
-  static const String onb2 = 'assets/svg/onb_2.svg';
+  /// * File path: _ssets/svg/onb_2.svg
+  static const String onb2 = 'ssets/svg/onb_2.svg';
 
   /// * Size:	24.6 KB
-  /// * File path: _assets/svg/onb_3.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2023-2-12
-  static const String onb3 = 'assets/svg/onb_3.svg';
+  /// * File path: _ssets/svg/onb_3.svg
+  static const String onb3 = 'ssets/svg/onb_3.svg';
 
   /// * Size:	1.1 KB
-  /// * File path: _assets/svg/onb_4.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2022-12-25
-  static const String onb4 = 'assets/svg/onb_4.svg';
+  /// * File path: _ssets/svg/onb_4.svg
+  static const String onb4 = 'ssets/svg/onb_4.svg';
 
   /// * Size:	211.0 B
-  /// * File path: _assets/svg/sort_asc.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2022-12-25
-  static const String sortAsc = 'assets/svg/sort_asc.svg';
+  /// * File path: _ssets/svg/sort_asc.svg
+  static const String sortAsc = 'ssets/svg/sort_asc.svg';
 
   /// * Size:	213.0 B
-  /// * File path: _assets/svg/sort_desc.svg
-  ///     * Accessed: 2023-3-12
-  ///     * Changed:  2023-1-26
-  ///     * Modified: 2022-12-25
-  static const String sortDesc = 'assets/svg/sort_desc.svg';
+  /// * File path: _ssets/svg/sort_desc.svg
+  static const String sortDesc = 'ssets/svg/sort_desc.svg';
 
   /// List of all assets
   static const List<String> values = [
+    onboardingRemindYou,
     icError,
     icErrorClose,
     icInfo,
@@ -189,4 +102,34 @@ class AppAssetsSVG {
     sortAsc,
     sortDesc
   ];
+}
+
+class AppAssetsPNG {
+  /// * Size:	60.8 KB
+  /// * File path: _ssets/image/splash.png
+  static const String splash = 'ssets/image/splash.png';
+
+  /// List of all assets
+  static const List<String> values = [splash];
+}
+
+class AppAssetsJSON {
+  /// * Size:	4.8 KB
+  /// * File path: _ssets/lottie/load_btn.json
+  static const String loadBtn = 'ssets/lottie/load_btn.json';
+
+  /// * Size:	26.0 KB
+  /// * File path: _ssets/lottie/load_page.json
+  static const String loadPage = 'ssets/lottie/load_page.json';
+
+  /// * Size:	6.5 KB
+  /// * File path: _ssets/lottie/water_down.json
+  static const String waterDown = 'ssets/lottie/water_down.json';
+
+  /// * Size:	4.2 KB
+  /// * File path: _ssets/lottie/water_up.json
+  static const String waterUp = 'ssets/lottie/water_up.json';
+
+  /// List of all assets
+  static const List<String> values = [loadBtn, loadPage, waterDown, waterUp];
 }

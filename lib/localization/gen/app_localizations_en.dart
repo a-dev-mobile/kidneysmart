@@ -140,10 +140,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gender_not_selected => 'Пол не выбран';
 
   @override
-  String get male => 'МУЖСКОЙ';
+  String get male => 'MALE';
 
   @override
-  String get female => 'ЖЕНСКИЙ';
+  String get female => 'FEMALE';
 
   @override
   String get normal => 'ОБЫЧНАЯ';

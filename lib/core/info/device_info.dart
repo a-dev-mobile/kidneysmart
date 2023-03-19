@@ -50,7 +50,6 @@ class DeviceInfo {
   static Future<String> getBuildNumber() async {
     final packageInfo = await PackageInfo.fromPlatform();
 
-    final appBuildNumber = packageInfo.buildNumber;
-    return appBuildNumber;
+    return packageInfo.buildNumber;
   }
 }

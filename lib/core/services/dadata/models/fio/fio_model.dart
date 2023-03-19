@@ -13,7 +13,7 @@ class Fio {
   // end
 
 //          --TURN_GEN--
-//             v0.4.1
+//             v0.4.7
 //  *************************************
 //           GENERATED CODE
 //  *************************************
@@ -21,17 +21,14 @@ class Fio {
   const Fio({
     this.suggestions = const [],
   });
-  /*
-   factory Fio.init() => Fio(
-      ); 
-  */
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'suggestions': suggestions.map((e) => e.toMap()).toList(),
     };
   }
 
-  factory Fio.fromMap(Map<String, dynamic>? map) {
+  factory Fio.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const Fio();
 
     return Fio(
@@ -74,6 +71,7 @@ class Fio {
           suggestions,
         ),
       ]);
+
   @override
   String toString() {
     return 'Fio(suggestions: $suggestions, )';

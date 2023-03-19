@@ -50,5 +50,7 @@
   "mcmolL": "μmol/l",
   "skip": "Skip",
   "max_text_length": "Maximum text length",
+  "male": "MALE",
+  "female": "FEMALE",
   "g": "g"
 }

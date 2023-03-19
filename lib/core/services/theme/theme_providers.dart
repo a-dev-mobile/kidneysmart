@@ -15,10 +15,18 @@ class ThemeController extends StateNotifier<ThemeState> {
 
   final AppStorageService _storage;
 
-  void changeTheme(ThemeMode theme) {
+  void setTheme(ThemeMode theme) {
     final updateState = state.copyWith(themeMode: theme);
     _storage.setThemeState(updateState);
 
     state = updateState;
+  }
+
+  void changeTheme() {
+    if (state.themeMode == ThemeMode.dark) {
+      setTheme(ThemeMode.light);
+    } else {
+      setTheme(ThemeMode.dark);
+    }
   }
 }

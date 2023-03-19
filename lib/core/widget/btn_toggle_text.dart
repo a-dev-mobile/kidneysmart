@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrition/core/style/app_text_style.dart';
 
-import 'package:nutrition/core/utils/utils.dart';
-
 class BtnToggleText extends StatelessWidget {
   const BtnToggleText({
     required this.textList,
@@ -35,7 +33,7 @@ class BtnToggleText extends StatelessWidget {
                   Expanded(
                     child: Text(
                       title,
-                      style: AppTextStyles.h6(),
+                      style: AppTextStyles.bodyText2(),
                     ),
                   ),
                 if (dialogText.isNotEmpty)
@@ -46,7 +44,7 @@ class BtnToggleText extends StatelessWidget {
                     ),
                     icon: Icon(
                       Icons.info_outline,
-                      color: context.theme.colorScheme.primary,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
               ],
@@ -66,11 +64,12 @@ class BtnToggleText extends StatelessWidget {
             if (errorText != null) ...[
               const SizedBox(height: 6),
               Align(
-                alignment: Alignment.centerLeft,
                 child: Text(
                   errorText!,
-                  style: context.textTheme.bodySmall!
-                      .copyWith(color: context.theme.colorScheme.error),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(color: Theme.of(context).colorScheme.error),
                 ),
               ),
             ],

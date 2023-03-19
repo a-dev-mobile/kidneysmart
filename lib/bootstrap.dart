@@ -2,7 +2,6 @@
 
 import 'dart:async';
 
-import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -12,6 +11,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/info/device_info.dart';
 import 'package:nutrition/core/log/log.dart';
+import 'package:nutrition/core/services/db/db.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/firebase_options.dart';
 import 'package:nutrition/global.dart';
@@ -22,15 +22,16 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
   await runZonedGuarded(
     () async {
       final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+      await _initFirebase();
       await _initOrientationApp();
       FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
       _initFlutterError();
       PlatformDispatcher.instance.onError = _onPlatformDispatcherError;
-      _initAppMetrica();
-      await _initFirebase();
+
       await _initCrashlytic();
       await _showSettingAppInLog();
 
+      // prepare await provider
       final overrides = await overrideProviders();
 
       runApp(
@@ -58,7 +59,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
 Future<void> _showSettingAppInLog() async {
   final userAgent = await DeviceInfo.getUserAgent();
   final packageName = await DeviceInfo.getPackageName();
-  log.i(
+  log.wtf(
     'IS_DEBUG = ${DartDefine.IS_DEBUG} | IS_PROD = ${DartDefine.IS_ANALYTICS}\n$packageName\n$userAgent',
   );
 }
@@ -76,14 +77,6 @@ Future<void> _initCrashlytic() async {
 Future<void> _initFirebase() async {
   final _ = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
-}
-
-void _initAppMetrica() {
-  unawaited(
-    AppMetrica.activate(
-      const AppMetricaConfig(DartDefine.API_KEY_APP_METRIC),
-    ),
   );
 }
 
@@ -111,6 +104,10 @@ bool _onPlatformDispatcherError(Object error, StackTrace stack) {
 /// Triggered from bootstrap() to complete futures
 Future<List<Override>> overrideProviders() async {
   final sp = await SharedPreferences.getInstance();
+  final fb = await FirebaseServiceProvider().load();
 
-  return <Override>[sharedPreferencesProvider.overrideWithValue(sp)];
+  return <Override>[
+    sharedPreferencesProvider.overrideWithValue(sp),
+    firebaseServiceProvider.overrideWithValue(fb),
+  ];
 }

@@ -16,7 +16,7 @@ class SuggestionsFio {
   // end
 
 //          --TURN_GEN--
-//             v0.4.1
+//             v0.4.7
 //  *************************************
 //           GENERATED CODE
 //  *************************************
@@ -26,10 +26,7 @@ class SuggestionsFio {
     this.unrestricted_value = '',
     this.data = const DataFio(),
   });
-  /*
-   factory SuggestionsFio.init() => SuggestionsFio(
-      ); 
-  */
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'value': value,
@@ -38,7 +35,7 @@ class SuggestionsFio {
     };
   }
 
-  factory SuggestionsFio.fromMap(Map<String, dynamic>? map) {
+  factory SuggestionsFio.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const SuggestionsFio();
 
     return SuggestionsFio(
@@ -47,7 +44,7 @@ class SuggestionsFio {
           ? map['unrestricted_value'] as String
           : '',
       data: map['data'] != null
-          ? DataFio.fromMap(map['data'] as Map<String, dynamic>)
+          ? DataFio.fromMap(Map<String, dynamic>.from(map['data'] as Map))
           : const DataFio(),
     );
   }
@@ -87,6 +84,7 @@ class SuggestionsFio {
         unrestricted_value,
         data,
       ]);
+
   @override
   String toString() {
     return 'SuggestionsFio(value: $value, unrestricted_value: $unrestricted_value, data: $data, )';

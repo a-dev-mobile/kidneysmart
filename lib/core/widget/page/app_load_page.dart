@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nutrition/gen/assets.gen.dart';
 
-class AppPageLoad extends StatelessWidget {
-  const AppPageLoad({
+class AppLoadPage extends StatelessWidget {
+  const AppLoadPage({
     super.key,
     this.size,
     this.title,

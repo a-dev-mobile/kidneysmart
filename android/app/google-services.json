@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "96038361233",
+    "firebase_url": "https://prod-ckd-nutrition-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "prod-ckd-nutrition",
     "storage_bucket": "prod-ckd-nutrition.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "96038361233-3b6e110ekdkbodekjds911urvaesck1k.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "96038361233-84c7pk658vu43m55j3rki2t48n9863nh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mobile.ckd.nutrition"
+              }
             }
           ]
         }

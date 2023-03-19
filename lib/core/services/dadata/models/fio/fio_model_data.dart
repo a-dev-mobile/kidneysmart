@@ -21,7 +21,7 @@ class DataFio {
 // end
 
 //          --TURN_GEN--
-//             v0.4.1
+//             v0.4.7
 //  *************************************
 //           GENERATED CODE
 //  *************************************
@@ -34,10 +34,7 @@ class DataFio {
     this.source = '',
     this.qc = '',
   });
-  /*
-   factory DataFio.init() => DataFio(
-      ); 
-  */
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'surname': surname,
@@ -49,7 +46,7 @@ class DataFio {
     };
   }
 
-  factory DataFio.fromMap(Map<String, dynamic>? map) {
+  factory DataFio.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const DataFio();
 
     return DataFio(
@@ -109,6 +106,7 @@ class DataFio {
         source,
         qc,
       ]);
+
   @override
   String toString() {
     return 'DataFio(surname: $surname, name: $name, patronymic: $patronymic, gender: $gender, source: $source, qc: $qc, )';

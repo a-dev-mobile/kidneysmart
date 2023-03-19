@@ -1,13 +1,13 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:nutrition/core/widget/progress_indicator/progress_indicator.dart';
+import 'package:nutrition/core/widget/widget.dart';
 
 /// {@template load_page}
 /// Widget with disabling user action during load
 /// {@endtemplate}
-class LoadNextPage extends StatelessWidget {
-  const LoadNextPage({
+class AppLoadNextPage extends StatelessWidget {
+  const AppLoadNextPage({
     required this.child,
     super.key,
     this.isLoad = false,
@@ -31,7 +31,7 @@ class LoadNextPage extends StatelessWidget {
                           filter: ui.ImageFilter.blur(sigmaX: 2, sigmaY: 2),
                           child: const Center(
                             child: RepaintBoundary(
-                              child: AppPageLoad(),
+                              child: AppLoadPage(),
                             ),
                           ),
                         ),
@@ -39,7 +39,7 @@ class LoadNextPage extends StatelessWidget {
                     : const SizedBox.shrink(),
               ),
             ),
-          )
+          ),
         ],
       );
 }

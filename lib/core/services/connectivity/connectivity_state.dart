@@ -10,9 +10,9 @@ class _ConnectivityState {
 // end
 
 //          --TURN_GEN--
-//             v0.4.1
+//          v0.5.1 (union)
 //  *************************************
-//           GENERATED CODE
+//         GENERATED CODE
 //  *************************************
 
 // coverage:ignore-file
@@ -28,21 +28,28 @@ class ConnectivityState {
   const ConnectivityState.notDetermined()
       : _tag = _ConnectivityStateTag.notDetermined;
 
-  T? mapOrNull<T>({
-    T? Function(_ConnectivityStateIsdisonnected v)? isDisonnected,
-    T? Function(_ConnectivityStateIsconnected v)? isConnected,
-    T? Function(_ConnectivityStateNotdetermined v)? notDetermined,
-  }) {
-    switch (_tag) {
-      case _ConnectivityStateTag.isDisonnected:
-        return isDisonnected?.call(const _ConnectivityStateIsdisonnected());
-      case _ConnectivityStateTag.isConnected:
-        return isConnected?.call(const _ConnectivityStateIsconnected());
-      case _ConnectivityStateTag.notDetermined:
-        return notDetermined?.call(const _ConnectivityStateNotdetermined());
-    }
-  }
-
+  /// Maps this `ConnectivityState` instance to a value of type `T`,
+  /// depending on its underlying tag.
+  ///
+  /// Returns the result of the appropriate function, depending on the tag
+  /// of this instance.
+  ///
+  /// Throws an exception if one of the functions is null, or if this
+  /// instance has an unknown tag.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// ConnectivityState state = ConnectivityState.success(text: 'Hello');
+  ///
+  /// String result = state.map<String>(
+  ///   error: (error) => 'Oops: ${error.msg}',
+  ///   load: () => 'Loading...',
+  ///   success: (success) => 'Success: ${success.text}',
+  /// );
+  ///
+  /// print(result); // 'Success: Hello'
+  /// ```
   T map<T>({
     required T Function(_ConnectivityStateIsdisonnected v) isDisonnected,
     required T Function(_ConnectivityStateIsconnected v) isConnected,
@@ -58,6 +65,24 @@ class ConnectivityState {
     }
   }
 
+  /// Returns the result of invoking the appropriate callback function based on the
+  /// [ConnectivityState] instance's tag.
+  /// If the appropriate callback function is null, this method invokes the [orElse]
+  /// callback function instead.
+  ///
+  /// The generic type parameter [T] represents the return type of the callback functions.
+  ///
+  /// Example:
+  /// ```
+  /// final state = OnboardingState.success(text: 'Hello, World!');
+  ///
+  /// final message = state.maybeMap<String>(
+  ///   success: (s) => s.text,
+  ///   orElse: () => 'Default message',
+  /// );
+  ///
+  /// print(message); // Output: 'Hello, World!'
+  /// ```
   T maybeMap<T>({
     T Function(_ConnectivityStateIsdisonnected v)? isDisonnected,
     T Function(_ConnectivityStateIsconnected v)? isConnected,
@@ -77,6 +102,59 @@ class ConnectivityState {
         if (notDetermined != null)
           return notDetermined(const _ConnectivityStateNotdetermined());
         return orElse();
+    }
+  }
+
+  T? mapOrNull<T>({
+    T? Function(_ConnectivityStateIsdisonnected v)? isDisonnected,
+    T? Function(_ConnectivityStateIsconnected v)? isConnected,
+    T? Function(_ConnectivityStateNotdetermined v)? notDetermined,
+  }) {
+    switch (_tag) {
+      case _ConnectivityStateTag.isDisonnected:
+        return isDisonnected?.call(const _ConnectivityStateIsdisonnected());
+      case _ConnectivityStateTag.isConnected:
+        return isConnected?.call(const _ConnectivityStateIsconnected());
+      case _ConnectivityStateTag.notDetermined:
+        return notDetermined?.call(const _ConnectivityStateNotdetermined());
+    }
+  }
+
+  /// Returns the result of invoking the appropriate callback function based on the
+  /// [ConnectivityState] instance's tag, or `null` if the callback function is null.
+  ///
+  /// The generic type parameter [T] represents the return type of the callback functions.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// final state = OnboardingState.success(text: 'Hello, World!');
+  ///
+  /// final message = state.maybeMapOrNull<String>(
+  ///   success: (s) => s.text,
+  ///   orElse: () => null,
+  /// );
+  ///
+  /// print(message); // Output: 'Hello, World!'
+  /// ```
+  T? maybeMapOrNull<T>({
+    T? Function(_ConnectivityStateIsdisonnected v)? isDisonnected,
+    T? Function(_ConnectivityStateIsconnected v)? isConnected,
+    T? Function(_ConnectivityStateNotdetermined v)? notDetermined,
+  }) {
+    switch (_tag) {
+      case _ConnectivityStateTag.isDisonnected:
+        if (isDisonnected != null)
+          return isDisonnected(const _ConnectivityStateIsdisonnected());
+        return null;
+      case _ConnectivityStateTag.isConnected:
+        if (isConnected != null)
+          return isConnected(const _ConnectivityStateIsconnected());
+        return null;
+      case _ConnectivityStateTag.notDetermined:
+        if (notDetermined != null)
+          return notDetermined(const _ConnectivityStateNotdetermined());
+        return null;
     }
   }
 

@@ -58,6 +58,7 @@ dart_code_metrics:
     - arguments-ordering: false
     - avoid-late-keyword: false
     - no-magic-number: false
+    - avoid-non-null-assertion: false
 
     - avoid-nested-conditional-expressions: false
     - prefer-static-class: false
@@ -65,4 +66,7 @@ dart_code_metrics:
         ignored-parameters:
           - height
           - width
+          - bottom
+          - right
+          - left
           - Duration.zero

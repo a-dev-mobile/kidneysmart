@@ -8,8 +8,8 @@ part 'splash_state.dart';
 final splashProvider =
     StateNotifierProvider.autoDispose<SplashNotifier, SplashState>((ref) {
   return SplashNotifier(
-    router: ref.watch(appRouterServiceProvider),
-    storage: ref.watch(appStorageServiceProvider),
+    router: ref.read(appRouterServiceProvider),
+    storage: ref.read(appStorageServiceProvider),
   )..load();
 });
 

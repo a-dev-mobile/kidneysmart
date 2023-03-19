@@ -38,6 +38,49 @@ abstract class AppUtilsString {
   }
 }
 
+abstract class AppUtilsParser {
+  static String googleUrl(String url) {
+    final idUrl = UtilsRegex.getTextRegexMatch(
+      content: url,
+      regex: r'(?<=\/d\/)[^\/]+',
+    );
+
+    return 'https://drive.google.com/uc?export=view&id=$idUrl';
+  }
+}
+
+abstract class UtilsRegex {
+  static String getTextRegexMatch({
+    required String regex,
+    required String content,
+    bool isLast = true,
+  }) {
+    final regexFindNameState = RegExp(regex, multiLine: true);
+    final match = regexFindNameState.allMatches(content);
+    if (match.isEmpty) {
+      return '';
+    }
+
+    return isLast ? match.last[0] ?? '' : match.first[0] ?? '';
+  }
+
+  static List<String> getTextRegexListMatch({
+    required String regex,
+    required String content,
+  }) {
+    final regexFindNameState = RegExp(regex, multiLine: true);
+    final matches = regexFindNameState.allMatches(content);
+    if (matches.isEmpty) return [];
+    final list = <String>[];
+    for (final Match m in matches) {
+      final match = m[0] ?? '';
+      list.add(match);
+    }
+
+    return list;
+  }
+}
+
 class AppUtilsNumber {
   static String getFormatNumber({
     required double num,

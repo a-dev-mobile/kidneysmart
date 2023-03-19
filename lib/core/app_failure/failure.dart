@@ -17,7 +17,7 @@ class _Failure implements Exception {
 // end
 
 //          --TURN_GEN--
-//             v0.4.1
+//             v0.4.7
 //  *************************************
 //           GENERATED CODE
 //  *************************************
@@ -40,24 +40,28 @@ class Failure implements Exception {
   /// Get the error message for specified failure
   const Failure.other() : _tag = _FailureTag.other;
 
-  T? mapOrNull<T>({
-    T? Function(_FailureEmpty v)? empty,
-    T? Function(_FailureBadrequest v)? badRequest,
-    T? Function(_FailureUnprocessableentity v)? unprocessableEntity,
-    T? Function(_FailureOther v)? other,
-  }) {
-    switch (_tag) {
-      case _FailureTag.empty:
-        return empty?.call(const _FailureEmpty());
-      case _FailureTag.badRequest:
-        return badRequest?.call(const _FailureBadrequest());
-      case _FailureTag.unprocessableEntity:
-        return unprocessableEntity?.call(const _FailureUnprocessableentity());
-      case _FailureTag.other:
-        return other?.call(const _FailureOther());
-    }
-  }
-
+  /// Maps this `Failure` instance to a value of type `T`,
+  /// depending on its underlying tag.
+  ///
+  /// Returns the result of the appropriate function, depending on the tag
+  /// of this instance.
+  ///
+  /// Throws an exception if one of the functions is null, or if this
+  /// instance has an unknown tag.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// Failure state = Failure.success(text: 'Hello');
+  ///
+  /// String result = state.map<String>(
+  ///   error: (error) => 'Oops: ${error.msg}',
+  ///   load: () => 'Loading...',
+  ///   success: (success) => 'Success: ${success.text}',
+  /// );
+  ///
+  /// print(result); // 'Success: Hello'
+  /// ```
   T map<T>({
     required T Function(_FailureEmpty v) empty,
     required T Function(_FailureBadrequest v) badRequest,
@@ -76,6 +80,24 @@ class Failure implements Exception {
     }
   }
 
+  /// Returns the result of invoking the appropriate callback function based on the
+  /// [Failure] instance's tag.
+  /// If the appropriate callback function is null, this method invokes the [orElse]
+  /// callback function instead.
+  ///
+  /// The generic type parameter [T] represents the return type of the callback functions.
+  ///
+  /// Example:
+  /// ```
+  /// final state = OnboardingState.success(text: 'Hello, World!');
+  ///
+  /// final message = state.maybeMap<String>(
+  ///   success: (s) => s.text,
+  ///   orElse: () => 'Default message',
+  /// );
+  ///
+  /// print(message); // Output: 'Hello, World!'
+  /// ```
   T maybeMap<T>({
     T Function(_FailureEmpty v)? empty,
     T Function(_FailureBadrequest v)? badRequest,
@@ -97,6 +119,64 @@ class Failure implements Exception {
       case _FailureTag.other:
         if (other != null) return other(const _FailureOther());
         return orElse();
+    }
+  }
+
+  T? mapOrNull<T>({
+    T? Function(_FailureEmpty v)? empty,
+    T? Function(_FailureBadrequest v)? badRequest,
+    T? Function(_FailureUnprocessableentity v)? unprocessableEntity,
+    T? Function(_FailureOther v)? other,
+  }) {
+    switch (_tag) {
+      case _FailureTag.empty:
+        return empty?.call(const _FailureEmpty());
+      case _FailureTag.badRequest:
+        return badRequest?.call(const _FailureBadrequest());
+      case _FailureTag.unprocessableEntity:
+        return unprocessableEntity?.call(const _FailureUnprocessableentity());
+      case _FailureTag.other:
+        return other?.call(const _FailureOther());
+    }
+  }
+
+  /// Returns the result of invoking the appropriate callback function based on the
+  /// [Failure] instance's tag, or `null` if the callback function is null.
+  ///
+  /// The generic type parameter [T] represents the return type of the callback functions.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// final state = OnboardingState.success(text: 'Hello, World!');
+  ///
+  /// final message = state.maybeMapOrNull<String>(
+  ///   success: (s) => s.text,
+  ///   orElse: () => null,
+  /// );
+  ///
+  /// print(message); // Output: 'Hello, World!'
+  /// ```
+  T? maybeMapOrNull<T>({
+    T? Function(_FailureEmpty v)? empty,
+    T? Function(_FailureBadrequest v)? badRequest,
+    T? Function(_FailureUnprocessableentity v)? unprocessableEntity,
+    T? Function(_FailureOther v)? other,
+  }) {
+    switch (_tag) {
+      case _FailureTag.empty:
+        if (empty != null) return empty(const _FailureEmpty());
+        return null;
+      case _FailureTag.badRequest:
+        if (badRequest != null) return badRequest(const _FailureBadrequest());
+        return null;
+      case _FailureTag.unprocessableEntity:
+        if (unprocessableEntity != null)
+          return unprocessableEntity(const _FailureUnprocessableentity());
+        return null;
+      case _FailureTag.other:
+        if (other != null) return other(const _FailureOther());
+        return null;
     }
   }
 

@@ -1,9 +1,11 @@
+import 'package:dio_log/dio_log.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/core/services/navigation/app_router_service.dart';
 import 'package:nutrition/core/style/app_text_style.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
+import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
 import 'package:nutrition/global.dart';
 
 class OverlayWidget extends ConsumerWidget {
@@ -17,7 +19,14 @@ class OverlayWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //  final state = ref.watch(connectivityStatusProvider);
+    ref.listen<DebugState>(debugProvider, (p, c) {
+      if (c.isShowBtnHttpLog) {
+        final _ = showDebugBtn(context);
+      } else {
+        final _ = dismissDebugBtn();
+      }
+    });
+
     return Scaffold(
       body: Stack(
         children: [
