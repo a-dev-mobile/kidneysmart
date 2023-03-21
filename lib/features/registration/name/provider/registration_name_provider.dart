@@ -49,7 +49,7 @@ class RegistrationNameNotifier extends StateNotifier<RegistrationNameState> {
         ),
       );
       //
-    } else if (value.minSymbol(1)) {
+    } else if (value.isMinSymbol(1)) {
       state = state.copyWith(
         nameValid: FieldStringValid(
           value: value,
@@ -57,7 +57,7 @@ class RegistrationNameNotifier extends StateNotifier<RegistrationNameState> {
         ),
       );
       //
-    } else if (value.maxSymbol(10)) {
+    } else if (value.isMaxSymbol(10)) {
       state = state.copyWith(
         nameValid: FieldStringValid(
           value: value,

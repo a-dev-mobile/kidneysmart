@@ -1,9 +1,7 @@
-extension ValidatorX on String {
-  bool maxSymbol(int value) => RegExp('^.{$value,}\$').hasMatch(this);
-  bool minSymbol(int value) => RegExp('^.{0,$value}\$').hasMatch(this);
-}
-
-extension StringIsDate on String {
+extension ValidatorStringX on String {
+  bool isMaxSymbol(int value) => RegExp('^.{$value,}\$').hasMatch(this);
+  bool isMinSymbol(int value) => RegExp('^.{0,$value}\$').hasMatch(this);
+  
   bool isDate() {
     try {
       final date = DateTime.parse(this);
@@ -17,4 +15,11 @@ extension StringIsDate on String {
       return false;
     }
   }
+}
+
+extension ValidatorDoubleX on double {
+  bool isMaxValue(double max) => this > max;
+  bool isMinValue(double min) => this < min;
+  bool isZero() => this == 0;
+
 }

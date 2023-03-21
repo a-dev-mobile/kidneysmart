@@ -721,10 +721,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: b4bb06205ec607278b6fc23db238278417bca84a3905779cc68d1eb7afae37e2
+      sha256: "871f6f89426ab20286d4e8aaa0f85b6fe91607e1720375f1baecbd34602df409"
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.0"
+    version: "6.3.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -1278,10 +1278,10 @@ packages:
     dependency: "direct dev"
     description:
       name: turn_gen
-      sha256: "22cf3e1b22a9a7f7309d398caf0d76b6545e74f63b9602f8ae11ba134cfe8935"
+      sha256: "737e804bab5359e42fd301403213d1eb500f6d65a3b4e4a21966cf798fda72f3"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.0"
+    version: "0.6.3"
   typed_data:
     dependency: transitive
     description:

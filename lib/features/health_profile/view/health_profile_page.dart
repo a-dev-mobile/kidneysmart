@@ -39,6 +39,8 @@ class HealthProfilePage extends ConsumerWidget {
           const BtnGender(),
           const DropBirthday(),
           const DropHeight(),
+          const FieldWeight(),
+          const BtnActivity(),
           ElevatedButton(
             onPressed: notifier.check,
             child: const Text('Проверить'),

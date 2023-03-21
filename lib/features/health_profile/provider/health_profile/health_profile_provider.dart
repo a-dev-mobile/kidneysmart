@@ -2,7 +2,8 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
-import 'package:nutrition/core/utils/string_extensions.dart';
+
+import 'package:nutrition/core/valid/valid_extension.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/localization/localization.dart';
 
@@ -30,6 +31,28 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
   final AppStorageService _storage;
   final AppLocalizations _l;
 
+
+
+/* from page */
+  void setActivity(int? v, {bool isSaveLocal = true}) {
+
+  var error = '';
+    if (v == null && state.genderModel.selectedIndex == null) {
+      error = _l.activity_not_selected;
+    }
+    // update other provider
+  final _ =  _ref.read(activityProvider.notifier).load(v);
+    state = state.copyWith(
+      activityModel: state.activityModel.copyWith(
+        selectedIndex: v,
+        errorMessage: error,
+      ),
+    );
+    if (isSaveLocal) _saveState();
+
+
+
+  }
 /* from page */
   void setGender(int? v, {bool isSaveLocal = true}) {
     var error = '';
@@ -119,6 +142,38 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     return errorMsg;
   }
 
+/* from page */
+  void setWeight(String? v, {bool isSaveLocal = true}) {
+    var error = '';
+
+    error = _validWeight(v);
+
+    state = state.copyWith(
+      weightModel: state.weightModel.copyWith(value: v, errorMessage: error),
+    );
+
+    if (isSaveLocal) _saveState();
+  }
+
+  String _validWeight(String? v) {
+    if (v?.isEmpty ?? true && state.weightModel.value.isEmpty) {
+      return 'Вес не указан';
+    }
+
+    final doubleValue = double.tryParse(v!) ?? -1;
+
+    if (doubleValue.isNegative) return 'Неправильное значение';
+
+    if (doubleValue.isMinValue(40)) {
+      return 'Указанный вес не поддерживается приложением';
+    }
+    if (doubleValue.isMaxValue(200)) {
+      return 'Указанный вес не поддерживается приложением';
+    }
+
+    return '';
+  }
+
   String _getDateRaw() {
     final day = state.birthdayModel.daySelected;
     final monthNumber = state.birthdayModel.monthSelected;
@@ -135,12 +190,16 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     final heightModel = state.heightModel.copyWith(errorMessage: '');
     final birthdayModel = state.birthdayModel.copyWith(errorMessage: '');
     final genderModel = state.genderModel.copyWith(errorMessage: '');
+    final weightModel = state.weightModel.copyWith(errorMessage: '');
+    final activityModel = state.activityModel.copyWith(errorMessage: '');
 
     _storage.setHealthProfileState(
       state.copyWith(
         birthdayModel: birthdayModel,
         genderModel: genderModel,
         heightModel: heightModel,
+        weightModel: weightModel,
+        activityModel: activityModel,
       ),
     );
   }
@@ -148,7 +207,11 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 /* from page */
   void check() {
     setGender(state.genderModel.selectedIndex, isSaveLocal: false);
+    setActivity(state.activityModel.selectedIndex, isSaveLocal: false);
     _checkDate();
     setHeight(state.heightModel.value, isSaveLocal: false);
+    setWeight(state.weightModel.value, isSaveLocal: false);
   }
+
+
 }

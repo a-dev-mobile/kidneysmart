@@ -6,72 +6,65 @@ import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 
 @immutable
-class HeightInfoState {
+class WeightState { 
   /* init: const [] */
   final List<String> heightList;
   // end
-
+   
 //          --TURN_GEN--
-//           v0.6.0 (data)
+//           v0.6.3 (data)
 //  *************************************
-//         GENERATED CODE
+//         GENERATED CODE 
 //  *************************************
-
-  const HeightInfoState({
+  
+  const WeightState({
     this.heightList = const [],
   });
 
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'heightList': heightList,
+      'heightList': heightList, 
     };
   }
 
-  factory HeightInfoState.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const HeightInfoState();
 
-    return HeightInfoState(
-      heightList: (map['heightList'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+  factory WeightState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const WeightState();
+
+    return WeightState(
+      heightList: (map['heightList'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
     );
   }
 
-  HeightInfoState copyWith({
+  WeightState copyWith({
     List<String>? heightList,
   }) {
-    return HeightInfoState(
-      heightList: heightList ?? this.heightList,
+    return WeightState(
+      heightList: heightList ?? this.heightList, 
     );
   }
 
-  String toJson() => json.encode(toMap());
-  factory HeightInfoState.fromJson(String source) => HeightInfoState.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
+  String toJson() => json.encode(toMap());  
+  factory WeightState.fromJson(String source) => WeightState.fromMap(json.decode(source) as Map<String, dynamic>,);  
+   
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is HeightInfoState &&
-            const DeepCollectionEquality().equals(
-              other.heightList,
-              heightList,
-            ));
+            other is WeightState &&
+            const DeepCollectionEquality().equals(other.heightList, heightList,));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(
-          heightList,
-        ),
-      ]);
+        const DeepCollectionEquality().hash(heightList,),
+]);
 
   @override
   String toString() {
-    return 'HeightInfoState(heightList: $heightList, )';
-  }
+    return 'WeightState(heightList: $heightList, )';
+    }
+
 }

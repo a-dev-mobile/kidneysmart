@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/common/common.dart';
 
 final heightInfoProvider =
-    StateNotifierProvider<HeightInfoNotifier, HeightInfoState>(
+    StateNotifierProvider<HeightInfoNotifier, WeightState>(
   (ref) {
     return HeightInfoNotifier(
       ref: ref,
@@ -12,12 +12,12 @@ final heightInfoProvider =
   },
 );
 
-class HeightInfoNotifier extends StateNotifier<HeightInfoState> {
+class HeightInfoNotifier extends StateNotifier<WeightState> {
   HeightInfoNotifier({
     required Ref ref,
   })  : _ref = ref,
         super(
-          const HeightInfoState(),
+          const WeightState(),
         );
 
   // ignore: unused_field
@@ -31,6 +31,6 @@ class HeightInfoNotifier extends StateNotifier<HeightInfoState> {
       list.add(i.toString());
     }
 
-    state = HeightInfoState(heightList: list);
+    state = WeightState(heightList: list);
   }
 }
