@@ -6,13 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class HealthProfileState {  
+class HealthProfileState {    
   /* init: false */
   final bool isValid;
   /* init: const BtnToggleModel() */
   final BtnToggleModel genderModel;
     /* init: const BtnToggleModel() */
   final BtnToggleModel activityModel;
+  /* init: const BtnToggleModel() */
+    final BtnToggleModel hypertensionModel;
   /* init: const BirthdayModel() */
   final BirthdayModel birthdayModel;
   /* init: const HeightModel() */
@@ -31,6 +33,7 @@ class HealthProfileState {
     this.isValid = false,
     this.genderModel = const BtnToggleModel(),
     this.activityModel = const BtnToggleModel(),
+    this.hypertensionModel = const BtnToggleModel(),
     this.birthdayModel = const BirthdayModel(),
     this.heightModel = const HeightModel(),
     this.weightModel = const WeightModel(),
@@ -42,6 +45,7 @@ class HealthProfileState {
       'isValid': isValid, 
       'genderModel': genderModel.toMap(), 
       'activityModel': activityModel.toMap(), 
+      'hypertensionModel': hypertensionModel.toMap(), 
       'birthdayModel': birthdayModel.toMap(), 
       'heightModel': heightModel.toMap(), 
       'weightModel': weightModel.toMap(), 
@@ -56,6 +60,7 @@ class HealthProfileState {
       isValid: map['isValid'] != null ? map['isValid'] as bool : false, 
       genderModel: map['genderModel'] != null ? BtnToggleModel.fromMap(Map<String, dynamic>.from(map['genderModel'] as Map)) : const BtnToggleModel(), 
       activityModel: map['activityModel'] != null ? BtnToggleModel.fromMap(Map<String, dynamic>.from(map['activityModel'] as Map)) : const BtnToggleModel(), 
+      hypertensionModel: map['hypertensionModel'] != null ? BtnToggleModel.fromMap(Map<String, dynamic>.from(map['hypertensionModel'] as Map)) : const BtnToggleModel(), 
       birthdayModel: map['birthdayModel'] != null ? BirthdayModel.fromMap(Map<String, dynamic>.from(map['birthdayModel'] as Map)) : const BirthdayModel(), 
       heightModel: map['heightModel'] != null ? HeightModel.fromMap(Map<String, dynamic>.from(map['heightModel'] as Map)) : const HeightModel(), 
       weightModel: map['weightModel'] != null ? WeightModel.fromMap(Map<String, dynamic>.from(map['weightModel'] as Map)) : const WeightModel(), 
@@ -66,6 +71,7 @@ class HealthProfileState {
     bool? isValid,
     BtnToggleModel? genderModel,
     BtnToggleModel? activityModel,
+    BtnToggleModel? hypertensionModel,
     BirthdayModel? birthdayModel,
     HeightModel? heightModel,
     WeightModel? weightModel,
@@ -74,6 +80,7 @@ class HealthProfileState {
       isValid: isValid ?? this.isValid, 
       genderModel: genderModel ?? this.genderModel, 
       activityModel: activityModel ?? this.activityModel, 
+      hypertensionModel: hypertensionModel ?? this.hypertensionModel, 
       birthdayModel: birthdayModel ?? this.birthdayModel, 
       heightModel: heightModel ?? this.heightModel, 
       weightModel: weightModel ?? this.weightModel, 
@@ -91,6 +98,7 @@ class HealthProfileState {
             (identical(other.isValid, isValid) || other.isValid == isValid) && 
             (identical(other.genderModel, genderModel) || other.genderModel == genderModel) && 
             (identical(other.activityModel, activityModel) || other.activityModel == activityModel) && 
+            (identical(other.hypertensionModel, hypertensionModel) || other.hypertensionModel == hypertensionModel) && 
             (identical(other.birthdayModel, birthdayModel) || other.birthdayModel == birthdayModel) && 
             (identical(other.heightModel, heightModel) || other.heightModel == heightModel) && 
             (identical(other.weightModel, weightModel) || other.weightModel == weightModel));
@@ -102,6 +110,7 @@ class HealthProfileState {
         isValid,
         genderModel,
         activityModel,
+        hypertensionModel,
         birthdayModel,
         heightModel,
         weightModel,
@@ -109,7 +118,7 @@ class HealthProfileState {
 
   @override
   String toString() {
-    return 'HealthProfileState(isValid: $isValid, genderModel: $genderModel, activityModel: $activityModel, birthdayModel: $birthdayModel, heightModel: $heightModel, weightModel: $weightModel, )';
+    return 'HealthProfileState(isValid: $isValid, genderModel: $genderModel, activityModel: $activityModel, hypertensionModel: $hypertensionModel, birthdayModel: $birthdayModel, heightModel: $heightModel, weightModel: $weightModel, )';
     }
 
 }

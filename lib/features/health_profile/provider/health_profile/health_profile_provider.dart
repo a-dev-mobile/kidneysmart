@@ -50,9 +50,32 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     );
     if (isSaveLocal) _saveState();
 
+  }
+
+
+/* from page */
+  void setHypertension(int? v, {bool isSaveLocal = true}) {
+
+  var error = '';
+    if (v == null && state.hypertensionModel.selectedIndex == null) {
+      error = 'Подтвердите отсутствие или наличие гипертензии';
+    }
+    // update other provider
+  final _ =  _ref.read(hypertensionProvider.notifier).load(v);
+    state = state.copyWith(
+      hypertensionModel:   state.hypertensionModel.copyWith(
+        selectedIndex: v,
+        errorMessage: error,
+      ),
+    );
+    if (isSaveLocal) _saveState();
+
 
 
   }
+
+
+
 /* from page */
   void setGender(int? v, {bool isSaveLocal = true}) {
     var error = '';
@@ -192,6 +215,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     final genderModel = state.genderModel.copyWith(errorMessage: '');
     final weightModel = state.weightModel.copyWith(errorMessage: '');
     final activityModel = state.activityModel.copyWith(errorMessage: '');
+    final hypertensionModel = state.hypertensionModel.copyWith(errorMessage: '');
 
     _storage.setHealthProfileState(
       state.copyWith(
@@ -200,6 +224,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
         heightModel: heightModel,
         weightModel: weightModel,
         activityModel: activityModel,
+        hypertensionModel: hypertensionModel,
       ),
     );
   }
@@ -208,6 +233,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
   void check() {
     setGender(state.genderModel.selectedIndex, isSaveLocal: false);
     setActivity(state.activityModel.selectedIndex, isSaveLocal: false);
+    setHypertension(state.hypertensionModel.selectedIndex, isSaveLocal: false);
     _checkDate();
     setHeight(state.heightModel.value, isSaveLocal: false);
     setWeight(state.weightModel.value, isSaveLocal: false);

@@ -8,13 +8,13 @@ class BtnToggleText extends StatelessWidget {
     required this.onPressed,
     super.key,
     this.title = '',
-    this.errorText,
+    this.errorText = '',
     this.infoBottom = '',
     this.dialogText = '',
   });
   final List<String> textList;
   final String title;
-  final String? errorText;
+  final String errorText;
   final String dialogText;
   final String infoBottom;
   final List<bool> isSelected;
@@ -61,11 +61,11 @@ class BtnToggleText extends StatelessWidget {
                 for (var i in textList) Text(i),
               ],
             ),
-            if (errorText != null) ...[
+            if (errorText.isNotEmpty) ...[
               const SizedBox(height: 6),
               Align(
                 child: Text(
-                  errorText!,
+                  errorText,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!

@@ -4,9 +4,10 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class BtnToggleModel { 
+class BtnToggleModel {   
   final int? selectedIndex;
-  final String? errorMessage;
+  /* init: '' */
+  final String errorMessage;
 
   // end
    
@@ -17,8 +18,8 @@ class BtnToggleModel {
 //  *************************************
   
   const BtnToggleModel({
+    this.errorMessage = '',
     this.selectedIndex,
-    this.errorMessage,
   });
 
 
@@ -35,7 +36,7 @@ class BtnToggleModel {
 
     return BtnToggleModel(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(), 
-      errorMessage: map['errorMessage'] != null ? map['errorMessage'] as String : null, 
+      errorMessage: map['errorMessage'] != null ? map['errorMessage'] as String : '', 
     );
   }
 

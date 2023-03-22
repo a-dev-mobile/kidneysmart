@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/services/locale/locale_provider.dart';
 import 'package:nutrition/core/services/theme/theme_providers.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/health_profile/view/widgets/btn_hypertension.dart';
 
 /// {@template health_profile_page}
 /// HealthProfilePage widget
@@ -41,6 +42,7 @@ class HealthProfilePage extends ConsumerWidget {
           const DropHeight(),
           const FieldWeight(),
           const BtnActivity(),
+          const BtnHypertension(),
           ElevatedButton(
             onPressed: notifier.check,
             child: const Text('Проверить'),
