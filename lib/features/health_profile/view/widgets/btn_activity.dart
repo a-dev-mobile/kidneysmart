@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,14 +15,14 @@ class BtnActivity extends ConsumerWidget {
     final stateHealth = ref.watch(healthProfileProvider);
     final notifierHealth = ref.watch(healthProfileProvider.notifier);
 
-    return CardCustom(
+    return AppCard(
       child: BtnToggleText(
         textList: stateActivity.activityInfo.map((e) => e.value).toList(),
-        isSelected: stateActivity.activityInfo.map((e) => e.isSelected).toList(),
+        isSelected:
+            stateActivity.activityInfo.map((e) => e.isSelected).toList(),
         onPressed: notifierHealth.setActivity,
-      
         errorText: stateHealth.activityModel.errorMessage,
-        title:  'Укажите свою физическую активность',
+        title: 'Укажите свою физическую активность',
       ),
     );
   }

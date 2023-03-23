@@ -16,7 +16,7 @@ class DropHeight extends ConsumerWidget {
     final stateHealth = ref.watch(healthProfileProvider);
     final notifierHealth = ref.watch(healthProfileProvider.notifier);
 
-    return CardCustom(
+    return AppCard(
       child: Column(
         children: [
           const TitleSub(text: 'Укажите свой рост'),

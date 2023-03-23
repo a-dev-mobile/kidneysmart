@@ -1,7 +1,7 @@
 // ignore_for_file: constant_identifier_names, avoid_positional_boolean_parameters
 
 import 'dart:convert';
-import 'dart:io';
+// import 'package:universal_io/io.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/log/log.dart';
@@ -13,6 +13,7 @@ import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/features/registration/name/provider/registration_name_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:universal_io/io.dart';
 
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError();
@@ -146,7 +147,7 @@ class AppStorageService {
   String getLocale() {
     return getString(
       key: _locale,
-      defaultValue: Platform.localeName.split('_').first,
+      defaultValue: Platform.localeName.split(RegExp('(_|-)')).first,
     );
   }
 

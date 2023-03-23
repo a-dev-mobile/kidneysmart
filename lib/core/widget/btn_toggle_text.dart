@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrition/core/style/app_text_style.dart';
+import 'package:nutrition/core/widget/widget.dart';
 
 class BtnToggleText extends StatelessWidget {
   const BtnToggleText({
@@ -31,9 +32,8 @@ class BtnToggleText extends StatelessWidget {
               children: [
                 if (title.isNotEmpty)
                   Expanded(
-                    child: Text(
-                      title,
-                      style: AppTextStyles.bodyText2(),
+                    child: TitleSub(
+                      text: title,
                     ),
                   ),
                 if (dialogText.isNotEmpty)

@@ -31,17 +31,46 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
   final AppStorageService _storage;
   final AppLocalizations _l;
 
+  void setDiabetes(int? v, {bool isSaveLocal = true}) {
+    var error = '';
+    if (v == null && state.diabetesModel.selectedIndex == null) {
+      error = 'Подтвердите отсутствие или наличие диабета';
+    }
+    // update other provider
+    final _ = _ref.read(diabetesProvider.notifier).load(v);
+    state = state.copyWith(
+      diabetesModel: state.diabetesModel.copyWith(
+        selectedIndex: v,
+        errorMessage: error,
+      ),
+    );
+    if (isSaveLocal) _saveState();
+  }
 
+  void setDailyDiuresis(int? v, {bool isSaveLocal = true}) {
+    var error = '';
+    if (v == null && state.dailyDiuresisModel.selectedIndex == null) {
+      error = 'Не указан уровень суточного диуреза';
+    }
+    // update other provider
+    final _ = _ref.read(dailyDiuresisProvider.notifier).load(v);
+    state = state.copyWith(
+      dailyDiuresisModel: state.dailyDiuresisModel.copyWith(
+        selectedIndex: v,
+        errorMessage: error,
+      ),
+    );
+    if (isSaveLocal) _saveState();
+  }
 
 /* from page */
   void setActivity(int? v, {bool isSaveLocal = true}) {
-
-  var error = '';
-    if (v == null && state.genderModel.selectedIndex == null) {
+    var error = '';
+    if (v == null && state.activityModel.selectedIndex == null) {
       error = _l.activity_not_selected;
     }
     // update other provider
-  final _ =  _ref.read(activityProvider.notifier).load(v);
+    final _ = _ref.read(activityProvider.notifier).load(v);
     state = state.copyWith(
       activityModel: state.activityModel.copyWith(
         selectedIndex: v,
@@ -49,32 +78,24 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
       ),
     );
     if (isSaveLocal) _saveState();
-
   }
-
 
 /* from page */
   void setHypertension(int? v, {bool isSaveLocal = true}) {
-
-  var error = '';
+    var error = '';
     if (v == null && state.hypertensionModel.selectedIndex == null) {
       error = 'Подтвердите отсутствие или наличие гипертензии';
     }
     // update other provider
-  final _ =  _ref.read(hypertensionProvider.notifier).load(v);
+    final _ = _ref.read(hypertensionProvider.notifier).load(v);
     state = state.copyWith(
-      hypertensionModel:   state.hypertensionModel.copyWith(
+      hypertensionModel: state.hypertensionModel.copyWith(
         selectedIndex: v,
         errorMessage: error,
       ),
     );
     if (isSaveLocal) _saveState();
-
-
-
   }
-
-
 
 /* from page */
   void setGender(int? v, {bool isSaveLocal = true}) {
@@ -165,6 +186,19 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     return errorMsg;
   }
 
+  void setUrineOutput(String? v, {bool isSaveLocal = true}) {
+    var error = '';
+
+    error = _validUrineOutput(v);
+
+    state = state.copyWith(
+      urineOutputModel:
+          state.urineOutputModel.copyWith(value: v, errorMessage: error),
+    );
+
+    if (isSaveLocal) _saveState();
+  }
+
 /* from page */
   void setWeight(String? v, {bool isSaveLocal = true}) {
     var error = '';
@@ -197,6 +231,25 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     return '';
   }
 
+  String _validUrineOutput(String? v) {
+    if (v?.isEmpty ?? true && state.weightModel.value.isEmpty) {
+      return 'Не указано количестов выделяемой мочи';
+    }
+
+    final doubleValue = double.tryParse(v!) ?? -1;
+
+    if (doubleValue.isNegative) return 'Неправильное значение';
+
+    if (doubleValue.isMinValue(0)) {
+      return 'Указанное значение мочи не поддерживается приложением';
+    }
+    if (doubleValue.isMaxValue(3000)) {
+      return 'Указанное значение мочи не поддерживается приложением';
+    }
+
+    return '';
+  }
+
   String _getDateRaw() {
     final day = state.birthdayModel.daySelected;
     final monthNumber = state.birthdayModel.monthSelected;
@@ -215,7 +268,10 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     final genderModel = state.genderModel.copyWith(errorMessage: '');
     final weightModel = state.weightModel.copyWith(errorMessage: '');
     final activityModel = state.activityModel.copyWith(errorMessage: '');
-    final hypertensionModel = state.hypertensionModel.copyWith(errorMessage: '');
+    final dailyDiuresisModel = state.dailyDiuresisModel.copyWith(errorMessage: '');
+    final urineOutputModel = state.urineOutputModel.copyWith(errorMessage: '');
+    final hypertensionModel =
+        state.hypertensionModel.copyWith(errorMessage: '');
 
     _storage.setHealthProfileState(
       state.copyWith(
@@ -225,6 +281,8 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
         weightModel: weightModel,
         activityModel: activityModel,
         hypertensionModel: hypertensionModel,
+        dailyDiuresisModel: dailyDiuresisModel,
+        urineOutputModel: urineOutputModel,
       ),
     );
   }
@@ -234,10 +292,13 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     setGender(state.genderModel.selectedIndex, isSaveLocal: false);
     setActivity(state.activityModel.selectedIndex, isSaveLocal: false);
     setHypertension(state.hypertensionModel.selectedIndex, isSaveLocal: false);
+    setDiabetes(state.hypertensionModel.selectedIndex, isSaveLocal: false);
     _checkDate();
     setHeight(state.heightModel.value, isSaveLocal: false);
     setWeight(state.weightModel.value, isSaveLocal: false);
+    setDailyDiuresis(
+      state.dailyDiuresisModel.selectedIndex,
+      isSaveLocal: false,
+    );
   }
-
-
 }

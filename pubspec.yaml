@@ -103,7 +103,7 @@ dependencies:
   firebase_performance: ^0.9.0+16
   firebase_storage: ^11.0.16
   firebase_database: ^10.0.16
-
+  universal_io: ^2.2.0
   # ******************************
   #  local packages
   # ******************************

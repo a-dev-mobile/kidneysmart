@@ -1,22 +1,20 @@
 // ignore_for_file: unused_element, lines_longer_than_80_chars
 
-import 'dart:io';
-
 import 'package:feedback/feedback.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/core/services/navigation/app_router_service.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/core/style/app_text_style.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
-
+import 'package:nutrition/features/onboarding/onboarding.dart';
+import 'package:nutrition/features/registration/name/name.dart';
 import 'package:nutrition/features/splash/splash.dart';
-
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:universal_io/io.dart';
 
 class DebugMenuPage extends ConsumerWidget {
   const DebugMenuPage({super.key});
@@ -78,14 +76,14 @@ class DebugMenuPage extends ConsumerWidget {
               Wrap(
                 children: const [
                   _ItemPage(name: 'splash', route: SplashPage.name),
-                  // _ItemPage(
-                  //   name: 'регистрация',
-                  //   route: RegistrationPage.name,
-                  // ),
-                  // _ItemPage(
-                  //   name: 'onboarding',
-                  //   route: OnBoardingPage.name,
-                  // ),
+                  _ItemPage(
+                    name: 'регистрация',
+                    route: RegistrationNamePage.name,
+                  ),
+                  _ItemPage(
+                    name: 'onboarding',
+                    route: OnBoardingPage.name,
+                  ),
 
                   // _ItemPage(
                   //   name: 'favorite',

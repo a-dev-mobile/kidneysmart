@@ -4,7 +4,7 @@ export 'app_logo.dart';
 export 'app_part_load.dart';
 export 'basic_button.dart';
 export 'btn_toggle_text.dart';
-export 'card_custom.dart';
+
 export 'clean_focus.dart';
 export 'dropdown.dart';
 export 'icon_text_btn.dart';

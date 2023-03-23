@@ -6,21 +6,27 @@ import 'package:flutter/material.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class HealthProfileState {    
+class HealthProfileState {  
   /* init: false */
   final bool isValid;
   /* init: const BtnToggleModel() */
   final BtnToggleModel genderModel;
-    /* init: const BtnToggleModel() */
+  /* init: const BtnToggleModel() */
   final BtnToggleModel activityModel;
   /* init: const BtnToggleModel() */
-    final BtnToggleModel hypertensionModel;
+  final BtnToggleModel hypertensionModel;
+  /* init: const BtnToggleModel() */
+  final BtnToggleModel diabetesModel;
   /* init: const BirthdayModel() */
   final BirthdayModel birthdayModel;
   /* init: const HeightModel() */
   final HeightModel heightModel;
+  /* init: const BtnToggleModel() */
+  final BtnToggleModel dailyDiuresisModel;
   /* init: const WeightModel() */
   final WeightModel weightModel;
+  /* init: const UrineOutputModel() */
+  final UrineOutputModel urineOutputModel;
   // end
    
 //          --TURN_GEN--
@@ -34,9 +40,12 @@ class HealthProfileState {
     this.genderModel = const BtnToggleModel(),
     this.activityModel = const BtnToggleModel(),
     this.hypertensionModel = const BtnToggleModel(),
+    this.diabetesModel = const BtnToggleModel(),
     this.birthdayModel = const BirthdayModel(),
     this.heightModel = const HeightModel(),
+    this.dailyDiuresisModel = const BtnToggleModel(),
     this.weightModel = const WeightModel(),
+    this.urineOutputModel = const UrineOutputModel(),
   });
 
 
@@ -46,9 +55,12 @@ class HealthProfileState {
       'genderModel': genderModel.toMap(), 
       'activityModel': activityModel.toMap(), 
       'hypertensionModel': hypertensionModel.toMap(), 
+      'diabetesModel': diabetesModel.toMap(), 
       'birthdayModel': birthdayModel.toMap(), 
       'heightModel': heightModel.toMap(), 
+      'dailyDiuresisModel': dailyDiuresisModel.toMap(), 
       'weightModel': weightModel.toMap(), 
+      'urineOutputModel': urineOutputModel.toMap(), 
     };
   }
 
@@ -61,9 +73,12 @@ class HealthProfileState {
       genderModel: map['genderModel'] != null ? BtnToggleModel.fromMap(Map<String, dynamic>.from(map['genderModel'] as Map)) : const BtnToggleModel(), 
       activityModel: map['activityModel'] != null ? BtnToggleModel.fromMap(Map<String, dynamic>.from(map['activityModel'] as Map)) : const BtnToggleModel(), 
       hypertensionModel: map['hypertensionModel'] != null ? BtnToggleModel.fromMap(Map<String, dynamic>.from(map['hypertensionModel'] as Map)) : const BtnToggleModel(), 
+      diabetesModel: map['diabetesModel'] != null ? BtnToggleModel.fromMap(Map<String, dynamic>.from(map['diabetesModel'] as Map)) : const BtnToggleModel(), 
       birthdayModel: map['birthdayModel'] != null ? BirthdayModel.fromMap(Map<String, dynamic>.from(map['birthdayModel'] as Map)) : const BirthdayModel(), 
       heightModel: map['heightModel'] != null ? HeightModel.fromMap(Map<String, dynamic>.from(map['heightModel'] as Map)) : const HeightModel(), 
+      dailyDiuresisModel: map['dailyDiuresisModel'] != null ? BtnToggleModel.fromMap(Map<String, dynamic>.from(map['dailyDiuresisModel'] as Map)) : const BtnToggleModel(), 
       weightModel: map['weightModel'] != null ? WeightModel.fromMap(Map<String, dynamic>.from(map['weightModel'] as Map)) : const WeightModel(), 
+      urineOutputModel: map['urineOutputModel'] != null ? UrineOutputModel.fromMap(Map<String, dynamic>.from(map['urineOutputModel'] as Map)) : const UrineOutputModel(), 
     );
   }
 
@@ -72,18 +87,24 @@ class HealthProfileState {
     BtnToggleModel? genderModel,
     BtnToggleModel? activityModel,
     BtnToggleModel? hypertensionModel,
+    BtnToggleModel? diabetesModel,
     BirthdayModel? birthdayModel,
     HeightModel? heightModel,
+    BtnToggleModel? dailyDiuresisModel,
     WeightModel? weightModel,
+    UrineOutputModel? urineOutputModel,
   }) {
     return HealthProfileState(
       isValid: isValid ?? this.isValid, 
       genderModel: genderModel ?? this.genderModel, 
       activityModel: activityModel ?? this.activityModel, 
       hypertensionModel: hypertensionModel ?? this.hypertensionModel, 
+      diabetesModel: diabetesModel ?? this.diabetesModel, 
       birthdayModel: birthdayModel ?? this.birthdayModel, 
       heightModel: heightModel ?? this.heightModel, 
+      dailyDiuresisModel: dailyDiuresisModel ?? this.dailyDiuresisModel, 
       weightModel: weightModel ?? this.weightModel, 
+      urineOutputModel: urineOutputModel ?? this.urineOutputModel, 
     );
   }
 
@@ -99,9 +120,12 @@ class HealthProfileState {
             (identical(other.genderModel, genderModel) || other.genderModel == genderModel) && 
             (identical(other.activityModel, activityModel) || other.activityModel == activityModel) && 
             (identical(other.hypertensionModel, hypertensionModel) || other.hypertensionModel == hypertensionModel) && 
+            (identical(other.diabetesModel, diabetesModel) || other.diabetesModel == diabetesModel) && 
             (identical(other.birthdayModel, birthdayModel) || other.birthdayModel == birthdayModel) && 
             (identical(other.heightModel, heightModel) || other.heightModel == heightModel) && 
-            (identical(other.weightModel, weightModel) || other.weightModel == weightModel));
+            (identical(other.dailyDiuresisModel, dailyDiuresisModel) || other.dailyDiuresisModel == dailyDiuresisModel) && 
+            (identical(other.weightModel, weightModel) || other.weightModel == weightModel) && 
+            (identical(other.urineOutputModel, urineOutputModel) || other.urineOutputModel == urineOutputModel));
   }
 
   @override
@@ -111,14 +135,17 @@ class HealthProfileState {
         genderModel,
         activityModel,
         hypertensionModel,
+        diabetesModel,
         birthdayModel,
         heightModel,
+        dailyDiuresisModel,
         weightModel,
+        urineOutputModel,
 ]);
 
   @override
   String toString() {
-    return 'HealthProfileState(isValid: $isValid, genderModel: $genderModel, activityModel: $activityModel, hypertensionModel: $hypertensionModel, birthdayModel: $birthdayModel, heightModel: $heightModel, weightModel: $weightModel, )';
+    return 'HealthProfileState(isValid: $isValid, genderModel: $genderModel, activityModel: $activityModel, hypertensionModel: $hypertensionModel, diabetesModel: $diabetesModel, birthdayModel: $birthdayModel, heightModel: $heightModel, dailyDiuresisModel: $dailyDiuresisModel, weightModel: $weightModel, urineOutputModel: $urineOutputModel, )';
     }
 
 }
