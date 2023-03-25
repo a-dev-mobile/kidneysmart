@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class UrineOutputModel {     
+class UrineOutputModel {                                                         
   /* init:'' */
   final String value;
   /* init:'' */
@@ -13,7 +13,7 @@ class UrineOutputModel {
   // end
    
 //          --TURN_GEN--
-//           v0.6.3 (data)
+//          v0.8.0 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class HypertensionItemModel {  
+class HypertensionItemModel {                                                      
 /* init: EnumHypertension.none */
   final EnumHypertension enumHypertension;
 /* init: '' */
@@ -15,7 +15,7 @@ class HypertensionItemModel {
 // end
    
 //          --TURN_GEN--
-//           v0.6.3 (data)
+//          v0.8.0 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

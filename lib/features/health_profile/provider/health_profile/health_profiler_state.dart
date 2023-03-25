@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class HealthProfileState {  
+class HealthProfileState {                                                      
   /* init: false */
   final bool isValid;
   /* init: const BtnToggleModel() */
@@ -30,7 +30,7 @@ class HealthProfileState {
   // end
    
 //          --TURN_GEN--
-//           v0.6.3 (data)
+//          v0.8.0 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

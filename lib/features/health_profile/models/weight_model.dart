@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class WeightModel {  
+class WeightModel {                                                      
   /* init:'' */
   final String value;
   final String? errorMessage;
@@ -12,7 +12,7 @@ class WeightModel {
   // end
    
 //          --TURN_GEN--
-//           v0.6.3 (data)
+//          v0.8.0 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

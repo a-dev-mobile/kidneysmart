@@ -109,4 +109,4 @@
 //   String toString() {
 //     return 'SettingState(localeActive: $localeActive, themeActive: $themeActive, boolsLocale: $boolsLocale, boolsTheme: $boolsTheme, )';
 //   }
-// }
+// ctive: $localeActive, themeActive: $themeActive, boolsLocale: $boolsLocale, boolsTheme: $boolsTheme, )';

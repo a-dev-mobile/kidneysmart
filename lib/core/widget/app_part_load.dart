@@ -11,7 +11,7 @@ class AppPartLoad extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Material(
         child: Center(
-          child: Lottie.asset(width: width, AppAssetsJSON.loadBtn),
+          child: Lottie.asset(width: width, AssetPaths.loadBtnLottie),
         ),
       );
 }

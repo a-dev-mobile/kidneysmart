@@ -1,4 +1,6 @@
+// turnGen
 enum EnumLang with Comparable<EnumLang> {
+
   ru('ru'),
   en('en');
 
@@ -8,10 +10,11 @@ enum EnumLang with Comparable<EnumLang> {
 // end
 
 //          --TURN_GEN--
-//          v0.5.1 (enum)
+//          v0.8.0 (enum)
 //  *************************************
-//         GENERATED CODE
+//         GENERATED CODE 
 //  *************************************
+  
 
   static EnumLang fromValue(String? value, {EnumLang? fallback}) {
     switch (value) {
@@ -20,14 +23,11 @@ enum EnumLang with Comparable<EnumLang> {
       case 'en':
         return en;
       default:
-        return fallback ??
-            (throw ArgumentError.value(
-              value,
-              '',
-              'Value not found in EnumLang',
-            ));
+        return fallback ?? (throw ArgumentError.value(
+          value, '', 'Value not found in EnumLang',));
     }
   }
+
 
   T map<T>({
     required T Function() ru,
@@ -41,6 +41,7 @@ enum EnumLang with Comparable<EnumLang> {
     }
   }
 
+
   T mapValue<T>({
     required T ru,
     required T en,
@@ -53,15 +54,17 @@ enum EnumLang with Comparable<EnumLang> {
     }
   }
 
+
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? ru,
     T Function()? en,
   }) =>
       map<T>(
-        ru: ru ?? orElse,
-        en: en ?? orElse,
+      ru: ru ?? orElse,
+      en: en ?? orElse,
       );
+
 
   T maybeMapValue<T>({
     required T orElse,
@@ -69,9 +72,10 @@ enum EnumLang with Comparable<EnumLang> {
     T? en,
   }) =>
       mapValue<T>(
-        ru: ru ?? orElse,
-        en: en ?? orElse,
+      ru: ru ?? orElse,
+      en: en ?? orElse,
       );
+
 
   T? maybeMapOrNull<T>({
     T Function()? ru,
@@ -83,6 +87,7 @@ enum EnumLang with Comparable<EnumLang> {
         en: en,
       );
 
+
   T? maybeMapOrNullValue<T>({
     T? ru,
     T? en,
@@ -93,12 +98,14 @@ enum EnumLang with Comparable<EnumLang> {
         en: en,
       );
 
-  static List<String> getValues() =>
-      EnumLang.values.map((e) => e.value).toList();
+
+  static List<String> getValues() => EnumLang.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumLang other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumLang.$name($value)';
+
+
 }

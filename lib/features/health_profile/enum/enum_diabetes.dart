@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names, lines_longer_than_80_chars
 
-enum EnumDiabetes with Comparable<EnumDiabetes>  {
+enum EnumDiabetes with Comparable<EnumDiabetes> {
 
   yes('yes'),
   no('no'),
@@ -12,7 +12,7 @@ enum EnumDiabetes with Comparable<EnumDiabetes>  {
 // end
 
 //          --TURN_GEN--
-//           v0.6.3 (enum)
+//          v0.8.0 (enum)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -124,7 +124,6 @@ enum EnumDiabetes with Comparable<EnumDiabetes>  {
 
   @override
   String toString() => 'EnumDiabetes.$name($value)';
-
 
 
 }

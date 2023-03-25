@@ -1,4 +1,4 @@
-enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis>  {
+enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
 
   normal('normal'),
   no('no'),
@@ -11,7 +11,7 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis>  {
 // end
 
 //          --TURN_GEN--
-//           v0.6.3 (enum)
+//          v0.8.0 (enum)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -139,7 +139,6 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis>  {
 
   @override
   String toString() => 'EnumDailyDiuresis.$name($value)';
-
 
 
 }

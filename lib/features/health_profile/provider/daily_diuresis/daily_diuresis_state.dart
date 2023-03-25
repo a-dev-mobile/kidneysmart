@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class DailyDiuresisState {  
+class DailyDiuresisState {                                                      
   /* init:const [] */
   final List<DailyDiuresisItemModel> dailyDiuresisInfo;
   /* init: false */
@@ -17,7 +17,7 @@ class DailyDiuresisState {
   // end
    
 //          --TURN_GEN--
-//           v0.6.3 (data)
+//          v0.8.0 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

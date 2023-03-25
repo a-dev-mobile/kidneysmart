@@ -6,13 +6,13 @@ import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 
 @immutable
-class WeightState { 
+class WeightState {                                                     
   /* init: const [] */
   final List<String> heightList;
   // end
    
 //          --TURN_GEN--
-//           v0.6.3 (data)
+//          v0.8.0 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

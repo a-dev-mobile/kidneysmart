@@ -1,5 +1,6 @@
 import 'package:meta/meta.dart';
 
+// turngen
 class _OnboardingState {
   const _OnboardingState.error([String msg = 'error']);
   const _OnboardingState.load();
@@ -8,7 +9,7 @@ class _OnboardingState {
 // end
 
 //          --TURN_GEN--
-//           v0.6.0 (union)
+//          v0.8.0 (union)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -34,28 +35,6 @@ class OnboardingState {
         _msg_error = null,
         _textMarkdown_success = textMarkdown;
 
- /// Maps this `OnboardingState` instance to a value of type `T`,
-  /// depending on its underlying tag.
-  ///
-  /// Returns the result of the appropriate function, depending on the tag
-  /// of this instance.
-  ///
-  /// Throws an exception if one of the functions is null, or if this
-  /// instance has an unknown tag.
-  ///
-  /// Example:
-  ///
-  /// ```dart
-  /// OnboardingState state = OnboardingState.success(text: 'Hello');
-  ///
-  /// String result = state.map<String>(
-  ///   error: (error) => 'Oops: ${error.msg}',
-  ///   load: () => 'Loading...',
-  ///   success: (success) => 'Success: ${success.text}',
-  /// );
-  ///
-  /// print(result); // 'Success: Hello'
-  /// ```
   T map<T>({
     required T Function(_OnboardingStateError v) error,
     required T Function(_OnboardingStateLoad v) load,
@@ -71,24 +50,6 @@ class OnboardingState {
     }
   }
 
-/// Returns the result of invoking the appropriate callback function based on the
-/// [OnboardingState] instance's tag.
-/// If the appropriate callback function is null, this method invokes the [orElse]
-/// callback function instead.
-///
-/// The generic type parameter [T] represents the return type of the callback functions.
-///
-/// Example:
-/// ```
-/// final state = OnboardingState.success(text: 'Hello, World!');
-///
-/// final message = state.maybeMap<String>(
-///   success: (s) => s.text,
-///   orElse: () => 'Default message',
-/// );
-///
-/// print(message); // Output: 'Hello, World!'
-/// ```
   T maybeMap<T>({
     T Function(_OnboardingStateError v)? error,
     T Function(_OnboardingStateLoad v)? load,
@@ -123,23 +84,6 @@ class OnboardingState {
     }
   }
 
-  /// Returns the result of invoking the appropriate callback function based on the
-  /// [OnboardingState] instance's tag, or `null` if the callback function is null.
-  ///
-  /// The generic type parameter [T] represents the return type of the callback functions.
-  ///
-  /// Example:
-  ///
-  /// ```dart
-  /// final state = OnboardingState.success(text: 'Hello, World!');
-  ///
-  /// final message = state.maybeMapOrNull<String>(
-  ///   success: (s) => s.text,
-  ///   orElse: () => null,
-  /// );
-  ///
-  /// print(message); // Output: 'Hello, World!'
-  /// ```
   T? maybeMapOrNull<T>({
     T? Function(_OnboardingStateError v)? error,
     T? Function(_OnboardingStateLoad v)? load,

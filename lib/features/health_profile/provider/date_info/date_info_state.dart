@@ -6,7 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 
 @immutable
-class DateInfoState {
+class DateInfoState {                                              
   /* init: const [] */
   final List<String> days;
   /* init: const [] */
@@ -14,39 +14,36 @@ class DateInfoState {
   /* init: const [] */
   final List<String> years;
   // end
-
+   
 //          --TURN_GEN--
-//             v0.4.7
+//          v0.8.0 (data)
 //  *************************************
-//           GENERATED CODE
+//         GENERATED CODE 
 //  *************************************
-
+  
   const DateInfoState({
     this.days = const [],
     this.months = const [],
     this.years = const [],
   });
 
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'days': days,
-      'months': months,
-      'years': years,
+      'days': days, 
+      'months': months, 
+      'years': years, 
     };
   }
+
 
   factory DateInfoState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const DateInfoState();
 
     return DateInfoState(
-      days: (map['days'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-          const [],
-      months:
-          (map['months'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              const [],
-      years:
-          (map['years'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              const [],
+      days: (map['days'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
+      months: (map['months'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
+      years: (map['years'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
     );
   }
 
@@ -56,52 +53,36 @@ class DateInfoState {
     List<String>? years,
   }) {
     return DateInfoState(
-      days: days ?? this.days,
-      months: months ?? this.months,
-      years: years ?? this.years,
+      days: days ?? this.days, 
+      months: months ?? this.months, 
+      years: years ?? this.years, 
     );
   }
 
-  String toJson() => json.encode(toMap());
-  factory DateInfoState.fromJson(String source) => DateInfoState.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
+  String toJson() => json.encode(toMap());  
+  factory DateInfoState.fromJson(String source) => DateInfoState.fromMap(json.decode(source) as Map<String, dynamic>,);  
+   
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DateInfoState &&
-            const DeepCollectionEquality().equals(
-              other.days,
-              days,
-            ) &&
-            const DeepCollectionEquality().equals(
-              other.months,
-              months,
-            ) &&
-            const DeepCollectionEquality().equals(
-              other.years,
-              years,
-            ));
+            const DeepCollectionEquality().equals(other.days, days,) && 
+            const DeepCollectionEquality().equals(other.months, months,) && 
+            const DeepCollectionEquality().equals(other.years, years,));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(
-          days,
-        ),
-        const DeepCollectionEquality().hash(
-          months,
-        ),
-        const DeepCollectionEquality().hash(
-          years,
-        ),
-      ]);
+        const DeepCollectionEquality().hash(days,),
+        const DeepCollectionEquality().hash(months,),
+        const DeepCollectionEquality().hash(years,),
+]);
 
   @override
   String toString() {
     return 'DateInfoState(days: $days, months: $months, years: $years, )';
-  }
+    }
+
 }

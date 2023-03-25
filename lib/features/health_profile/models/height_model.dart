@@ -4,38 +4,39 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class HeightModel {
+class HeightModel {                                                    
   /* init:'' */
   final String value;
   final String? errorMessage;
 
   // end
-
+   
 //          --TURN_GEN--
-//           v0.6.0 (data)
+//          v0.8.0 (data)
 //  *************************************
-//         GENERATED CODE
+//         GENERATED CODE 
 //  *************************************
-
+  
   const HeightModel({
     this.value = '',
     this.errorMessage,
   });
 
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': value,
-      'errorMessage': errorMessage,
+      'value': value, 
+      'errorMessage': errorMessage, 
     };
   }
+
 
   factory HeightModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const HeightModel();
 
     return HeightModel(
-      value: map['value'] != null ? map['value'] as String : '',
-      errorMessage:
-          map['errorMessage'] != null ? map['errorMessage'] as String : null,
+      value: map['value'] != null ? map['value'] as String : '', 
+      errorMessage: map['errorMessage'] != null ? map['errorMessage'] as String : null, 
     );
   }
 
@@ -44,24 +45,21 @@ class HeightModel {
     String? errorMessage,
   }) {
     return HeightModel(
-      value: value ?? this.value,
-      errorMessage: errorMessage ?? this.errorMessage,
+      value: value ?? this.value, 
+      errorMessage: errorMessage ?? this.errorMessage, 
     );
   }
 
-  String toJson() => json.encode(toMap());
-  factory HeightModel.fromJson(String source) => HeightModel.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
+  String toJson() => json.encode(toMap());  
+  factory HeightModel.fromJson(String source) => HeightModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+   
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is HeightModel &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.value, value) || other.value == value) && 
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @override
@@ -69,10 +67,11 @@ class HeightModel {
         runtimeType,
         value,
         errorMessage,
-      ]);
+]);
 
   @override
   String toString() {
     return 'HeightModel(value: $value, errorMessage: $errorMessage, )';
-  }
+    }
+
 }

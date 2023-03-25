@@ -4,33 +4,35 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class RegistrationNameDbModel {
+class RegistrationNameDbModel {                                              
   /* init: '' */
   final String url;
 
   // end
-
+   
 //          --TURN_GEN--
-//             v0.4.7
+//          v0.8.0 (data)
 //  *************************************
-//           GENERATED CODE
+//         GENERATED CODE 
 //  *************************************
-
+  
   const RegistrationNameDbModel({
     this.url = '',
   });
 
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'url': url,
+      'url': url, 
     };
   }
+
 
   factory RegistrationNameDbModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const RegistrationNameDbModel();
 
     return RegistrationNameDbModel(
-      url: map['url'] != null ? map['url'] as String : '',
+      url: map['url'] != null ? map['url'] as String : '', 
     );
   }
 
@@ -38,16 +40,13 @@ class RegistrationNameDbModel {
     String? url,
   }) {
     return RegistrationNameDbModel(
-      url: url ?? this.url,
+      url: url ?? this.url, 
     );
   }
 
-  String toJson() => json.encode(toMap());
-  factory RegistrationNameDbModel.fromJson(String source) =>
-      RegistrationNameDbModel.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
+  String toJson() => json.encode(toMap());  
+  factory RegistrationNameDbModel.fromJson(String source) => RegistrationNameDbModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+   
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
@@ -60,10 +59,11 @@ class RegistrationNameDbModel {
   int get hashCode => Object.hashAll([
         runtimeType,
         url,
-      ]);
+]);
 
   @override
   String toString() {
     return 'RegistrationNameDbModel(url: $url, )';
-  }
+    }
+
 }

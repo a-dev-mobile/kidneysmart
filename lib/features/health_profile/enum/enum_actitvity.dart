@@ -1,4 +1,4 @@
-enum EnumActivity with Comparable<EnumActivity>  {
+enum EnumActivity with Comparable<EnumActivity> {
 // light
   normal('normal'),
   light('light'),
@@ -10,7 +10,7 @@ enum EnumActivity with Comparable<EnumActivity>  {
 // end
 
 //          --TURN_GEN--
-//           v0.6.3 (enum)
+//          v0.8.0 (enum)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -122,7 +122,6 @@ enum EnumActivity with Comparable<EnumActivity>  {
 
   @override
   String toString() => 'EnumActivity.$name($value)';
-
 
 
 }

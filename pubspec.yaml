@@ -121,10 +121,10 @@ dev_dependencies:
   json_serializable: ^6.6.1
   # turn_gen:
     # path: F:/DEV/FLUTTER/project/MY_GITHUB/turn_gen
-  turn_gen: ^0.6.3
+  turn_gen: ^0.8.0
 
 # Tests
-#flutter_driver:
+# flutter_driver:
 #  sdk: flutter
 #integration_test:
 #  sdk: flutter

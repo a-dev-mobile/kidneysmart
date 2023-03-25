@@ -1278,10 +1278,10 @@ packages:
     dependency: "direct dev"
     description:
       name: turn_gen
-      sha256: "737e804bab5359e42fd301403213d1eb500f6d65a3b4e4a21966cf798fda72f3"
+      sha256: "6044973775f017c4234c1ca18379b1232bb5df2abb9e2aa637220a0b8305b070"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.3"
+    version: "0.8.0"
   typed_data:
     dependency: transitive
     description:

@@ -4,45 +4,43 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class FieldStringValid {
+class FieldStringValid {                                              
   /* init:'' */
   final String value;
   final String? errorMessage;
   /* init: false */
   final bool isValid;
   // end
-
+   
 //          --TURN_GEN--
-//             v0.4.1
+//          v0.8.0 (data)
 //  *************************************
-//           GENERATED CODE
+//         GENERATED CODE 
 //  *************************************
-
+  
   const FieldStringValid({
     this.value = '',
     this.isValid = false,
     this.errorMessage,
   });
-  /*
-   factory FieldStringValid.init() => FieldStringValid(
-      ); 
-  */
+
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': value,
-      'errorMessage': errorMessage,
-      'isValid': isValid,
+      'value': value, 
+      'errorMessage': errorMessage, 
+      'isValid': isValid, 
     };
   }
 
-  factory FieldStringValid.fromMap(Map<String, dynamic>? map) {
+
+  factory FieldStringValid.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const FieldStringValid();
 
     return FieldStringValid(
-      value: map['value'] != null ? map['value'] as String : '',
-      errorMessage:
-          map['errorMessage'] != null ? map['errorMessage'] as String : null,
-      isValid: map['isValid'] != null ? map['isValid'] as bool : false,
+      value: map['value'] != null ? map['value'] as String : '', 
+      errorMessage: map['errorMessage'] != null ? map['errorMessage'] as String : null, 
+      isValid: map['isValid'] != null ? map['isValid'] as bool : false, 
     );
   }
 
@@ -52,25 +50,22 @@ class FieldStringValid {
     bool? isValid,
   }) {
     return FieldStringValid(
-      value: value ?? this.value,
-      errorMessage: errorMessage ?? this.errorMessage,
-      isValid: isValid ?? this.isValid,
+      value: value ?? this.value, 
+      errorMessage: errorMessage ?? this.errorMessage, 
+      isValid: isValid ?? this.isValid, 
     );
   }
 
-  String toJson() => json.encode(toMap());
-  factory FieldStringValid.fromJson(String source) => FieldStringValid.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
+  String toJson() => json.encode(toMap());  
+  factory FieldStringValid.fromJson(String source) => FieldStringValid.fromMap(json.decode(source) as Map<String, dynamic>,);  
+   
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is FieldStringValid &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
+            (identical(other.value, value) || other.value == value) && 
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) && 
             (identical(other.isValid, isValid) || other.isValid == isValid));
   }
 
@@ -80,9 +75,11 @@ class FieldStringValid {
         value,
         errorMessage,
         isValid,
-      ]);
+]);
+
   @override
   String toString() {
     return 'FieldStringValid(value: $value, errorMessage: $errorMessage, isValid: $isValid, )';
-  }
+    }
+
 }

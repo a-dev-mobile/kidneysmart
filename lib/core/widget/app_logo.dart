@@ -13,7 +13,7 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     // for nado_deneg
     return SvgPicture.asset(
-      AppAssetsSVG.logo,
+      AssetPaths.logoSvg,
       width: size,
       height: size,
     );

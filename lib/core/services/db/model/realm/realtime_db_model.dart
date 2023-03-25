@@ -5,14 +5,14 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/services/db/db.dart';
 
 @immutable
-class RealtimeDbModel { 
+class RealtimeDbModel {                                                     
 /* init: const FeaturesDbModel()  */
   final FeaturesDbModel features;
 
   // end
    
 //          --TURN_GEN--
-//           v0.6.0 (data)
+//          v0.8.0 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

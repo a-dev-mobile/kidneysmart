@@ -30,7 +30,7 @@ class BasicButton extends StatelessWidget {
         ? TextStyle(decoration: TextDecoration.underline, color: colorText)
         : TextStyle(color: colorText);
 
-    final lottie = Lottie.asset(AppAssetsJSON.loadBtn);
+    final lottie = Lottie.asset(AssetPaths.loadBtnLottie);
 
     return SizedBox(
       height: isMin ? null : 50,

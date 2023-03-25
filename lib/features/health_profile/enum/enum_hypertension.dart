@@ -1,4 +1,4 @@
-enum EnumHypertension with Comparable<EnumHypertension>  {
+enum EnumHypertension with Comparable<EnumHypertension> {
 
   yes('yes'),
   no('no'),
@@ -10,7 +10,7 @@ enum EnumHypertension with Comparable<EnumHypertension>  {
 // end
 
 //          --TURN_GEN--
-//           v0.6.3 (enum)
+//          v0.8.0 (enum)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -122,7 +122,6 @@ enum EnumHypertension with Comparable<EnumHypertension>  {
 
   @override
   String toString() => 'EnumHypertension.$name($value)';
-
 
 
 }
