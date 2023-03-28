@@ -37,7 +37,7 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
     ];
 
     final selectedIndex =
-        v ?? _storage.getHealthProfileState().activityModel.selectedIndex;
+        v ?? _storage.getHealthProfileState().validActivityModel.selectedIndex;
 
     if (selectedIndex != null) {
       itemsInit[selectedIndex] =

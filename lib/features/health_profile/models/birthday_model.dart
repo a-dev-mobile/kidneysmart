@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 @immutable
-class BirthdayModel {                                              
+class ValidBirthdayModel {                                                                                                                            
   /* init:'' */
   final String? errorMessage;
   /* init: false */
@@ -16,12 +16,12 @@ class BirthdayModel {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
   
-  const BirthdayModel({
+  const ValidBirthdayModel({
     this.errorMessage = '',
     this.isValid = false,
     this.daySelected,
@@ -41,26 +41,26 @@ class BirthdayModel {
   }
 
 
-  factory BirthdayModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const BirthdayModel();
+  factory ValidBirthdayModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const ValidBirthdayModel();
 
-    return BirthdayModel(
-      errorMessage: map['errorMessage'] != null ? map['errorMessage'] as String : '', 
-      isValid: map['isValid'] != null ? map['isValid'] as bool : false, 
-      daySelected: map['daySelected'] != null ? map['daySelected'] as String : null, 
-      yearSelected: map['yearSelected'] != null ? map['yearSelected'] as String : null, 
-      monthSelected: map['monthSelected'] != null ? map['monthSelected'] as String : null, 
+    return ValidBirthdayModel(
+      errorMessage: map['errorMessage'] as String? ?? '', 
+      isValid: map['isValid'] as bool? ?? false, 
+      daySelected: map['daySelected'] as String?, 
+      yearSelected: map['yearSelected'] as String?, 
+      monthSelected: map['monthSelected'] as String?, 
     );
   }
 
-  BirthdayModel copyWith({
+  ValidBirthdayModel copyWith({
     String? errorMessage,
     bool? isValid,
     String? daySelected,
     String? yearSelected,
     String? monthSelected,
   }) {
-    return BirthdayModel(
+    return ValidBirthdayModel(
       errorMessage: errorMessage ?? this.errorMessage, 
       isValid: isValid ?? this.isValid, 
       daySelected: daySelected ?? this.daySelected, 
@@ -70,13 +70,13 @@ class BirthdayModel {
   }
 
   String toJson() => json.encode(toMap());  
-  factory BirthdayModel.fromJson(String source) => BirthdayModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+  factory ValidBirthdayModel.fromJson(String source) => ValidBirthdayModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
    
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is BirthdayModel &&
+            other is ValidBirthdayModel &&
             (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) && 
             (identical(other.isValid, isValid) || other.isValid == isValid) && 
             (identical(other.daySelected, daySelected) || other.daySelected == daySelected) && 
@@ -96,7 +96,7 @@ class BirthdayModel {
 
   @override
   String toString() {
-    return 'BirthdayModel(errorMessage: $errorMessage, isValid: $isValid, daySelected: $daySelected, yearSelected: $yearSelected, monthSelected: $monthSelected, )';
+    return 'ValidBirthdayModel(errorMessage: $errorMessage, isValid: $isValid, daySelected: $daySelected, yearSelected: $yearSelected, monthSelected: $monthSelected, )';
     }
 
 }

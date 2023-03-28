@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class DebugState {                                              
+class DebugState {                                                                                                                            
   /* init: false */
   final bool isShowDevice;
   /* init: false */
@@ -17,7 +17,7 @@ class DebugState {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -44,10 +44,10 @@ class DebugState {
     if (map == null) return const DebugState();
 
     return DebugState(
-      isShowDevice: map['isShowDevice'] != null ? map['isShowDevice'] as bool : false, 
-      isShowBtnHttpLog: map['isShowBtnHttpLog'] != null ? map['isShowBtnHttpLog'] as bool : false, 
-      isShowRepaintRainbow: map['isShowRepaintRainbow'] != null ? map['isShowRepaintRainbow'] as bool : false, 
-      isShowPaintSizeEnabled: map['isShowPaintSizeEnabled'] != null ? map['isShowPaintSizeEnabled'] as bool : false, 
+      isShowDevice: map['isShowDevice'] as bool? ?? false, 
+      isShowBtnHttpLog: map['isShowBtnHttpLog'] as bool? ?? false, 
+      isShowRepaintRainbow: map['isShowRepaintRainbow'] as bool? ?? false, 
+      isShowPaintSizeEnabled: map['isShowPaintSizeEnabled'] as bool? ?? false, 
     );
   }
 

@@ -6,14 +6,14 @@ import 'package:flutter/foundation.dart';
 import 'package:nutrition/core/services/dadata/dadata.dart';
 
 @immutable
-class Fio {                                              
+class Fio {                                                                                                                            
 /* init: const[] */
   final List<SuggestionsFio> suggestions;
 
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

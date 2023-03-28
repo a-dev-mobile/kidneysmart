@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class AppState {                                              
+class AppState {                                                                                                                            
   /* init: true */
   final bool isFirstTime;
   /* init: false */
@@ -13,7 +13,7 @@ class AppState {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -36,8 +36,8 @@ class AppState {
     if (map == null) return const AppState();
 
     return AppState(
-      isFirstTime: map['isFirstTime'] != null ? map['isFirstTime'] as bool : true, 
-      isOnboardingCompleted: map['isOnboardingCompleted'] != null ? map['isOnboardingCompleted'] as bool : false, 
+      isFirstTime: map['isFirstTime'] as bool? ?? true, 
+      isOnboardingCompleted: map['isOnboardingCompleted'] as bool? ?? false, 
     );
   }
 

@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class GenderItemModel {                                                    
+class GenderItemModel {                                                                                                                                  
 /* init: EnumGender.none */
   final EnumGender enumGender;
 /* init: '' */
@@ -15,7 +15,7 @@ class GenderItemModel {
 // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -41,8 +41,8 @@ class GenderItemModel {
 
     return GenderItemModel(
       enumGender: map['enumGender'] != null ? EnumGender.values[map['enumGender'] as int] : EnumGender.none, 
-      value: map['value'] != null ? map['value'] as String : '', 
-      isSelected: map['isSelected'] != null ? map['isSelected'] as bool : false, 
+      value: map['value'] as String? ?? '', 
+      isSelected: map['isSelected'] as bool? ?? false, 
     );
   }
 

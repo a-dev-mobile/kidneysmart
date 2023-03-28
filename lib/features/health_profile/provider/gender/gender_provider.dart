@@ -37,7 +37,7 @@ class GenderNotifier extends StateNotifier<GenderState> {
     ];
 
     final selectedIndex =
-        v ?? _storage.getHealthProfileState().genderModel.selectedIndex;
+        v ?? _storage.getHealthProfileState().validGenderModel.selectedIndex;
 
     if (selectedIndex != null) {
       itemsInit[selectedIndex] =

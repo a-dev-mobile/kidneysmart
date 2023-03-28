@@ -261,10 +261,10 @@ packages:
     dependency: "direct dev"
     description:
       name: dart_code_metrics
-      sha256: "026e28da197a03caeccccc0b174ec98ef03da3c81c4543314d7add121aab4375"
+      sha256: "728b1835a8c5b994ae8111148b427236f2f89954eebcb62baf4c476909b3d02d"
       url: "https://pub.dev"
     source: hosted
-    version: "5.6.0"
+    version: "5.7.0"
   dart_code_metrics_presets:
     dependency: transitive
     description:
@@ -325,17 +325,18 @@ packages:
     dependency: "direct main"
     description:
       name: dio
-      sha256: "7d328c4d898a61efc3cd93655a0955858e29a0aa647f0f9e02d59b3bb275e2e8"
+      sha256: f7c26ddb3a10ff033cf1bfbf2c668feb3472327f48385775f7cf25b104f8bfce
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.6"
+    version: "5.1.0"
   dio_log:
     dependency: "direct main"
     description:
-      name: dio_log
-      sha256: bf5ae847695277999d46e8089e74ec9fdf092f1d91299712d72ba5449ba13374
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: "dependabot/pub/dio-5.0.3"
+      resolved-ref: "50a19688f9ea27d03aee07297a6679c684b8f771"
+      url: "https://github.com/flutterplugin/dio_log.git"
+    source: git
     version: "2.0.4"
   dots_indicator:
     dependency: transitive
@@ -365,10 +366,10 @@ packages:
     dependency: "direct main"
     description:
       name: feedback
-      sha256: "912ffe11317f88585410818885a5312d044f025bd9b5633eab18f5808d28ac54"
+      sha256: a3a18af1d490b1e172cc354f1270760d14d2d0d5bb65e2d3710565de88507f33
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.0"
   ffi:
     dependency: transitive
     description:
@@ -721,10 +722,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "871f6f89426ab20286d4e8aaa0f85b6fe91607e1720375f1baecbd34602df409"
+      sha256: "7f25c4bb371b74b6f32f74946707db4595fa66e68ddc7f0da4a4dafb18a21480"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.0"
+    version: "6.5.1"
   google_fonts:
     dependency: "direct main"
     description:
@@ -849,10 +850,10 @@ packages:
     dependency: "direct main"
     description:
       name: lottie
-      sha256: "0cf78e7a3dd3431523a7debcf33ce4c41ecbfa113e2d10c24c3fe6667d55b556"
+      sha256: "14b489bf93af84727a07c87c73580a9413f9cbffa4ea2342f3f71447a674a3fb"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   markdown:
     dependency: transitive
     description:
@@ -1113,10 +1114,10 @@ packages:
     dependency: "direct main"
     description:
       name: shared_preferences
-      sha256: ee6257848f822b8481691f20c3e6d2bfee2e9eccb2a3d249907fcfb198c55b41
+      sha256: "78528fd87d0d08ffd3e69551173c026e8eacc7b7079c82eb6a77413957b7e394"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.18"
+    version: "2.0.20"
   shared_preferences_android:
     dependency: transitive
     description:
@@ -1278,10 +1279,10 @@ packages:
     dependency: "direct dev"
     description:
       name: turn_gen
-      sha256: "6044973775f017c4234c1ca18379b1232bb5df2abb9e2aa637220a0b8305b070"
+      sha256: e8e7de86bf51be4819c8bb651d2095c8d388e8d97b4a14febb47dd93434d0b86
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.0"
+    version: "0.8.2"
   typed_data:
     dependency: transitive
     description:
@@ -1430,10 +1431,10 @@ packages:
     dependency: "direct main"
     description:
       name: webview_flutter
-      sha256: b6cd42db3ced5411f3d01599906156885b18e4188f7065a8a351eb84bee347e0
+      sha256: "47663d51a9061451aa3880a214ee9a65dcbb933b77bc44388e194279ab3ccaf6"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.6"
+    version: "4.0.7"
   webview_flutter_android:
     dependency: transitive
     description:

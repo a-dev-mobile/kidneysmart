@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 // turngen
 @immutable
-class DataFio {                                                                                    
+class DataFio {                                                                                                                                                                                         
   /* init:'' */
   final String surname;
   /* init:'' */
@@ -21,7 +21,7 @@ class DataFio {
 // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -52,12 +52,12 @@ class DataFio {
     if (map == null) return const DataFio();
 
     return DataFio(
-      surname: map['surname'] != null ? map['surname'] as String : '', 
-      name: map['name'] != null ? map['name'] as String : '', 
-      patronymic: map['patronymic'] != null ? map['patronymic'] as String : '', 
-      gender: map['gender'] != null ? map['gender'] as String : '', 
-      source: map['source'] != null ? map['source'] as String : '', 
-      qc: map['qc'] != null ? map['qc'] as String : '', 
+      surname: map['surname'] as String? ?? '', 
+      name: map['name'] as String? ?? '', 
+      patronymic: map['patronymic'] as String? ?? '', 
+      gender: map['gender'] as String? ?? '', 
+      source: map['source'] as String? ?? '', 
+      qc: map['qc'] as String? ?? '', 
     );
   }
 

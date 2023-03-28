@@ -48,8 +48,8 @@ class DailyDiuresisNotifier extends StateNotifier<DailyDiuresisState> {
       ),
     ];
 
-    final selectedIndex =
-        v ?? _storage.getHealthProfileState().dailyDiuresisModel.selectedIndex;
+    final selectedIndex = v ??
+        _storage.getHealthProfileState().validDailyDiuresisModel.selectedIndex;
 
     if (selectedIndex != null) {
       itemsInit[selectedIndex] =

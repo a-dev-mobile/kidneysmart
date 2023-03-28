@@ -6,7 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 
 @immutable
-class DateInfoState {                                              
+class DateInfoState {                                                                                                                            
   /* init: const [] */
   final List<String> days;
   /* init: const [] */
@@ -16,7 +16,7 @@ class DateInfoState {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

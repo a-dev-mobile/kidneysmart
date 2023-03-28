@@ -26,7 +26,7 @@ class DropBirthday extends ConsumerWidget {
             children: [
               AppDropDown(
                 hint: 'ДЕНЬ',
-                value: stateHealth.birthdayModel.daySelected,
+                value: stateHealth.validBirthdayModel.daySelected,
                 onChanged: (v) =>
                     notifierHealth.setDate(v: v, enumDate: EnumDate.day),
                 values: stateDateInfo.days,
@@ -35,19 +35,19 @@ class DropBirthday extends ConsumerWidget {
                 hint: 'MЕСЯЦ',
                 onChanged: (v) =>
                     notifierHealth.setDate(v: v, enumDate: EnumDate.month),
-                value: stateHealth.birthdayModel.monthSelected,
+                value: stateHealth.validBirthdayModel.monthSelected,
                 values: stateDateInfo.months,
               ),
               AppDropDown(
                 hint: 'ГОД',
                 onChanged: (v) =>
                     notifierHealth.setDate(v: v, enumDate: EnumDate.year),
-                value: stateHealth.birthdayModel.yearSelected,
+                value: stateHealth.validBirthdayModel.yearSelected,
                 values: stateDateInfo.years,
               ),
             ],
           ),
-          ErrorMsg(error: stateHealth.birthdayModel.errorMessage),
+          ErrorMsg(error: stateHealth.validBirthdayModel.errorMessage),
         ],
       ),
     );

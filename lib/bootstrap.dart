@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names, lines_longer_than_80_chars
 
 import 'dart:async';
+import 'dart:isolate';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -17,41 +18,99 @@ import 'package:nutrition/firebase_options.dart';
 import 'package:nutrition/global.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 // ignore: prefer-static-class
 Future<void> bootstrap(FutureOr<Widget> Function() app) async {
-  await runZonedGuarded(
-    () async {
-      final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-      await _initFirebase();
-      await _initOrientationApp();
-      FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-      _initFlutterError();
-      PlatformDispatcher.instance.onError = _onPlatformDispatcherError;
+  try {
+    await runZonedGuarded(
+      () async {
+        final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+        FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-      await _initCrashlytic();
-      await _showSettingAppInLog();
+        final _ = await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        );
 
-      // prepare await provider
-      final overrides = await overrideProviders();
+        FlutterError.onError = (details) {
+          final exception = details.exception;
+          final stackTrace = details.stack ?? StackTrace.current;
 
-      runApp(
-        ProviderScope(
-          overrides: overrides,
-          observers: [if (DartDefine.IS_DEBUG) LogRiverpod()],
-          child: await app(),
-        ),
-      );
-    },
-    (error, stackTrace) {
-      if (DartDefine.IS_ANALYTICS) {
-        FirebaseCrashlytics.instance.recordError(error, stackTrace);
-      } else {
-        logger.e('App Zone Stack Trace', error.toString(), stackTrace);
-      }
-    },
+          if (DartDefine.IS_DEBUG_MENU_ENABLED) {
+            FlutterError.dumpErrorToConsole(details);
+          }
+
+          if (kReleaseMode || DartDefine.IS_DEBUG_MENU_ENABLED) {
+            // In development mode simply print to console.
+            Zone.current.handleUncaughtError(exception, stackTrace);
+          }
+        };
+
+        await _initOrientationApp();
+
+        await _showSettingAppInLog();
+
+        // prepare await provider
+        final overrides = await overrideProviders();
+
+        runApp(
+          ProviderScope(
+            overrides: overrides,
+            observers: [if (kDebugMode) LogRiverpod()],
+            child: await app(),
+          ),
+        );
+      },
+      (error, stackTrace) {
+        logger.e('🚑🚑', error.toString(), stackTrace);
+
+        _recordError(error, stackTrace);
+      },
+    );
+    FlutterNativeSplash.remove();
+    log.v('** close NATIVE splash**');
+
+    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+    PlatformDispatcher.instance.onError = (error, stack) {
+      logger.e('🚑🚑🚑', error, stack);
+      _recordError(error, stack);
+
+      return true;
+    };
+    Isolate.current.addErrorListener(
+      RawReceivePort((List<dynamic> errorAndStacktrace) async {
+        await _recordError(
+          errorAndStacktrace.first,
+          errorAndStacktrace.last as StackTrace,
+        );
+      }).sendPort,
+    );
+  } catch (e) {
+    log.e(e, '🚑', StackTrace.current);
+
+    await _recordError(e, StackTrace.current);
+  }
+}
+
+Future<void> _recordError(dynamic exception, StackTrace stack) async {
+  // await FirebaseCrashlytics.instance.setCustomKey('phone', '22e2222e22');
+  // await FirebaseCrashlytics.instance.setCustomKey('loan', '22e2222e22');
+  // await FirebaseCrashlytics.instance.setCustomKey('last_step', '22e2222e22');
+  // await FirebaseCrashlytics.instance.setCustomKey('BASE_URL', '22e2222e22');
+  // await FirebaseCrashlytics.instance
+  //     .setCustomKey('IS_DEBUG_MENU_ENABLED', DartDefine.IS_DEBUG_MENU_ENABLED);
+  // await FirebaseCrashlytics.instance
+  //     .setCustomKey('IS_ANALYTICS_ENABLED', DartDefine.IS_ANALYTICS_ENABLED);
+
+  // await FirebaseCrashlytics.instance.setUserIdentifier("5858512555e1");
+
+    const typeError = DartDefine.IS_DEBUG_MENU_ENABLED ? 'TEST' : 'PROD';
+
+  await FirebaseCrashlytics.instance.recordError(
+    exception,
+    stack,
+    reason: typeError,
+    fatal: true,
   );
-  FlutterNativeSplash.remove();
-  log.v('** close NATIVE splash**');
 }
 
 /* ****************************** */
@@ -60,23 +119,7 @@ Future<void> _showSettingAppInLog() async {
   final userAgent = await DeviceInfo.getUserAgent();
   final packageName = await DeviceInfo.getPackageName();
   log.wtf(
-    'IS_DEBUG = ${DartDefine.IS_DEBUG} | IS_PROD = ${DartDefine.IS_ANALYTICS}\n$packageName\n$userAgent',
-  );
-}
-
-Future<void> _initCrashlytic() async {
-  if (kDebugMode && !kIsWeb) {
-    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
-  } else if (!kIsWeb) {
-    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
-    // Passing all uncaught errors from the framework to Crashlytics
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-  }
-}
-
-Future<void> _initFirebase() async {
-  final _ = await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    'IS_DEBUG_MENU_ENABLED = ${DartDefine.IS_DEBUG_MENU_ENABLED} | IS_ANALYTICS_ENABLED = ${DartDefine.IS_ANALYTICS_ENABLED}\n$packageName\n$userAgent',
   );
 }
 
@@ -84,21 +127,6 @@ Future<void> _initOrientationApp() async {
   await SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp],
   );
-}
-
-void _initFlutterError() {
-  FlutterError.onError = (FlutterErrorDetails details) {
-    FlutterError.presentError(details);
-    FlutterError.dumpErrorToConsole(details);
-    log.e(details.exceptionAsString(), '🚑', details.stack);
-  };
-}
-
-// ignore: prefer-static-class, unused_element
-bool _onPlatformDispatcherError(Object error, StackTrace stack) {
-  logger.e('error: FlutterError', error, stack);
-
-  return true;
 }
 
 /// Triggered from bootstrap() to complete futures

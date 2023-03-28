@@ -11,8 +11,8 @@ class NetworkClientService {
   NetworkClientService()
       : _dio = Dio(
           BaseOptions(
-            connectTimeout: 3000,
-            receiveTimeout: 5000,
+            connectTimeout: const Duration(seconds: 10),
+            receiveTimeout: const Duration(seconds: 8),
           ),
         )..interceptors.addAll([
             DioLogInterceptor(),

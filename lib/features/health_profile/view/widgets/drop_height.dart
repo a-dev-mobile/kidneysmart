@@ -25,7 +25,7 @@ class DropHeight extends ConsumerWidget {
             children: [
               AppDropDown(
                 hint: 'Рост',
-                value: stateHealth.heightModel.value,
+                value: stateHealth.validHeightModel.value,
                 onChanged: notifierHealth.setHeight,
                 values: stateHeight.heightList,
               ),
@@ -36,7 +36,7 @@ class DropHeight extends ConsumerWidget {
               ),
             ],
           ),
-          ErrorMsg(error: stateHealth.heightModel.errorMessage),
+          ErrorMsg(error: stateHealth.validHeightModel.errorMessage),
         ],
       ),
     );

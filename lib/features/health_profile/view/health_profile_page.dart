@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/services/locale/locale_provider.dart';
@@ -18,6 +19,7 @@ class HealthProfilePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // final state = ref.watch(healthProfileProvider);
     final notifier = ref.watch(healthProfileProvider.notifier);
+
 
     return Scaffold(
       appBar: AppBar(
@@ -45,6 +47,9 @@ class HealthProfilePage extends ConsumerWidget {
           const BtnDiabetes(),
           const BtnDailyDiuresis(),
           const FieldUrineOutput(),
+          const BtnCkd(),
+          const FieldCreatinine(),
+
           ElevatedButton(
             onPressed: notifier.check,
             child: const Text('Проверить'),

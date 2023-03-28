@@ -39,7 +39,7 @@ class AppRouterService {
       FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
     ],
     // ignore: avoid_redundant_argument_values
-    debugLogDiagnostics: DartDefine.IS_DEBUG,
+    debugLogDiagnostics: DartDefine.IS_DEBUG_MENU_ENABLED,
     navigatorKey: _rootNavigatorKey,
 
     routes: [

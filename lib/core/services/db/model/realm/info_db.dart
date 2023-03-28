@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 @immutable
-class InfoDb {                                              
+class InfoDb {                                                                                                                            
   /* init: '' */
   final String url_ru;
   /* init: '' */
@@ -13,7 +13,7 @@ class InfoDb {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -36,8 +36,8 @@ class InfoDb {
     if (map == null) return const InfoDb();
 
     return InfoDb(
-      url_ru: map['url_ru'] != null ? map['url_ru'] as String : '', 
-      url_en: map['url_en'] != null ? map['url_en'] as String : '', 
+      url_ru: map['url_ru'] as String? ?? '', 
+      url_en: map['url_en'] as String? ?? '', 
     );
   }
 

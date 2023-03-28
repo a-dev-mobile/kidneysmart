@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
-
-
 
 class FieldWeight extends ConsumerStatefulWidget {
   const FieldWeight({super.key});
@@ -20,7 +17,7 @@ class _FieldNameState extends ConsumerState<FieldWeight> {
 
   @override
   void initState() {
-    final initValue = ref.read(healthProfileProvider).weightModel.value;
+    final initValue = ref.read(healthProfileProvider).validWeightModel.value;
 
     controller = TextEditingController(text: initValue);
 
@@ -40,7 +37,8 @@ class _FieldNameState extends ConsumerState<FieldWeight> {
     final notifier = ref.watch(healthProfileProvider.notifier);
 
     // final state = ref.watch(healthProfileProvider);
-    final errorMsg = ref.watch(healthProfileProvider).weightModel.errorMessage;
+    final errorMsg =
+        ref.watch(healthProfileProvider).validWeightModel.errorMessage;
 
     return AppCard(
       child: Column(

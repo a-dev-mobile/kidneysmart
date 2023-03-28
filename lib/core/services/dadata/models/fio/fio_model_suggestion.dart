@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:nutrition/core/services/dadata/dadata.dart';
 
 @immutable
-class SuggestionsFio {                                              
+class SuggestionsFio {                                                                                                                            
   /* init: '' */
   final String value;
   /* init: '' */
@@ -16,7 +16,7 @@ class SuggestionsFio {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -41,8 +41,8 @@ class SuggestionsFio {
     if (map == null) return const SuggestionsFio();
 
     return SuggestionsFio(
-      value: map['value'] != null ? map['value'] as String : '', 
-      unrestricted_value: map['unrestricted_value'] != null ? map['unrestricted_value'] as String : '', 
+      value: map['value'] as String? ?? '', 
+      unrestricted_value: map['unrestricted_value'] as String? ?? '', 
       data: map['data'] != null ? DataFio.fromMap(Map<String, dynamic>.from(map['data'] as Map)) : const DataFio(), 
     );
   }

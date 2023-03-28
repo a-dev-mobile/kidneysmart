@@ -5,9 +5,9 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class DailyDiuresisItemModel {                                                                                                                                        
-/* init: EnumDailyDiuresis.none */
-  final EnumDailyDiuresis enumDailyDiuresis;
+class CkdItemModel {                                                                                                                                         
+/* init: EnumCkd.none */
+  final EnumCkd enumCkd;
 /* init: '' */
   final String value;
 /* init: false */
@@ -20,8 +20,8 @@ class DailyDiuresisItemModel {
 //         GENERATED CODE 
 //  *************************************
   
-  const DailyDiuresisItemModel({
-    this.enumDailyDiuresis = EnumDailyDiuresis.none,
+  const CkdItemModel({
+    this.enumCkd = EnumCkd.none,
     this.value = '',
     this.isSelected = false,
   });
@@ -29,44 +29,44 @@ class DailyDiuresisItemModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumDailyDiuresis': enumDailyDiuresis.index, 
+      'enumCkd': enumCkd.index, 
       'value': value, 
       'isSelected': isSelected, 
     };
   }
 
 
-  factory DailyDiuresisItemModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const DailyDiuresisItemModel();
+  factory CkdItemModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const CkdItemModel();
 
-    return DailyDiuresisItemModel(
-      enumDailyDiuresis: map['enumDailyDiuresis'] != null ? EnumDailyDiuresis.values[map['enumDailyDiuresis'] as int] : EnumDailyDiuresis.none, 
+    return CkdItemModel(
+      enumCkd: map['enumCkd'] != null ? EnumCkd.values[map['enumCkd'] as int] : EnumCkd.none, 
       value: map['value'] as String? ?? '', 
       isSelected: map['isSelected'] as bool? ?? false, 
     );
   }
 
-  DailyDiuresisItemModel copyWith({
-    EnumDailyDiuresis? enumDailyDiuresis,
+  CkdItemModel copyWith({
+    EnumCkd? enumCkd,
     String? value,
     bool? isSelected,
   }) {
-    return DailyDiuresisItemModel(
-      enumDailyDiuresis: enumDailyDiuresis ?? this.enumDailyDiuresis, 
+    return CkdItemModel(
+      enumCkd: enumCkd ?? this.enumCkd, 
       value: value ?? this.value, 
       isSelected: isSelected ?? this.isSelected, 
     );
   }
 
   String toJson() => json.encode(toMap());  
-  factory DailyDiuresisItemModel.fromJson(String source) => DailyDiuresisItemModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+  factory CkdItemModel.fromJson(String source) => CkdItemModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
    
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DailyDiuresisItemModel &&
-            (identical(other.enumDailyDiuresis, enumDailyDiuresis) || other.enumDailyDiuresis == enumDailyDiuresis) && 
+            other is CkdItemModel &&
+            (identical(other.enumCkd, enumCkd) || other.enumCkd == enumCkd) && 
             (identical(other.value, value) || other.value == value) && 
             (identical(other.isSelected, isSelected) || other.isSelected == isSelected));
   }
@@ -74,14 +74,14 @@ class DailyDiuresisItemModel {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        enumDailyDiuresis,
+        enumCkd,
         value,
         isSelected,
 ]);
 
   @override
   String toString() {
-    return 'DailyDiuresisItemModel(enumDailyDiuresis: $enumDailyDiuresis, value: $value, isSelected: $isSelected, )';
+    return 'CkdItemModel(enumCkd: $enumCkd, value: $value, isSelected: $isSelected, )';
     }
 
 }

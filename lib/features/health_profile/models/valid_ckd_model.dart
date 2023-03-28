@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class UrineOutputModel {                                                         
+class ValidUrineOutputModel {                                                                                                                                       
   /* init:'' */
   final String value;
   /* init:'' */
@@ -13,12 +13,12 @@ class UrineOutputModel {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
   
-  const UrineOutputModel({
+  const ValidUrineOutputModel({
     this.value = '',
     this.errorMessage = '',
   });
@@ -32,33 +32,33 @@ class UrineOutputModel {
   }
 
 
-  factory UrineOutputModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const UrineOutputModel();
+  factory ValidUrineOutputModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const ValidUrineOutputModel();
 
-    return UrineOutputModel(
-      value: map['value'] != null ? map['value'] as String : '', 
-      errorMessage: map['errorMessage'] != null ? map['errorMessage'] as String : '', 
+    return ValidUrineOutputModel(
+      value: map['value'] as String? ?? '', 
+      errorMessage: map['errorMessage'] as String? ?? '', 
     );
   }
 
-  UrineOutputModel copyWith({
+  ValidUrineOutputModel copyWith({
     String? value,
     String? errorMessage,
   }) {
-    return UrineOutputModel(
+    return ValidUrineOutputModel(
       value: value ?? this.value, 
       errorMessage: errorMessage ?? this.errorMessage, 
     );
   }
 
   String toJson() => json.encode(toMap());  
-  factory UrineOutputModel.fromJson(String source) => UrineOutputModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+  factory ValidUrineOutputModel.fromJson(String source) => ValidUrineOutputModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
    
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UrineOutputModel &&
+            other is ValidUrineOutputModel &&
             (identical(other.value, value) || other.value == value) && 
             (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
@@ -72,7 +72,7 @@ class UrineOutputModel {
 
   @override
   String toString() {
-    return 'UrineOutputModel(value: $value, errorMessage: $errorMessage, )';
+    return 'ValidUrineOutputModel(value: $value, errorMessage: $errorMessage, )';
     }
 
 }

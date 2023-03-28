@@ -41,7 +41,7 @@ class OverlayWidget extends ConsumerWidget {
           //     );
           //   },
           // ),
-          if (DartDefine.IS_DEBUG)
+          if (DartDefine.IS_DEBUG_MENU_ENABLED)
             Positioned(
               left: 0,
               bottom: 0,
@@ -50,7 +50,7 @@ class OverlayWidget extends ConsumerWidget {
                 style: AppTextStyles.s20w600h24(Colors.red),
               ),
             ),
-          if (DartDefine.IS_DEBUG)
+          if (DartDefine.IS_DEBUG_MENU_ENABLED)
             Positioned(
               right: 10,
               bottom: 2,

@@ -4,12 +4,11 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class FieldStringValid {                                                                                                                            
+class ValidWeightModel {  
   /* init:'' */
   final String value;
   final String? errorMessage;
-  /* init: false */
-  final bool isValid;
+
   // end
    
 //          --TURN_GEN--
@@ -18,9 +17,8 @@ class FieldStringValid {
 //         GENERATED CODE 
 //  *************************************
   
-  const FieldStringValid({
+  const ValidWeightModel({
     this.value = '',
-    this.isValid = false,
     this.errorMessage,
   });
 
@@ -29,44 +27,39 @@ class FieldStringValid {
     return <String, dynamic>{
       'value': value, 
       'errorMessage': errorMessage, 
-      'isValid': isValid, 
     };
   }
 
 
-  factory FieldStringValid.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const FieldStringValid();
+  factory ValidWeightModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const ValidWeightModel();
 
-    return FieldStringValid(
+    return ValidWeightModel(
       value: map['value'] as String? ?? '', 
       errorMessage: map['errorMessage'] as String?, 
-      isValid: map['isValid'] as bool? ?? false, 
     );
   }
 
-  FieldStringValid copyWith({
+  ValidWeightModel copyWith({
     String? value,
     String? errorMessage,
-    bool? isValid,
   }) {
-    return FieldStringValid(
+    return ValidWeightModel(
       value: value ?? this.value, 
       errorMessage: errorMessage ?? this.errorMessage, 
-      isValid: isValid ?? this.isValid, 
     );
   }
 
   String toJson() => json.encode(toMap());  
-  factory FieldStringValid.fromJson(String source) => FieldStringValid.fromMap(json.decode(source) as Map<String, dynamic>,);  
+  factory ValidWeightModel.fromJson(String source) => ValidWeightModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
    
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FieldStringValid &&
+            other is ValidWeightModel &&
             (identical(other.value, value) || other.value == value) && 
-            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) && 
-            (identical(other.isValid, isValid) || other.isValid == isValid));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @override
@@ -74,12 +67,11 @@ class FieldStringValid {
         runtimeType,
         value,
         errorMessage,
-        isValid,
 ]);
 
   @override
   String toString() {
-    return 'FieldStringValid(value: $value, errorMessage: $errorMessage, isValid: $isValid, )';
+    return 'ValidWeightModel(value: $value, errorMessage: $errorMessage, )';
     }
 
 }

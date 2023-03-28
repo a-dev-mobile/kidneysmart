@@ -20,7 +20,7 @@ class Analytics {
     log('--$value');
     log('--');
 
-    if (DartDefine.IS_ANALYTICS) {
+    if (DartDefine.IS_ANALYTICS_ENABLED) {
       await FirebaseAnalytics.instance.logEvent(
         name: mainEvent,
         parameters: {subEvent: value},

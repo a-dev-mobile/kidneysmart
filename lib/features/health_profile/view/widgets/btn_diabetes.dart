@@ -20,7 +20,7 @@ class BtnDiabetes extends ConsumerWidget {
         textList: state.diabetesInfo.map((e) => e.value).toList(),
         isSelected: state.diabetesInfo.map((e) => e.isSelected).toList(),
         onPressed: notifierHealth.setDiabetes,
-        errorText: stateHealth.diabetesModel.errorMessage,
+        errorText: stateHealth.validDiabetesModel.errorMessage,
         title: 'Наличие диабета',
       ),
     );

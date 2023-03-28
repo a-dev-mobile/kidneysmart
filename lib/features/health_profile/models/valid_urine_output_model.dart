@@ -4,22 +4,23 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class HeightModel {                                                    
+class ValidUrineOutputModel {                                                                                                                                       
   /* init:'' */
   final String value;
-  final String? errorMessage;
+  /* init:'' */
+  final String errorMessage;
 
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
   
-  const HeightModel({
+  const ValidUrineOutputModel({
     this.value = '',
-    this.errorMessage,
+    this.errorMessage = '',
   });
 
 
@@ -31,33 +32,33 @@ class HeightModel {
   }
 
 
-  factory HeightModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const HeightModel();
+  factory ValidUrineOutputModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const ValidUrineOutputModel();
 
-    return HeightModel(
-      value: map['value'] != null ? map['value'] as String : '', 
-      errorMessage: map['errorMessage'] != null ? map['errorMessage'] as String : null, 
+    return ValidUrineOutputModel(
+      value: map['value'] as String? ?? '', 
+      errorMessage: map['errorMessage'] as String? ?? '', 
     );
   }
 
-  HeightModel copyWith({
+  ValidUrineOutputModel copyWith({
     String? value,
     String? errorMessage,
   }) {
-    return HeightModel(
+    return ValidUrineOutputModel(
       value: value ?? this.value, 
       errorMessage: errorMessage ?? this.errorMessage, 
     );
   }
 
   String toJson() => json.encode(toMap());  
-  factory HeightModel.fromJson(String source) => HeightModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+  factory ValidUrineOutputModel.fromJson(String source) => ValidUrineOutputModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
    
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is HeightModel &&
+            other is ValidUrineOutputModel &&
             (identical(other.value, value) || other.value == value) && 
             (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
@@ -71,7 +72,7 @@ class HeightModel {
 
   @override
   String toString() {
-    return 'HeightModel(value: $value, errorMessage: $errorMessage, )';
+    return 'ValidUrineOutputModel(value: $value, errorMessage: $errorMessage, )';
     }
 
 }

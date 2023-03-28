@@ -4,14 +4,14 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class RegistrationNameDbModel {                                              
+class RegistrationNameDbModel {                                                                                                                            
   /* init: '' */
   final String url;
 
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -32,7 +32,7 @@ class RegistrationNameDbModel {
     if (map == null) return const RegistrationNameDbModel();
 
     return RegistrationNameDbModel(
-      url: map['url'] != null ? map['url'] as String : '', 
+      url: map['url'] as String? ?? '', 
     );
   }
 

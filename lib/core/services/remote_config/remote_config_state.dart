@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class RemoteConfigState {                                              
+class RemoteConfigState {                                                                                                                            
   /* init: true */
   final bool isLoad;
   /* init: false */
@@ -14,7 +14,7 @@ class RemoteConfigState {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -37,8 +37,8 @@ class RemoteConfigState {
     if (map == null) return const RemoteConfigState();
 
     return RemoteConfigState(
-      isLoad: map['isLoad'] != null ? map['isLoad'] as bool : true, 
-      isNeedUpdate: map['isNeedUpdate'] != null ? map['isNeedUpdate'] as bool : false, 
+      isLoad: map['isLoad'] as bool? ?? true, 
+      isNeedUpdate: map['isNeedUpdate'] as bool? ?? false, 
     );
   }
 

@@ -4,9 +4,10 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class ValidBtnToggleModel {                                                                                                                                     
-  final int? selectedIndex;
-  /* init: '' */
+class ValidCreatinineModel {                                                                                                                                        
+  /* init:'' */
+  final String value;
+  /* init:'' */
   final String errorMessage;
 
   // end
@@ -17,61 +18,61 @@ class ValidBtnToggleModel {
 //         GENERATED CODE 
 //  *************************************
   
-  const ValidBtnToggleModel({
+  const ValidCreatinineModel({
+    this.value = '',
     this.errorMessage = '',
-    this.selectedIndex,
   });
 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'selectedIndex': selectedIndex, 
+      'value': value, 
       'errorMessage': errorMessage, 
     };
   }
 
 
-  factory ValidBtnToggleModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const ValidBtnToggleModel();
+  factory ValidCreatinineModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const ValidCreatinineModel();
 
-    return ValidBtnToggleModel(
-      selectedIndex: (map['selectedIndex'] as num?)?.toInt(), 
+    return ValidCreatinineModel(
+      value: map['value'] as String? ?? '', 
       errorMessage: map['errorMessage'] as String? ?? '', 
     );
   }
 
-  ValidBtnToggleModel copyWith({
-    int? selectedIndex,
+  ValidCreatinineModel copyWith({
+    String? value,
     String? errorMessage,
   }) {
-    return ValidBtnToggleModel(
-      selectedIndex: selectedIndex ?? this.selectedIndex, 
+    return ValidCreatinineModel(
+      value: value ?? this.value, 
       errorMessage: errorMessage ?? this.errorMessage, 
     );
   }
 
   String toJson() => json.encode(toMap());  
-  factory ValidBtnToggleModel.fromJson(String source) => ValidBtnToggleModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+  factory ValidCreatinineModel.fromJson(String source) => ValidCreatinineModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
    
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ValidBtnToggleModel &&
-            (identical(other.selectedIndex, selectedIndex) || other.selectedIndex == selectedIndex) && 
+            other is ValidCreatinineModel &&
+            (identical(other.value, value) || other.value == value) && 
             (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        selectedIndex,
+        value,
         errorMessage,
 ]);
 
   @override
   String toString() {
-    return 'ValidBtnToggleModel(selectedIndex: $selectedIndex, errorMessage: $errorMessage, )';
+    return 'ValidCreatinineModel(value: $value, errorMessage: $errorMessage, )';
     }
 
 }

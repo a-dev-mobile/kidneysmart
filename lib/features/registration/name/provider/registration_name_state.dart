@@ -4,7 +4,7 @@ part of 'registration_name_provider.dart';
 
 /*  */
 @immutable
-class RegistrationNameState {                                                     
+class RegistrationNameState {                                                                                                                                   
 /* init: false */
   final bool isValid;
 /* 
@@ -15,7 +15,7 @@ init: const FieldStringValid()
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -38,7 +38,7 @@ init: const FieldStringValid()
     if (map == null) return const RegistrationNameState();
 
     return RegistrationNameState(
-      isValid: map['isValid'] != null ? map['isValid'] as bool : false, 
+      isValid: map['isValid'] as bool? ?? false, 
       nameValid: map['nameValid'] != null ? FieldStringValid.fromMap(Map<String, dynamic>.from(map['nameValid'] as Map)) : const FieldStringValid(), 
     );
   }

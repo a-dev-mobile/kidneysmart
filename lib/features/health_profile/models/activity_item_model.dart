@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class ActivityItemModel {                                                     
+class ActivityItemModel {                                                                                                                                   
 /* init: EnumActivity.none */
   final EnumActivity enumActivity;
 /* init: '' */
@@ -15,7 +15,7 @@ class ActivityItemModel {
 // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -41,8 +41,8 @@ class ActivityItemModel {
 
     return ActivityItemModel(
       enumActivity: map['enumActivity'] != null ? EnumActivity.values[map['enumActivity'] as int] : EnumActivity.none, 
-      value: map['value'] != null ? map['value'] as String : '', 
-      isSelected: map['isSelected'] != null ? map['isSelected'] as bool : false, 
+      value: map['value'] as String? ?? '', 
+      isSelected: map['isSelected'] as bool? ?? false, 
     );
   }
 

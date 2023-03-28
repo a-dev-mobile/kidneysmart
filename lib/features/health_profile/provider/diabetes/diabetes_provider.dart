@@ -43,7 +43,7 @@ class DiabetesNotifier extends StateNotifier<DiabetesState> {
     ];
 
     final selectedIndex =
-        v ?? _storage.getHealthProfileState().diabetesModel.selectedIndex;
+        v ?? _storage.getHealthProfileState().validDiabetesModel.selectedIndex;
 
     if (selectedIndex != null) {
       itemsInit[selectedIndex] =

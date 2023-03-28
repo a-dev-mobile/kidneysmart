@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class WeightModel {                                                      
+class ValidHeightModel {                                                                                                                                  
   /* init:'' */
   final String value;
   final String? errorMessage;
@@ -12,12 +12,12 @@ class WeightModel {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
   
-  const WeightModel({
+  const ValidHeightModel({
     this.value = '',
     this.errorMessage,
   });
@@ -31,33 +31,33 @@ class WeightModel {
   }
 
 
-  factory WeightModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const WeightModel();
+  factory ValidHeightModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const ValidHeightModel();
 
-    return WeightModel(
-      value: map['value'] != null ? map['value'] as String : '', 
-      errorMessage: map['errorMessage'] != null ? map['errorMessage'] as String : null, 
+    return ValidHeightModel(
+      value: map['value'] as String? ?? '', 
+      errorMessage: map['errorMessage'] as String?, 
     );
   }
 
-  WeightModel copyWith({
+  ValidHeightModel copyWith({
     String? value,
     String? errorMessage,
   }) {
-    return WeightModel(
+    return ValidHeightModel(
       value: value ?? this.value, 
       errorMessage: errorMessage ?? this.errorMessage, 
     );
   }
 
   String toJson() => json.encode(toMap());  
-  factory WeightModel.fromJson(String source) => WeightModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+  factory ValidHeightModel.fromJson(String source) => ValidHeightModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
    
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is WeightModel &&
+            other is ValidHeightModel &&
             (identical(other.value, value) || other.value == value) && 
             (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
   }
@@ -71,7 +71,7 @@ class WeightModel {
 
   @override
   String toString() {
-    return 'WeightModel(value: $value, errorMessage: $errorMessage, )';
+    return 'ValidHeightModel(value: $value, errorMessage: $errorMessage, )';
     }
 
 }

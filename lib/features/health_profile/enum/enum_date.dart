@@ -9,7 +9,7 @@ enum EnumDate with Comparable<EnumDate> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.0 (enum)
+//          v0.8.2 (enum)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

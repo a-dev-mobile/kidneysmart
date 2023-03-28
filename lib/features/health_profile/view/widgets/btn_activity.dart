@@ -21,7 +21,7 @@ class BtnActivity extends ConsumerWidget {
         isSelected:
             stateActivity.activityInfo.map((e) => e.isSelected).toList(),
         onPressed: notifierHealth.setActivity,
-        errorText: stateHealth.activityModel.errorMessage,
+        errorText: stateHealth.validActivityModel.errorMessage,
         title: 'Укажите свою физическую активность',
       ),
     );

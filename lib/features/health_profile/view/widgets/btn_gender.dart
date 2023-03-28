@@ -22,7 +22,7 @@ class BtnGender extends ConsumerWidget {
         onPressed: notifierHealth.setGender,
         dialogText:
             'Пол влияет на скорость метаболизма. Вот почему эта информация нужна для расчета суточной нормы.',
-        errorText: stateHealth.genderModel.errorMessage,
+        errorText: stateHealth.validGenderModel.errorMessage,
         title: 'Для человека какого пола следует рассчитывать рекомендации?',
       ),
     );

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class DailyDiuresisState {                                                      
+class DailyDiuresisState {                                                                                                                                    
   /* init:const [] */
   final List<DailyDiuresisItemModel> dailyDiuresisInfo;
   /* init: false */
@@ -17,7 +17,7 @@ class DailyDiuresisState {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -41,7 +41,7 @@ class DailyDiuresisState {
 
     return DailyDiuresisState(
       dailyDiuresisInfo: map['dailyDiuresisInfo'] != null ? (map['dailyDiuresisInfo'] as List<dynamic>).map((e) => DailyDiuresisItemModel.fromMap(e as Map<dynamic, dynamic>)).toList() : const [], 
-      isShowInput: map['isShowInput'] != null ? map['isShowInput'] as bool : false, 
+      isShowInput: map['isShowInput'] as bool? ?? false, 
     );
   }
 

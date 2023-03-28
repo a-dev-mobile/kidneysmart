@@ -42,8 +42,8 @@ class HypertensionNotifier extends StateNotifier<HypertensionState> {
       ),
     ];
 
-    final selectedIndex =
-        v ?? _storage.getHealthProfileState().hypertensionModel.selectedIndex;
+    final selectedIndex = v ??
+        _storage.getHealthProfileState().validHypertensionModel.selectedIndex;
 
     if (selectedIndex != null) {
       itemsInit[selectedIndex] =

@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/services/db/db.dart';
 
 @immutable
-class OnboardingDbModel {                                              
+class OnboardingDbModel {                                                                                                                            
   /* init: '' */
   final String url;
   /* init: const [] */
@@ -18,7 +18,7 @@ class OnboardingDbModel {
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -45,9 +45,9 @@ class OnboardingDbModel {
     if (map == null) return const OnboardingDbModel();
 
     return OnboardingDbModel(
-      url: map['url'] != null ? map['url'] as String : '', 
+      url: map['url'] as String? ?? '', 
       ttt: (map['ttt'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
-      title: map['title'] != null ? map['title'] as String : '', 
+      title: map['title'] as String? ?? '', 
       info: map['info'] != null ? InfoDb.fromMap(Map<String, dynamic>.from(map['info'] as Map)) : const InfoDb(), 
     );
   }

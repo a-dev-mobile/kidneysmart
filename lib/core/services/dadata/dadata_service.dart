@@ -22,8 +22,8 @@ class DaDataService {
         _dio = Dio(
           BaseOptions(
             baseUrl: 'https://suggestions.dadata.ru',
-            connectTimeout: 5000,
-            receiveTimeout: 3000,
+            connectTimeout: const Duration(seconds: 10),
+            receiveTimeout: const Duration(seconds: 8),
           ),
         )..interceptors.addAll([
             DioLogInterceptor(),

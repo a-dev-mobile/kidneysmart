@@ -4,14 +4,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 @immutable
-class ThemeState {                                              
+class ThemeState {                                                                                                                            
   /* init: ThemeMode.light */
   final ThemeMode themeMode;
 
   // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************

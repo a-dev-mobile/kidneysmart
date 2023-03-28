@@ -20,7 +20,7 @@ class BtnHypertension extends ConsumerWidget {
         textList: state.hypertensionInfo.map((e) => e.value).toList(),
         isSelected: state.hypertensionInfo.map((e) => e.isSelected).toList(),
         onPressed: notifierHealth.setHypertension,
-        errorText: stateHealth.hypertensionModel.errorMessage,
+        errorText: stateHealth.validHypertensionModel.errorMessage,
         title: 'Наличие гипертензии (высокое кровяное давление)',
       ),
     );

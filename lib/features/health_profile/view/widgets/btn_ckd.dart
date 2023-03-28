@@ -4,23 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
-class BtnDailyDiuresis extends ConsumerWidget {
-  const BtnDailyDiuresis({
+class BtnCkd extends ConsumerWidget {
+  const BtnCkd({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateActivity = ref.watch(dailyDiuresisProvider);
+    final state = ref.watch(ckdProvider);
     final stateHealth = ref.watch(healthProfileProvider);
     final notifierHealth = ref.watch(healthProfileProvider.notifier);
 
-    final listBoolAll =
-        stateActivity.dailyDiuresisInfo.map((e) => e.isSelected);
+    final listBoolAll = state.ckdInfo.map((e) => e.isSelected);
     final listBoolWithoutLast = [...listBoolAll];
     final boolLast = listBoolWithoutLast.removeLast();
 
-    final listTextAll = stateActivity.dailyDiuresisInfo.map((e) => e.value);
+    final listTextAll = state.ckdInfo.map((e) => e.value);
     final listTextWithoutLast = [...listTextAll];
     final textLast = listTextWithoutLast.removeLast();
 
@@ -30,9 +29,9 @@ class BtnDailyDiuresis extends ConsumerWidget {
           BtnToggleText(
             textList: listTextWithoutLast.toList(),
             isSelected: listBoolWithoutLast.toList(),
-            onPressed: notifierHealth.setDailyDiuresis,
+            onPressed: notifierHealth.setCkd,
             errorText: stateHealth.validDailyDiuresisModel.errorMessage,
-            title: 'Укажите уровень суточного диуреза (обьем выделяемой мочи)',
+            title: 'Укажите стадию ХБП',
           ),
 
           //  all last values
@@ -40,8 +39,8 @@ class BtnDailyDiuresis extends ConsumerWidget {
             textList: [textLast],
             isSelected: [boolLast],
             onPressed: (v) =>
-                notifierHealth.setDailyDiuresis(v + listBoolWithoutLast.length),
-            errorText: stateHealth.validDailyDiuresisModel.errorMessage,
+                notifierHealth.setCkd(v + listBoolWithoutLast.length),
+            errorText: stateHealth.validCkdModel.errorMessage,
           ),
         ],
       ),

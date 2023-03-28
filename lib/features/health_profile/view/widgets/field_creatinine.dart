@@ -6,20 +6,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
-class FieldUrineOutput extends ConsumerStatefulWidget {
-  const FieldUrineOutput({super.key});
+class FieldCreatinine extends ConsumerStatefulWidget {
+  const FieldCreatinine({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _FieldNameState();
 }
 
-class _FieldNameState extends ConsumerState<FieldUrineOutput> {
+class _FieldNameState extends ConsumerState<FieldCreatinine> {
   late final TextEditingController controller;
 
   @override
   void initState() {
     final initValue =
-        ref.read(healthProfileProvider).validUrineOutputModel.value;
+        ref.read(healthProfileProvider).validCreatinineModel.value;
 
     controller = TextEditingController(text: initValue);
 
@@ -38,7 +38,8 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
     // final provider = ref.watch(registrationNameProvider);
     final notifier = ref.watch(healthProfileProvider.notifier);
 
-    final isVisibly = ref.watch(dailyDiuresisProvider).isShowInput;
+    final isVisibly = ref.watch(ckdProvider).isShowInput;
+    final inputTypeCreatinine = ref.watch(ckdProvider).inputTypeCreatinine;
 
     // final state = ref.watch(healthProfileProvider);
     final errorMsg =
@@ -50,20 +51,23 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
         child: Column(
           children: [
             const TitleSub(
-              text: 'Укажите количество выделяемой мочи',
-              dialogText:
-                  'Мы используем эти сведения для расчета суточной нормы потребления воды',
+          text: 'Укажите свой креатинин',
+                  dialogText:
+                  'Мы используем эти сведения для расчета клубочковой фильтрации',
             ),
             TextField(
               controller: controller,
               decoration: InputDecoration(
-                // labelText: 'Моча',
+                   labelText: _getText(
+                      type: inputTypeCreatinine,
+                    ),
+             
                 errorText: errorMsg.isEmpty ? null : errorMsg,
                 errorMaxLines: 2,
                 suffixText: 'мл',
               ),
               keyboardType: TextInputType.number,
-              onChanged: notifier.setUrineOutput,
+              onChanged: notifier.setCreatinine,
               inputFormatters: [
                 LengthLimitingTextInputFormatter(6),
                 FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
@@ -72,6 +76,14 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
           ],
         ),
       ),
+    );
+  }
+    String _getText({
+    required EnumInputTypeCreatinine type,
+  }) {
+    return type.map(
+      mgDl: () => 'Норма: 0.3 - 1.3',
+      mcmolL: () => 'Норма: 62 - 115',
     );
   }
 }

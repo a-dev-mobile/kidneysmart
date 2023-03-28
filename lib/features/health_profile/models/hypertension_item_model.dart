@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class HypertensionItemModel {                                                      
+class HypertensionItemModel {                                                                                                                                    
 /* init: EnumHypertension.none */
   final EnumHypertension enumHypertension;
 /* init: '' */
@@ -15,7 +15,7 @@ class HypertensionItemModel {
 // end
    
 //          --TURN_GEN--
-//          v0.8.0 (data)
+//          v0.8.2 (data)
 //  *************************************
 //         GENERATED CODE 
 //  *************************************
@@ -41,8 +41,8 @@ class HypertensionItemModel {
 
     return HypertensionItemModel(
       enumHypertension: map['enumHypertension'] != null ? EnumHypertension.values[map['enumHypertension'] as int] : EnumHypertension.none, 
-      value: map['value'] != null ? map['value'] as String : '', 
-      isSelected: map['isSelected'] != null ? map['isSelected'] as bool : false, 
+      value: map['value'] as String? ?? '', 
+      isSelected: map['isSelected'] as bool? ?? false, 
     );
   }
 
