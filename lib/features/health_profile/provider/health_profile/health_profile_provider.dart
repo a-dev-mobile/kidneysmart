@@ -340,6 +340,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     final genderModel = state.validGenderModel.copyWith(errorMessage: '');
     final weightModel = state.validWeightModel.copyWith(errorMessage: '');
     final activityModel = state.validActivityModel.copyWith(errorMessage: '');
+    final validDiabetesModel = state.validDiabetesModel.copyWith(errorMessage: '');
     final dailyDiuresisModel =
         state.validDailyDiuresisModel.copyWith(errorMessage: '');
     final urineOutputModel =
@@ -362,6 +363,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
         validUrineOutputModel: urineOutputModel,
         validCkdModel: validCkdModel,
         validCreatinineModel: validCreatinineModel,
+        validDiabetesModel: validDiabetesModel,
       ),
     );
   }
