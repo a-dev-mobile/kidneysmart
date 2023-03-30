@@ -64,7 +64,7 @@ class DailyDiuresisNotifier extends StateNotifier<DailyDiuresisState> {
 
   void _setVisiblyInput() {
     final activeItem =
-        state.dailyDiuresisInfo.firstWhereOrNull((e) => e.isSelected == true);
+        state.dailyDiuresisInfo.firstWhereOrNull((e) => e.isSelected);
 
     state = state.copyWith(
       isShowInput:

@@ -50,6 +50,7 @@ export 'view/widgets/btn_gender.dart';
 export 'view/widgets/btn_hypertension.dart';
 export 'view/widgets/drop_birthday.dart';
 export 'view/widgets/drop_height.dart';
+export 'view/widgets/drop_input_type_creatinine.dart';
 export 'view/widgets/field_creatinine.dart';
 export 'view/widgets/field_urine_output.dart';
 export 'view/widgets/field_weight.dart';

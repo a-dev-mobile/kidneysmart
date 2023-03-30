@@ -43,6 +43,7 @@ class BtnDailyDiuresis extends ConsumerWidget {
                 notifierHealth.setDailyDiuresis(v + listBoolWithoutLast.length),
             errorText: stateHealth.validDailyDiuresisModel.errorMessage,
           ),
+       const FieldUrineOutput(),
         ],
       ),
     );

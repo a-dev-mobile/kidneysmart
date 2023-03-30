@@ -59,7 +59,7 @@ class CkdNotifier extends StateNotifier<CkdState> {
       ),
       const CkdItemModel(
         enumCkd: EnumCkd.calculate,
-        value: 'Укажите стадию ХБП',
+        value: 'Рассчитать',
       ),
     ];
 
@@ -83,5 +83,10 @@ class CkdNotifier extends StateNotifier<CkdState> {
     state = state.copyWith(
       isShowInput: activeItem?.enumCkd == EnumCkd.calculate,
     );
+  }
+
+  void changeTypeCreatinine(EnumInputTypeCreatinine? value) {
+    state =
+        state.copyWith(inputTypeCreatinine: value ?? state.inputTypeCreatinine);
   }
 }

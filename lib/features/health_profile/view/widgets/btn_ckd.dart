@@ -42,6 +42,7 @@ class BtnCkd extends ConsumerWidget {
                 notifierHealth.setCkd(v + listBoolWithoutLast.length),
             errorText: stateHealth.validCkdModel.errorMessage,
           ),
+       const FieldCreatinine(),
         ],
       ),
     );
