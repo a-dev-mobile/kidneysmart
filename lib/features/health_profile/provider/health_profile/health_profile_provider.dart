@@ -128,6 +128,12 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
       ),
     );
     if (isSaveLocal) _saveState();
+
+    _upgradeCreatinine(error);
+  }
+
+  void _upgradeCreatinine(String error) {
+    if (error.isEmpty) setCreatinine(state.validCreatinineModel.value);
   }
 
 /* from page */
@@ -160,12 +166,14 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
   }
 
   void _checkDate() {
-    final errorMsg = _validBirthDay();
+    final error = _validBirthDay();
 
     state = state.copyWith(
       validBirthdayModel:
-          state.validBirthdayModel.copyWith(errorMessage: errorMsg),
+          state.validBirthdayModel.copyWith(errorMessage: error),
     );
+
+    _upgradeCreatinine(error);
   }
 
   String _validBirthDay() {
@@ -218,24 +226,6 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     );
 
     if (isSaveLocal) _saveState();
-/* 
-    return isPure
-        ? null
-        : error == isEmpty
-            ? 'Креатинин не указан'
-            : error == isMax
-                ? 'Указанный креатинин не поддерживается приложением'
-                : error == isMin
-                    ? 'Указанный креатинин не поддерживается приложением'
-                    : error == isNoValid
-                        ? 'Неправильное значение'
-                        : error == noBirthday
-                            ? 'Укажите дату своего рождения'
-                            : error == noGender
-                                ? 'Укажите ваш пол'
-                                : null;
-
- */
   }
 
   void setUrineOutput(String? v, {bool isSaveLocal = true}) {
@@ -304,10 +294,16 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
   }
 
   String _validCreatinine(String? v) {
-    if (v?.isEmpty ?? true && state.validWeightModel.value.isEmpty) {
+    if (v?.isEmpty ?? true) {
       return 'Креатинин не указан';
     }
 
+    if (state.validGenderModel.errorMessage.isNotEmpty) {
+      return 'Укажите ваш пол';
+    }
+    if (state.validBirthdayModel.errorMessage.isNotEmpty) {
+      return 'Укажите дату своего рождения';
+    }
     final doubleValue = double.tryParse(v!) ?? -1;
 
     if (doubleValue.isNegative) return 'Неправильное значение';
@@ -322,6 +318,24 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     return '';
   }
 
+/* 
+    return isPure
+        ? null
+        : error == isEmpty
+            ? 'Креатинин не указан'
+            : error == isMax
+                ? 'Указанный креатинин не поддерживается приложением'
+                : error == isMin
+                    ? 'Указанный креатинин не поддерживается приложением'
+                    : error == isNoValid
+                        ? 'Неправильное значение'
+                        : error == noBirthday
+                            ? 'Укажите дату своего рождения'
+                            : error == noGender
+                                ? 'Укажите ваш пол'
+                                : null;
+
+ */
   String _getDateRaw() {
     final day = state.validBirthdayModel.daySelected;
     final monthNumber = state.validBirthdayModel.monthSelected;
@@ -340,7 +354,8 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     final genderModel = state.validGenderModel.copyWith(errorMessage: '');
     final weightModel = state.validWeightModel.copyWith(errorMessage: '');
     final activityModel = state.validActivityModel.copyWith(errorMessage: '');
-    final validDiabetesModel = state.validDiabetesModel.copyWith(errorMessage: '');
+    final validDiabetesModel =
+        state.validDiabetesModel.copyWith(errorMessage: '');
     final dailyDiuresisModel =
         state.validDailyDiuresisModel.copyWith(errorMessage: '');
     final urineOutputModel =

@@ -36,15 +36,14 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
-    // final provider = ref.watch(registrationNameProvider);
+
     final notifier = ref.watch(healthProfileProvider.notifier);
 
     final isEnabled = ref.watch(ckdProvider).isShowInput;
     final inputTypeCreatinine = ref.watch(ckdProvider).inputTypeCreatinine;
 
-    // final state = ref.watch(healthProfileProvider);
     final errorMsg =
-        ref.watch(healthProfileProvider).validUrineOutputModel.errorMessage;
+        ref.watch(healthProfileProvider).validCreatinineModel.errorMessage;
 
     return Column(
       children: [
@@ -58,13 +57,17 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
             const DropInputTypeCreatinine(),
             const SizedBox(height: 10),
             GestureDetector(
-              onTap: ()=>_showSnack(context),
+              onTap: () => _showSnack(context),
               child: TextField(
                 enabled: isEnabled,
                 controller: controller,
                 decoration: InputDecoration(
                   labelText: _getNorma(type: inputTypeCreatinine, l: l),
-                  errorText: errorMsg.isEmpty ? null : errorMsg,
+                  errorText: errorMsg.isEmpty
+                      ? null
+                      : isEnabled
+                          ? errorMsg
+                          : null,
                   errorMaxLines: 2,
                   suffixText: _getSuffix(type: inputTypeCreatinine, l: l),
                 ),
@@ -81,6 +84,7 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
       ],
     );
   }
+
   void _showSnack(BuildContext context) {
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     final _ = ScaffoldMessenger.of(context).showSnackBar(
@@ -91,13 +95,15 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
       ),
     );
   }
+
   String _getNorma({
     required EnumInputTypeCreatinine type,
     required AppLocalizations l,
   }) {
     return type.mapValue(
-      mgDl: 'Норма: 0.3 - 1.3',
+      mgDl: 'Норма: 0.7 - 1.3',
       mcmolL: 'Норма: 62 - 115',
+      mmolL: 'Норма: 0.062 - 0.115',
     );
   }
 
@@ -106,8 +112,9 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
     required AppLocalizations l,
   }) {
     return type.mapValue(
-    mgDl:  l.mgDl,
-    mcmolL: l.mcmolL,
+      mgDl: l.mgDl,
+      mcmolL: l.mcmolL,
+      mmolL: l.mmmolL,
     );
   }
 }

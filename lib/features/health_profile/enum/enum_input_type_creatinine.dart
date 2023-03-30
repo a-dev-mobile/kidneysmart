@@ -3,7 +3,8 @@
 enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
 
   mgDl('mgDl'),
-  mcmolL('mcmolL');
+  mcmolL('mcmolL'),
+  mmolL('mmolL');
 
   const EnumInputTypeCreatinine(this.value);
   final String value;
@@ -23,6 +24,8 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
         return mgDl;
       case 'mcmolL':
         return mcmolL;
+      case 'mmolL':
+        return mmolL;
       default:
         return fallback ?? (throw ArgumentError.value(
           value, '', 'Value not found in EnumInputTypeCreatinine',));
@@ -33,12 +36,15 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
   T map<T>({
     required T Function() mgDl,
     required T Function() mcmolL,
+    required T Function() mmolL,
   }) {
     switch (this) {
       case EnumInputTypeCreatinine.mgDl:
         return mgDl();
       case EnumInputTypeCreatinine.mcmolL:
         return mcmolL();
+      case EnumInputTypeCreatinine.mmolL:
+        return mmolL();
     }
   }
 
@@ -46,12 +52,15 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
   T mapValue<T>({
     required T mgDl,
     required T mcmolL,
+    required T mmolL,
   }) {
     switch (this) {
       case EnumInputTypeCreatinine.mgDl:
         return mgDl;
       case EnumInputTypeCreatinine.mcmolL:
         return mcmolL;
+      case EnumInputTypeCreatinine.mmolL:
+        return mmolL;
     }
   }
 
@@ -60,10 +69,12 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
     required T Function() orElse,
     T Function()? mgDl,
     T Function()? mcmolL,
+    T Function()? mmolL,
   }) =>
       map<T>(
       mgDl: mgDl ?? orElse,
       mcmolL: mcmolL ?? orElse,
+      mmolL: mmolL ?? orElse,
       );
 
 
@@ -71,32 +82,38 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
     required T orElse,
     T? mgDl,
     T? mcmolL,
+    T? mmolL,
   }) =>
       mapValue<T>(
       mgDl: mgDl ?? orElse,
       mcmolL: mcmolL ?? orElse,
+      mmolL: mmolL ?? orElse,
       );
 
 
   T? maybeMapOrNull<T>({
     T Function()? mgDl,
     T Function()? mcmolL,
+    T Function()? mmolL,
   }) =>
       maybeMap<T?>(
         orElse: () => null,
         mgDl: mgDl,
         mcmolL: mcmolL,
+        mmolL: mmolL,
       );
 
 
   T? maybeMapOrNullValue<T>({
     T? mgDl,
     T? mcmolL,
+    T? mmolL,
   }) =>
       maybeMapValue<T?>(
         orElse: null,
         mgDl: mgDl,
         mcmolL: mcmolL,
+        mmolL: mmolL,
       );
 
 

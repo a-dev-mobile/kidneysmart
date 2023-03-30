@@ -5,11 +5,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 @immutable
-class ValidBirthdayModel {                                                                                                                            
+class ValidBirthdayModel {                                                                                                                              
   /* init:'' */
-  final String? errorMessage;
-  /* init: false */
-  final bool isValid;
+  final String errorMessage;
+
   final String? daySelected;
   final String? yearSelected;
   final String? monthSelected;
@@ -23,7 +22,6 @@ class ValidBirthdayModel {
   
   const ValidBirthdayModel({
     this.errorMessage = '',
-    this.isValid = false,
     this.daySelected,
     this.yearSelected,
     this.monthSelected,
@@ -33,7 +31,6 @@ class ValidBirthdayModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'errorMessage': errorMessage, 
-      'isValid': isValid, 
       'daySelected': daySelected, 
       'yearSelected': yearSelected, 
       'monthSelected': monthSelected, 
@@ -46,7 +43,6 @@ class ValidBirthdayModel {
 
     return ValidBirthdayModel(
       errorMessage: map['errorMessage'] as String? ?? '', 
-      isValid: map['isValid'] as bool? ?? false, 
       daySelected: map['daySelected'] as String?, 
       yearSelected: map['yearSelected'] as String?, 
       monthSelected: map['monthSelected'] as String?, 
@@ -55,14 +51,12 @@ class ValidBirthdayModel {
 
   ValidBirthdayModel copyWith({
     String? errorMessage,
-    bool? isValid,
     String? daySelected,
     String? yearSelected,
     String? monthSelected,
   }) {
     return ValidBirthdayModel(
       errorMessage: errorMessage ?? this.errorMessage, 
-      isValid: isValid ?? this.isValid, 
       daySelected: daySelected ?? this.daySelected, 
       yearSelected: yearSelected ?? this.yearSelected, 
       monthSelected: monthSelected ?? this.monthSelected, 
@@ -78,7 +72,6 @@ class ValidBirthdayModel {
         (other.runtimeType == runtimeType &&
             other is ValidBirthdayModel &&
             (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) && 
-            (identical(other.isValid, isValid) || other.isValid == isValid) && 
             (identical(other.daySelected, daySelected) || other.daySelected == daySelected) && 
             (identical(other.yearSelected, yearSelected) || other.yearSelected == yearSelected) && 
             (identical(other.monthSelected, monthSelected) || other.monthSelected == monthSelected));
@@ -88,7 +81,6 @@ class ValidBirthdayModel {
   int get hashCode => Object.hashAll([
         runtimeType,
         errorMessage,
-        isValid,
         daySelected,
         yearSelected,
         monthSelected,
@@ -96,7 +88,7 @@ class ValidBirthdayModel {
 
   @override
   String toString() {
-    return 'ValidBirthdayModel(errorMessage: $errorMessage, isValid: $isValid, daySelected: $daySelected, yearSelected: $yearSelected, monthSelected: $monthSelected, )';
+    return 'ValidBirthdayModel(errorMessage: $errorMessage, daySelected: $daySelected, yearSelected: $yearSelected, monthSelected: $monthSelected, )';
     }
 
 }
