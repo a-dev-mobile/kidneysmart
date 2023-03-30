@@ -51,8 +51,10 @@ class BtnToggleText extends StatelessWidget {
             ),
             if (dialogText.isEmpty) const SizedBox(height: 10),
             ToggleButtons(
+              
               constraints: BoxConstraints.expand(
                 // number 3 = becouse if less - ovverflow
+                height: 40,
                 width: (constraint.maxWidth / textList.length) - 3,
               ),
               isSelected: isSelected,

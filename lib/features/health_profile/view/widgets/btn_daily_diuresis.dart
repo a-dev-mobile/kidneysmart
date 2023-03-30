@@ -31,7 +31,7 @@ class BtnDailyDiuresis extends ConsumerWidget {
             textList: listTextWithoutLast.toList(),
             isSelected: listBoolWithoutLast.toList(),
             onPressed: notifierHealth.setDailyDiuresis,
-            errorText: stateHealth.validDailyDiuresisModel.errorMessage,
+
             title: 'Укажите уровень суточного диуреза (обьем выделяемой мочи)',
           ),
 

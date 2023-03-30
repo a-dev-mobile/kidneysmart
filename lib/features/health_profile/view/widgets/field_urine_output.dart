@@ -1,5 +1,6 @@
 // ignore_for_file:  avoid-nested-conditional-expressions, lines_longer_than_80_chars
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,10 +40,12 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
     // final provider = ref.watch(registrationNameProvider);
     final notifier = ref.watch(healthProfileProvider.notifier);
 
+
     final isEnabled = ref.watch(dailyDiuresisProvider).isShowInput;
-    final gender = EnumGender.values[
-        (ref.watch(healthProfileProvider).validGenderModel.selectedIndex) ??
-            EnumGender.none.index];
+
+    final gender =
+        ref.watch(genderProvider).genderInfo.firstWhereOrNull((e) => e.isSelected)?.enumGender??EnumGender.none;
+
 
     // final state = ref.watch(healthProfileProvider);
     final errorMsg =
@@ -96,7 +99,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
     return type.mapValue(
       female: 'Норма: у женщин – 1000-1600 мл',
       male: 'Норма: у мужчин – 1000-2000 мл',
-      none: 'Для расчета нормы выберите пол',
+      none: 'Для показа нормы выберите пол',
     );
   }
 }

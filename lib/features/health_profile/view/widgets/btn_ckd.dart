@@ -30,7 +30,7 @@ class BtnCkd extends ConsumerWidget {
             textList: listTextWithoutLast.toList(),
             isSelected: listBoolWithoutLast.toList(),
             onPressed: notifierHealth.setCkd,
-            errorText: stateHealth.validDailyDiuresisModel.errorMessage,
+     
             title: 'Укажите стадию ХБП',
           ),
 
@@ -40,7 +40,7 @@ class BtnCkd extends ConsumerWidget {
             isSelected: [boolLast],
             onPressed: (v) =>
                 notifierHealth.setCkd(v + listBoolWithoutLast.length),
-            errorText: stateHealth.validCkdModel.errorMessage,
+             errorText: stateHealth.validCkdModel.errorMessage,
           ),
        const FieldCreatinine(),
         ],
