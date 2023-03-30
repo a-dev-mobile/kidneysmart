@@ -31,7 +31,7 @@ class _FieldNameState extends ConsumerState<FieldName> {
     final notifier = ref.watch(registrationNameProvider.notifier);
     final l = context.l10n;
 
-    return AppCard(
+    return AppInputCard(
       child: Column(
         children: [
           const TitleSub(text: 'Введите имя'),

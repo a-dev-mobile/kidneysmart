@@ -15,7 +15,7 @@ class BtnHypertension extends ConsumerWidget {
     final stateHealth = ref.watch(healthProfileProvider);
     final notifierHealth = ref.watch(healthProfileProvider.notifier);
 
-    return AppCard(
+    return AppInputCard(
       child: BtnToggleText(
         textList: state.hypertensionInfo.map((e) => e.value).toList(),
         isSelected: state.hypertensionInfo.map((e) => e.isSelected).toList(),

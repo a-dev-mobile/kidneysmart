@@ -6,6 +6,7 @@ import 'package:nutrition/core/services/theme/theme_providers.dart';
 import 'package:nutrition/core/widget/clean_focus.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
+
 /// {@template health_profile_page}
 /// HealthProfilePage widget
 /// {@endtemplate}
@@ -22,7 +23,7 @@ class HealthProfilePage extends ConsumerWidget {
 
    
     return ClearFocus(
-      
+
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Введите данные'),
@@ -44,6 +45,8 @@ class HealthProfilePage extends ConsumerWidget {
             const BtnGender(),
             const DropBirthday(),
             const DropHeight(),
+            const FieldWeight(),
+            const ResultBmi(),
             const BtnActivity(),
             const BtnHypertension(),
             const BtnDiabetes(),

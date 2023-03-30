@@ -23,14 +23,13 @@ class BtnCkd extends ConsumerWidget {
     final listTextWithoutLast = [...listTextAll];
     final textLast = listTextWithoutLast.removeLast();
 
-    return AppCard(
+    return AppInputCard(
       child: Column(
         children: [
           BtnToggleText(
             textList: listTextWithoutLast.toList(),
             isSelected: listBoolWithoutLast.toList(),
             onPressed: notifierHealth.setCkd,
-     
             title: 'Укажите стадию ХБП',
           ),
 
@@ -40,9 +39,9 @@ class BtnCkd extends ConsumerWidget {
             isSelected: [boolLast],
             onPressed: (v) =>
                 notifierHealth.setCkd(v + listBoolWithoutLast.length),
-             errorText: stateHealth.validCkdModel.errorMessage,
+            errorText: stateHealth.validCkdModel.errorMessage,
           ),
-       const FieldCreatinine(),
+          const FieldCreatinine(),
         ],
       ),
     );

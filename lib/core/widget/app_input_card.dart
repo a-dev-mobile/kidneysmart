@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AppCard extends StatelessWidget {
-  const AppCard({required this.child, super.key});
+class AppInputCard extends StatelessWidget {
+  const AppInputCard({required this.child, super.key});
 
   final Widget child;
+
   @override
   Widget build(BuildContext context) {
     return Card(

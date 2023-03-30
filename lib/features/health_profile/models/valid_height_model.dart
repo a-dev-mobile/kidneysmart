@@ -2,12 +2,16 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
+import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
-class ValidHeightModel {                                                                                                                                  
+class ValidHeightModel {  
   /* init:'' */
   final String value;
-  final String? errorMessage;
+  /* init:'' */
+  final String errorMessage;
+  /* init: EnumValid.init */
+  final EnumValid enumValid;
 
   // end
    
@@ -19,7 +23,8 @@ class ValidHeightModel {
   
   const ValidHeightModel({
     this.value = '',
-    this.errorMessage,
+    this.errorMessage = '',
+    this.enumValid = EnumValid.init,
   });
 
 
@@ -27,6 +32,7 @@ class ValidHeightModel {
     return <String, dynamic>{
       'value': value, 
       'errorMessage': errorMessage, 
+      'enumValid': enumValid.index, 
     };
   }
 
@@ -36,17 +42,20 @@ class ValidHeightModel {
 
     return ValidHeightModel(
       value: map['value'] as String? ?? '', 
-      errorMessage: map['errorMessage'] as String?, 
+      errorMessage: map['errorMessage'] as String? ?? '', 
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
     );
   }
 
   ValidHeightModel copyWith({
     String? value,
     String? errorMessage,
+    EnumValid? enumValid,
   }) {
     return ValidHeightModel(
       value: value ?? this.value, 
       errorMessage: errorMessage ?? this.errorMessage, 
+      enumValid: enumValid ?? this.enumValid, 
     );
   }
 
@@ -59,7 +68,8 @@ class ValidHeightModel {
         (other.runtimeType == runtimeType &&
             other is ValidHeightModel &&
             (identical(other.value, value) || other.value == value) && 
-            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) && 
+            (identical(other.enumValid, enumValid) || other.enumValid == enumValid));
   }
 
   @override
@@ -67,11 +77,12 @@ class ValidHeightModel {
         runtimeType,
         value,
         errorMessage,
+        enumValid,
 ]);
 
   @override
   String toString() {
-    return 'ValidHeightModel(value: $value, errorMessage: $errorMessage, )';
+    return 'ValidHeightModel(value: $value, errorMessage: $errorMessage, enumValid: $enumValid, )';
     }
 
 }

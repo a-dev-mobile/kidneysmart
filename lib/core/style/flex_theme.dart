@@ -10,17 +10,18 @@ class FlexTheme {
   static final FlexTheme _internalSingleton = FlexTheme._internal();
 
   static ThemeData lightThemeData() {
-    return FlexThemeData.light(
-      scheme: FlexScheme.aquaBlue,
-      surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-      blendLevel: 9,
-      subThemesData: const FlexSubThemesData(
-        blendOnLevel: 10,
-        blendOnColors: false,
-      ),
-      visualDensity: FlexColorScheme.comfortablePlatformDensity,
-      useMaterial3: true,
-      swapLegacyOnMaterial3: true,
+    return  FlexThemeData.light(
+  scheme: FlexScheme.materialBaseline,
+  surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+  blendLevel: 7,
+  subThemesData: const FlexSubThemesData(
+    blendOnLevel: 10,
+    blendOnColors: false,
+    useM2StyleDividerInM3: true,
+  ),
+  visualDensity: FlexColorScheme.comfortablePlatformDensity,
+  useMaterial3: true,
+  swapLegacyOnMaterial3: true,
       fontFamily: GoogleFonts.montserrat().fontFamily,
     );
   }
@@ -28,15 +29,16 @@ class FlexTheme {
   /// *---* [Dark Theme] *---*
   static ThemeData darkThemeData() {
     return FlexThemeData.dark(
-      scheme: FlexScheme.aquaBlue,
-      surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-      blendLevel: 15,
-      subThemesData: const FlexSubThemesData(
-        blendOnLevel: 20,
-      ),
-      visualDensity: FlexColorScheme.comfortablePlatformDensity,
-      useMaterial3: true,
-      swapLegacyOnMaterial3: true,
+  scheme: FlexScheme.materialBaseline,
+  surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+  blendLevel: 13,
+  subThemesData: const FlexSubThemesData(
+    blendOnLevel: 20,
+    useM2StyleDividerInM3: true,
+  ),
+  visualDensity: FlexColorScheme.comfortablePlatformDensity,
+  useMaterial3: true,
+  swapLegacyOnMaterial3: true,
       fontFamily: GoogleFonts.montserrat().fontFamily,
     );
   }

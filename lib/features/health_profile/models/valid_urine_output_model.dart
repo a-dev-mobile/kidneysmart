@@ -2,14 +2,16 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
+import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
-class ValidUrineOutputModel {                                                                                                                                       
+class ValidUrineOutputModel {                                                                                                                                        
   /* init:'' */
   final String value;
   /* init:'' */
   final String errorMessage;
-
+  /* init: EnumValid.init */
+  final EnumValid enumValid;
   // end
    
 //          --TURN_GEN--
@@ -21,6 +23,7 @@ class ValidUrineOutputModel {
   const ValidUrineOutputModel({
     this.value = '',
     this.errorMessage = '',
+    this.enumValid = EnumValid.init,
   });
 
 
@@ -28,6 +31,7 @@ class ValidUrineOutputModel {
     return <String, dynamic>{
       'value': value, 
       'errorMessage': errorMessage, 
+      'enumValid': enumValid.index, 
     };
   }
 
@@ -38,16 +42,19 @@ class ValidUrineOutputModel {
     return ValidUrineOutputModel(
       value: map['value'] as String? ?? '', 
       errorMessage: map['errorMessage'] as String? ?? '', 
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
     );
   }
 
   ValidUrineOutputModel copyWith({
     String? value,
     String? errorMessage,
+    EnumValid? enumValid,
   }) {
     return ValidUrineOutputModel(
       value: value ?? this.value, 
       errorMessage: errorMessage ?? this.errorMessage, 
+      enumValid: enumValid ?? this.enumValid, 
     );
   }
 
@@ -60,7 +67,8 @@ class ValidUrineOutputModel {
         (other.runtimeType == runtimeType &&
             other is ValidUrineOutputModel &&
             (identical(other.value, value) || other.value == value) && 
-            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) && 
+            (identical(other.enumValid, enumValid) || other.enumValid == enumValid));
   }
 
   @override
@@ -68,11 +76,12 @@ class ValidUrineOutputModel {
         runtimeType,
         value,
         errorMessage,
+        enumValid,
 ]);
 
   @override
   String toString() {
-    return 'ValidUrineOutputModel(value: $value, errorMessage: $errorMessage, )';
+    return 'ValidUrineOutputModel(value: $value, errorMessage: $errorMessage, enumValid: $enumValid, )';
     }
 
 }

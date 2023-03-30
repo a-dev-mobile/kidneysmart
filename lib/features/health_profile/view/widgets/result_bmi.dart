@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/enum/enum.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
-class BtnActivity extends ConsumerWidget {
-  const BtnActivity({
+class ResultBmi extends ConsumerWidget {
+  const ResultBmi({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateActivity = ref.watch(activityProvider);
     final stateHealth = ref.watch(healthProfileProvider);
-    final notifierHealth = ref.watch(healthProfileProvider.notifier);
+// if weight and height are valid
+    final visible = stateHealth.validHeightModel.enumValid == EnumValid.valid &&
+        stateHealth.validWeightModel.enumValid == EnumValid.valid;
 
-    return AppInputCard(
-      child: BtnToggleText(
-        textList: stateActivity.activityInfo.map((e) => e.value).toList(),
-        isSelected:
-            stateActivity.activityInfo.map((e) => e.isSelected).toList(),
-        onPressed: notifierHealth.setActivity,
-        errorText: stateHealth.validActivityModel.errorMessage,
-        title: 'Укажите свою физическую активность',
+    final stateBmi = ref.watch(calculateBmiProvider);
+
+    return Visibility(
+      visible: visible,
+      child: AppResultCard(
+        child: Column(children: [Text(stateBmi.value.toString())]),
       ),
     );
   }

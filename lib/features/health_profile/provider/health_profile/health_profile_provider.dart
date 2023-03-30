@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 
 import 'package:nutrition/core/valid/valid_extension.dart';
@@ -144,8 +145,11 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
       error = 'Рост не указан';
     }
     state = state.copyWith(
-      validHeightModel:
-          state.validHeightModel.copyWith(value: v, errorMessage: error),
+      validHeightModel: state.validHeightModel.copyWith(
+        value: v,
+        errorMessage: error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      ),
     );
     if (isSaveLocal) _saveState();
   }
@@ -248,8 +252,11 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     error = _validWeight(v);
 
     state = state.copyWith(
-      validWeightModel:
-          state.validWeightModel.copyWith(value: v, errorMessage: error),
+      validWeightModel: state.validWeightModel.copyWith(
+        value: v,
+        errorMessage: error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      ),
     );
 
     if (isSaveLocal) _saveState();
@@ -267,7 +274,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     if (doubleValue.isMinValue(40)) {
       return 'Указанный вес не поддерживается приложением';
     }
-    if (doubleValue.isMaxValue(200)) {
+    if (doubleValue.isMaxValue(300)) {
       return 'Указанный вес не поддерживается приложением';
     }
 
@@ -318,24 +325,12 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     return '';
   }
 
-/* 
-    return isPure
-        ? null
-        : error == isEmpty
-            ? 'Креатинин не указан'
-            : error == isMax
-                ? 'Указанный креатинин не поддерживается приложением'
-                : error == isMin
-                    ? 'Указанный креатинин не поддерживается приложением'
-                    : error == isNoValid
-                        ? 'Неправильное значение'
-                        : error == noBirthday
-                            ? 'Укажите дату своего рождения'
-                            : error == noGender
-                                ? 'Укажите ваш пол'
-                                : null;
+  void changeTypeUnitWeight(EnumUnitWeight? value) {
+    state = state.copyWith(
+      validWeightModel: state.validWeightModel.copyWith(enumUnitWeight: value),
+    );
+  }
 
- */
   String _getDateRaw() {
     final day = state.validBirthdayModel.daySelected;
     final monthNumber = state.validBirthdayModel.monthSelected;

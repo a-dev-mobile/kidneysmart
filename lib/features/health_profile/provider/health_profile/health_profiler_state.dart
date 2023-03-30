@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class HealthProfileState {  
+class HealthProfileState {   
   /* init: false */
   final bool isValid;
   /* init: const ValidBtnToggleModel() */
@@ -29,7 +29,7 @@ class HealthProfileState {
   final ValidUrineOutputModel validUrineOutputModel;
   /* init: const ValidBtnToggleModel() */
   final ValidBtnToggleModel validCkdModel;
-    /* init: const ValidCreatinineModel() */
+  /* init: const ValidCreatinineModel() */
   final ValidCreatinineModel validCreatinineModel;
   // end
    

@@ -24,14 +24,13 @@ class BtnDailyDiuresis extends ConsumerWidget {
     final listTextWithoutLast = [...listTextAll];
     final textLast = listTextWithoutLast.removeLast();
 
-    return AppCard(
+    return AppInputCard(
       child: Column(
         children: [
           BtnToggleText(
             textList: listTextWithoutLast.toList(),
             isSelected: listBoolWithoutLast.toList(),
             onPressed: notifierHealth.setDailyDiuresis,
-
             title: 'Укажите уровень суточного диуреза (обьем выделяемой мочи)',
           ),
 
@@ -43,7 +42,7 @@ class BtnDailyDiuresis extends ConsumerWidget {
                 notifierHealth.setDailyDiuresis(v + listBoolWithoutLast.length),
             errorText: stateHealth.validDailyDiuresisModel.errorMessage,
           ),
-       const FieldUrineOutput(),
+          const FieldUrineOutput(),
         ],
       ),
     );

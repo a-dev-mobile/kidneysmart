@@ -17,7 +17,7 @@ class DropBirthday extends ConsumerWidget {
     final stateHealth = ref.watch(healthProfileProvider);
     final notifierHealth = ref.watch(healthProfileProvider.notifier);
 
-    return AppCard(
+    return AppInputCard(
       child: Column(
         children: [
           const TitleSub(text: 'Укажите дату своего рождения'),

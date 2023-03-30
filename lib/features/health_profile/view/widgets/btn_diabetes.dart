@@ -15,7 +15,7 @@ class BtnDiabetes extends ConsumerWidget {
     final stateHealth = ref.watch(healthProfileProvider);
     final notifierHealth = ref.watch(healthProfileProvider.notifier);
 
-    return AppCard(
+    return AppInputCard(
       child: BtnToggleText(
         textList: state.diabetesInfo.map((e) => e.value).toList(),
         isSelected: state.diabetesInfo.map((e) => e.isSelected).toList(),

@@ -40,24 +40,30 @@ class _FieldNameState extends ConsumerState<FieldWeight> {
     final errorMsg =
         ref.watch(healthProfileProvider).validWeightModel.errorMessage;
 
-    return AppCard(
+    return AppInputCard(
       child: Column(
         children: [
           const TitleSub(text: 'Укажите свой текущий вес'),
-          const SizedBox(height: 10),
-          TextField(
-            controller: controller,
-            decoration: InputDecoration(
-              labelText: 'Вес',
-              errorText: errorMsg?.isEmpty ?? true ? null : errorMsg,
-              errorMaxLines: 2,
-              suffixText: 'кг',
-            ),
-            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            onChanged: notifier.setWeight,
-            inputFormatters: [
-              LengthLimitingTextInputFormatter(6),
-              FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
+          Column(
+            children: [
+              const DropUnitWeight(),
+              const SizedBox(height: 10),
+              TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                  labelText: 'Вес',
+                  errorText: errorMsg.isEmpty  ? null : errorMsg,
+                  errorMaxLines: 2,
+                  suffixText: 'кг',
+                ),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                onChanged: notifier.setWeight,
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(6),
+                  FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
+                ],
+              ),
             ],
           ),
         ],

@@ -15,7 +15,7 @@ class BtnGender extends ConsumerWidget {
     final stateHealth = ref.watch(healthProfileProvider);
     final notifierHealth = ref.watch(healthProfileProvider.notifier);
 
-    return AppCard(
+    return AppInputCard(
       child: BtnToggleText(
         textList: stateGender.genderInfo.map((e) => e.value).toList(),
         isSelected: stateGender.genderInfo.map((e) => e.isSelected).toList(),
