@@ -171,22 +171,20 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 
   void _checkDate() {
     final error = _validBirthDay();
-
     state = state.copyWith(
-      validBirthdayModel:
-          state.validBirthdayModel.copyWith(errorMessage: error),
+      validBirthdayModel: state.validBirthdayModel.copyWith(
+        errorMessage: error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      ),
     );
 
     _upgradeCreatinine(error);
   }
 
   String _validBirthDay() {
-    final isValidDay =
-        state.validBirthdayModel.daySelected?.isNotEmpty ?? false;
-    final isValidMonth =
-        state.validBirthdayModel.monthSelected?.isNotEmpty ?? false;
-    final isValidYear =
-        state.validBirthdayModel.yearSelected?.isNotEmpty ?? false;
+    final isValidDay = state.validBirthdayModel.daySelected.isNotEmpty;
+    final isValidMonth = state.validBirthdayModel.monthSelected.isNotEmpty;
+    final isValidYear = state.validBirthdayModel.yearSelected.isNotEmpty;
     var errorMsg = '';
 
     final dateRaw = _getDateRaw();
@@ -271,10 +269,10 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 
     if (doubleValue.isNegative) return 'Неправильное значение';
 
-    if (doubleValue.isMinValue(40)) {
+    if (doubleValue.isMinValue(20)) {
       return 'Указанный вес не поддерживается приложением';
     }
-    if (doubleValue.isMaxValue(300)) {
+    if (doubleValue.isMaxValue(1000)) {
       return 'Указанный вес не поддерживается приложением';
     }
 
@@ -336,7 +334,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     final monthNumber = state.validBirthdayModel.monthSelected;
     final year = state.validBirthdayModel.yearSelected;
 
-    if (day != null && monthNumber != null && year != null) {
+    if (day.isNotEmpty && monthNumber.isNotEmpty && year .isNotEmpty) {
       return '$year-$monthNumber-$day';
     }
 

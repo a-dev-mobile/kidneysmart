@@ -22,8 +22,8 @@ class DateInfoNotifier extends StateNotifier<DateInfoState> {
 
   // ignore: unused_field
   final Ref _ref;
-  static const _MIN_AGE = 13;
-  static const _MAX_AGE = 100;
+  static const _MIN_AGE = 2;
+  static const _MAX_AGE = 150;
 
   void load() {
     final days = _initDayMonth(start: 1, end: 31);

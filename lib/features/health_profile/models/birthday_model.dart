@@ -3,15 +3,24 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
-class ValidBirthdayModel {                                                                                                                              
+class ValidBirthdayModel {                                                                                                                                    
   /* init:'' */
   final String errorMessage;
 
-  final String? daySelected;
-  final String? yearSelected;
-  final String? monthSelected;
+  /* init:'' */
+  final String daySelected;
+  /* init:'' */
+  final String yearSelected;
+  /* init:'' */
+  final String monthSelected;
+
+  final DateTime? dateBirthday;
+
+    /* init: EnumValid.init */
+  final EnumValid enumValid;
   // end
    
 //          --TURN_GEN--
@@ -22,9 +31,11 @@ class ValidBirthdayModel {
   
   const ValidBirthdayModel({
     this.errorMessage = '',
-    this.daySelected,
-    this.yearSelected,
-    this.monthSelected,
+    this.daySelected = '',
+    this.yearSelected = '',
+    this.monthSelected = '',
+    this.enumValid = EnumValid.init,
+    this.dateBirthday,
   });
 
 
@@ -34,6 +45,8 @@ class ValidBirthdayModel {
       'daySelected': daySelected, 
       'yearSelected': yearSelected, 
       'monthSelected': monthSelected, 
+      'dateBirthday': dateBirthday?.toIso8601String(), 
+      'enumValid': enumValid.index, 
     };
   }
 
@@ -43,9 +56,11 @@ class ValidBirthdayModel {
 
     return ValidBirthdayModel(
       errorMessage: map['errorMessage'] as String? ?? '', 
-      daySelected: map['daySelected'] as String?, 
-      yearSelected: map['yearSelected'] as String?, 
-      monthSelected: map['monthSelected'] as String?, 
+      daySelected: map['daySelected'] as String? ?? '', 
+      yearSelected: map['yearSelected'] as String? ?? '', 
+      monthSelected: map['monthSelected'] as String? ?? '', 
+      dateBirthday: map['dateBirthday'] == null ? null : DateTime.parse(map['dateBirthday'] as String), 
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
     );
   }
 
@@ -54,12 +69,16 @@ class ValidBirthdayModel {
     String? daySelected,
     String? yearSelected,
     String? monthSelected,
+    DateTime? dateBirthday,
+    EnumValid? enumValid,
   }) {
     return ValidBirthdayModel(
       errorMessage: errorMessage ?? this.errorMessage, 
       daySelected: daySelected ?? this.daySelected, 
       yearSelected: yearSelected ?? this.yearSelected, 
       monthSelected: monthSelected ?? this.monthSelected, 
+      dateBirthday: dateBirthday ?? this.dateBirthday, 
+      enumValid: enumValid ?? this.enumValid, 
     );
   }
 
@@ -74,7 +93,9 @@ class ValidBirthdayModel {
             (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) && 
             (identical(other.daySelected, daySelected) || other.daySelected == daySelected) && 
             (identical(other.yearSelected, yearSelected) || other.yearSelected == yearSelected) && 
-            (identical(other.monthSelected, monthSelected) || other.monthSelected == monthSelected));
+            (identical(other.monthSelected, monthSelected) || other.monthSelected == monthSelected) && 
+            (identical(other.dateBirthday, dateBirthday) || other.dateBirthday == dateBirthday) && 
+            (identical(other.enumValid, enumValid) || other.enumValid == enumValid));
   }
 
   @override
@@ -84,11 +105,13 @@ class ValidBirthdayModel {
         daySelected,
         yearSelected,
         monthSelected,
+        dateBirthday,
+        enumValid,
 ]);
 
   @override
   String toString() {
-    return 'ValidBirthdayModel(errorMessage: $errorMessage, daySelected: $daySelected, yearSelected: $yearSelected, monthSelected: $monthSelected, )';
+    return 'ValidBirthdayModel(errorMessage: $errorMessage, daySelected: $daySelected, yearSelected: $yearSelected, monthSelected: $monthSelected, dateBirthday: $dateBirthday, enumValid: $enumValid, )';
     }
 
 }
