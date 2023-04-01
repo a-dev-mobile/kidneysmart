@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:nutrition/core/services/dadata/dadata.dart';
 
 @immutable
-class Fio {                                                                                                                            
+class Fio { 
 /* init: const[] */
   final List<SuggestionsFio> suggestions;
 

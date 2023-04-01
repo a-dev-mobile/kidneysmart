@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class RegistrationNameDbModel {                                                                                                                            
+class RegistrationNameDbModel { 
   /* init: '' */
   final String url;
 

@@ -6,7 +6,7 @@ import 'package:nutrition/core/services/storage/app_storage_service.dart';
 part 'splash_state.dart';
 
 final splashProvider =
-    StateNotifierProvider.autoDispose<SplashNotifier, SplashState>((ref) {
+    StateNotifierProvider<SplashNotifier, SplashState>((ref) {
   return SplashNotifier(
     router: ref.read(appRouterServiceProvider),
     storage: ref.read(appStorageServiceProvider),

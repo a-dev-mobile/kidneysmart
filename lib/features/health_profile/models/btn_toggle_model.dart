@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class ValidBtnToggleModel {                                                                                                                                     
+class ValidBtnToggleModel { 
   final int? selectedIndex;
   /* init: '' */
   final String errorMessage;

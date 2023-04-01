@@ -12,15 +12,15 @@ class BtnHypertension extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(hypertensionProvider);
-    final stateHealth = ref.watch(healthProfileProvider);
-    final notifierHealth = ref.watch(healthProfileProvider.notifier);
+
+    final notifier = ref.watch(hypertensionProvider.notifier);
 
     return AppInputCard(
       child: BtnToggleText(
         textList: state.hypertensionInfo.map((e) => e.value).toList(),
         isSelected: state.hypertensionInfo.map((e) => e.isSelected).toList(),
-        onPressed: notifierHealth.setHypertension,
-        errorText: stateHealth.validHypertensionModel.errorMessage,
+        onPressed: notifier.setHypertension,
+        errorText: state.error,
         title: 'Наличие гипертензии (высокое кровяное давление)',
       ),
     );

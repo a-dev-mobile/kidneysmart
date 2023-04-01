@@ -1,6 +1,5 @@
 // turnGen
 enum EnumLang with Comparable<EnumLang> {
-
   ru('ru'),
   en('en');
 

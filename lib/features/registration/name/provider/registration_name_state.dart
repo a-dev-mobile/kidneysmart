@@ -4,7 +4,7 @@ part of 'registration_name_provider.dart';
 
 /*  */
 @immutable
-class RegistrationNameState {                                                                                                                                   
+class RegistrationNameState { 
 /* init: false */
   final bool isValid;
 /* 

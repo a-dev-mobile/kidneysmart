@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class AppState {                                                                                                                            
+class AppState { 
   /* init: true */
   final bool isFirstTime;
   /* init: false */

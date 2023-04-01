@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class FireStoreDbModel {                                                                                                                            
+class FireStoreDbModel { 
 /* init: 1  */
   final int version_store_file;
 

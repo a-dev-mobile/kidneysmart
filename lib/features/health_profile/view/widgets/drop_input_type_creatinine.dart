@@ -14,9 +14,10 @@ class DropInputTypeCreatinine extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = context.l10n;
 
-    final notifier = ref.watch(ckdProvider.notifier);
+    final state = ref.watch(creatinineProvider);
+    final notifier = ref.watch(creatinineProvider.notifier);
 
-    final inputTypeCreatinine = ref.watch(ckdProvider).inputTypeCreatinine;
+    final inputTypeCreatinine = state.inputTypeCreatinine;
 
     return Row(
       children: [

@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 @immutable
-class ThemeState {                                                                                                                            
+class ThemeState { 
   /* init: ThemeMode.light */
   final ThemeMode themeMode;
 

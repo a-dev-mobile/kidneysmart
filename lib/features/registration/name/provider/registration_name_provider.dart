@@ -14,8 +14,8 @@ import 'package:nutrition/localization/localization.dart';
 
 part 'registration_name_state.dart';
 
-final registrationNameProvider = StateNotifierProvider.autoDispose<
-    RegistrationNameNotifier, RegistrationNameState>(
+final registrationNameProvider =
+    StateNotifierProvider<RegistrationNameNotifier, RegistrationNameState>(
   (ref) {
     return RegistrationNameNotifier(
       ref: ref,

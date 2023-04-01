@@ -1,15 +1,18 @@
-// ignore_for_file: sort_constructors_first, avoid_bool_literals_in_conditional_expressions
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+// ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
-class ValidHeightModel {  
+class UrineState { 
   /* init:'' */
-  final String value;
+  final String result;
+
+  final double? value;
   /* init:'' */
-  final String errorMessage;
+  final String error;
   /* init: EnumValid.init */
   final EnumValid enumValid;
 
@@ -21,68 +24,75 @@ class ValidHeightModel {
 //         GENERATED CODE 
 //  *************************************
   
-  const ValidHeightModel({
-    this.value = '',
-    this.errorMessage = '',
+  const UrineState({
+    this.result = '',
+    this.error = '',
     this.enumValid = EnumValid.init,
+    this.value,
   });
 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'result': result, 
       'value': value, 
-      'errorMessage': errorMessage, 
+      'error': error, 
       'enumValid': enumValid.index, 
     };
   }
 
 
-  factory ValidHeightModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const ValidHeightModel();
+  factory UrineState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const UrineState();
 
-    return ValidHeightModel(
-      value: map['value'] as String? ?? '', 
-      errorMessage: map['errorMessage'] as String? ?? '', 
+    return UrineState(
+      result: map['result'] as String? ?? '', 
+      value: (map['value'] as num?)?.toDouble(), 
+      error: map['error'] as String? ?? '', 
       enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
     );
   }
 
-  ValidHeightModel copyWith({
-    String? value,
-    String? errorMessage,
+  UrineState copyWith({
+    String? result,
+    double? value,
+    String? error,
     EnumValid? enumValid,
   }) {
-    return ValidHeightModel(
+    return UrineState(
+      result: result ?? this.result, 
       value: value ?? this.value, 
-      errorMessage: errorMessage ?? this.errorMessage, 
+      error: error ?? this.error, 
       enumValid: enumValid ?? this.enumValid, 
     );
   }
 
   String toJson() => json.encode(toMap());  
-  factory ValidHeightModel.fromJson(String source) => ValidHeightModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+  factory UrineState.fromJson(String source) => UrineState.fromMap(json.decode(source) as Map<String, dynamic>,);  
    
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ValidHeightModel &&
+            other is UrineState &&
+            (identical(other.result, result) || other.result == result) && 
             (identical(other.value, value) || other.value == value) && 
-            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) && 
+            (identical(other.error, error) || other.error == error) && 
             (identical(other.enumValid, enumValid) || other.enumValid == enumValid));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
+        result,
         value,
-        errorMessage,
+        error,
         enumValid,
 ]);
 
   @override
   String toString() {
-    return 'ValidHeightModel(value: $value, errorMessage: $errorMessage, enumValid: $enumValid, )';
+    return 'UrineState(result: $result, value: $value, error: $error, enumValid: $enumValid, )';
     }
 
 }

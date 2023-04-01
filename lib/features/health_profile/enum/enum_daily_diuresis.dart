@@ -1,5 +1,4 @@
 enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
-
   normal('normal'),
   no('no'),
   enterValue('enterValue'),

@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class FieldStringValid {                                                                                                                            
+class FieldStringValid { 
   /* init:'' */
   final String value;
   final String? errorMessage;

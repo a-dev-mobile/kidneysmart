@@ -1,18 +1,20 @@
 // turnGen
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+
 enum EnumWeightStatus with Comparable<EnumWeightStatus> {
+  severe_thinness(0),
+  moderate_thinness(16),
+  mild_thinness(17),
+  normal(18.5),
+  overweight(25),
+  obesity_1(30),
+  obesity_2(35),
+  obesity_3(40),
+  obesity_4(45),
+  none(-1);
 
-  severeUnderweight('severeUnderweight'),
-  underweight('underweight'),
-  healthyWeight('healthyWeight'),
-  overweight('overweight'),
-  obesity1('obesity1'),
-  obesity2('obesity2'),
-  obesity3('obesity3'),
-  obesity4('obesity4'),
-  none('none');
-
-  const EnumWeightStatus(this.value);
-  final String value;
+  const EnumWeightStatus(this.minValue);
+  final double minValue;
 
 // end
 
@@ -23,25 +25,27 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
 //  *************************************
   
 
-  static EnumWeightStatus fromValue(String? value, {EnumWeightStatus? fallback}) {
-    switch (value) {
-      case 'severeUnderweight':
-        return severeUnderweight;
-      case 'underweight':
-        return underweight;
-      case 'healthyWeight':
-        return healthyWeight;
-      case 'overweight':
+  static EnumWeightStatus fromValue(double? value, {EnumWeightStatus? fallback}) {
+    switch (value?.toString()) {
+      case '0':
+        return severe_thinness;
+      case '16':
+        return moderate_thinness;
+      case '17':
+        return mild_thinness;
+      case '18.5':
+        return normal;
+      case '25':
         return overweight;
-      case 'obesity1':
-        return obesity1;
-      case 'obesity2':
-        return obesity2;
-      case 'obesity3':
-        return obesity3;
-      case 'obesity4':
-        return obesity4;
-      case 'none':
+      case '30':
+        return obesity_1;
+      case '35':
+        return obesity_2;
+      case '40':
+        return obesity_3;
+      case '45':
+        return obesity_4;
+      case '-1':
         return none;
       default:
         return fallback ?? (throw ArgumentError.value(
@@ -51,33 +55,36 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
 
 
   T map<T>({
-    required T Function() severeUnderweight,
-    required T Function() underweight,
-    required T Function() healthyWeight,
+    required T Function() severe_thinness,
+    required T Function() moderate_thinness,
+    required T Function() mild_thinness,
+    required T Function() normal,
     required T Function() overweight,
-    required T Function() obesity1,
-    required T Function() obesity2,
-    required T Function() obesity3,
-    required T Function() obesity4,
+    required T Function() obesity_1,
+    required T Function() obesity_2,
+    required T Function() obesity_3,
+    required T Function() obesity_4,
     required T Function() none,
   }) {
     switch (this) {
-      case EnumWeightStatus.severeUnderweight:
-        return severeUnderweight();
-      case EnumWeightStatus.underweight:
-        return underweight();
-      case EnumWeightStatus.healthyWeight:
-        return healthyWeight();
+      case EnumWeightStatus.severe_thinness:
+        return severe_thinness();
+      case EnumWeightStatus.moderate_thinness:
+        return moderate_thinness();
+      case EnumWeightStatus.mild_thinness:
+        return mild_thinness();
+      case EnumWeightStatus.normal:
+        return normal();
       case EnumWeightStatus.overweight:
         return overweight();
-      case EnumWeightStatus.obesity1:
-        return obesity1();
-      case EnumWeightStatus.obesity2:
-        return obesity2();
-      case EnumWeightStatus.obesity3:
-        return obesity3();
-      case EnumWeightStatus.obesity4:
-        return obesity4();
+      case EnumWeightStatus.obesity_1:
+        return obesity_1();
+      case EnumWeightStatus.obesity_2:
+        return obesity_2();
+      case EnumWeightStatus.obesity_3:
+        return obesity_3();
+      case EnumWeightStatus.obesity_4:
+        return obesity_4();
       case EnumWeightStatus.none:
         return none();
     }
@@ -85,33 +92,36 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
 
 
   T mapValue<T>({
-    required T severeUnderweight,
-    required T underweight,
-    required T healthyWeight,
+    required T severe_thinness,
+    required T moderate_thinness,
+    required T mild_thinness,
+    required T normal,
     required T overweight,
-    required T obesity1,
-    required T obesity2,
-    required T obesity3,
-    required T obesity4,
+    required T obesity_1,
+    required T obesity_2,
+    required T obesity_3,
+    required T obesity_4,
     required T none,
   }) {
     switch (this) {
-      case EnumWeightStatus.severeUnderweight:
-        return severeUnderweight;
-      case EnumWeightStatus.underweight:
-        return underweight;
-      case EnumWeightStatus.healthyWeight:
-        return healthyWeight;
+      case EnumWeightStatus.severe_thinness:
+        return severe_thinness;
+      case EnumWeightStatus.moderate_thinness:
+        return moderate_thinness;
+      case EnumWeightStatus.mild_thinness:
+        return mild_thinness;
+      case EnumWeightStatus.normal:
+        return normal;
       case EnumWeightStatus.overweight:
         return overweight;
-      case EnumWeightStatus.obesity1:
-        return obesity1;
-      case EnumWeightStatus.obesity2:
-        return obesity2;
-      case EnumWeightStatus.obesity3:
-        return obesity3;
-      case EnumWeightStatus.obesity4:
-        return obesity4;
+      case EnumWeightStatus.obesity_1:
+        return obesity_1;
+      case EnumWeightStatus.obesity_2:
+        return obesity_2;
+      case EnumWeightStatus.obesity_3:
+        return obesity_3;
+      case EnumWeightStatus.obesity_4:
+        return obesity_4;
       case EnumWeightStatus.none:
         return none;
     }
@@ -120,111 +130,119 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
 
   T maybeMap<T>({
     required T Function() orElse,
-    T Function()? severeUnderweight,
-    T Function()? underweight,
-    T Function()? healthyWeight,
+    T Function()? severe_thinness,
+    T Function()? moderate_thinness,
+    T Function()? mild_thinness,
+    T Function()? normal,
     T Function()? overweight,
-    T Function()? obesity1,
-    T Function()? obesity2,
-    T Function()? obesity3,
-    T Function()? obesity4,
+    T Function()? obesity_1,
+    T Function()? obesity_2,
+    T Function()? obesity_3,
+    T Function()? obesity_4,
     T Function()? none,
   }) =>
       map<T>(
-      severeUnderweight: severeUnderweight ?? orElse,
-      underweight: underweight ?? orElse,
-      healthyWeight: healthyWeight ?? orElse,
+      severe_thinness: severe_thinness ?? orElse,
+      moderate_thinness: moderate_thinness ?? orElse,
+      mild_thinness: mild_thinness ?? orElse,
+      normal: normal ?? orElse,
       overweight: overweight ?? orElse,
-      obesity1: obesity1 ?? orElse,
-      obesity2: obesity2 ?? orElse,
-      obesity3: obesity3 ?? orElse,
-      obesity4: obesity4 ?? orElse,
+      obesity_1: obesity_1 ?? orElse,
+      obesity_2: obesity_2 ?? orElse,
+      obesity_3: obesity_3 ?? orElse,
+      obesity_4: obesity_4 ?? orElse,
       none: none ?? orElse,
       );
 
 
   T maybeMapValue<T>({
     required T orElse,
-    T? severeUnderweight,
-    T? underweight,
-    T? healthyWeight,
+    T? severe_thinness,
+    T? moderate_thinness,
+    T? mild_thinness,
+    T? normal,
     T? overweight,
-    T? obesity1,
-    T? obesity2,
-    T? obesity3,
-    T? obesity4,
+    T? obesity_1,
+    T? obesity_2,
+    T? obesity_3,
+    T? obesity_4,
     T? none,
   }) =>
       mapValue<T>(
-      severeUnderweight: severeUnderweight ?? orElse,
-      underweight: underweight ?? orElse,
-      healthyWeight: healthyWeight ?? orElse,
+      severe_thinness: severe_thinness ?? orElse,
+      moderate_thinness: moderate_thinness ?? orElse,
+      mild_thinness: mild_thinness ?? orElse,
+      normal: normal ?? orElse,
       overweight: overweight ?? orElse,
-      obesity1: obesity1 ?? orElse,
-      obesity2: obesity2 ?? orElse,
-      obesity3: obesity3 ?? orElse,
-      obesity4: obesity4 ?? orElse,
+      obesity_1: obesity_1 ?? orElse,
+      obesity_2: obesity_2 ?? orElse,
+      obesity_3: obesity_3 ?? orElse,
+      obesity_4: obesity_4 ?? orElse,
       none: none ?? orElse,
       );
 
 
   T? maybeMapOrNull<T>({
-    T Function()? severeUnderweight,
-    T Function()? underweight,
-    T Function()? healthyWeight,
+    T Function()? severe_thinness,
+    T Function()? moderate_thinness,
+    T Function()? mild_thinness,
+    T Function()? normal,
     T Function()? overweight,
-    T Function()? obesity1,
-    T Function()? obesity2,
-    T Function()? obesity3,
-    T Function()? obesity4,
+    T Function()? obesity_1,
+    T Function()? obesity_2,
+    T Function()? obesity_3,
+    T Function()? obesity_4,
     T Function()? none,
   }) =>
       maybeMap<T?>(
         orElse: () => null,
-        severeUnderweight: severeUnderweight,
-        underweight: underweight,
-        healthyWeight: healthyWeight,
+        severe_thinness: severe_thinness,
+        moderate_thinness: moderate_thinness,
+        mild_thinness: mild_thinness,
+        normal: normal,
         overweight: overweight,
-        obesity1: obesity1,
-        obesity2: obesity2,
-        obesity3: obesity3,
-        obesity4: obesity4,
+        obesity_1: obesity_1,
+        obesity_2: obesity_2,
+        obesity_3: obesity_3,
+        obesity_4: obesity_4,
         none: none,
       );
 
 
   T? maybeMapOrNullValue<T>({
-    T? severeUnderweight,
-    T? underweight,
-    T? healthyWeight,
+    T? severe_thinness,
+    T? moderate_thinness,
+    T? mild_thinness,
+    T? normal,
     T? overweight,
-    T? obesity1,
-    T? obesity2,
-    T? obesity3,
-    T? obesity4,
+    T? obesity_1,
+    T? obesity_2,
+    T? obesity_3,
+    T? obesity_4,
     T? none,
   }) =>
       maybeMapValue<T?>(
         orElse: null,
-        severeUnderweight: severeUnderweight,
-        underweight: underweight,
-        healthyWeight: healthyWeight,
+        severe_thinness: severe_thinness,
+        moderate_thinness: moderate_thinness,
+        mild_thinness: mild_thinness,
+        normal: normal,
         overweight: overweight,
-        obesity1: obesity1,
-        obesity2: obesity2,
-        obesity3: obesity3,
-        obesity4: obesity4,
+        obesity_1: obesity_1,
+        obesity_2: obesity_2,
+        obesity_3: obesity_3,
+        obesity_4: obesity_4,
         none: none,
       );
 
 
-  static List<String> getValues() => EnumWeightStatus.values.map((e) => e.value).toList();
+  static List<double> getValues() => EnumWeightStatus.values.map((e) => e.minValue).toList();
 
   @override
   int compareTo(EnumWeightStatus other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumWeightStatus.$name($value)';
+  String toString() => 'EnumWeightStatus.$name($minValue)';
 
 
 }

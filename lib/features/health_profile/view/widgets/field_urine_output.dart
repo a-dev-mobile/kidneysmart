@@ -20,8 +20,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
 
   @override
   void initState() {
-    final initValue =
-        ref.read(healthProfileProvider).validUrineOutputModel.value;
+    final initValue = ref.read(urineProvider).result;
 
     controller = TextEditingController(text: initValue);
 
@@ -38,18 +37,20 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
   Widget build(BuildContext context) {
     final l = context.l10n;
     // final provider = ref.watch(registrationNameProvider);
-    final notifier = ref.watch(healthProfileProvider.notifier);
-
+    final notifier = ref.watch(urineProvider.notifier);
+    final state = ref.watch(urineProvider);
 
     final isEnabled = ref.watch(dailyDiuresisProvider).isShowInput;
 
-    final gender =
-        ref.watch(genderProvider).genderInfo.firstWhereOrNull((e) => e.isSelected)?.enumGender??EnumGender.none;
-
+    final gender = ref
+            .watch(genderProvider)
+            .gender
+            .firstWhereOrNull((e) => e.isSelected)
+            ?.enumGender ??
+        EnumGender.none;
 
     // final state = ref.watch(healthProfileProvider);
-    final errorMsg =
-        ref.watch(healthProfileProvider).validUrineOutputModel.errorMessage;
+    final errorMsg = state.error;
 
     return Column(
       children: [

@@ -50,6 +50,7 @@
   "mcmolL": "μmol/l",
   "skip": "Skip",
   "max_text_length": "Maximum text length",
+  "calculate_bmi_enter": "To calculate BMI enter:",
   "male": "MALE",
   "female": "FEMALE",
   "g": "g"

@@ -2,9 +2,10 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+
 // turngen
 @immutable
-class DataFio {                                                                                                                                                                                         
+class DataFio { 
   /* init:'' */
   final String surname;
   /* init:'' */

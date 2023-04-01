@@ -1,6 +1,5 @@
 // turngen
 enum EnumCkd with Comparable<EnumCkd> {
-
   one('one'),
   two('two'),
   threeA('threeA'),

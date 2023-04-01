@@ -1,7 +1,6 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names, lines_longer_than_80_chars
 
 enum EnumDiabetes with Comparable<EnumDiabetes> {
-
   yes('yes'),
   no('no'),
   none('none');

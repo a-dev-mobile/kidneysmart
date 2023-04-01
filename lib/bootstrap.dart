@@ -18,7 +18,6 @@ import 'package:nutrition/firebase_options.dart';
 import 'package:nutrition/global.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 // ignore: prefer-static-class
 Future<void> bootstrap(FutureOr<Widget> Function() app) async {
   try {
@@ -103,7 +102,7 @@ Future<void> _recordError(dynamic exception, StackTrace stack) async {
 
   // await FirebaseCrashlytics.instance.setUserIdentifier("5858512555e1");
 
-    const typeError = DartDefine.IS_DEBUG_MENU_ENABLED ? 'TEST' : 'PROD';
+  const typeError = DartDefine.IS_DEBUG_MENU_ENABLED ? 'TEST' : 'PROD';
 
   await FirebaseCrashlytics.instance.recordError(
     exception,

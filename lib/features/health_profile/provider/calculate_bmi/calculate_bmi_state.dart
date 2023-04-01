@@ -2,26 +2,21 @@
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
-
 import 'package:flutter/material.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class CalculateBmiState {    
+class CalculateBmiState { 
   /* init: '' */
-  final String value;
+  final String bmiValue;
   /* init:  EnumWeightStatus.none */
   final EnumWeightStatus enumWeightStatus;
-    /* init:  EnumBmiYears.none */
+  /* init:  EnumBmiYears.none */
   final EnumBmiYears enumBmiYears;
   /* init:'' */
-  final String daySelected;
+  final String markdownSuccess;
   /* init:'' */
-  final String yearSelected;
-  /* init:'' */
-  final String monthSelected;
-
-
+  final String markdownError;
 // end
    
 //          --TURN_GEN--
@@ -31,23 +26,21 @@ class CalculateBmiState {
 //  *************************************
   
   const CalculateBmiState({
-    this.value = '',
+    this.bmiValue = '',
     this.enumWeightStatus = EnumWeightStatus.none,
     this.enumBmiYears = EnumBmiYears.none,
-    this.daySelected = '',
-    this.yearSelected = '',
-    this.monthSelected = '',
+    this.markdownSuccess = '',
+    this.markdownError = '',
   });
 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': value, 
+      'bmiValue': bmiValue, 
       'enumWeightStatus': enumWeightStatus.index, 
       'enumBmiYears': enumBmiYears.index, 
-      'daySelected': daySelected, 
-      'yearSelected': yearSelected, 
-      'monthSelected': monthSelected, 
+      'markdownSuccess': markdownSuccess, 
+      'markdownError': markdownError, 
     };
   }
 
@@ -56,30 +49,27 @@ class CalculateBmiState {
     if (map == null) return const CalculateBmiState();
 
     return CalculateBmiState(
-      value: map['value'] as String? ?? '', 
+      bmiValue: map['bmiValue'] as String? ?? '', 
       enumWeightStatus: map['enumWeightStatus'] != null ? EnumWeightStatus.values[map['enumWeightStatus'] as int] : EnumWeightStatus.none, 
       enumBmiYears: map['enumBmiYears'] != null ? EnumBmiYears.values[map['enumBmiYears'] as int] : EnumBmiYears.none, 
-      daySelected: map['daySelected'] as String? ?? '', 
-      yearSelected: map['yearSelected'] as String? ?? '', 
-      monthSelected: map['monthSelected'] as String? ?? '', 
+      markdownSuccess: map['markdownSuccess'] as String? ?? '', 
+      markdownError: map['markdownError'] as String? ?? '', 
     );
   }
 
   CalculateBmiState copyWith({
-    String? value,
+    String? bmiValue,
     EnumWeightStatus? enumWeightStatus,
     EnumBmiYears? enumBmiYears,
-    String? daySelected,
-    String? yearSelected,
-    String? monthSelected,
+    String? markdownSuccess,
+    String? markdownError,
   }) {
     return CalculateBmiState(
-      value: value ?? this.value, 
+      bmiValue: bmiValue ?? this.bmiValue, 
       enumWeightStatus: enumWeightStatus ?? this.enumWeightStatus, 
       enumBmiYears: enumBmiYears ?? this.enumBmiYears, 
-      daySelected: daySelected ?? this.daySelected, 
-      yearSelected: yearSelected ?? this.yearSelected, 
-      monthSelected: monthSelected ?? this.monthSelected, 
+      markdownSuccess: markdownSuccess ?? this.markdownSuccess, 
+      markdownError: markdownError ?? this.markdownError, 
     );
   }
 
@@ -91,28 +81,26 @@ class CalculateBmiState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CalculateBmiState &&
-            (identical(other.value, value) || other.value == value) && 
+            (identical(other.bmiValue, bmiValue) || other.bmiValue == bmiValue) && 
             (identical(other.enumWeightStatus, enumWeightStatus) || other.enumWeightStatus == enumWeightStatus) && 
             (identical(other.enumBmiYears, enumBmiYears) || other.enumBmiYears == enumBmiYears) && 
-            (identical(other.daySelected, daySelected) || other.daySelected == daySelected) && 
-            (identical(other.yearSelected, yearSelected) || other.yearSelected == yearSelected) && 
-            (identical(other.monthSelected, monthSelected) || other.monthSelected == monthSelected));
+            (identical(other.markdownSuccess, markdownSuccess) || other.markdownSuccess == markdownSuccess) && 
+            (identical(other.markdownError, markdownError) || other.markdownError == markdownError));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        value,
+        bmiValue,
         enumWeightStatus,
         enumBmiYears,
-        daySelected,
-        yearSelected,
-        monthSelected,
+        markdownSuccess,
+        markdownError,
 ]);
 
   @override
   String toString() {
-    return 'CalculateBmiState(value: $value, enumWeightStatus: $enumWeightStatus, enumBmiYears: $enumBmiYears, daySelected: $daySelected, yearSelected: $yearSelected, monthSelected: $monthSelected, )';
+    return 'CalculateBmiState(bmiValue: $bmiValue, enumWeightStatus: $enumWeightStatus, enumBmiYears: $enumBmiYears, markdownSuccess: $markdownSuccess, markdownError: $markdownError, )';
     }
 
 }

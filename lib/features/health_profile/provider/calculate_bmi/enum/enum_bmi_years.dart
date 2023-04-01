@@ -1,9 +1,8 @@
 // turnGen
 enum EnumBmiYears with Comparable<EnumBmiYears> {
-
   children('children'),
 
-  adults ('adults'),
+  adults('adults'),
   none('none');
 
   const EnumBmiYears(this.value);

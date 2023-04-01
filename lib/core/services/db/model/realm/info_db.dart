@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 @immutable
-class InfoDb {                                                                                                                            
+class InfoDb { 
   /* init: '' */
   final String url_ru;
   /* init: '' */

@@ -6,7 +6,6 @@ import 'package:nutrition/core/services/theme/theme_providers.dart';
 import 'package:nutrition/core/widget/clean_focus.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
-
 /// {@template health_profile_page}
 /// HealthProfilePage widget
 /// {@endtemplate}
@@ -17,13 +16,11 @@ class HealthProfilePage extends ConsumerWidget {
   static const name = 'HealthProfilePage';
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // final state = ref.watch(healthProfileProvider);
     final notifier = ref.watch(healthProfileProvider.notifier);
 
-   
     return ClearFocus(
-
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Введите данные'),
@@ -39,7 +36,6 @@ class HealthProfilePage extends ConsumerWidget {
           ],
         ),
         body: ListView(
-    
           padding: const EdgeInsets.all(10),
           children: [
             const BtnGender(),
@@ -51,8 +47,7 @@ class HealthProfilePage extends ConsumerWidget {
             const BtnHypertension(),
             const BtnDiabetes(),
             const BtnDailyDiuresis(),
-             const BtnCkd(),
-       
+            const BtnCkd(),
             ElevatedButton(
               onPressed: notifier.check,
               child: const Text('Проверить'),

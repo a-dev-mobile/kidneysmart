@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:nutrition/core/services/dadata/dadata.dart';
 
 @immutable
-class SuggestionsFio {                                                                                                                            
+class SuggestionsFio { 
   /* init: '' */
   final String value;
   /* init: '' */

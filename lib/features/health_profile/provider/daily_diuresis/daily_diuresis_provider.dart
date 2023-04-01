@@ -2,13 +2,14 @@
 
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 
 import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/localization/localization.dart';
 
-final dailyDiuresisProvider = StateNotifierProvider.autoDispose<
-    DailyDiuresisNotifier, DailyDiuresisState>(
+final dailyDiuresisProvider =
+    StateNotifierProvider<DailyDiuresisNotifier, DailyDiuresisState>(
   (ref) {
     return DailyDiuresisNotifier(
       ref: ref,
@@ -31,6 +32,7 @@ class DailyDiuresisNotifier extends StateNotifier<DailyDiuresisState> {
 
   // ignore: unused_field
   final AppLocalizations _l;
+  // ignore: unused_field
   final AppStorageService _storage;
   void load([int? v]) {
     final itemsInit = <DailyDiuresisItemModel>[
@@ -48,8 +50,7 @@ class DailyDiuresisNotifier extends StateNotifier<DailyDiuresisState> {
       ),
     ];
 
-    final selectedIndex = v ??
-        _storage.getHealthProfileState().validDailyDiuresisModel.selectedIndex;
+    final selectedIndex = v ?? state.selectedIndex;
 
     if (selectedIndex != null) {
       itemsInit[selectedIndex] =
@@ -70,5 +71,20 @@ class DailyDiuresisNotifier extends StateNotifier<DailyDiuresisState> {
       isShowInput:
           activeItem?.enumDailyDiuresis == EnumDailyDiuresis.enterValue,
     );
+  }
+
+  void setDailyDiuresis(int? v, {bool isSaveLocal = true}) {
+    var error = '';
+    if (v == null && state.selectedIndex == null) {
+      error = 'Не указан уровень суточного диуреза';
+    }
+    // update other provider
+    final _ = _ref.read(dailyDiuresisProvider.notifier).load(v);
+    state = state.copyWith(
+      selectedIndex: v,
+      error: error,
+      enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+    );
+//     if (isSaveLocal) _saveState();
   }
 }

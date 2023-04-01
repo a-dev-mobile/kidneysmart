@@ -114,7 +114,8 @@ class AppUtilsNumber {
 
     return mainResult;
   }
-    static String correctFormatDouble(double? v) {
+
+  static String correctFormatDouble(double? v) {
     if (v == null || v < 0) return '0';
     if (v % 1 == 0) return v.toStringAsFixed(0);
 

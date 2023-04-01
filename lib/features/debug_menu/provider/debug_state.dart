@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class DebugState {                                                                                                                            
+class DebugState { 
   /* init: false */
   final bool isShowDevice;
   /* init: false */

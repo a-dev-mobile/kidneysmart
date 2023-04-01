@@ -19,8 +19,7 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
 
   @override
   void initState() {
-    final initValue =
-        ref.read(healthProfileProvider).validCreatinineModel.value;
+    final initValue = ref.read(creatinineProvider).result;
 
     controller = TextEditingController(text: initValue);
 
@@ -37,13 +36,13 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
   Widget build(BuildContext context) {
     final l = context.l10n;
 
-    final notifier = ref.watch(healthProfileProvider.notifier);
+    final state = ref.watch(creatinineProvider);
+    final notifier = ref.watch(creatinineProvider.notifier);
 
-    final isEnabled = ref.watch(ckdProvider).isShowInput;
-    final inputTypeCreatinine = ref.watch(ckdProvider).inputTypeCreatinine;
+    final isEnabled = ref.watch(ckdProvider).isShowCalcCreatinine;
+    final inputTypeCreatinine = state.inputTypeCreatinine;
 
-    final errorMsg =
-        ref.watch(healthProfileProvider).validCreatinineModel.errorMessage;
+    final errorMsg = state.error;
 
     return Column(
       children: [

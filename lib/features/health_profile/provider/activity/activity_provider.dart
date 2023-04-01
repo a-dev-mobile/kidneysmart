@@ -6,8 +6,7 @@ import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/localization/localization.dart';
 
-final activityProvider =
-    StateNotifierProvider.autoDispose<ActivityNotifier, ActivityState>(
+final activityProvider = StateNotifierProvider<ActivityNotifier, ActivityState>(
   (ref) {
     return ActivityNotifier(
       ref: ref,
@@ -29,6 +28,7 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
   final Ref _ref;
 
   final AppLocalizations _l;
+  // ignore: unused_field
   final AppStorageService _storage;
   void load([int? v]) {
     final itemsInit = <ActivityItemModel>[
@@ -36,8 +36,7 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
       ActivityItemModel(enumActivity: EnumActivity.normal, value: _l.normal),
     ];
 
-    final selectedIndex =
-        v ?? _storage.getHealthProfileState().validActivityModel.selectedIndex;
+    final selectedIndex = v ?? state.selectedIndex;
 
     if (selectedIndex != null) {
       itemsInit[selectedIndex] =
@@ -45,5 +44,20 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
     }
 
     state = ActivityState(activityInfo: itemsInit);
+  }
+
+  void setActivity(int? v, {bool isSaveLocal = true}) {
+    var error = '';
+    if (v == null && state.selectedIndex == null) {
+      error = _l.activity_not_selected;
+    }
+    // update  provider
+    load(v);
+
+    state = state.copyWith(
+      selectedIndex: v,
+      error: error,
+    );
+//     if (isSaveLocal) _saveState();
   }
 }

@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class ActivityItemModel {                                                                                                                                   
+class ActivityItemModel { 
 /* init: EnumActivity.none */
   final EnumActivity enumActivity;
 /* init: '' */

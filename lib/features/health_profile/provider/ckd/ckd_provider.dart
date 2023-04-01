@@ -2,12 +2,13 @@
 
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 import 'package:nutrition/localization/localization.dart';
 
-final ckdProvider = StateNotifierProvider.autoDispose<CkdNotifier, CkdState>(
+final ckdProvider = StateNotifierProvider<CkdNotifier, CkdState>(
   (ref) {
     return CkdNotifier(
       ref: ref,
@@ -30,6 +31,7 @@ class CkdNotifier extends StateNotifier<CkdState> {
 
   // ignore: unused_field
   final AppLocalizations _l;
+  // ignore: unused_field
   final AppStorageService _storage;
   void load([int? v]) {
     final itemsInit = <CkdItemModel>[
@@ -63,8 +65,7 @@ class CkdNotifier extends StateNotifier<CkdState> {
       ),
     ];
 
-    final selectedIndex =
-        v ?? _storage.getHealthProfileState().validCkdModel.selectedIndex;
+    final selectedIndex = v ?? state.selectedIndex;
 
     if (selectedIndex != null) {
       itemsInit[selectedIndex] =
@@ -81,12 +82,22 @@ class CkdNotifier extends StateNotifier<CkdState> {
     final activeItem = state.ckdInfo.firstWhereOrNull((e) => e.isSelected);
 
     state = state.copyWith(
-      isShowInput: activeItem?.enumCkd == EnumCkd.calculate,
+      isShowCalcCreatinine: activeItem?.enumCkd == EnumCkd.calculate,
     );
   }
 
-  void changeTypeCreatinine(EnumInputTypeCreatinine? value) {
-    state =
-        state.copyWith(inputTypeCreatinine: value ?? state.inputTypeCreatinine);
+  void setCkd(int? v, {bool isSaveLocal = true}) {
+    var error = '';
+    if (v == null && state.selectedIndex == null) {
+      error = 'Стадия ХБП не выбрана';
+    }
+    // update other provider
+    final _ = _ref.read(ckdProvider.notifier).load(v);
+    state = state.copyWith(
+      selectedIndex: v,
+      enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      error: error,
+    );
+//     if (isSaveLocal) _saveState();
   }
 }

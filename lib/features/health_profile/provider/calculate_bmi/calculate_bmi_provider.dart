@@ -1,91 +1,120 @@
 // ignore_for_file: constant_identifier_names
 
-import 'dart:math';
+
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/utils/utils.dart';
 
 import 'package:nutrition/features/health_profile/health_profile.dart';
-
+import 'package:nutrition/localization/localization.dart';
 
 final calculateBmiProvider =
-    StateNotifierProvider.autoDispose<CalculateBmiNotifier, CalculateBmiState>(
+    StateNotifierProvider<CalculateBmiNotifier, CalculateBmiState>(
   (ref) {
-    final state = ref.watch(healthProfileProvider);
+    final stateBirthday = ref.watch(dateBirthdayProvider);
+
+    final height = ref.watch(heightProvider).value;
+    final weight = ref.watch(weightProvider).value;
+
+    final l = ref.watch(appLocalizationsProvider);
 
     return CalculateBmiNotifier(
-      height: state.validHeightModel.value,
-      weight: state.validWeightModel.value,
-      day: state.validBirthdayModel.daySelected,
-      month: state.validBirthdayModel.monthSelected,
-      years: state.validBirthdayModel.yearSelected,
+      weight: weight,
+      height: height,
+      dateTimeBirthday: stateBirthday.dateBirthday,
+      l: l,
     )..load();
   },
 );
 
 class CalculateBmiNotifier extends StateNotifier<CalculateBmiState> {
   CalculateBmiNotifier({
-    required this.weight,
-    required this.height,
-    required this.day,
-    required this.month,
-    required this.years,
-  }) : super(
-          const CalculateBmiState(),
-        );
+    required double? height,
+    required double? weight,
+    required DateTime? dateTimeBirthday,
+    required AppLocalizations l,
+  })  : _height = height,
+        _weight = weight,
+        _dateTimeBirthday = dateTimeBirthday,
+        _l = l,
+        super(const CalculateBmiState());
 
-  final String weight;
-  final String height;
-  final String years;
-  final String month;
-  final String day;
+  final double? _height;
+  final double? _weight;
+  final DateTime? _dateTimeBirthday;
+  final AppLocalizations _l;
 
   void load() {
-    final w = double.tryParse(weight);
-    final h = double.tryParse(height);
-    final y = int.tryParse(years);
-    final m = int.tryParse(month);
-    final d = int.tryParse(day);
+    if (!_isValid()) return;
 
-    if (w == null || h == null || y == null || d == null || m == null) return;
+    // final calcYear = DateTime.now().year - _dateTimeBirthday!.year;
 
-    final dateBridht = DateTime.parse('$years-$month-$day');
+    // final result = _roundDouble(_weight! / pow(_height! / 100, 2), 1);
 
-    final calcYear = DateTime.now().year - dateBridht.year;
+    // final bmiStatus = result >= EnumWeightStatus.obesity_4.minValue
+    //     ? EnumWeightStatus.obesity_4
+    //     : result >= EnumWeightStatus.obesity_3.minValue
+    //         ? EnumWeightStatus.obesity_3
+    //         : result >= EnumWeightStatus.obesity_2.minValue
+    //             ? EnumWeightStatus.obesity_2
+    //             : result >= EnumWeightStatus.obesity_1.minValue
+    //                 ? EnumWeightStatus.obesity_1
+    //                 : result >= EnumWeightStatus.overweight.minValue
+    //                     ? EnumWeightStatus.overweight
+    //                     : result >= EnumWeightStatus.normal.minValue
+    //                         ? EnumWeightStatus.normal
+    //                         : result >= EnumWeightStatus.mild_thinness.minValue
+    //                             ? EnumWeightStatus.mild_thinness
+    //                             : result >=
+    //                                     EnumWeightStatus
+    //                                         .moderate_thinness.minValue
+    //                                 ? EnumWeightStatus.moderate_thinness
+    //                                 : EnumWeightStatus.severe_thinness;
 
-    final result = _roundDouble(w / pow(h / 100, 2), 1);
+    // final bmiYear = calcYear > 20 ? EnumBmiYears.adults : EnumBmiYears.children;
 
-    final bmiStatus = result >= 45
-        ? EnumWeightStatus.obesity4
-        : result >= 40
-            ? EnumWeightStatus.obesity3
-            : result >= 35
-                ? EnumWeightStatus.obesity2
-                : result >= 30
-                    ? EnumWeightStatus.obesity1
-                    : result >= 25
-                        ? EnumWeightStatus.overweight
-                        : result >= 18.5
-                            ? EnumWeightStatus.healthyWeight
-                            : result >= 16
-                                ? EnumWeightStatus.underweight
-                                : EnumWeightStatus.severeUnderweight;
-
-    final bmiYear = calcYear > 20 ? EnumBmiYears.adults : EnumBmiYears.children;
-
-    state = state.copyWith(
-      value: AppUtilsNumber.correctFormatDouble(result),
-      enumWeightStatus: bmiStatus,
-      enumBmiYears: bmiYear,
-      yearSelected: calcYear.toString(),
-      monthSelected: dateBridht.month.toString(),
-
-    );
+    // state = state.copyWith(
+    //   value: AppUtilsNumber.correctFormatDouble(result),
+    //   enumWeightStatus: bmiStatus,
+    //   enumBmiYears: bmiYear,
+    //   yearSelected: calcYear.toString(),
+    //   monthSelected: dateBridht.month.toString(),
+    // );
   }
 
-  double _roundDouble(double value, int places) {
-    final mod = pow(10.0, places);
+  // double _roundDouble(double value, int places) {
+  //   final mod = pow(10.0, places);
 
-    return (value * mod).round().toDouble() / mod;
+  //   return (value * mod).round().toDouble() / mod;
+  // }
+
+  bool _isValid() {
+    final isValidBirthday = _dateTimeBirthday != null;
+    final isValidHeight = _height != null;
+    final isValidWeight = _weight != null;
+
+    if (isValidBirthday && isValidHeight && isValidBirthday) return true;
+
+    final baseText = _l.calculate_bmi_enter;
+
+    var changeText = '';
+
+    if (isValidHeight && isValidWeight) {
+      changeText = 'дату рождения';
+    } else if (isValidBirthday && isValidWeight) {
+      changeText = 'рост';
+    } else if (isValidBirthday && isValidHeight) {
+      changeText = 'вес';
+    } else if (isValidBirthday) {
+      changeText = 'вес и рост';
+    } else if (isValidHeight) {
+      changeText = 'дату рождения и вес';
+    } else if (isValidWeight) {
+      changeText = 'дату рождения и рост';
+    } else {
+      changeText = 'вес, дату рождения и рост';
+    }
+    state = state.copyWith(markdownError: '$baseText **$changeText**');
+
+    return false;
   }
 }

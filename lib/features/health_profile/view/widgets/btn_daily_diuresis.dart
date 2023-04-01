@@ -11,16 +11,15 @@ class BtnDailyDiuresis extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateActivity = ref.watch(dailyDiuresisProvider);
-    final stateHealth = ref.watch(healthProfileProvider);
-    final notifierHealth = ref.watch(healthProfileProvider.notifier);
+    final state = ref.watch(dailyDiuresisProvider);
 
-    final listBoolAll =
-        stateActivity.dailyDiuresisInfo.map((e) => e.isSelected);
+    final notifier = ref.watch(dailyDiuresisProvider.notifier);
+
+    final listBoolAll = state.dailyDiuresisInfo.map((e) => e.isSelected);
     final listBoolWithoutLast = [...listBoolAll];
     final boolLast = listBoolWithoutLast.removeLast();
 
-    final listTextAll = stateActivity.dailyDiuresisInfo.map((e) => e.value);
+    final listTextAll = state.dailyDiuresisInfo.map((e) => e.value);
     final listTextWithoutLast = [...listTextAll];
     final textLast = listTextWithoutLast.removeLast();
 
@@ -30,7 +29,7 @@ class BtnDailyDiuresis extends ConsumerWidget {
           BtnToggleText(
             textList: listTextWithoutLast.toList(),
             isSelected: listBoolWithoutLast.toList(),
-            onPressed: notifierHealth.setDailyDiuresis,
+            onPressed: notifier.setDailyDiuresis,
             title: 'Укажите уровень суточного диуреза (обьем выделяемой мочи)',
           ),
 
@@ -39,8 +38,8 @@ class BtnDailyDiuresis extends ConsumerWidget {
             textList: [textLast],
             isSelected: [boolLast],
             onPressed: (v) =>
-                notifierHealth.setDailyDiuresis(v + listBoolWithoutLast.length),
-            errorText: stateHealth.validDailyDiuresisModel.errorMessage,
+                notifier.setDailyDiuresis(v + listBoolWithoutLast.length),
+            errorText: state.error,
           ),
           const FieldUrineOutput(),
         ],

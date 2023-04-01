@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class DiabetesItemModel {                                                                                                                                     
+class DiabetesItemModel { 
 /* init: EnumDiabetes.none */
   final EnumDiabetes enumDiabetes;
 /* init: '' */

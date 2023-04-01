@@ -11,23 +11,21 @@ class BtnActivity extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateActivity = ref.watch(activityProvider);
-    final stateHealth = ref.watch(healthProfileProvider);
-    final notifierHealth = ref.watch(healthProfileProvider.notifier);
+    final state = ref.watch(activityProvider);
+
+    final notifier = ref.watch(activityProvider.notifier);
 
     return AppInputCard(
       child: BtnToggleText(
-        textList: stateActivity.activityInfo.map((e) => e.value).toList(),
-        isSelected:
-            stateActivity.activityInfo.map((e) => e.isSelected).toList(),
-        onPressed: notifierHealth.setActivity,
-        errorText: stateHealth.validActivityModel.errorMessage,
+        textList: state.activityInfo.map((e) => e.value).toList(),
+        isSelected: state.activityInfo.map((e) => e.isSelected).toList(),
+        onPressed: notifier.setActivity,
+        errorText: state.error,
         title: 'Укажите свою физическую активность',
       ),
     );
   }
 }
-
 
 /*
 class BtnActivity extends StatelessWidget {

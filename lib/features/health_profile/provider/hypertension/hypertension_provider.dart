@@ -1,13 +1,14 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 
 import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/localization/localization.dart';
 
 final hypertensionProvider =
-    StateNotifierProvider.autoDispose<HypertensionNotifier, HypertensionState>(
+    StateNotifierProvider<HypertensionNotifier, HypertensionState>(
   (ref) {
     return HypertensionNotifier(
       ref: ref,
@@ -29,6 +30,7 @@ class HypertensionNotifier extends StateNotifier<HypertensionState> {
   final Ref _ref;
 
   final AppLocalizations _l;
+  // ignore: unused_field
   final AppStorageService _storage;
   void load([int? v]) {
     final itemsInit = <HypertensionItemModel>[
@@ -42,8 +44,7 @@ class HypertensionNotifier extends StateNotifier<HypertensionState> {
       ),
     ];
 
-    final selectedIndex = v ??
-        _storage.getHealthProfileState().validHypertensionModel.selectedIndex;
+    final selectedIndex = v ?? state.selectedIndex;
 
     if (selectedIndex != null) {
       itemsInit[selectedIndex] =
@@ -51,5 +52,20 @@ class HypertensionNotifier extends StateNotifier<HypertensionState> {
     }
 
     state = HypertensionState(hypertensionInfo: itemsInit);
+  }
+
+  void setHypertension(int? v, {bool isSaveLocal = true}) {
+    var error = '';
+    if (v == null && state.selectedIndex == null) {
+      error = 'Подтвердите отсутствие или наличие гипертензии';
+    }
+    // update other provider
+    load(v);
+    state = state.copyWith(
+      selectedIndex: v,
+      error: error,
+      enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+    );
+//     if (isSaveLocal) _saveState();
   }
 }

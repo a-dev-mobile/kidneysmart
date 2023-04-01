@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/services/db/db.dart';
 
 @immutable
-class OnboardingDbModel {                                                                                                                            
+class OnboardingDbModel { 
   /* init: '' */
   final String url;
   /* init: const [] */

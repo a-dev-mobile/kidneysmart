@@ -1,5 +1,4 @@
 enum EnumHypertension with Comparable<EnumHypertension> {
-
   yes('yes'),
   no('no'),
   none('none');

@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/services/db/db.dart';
 
 @immutable
-class RealtimeDbModel {                                                                                                                                   
+class RealtimeDbModel { 
 /* init: const FeaturesDbModel()  */
   final FeaturesDbModel features;
 

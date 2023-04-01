@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class DailyDiuresisItemModel {                                                                                                                                        
+class DailyDiuresisItemModel { 
 /* init: EnumDailyDiuresis.none */
   final EnumDailyDiuresis enumDailyDiuresis;
 /* init: '' */

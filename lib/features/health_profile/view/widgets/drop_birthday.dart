@@ -13,9 +13,10 @@ class DropBirthday extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateDateInfo = ref.watch(dateInfoProvider);
-    final stateHealth = ref.watch(healthProfileProvider);
-    final notifierHealth = ref.watch(healthProfileProvider.notifier);
+    final state = ref.watch(dateBirthdayProvider);
+    final notifier = ref.watch(dateBirthdayProvider.notifier);
+
+    // if (stateDateInfo.months.isEmpty) return SizedBox.shrink();
 
     return AppInputCard(
       child: Column(
@@ -26,28 +27,28 @@ class DropBirthday extends ConsumerWidget {
             children: [
               AppDropDown(
                 hint: 'ДЕНЬ',
-                value: stateHealth.validBirthdayModel.daySelected,
+                value: state.day,
                 onChanged: (v) =>
-                    notifierHealth.setDate(v: v, enumDate: EnumDate.day),
-                values: stateDateInfo.days,
+                    notifier.setDate(v: v, enumDate: EnumDate.day),
+                values: state.days,
               ),
               _DropDownMonth(
                 hint: 'MЕСЯЦ',
                 onChanged: (v) =>
-                    notifierHealth.setDate(v: v, enumDate: EnumDate.month),
-                value: stateHealth.validBirthdayModel.monthSelected,
-                values: stateDateInfo.months,
+                    notifier.setDate(v: v, enumDate: EnumDate.month),
+                value: state.month,
+                values: state.months,
               ),
               AppDropDown(
                 hint: 'ГОД',
                 onChanged: (v) =>
-                    notifierHealth.setDate(v: v, enumDate: EnumDate.year),
-                value: stateHealth.validBirthdayModel.yearSelected,
-                values: stateDateInfo.years,
+                    notifier.setDate(v: v, enumDate: EnumDate.year),
+                value: state.year,
+                values: state.years,
               ),
             ],
           ),
-          ErrorMsg(error: stateHealth.validBirthdayModel.errorMessage),
+          ErrorMsg(error: state.errorMessage),
         ],
       ),
     );
@@ -71,7 +72,7 @@ class _DropDownMonth extends StatelessWidget {
 
     return DropdownButton<String>(
       hint: Text(hint),
-      value: value,
+      value: value?.isNotEmpty ?? false ? value : null,
       items: [
         for (var v in values)
           DropdownMenuItem(
@@ -101,6 +102,7 @@ class _DropDownMonth extends StatelessWidget {
       '11': l.month_november,
       '12': l.month_december,
     };
+
     return mapMonth[monthNumber] ?? '';
   }
 }

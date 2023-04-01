@@ -12,9 +12,9 @@ class DropHeight extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateHeight = ref.watch(heightInfoProvider);
-    final stateHealth = ref.watch(healthProfileProvider);
-    final notifierHealth = ref.watch(healthProfileProvider.notifier);
+    final state = ref.watch(heightProvider);
+
+    final notifier = ref.watch(heightProvider.notifier);
 
     return AppInputCard(
       child: Column(
@@ -25,9 +25,9 @@ class DropHeight extends ConsumerWidget {
             children: [
               AppDropDown(
                 hint: 'Рост',
-                value: stateHealth.validHeightModel.value,
-                onChanged: notifierHealth.setHeight,
-                values: stateHeight.heightList,
+                value: state.result,
+                onChanged: notifier.setHeight,
+                values: state.heightList,
               ),
               const SizedBox(width: 10),
               Text(
@@ -36,7 +36,7 @@ class DropHeight extends ConsumerWidget {
               ),
             ],
           ),
-          ErrorMsg(error: stateHealth.validHeightModel.errorMessage),
+          ErrorMsg(error: state.errorMessage),
         ],
       ),
     );

@@ -1,4 +1,3 @@
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:nutrition/core/enum/enum_lang.dart';
@@ -14,7 +13,7 @@ import 'package:nutrition/features/registration/name/name.dart';
 import 'package:nutrition/localization/localization.dart';
 
 final onboardingProvider =
-    StateNotifierProvider.autoDispose<OndoardingNotifier, OnboardingState>(
+    StateNotifierProvider<OndoardingNotifier, OnboardingState>(
   (ref) {
     return OndoardingNotifier(
       ref: ref,
