@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/services/db/db.dart';
 
 @immutable
-class FeaturesDbModel { 
+class FeaturesDbModel {
 /* init: const OnboardingDbModel()  */
   final OnboardingDbModel onboarding;
 /* init: const RegistrationNameDbModel()  */
@@ -14,11 +14,10 @@ class FeaturesDbModel {
   // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const FeaturesDbModel({
     this.onboarding = const OnboardingDbModel(),
     this.registration_name = const RegistrationNameDbModel(),

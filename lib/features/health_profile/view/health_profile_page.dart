@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:nutrition/core/services/locale/locale_provider.dart';
 import 'package:nutrition/core/services/theme/theme_providers.dart';
-import 'package:nutrition/core/widget/clean_focus.dart';
+import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 /// {@template health_profile_page}
@@ -19,6 +19,11 @@ class HealthProfilePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // final state = ref.watch(healthProfileProvider);
     final notifier = ref.watch(healthProfileProvider.notifier);
+    ref.listen<HealthProfileState>(healthProfileProvider, (p, c) {
+      if (c.markdownError.isNotEmpty) {
+        final _ = showMarkdownSnack(context, c.markdownError);
+      }
+    });
 
     return ClearFocus(
       child: Scaffold(
@@ -49,7 +54,7 @@ class HealthProfilePage extends ConsumerWidget {
             const BtnDailyDiuresis(),
             const BtnCkd(),
             ElevatedButton(
-              onPressed: notifier.check,
+              onPressed: notifier.checkValid,
               child: const Text('Проверить'),
             ),
           ],

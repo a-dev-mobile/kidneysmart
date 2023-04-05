@@ -11,16 +11,16 @@ class BtnDiabetes extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(diabetesProvider);
-
-    final notifier = ref.watch(diabetesProvider.notifier);
+    final state = ref.watch(healthProfileProvider);
+    final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateDiabet = state.diabet;
 
     return AppInputCard(
       child: BtnToggleText(
-        textList: state.diabetesInfo.map((e) => e.value).toList(),
-        isSelected: state.diabetesInfo.map((e) => e.isSelected).toList(),
+        textList: stateDiabet.listDiabet.map((e) => e.value).toList(),
+        isSelected: stateDiabet.listSelected,
         onPressed: notifier.setDiabetes,
-        errorText: state.error,
+        errorText: stateDiabet.error,
         title: 'Наличие диабета',
       ),
     );

@@ -17,11 +17,10 @@ enum TypeRun with Comparable<TypeRun> {
   // end
 
 //          --TURN_GEN--
-//          v0.8.2 (enum)
+//          v0.8.3 (enum)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
 
   static TypeRun fromValue(String? value, {TypeRun? fallback}) {
     switch (value) {

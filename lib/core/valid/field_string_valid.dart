@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class FieldStringValid { 
+class FieldStringValid {
   /* init:'' */
   final String value;
   final String? errorMessage;
@@ -13,11 +13,10 @@ class FieldStringValid {
   // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const FieldStringValid({
     this.value = '',
     this.isValid = false,

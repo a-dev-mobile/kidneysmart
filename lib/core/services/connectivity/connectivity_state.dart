@@ -10,11 +10,10 @@ class _ConnectivityState {
 // end
 
 //          --TURN_GEN--
-//          v0.8.2 (union)
+//          v0.8.3 (union)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
 // coverage:ignore-file
 // ignore_for_file: avoid_unused_constructor_parameters, unused_element, avoid-non-null-assertion,  library_private_types_in_public_api,non_constant_identifier_names, always_put_required_named_parameters_first,  avoid_positional_boolean_parameters, strict_raw_type, curly_braces_in_flow_control_structures
 @immutable

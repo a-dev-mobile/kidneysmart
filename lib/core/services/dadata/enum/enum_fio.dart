@@ -12,11 +12,10 @@ enum DaDataEnum with Comparable<DaDataEnum> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.2 (enum)
+//          v0.8.3 (enum)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
 
   static DaDataEnum fromValue(String? value, {DaDataEnum? fallback}) {
     switch (value) {

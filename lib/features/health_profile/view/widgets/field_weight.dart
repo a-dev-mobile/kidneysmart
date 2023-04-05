@@ -17,7 +17,7 @@ class _FieldNameState extends ConsumerState<FieldWeight> {
 
   @override
   void initState() {
-    final initValue = ref.read(weightProvider).result;
+    final initValue = ref.read(healthProfileProvider).weight.result;
 
     controller = TextEditingController(text: initValue);
 
@@ -33,11 +33,9 @@ class _FieldNameState extends ConsumerState<FieldWeight> {
   @override
   Widget build(BuildContext context) {
     // final l = context.l10n;
-    // final provider = ref.watch(registrationNameProvider);
-    final notifier = ref.watch(weightProvider.notifier);
-
-    // final state = ref.watch(healthProfileProvider);
-    final errorMsg = ref.watch(weightProvider).errorMessage;
+    final state = ref.watch(healthProfileProvider);
+    final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateWeight = state.weight;
 
     return AppInputCard(
       child: Column(
@@ -51,7 +49,8 @@ class _FieldNameState extends ConsumerState<FieldWeight> {
                 controller: controller,
                 decoration: InputDecoration(
                   labelText: 'Вес',
-                  errorText: errorMsg.isEmpty ? null : errorMsg,
+                  errorText: stateWeight.enumValid
+                      .maybeMapOrNullValue(error: stateWeight.error),
                   errorMaxLines: 2,
                   suffixText: 'кг',
                 ),

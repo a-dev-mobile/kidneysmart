@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class DebugState { 
+class DebugState {
   /* init: false */
   final bool isShowDevice;
   /* init: false */
@@ -17,11 +17,10 @@ class DebugState {
   // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const DebugState({
     this.isShowDevice = false,
     this.isShowBtnHttpLog = false,

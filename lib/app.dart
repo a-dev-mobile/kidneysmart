@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:feedback/feedback.dart';
+import 'package:flash/flash_helper.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -26,8 +27,46 @@ class App extends StatelessWidget {
   }
 }
 
-class _MobileApp extends ConsumerWidget {
+/// {@template app}
+/// _MobileApp widget
+/// {@endtemplate}
+class _MobileApp extends ConsumerStatefulWidget {
+  /// {@macro app}
   const _MobileApp();
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => __MobileAppState();
+}
+
+/// State for widget _MobileApp
+class __MobileAppState extends ConsumerState<_MobileApp> {
+  /* #region Lifecycle */
+  @override
+  void initState() {
+    super.initState();
+    // Initial state initialization
+  }
+
+  @override
+  void didUpdateWidget(_MobileApp oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Widget configuration changed
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // The configuration of InheritedWidgets has changed
+    // Also called after initState but before build
+  }
+
+  @override
+  void dispose() {
+    // Permanent removal of a tree stent
+    super.dispose();
+  }
+  /* #endregion */
+
   void initStatusBar({required ThemeMode themeMode}) {
     Brightness? statusBarIconBrightness;
 
@@ -41,8 +80,9 @@ class _MobileApp extends ConsumerWidget {
     );
   }
 
+  final navigatorKey = GlobalKey<NavigatorState>();
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     // final go = context.read<AppRouterService>();
     final themeMode = ref.watch(themeProvider).themeMode;
     final navigator = ref.watch(appRouterServiceProvider);
@@ -68,8 +108,11 @@ class _MobileApp extends ConsumerWidget {
           routerDelegate: navigator.router.routerDelegate,
 
           // routerConfig: go.router,
-          builder: (context, widget) {
-            final child = widget ?? const SizedBox.shrink();
+          builder: (context, _) {
+            var child = _!;
+            child = DevicePreview.appBuilder(context, _);
+            // Wrap with toast.
+            child = Toast(navigatorKey: navigatorKey, child: child);
 
             return DevicePreview.appBuilder(context, child);
           },

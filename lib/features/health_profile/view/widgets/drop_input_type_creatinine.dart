@@ -14,17 +14,16 @@ class DropInputTypeCreatinine extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = context.l10n;
 
-    final state = ref.watch(creatinineProvider);
-    final notifier = ref.watch(creatinineProvider.notifier);
-
-    final inputTypeCreatinine = state.inputTypeCreatinine;
+    final state = ref.watch(healthProfileProvider);
+    final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateCreatinine = state.creatinine;
 
     return Row(
       children: [
         const Expanded(child: Text('Выберите единицу измерения')),
         const SizedBox(width: 10),
         DropdownButton<EnumInputTypeCreatinine>(
-          value: inputTypeCreatinine,
+          value: stateCreatinine.inputTypeCreatinine,
           items: [
             for (var v in EnumInputTypeCreatinine.values)
               DropdownMenuItem(

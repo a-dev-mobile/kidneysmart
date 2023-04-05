@@ -4,7 +4,7 @@ part of 'registration_name_provider.dart';
 
 /*  */
 @immutable
-class RegistrationNameState { 
+class RegistrationNameState {
 /* init: false */
   final bool isValid;
 /* 
@@ -15,11 +15,10 @@ init: const FieldStringValid()
   // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const RegistrationNameState({
     this.isValid = false,
     this.nameValid = const FieldStringValid(),

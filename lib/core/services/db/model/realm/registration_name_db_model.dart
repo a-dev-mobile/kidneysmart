@@ -4,18 +4,17 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class RegistrationNameDbModel { 
+class RegistrationNameDbModel {
   /* init: '' */
   final String url;
 
   // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const RegistrationNameDbModel({
     this.url = '',
   });

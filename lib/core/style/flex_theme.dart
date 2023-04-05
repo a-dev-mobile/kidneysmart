@@ -9,9 +9,10 @@ class FlexTheme {
 
   static final FlexTheme _internalSingleton = FlexTheme._internal();
 
+  /// *---* [Light Theme] *---*
   static ThemeData lightThemeData() {
     return FlexThemeData.light(
-      scheme: FlexScheme.materialBaseline,
+      scheme: FlexScheme.blue,
       surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
       blendLevel: 7,
       subThemesData: const FlexSubThemesData(
@@ -22,6 +23,9 @@ class FlexTheme {
       visualDensity: FlexColorScheme.comfortablePlatformDensity,
       useMaterial3: true,
       swapLegacyOnMaterial3: true,
+      // To use the playground font, add GoogleFonts package and uncomment
+      // fontFamily: GoogleFonts.notoSans().fontFamily,
+
       fontFamily: GoogleFonts.montserrat().fontFamily,
     );
   }
@@ -29,7 +33,7 @@ class FlexTheme {
   /// *---* [Dark Theme] *---*
   static ThemeData darkThemeData() {
     return FlexThemeData.dark(
-      scheme: FlexScheme.materialBaseline,
+      scheme: FlexScheme.blue,
       surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
       blendLevel: 13,
       subThemesData: const FlexSubThemesData(

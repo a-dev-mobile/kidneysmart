@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 @immutable
-class InfoDb { 
+class InfoDb {
   /* init: '' */
   final String url_ru;
   /* init: '' */
@@ -13,11 +13,10 @@ class InfoDb {
   // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const InfoDb({
     this.url_ru = '',
     this.url_en = '',

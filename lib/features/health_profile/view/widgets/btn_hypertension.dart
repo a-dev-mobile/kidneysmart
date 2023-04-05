@@ -11,16 +11,18 @@ class BtnHypertension extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(hypertensionProvider);
-
-    final notifier = ref.watch(hypertensionProvider.notifier);
+    final state = ref.watch(healthProfileProvider);
+    final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateHypertension = state.hypertension;
 
     return AppInputCard(
       child: BtnToggleText(
-        textList: state.hypertensionInfo.map((e) => e.value).toList(),
-        isSelected: state.hypertensionInfo.map((e) => e.isSelected).toList(),
+        textList:
+            stateHypertension.listHypertension.map((e) => e.value).toList(),
+        isSelected: stateHypertension.listSelected,
         onPressed: notifier.setHypertension,
-        errorText: state.error,
+        errorText: stateHypertension.enumValid
+            .maybeMapOrNullValue(error: stateHypertension.error),
         title: 'Наличие гипертензии (высокое кровяное давление)',
       ),
     );

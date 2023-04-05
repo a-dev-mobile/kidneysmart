@@ -11,15 +11,16 @@ class BtnDailyDiuresis extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(dailyDiuresisProvider);
+    final state = ref.watch(healthProfileProvider);
+    final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateDailyDiuresis = state.dailyDiuresis;
 
-    final notifier = ref.watch(dailyDiuresisProvider.notifier);
-
-    final listBoolAll = state.dailyDiuresisInfo.map((e) => e.isSelected);
+    final listBoolAll = stateDailyDiuresis.listSelected;
     final listBoolWithoutLast = [...listBoolAll];
     final boolLast = listBoolWithoutLast.removeLast();
 
-    final listTextAll = state.dailyDiuresisInfo.map((e) => e.value);
+    final listTextAll =
+        stateDailyDiuresis.listDailyDiuresis.map((e) => e.value);
     final listTextWithoutLast = [...listTextAll];
     final textLast = listTextWithoutLast.removeLast();
 
@@ -39,7 +40,7 @@ class BtnDailyDiuresis extends ConsumerWidget {
             isSelected: [boolLast],
             onPressed: (v) =>
                 notifier.setDailyDiuresis(v + listBoolWithoutLast.length),
-            errorText: state.error,
+            errorText: stateDailyDiuresis.error,
           ),
           const FieldUrineOutput(),
         ],

@@ -13,7 +13,7 @@ import 'package:nutrition/features/registration/name/name.dart';
 import 'package:nutrition/localization/localization.dart';
 
 final onboardingProvider =
-    StateNotifierProvider<OndoardingNotifier, OnboardingState>(
+    StateNotifierProvider.autoDispose<OndoardingNotifier, OnboardingState>(
   (ref) {
     return OndoardingNotifier(
       ref: ref,

@@ -1,9 +1,8 @@
 //          --TURN_GEN--
-//          v0.8.2 (assets)
+//          v0.8.3 (assets)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
 class AssetPaths {
   const AssetPaths._();
  

@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 
 // turngen
 @immutable
-class DataFio { 
+class DataFio {
   /* init:'' */
   final String surname;
   /* init:'' */
@@ -22,11 +22,10 @@ class DataFio {
 // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const DataFio({
     this.surname = '',
     this.name = '',

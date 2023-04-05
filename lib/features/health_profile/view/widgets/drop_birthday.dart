@@ -13,8 +13,9 @@ class DropBirthday extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(dateBirthdayProvider);
-    final notifier = ref.watch(dateBirthdayProvider.notifier);
+    final state = ref.watch(healthProfileProvider);
+    final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateDateBirthday = state.dateBirthday;
 
     // if (stateDateInfo.months.isEmpty) return SizedBox.shrink();
 
@@ -27,28 +28,31 @@ class DropBirthday extends ConsumerWidget {
             children: [
               AppDropDown(
                 hint: 'ДЕНЬ',
-                value: state.day,
+                value: stateDateBirthday.day,
                 onChanged: (v) =>
                     notifier.setDate(v: v, enumDate: EnumDate.day),
-                values: state.days,
+                values: stateDateBirthday.days,
               ),
               _DropDownMonth(
                 hint: 'MЕСЯЦ',
                 onChanged: (v) =>
                     notifier.setDate(v: v, enumDate: EnumDate.month),
-                value: state.month,
-                values: state.months,
+                value: stateDateBirthday.month,
+                values: stateDateBirthday.months,
               ),
               AppDropDown(
                 hint: 'ГОД',
                 onChanged: (v) =>
                     notifier.setDate(v: v, enumDate: EnumDate.year),
-                value: state.year,
-                values: state.years,
+                value: stateDateBirthday.year,
+                values: stateDateBirthday.years,
               ),
             ],
           ),
-          ErrorMsg(error: state.errorMessage),
+          ErrorMsg(
+            error: stateDateBirthday.enumValid
+                .maybeMapOrNullValue(error: stateDateBirthday.error),
+          ),
         ],
       ),
     );

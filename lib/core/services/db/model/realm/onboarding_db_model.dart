@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/services/db/db.dart';
 
 @immutable
-class OnboardingDbModel { 
+class OnboardingDbModel {
   /* init: '' */
   final String url;
   /* init: const [] */
@@ -18,11 +18,10 @@ class OnboardingDbModel {
   // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const OnboardingDbModel({
     this.url = '',
     this.ttt = const [],

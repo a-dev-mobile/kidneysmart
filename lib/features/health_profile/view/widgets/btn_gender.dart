@@ -11,18 +11,19 @@ class BtnGender extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(genderProvider);
-
-    final notifier = ref.watch(genderProvider.notifier);
+    final state = ref.watch(healthProfileProvider);
+    final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateGender = state.gender;
 
     return AppInputCard(
       child: BtnToggleText(
-        textList: state.gender.map((e) => e.value).toList(),
-        isSelected: state.gender.map((e) => e.isSelected).toList(),
+        textList: stateGender.listGender.map((e) => e.value).toList(),
+        isSelected: stateGender.listSelected,
         onPressed: notifier.setGender,
         dialogText:
             'Пол влияет на скорость метаболизма. Вот почему эта информация нужна для расчета суточной нормы.',
-        errorText: state.error,
+        errorText:
+            stateGender.enumValid.maybeMapOrNullValue(error: stateGender.error),
         title: 'Для человека какого пола следует рассчитывать рекомендации?',
       ),
     );

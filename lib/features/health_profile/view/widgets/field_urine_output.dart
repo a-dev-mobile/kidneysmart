@@ -1,12 +1,11 @@
 // ignore_for_file:  avoid-nested-conditional-expressions, lines_longer_than_80_chars
 
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
-import 'package:nutrition/localization/localization.dart';
+
 
 class FieldUrineOutput extends ConsumerStatefulWidget {
   const FieldUrineOutput({super.key});
@@ -20,7 +19,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
 
   @override
   void initState() {
-    final initValue = ref.read(urineProvider).result;
+    final initValue = ref.read(healthProfileProvider).urine.result;
 
     controller = TextEditingController(text: initValue);
 
@@ -35,22 +34,20 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
 
   @override
   Widget build(BuildContext context) {
-    final l = context.l10n;
+    // final l = context.l10n;
     // final provider = ref.watch(registrationNameProvider);
-    final notifier = ref.watch(urineProvider.notifier);
-    final state = ref.watch(urineProvider);
+    final state = ref.watch(healthProfileProvider);
+    final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateDailyDiuresis = state.dailyDiuresis;
 
-    final isEnabled = ref.watch(dailyDiuresisProvider).isShowInput;
+    final isEnabled = stateDailyDiuresis.isShowInput;
 
-    final gender = ref
-            .watch(genderProvider)
-            .gender
-            .firstWhereOrNull((e) => e.isSelected)
-            ?.enumGender ??
-        EnumGender.none;
-
-    // final state = ref.watch(healthProfileProvider);
-    final errorMsg = state.error;
+    // final gender = ref
+    //         .watch(genderProvider)
+    //         .gender
+    //         .firstWhereOrNull((e) => e.isSelected)
+    //         ?.enumGender ??
+    //     EnumGender.none;
 
     return Column(
       children: [
@@ -65,8 +62,9 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
             controller: controller,
             enabled: isEnabled,
             decoration: InputDecoration(
-              labelText: _getNorma(type: gender, l: l),
-              errorText: errorMsg.isEmpty ? null : errorMsg,
+              // labelText: _getNorma(type: gender, l: l),
+              errorText: stateDailyDiuresis.enumValid
+                  .maybeMapOrNullValue(error: stateDailyDiuresis.error),
               errorMaxLines: 2,
               suffixText: 'мл',
             ),
@@ -93,14 +91,14 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
     );
   }
 
-  String _getNorma({
-    required EnumGender type,
-    required AppLocalizations l,
-  }) {
-    return type.mapValue(
-      female: 'Норма: у женщин – 1000-1600 мл',
-      male: 'Норма: у мужчин – 1000-2000 мл',
-      none: 'Для показа нормы выберите пол',
-    );
-  }
+  // String _getNorma({
+  //   required EnumGender type,
+  //   required AppLocalizations l,
+  // }) {
+  //   return type.mapValue(
+  //     female: 'Норма: у женщин – 1000-1600 мл',
+  //     male: 'Норма: у мужчин – 1000-2000 мл',
+  //     none: 'Для показа нормы выберите пол',
+  //   );
+  // }
 }

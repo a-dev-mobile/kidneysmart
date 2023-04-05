@@ -67,6 +67,66 @@ class AppStorageService {
 
 // ******************************
 // ******************************
+  static const _genderState = 'genderState';
+
+  GenderModel getGenderState() {
+    return GenderModel.fromMap(getJson(key: _genderState));
+  }
+
+  Future<void> setGenderState(GenderModel value) {
+    return setJson(key: _genderState, value: value.toMap());
+  }
+
+// ******************************
+// ******************************
+  static const _heightState = '_heightState';
+
+  HeightModel getHeightState() {
+    return HeightModel.fromMap(getJson(key: _heightState));
+  }
+
+  Future<void> setHeightState(HeightModel value) {
+    return setJson(key: _heightState, value: value.toMap());
+  }
+
+// ******************************
+// ******************************
+  static const _activityState = '_activityState';
+
+  ActivityModel getActivityState() {
+    return ActivityModel.fromMap(getJson(key: _activityState));
+  }
+
+  Future<void> setActivityState(ActivityModel value) {
+    return setJson(key: _activityState, value: value.toMap());
+  }
+
+// ******************************
+// ******************************
+  static const _weightState = '_weightState';
+
+  WeightModel getWeightState() {
+    return WeightModel.fromMap(getJson(key: _weightState));
+  }
+
+  Future<void> setWeightState(WeightModel value) {
+    return setJson(key: _weightState, value: value.toMap());
+  }
+
+// ******************************
+// ******************************
+  static const _dateBirthdayState = '_dateBirthdayState';
+
+  DateBirthdayModel getDateBirthdayState() {
+    return DateBirthdayModel.fromMap(getJson(key: _dateBirthdayState));
+  }
+
+  Future<void> setDateBirthdayState(DateBirthdayModel value) {
+    return setJson(key: _dateBirthdayState, value: value.toMap());
+  }
+
+// ******************************
+// ******************************
   static const _registrationNameState = '_registrationNameState';
 
   RegistrationNameState getRegistrationNameState() {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/enum/enum.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
@@ -13,58 +12,34 @@ class ResultBmi extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateHeight = ref.watch(heightProvider);
-    final stateBirthday = ref.watch(dateBirthdayProvider);
-    final stateWeight = ref.watch(weightProvider);
-// if weight and height are valid
-    final isValidWeight = stateWeight.enumValid == EnumValid.valid;
-    final isValidBirthday = stateBirthday.enumValid == EnumValid.valid;
-    final isValidHeight = stateHeight.enumValid == EnumValid.valid;
-
-    final stateBmi = ref.watch(calculateBmiProvider);
+    final state = ref.watch(healthProfileProvider);
+    // final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateBmi = state.bmi;
 
     return AppResultCard(
-      child: isValidBirthday && isValidHeight && isValidWeight
-          ? _Result(stateBmi: stateBmi)
-          : isValidHeight && isValidWeight
-              ? const Text('Для расчета ИМТ укажите: дату рождения')
-              : isValidBirthday && isValidWeight
-                  ? const Text('Для расчета ИМТ укажите: рост')
-                  : isValidBirthday && isValidHeight
-                      ? const Text('Для расчета ИМТ укажите: вес')
-                      : isValidBirthday
-                          ? const Text('Для расчета ИМТ укажите: вес и рост')
-                          : isValidHeight
-                              ? const Text(
-                                  'Для расчета ИМТ укажите: дату рождения и вес',
-                                )
-                              : isValidWeight
-                                  ? const Text(
-                                      'Для расчета ИМТ укажите: дату рождения и рост',
-                                    )
-                                  : const Text(
-                                      'Для расчета ИМТ укажите: вес, дату рождения и рост',
-                                    ),
+      child: stateBmi.enumResult.mapValue(
+        init: _Result(markdown: stateBmi.markdownInit),
+        valid: _Result(markdown: stateBmi.markdownSuccess),
+        error: _Result(markdown: stateBmi.markdownError),
+      ),
     );
   }
 }
 
 class _Result extends StatelessWidget {
   const _Result({
-    required this.stateBmi,
+    required this.markdown,
   });
 
-  final CalculateBmiState stateBmi;
+  final String markdown;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        TitleSub(text: 'Расчет индекса массы тела (ИМТ)'),
-        Markdown(
-          padding: EdgeInsets.zero,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+    return Markdown(
+      padding: EdgeInsets.zero,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      data: markdown,
 //           data: '''
 // ####
 // Ваш возраст - **${stateBmi.year} ${_getTextYearRu2(int.tryParse(stateBmi.yearSelected) ?? 0)}** **${stateBmi.monthSelected} **
@@ -76,15 +51,11 @@ class _Result extends StatelessWidget {
 // Калькулятор для - **${_getTypePeopoe()}**
 
 // ''',
-          // onTapLink: (text, href, title) {
-          // print('1 $text');
-          // print('2 $href');
-          // print('3 $title');
-          // },
-
-          data: '',
-        ),
-      ],
+      // onTapLink: (text, href, title) {
+      // print('1 $text');
+      // print('2 $href');
+      // print('3 $title');
+      // },
     );
   }
 

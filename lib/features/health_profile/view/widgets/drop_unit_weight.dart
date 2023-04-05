@@ -13,16 +13,16 @@ class DropUnitWeight extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = context.l10n;
-
-    final notifier = ref.watch(weightProvider.notifier);
-    final state = ref.watch(weightProvider);
+    final state = ref.watch(healthProfileProvider);
+    final notifier = ref.watch(healthProfileProvider.notifier);
+    final stateWeight = state.weight;
 
     return Row(
       children: [
         const Expanded(child: Text('Выберите единицу измерения')),
         const SizedBox(width: 10),
         DropdownButton<EnumUnitWeight>(
-          value: state.enumUnitWeight,
+          value: stateWeight.enumUnitWeight,
           items: [
             for (var v in EnumUnitWeight.values)
               DropdownMenuItem(

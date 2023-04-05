@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 @immutable
-class FireStoreDbModel { 
+class FireStoreDbModel {
 /* init: 1  */
   final int version_store_file;
 
@@ -14,11 +14,10 @@ class FireStoreDbModel {
   // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const FireStoreDbModel({
     this.version_store_file = 1,
     this.version_realtime_db = 1,

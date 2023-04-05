@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:nutrition/core/services/dadata/dadata.dart';
 
 @immutable
-class SuggestionsFio { 
+class SuggestionsFio {
   /* init: '' */
   final String value;
   /* init: '' */
@@ -16,11 +16,10 @@ class SuggestionsFio {
   // end
    
 //          --TURN_GEN--
-//          v0.8.2 (data)
+//          v0.8.3 (data)
 //  *************************************
-//         GENERATED CODE 
+//         GENERATED CODE
 //  *************************************
-  
   const SuggestionsFio({
     this.value = '',
     this.unrestricted_value = '',
