@@ -495,6 +495,12 @@ abstract class AppLocalizations {
   /// **'Для расчета ИМТ укажите:'**
   String get calculate_bmi_enter;
 
+  /// No description provided for @calculate_gfr_enter.
+  ///
+  /// In ru, this message translates to:
+  /// **'Для расчета клубочковой фильтрации укажите:'**
+  String get calculate_gfr_enter;
+
   /// No description provided for @mgDl.
   ///
   /// In ru, this message translates to:

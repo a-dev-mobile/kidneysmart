@@ -14,8 +14,8 @@ class DailyDiuresisModel {
   /* init: false */
   final bool isShowInput;
   final int? selectedIndex;
-  /* init: EnumResult.init */
-  final EnumResult enumValid;
+  /* init: EnumValid.init */
+  final EnumValid enumValid;
   /* init: '' */
   final String error;
 /* init: [] */
@@ -30,7 +30,7 @@ class DailyDiuresisModel {
   const DailyDiuresisModel({
     this.listDailyDiuresis = const [],
     this.isShowInput = false,
-    this.enumValid = EnumResult.init,
+    this.enumValid = EnumValid.init,
     this.error = '',
     this.listSelected = const [],
     this.selectedIndex,
@@ -56,7 +56,7 @@ class DailyDiuresisModel {
       listDailyDiuresis: map['listDailyDiuresis'] != null ? (map['listDailyDiuresis'] as List<dynamic>).map((e) => DailyDiuresisItemModel.fromMap(e as Map<dynamic, dynamic>)).toList() : const [], 
       isShowInput: map['isShowInput'] as bool? ?? false, 
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(), 
-      enumValid: map['enumValid'] != null ? EnumResult.values[map['enumValid'] as int] : EnumResult.init, 
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
       error: map['error'] as String? ?? '', 
       listSelected: (map['listSelected'] as List<dynamic>?)?.map((e) => e as bool).toList() ?? const [], 
     );
@@ -66,7 +66,7 @@ class DailyDiuresisModel {
     List<DailyDiuresisItemModel>? listDailyDiuresis,
     bool? isShowInput,
     int? selectedIndex,
-    EnumResult? enumValid,
+    EnumValid? enumValid,
     String? error,
     List<bool>? listSelected,
   }) {

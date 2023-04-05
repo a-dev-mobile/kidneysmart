@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
-
+import 'package:nutrition/localization/localization.dart';
 
 class FieldUrineOutput extends ConsumerStatefulWidget {
   const FieldUrineOutput({super.key});
@@ -34,20 +34,15 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
 
   @override
   Widget build(BuildContext context) {
-    // final l = context.l10n;
+    final l = context.l10n;
     // final provider = ref.watch(registrationNameProvider);
     final state = ref.watch(healthProfileProvider);
     final notifier = ref.watch(healthProfileProvider.notifier);
     final stateDailyDiuresis = state.dailyDiuresis;
+    final stateUrinine = state.urine;
 
     final isEnabled = stateDailyDiuresis.isShowInput;
 
-    // final gender = ref
-    //         .watch(genderProvider)
-    //         .gender
-    //         .firstWhereOrNull((e) => e.isSelected)
-    //         ?.enumGender ??
-    //     EnumGender.none;
 
     return Column(
       children: [
@@ -62,9 +57,11 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
             controller: controller,
             enabled: isEnabled,
             decoration: InputDecoration(
-              // labelText: _getNorma(type: gender, l: l),
-              errorText: stateDailyDiuresis.enumValid
-                  .maybeMapOrNullValue(error: stateDailyDiuresis.error),
+              labelText: _getNorma(type: state.gender.enumGender, l: l),
+              errorText: isEnabled
+                  ? stateUrinine.enumValid
+                      .maybeMapOrNullValue(error: stateUrinine.error)
+                  : null,
               errorMaxLines: 2,
               suffixText: 'мл',
             ),
@@ -91,14 +88,14 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
     );
   }
 
-  // String _getNorma({
-  //   required EnumGender type,
-  //   required AppLocalizations l,
-  // }) {
-  //   return type.mapValue(
-  //     female: 'Норма: у женщин – 1000-1600 мл',
-  //     male: 'Норма: у мужчин – 1000-2000 мл',
-  //     none: 'Для показа нормы выберите пол',
-  //   );
-  // }
+  String _getNorma({
+    required EnumGender type,
+    required AppLocalizations l,
+  }) {
+    return type.mapValue(
+      female: 'Норма: у женщин – 1000-1600 мл',
+      male: 'Норма: у мужчин – 1000-2000 мл',
+      none: 'Для показа нормы выберите пол',
+    );
+  }
 }

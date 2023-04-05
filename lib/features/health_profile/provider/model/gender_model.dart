@@ -12,8 +12,8 @@ class GenderModel {
   final int? selectedIndex;
   /* init: EnumGender.none */
   final EnumGender enumGender;
-  /* init: EnumResult.init */
-  final EnumResult enumValid;
+  /* init: EnumValid.init */
+  final EnumValid enumValid;
   /* init: '' */
   final String error;
   /* init:const [] */
@@ -31,7 +31,7 @@ class GenderModel {
 //  *************************************
   const GenderModel({
     this.enumGender = EnumGender.none,
-    this.enumValid = EnumResult.init,
+    this.enumValid = EnumValid.init,
     this.error = '',
     this.listGender = const [],
     this.listSelected = const [],
@@ -57,7 +57,7 @@ class GenderModel {
     return GenderModel(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(), 
       enumGender: map['enumGender'] != null ? EnumGender.values[map['enumGender'] as int] : EnumGender.none, 
-      enumValid: map['enumValid'] != null ? EnumResult.values[map['enumValid'] as int] : EnumResult.init, 
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
       error: map['error'] as String? ?? '', 
       listGender: map['listGender'] != null ? (map['listGender'] as List<dynamic>).map((e) => GenderItemModel.fromMap(e as Map<dynamic, dynamic>)).toList() : const [], 
       listSelected: (map['listSelected'] as List<dynamic>?)?.map((e) => e as bool).toList() ?? const [], 
@@ -67,7 +67,7 @@ class GenderModel {
   GenderModel copyWith({
     int? selectedIndex,
     EnumGender? enumGender,
-    EnumResult? enumValid,
+    EnumValid? enumValid,
     String? error,
     List<GenderItemModel>? listGender,
     List<bool>? listSelected,

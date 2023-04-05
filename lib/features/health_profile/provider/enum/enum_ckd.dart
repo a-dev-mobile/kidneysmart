@@ -1,16 +1,17 @@
 // turngen
 enum EnumCkd with Comparable<EnumCkd> {
-  one('one'),
-  two('two'),
-  threeA('threeA'),
-  threeB('threeB'),
-  four('four'),
-  five('five'),
-  calculate('calculate'),
-  none('none');
+  one(90, 100000),
+  two(60, 89),
+  threeA(45,59),
+  threeB(30, 44),
+  four(15, 29),
+  five(-10000,15),
+  calculate(0,0),
+  none(-1,-1);
 
-  const EnumCkd(this.value);
-  final String value;
+  const EnumCkd(this.minValue, this.maxValue);
+  final double minValue;
+  final double maxValue;
 
 // end
 
@@ -20,23 +21,23 @@ enum EnumCkd with Comparable<EnumCkd> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumCkd fromValue(String? value, {EnumCkd? fallback}) {
-    switch (value) {
-      case 'one':
+  static EnumCkd fromValue(double? value, {EnumCkd? fallback}) {
+    switch (value?.toString()) {
+      case '90, 100000':
         return one;
-      case 'two':
+      case '60, 89':
         return two;
-      case 'threeA':
+      case '45, 59':
         return threeA;
-      case 'threeB':
+      case '30, 44':
         return threeB;
-      case 'four':
+      case '15, 29':
         return four;
-      case 'five':
+      case '-10000, 15':
         return five;
-      case 'calculate':
+      case '0, 0':
         return calculate;
-      case 'none':
+      case '-1, -1':
         return none;
       default:
         return fallback ?? (throw ArgumentError.value(
@@ -199,13 +200,13 @@ enum EnumCkd with Comparable<EnumCkd> {
       );
 
 
-  static List<String> getValues() => EnumCkd.values.map((e) => e.value).toList();
+  static List<double> getValues() => EnumCkd.values.map((e) => e.minValue).toList();
 
   @override
   int compareTo(EnumCkd other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumCkd.$name($value)';
+  String toString() => 'EnumCkd.$name($minValue)';
 
 
 }

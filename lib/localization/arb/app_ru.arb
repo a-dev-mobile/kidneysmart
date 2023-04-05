@@ -67,6 +67,7 @@
   "no_stage_skd_selected": "Стадия ХБП не выбрана",
   "activity_not_selected": "Физическая активность не выбрана",
   "calculate_bmi_enter": "Для расчета ИМТ укажите:",
+  "calculate_gfr_enter": "Для расчета клубочковой фильтрации укажите:",
   "mgDl": "мг/дл",
   "mmmolL": "ммоль/л",
   "mcmolL": "мкмоль/л",

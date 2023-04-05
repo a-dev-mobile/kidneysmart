@@ -19,7 +19,7 @@ class ResultBmi extends ConsumerWidget {
     return AppResultCard(
       child: stateBmi.enumResult.mapValue(
         init: _Result(markdown: stateBmi.markdownInit),
-        valid: _Result(markdown: stateBmi.markdownSuccess),
+        success: _Result(markdown: stateBmi.markdownSuccess),
         error: _Result(markdown: stateBmi.markdownError),
       ),
     );

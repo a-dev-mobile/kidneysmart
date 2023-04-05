@@ -130,8 +130,6 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
       ),
     ];
 
-// init calc bmi
-
     state = state.copyWith(
       ckd: state.ckd.copyWith(
         listCkd: listCkd,
@@ -181,18 +179,11 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     );
 
     calcBmi();
+    calcGfr();
   }
 
   void calcBmi() {
     if (!_isValidForCalcBmi()) return;
-    final dateTimeNow = DateTime.now();
-    var userYear = dateTimeNow.year - state.dateBirthday.dateTime!.year;
-    var userMonth = dateTimeNow.month - state.dateBirthday.dateTime!.month;
-
-    if (userMonth.isNegative) {
-      userYear = userYear - 1;
-      userMonth = userMonth + 12;
-    }
 
     final weight = state.weight.value!;
     final height = state.height.value!;
@@ -224,9 +215,12 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
                                     ? EnumWeightStatus.moderate_thinness
                                     : EnumWeightStatus.severe_thinness;
 
-    final enumBmiYear = userYear > 20
+    final enumBmiYear = state.dateBirthday.userYearCoarse > 20
         ? EnumTypeCalcBmiPeople.adults
         : EnumTypeCalcBmiPeople.children;
+
+    final userYear = state.dateBirthday.userYearFine;
+    final userMonth = state.dateBirthday.userMonth;
 
     final resultMarkdown = '''
 
@@ -247,7 +241,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     state = state.copyWith(
       bmi: state.bmi.copyWith(
         markdownSuccess: resultMarkdown,
-        enumResult: EnumResult.valid,
+        enumResult: EnumResult.success,
       ),
     );
   }
@@ -264,6 +258,19 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
       obesity_3: 'Ожирение третьей степени',
       obesity_4: 'Ожирение четвертой степени',
       none: '',
+    );
+  }
+
+  String _getCkdStage(EnumCkd stage) {
+    return stage.mapValue(
+      one: 'Stage I',
+      two: 'Stage II',
+      threeA: 'Stage IIIa',
+      threeB: 'Stage IIIb',
+      four: 'Stage IV',
+      five: 'Stage V',
+      none: '',
+      calculate: '',
     );
   }
 
@@ -317,9 +324,9 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
   }
 
   bool _isValidForCalcBmi() {
-    final isValidBirthday = state.dateBirthday.enumValid == EnumResult.valid;
-    final isValidHeight = state.height.enumValid == EnumResult.valid;
-    final isValidWeight = state.weight.enumValid == EnumResult.valid;
+    final isValidBirthday = state.dateBirthday.enumValid == EnumValid.valid;
+    final isValidHeight = state.height.enumValid == EnumValid.valid;
+    final isValidWeight = state.weight.enumValid == EnumValid.valid;
 
     if (isValidWeight && isValidHeight && isValidBirthday) {
       return true;
@@ -391,7 +398,7 @@ $baseText
         result: v,
         value: double.tryParse(v ?? ''),
         error: error,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
     _saveState(isSaveState);
@@ -408,7 +415,7 @@ $baseText
         result: v,
         value: error.isEmpty ? _parseValue(v) : null,
         error: error,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
 
@@ -461,12 +468,15 @@ $baseText
         listGender: listGender,
         selectedIndex: v,
         listSelected: listBool,
+        enumGender:
+            selectedIndex != null ? listGender[selectedIndex].enumGender : null,
         error: error,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
 
     _saveState(isSaveState);
+    setCreatinine(null);
   }
 
   List<bool> _getListBool({
@@ -496,7 +506,7 @@ $baseText
         listSelected: listBool,
         selectedIndex: v,
         error: error,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
 
@@ -591,18 +601,44 @@ $baseText
     final day = state.dateBirthday.day;
     final month = state.dateBirthday.month;
     final year = state.dateBirthday.year;
+    final enumValid = error.isEmpty ? EnumValid.valid : EnumValid.error;
+
+    final dateTime = error.isEmpty ? DateTime.parse('$year-$month-$day') : null;
+
+    final dateTimeNow = DateTime.now();
+
+    var userYearFine = error.isEmpty
+        ? dateTimeNow.year - dateTime!.year
+        : state.dateBirthday.userYearFine;
+    var userMonth = error.isEmpty
+        ? dateTimeNow.month - dateTime!.month
+        : state.dateBirthday.userMonth;
+
+// более точное преобразование с учетом месяцев
+    final userYearCoarse = userYearFine;
+    if (userMonth.isNegative) {
+      userYearFine = userYearFine - 1;
+      userMonth = userMonth + 12;
+    }
+
     state = state.copyWith(
       dateBirthday: state.dateBirthday.copyWith(
-        dateTime: error.isEmpty ? DateTime.parse('$year-$month-$day') : null,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        dateTime: dateTime,
+        enumValid: enumValid,
         error: error,
+        userYearCoarse: userYearCoarse,
+        userYearFine: userYearFine,
+        userMonth: userMonth,
       ),
     );
 
     // _upgradeCreatinine(error);
 
     _saveState(isSaveState);
+
     calcBmi();
+
+    setCreatinine(null);
   }
 
   void setDailyDiuresis(int? v, {bool isSaveState = true}) {
@@ -627,7 +663,7 @@ $baseText
         selectedIndex: v,
         listSelected: listBool,
         error: error,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
         isShowInput:
             activeItem?.enumDailyDiuresis == EnumDailyDiuresis.enterValue,
       ),
@@ -655,7 +691,7 @@ $baseText
         listSelected: listBool,
         selectedIndex: v,
         error: error,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
 
@@ -670,7 +706,7 @@ $baseText
     state = state.copyWith(
       urine: state.urine.copyWith(
         result: v,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
         error: error,
         value: error.isEmpty ? double.tryParse(v!) : null,
       ),
@@ -704,52 +740,22 @@ $baseText
     return (value * mod).round().toDouble() / mod;
   }
 
-  // bool _isValid() {
-  //   final isValidBirthday = _dateTimeBirthday != null;
-  //   final isValidHeight = _height != null;
-  //   final isValidWeight = _weight != null;
-
-  //   if (isValidBirthday && isValidHeight && isValidBirthday) return true;
-
-  //   final baseText = _l.calculate_bmi_enter;
-
-  //   var changeText = '';
-
-  //   if (isValidHeight && isValidWeight) {
-  //     changeText = 'дату рождения';
-  //   } else if (isValidBirthday && isValidWeight) {
-  //     changeText = 'рост';
-  //   } else if (isValidBirthday && isValidHeight) {
-  //     changeText = 'вес';
-  //   } else if (isValidBirthday) {
-  //     changeText = 'вес и рост';
-  //   } else if (isValidHeight) {
-  //     changeText = 'дату рождения и вес';
-  //   } else if (isValidWeight) {
-  //     changeText = 'дату рождения и рост';
-  //   } else {
-  //     changeText = 'вес, дату рождения и рост';
-  //   }
-  //   state = state.copyWith(markdownError: '$baseText **$changeText**');
-
-  //   return false;
-  // }
-
   void setCreatinine(String? v, {bool isSaveState = true}) {
     var error = '';
-
+    final vNew = v ?? state.creatinine.result;
     error = _validCreatinine(v);
-
+    final enumValid = error.isEmpty ? EnumValid.valid : EnumValid.error;
     state = state.copyWith(
       creatinine: state.creatinine.copyWith(
         result: v,
-        value: error.isEmpty ? double.tryParse(v!) : null,
+        value: error.isEmpty ? double.tryParse(vNew) : null,
         error: error,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: enumValid,
       ),
     );
 
     _saveState(isSaveState);
+    calcGfr();
   }
 
   void changeTypeCreatinine(EnumInputTypeCreatinine? value) {
@@ -759,16 +765,10 @@ $baseText
   }
 
   String _validCreatinine(String? v) {
-    if (v?.isEmpty ?? true) {
+    if (v?.isEmpty ?? true && state.creatinine.result.isEmpty) {
       return 'Креатинин не указан';
     }
 
-    // if (state.validGenderModel.errorMessage.isNotEmpty) {
-    //   return 'Укажите ваш пол';
-    // }
-    // if (state.validBirthdayModel.enumValid == EnumResult.error) {
-    //   return 'Укажите дату своего рождения';
-    // }
     final doubleValue = double.tryParse(v!) ?? -1;
 
     if (doubleValue.isNegative) return 'Неправильное значение';
@@ -779,10 +779,126 @@ $baseText
     if (doubleValue.isMaxValue(3000)) {
       return 'Указанный креатинин не поддерживается приложением';
     }
+    if (state.dateBirthday.enumValid != EnumValid.valid) {
+      return 'Укажите дату рождения';
+    }
+    if (state.gender.enumValid != EnumValid.valid) {
+      return 'Укажите пол';
+    }
 
     return '';
   }
 
+  bool _isValidForCalcGfr() {
+    final isValidGender = state.gender.enumValid == EnumValid.valid;
+    final isValidDateBirthday = state.dateBirthday.enumValid == EnumValid.valid;
+
+    if (isValidGender && isValidDateBirthday) {
+      return true;
+    }
+
+    final baseText = _l.calculate_gfr_enter;
+
+    var changeText = '';
+
+    if (!isValidGender && isValidDateBirthday) {
+      changeText = '''
+$baseText
+* **Ваш пол**
+''';
+    } else if (isValidGender && !isValidDateBirthday) {
+      changeText = '''
+$baseText
+* **Дата рождения**
+''';
+    } else {
+      changeText = '''
+$baseText
+* **Ваш пол** 
+* **Дата рождения**
+''';
+    }
+    state = state.copyWith(
+      gfr: state.gfr.copyWith(
+        enumResult: EnumResult.error,
+        markdownError: changeText,
+      ),
+    );
+
+    return false;
+  }
+
+  void calcGfr() {
+    if (!_isValidForCalcGfr()) return;
+
+    final baseValueCreatinine = state.creatinine.value!;
+//  in mgDl
+    final valueMgDl = state.creatinine.inputTypeCreatinine.mapValue(
+      mgDl: baseValueCreatinine,
+      mmolL: baseValueCreatinine * 11.3097,
+      mcmolL: baseValueCreatinine * 0.0113,
+    );
+    final gender = state.gender.enumGender;
+    final genderCoeff = gender.mapValue(female: 1.012, male: 1, none: 0);
+
+    final kCoeff = gender.mapValue(female: 0.7, male: 0.9, none: 0);
+    final yearUser = state.dateBirthday.userYearFine;
+    var alpha = 0.0;
+
+    if (gender == EnumGender.female && valueMgDl <= kCoeff) {
+      alpha = -0.241;
+    } else if (gender == EnumGender.female && valueMgDl > kCoeff) {
+      alpha = -1.2;
+    } else if (gender == EnumGender.male && valueMgDl <= kCoeff) {
+      alpha = -0.302;
+    } else {
+      alpha = -1.2;
+    }
+
+    final estimatedGFR = 142 *
+        pow(valueMgDl / kCoeff, alpha) *
+        pow(0.9938, yearUser) *
+        genderCoeff;
+
+    final userYear = state.dateBirthday.userYearFine;
+    final userMonth = state.dateBirthday.userMonth;
+
+    final ckdStatus = estimatedGFR >= EnumCkd.one.minValue
+        ? EnumCkd.one
+        : estimatedGFR >= EnumCkd.two.minValue
+            ? EnumCkd.two
+            : estimatedGFR >= EnumCkd.threeA.minValue
+                ? EnumCkd.threeA
+                : estimatedGFR >= EnumCkd.threeB.minValue
+                    ? EnumCkd.threeB
+                    : estimatedGFR >= EnumCkd.four.minValue
+                        ? EnumCkd.four
+                        : EnumCkd.five;
+
+    final resultMarkdown = '''
+
+## Расчет клубочковой фильтрации
+
+Формула [2021 CKD-EPI Creatinine](https://www.kidney.org/content/ckd-epi-creatinine-equation-2021) 
+
+Стадии [CKD stage by CKD-EPI Creatinine](https://www.kidney.org/atoz/content/gfr) 
+
+---
+Ваш возраст - **$userYear** ${_getTextYearRu(userYear)} **$userMonth** ${_getTextYearMonth(userMonth)}
+
+Ваш СКФ составляет - **${AppUtilsNumber.getFormatNumber(num: estimatedGFR.toDouble())}** ml/min/1.73 m²
+
+Стадия ХБП - **${_getCkdStage(ckdStatus)}**
+
+''';
+
+    state = state.copyWith(
+      gfr: state.gfr.copyWith(
+        markdownSuccess: resultMarkdown,
+        enumResult: EnumResult.success,
+      ),
+    );
+  }
   // void _upgradeCreatinine(String error) {
   //   if (error.isEmpty) setCreatinine(state.value);
   // }
@@ -804,7 +920,7 @@ $baseText
         selectedIndex: v,
         error: error,
         listSelected: listBool,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
 
@@ -833,7 +949,7 @@ $baseText
         enumCkdSelected: activeItem?.enumCkd,
         error: error,
         isShowCalcCreatinine: activeItem?.enumCkd == EnumCkd.calculate,
-        enumValid: error.isEmpty ? EnumResult.valid : EnumResult.error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
 
@@ -844,6 +960,7 @@ $baseText
     setGender(null, isSaveState: false);
     setDate(isSaveState: false);
     setHeight(null, isSaveState: false);
+    setHypertension(null, isSaveState: false);
     setWeight(null, isSaveState: false);
     setActivity(null, isSaveState: false);
     setCkd(null, isSaveState: false);
@@ -862,6 +979,8 @@ $baseText
       state.ckd.enumValid.maybeMapOrNullValue(error: 'Укажите стадию ХБП'),
       state.diabet.enumValid
           .maybeMapOrNullValue(error: 'Укажите наличие или нет - диабета'),
+      state.hypertension.enumValid
+          .maybeMapOrNullValue(error: 'Укажите наличие или нет - гипертензии'),
       state.dailyDiuresis.enumValid.maybeMapOrNullValue(
         error: 'Укажите уровень суточного диуреза',
       ),
@@ -901,76 +1020,7 @@ $baseText
     return false;
   }
 
-/* from page */
-
-/* from page */
-
-/* from page */
-
-/* from page */
-
-/* from page */
-
   void _saveState(bool isSaveState) {
     if (isSaveState) _storage.setHealthProfileState(state);
-
-    //   final heightModel = state.validHeightModel.copyWith(errorMessage: '');
-    //   final birthdayModel = state.validBirthdayModel.copyWith(errorMessage: '');
-    //   final genderModel = state.validGenderModel.copyWith(errorMessage: '');
-    //   final weightModel = state.validWeightModel.copyWith(errorMessage: '');
-    //   final activityModel = state.validActivityModel.copyWith(errorMessage: '');
-    //   final validDiabetesModel =
-    //       state.validDiabetesModel.copyWith(errorMessage: '');
-    //   final dailyDiuresisModel =
-    //       state.validDailyDiuresisModel.copyWith(errorMessage: '');
-    //   final urineOutputModel =
-    //       state.validUrineOutputModel.copyWith(errorMessage: '');
-    //   final hypertensionModel =
-    //       state.validHypertensionModel.copyWith(errorMessage: '');
-    //   final validCkdModel = state.validCkdModel.copyWith(errorMessage: '');
-    //   final validCreatinineModel =
-    //       state.validCreatinineModel.copyWith(errorMessage: '');
-
-    //   _storage.setHealthProfileState(
-    //     state.copyWith(
-    //       validBirthdayModel: birthdayModel,
-    //       validGenderModel: genderModel,
-    //       validHeightModel: heightModel,
-    //       validWeightModel: weightModel,
-    //       validActivityModel: activityModel,
-    //       validHypertensionModel: hypertensionModel,
-    //       validDailyDiuresisModel: dailyDiuresisModel,
-    //       validUrineOutputModel: urineOutputModel,
-    //       validCkdModel: validCkdModel,
-    //       validCreatinineModel: validCreatinineModel,
-    //       validDiabetesModel: validDiabetesModel,
-    //     ),
-    //   );
-  }
-
-/* from page */
-  void check() {
-    // setGender(state.validGenderModel.selectedIndex, isSaveState: false);
-    // setActivity(state.validActivityModel.selectedIndex, isSaveState: false);
-    // setHypertension(
-    //   state.validHypertensionModel.selectedIndex,
-    //   isSaveState: false,
-    // );
-    // setDiabetes(state.validHypertensionModel.selectedIndex, isSaveState: false);
-    // _checkDate();
-    // setHeight(state.validHeightModel.result, isSaveState: false);
-    // setWeight(state.validWeightModel.result, isSaveState: false);
-    // setDailyDiuresis(
-    //   state.validDailyDiuresisModel.selectedIndex,
-    //   isSaveState: false,
-    // );
-    // setCkd(
-    //   state.validCkdModel.selectedIndex,
-    //   isSaveState: false,
-    // );
-    // setCreatinine(
-    //   state.validCreatinineModel.value,
-    //   isSaveState: false,
-    // );
   }
 }

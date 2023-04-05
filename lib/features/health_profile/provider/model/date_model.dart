@@ -22,13 +22,20 @@ class DateBirthdayModel {
   /* init:'' */
   final String month;
 
+  /* init:-1 */
+  final int userMonth;
+  /* init:-1 */
+  final int userYearFine;
+// без учета количества месяцев
+  /* init:-1 */
+  final int userYearCoarse;
   /* init:'' */
   final String error;
 
   final DateTime? dateTime;
 
-  /* init: EnumResult.init */
-  final EnumResult enumValid;
+  /* init: EnumValid.init */
+  final EnumValid enumValid;
   // end
    
 //          --TURN_GEN--
@@ -43,8 +50,11 @@ class DateBirthdayModel {
     this.day = '',
     this.year = '',
     this.month = '',
+    this.userMonth = -1,
+    this.userYearFine = -1,
+    this.userYearCoarse = -1,
     this.error = '',
-    this.enumValid = EnumResult.init,
+    this.enumValid = EnumValid.init,
     this.dateTime,
   });
 
@@ -57,6 +67,9 @@ class DateBirthdayModel {
       'day': day, 
       'year': year, 
       'month': month, 
+      'userMonth': userMonth, 
+      'userYearFine': userYearFine, 
+      'userYearCoarse': userYearCoarse, 
       'error': error, 
       'dateTime': dateTime?.toIso8601String(), 
       'enumValid': enumValid.index, 
@@ -74,9 +87,12 @@ class DateBirthdayModel {
       day: map['day'] as String? ?? '', 
       year: map['year'] as String? ?? '', 
       month: map['month'] as String? ?? '', 
+      userMonth: (map['userMonth'] as num?)?.toInt() ?? -1, 
+      userYearFine: (map['userYearFine'] as num?)?.toInt() ?? -1, 
+      userYearCoarse: (map['userYearCoarse'] as num?)?.toInt() ?? -1, 
       error: map['error'] as String? ?? '', 
       dateTime: map['dateTime'] == null ? null : DateTime.parse(map['dateTime'] as String), 
-      enumValid: map['enumValid'] != null ? EnumResult.values[map['enumValid'] as int] : EnumResult.init, 
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
     );
   }
 
@@ -87,9 +103,12 @@ class DateBirthdayModel {
     String? day,
     String? year,
     String? month,
+    int? userMonth,
+    int? userYearFine,
+    int? userYearCoarse,
     String? error,
     DateTime? dateTime,
-    EnumResult? enumValid,
+    EnumValid? enumValid,
   }) {
     return DateBirthdayModel(
       days: days ?? this.days, 
@@ -98,6 +117,9 @@ class DateBirthdayModel {
       day: day ?? this.day, 
       year: year ?? this.year, 
       month: month ?? this.month, 
+      userMonth: userMonth ?? this.userMonth, 
+      userYearFine: userYearFine ?? this.userYearFine, 
+      userYearCoarse: userYearCoarse ?? this.userYearCoarse, 
       error: error ?? this.error, 
       dateTime: dateTime ?? this.dateTime, 
       enumValid: enumValid ?? this.enumValid, 
@@ -118,6 +140,9 @@ class DateBirthdayModel {
             (identical(other.day, day) || other.day == day) && 
             (identical(other.year, year) || other.year == year) && 
             (identical(other.month, month) || other.month == month) && 
+            (identical(other.userMonth, userMonth) || other.userMonth == userMonth) && 
+            (identical(other.userYearFine, userYearFine) || other.userYearFine == userYearFine) && 
+            (identical(other.userYearCoarse, userYearCoarse) || other.userYearCoarse == userYearCoarse) && 
             (identical(other.error, error) || other.error == error) && 
             (identical(other.dateTime, dateTime) || other.dateTime == dateTime) && 
             (identical(other.enumValid, enumValid) || other.enumValid == enumValid));
@@ -132,6 +157,9 @@ class DateBirthdayModel {
         day,
         year,
         month,
+        userMonth,
+        userYearFine,
+        userYearCoarse,
         error,
         dateTime,
         enumValid,
@@ -139,7 +167,7 @@ class DateBirthdayModel {
 
   @override
   String toString() {
-    return 'DateBirthdayModel(days: $days, months: $months, years: $years, day: $day, year: $year, month: $month, error: $error, dateTime: $dateTime, enumValid: $enumValid, )';
+    return 'DateBirthdayModel(days: $days, months: $months, years: $years, day: $day, year: $year, month: $month, userMonth: $userMonth, userYearFine: $userYearFine, userYearCoarse: $userYearCoarse, error: $error, dateTime: $dateTime, enumValid: $enumValid, )';
     }
 
 }

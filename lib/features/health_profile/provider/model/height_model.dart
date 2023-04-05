@@ -14,8 +14,8 @@ class HeightModel {
   final double? value;
   /* init:'' */
   final String error;
-  /* init: EnumResult.init */
-  final EnumResult enumValid;
+  /* init: EnumValid.init */
+  final EnumValid enumValid;
   /* init: const [] */
   final List<String> heightList;
   // end
@@ -28,7 +28,7 @@ class HeightModel {
   const HeightModel({
     this.result = '',
     this.error = '',
-    this.enumValid = EnumResult.init,
+    this.enumValid = EnumValid.init,
     this.heightList = const [],
     this.value,
   });
@@ -52,7 +52,7 @@ class HeightModel {
       result: map['result'] as String? ?? '', 
       value: (map['value'] as num?)?.toDouble(), 
       error: map['error'] as String? ?? '', 
-      enumValid: map['enumValid'] != null ? EnumResult.values[map['enumValid'] as int] : EnumResult.init, 
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
       heightList: (map['heightList'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
     );
   }
@@ -61,7 +61,7 @@ class HeightModel {
     String? result,
     double? value,
     String? error,
-    EnumResult? enumValid,
+    EnumValid? enumValid,
     List<String>? heightList,
   }) {
     return HeightModel(

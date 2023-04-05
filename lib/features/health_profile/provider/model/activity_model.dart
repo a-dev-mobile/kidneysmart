@@ -12,8 +12,8 @@ class ActivityModel {
   /* init:const [] */
   final List<ActivityItemModel> listActivity;
   final int? selectedIndex;
-  /* init: EnumResult.init */
-  final EnumResult enumValid;
+  /* init: EnumValid.init */
+  final EnumValid enumValid;
   /* init: '' */
   final String error;
   /* init: [] */
@@ -27,7 +27,7 @@ class ActivityModel {
 //  *************************************
   const ActivityModel({
     this.listActivity = const [],
-    this.enumValid = EnumResult.init,
+    this.enumValid = EnumValid.init,
     this.error = '',
     this.listSelected = const [],
     this.selectedIndex,
@@ -51,7 +51,7 @@ class ActivityModel {
     return ActivityModel(
       listActivity: map['listActivity'] != null ? (map['listActivity'] as List<dynamic>).map((e) => ActivityItemModel.fromMap(e as Map<dynamic, dynamic>)).toList() : const [], 
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(), 
-      enumValid: map['enumValid'] != null ? EnumResult.values[map['enumValid'] as int] : EnumResult.init, 
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
       error: map['error'] as String? ?? '', 
       listSelected: (map['listSelected'] as List<dynamic>?)?.map((e) => e as bool).toList() ?? const [], 
     );
@@ -60,7 +60,7 @@ class ActivityModel {
   ActivityModel copyWith({
     List<ActivityItemModel>? listActivity,
     int? selectedIndex,
-    EnumResult? enumValid,
+    EnumValid? enumValid,
     String? error,
     List<bool>? listSelected,
   }) {

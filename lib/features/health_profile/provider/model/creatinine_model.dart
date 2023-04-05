@@ -14,8 +14,8 @@ class CreatinineModel {
   final double? value;
   /* init:'' */
   final String error;
-  /* init: EnumResult.init */
-  final EnumResult enumValid;
+  /* init: EnumValid.init */
+  final EnumValid enumValid;
 
   /* init:  EnumInputTypeCreatinine.mcmolL */
   final EnumInputTypeCreatinine inputTypeCreatinine;
@@ -29,7 +29,7 @@ class CreatinineModel {
   const CreatinineModel({
     this.result = '',
     this.error = '',
-    this.enumValid = EnumResult.init,
+    this.enumValid = EnumValid.init,
     this.inputTypeCreatinine = EnumInputTypeCreatinine.mcmolL,
     this.value,
   });
@@ -53,7 +53,7 @@ class CreatinineModel {
       result: map['result'] as String? ?? '', 
       value: (map['value'] as num?)?.toDouble(), 
       error: map['error'] as String? ?? '', 
-      enumValid: map['enumValid'] != null ? EnumResult.values[map['enumValid'] as int] : EnumResult.init, 
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
       inputTypeCreatinine: map['inputTypeCreatinine'] != null ? EnumInputTypeCreatinine.values[map['inputTypeCreatinine'] as int] : EnumInputTypeCreatinine.mcmolL, 
     );
   }
@@ -62,7 +62,7 @@ class CreatinineModel {
     String? result,
     double? value,
     String? error,
-    EnumResult? enumValid,
+    EnumValid? enumValid,
     EnumInputTypeCreatinine? inputTypeCreatinine,
   }) {
     return CreatinineModel(

@@ -206,6 +206,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get calculate_bmi_enter => 'To calculate BMI enter:';
 
   @override
+  String get calculate_gfr_enter => 'Для расчета клубочковой фильтрации укажите:';
+
+  @override
   String get mgDl => 'mg/dl';
 
   @override

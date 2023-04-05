@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
+
 @immutable
 class HealthProfileState {
   /* init: false */
@@ -41,6 +42,9 @@ class HealthProfileState {
 
   /* init: const CalculateBmiModel() */
   final CalculateBmiModel bmi;
+
+    /* init: const CalculateGfrModel() */
+  final CalculateGfrModel gfr;
   /* init: '' */
   final String markdownError;
   // end
@@ -64,6 +68,7 @@ class HealthProfileState {
     this.activity = const ActivityModel(),
     this.ckd = const CkdModel(),
     this.bmi = const CalculateBmiModel(),
+    this.gfr = const CalculateGfrModel(),
     this.markdownError = '',
   });
 
@@ -83,6 +88,7 @@ class HealthProfileState {
       'activity': activity.toMap(), 
       'ckd': ckd.toMap(), 
       'bmi': bmi.toMap(), 
+      'gfr': gfr.toMap(), 
       'markdownError': markdownError, 
     };
   }
@@ -105,6 +111,7 @@ class HealthProfileState {
       activity: map['activity'] != null ? ActivityModel.fromMap(Map<String, dynamic>.from(map['activity'] as Map)) : const ActivityModel(), 
       ckd: map['ckd'] != null ? CkdModel.fromMap(Map<String, dynamic>.from(map['ckd'] as Map)) : const CkdModel(), 
       bmi: map['bmi'] != null ? CalculateBmiModel.fromMap(Map<String, dynamic>.from(map['bmi'] as Map)) : const CalculateBmiModel(), 
+      gfr: map['gfr'] != null ? CalculateGfrModel.fromMap(Map<String, dynamic>.from(map['gfr'] as Map)) : const CalculateGfrModel(), 
       markdownError: map['markdownError'] as String? ?? '', 
     );
   }
@@ -123,6 +130,7 @@ class HealthProfileState {
     ActivityModel? activity,
     CkdModel? ckd,
     CalculateBmiModel? bmi,
+    CalculateGfrModel? gfr,
     String? markdownError,
   }) {
     return HealthProfileState(
@@ -139,6 +147,7 @@ class HealthProfileState {
       activity: activity ?? this.activity, 
       ckd: ckd ?? this.ckd, 
       bmi: bmi ?? this.bmi, 
+      gfr: gfr ?? this.gfr, 
       markdownError: markdownError ?? this.markdownError, 
     );
   }
@@ -164,6 +173,7 @@ class HealthProfileState {
             (identical(other.activity, activity) || other.activity == activity) && 
             (identical(other.ckd, ckd) || other.ckd == ckd) && 
             (identical(other.bmi, bmi) || other.bmi == bmi) && 
+            (identical(other.gfr, gfr) || other.gfr == gfr) && 
             (identical(other.markdownError, markdownError) || other.markdownError == markdownError));
   }
 
@@ -183,12 +193,13 @@ class HealthProfileState {
         activity,
         ckd,
         bmi,
+        gfr,
         markdownError,
 ]);
 
   @override
   String toString() {
-    return 'HealthProfileState(isValid: $isValid, dateBirthday: $dateBirthday, diabet: $diabet, height: $height, weight: $weight, gender: $gender, dailyDiuresis: $dailyDiuresis, hypertension: $hypertension, urine: $urine, creatinine: $creatinine, activity: $activity, ckd: $ckd, bmi: $bmi, markdownError: $markdownError, )';
+    return 'HealthProfileState(isValid: $isValid, dateBirthday: $dateBirthday, diabet: $diabet, height: $height, weight: $weight, gender: $gender, dailyDiuresis: $dailyDiuresis, hypertension: $hypertension, urine: $urine, creatinine: $creatinine, activity: $activity, ckd: $ckd, bmi: $bmi, gfr: $gfr, markdownError: $markdownError, )';
     }
 
 }
