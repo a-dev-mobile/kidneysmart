@@ -44,36 +44,39 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
     final isEnabled = stateDailyDiuresis.isShowInput;
 
 
-    return Column(
-      children: [
-        const TitleSub(
-          text: 'Укажите количество выделяемой мочи',
-          dialogText:
-              'Мы используем эти сведения для расчета суточной нормы потребления воды',
-        ),
-        GestureDetector(
-          onTap: () => _showSnack(context),
-          child: TextField(
-            controller: controller,
-            enabled: isEnabled,
-            decoration: InputDecoration(
-              labelText: _getNorma(type: state.gender.enumGender, l: l),
-              errorText: isEnabled
-                  ? stateUrinine.enumValid
-                      .maybeMapOrNullValue(error: stateUrinine.error)
-                  : null,
-              errorMaxLines: 2,
-              suffixText: 'мл',
-            ),
-            keyboardType: TextInputType.number,
-            onChanged: notifier.setUrineOutput,
-            inputFormatters: [
-              LengthLimitingTextInputFormatter(6),
-              FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
-            ],
+    return Visibility(
+      visible: isEnabled,
+      child: Column(
+        children: [
+          const TitleSub(
+            text: 'Укажите количество выделяемой мочи',
+            dialogText:
+                'Мы используем эти сведения для расчета суточной нормы потребления воды',
           ),
-        ),
-      ],
+          GestureDetector(
+            onTap: () => _showSnack(context),
+            child: TextField(
+              controller: controller,
+              enabled: isEnabled,
+              decoration: InputDecoration(
+                labelText: _getNorma(type: state.gender.enumGender, l: l),
+                errorText: isEnabled
+                    ? stateUrinine.enumValid
+                        .maybeMapOrNullValue(error: stateUrinine.error)
+                    : null,
+                errorMaxLines: 2,
+                suffixText: 'мл',
+              ),
+              keyboardType: TextInputType.number,
+              onChanged: notifier.setUrineOutput,
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(6),
+                FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

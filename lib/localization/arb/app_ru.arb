@@ -38,7 +38,7 @@
   "clear": "Очистить",
   "privacy_policy": "Политика конфиденциальности",
   "data_source": "Источник",
-  "weight": "Порция",
+  "portion": "Порция",
   "favorite": "Любимые",
   "enter_name": "Введите имя",
   "max_text_length": "Максимальная длина текста",
@@ -72,5 +72,11 @@
   "mmmolL": "ммоль/л",
   "mcmolL": "мкмоль/л",
   "skip": "Пропустить",
+  "calculate": "Рассчитать",
+  "date_of_birth": "Дата рождения",
+  "gender": "Пол",
+  "weight": "Вес",
+  "height": "Рост",
+  "creatinine": "Креатинин",
   "g": "г"
 }

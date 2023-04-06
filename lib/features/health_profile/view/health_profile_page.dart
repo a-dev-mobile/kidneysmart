@@ -26,39 +26,41 @@ class HealthProfilePage extends ConsumerWidget {
     });
 
     return ClearFocus(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Введите данные'),
-          actions: [
-            IconButton(
-              onPressed: () => ref.read(localeProvider.notifier).changeLocale(),
-              icon: const Icon(Icons.language),
-            ),
-            IconButton(
-              onPressed: () => ref.read(themeProvider.notifier).changeTheme(),
-              icon: const Icon(Icons.brightness_4_outlined),
-            ),
-          ],
-        ),
-        body: ListView(
-          padding: const EdgeInsets.all(10),
-          children: [
-            const BtnGender(),
-            const DropBirthday(),
-            const DropHeight(),
-            const FieldWeight(),
-            const ResultBmi(),
-            const BtnActivity(),
-            const BtnHypertension(),
-            const BtnDiabetes(),
-            const BtnDailyDiuresis(),
-            const BtnCkd(),
-            const ResultGfr(),
-            ElevatedButton(
-              onPressed: notifier.checkValid,
-              child: const Text('Проверить'),
-            ),
-          ],
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Введите данные'),
+            actions: [
+              IconButton(
+                onPressed: () => ref.read(localeProvider.notifier).changeLocale(),
+                icon: const Icon(Icons.language),
+              ),
+              IconButton(
+                onPressed: () => ref.read(themeProvider.notifier).changeTheme(),
+                icon: const Icon(Icons.brightness_4_outlined),
+              ),
+            ],
+          ),
+          body: ListView(
+            padding: const EdgeInsets.all(10),
+            children: [
+              const BtnGender(),
+              const DropBirthday(),
+              const DropHeight(),
+              const FieldWeight(),
+              const ResultBmi(),
+              const BtnActivity(),
+              const BtnHypertension(),
+              const BtnDiabetes(),
+              const BtnDailyDiuresis(),
+              const BtnCkd(),
+              const ResultGfr(),
+              ElevatedButton(
+                onPressed: notifier.checkValid,
+                child: const Text('Проверить'),
+              ),
+            ],
+          ),
         ),
       ),
     );

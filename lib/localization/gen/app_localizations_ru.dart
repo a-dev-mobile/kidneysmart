@@ -119,7 +119,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get data_source => 'Источник';
 
   @override
-  String get weight => 'Порция';
+  String get portion => 'Порция';
 
   @override
   String get favorite => 'Любимые';
@@ -219,6 +219,24 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get skip => 'Пропустить';
+
+  @override
+  String get calculate => 'Рассчитать';
+
+  @override
+  String get date_of_birth => 'Дата рождения';
+
+  @override
+  String get gender => 'Пол';
+
+  @override
+  String get weight => 'Вес';
+
+  @override
+  String get height => 'Рост';
+
+  @override
+  String get creatinine => 'Креатинин';
 
   @override
   String get g => 'г';

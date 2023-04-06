@@ -11,6 +11,11 @@ import 'package:nutrition/core/valid/valid_extension.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/localization/localization.dart';
 
+part 'init_data_extension.dart';
+part 'text_translate_extension.dart';
+part 'helper_method_extension.dart';
+part 'valid_extension.dart';
+
 final healthProfileProvider = StateNotifierProvider.autoDispose<
     HealthProfileNotifier, HealthProfileState>(
   (ref) {
@@ -34,11 +39,6 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
   final AppStorageService _storage;
   final AppLocalizations _l;
 
-  static const _MIN_AGE = 2;
-  static const _MAX_AGE = 150;
-  static const _MIN_HEIGHT = 50;
-  static const _MAX_HEIGHT = 220;
-
   /// preload
   void load() {
     // init date
@@ -46,10 +46,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     final months = _initDayMonth(start: 1, end: 12);
     final years = _initYears();
     // init height
-    final listHeight = <String>[];
-    for (var i = _MAX_HEIGHT; i > _MIN_HEIGHT; i--) {
-      listHeight.add(i.toString());
-    }
+    final listHeight = _initHeight();
     // init gender
     final listGender = <GenderItemModel>[
       GenderItemModel(enumGender: EnumGender.male, value: _l.male),
@@ -68,67 +65,17 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
       ),
     ];
     // init DailyDiuresis
-    final listDailyDiuresis = <DailyDiuresisItemModel>[
-      const DailyDiuresisItemModel(
-        enumDailyDiuresis: EnumDailyDiuresis.no,
-        value: 'Отсутствует',
-      ),
-      const DailyDiuresisItemModel(
-        enumDailyDiuresis: EnumDailyDiuresis.normal,
-        value: 'Нормальный',
-      ),
-      const DailyDiuresisItemModel(
-        enumDailyDiuresis: EnumDailyDiuresis.enterValue,
-        value: 'Ввести значение',
-      ),
-    ];
+    final listDailyDiuresis = _initDailyDiuresis;
     // init Hypertension
-    final listHypertension = <HypertensionItemModel>[
-      HypertensionItemModel(
-        enumHypertension: EnumHypertension.yes,
-        value: _l.yes_caps,
-      ),
-      HypertensionItemModel(
-        enumHypertension: EnumHypertension.no,
-        value: _l.no_caps,
-      ),
-    ];
+    final listHypertension = _initHypertension;
     // Activity
     final listActivity = <ActivityItemModel>[
       ActivityItemModel(enumActivity: EnumActivity.light, value: _l.light),
       ActivityItemModel(enumActivity: EnumActivity.normal, value: _l.normal),
     ];
+
     // init ckd
-    final listCkd = <CkdItemModel>[
-      const CkdItemModel(
-        enumCkd: EnumCkd.one,
-        value: '1',
-      ),
-      const CkdItemModel(
-        enumCkd: EnumCkd.two,
-        value: '2',
-      ),
-      const CkdItemModel(
-        enumCkd: EnumCkd.threeA,
-        value: '3a',
-      ),
-      const CkdItemModel(
-        enumCkd: EnumCkd.threeB,
-        value: '3b',
-      ),
-      const CkdItemModel(
-        enumCkd: EnumCkd.four,
-        value: '4',
-      ),
-      const CkdItemModel(
-        enumCkd: EnumCkd.five,
-        value: '5',
-      ),
-      const CkdItemModel(
-        enumCkd: EnumCkd.calculate,
-        value: 'Рассчитать',
-      ),
-    ];
+    final listCkd = _initCkdStage;
 
     state = state.copyWith(
       ckd: state.ckd.copyWith(
@@ -178,277 +125,8 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
       height: state.height.copyWith(heightList: listHeight),
     );
 
-    calcBmi();
-    calcGfr();
-  }
-
-  void calcBmi() {
-    if (!_isValidForCalcBmi()) return;
-
-    final weight = state.weight.value!;
-    final height = state.height.value!;
-
-    final result = _roundDouble(weight / pow(height / 100, 2), 1);
-
-    final recomWeightMin =
-        EnumWeightStatus.normal.minValue * pow(height / 100, 2);
-    final recomWeightMax =
-        EnumWeightStatus.normal.maxValue * pow(height / 100, 2);
-
-    final bmiStatus = result >= EnumWeightStatus.obesity_4.minValue
-        ? EnumWeightStatus.obesity_4
-        : result >= EnumWeightStatus.obesity_3.minValue
-            ? EnumWeightStatus.obesity_3
-            : result >= EnumWeightStatus.obesity_2.minValue
-                ? EnumWeightStatus.obesity_2
-                : result >= EnumWeightStatus.obesity_1.minValue
-                    ? EnumWeightStatus.obesity_1
-                    : result >= EnumWeightStatus.overweight.minValue
-                        ? EnumWeightStatus.overweight
-                        : result >= EnumWeightStatus.normal.minValue
-                            ? EnumWeightStatus.normal
-                            : result >= EnumWeightStatus.mild_thinness.minValue
-                                ? EnumWeightStatus.mild_thinness
-                                : result >=
-                                        EnumWeightStatus
-                                            .moderate_thinness.minValue
-                                    ? EnumWeightStatus.moderate_thinness
-                                    : EnumWeightStatus.severe_thinness;
-
-    final enumBmiYear = state.dateBirthday.userYearCoarse > 20
-        ? EnumTypeCalcBmiPeople.adults
-        : EnumTypeCalcBmiPeople.children;
-
-    final userYear = state.dateBirthday.userYearFine;
-    final userMonth = state.dateBirthday.userMonth;
-
-    final resultMarkdown = '''
-
-## ${_getTypeCalcBmiPeople(enumBmiYear)}
-
----
-Ваш возраст - **$userYear** ${_getTextYearRu(userYear)} **$userMonth** ${_getTextYearMonth(userMonth)}
-
-Ваш ИМТ составляет - **${AppUtilsNumber.getFormatNumber(num: result)}**
-
-Ваш вес находится в категории - **${_getBmiStatus(bmiStatus)}**
-
-### Ваш рекомендуемый вес:
-* Минимальный - **${AppUtilsNumber.getFormatNumber(num: recomWeightMin, numberDigitsAfterPoint: 0)} кг**
-* Максимальный - **${AppUtilsNumber.getFormatNumber(num: recomWeightMax, numberDigitsAfterPoint: 0)} кг**
-''';
-
-    state = state.copyWith(
-      bmi: state.bmi.copyWith(
-        markdownSuccess: resultMarkdown,
-        enumResult: EnumResult.success,
-      ),
-    );
-  }
-
-  String _getBmiStatus(EnumWeightStatus status) {
-    return status.mapValue(
-      severe_thinness: 'Выраженный дефицит массы тела',
-      moderate_thinness: 'Умеренный (дефицит) массы тела',
-      mild_thinness: 'Легкий (дефицит) массы тела',
-      normal: 'Норма',
-      overweight: 'Избыточная масса тела (предожирение)',
-      obesity_1: 'Ожирение первой степени',
-      obesity_2: 'Ожирение второй степени',
-      obesity_3: 'Ожирение третьей степени',
-      obesity_4: 'Ожирение четвертой степени',
-      none: '',
-    );
-  }
-
-  String _getCkdStage(EnumCkd stage) {
-    return stage.mapValue(
-      one: 'Stage I',
-      two: 'Stage II',
-      threeA: 'Stage IIIa',
-      threeB: 'Stage IIIb',
-      four: 'Stage IV',
-      five: 'Stage V',
-      none: '',
-      calculate: '',
-    );
-  }
-
-  String _getTypeCalcBmiPeople(EnumTypeCalcBmiPeople enumBmiCalc) {
-    return enumBmiCalc.mapValue(
-      children: 'Расчет ИМТ для детей или подросков',
-      adults: 'Расчет ИМТ для взрослых',
-      none: '',
-    );
-  }
-
-  String _getTextYearRu(int num) {
-    // ignore: parameter_assignments
-    num = num % 100;
-    if (num > 19) {
-      // ignore: parameter_assignments
-      num = num % 10;
-    }
-    switch (num) {
-      case 1:
-        {
-          return 'год';
-        }
-      case 2:
-      case 3:
-      case 4:
-        {
-          return 'года';
-        }
-
-      default:
-        {
-          return 'лет';
-        }
-    }
-  }
-
-  String _getTextYearMonth(int num) {
-    switch (num) {
-      case 1:
-        return 'месяц';
-
-      case 2:
-      case 3:
-      case 4:
-        return 'месяца';
-
-      default:
-        return 'месяцев';
-    }
-  }
-
-  bool _isValidForCalcBmi() {
-    final isValidBirthday = state.dateBirthday.enumValid == EnumValid.valid;
-    final isValidHeight = state.height.enumValid == EnumValid.valid;
-    final isValidWeight = state.weight.enumValid == EnumValid.valid;
-
-    if (isValidWeight && isValidHeight && isValidBirthday) {
-      return true;
-    }
-
-    final baseText = _l.calculate_bmi_enter;
-
-    var changeText = '';
-
-    if (isValidHeight && isValidWeight) {
-      changeText = '''
-$baseText
-* **Дата рождения**
-''';
-    } else if (isValidBirthday && isValidWeight) {
-      changeText = '''
-$baseText
-* **Рост**
-''';
-    } else if (isValidBirthday && isValidHeight) {
-      changeText = '''
-$baseText
-* **Вес** 
-''';
-    } else if (isValidBirthday) {
-      changeText = '''
-$baseText
-* **Рост**
-* **Вес** 
-''';
-    } else if (isValidHeight) {
-      changeText = '''
-$baseText
-* **Вес** 
-* **Дата рождения**
-''';
-    } else if (isValidWeight) {
-      changeText = '''
-$baseText
-* **Рост**
-* **Дата рождения**
-''';
-    } else {
-      changeText = '''
-$baseText
-* **Рост**
-* **Вес** 
-* **Дата рождения**
-''';
-    }
-    state = state.copyWith(
-      bmi: state.bmi.copyWith(
-        enumResult: EnumResult.error,
-        markdownError: changeText,
-      ),
-    );
-
-    return false;
-  }
-
-  void setHeight(String? v, {bool isSaveState = true}) {
-    var error = '';
-
-    if (v?.isEmpty ?? true && state.height.result.isEmpty) {
-      error = 'Рост не указан';
-    }
-    state = state.copyWith(
-      height: state.height.copyWith(
-        result: v,
-        value: double.tryParse(v ?? ''),
-        error: error,
-        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-      ),
-    );
-    _saveState(isSaveState);
-    calcBmi();
-  }
-
-  void setWeight(String? v, {bool isSaveState = true}) {
-    var error = '';
-
-    error = _validWeight(v);
-
-    state = state.copyWith(
-      weight: state.weight.copyWith(
-        result: v,
-        value: error.isEmpty ? _parseValue(v) : null,
-        error: error,
-        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-      ),
-    );
-
-    _saveState(isSaveState);
-    calcBmi();
-  }
-
-  String _validWeight(String? v) {
-    if (v?.isEmpty ?? true && state.weight.result.isEmpty) {
-      return 'Вес не указан';
-    }
-
-    final doubleValue = _parseValue(v);
-
-    if (doubleValue.isNegative) return 'Неправильное значение';
-
-    if (doubleValue.isMinValue(20)) {
-      return 'Указанный вес не поддерживается приложением';
-    }
-    if (doubleValue.isMaxValue(1000)) {
-      return 'Указанный вес не поддерживается приложением';
-    }
-
-    return '';
-  }
-
-  double _parseValue(String? v) {
-    return double.tryParse(v ?? state.weight.result) ?? -1;
-  }
-
-  void changeTypeUnitWeight(EnumUnitWeight? value) {
-    state =
-        state.copyWith(weight: state.weight.copyWith(enumUnitWeight: value));
+    _calcBmi();
+    _calcGfr();
   }
 
   void setGender(int? v, {bool isSaveState = true}) {
@@ -479,105 +157,6 @@ $baseText
     setCreatinine(null);
   }
 
-  List<bool> _getListBool({
-    required int length,
-    int? selectedIndex = -1,
-  }) {
-    return List.generate(
-      length,
-      (i) => selectedIndex == i,
-    );
-  }
-
-  void setDiabetes(int? v, {bool isSaveState = true}) {
-    var error = '';
-    if (v == null && state.diabet.selectedIndex == null) {
-      error = 'Подтвердите отсутствие или наличие диабета';
-    }
-
-    final selectedIndex = v ?? state.diabet.selectedIndex;
-    final listDiabet = state.diabet.listDiabet;
-    final listBool =
-        _getListBool(length: listDiabet.length, selectedIndex: selectedIndex);
-
-    state = state.copyWith(
-      diabet: state.diabet.copyWith(
-        listDiabet: listDiabet,
-        listSelected: listBool,
-        selectedIndex: v,
-        error: error,
-        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-      ),
-    );
-
-    _saveState(isSaveState);
-  }
-
-  static List<String> _initYears() {
-    final listYear = <String>[];
-    final yearStart = DateTime.now().year - _MAX_AGE;
-    final yearEnd = DateTime.now().year - _MIN_AGE;
-    for (var i = yearEnd; i > yearStart; i--) {
-      listYear.add(i.toString());
-    }
-
-    return listYear;
-  }
-
-  static List<String> _initDayMonth({required int start, required int end}) {
-    final list = <String>[];
-    for (var i = start; i <= end; i++) {
-      if (i < 10) {
-        list.add('0$i');
-        continue;
-      }
-
-      list.add(i.toString());
-    }
-
-    return list;
-  }
-
-  String _getErrorValidBirthDay() {
-    final day = state.dateBirthday.day;
-    final month = state.dateBirthday.month;
-    final year = state.dateBirthday.year;
-    final isValidDay = day.isNotEmpty;
-    final isValidMonth = month.isNotEmpty;
-    final isValidYear = year.isNotEmpty;
-
-    var errorMsg = '';
-
-    if ((isValidDay && isValidMonth && isValidYear) &&
-        !'$year-$month-$day'.isDate()) {
-      errorMsg = 'Дата рождения указана некорректно';
-    }
-    if (isValidDay && isValidMonth && !isValidYear) {
-      errorMsg = 'Год не указан';
-    }
-    if (!isValidDay && isValidMonth && isValidYear) {
-      errorMsg = 'День не указан';
-    }
-    if (isValidDay && !isValidMonth && isValidYear) {
-      errorMsg = 'Месяц не указан';
-    }
-    if (!isValidDay && !isValidMonth && isValidYear) {
-      errorMsg = 'День и месяц не указан';
-    }
-    if (!isValidDay && isValidMonth && !isValidYear) {
-      errorMsg = 'День и год не указан';
-    }
-    if (isValidDay && !isValidMonth && !isValidYear) {
-      errorMsg = 'Месяц и год не указан';
-    }
-    if (!isValidDay && !isValidMonth && !isValidYear) {
-      errorMsg = 'Укажите дату рождения';
-    }
-
-    return errorMsg;
-  }
-
-/* from page */
   void setDate({EnumDate? enumDate, String? v, bool isSaveState = true}) {
     if (enumDate != null) {
       enumDate.map(
@@ -597,7 +176,7 @@ $baseText
         },
       );
     }
-    final error = _getErrorValidBirthDay();
+    final error = _getErrorValidBirthDay(state);
     final day = state.dateBirthday.day;
     final month = state.dateBirthday.month;
     final year = state.dateBirthday.year;
@@ -636,9 +215,74 @@ $baseText
 
     _saveState(isSaveState);
 
-    calcBmi();
+    _calcBmi();
 
     setCreatinine(null);
+  }
+
+  void setHeight(String? v, {bool isSaveState = true}) {
+    var error = '';
+
+    if (v?.isEmpty ?? true && state.height.result.isEmpty) {
+      error = 'Рост не указан';
+    }
+    state = state.copyWith(
+      height: state.height.copyWith(
+        result: v,
+        value: double.tryParse(v ?? ''),
+        error: error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      ),
+    );
+    _saveState(isSaveState);
+    _calcBmi();
+  }
+
+  void setWeight(String? v, {bool isSaveState = true}) {
+    var error = '';
+
+    error = _validWeight(v, state);
+
+    state = state.copyWith(
+      weight: state.weight.copyWith(
+        result: v,
+        value: error.isEmpty ? _parseValue(v,state) : null,
+        error: error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      ),
+    );
+
+    _saveState(isSaveState);
+    _calcBmi();
+  }
+
+  void changeTypeUnitWeight(EnumUnitWeight? value) {
+    state =
+        state.copyWith(weight: state.weight.copyWith(enumUnitWeight: value));
+  }
+
+  void setDiabetes(int? v, {bool isSaveState = true}) {
+    var error = '';
+    if (v == null && state.diabet.selectedIndex == null) {
+      error = 'Подтвердите отсутствие или наличие диабета';
+    }
+
+    final selectedIndex = v ?? state.diabet.selectedIndex;
+    final listDiabet = state.diabet.listDiabet;
+    final listBool =
+        _getListBool(length: listDiabet.length, selectedIndex: selectedIndex);
+
+    state = state.copyWith(
+      diabet: state.diabet.copyWith(
+        listDiabet: listDiabet,
+        listSelected: listBool,
+        selectedIndex: v,
+        error: error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      ),
+    );
+
+    _saveState(isSaveState);
   }
 
   void setDailyDiuresis(int? v, {bool isSaveState = true}) {
@@ -701,7 +345,7 @@ $baseText
   void setUrineOutput(String? v, {bool isSaveState = true}) {
     var error = '';
 
-    error = _validUrineOutput(v);
+    error = _validUrineOutput(v, state);
 
     state = state.copyWith(
       urine: state.urine.copyWith(
@@ -715,35 +359,10 @@ $baseText
     _saveState(isSaveState);
   }
 
-  String _validUrineOutput(String? v) {
-    if (v?.isEmpty ?? true && state.urine.result.isEmpty) {
-      return 'Не указано количестов выделяемой мочи';
-    }
-
-    final doubleValue = double.tryParse(v!) ?? -1;
-
-    if (doubleValue.isNegative) return 'Неправильное значение';
-
-    if (doubleValue.isMinValue(0)) {
-      return 'Указанное значение мочи не поддерживается приложением';
-    }
-    if (doubleValue.isMaxValue(3000)) {
-      return 'Указанное значение мочи не поддерживается приложением';
-    }
-
-    return '';
-  }
-
-  double _roundDouble(double value, int places) {
-    final mod = pow(10.0, places);
-
-    return (value * mod).round().toDouble() / mod;
-  }
-
   void setCreatinine(String? v, {bool isSaveState = true}) {
     var error = '';
     final vNew = v ?? state.creatinine.result;
-    error = _validCreatinine(v);
+    error = _validCreatinine(v, state);
     final enumValid = error.isEmpty ? EnumValid.valid : EnumValid.error;
     state = state.copyWith(
       creatinine: state.creatinine.copyWith(
@@ -754,82 +373,164 @@ $baseText
       ),
     );
 
+    _calcGfr();
     _saveState(isSaveState);
-    calcGfr();
   }
 
   void changeTypeCreatinine(EnumInputTypeCreatinine? value) {
     state = state.copyWith(
       creatinine: state.creatinine.copyWith(inputTypeCreatinine: value),
     );
+
+    setCreatinine(null);
   }
 
-  String _validCreatinine(String? v) {
-    if (v?.isEmpty ?? true && state.creatinine.result.isEmpty) {
-      return 'Креатинин не указан';
+  // void _upgradeCreatinine(String error) {
+  //   if (error.isEmpty) setCreatinine(state.value);
+  // }
+
+  void setActivity(int? v, {bool isSaveState = true}) {
+    var error = '';
+    if (v == null && state.activity.selectedIndex == null) {
+      error = _l.activity_not_selected;
     }
 
-    final doubleValue = double.tryParse(v!) ?? -1;
+    final selectedIndex = v ?? state.activity.selectedIndex;
+    final listActivity = state.activity.listActivity;
+    final listBool =
+        _getListBool(length: listActivity.length, selectedIndex: selectedIndex);
 
-    if (doubleValue.isNegative) return 'Неправильное значение';
-
-    if (doubleValue.isMinValue(0)) {
-      return 'Указанный креатинин не поддерживается приложением';
-    }
-    if (doubleValue.isMaxValue(3000)) {
-      return 'Указанный креатинин не поддерживается приложением';
-    }
-    if (state.dateBirthday.enumValid != EnumValid.valid) {
-      return 'Укажите дату рождения';
-    }
-    if (state.gender.enumValid != EnumValid.valid) {
-      return 'Укажите пол';
-    }
-
-    return '';
-  }
-
-  bool _isValidForCalcGfr() {
-    final isValidGender = state.gender.enumValid == EnumValid.valid;
-    final isValidDateBirthday = state.dateBirthday.enumValid == EnumValid.valid;
-
-    if (isValidGender && isValidDateBirthday) {
-      return true;
-    }
-
-    final baseText = _l.calculate_gfr_enter;
-
-    var changeText = '';
-
-    if (!isValidGender && isValidDateBirthday) {
-      changeText = '''
-$baseText
-* **Ваш пол**
-''';
-    } else if (isValidGender && !isValidDateBirthday) {
-      changeText = '''
-$baseText
-* **Дата рождения**
-''';
-    } else {
-      changeText = '''
-$baseText
-* **Ваш пол** 
-* **Дата рождения**
-''';
-    }
     state = state.copyWith(
-      gfr: state.gfr.copyWith(
-        enumResult: EnumResult.error,
-        markdownError: changeText,
+      activity: state.activity.copyWith(
+        listActivity: listActivity,
+        selectedIndex: v,
+        error: error,
+        listSelected: listBool,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
 
-    return false;
+    _saveState(isSaveState);
   }
 
-  void calcGfr() {
-    if (!_isValidForCalcGfr()) return;
+  void setCkd(int? v, {bool isSaveState = true}) {
+    var error = '';
+    if (v == null && state.ckd.selectedIndex == null) {
+      error = 'Стадия ХБП не выбрана';
+    }
+
+    final selectedIndex = v ?? state.ckd.selectedIndex;
+    final listCkd = state.ckd.listCkd;
+    final activeItem = selectedIndex != null ? listCkd[selectedIndex] : null;
+
+    final listBool = _getListBool(
+      length: listCkd.length,
+      selectedIndex: selectedIndex,
+    );
+    state = state.copyWith(
+      ckd: state.ckd.copyWith(
+        listCkd: listCkd,
+        selectedIndex: v,
+        listSelected: listBool,
+        enumCkdSelected: activeItem?.enumCkd,
+        error: error,
+        isShowCalcCreatinine: activeItem?.enumCkd == EnumCkd.calculate,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      ),
+    );
+
+    _saveState(isSaveState);
+  }
+
+  void _calcBmi() {
+    final errorMarkdown = _getErrorMarkdownValidCalcBmi(state);
+
+    if (errorMarkdown.isNotEmpty) {
+      state = state.copyWith(
+        bmi: state.bmi.copyWith(
+          enumResult: EnumResult.error,
+          markdownError: errorMarkdown,
+        ),
+      );
+
+      return;
+    }
+
+    final weight = state.weight.value!;
+    final height = state.height.value!;
+
+    final result = _roundDouble(weight / pow(height / 100, 2), 1);
+
+    final recomWeightMin =
+        EnumWeightStatus.normal.minValue * pow(height / 100, 2);
+    final recomWeightMax =
+        EnumWeightStatus.normal.maxValue * pow(height / 100, 2);
+
+    final bmiStatus = result >= EnumWeightStatus.obesity_4.minValue
+        ? EnumWeightStatus.obesity_4
+        : result >= EnumWeightStatus.obesity_3.minValue
+            ? EnumWeightStatus.obesity_3
+            : result >= EnumWeightStatus.obesity_2.minValue
+                ? EnumWeightStatus.obesity_2
+                : result >= EnumWeightStatus.obesity_1.minValue
+                    ? EnumWeightStatus.obesity_1
+                    : result >= EnumWeightStatus.overweight.minValue
+                        ? EnumWeightStatus.overweight
+                        : result >= EnumWeightStatus.normal.minValue
+                            ? EnumWeightStatus.normal
+                            : result >= EnumWeightStatus.mild_thinness.minValue
+                                ? EnumWeightStatus.mild_thinness
+                                : result >=
+                                        EnumWeightStatus
+                                            .moderate_thinness.minValue
+                                    ? EnumWeightStatus.moderate_thinness
+                                    : EnumWeightStatus.severe_thinness;
+
+    final enumBmiYear = state.dateBirthday.userYearCoarse > 20
+        ? EnumTypeCalcBmiPeople.adults
+        : EnumTypeCalcBmiPeople.children;
+
+    final userYear = state.dateBirthday.userYearFine;
+    final userMonth = state.dateBirthday.userMonth;
+
+    final resultMarkdown = '''
+
+## ${_getTypeCalcBmiPeople(enumBmiYear)}
+
+---
+Ваш возраст - **$userYear** ${_getTextYearRu(userYear)} **$userMonth** ${_getTextYearMonth(userMonth)}
+
+Ваш ИМТ составляет - **${AppUtilsNumber.getFormatNumber(num: result)}**
+
+Ваш вес находится в категории - **${_getBmiStatus(bmiStatus)}**
+
+### Ваш рекомендуемый вес:
+* Минимальный - **${AppUtilsNumber.getFormatNumber(num: recomWeightMin, numberDigitsAfterPoint: 0)} кг**
+* Максимальный - **${AppUtilsNumber.getFormatNumber(num: recomWeightMax, numberDigitsAfterPoint: 0)} кг**
+''';
+
+    state = state.copyWith(
+      bmi: state.bmi.copyWith(
+        markdownSuccess: resultMarkdown,
+        enumResult: EnumResult.success,
+      ),
+    );
+  }
+
+/* ****************************** */
+  void _calcGfr() {
+    final errorText = _getErrorMarkdownValidCalcGfr(state);
+
+    if (errorText.isNotEmpty) {
+      state = state.copyWith(
+        gfr: state.gfr.copyWith(
+          enumResult: EnumResult.error,
+          markdownError: errorText,
+        ),
+      );
+
+      return;
+    }
 
     final baseValueCreatinine = state.creatinine.value!;
 //  in mgDl
@@ -899,61 +600,9 @@ $baseText
       ),
     );
   }
-  // void _upgradeCreatinine(String error) {
-  //   if (error.isEmpty) setCreatinine(state.value);
-  // }
 
-  void setActivity(int? v, {bool isSaveState = true}) {
-    var error = '';
-    if (v == null && state.activity.selectedIndex == null) {
-      error = _l.activity_not_selected;
-    }
-
-    final selectedIndex = v ?? state.activity.selectedIndex;
-    final listActivity = state.activity.listActivity;
-    final listBool =
-        _getListBool(length: listActivity.length, selectedIndex: selectedIndex);
-
-    state = state.copyWith(
-      activity: state.activity.copyWith(
-        listActivity: listActivity,
-        selectedIndex: v,
-        error: error,
-        listSelected: listBool,
-        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-      ),
-    );
-
-    _saveState(isSaveState);
-  }
-
-  void setCkd(int? v, {bool isSaveState = true}) {
-    var error = '';
-    if (v == null && state.ckd.selectedIndex == null) {
-      error = 'Стадия ХБП не выбрана';
-    }
-
-    final selectedIndex = v ?? state.ckd.selectedIndex;
-    final listCkd = state.ckd.listCkd;
-    final activeItem = selectedIndex != null ? listCkd[selectedIndex] : null;
-
-    final listBool = _getListBool(
-      length: listCkd.length,
-      selectedIndex: selectedIndex,
-    );
-    state = state.copyWith(
-      ckd: state.ckd.copyWith(
-        listCkd: listCkd,
-        selectedIndex: v,
-        listSelected: listBool,
-        enumCkdSelected: activeItem?.enumCkd,
-        error: error,
-        isShowCalcCreatinine: activeItem?.enumCkd == EnumCkd.calculate,
-        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-      ),
-    );
-
-    _saveState(isSaveState);
+  void _saveState(bool isSaveState) {
+    if (isSaveState) _storage.setHealthProfileState(state);
   }
 
   void checkValid() {
@@ -1006,21 +655,5 @@ $baseText
     state = state.copyWith(
       markdownError: '',
     );
-  }
-
-  bool isValid() {
-    // final gender = _ref.read(genderProvider).enumValid == EnumResult.valid;
-    // final birthday =
-    //     _ref.read(dateBirthdayProvider).enumValid == EnumResult.valid;
-
-    // if (gender && birthday) {
-    //   return true;
-    // }
-
-    return false;
-  }
-
-  void _saveState(bool isSaveState) {
-    if (isSaveState) _storage.setHealthProfileState(state);
   }
 }

@@ -45,44 +45,47 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
 
     final errorMsg = stateCreatinine.error;
 
-    return Column(
-      children: [
-        const TitleSub(
-          text: 'Укажите свой креатинин',
-          dialogText:
-              'Мы используем эти сведения для расчета клубочковой фильтрации',
-        ),
-        Column(
-          children: [
-            const DropInputTypeCreatinine(),
-            const SizedBox(height: 10),
-            GestureDetector(
-              onTap: () => _showSnack(context),
-              child: TextField(
-                enabled: isEnabled,
-                controller: controller,
-                decoration: InputDecoration(
-                  labelText: _getNorma(type: inputTypeCreatinine, l: l),
-                  errorText: errorMsg.isEmpty
-                      ? null
-                      : isEnabled
-                          ? stateCreatinine.enumValid
-                              .maybeMapOrNullValue(error: stateCreatinine.error)
-                          : null,
-                  errorMaxLines: 2,
-                  suffixText: _getSuffix(type: inputTypeCreatinine, l: l),
+    return Visibility(
+      visible: isEnabled,
+      child: Column(
+        children: [
+          const TitleSub(
+            text: 'Укажите свой креатинин',
+            dialogText:
+                'Мы используем эти сведения для расчета клубочковой фильтрации',
+          ),
+          Column(
+            children: [
+              const DropInputTypeCreatinine(),
+              const SizedBox(height: 10),
+              GestureDetector(
+                onTap: () => _showSnack(context),
+                child: TextField(
+                  enabled: isEnabled,
+                  controller: controller,
+                  decoration: InputDecoration(
+                    labelText: _getNorma(type: inputTypeCreatinine, l: l),
+                    errorText: errorMsg.isEmpty
+                        ? null
+                        : isEnabled
+                            ? stateCreatinine.enumValid
+                                .maybeMapOrNullValue(error: stateCreatinine.error)
+                            : null,
+                    errorMaxLines: 2,
+                    suffixText: _getSuffix(type: inputTypeCreatinine, l: l),
+                  ),
+                  keyboardType: TextInputType.number,
+                  onChanged: notifier.setCreatinine,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(6),
+                    FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
+                  ],
                 ),
-                keyboardType: TextInputType.number,
-                onChanged: notifier.setCreatinine,
-                inputFormatters: [
-                  LengthLimitingTextInputFormatter(6),
-                  FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
-                ],
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 

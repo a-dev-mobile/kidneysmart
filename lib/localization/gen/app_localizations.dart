@@ -321,11 +321,11 @@ abstract class AppLocalizations {
   /// **'Источник'**
   String get data_source;
 
-  /// No description provided for @weight.
+  /// No description provided for @portion.
   ///
   /// In ru, this message translates to:
   /// **'Порция'**
-  String get weight;
+  String get portion;
 
   /// No description provided for @favorite.
   ///
@@ -524,6 +524,42 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Пропустить'**
   String get skip;
+
+  /// No description provided for @calculate.
+  ///
+  /// In ru, this message translates to:
+  /// **'Рассчитать'**
+  String get calculate;
+
+  /// No description provided for @date_of_birth.
+  ///
+  /// In ru, this message translates to:
+  /// **'Дата рождения'**
+  String get date_of_birth;
+
+  /// No description provided for @gender.
+  ///
+  /// In ru, this message translates to:
+  /// **'Пол'**
+  String get gender;
+
+  /// No description provided for @weight.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вес'**
+  String get weight;
+
+  /// No description provided for @height.
+  ///
+  /// In ru, this message translates to:
+  /// **'Рост'**
+  String get height;
+
+  /// No description provided for @creatinine.
+  ///
+  /// In ru, this message translates to:
+  /// **'Креатинин'**
+  String get creatinine;
 
   /// No description provided for @g.
   ///

@@ -53,5 +53,6 @@
   "calculate_bmi_enter": "To calculate BMI enter:",
   "male": "MALE",
   "female": "FEMALE",
+  "calculate": "Calculate",
   "g": "g"
 }
