@@ -32,7 +32,8 @@ class HealthProfilePage extends ConsumerWidget {
             title: const Text('Введите данные'),
             actions: [
               IconButton(
-                onPressed: () => ref.read(localeProvider.notifier).changeLocale(),
+                onPressed: () =>
+                    ref.read(localeProvider.notifier).changeLocale(),
                 icon: const Icon(Icons.language),
               ),
               IconButton(

@@ -43,7 +43,6 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
 
     final isEnabled = stateDailyDiuresis.isShowInput;
 
-
     return Visibility(
       visible: isEnabled,
       child: Column(

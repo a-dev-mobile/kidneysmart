@@ -68,8 +68,9 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
                     errorText: errorMsg.isEmpty
                         ? null
                         : isEnabled
-                            ? stateCreatinine.enumValid
-                                .maybeMapOrNullValue(error: stateCreatinine.error)
+                            ? stateCreatinine.enumValid.maybeMapOrNullValue(
+                                error: stateCreatinine.error,
+                              )
                             : null,
                     errorMaxLines: 2,
                     suffixText: _getSuffix(type: inputTypeCreatinine, l: l),

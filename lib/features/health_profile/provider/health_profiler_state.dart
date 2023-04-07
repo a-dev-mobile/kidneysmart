@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
-
 @immutable
 class HealthProfileState {
   /* init: false */
@@ -43,7 +42,7 @@ class HealthProfileState {
   /* init: const CalculateBmiModel() */
   final CalculateBmiModel bmi;
 
-    /* init: const CalculateGfrModel() */
+  /* init: const CalculateGfrModel() */
   final CalculateGfrModel gfr;
   /* init: '' */
   final String markdownError;

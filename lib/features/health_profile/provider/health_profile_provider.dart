@@ -246,7 +246,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     state = state.copyWith(
       weight: state.weight.copyWith(
         result: v,
-        value: error.isEmpty ? _parseValue(v,state) : null,
+        value: error.isEmpty ? _parseValue(v, state) : null,
         error: error,
         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),

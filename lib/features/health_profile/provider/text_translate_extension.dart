@@ -42,6 +42,7 @@ extension _TextTranslateExtension on HealthProfileNotifier {
         return 'месяцев';
     }
   }
+
   String _getBmiStatus(EnumWeightStatus status) {
     return status.mapValue(
       severe_thinness: 'Выраженный дефицит массы тела',
@@ -56,6 +57,7 @@ extension _TextTranslateExtension on HealthProfileNotifier {
       none: '',
     );
   }
+
   String _getTypeCalcBmiPeople(EnumTypeCalcBmiPeople enumBmiCalc) {
     return enumBmiCalc.mapValue(
       children: 'Расчет ИМТ для детей или подросков',
@@ -63,6 +65,7 @@ extension _TextTranslateExtension on HealthProfileNotifier {
       none: '',
     );
   }
+
   String _getCkdStage(EnumCkd stage) {
     return stage.mapValue(
       one: 'Stage I',

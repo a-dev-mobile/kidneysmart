@@ -8,7 +8,7 @@ extension _ValidExtension on HealthProfileNotifier {
       return 'Вес не указан';
     }
 
-    final doubleValue = _parseValue(v,state);
+    final doubleValue = _parseValue(v, state);
 
     if (doubleValue.isNegative) return 'Неправильное значение';
 
@@ -98,12 +98,12 @@ extension _ValidExtension on HealthProfileNotifier {
     if (doubleValue.isMaxValue(3000)) {
       return 'Указанный креатинин не поддерживается приложением';
     }
-    if (state.dateBirthday.enumValid != EnumValid.valid) {
-      return 'Укажите дату рождения';
-    }
-    if (state.gender.enumValid != EnumValid.valid) {
-      return 'Укажите пол';
-    }
+    // if (state.dateBirthday.enumValid != EnumValid.valid) {
+    //   return 'Укажите дату рождения';
+    // }
+    // if (state.gender.enumValid != EnumValid.valid) {
+    //   return 'Укажите пол';
+    // }
 
     return '';
   }

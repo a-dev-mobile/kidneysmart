@@ -8,8 +8,8 @@ import 'package:nutrition/core/services/db/db.dart';
 class FeaturesDbModel {
 /* init: const OnboardingDbModel()  */
   final OnboardingDbModel onboarding;
-/* init: const RegistrationNameDbModel()  */
-  final RegistrationNameDbModel registration_name;
+/* init: const GfrDbModel()  */
+  final GfrDbModel gfr;
 
   // end
    
@@ -20,14 +20,14 @@ class FeaturesDbModel {
 //  *************************************
   const FeaturesDbModel({
     this.onboarding = const OnboardingDbModel(),
-    this.registration_name = const RegistrationNameDbModel(),
+    this.gfr = const GfrDbModel(),
   });
 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'onboarding': onboarding.toMap(), 
-      'registration_name': registration_name.toMap(), 
+      'gfr': gfr.toMap(), 
     };
   }
 
@@ -37,17 +37,17 @@ class FeaturesDbModel {
 
     return FeaturesDbModel(
       onboarding: map['onboarding'] != null ? OnboardingDbModel.fromMap(Map<String, dynamic>.from(map['onboarding'] as Map)) : const OnboardingDbModel(), 
-      registration_name: map['registration_name'] != null ? RegistrationNameDbModel.fromMap(Map<String, dynamic>.from(map['registration_name'] as Map)) : const RegistrationNameDbModel(), 
+      gfr: map['gfr'] != null ? GfrDbModel.fromMap(Map<String, dynamic>.from(map['gfr'] as Map)) : const GfrDbModel(), 
     );
   }
 
   FeaturesDbModel copyWith({
     OnboardingDbModel? onboarding,
-    RegistrationNameDbModel? registration_name,
+    GfrDbModel? gfr,
   }) {
     return FeaturesDbModel(
       onboarding: onboarding ?? this.onboarding, 
-      registration_name: registration_name ?? this.registration_name, 
+      gfr: gfr ?? this.gfr, 
     );
   }
 
@@ -60,19 +60,19 @@ class FeaturesDbModel {
         (other.runtimeType == runtimeType &&
             other is FeaturesDbModel &&
             (identical(other.onboarding, onboarding) || other.onboarding == onboarding) && 
-            (identical(other.registration_name, registration_name) || other.registration_name == registration_name));
+            (identical(other.gfr, gfr) || other.gfr == gfr));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         onboarding,
-        registration_name,
+        gfr,
 ]);
 
   @override
   String toString() {
-    return 'FeaturesDbModel(onboarding: $onboarding, registration_name: $registration_name, )';
+    return 'FeaturesDbModel(onboarding: $onboarding, gfr: $gfr, )';
     }
 
 }

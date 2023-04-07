@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// {@endtemplate}
 class AppErrorPage extends StatelessWidget {
   const AppErrorPage({
-    required this.msg,
+    this.msg = '',
     super.key,
   });
   final String msg;
@@ -14,7 +14,7 @@ class AppErrorPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         body: SafeArea(
           child: Center(
-            child: Text(msg),
+            child: Text('Error $msg'),
           ),
         ),
       );

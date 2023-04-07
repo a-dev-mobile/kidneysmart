@@ -2,12 +2,12 @@
 enum EnumCkd with Comparable<EnumCkd> {
   one(90, 100000),
   two(60, 89),
-  threeA(45,59),
+  threeA(45, 59),
   threeB(30, 44),
   four(15, 29),
-  five(-10000,15),
-  calculate(0,0),
-  none(-1,-1);
+  five(-10000, 15),
+  calculate(0, 0),
+  none(-1, -1);
 
   const EnumCkd(this.minValue, this.maxValue);
   final double minValue;

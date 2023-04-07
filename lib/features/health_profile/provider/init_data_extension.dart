@@ -8,7 +8,6 @@ extension _InitDataExtension on HealthProfileNotifier {
   static const _MIN_HEIGHT = 50;
   static const _MAX_HEIGHT = 220;
 
-
   List<String> _initYears() {
     final listYear = <String>[];
     final yearStart = DateTime.now().year - _MAX_AGE;
@@ -93,16 +92,16 @@ extension _InitDataExtension on HealthProfileNotifier {
     ];
   }
 
-    List<HypertensionItemModel> get _initHypertension {
+  List<HypertensionItemModel> get _initHypertension {
     return <HypertensionItemModel>[
-    HypertensionItemModel(
-      enumHypertension: EnumHypertension.yes,
-      value: _l.yes_caps,
-    ),
-    HypertensionItemModel(
-      enumHypertension: EnumHypertension.no,
-      value: _l.no_caps,
-    ),
-  ];
+      HypertensionItemModel(
+        enumHypertension: EnumHypertension.yes,
+        value: _l.yes_caps,
+      ),
+      HypertensionItemModel(
+        enumHypertension: EnumHypertension.no,
+        value: _l.no_caps,
+      ),
+    ];
   }
 }

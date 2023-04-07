@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/services/db/db.dart';
 
 @immutable
-class OnboardingDbModel {
+class GfrDbModel {
   /* init: const InfoUrlModel() */
   final InfoUrlModel info;
   // end
@@ -15,7 +15,7 @@ class OnboardingDbModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const OnboardingDbModel({
+  const GfrDbModel({
     this.info = const InfoUrlModel(),
   });
 
@@ -27,30 +27,30 @@ class OnboardingDbModel {
   }
 
 
-  factory OnboardingDbModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const OnboardingDbModel();
+  factory GfrDbModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const GfrDbModel();
 
-    return OnboardingDbModel(
+    return GfrDbModel(
       info: map['info'] != null ? InfoUrlModel.fromMap(Map<String, dynamic>.from(map['info'] as Map)) : const InfoUrlModel(), 
     );
   }
 
-  OnboardingDbModel copyWith({
+  GfrDbModel copyWith({
     InfoUrlModel? info,
   }) {
-    return OnboardingDbModel(
+    return GfrDbModel(
       info: info ?? this.info, 
     );
   }
 
   String toJson() => json.encode(toMap());  
-  factory OnboardingDbModel.fromJson(String source) => OnboardingDbModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
+  factory GfrDbModel.fromJson(String source) => GfrDbModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
    
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is OnboardingDbModel &&
+            other is GfrDbModel &&
             (identical(other.info, info) || other.info == info));
   }
 
@@ -62,7 +62,7 @@ class OnboardingDbModel {
 
   @override
   String toString() {
-    return 'OnboardingDbModel(info: $info, )';
+    return 'GfrDbModel(info: $info, )';
     }
 
 }

@@ -54,8 +54,8 @@ class OndoardingNotifier extends StateNotifier<OnboardingState> {
     final realtimeDb = await _firestore.getRealtimeDbModel(storage: _storage);
 
     final url = lang.mapValue(
-      en: realtimeDb.features.onboarding.info.url_en,
-      ru: realtimeDb.features.onboarding.info.url_ru,
+      en: realtimeDb.features.onboarding.info.en,
+      ru: realtimeDb.features.onboarding.info.ru,
     );
 
     try {
