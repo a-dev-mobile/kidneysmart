@@ -4,10 +4,10 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:universal_io/io.dart';
 
 /// DeviceInfo Singleton class
-class DeviceInfo {
-  factory DeviceInfo() => _internalSingleton;
-  DeviceInfo._internal();
-  static final DeviceInfo _internalSingleton = DeviceInfo._internal();
+class AppInfo {
+  factory AppInfo() => _internalSingleton;
+  AppInfo._internal();
+  static final AppInfo _internalSingleton = AppInfo._internal();
 
   static Future<String> getUserAgent() async {
     final deviceInfo = DeviceInfoPlugin();
@@ -45,9 +45,9 @@ class DeviceInfo {
     return packageInfo.packageName;
   }
 
-  static Future<String> getBuildNumber() async {
+  static Future<int> getBuildNumber() async {
     final packageInfo = await PackageInfo.fromPlatform();
 
-    return packageInfo.buildNumber;
+    return int.parse(packageInfo.buildNumber);
   }
 }

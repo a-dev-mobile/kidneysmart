@@ -17,3 +17,8 @@ class DartDefine {
   static const API_KEY_APP_METRIC =
       String.fromEnvironment('API_KEY_APP_METRIC');
 }
+
+class GlobalDB {
+  static const name = 'v_1.db';
+  static const assetsPath = 'assets/db/$name';
+}

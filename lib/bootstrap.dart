@@ -10,9 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/info/device_info.dart';
+import 'package:nutrition/core/info/app_info.dart';
 import 'package:nutrition/core/log/log.dart';
-import 'package:nutrition/core/services/db/db.dart';
+import 'package:nutrition/core/services/db/firebase/firebase.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/firebase_options.dart';
 import 'package:nutrition/global.dart';
@@ -115,8 +115,8 @@ Future<void> _recordError(dynamic exception, StackTrace stack) async {
 /* ****************************** */
 
 Future<void> _showSettingAppInLog() async {
-  final userAgent = await DeviceInfo.getUserAgent();
-  final packageName = await DeviceInfo.getPackageName();
+  final userAgent = await AppInfo.getUserAgent();
+  final packageName = await AppInfo.getPackageName();
   log.wtf(
     'IS_DEBUG_MENU_ENABLED = ${DartDefine.IS_DEBUG_MENU_ENABLED} | IS_ANALYTICS_ENABLED = ${DartDefine.IS_ANALYTICS_ENABLED}\n$packageName\n$userAgent',
   );

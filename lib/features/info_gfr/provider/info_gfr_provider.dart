@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/enum/enum.dart';
-import 'package:nutrition/core/services/db/db.dart';
+import 'package:nutrition/core/services/db/firebase/firebase.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/network/network_client_service.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
@@ -66,7 +66,6 @@ class InfoGfrNotifier extends StateNotifier<InfoGfrState> {
 
       if (response.statusCode == 200) {
         state = state.copyWith(
-          
           enumResult: EnumResult.success,
           url: url,
           textMarkdown: response.data.toString(),

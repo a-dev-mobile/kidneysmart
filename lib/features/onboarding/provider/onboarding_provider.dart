@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:nutrition/core/enum/enum_lang.dart';
-import 'package:nutrition/core/services/db/db.dart';
+import 'package:nutrition/core/services/db/firebase/firebase.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 
 import 'package:nutrition/core/services/network/network_client_service.dart';

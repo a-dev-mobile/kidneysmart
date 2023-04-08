@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
-import 'package:nutrition/core/services/db/db.dart';
+import 'package:nutrition/core/services/db/firebase/firebase.dart';
 
 @immutable
 class RealtimeDbModel {

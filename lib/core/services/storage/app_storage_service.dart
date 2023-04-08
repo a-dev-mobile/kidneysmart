@@ -5,7 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/log/log.dart';
-import 'package:nutrition/core/services/db/db.dart';
+import 'package:nutrition/core/services/db/firebase/firebase.dart';
 import 'package:nutrition/core/services/navigation/models/app_state.dart';
 import 'package:nutrition/core/services/theme/theme_state.dart';
 import 'package:nutrition/core/valid/field_string_valid.dart';

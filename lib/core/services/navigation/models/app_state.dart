@@ -9,7 +9,10 @@ class AppState {
   final bool isFirstTime;
   /* init: false */
   final bool isOnboardingCompleted;
-
+  /* init: 1 */
+  final int buildApp;
+/* init: 1 */
+  final int versionDb;
   // end
    
 //          --TURN_GEN--
@@ -20,6 +23,8 @@ class AppState {
   const AppState({
     this.isFirstTime = true,
     this.isOnboardingCompleted = false,
+    this.buildApp = 1,
+    this.versionDb = 1,
   });
 
 
@@ -27,6 +32,8 @@ class AppState {
     return <String, dynamic>{
       'isFirstTime': isFirstTime, 
       'isOnboardingCompleted': isOnboardingCompleted, 
+      'buildApp': buildApp, 
+      'versionDb': versionDb, 
     };
   }
 
@@ -37,16 +44,22 @@ class AppState {
     return AppState(
       isFirstTime: map['isFirstTime'] as bool? ?? true, 
       isOnboardingCompleted: map['isOnboardingCompleted'] as bool? ?? false, 
+      buildApp: (map['buildApp'] as num?)?.toInt() ?? 1, 
+      versionDb: (map['versionDb'] as num?)?.toInt() ?? 1, 
     );
   }
 
   AppState copyWith({
     bool? isFirstTime,
     bool? isOnboardingCompleted,
+    int? buildApp,
+    int? versionDb,
   }) {
     return AppState(
       isFirstTime: isFirstTime ?? this.isFirstTime, 
       isOnboardingCompleted: isOnboardingCompleted ?? this.isOnboardingCompleted, 
+      buildApp: buildApp ?? this.buildApp, 
+      versionDb: versionDb ?? this.versionDb, 
     );
   }
 
@@ -59,7 +72,9 @@ class AppState {
         (other.runtimeType == runtimeType &&
             other is AppState &&
             (identical(other.isFirstTime, isFirstTime) || other.isFirstTime == isFirstTime) && 
-            (identical(other.isOnboardingCompleted, isOnboardingCompleted) || other.isOnboardingCompleted == isOnboardingCompleted));
+            (identical(other.isOnboardingCompleted, isOnboardingCompleted) || other.isOnboardingCompleted == isOnboardingCompleted) && 
+            (identical(other.buildApp, buildApp) || other.buildApp == buildApp) && 
+            (identical(other.versionDb, versionDb) || other.versionDb == versionDb));
   }
 
   @override
@@ -67,11 +82,13 @@ class AppState {
         runtimeType,
         isFirstTime,
         isOnboardingCompleted,
+        buildApp,
+        versionDb,
 ]);
 
   @override
   String toString() {
-    return 'AppState(isFirstTime: $isFirstTime, isOnboardingCompleted: $isOnboardingCompleted, )';
+    return 'AppState(isFirstTime: $isFirstTime, isOnboardingCompleted: $isOnboardingCompleted, buildApp: $buildApp, versionDb: $versionDb, )';
     }
 
 }

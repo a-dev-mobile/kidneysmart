@@ -15,6 +15,7 @@ import 'package:nutrition/features/onboarding/vew/onboarding_page.dart';
 import 'package:nutrition/features/overlay_widget/view/view.dart';
 import 'package:nutrition/features/registration/name/name.dart';
 import 'package:nutrition/features/splash/splash.dart';
+import 'package:nutrition/features/update_db/update_db.dart';
 import 'package:nutrition/global.dart';
 
 final appRouterServiceProvider = Provider<AppRouterService>((ref) {
@@ -95,6 +96,14 @@ class AppRouterService {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const InfoGfrPage(),
+            ),
+          ),
+           GoRoute(
+            path: UpdateDbPage.path,
+            name: UpdateDbPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const UpdateDbPage(),
             ),
           ),
         ],

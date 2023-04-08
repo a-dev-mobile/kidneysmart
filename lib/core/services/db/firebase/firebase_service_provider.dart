@@ -2,13 +2,17 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/info/device_info.dart';
+import 'package:nutrition/core/info/app_info.dart';
 import 'package:nutrition/core/log/log.dart';
-import 'package:nutrition/core/services/db/db.dart';
+import 'package:nutrition/core/services/db/firebase/firebase.dart';
 
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:universal_io/io.dart';
 
 final firebaseServiceProvider = Provider<FirebaseServiceProvider>((ref) {
   throw UnimplementedError();
@@ -18,17 +22,17 @@ class FirebaseServiceProvider {
   late final FirebaseFirestore _fireStoreDb;
   late final FirebaseDatabase _realtimeDb;
 
-  FireStoreDbModel _firestoreDbModel = const FireStoreDbModel();
+  FireStoreDbModel _firestoreOnlineDbModel = const FireStoreDbModel();
 
   // int get onlineDbUpdateVersion => _onlineVersionRealtimeDb;
-  String _buildNumberApp = '1';
+  int _buildNumberApp = 1;
   Future<FirebaseServiceProvider> load() async {
     _fireStoreDb = FirebaseFirestore.instance;
     _realtimeDb = FirebaseDatabase.instance;
 
-    _firestoreDbModel = await _getFirestoreDbModel();
+    _firestoreOnlineDbModel = await _getFirestoreDbModel();
 
-    _buildNumberApp = await DeviceInfo.getBuildNumber();
+    _buildNumberApp = await AppInfo.getBuildNumber();
 
     return this;
   }
@@ -37,7 +41,7 @@ class FirebaseServiceProvider {
     try {
       final doc = (await _fireStoreDb
               .collection('app_build_number')
-              .doc(_buildNumberApp)
+              .doc(_buildNumberApp.toString())
               .get())
           .data();
 
@@ -49,20 +53,44 @@ class FirebaseServiceProvider {
     }
   }
 
+  int getVersionOnlineDb() {
+    return _firestoreOnlineDbModel.version_sql_db;
+  }
+
+  /// url storage
+  String getUrlDb() {
+    final build = _buildNumberApp;
+    final versionDb = _firestoreOnlineDbModel.version_sql_db;
+
+    return 'https://storage.googleapis.com/prod-ckd-nutrition.appspot.com/db/app_build_$build/v_$versionDb.db';
+  }
+
+  Future<DownloadTask> downloadDb() async {
+    final httpsReference = FirebaseStorage.instance.refFromURL(getUrlDb());
+    final versionDb = _firestoreOnlineDbModel.version_sql_db;
+    final dbPath = await getDatabasesPath();
+
+    final file = File(join(dbPath, 'v_$versionDb.db'));
+
+    return httpsReference.writeToFile(file);
+  }
+
   Future<RealtimeDbModel> getRealtimeDbModel({
     required AppStorageService storage,
   }) async {
     final firestoreOfflineDb = storage.getFirestoreDbModel();
 
     final versionOfflineRealtimeDB = firestoreOfflineDb.version_realtime_db;
-    final versionOnlineRealtimeDB = _firestoreDbModel.version_realtime_db;
+    final versionOnlineRealtimeDB = _firestoreOnlineDbModel.version_realtime_db;
 
     // choice from whom take data
     if (versionOfflineRealtimeDB < versionOnlineRealtimeDB) {
       // do not save in the debug to test queries
       final realmDb = await _getOnlineRealmDb();
 
-      if (kReleaseMode) await storage.setFirestoreDbModel(_firestoreDbModel);
+      if (kReleaseMode) {
+        await storage.setFirestoreDbModel(_firestoreOnlineDbModel);
+      }
       if (kReleaseMode) await storage.setRealtimeDbModel(realmDb);
 
       return realmDb;
