@@ -10,9 +10,10 @@ class InfoGfrState {
   /* init: EnumResult.init */
   final EnumResult enumResult;
   /* init: '' */
-  final String textHtml;
+  final String desc;
   /* init: '' */
-  final String url;
+  final String title;
+
   // end
    
 //          --TURN_GEN--
@@ -22,16 +23,16 @@ class InfoGfrState {
 //  *************************************
   const InfoGfrState({
     this.enumResult = EnumResult.init,
-    this.textHtml = '',
-    this.url = '',
+    this.desc = '',
+    this.title = '',
   });
 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enumResult': enumResult.index, 
-      'textHtml': textHtml, 
-      'url': url, 
+      'desc': desc, 
+      'title': title, 
     };
   }
 
@@ -41,20 +42,20 @@ class InfoGfrState {
 
     return InfoGfrState(
       enumResult: map['enumResult'] != null ? EnumResult.values[map['enumResult'] as int] : EnumResult.init, 
-      textHtml: map['textHtml'] as String? ?? '', 
-      url: map['url'] as String? ?? '', 
+      desc: map['desc'] as String? ?? '', 
+      title: map['title'] as String? ?? '', 
     );
   }
 
   InfoGfrState copyWith({
     EnumResult? enumResult,
-    String? textHtml,
-    String? url,
+    String? desc,
+    String? title,
   }) {
     return InfoGfrState(
       enumResult: enumResult ?? this.enumResult, 
-      textHtml: textHtml ?? this.textHtml, 
-      url: url ?? this.url, 
+      desc: desc ?? this.desc, 
+      title: title ?? this.title, 
     );
   }
 
@@ -67,21 +68,21 @@ class InfoGfrState {
         (other.runtimeType == runtimeType &&
             other is InfoGfrState &&
             (identical(other.enumResult, enumResult) || other.enumResult == enumResult) && 
-            (identical(other.textHtml, textHtml) || other.textHtml == textHtml) && 
-            (identical(other.url, url) || other.url == url));
+            (identical(other.desc, desc) || other.desc == desc) && 
+            (identical(other.title, title) || other.title == title));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         enumResult,
-        textHtml,
-        url,
+        desc,
+        title,
 ]);
 
   @override
   String toString() {
-    return 'InfoGfrState(enumResult: $enumResult, textHtml: $textHtml, url: $url, )';
+    return 'InfoGfrState(enumResult: $enumResult, desc: $desc, title: $title, )';
     }
 
 }

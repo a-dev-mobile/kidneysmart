@@ -1,6 +1,8 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:nutrition/core/enum/enum_lang.dart';
+
 import 'package:nutrition/core/services/db/firebase/firebase.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 
@@ -45,34 +47,34 @@ class OndoardingNotifier extends StateNotifier<OnboardingState> {
     _go.router.goNamed(RegistrationNamePage.name);
   }
 
-  Future<void> load() async {
-    final lang = EnumLang.fromValue(
-      _loc.localeName,
-      fallback: EnumLang.ru,
-    );
+  void load()  {
+    // final lang = EnumLang.fromValue(
+    //   _loc.localeName,
+    //   fallback: EnumLang.ru,
+    // );
 
-    final realtimeDb = await _firestore.getRealtimeDbModel(storage: _storage);
+    // final realtimeDb = await _firestore.getRealtimeDbModel(storage: _storage);
 
-    final url = lang.mapValue(
-      en: realtimeDb.features.onboarding.info.en,
-      ru: realtimeDb.features.onboarding.info.ru,
-    );
+    // final url = lang.mapValue(
+    //   en: realtimeDb.features.onboarding.info.en,
+    //   ru: realtimeDb.features.onboarding.info.ru,
+    // );
 
     try {
-      final response = await _client.request<dynamic>(
-        method: Method.get,
-        url: url,
-      );
+      // final response = await _client.request<dynamic>(
+      //   method: Method.get,
+      //   url: url,
+      // );
 
-      if (response.statusCode == 200) {
-        state = OnboardingState.success(
-          textMarkdown: response.data.toString(),
-        );
+      // if (response.statusCode == 200) {
+      //   state = OnboardingState.success(
+      //     textMarkdown: response.data.toString(),
+      //   );
 
-        return;
-      } else {
-        state = const OnboardingState.error('Wrong page address');
-      }
+      //   return;
+      // } else {
+      //   state = const OnboardingState.error('Wrong page address');
+      // }
     } on Object catch (e, stackTrace) {
       state = OnboardingState.error(e.toString());
 

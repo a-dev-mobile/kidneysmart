@@ -3,13 +3,11 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/info/app_info.dart';
 import 'package:nutrition/core/log/log.dart';
 import 'package:nutrition/core/services/db/firebase/firebase.dart';
 
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:universal_io/io.dart';
 
 final firebaseServiceProvider = Provider<FirebaseServiceProvider>((ref) {
@@ -52,13 +50,13 @@ class FirebaseServiceProvider {
   }
 
   int getVersionOnlineDb() {
-    return _firestoreOnlineDbModel.version_sql_db;
+    return _firestoreOnlineDbModel.db_version;
   }
 
   /// url storage
   String getUrlDb() {
     final build = _buildNumberApp;
-    final versionDb = _firestoreOnlineDbModel.version_sql_db;
+    final versionDb = _firestoreOnlineDbModel.db_version;
 
     return 'https://storage.googleapis.com/prod-ckd-nutrition.appspot.com/db/app_build_$build/v_$versionDb.db';
   }
@@ -76,30 +74,31 @@ class FirebaseServiceProvider {
     return httpsReference.writeToFile(File(path));
   }
 
-  Future<RealtimeDbModel> getRealtimeDbModel({
-    required AppStorageService storage,
-  }) async {
-    final firestoreOfflineDb = storage.getFirestoreDbModel();
+  // Future<RealtimeDbModel> getRealtimeDbModel({
+  //   required AppStorageService storage,
+  // }) async {
+  //   final firestoreOfflineDb = storage.getFirestoreDbModel();
 
-    final versionOfflineRealtimeDB = firestoreOfflineDb.version_realtime_db;
-    final versionOnlineRealtimeDB = _firestoreOnlineDbModel.version_realtime_db;
+  //   final versionOfflineRealtimeDB = firestoreOfflineDb.version_realtime_db;
+  //   final versionOnlineRealtimeDB = _firestoreOnlineDbModel.version_realtime_db;
 
-    // choice from whom take data
-    if (versionOfflineRealtimeDB < versionOnlineRealtimeDB) {
-      // do not save in the debug to test queries
-      final realmDb = await _getOnlineRealmDb();
+  //   // choice from whom take data
+  //   if (versionOfflineRealtimeDB < versionOnlineRealtimeDB) {
+  //     // do not save in the debug to test queries
+  //     final realmDb = await _getOnlineRealmDb();
 
-      if (kReleaseMode) {
-        await storage.setFirestoreDbModel(_firestoreOnlineDbModel);
-      }
-      if (kReleaseMode) await storage.setRealtimeDbModel(realmDb);
+  //     if (kReleaseMode) {
+  //       await storage.setFirestoreDbModel(_firestoreOnlineDbModel);
+  //     }
+  //     if (kReleaseMode) await storage.setRealtimeDbModel(realmDb);
 
-      return realmDb;
-    } else {
-      return storage.getRealtimeDbModel();
-    }
-  }
+  //     return realmDb;
+  //   } else {
+  //     return storage.getRealtimeDbModel();
+  //   }
+  // }
 
+  // ignore: unused_element
   Future<RealtimeDbModel> _getOnlineRealmDb() async {
     try {
       final ref = _realtimeDb.ref();

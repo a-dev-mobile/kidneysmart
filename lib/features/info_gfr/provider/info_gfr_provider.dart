@@ -8,6 +8,7 @@ import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/info_gfr/info_gfr.dart';
 import 'package:nutrition/global.dart';
 import 'package:nutrition/localization/localization.dart';
+import 'package:sqflite/sqflite.dart';
 
 final infoGfrProvider =
     StateNotifierProvider.autoDispose<InfoGfrNotifier, InfoGfrState>(
@@ -51,19 +52,22 @@ class InfoGfrNotifier extends StateNotifier<InfoGfrState> {
 
   bool _isDarkTheme = false;
 
-
-
-
-
-
   /// preload
   Future<void> load() async {
-    // final lang = EnumLang.fromValue(
-    //   _l.localeName,
-    //   fallback: EnumLang.en,
-    // );
+    final lang = EnumLang.fromValue(
+      _l.localeName,
+      fallback: EnumLang.en,
+    );
 
     _isDarkTheme = _storage.getThemeState().themeMode == ThemeMode.dark;
+    final dbPath = _storage.getAppState().dbPathUpdate;
+    final db = await openDatabase(dbPath);
+
+    final list = await db.rawQuery('SELECT * from info');
+    final title = list.first['${lang.value}_title'].toString();
+    final desc = list.first['${lang.value}_description'].toString();
+ 
+    // print(list);
 
     // final realtimeDb = await _firebase.getRealtimeDbModel(storage: _storage);
 
@@ -71,10 +75,10 @@ class InfoGfrNotifier extends StateNotifier<InfoGfrState> {
     //   en: realtimeDb.features.gfr.info.en,
     //   ru: realtimeDb.features.gfr.info.ru,
     // );
-    await Future<void>.delayed(const Duration(seconds: 1));
 
-    state = state.copyWith(
-      textHtml: getThemeHtmlText(body: _html, isDark: _isDarkTheme),
+
+    state = state.copyWith(title: title,
+      desc: getThemeHtmlText(body: desc, isDark: _isDarkTheme),
       enumResult: EnumResult.success,
     );
     try {
@@ -100,14 +104,6 @@ class InfoGfrNotifier extends StateNotifier<InfoGfrState> {
     // );
   }
 
-
-
-
-
-
-
-
-
   static String getThemeHtmlText({required String body, bool isDark = false}) {
     return '''
 <html>
@@ -125,9 +121,5 @@ $body
 ''';
   }
 
-  static const _html = '''
-
-
-<ul><li><a href="https://www.ncbi.nlm.nih.gov/pubmed/16339095">Rutgeerts P, Sandborn WJ, Feagan BG, Reinisch W, et al. Infliximab for induction and maintenance therapy for ulcerative colitis. N Engl J Med. 2005 Dec 8;353(23):2462-76</a></li><li>Рекомендации Российской гастроэнтерологической ассоциации и Ассоциации колопроктологов России по диагностике и лечению взрослых больных язвенным колитом // Российский журнал Гастроэнтерологии, Гепатологии, Колопроктологии 1'2015</li></ul>
-''';
+  
 }

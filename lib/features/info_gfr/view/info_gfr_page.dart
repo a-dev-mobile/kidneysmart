@@ -25,13 +25,13 @@ class InfoGfrPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Информация'),
+        title: Text(state.title),
       ),
       body: SafeArea(
         child: state.enumResult.maybeMap(
           orElse: () => const AppLoadPage(),
           success: () => WebViewWidget(
-            controller: controller(context, state.textHtml),
+            controller: controller(context, state.desc),
           ),
         ),
       ),

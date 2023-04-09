@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/core/log/log.dart';
@@ -68,9 +67,9 @@ class UpdateDbNotifier extends StateNotifier<UpdateDbState> {
 
     appState = appState.copyWith(dbUrl: urlDb, dbPathUpdate: path);
 // сохраняем тольков релизе
-    if (kReleaseMode) {
+    // if (kReleaseMode) {
       appState = appState.copyWith(dbVersion: versionDb);
-    }
+    // }
 
     await _storage.setAppState(appState);
     try {

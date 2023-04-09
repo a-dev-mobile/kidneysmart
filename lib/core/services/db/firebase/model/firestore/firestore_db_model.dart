@@ -10,11 +10,9 @@ class FireStoreDbModel {
 
 
 
-/* init: 1  */
-  final int version_realtime_db;
 
 /* init: 1  */
-  final int version_sql_db;
+  final int db_version;
 
   // end
    
@@ -24,15 +22,13 @@ class FireStoreDbModel {
 //         GENERATED CODE
 //  *************************************
   const FireStoreDbModel({
-    this.version_realtime_db = 1,
-    this.version_sql_db = 1,
+    this.db_version = 1,
   });
 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'version_realtime_db': version_realtime_db, 
-      'version_sql_db': version_sql_db, 
+      'db_version': db_version, 
     };
   }
 
@@ -41,18 +37,15 @@ class FireStoreDbModel {
     if (map == null) return const FireStoreDbModel();
 
     return FireStoreDbModel(
-      version_realtime_db: (map['version_realtime_db'] as num?)?.toInt() ?? 1, 
-      version_sql_db: (map['version_sql_db'] as num?)?.toInt() ?? 1, 
+      db_version: (map['db_version'] as num?)?.toInt() ?? 1, 
     );
   }
 
   FireStoreDbModel copyWith({
-    int? version_realtime_db,
-    int? version_sql_db,
+    int? db_version,
   }) {
     return FireStoreDbModel(
-      version_realtime_db: version_realtime_db ?? this.version_realtime_db, 
-      version_sql_db: version_sql_db ?? this.version_sql_db, 
+      db_version: db_version ?? this.db_version, 
     );
   }
 
@@ -64,20 +57,18 @@ class FireStoreDbModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is FireStoreDbModel &&
-            (identical(other.version_realtime_db, version_realtime_db) || other.version_realtime_db == version_realtime_db) && 
-            (identical(other.version_sql_db, version_sql_db) || other.version_sql_db == version_sql_db));
+            (identical(other.db_version, db_version) || other.db_version == db_version));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        version_realtime_db,
-        version_sql_db,
+        db_version,
 ]);
 
   @override
   String toString() {
-    return 'FireStoreDbModel(version_realtime_db: $version_realtime_db, version_sql_db: $version_sql_db, )';
+    return 'FireStoreDbModel(db_version: $db_version, )';
     }
 
 }
