@@ -50,6 +50,9 @@ class GlobalString {
         color: #E1E2E2;
 
       }
+   a { color: #90CAF9; } /* CSS link color */
+
+    a:visited {color: #929597; } /* visited link */
     </style>
 ''';
 }

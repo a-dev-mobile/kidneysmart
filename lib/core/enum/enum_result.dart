@@ -1,7 +1,7 @@
 // turnGen
 enum EnumResult with Comparable<EnumResult> {
   init('init'),
-  success('valid'),
+  success('success'),
   error('error');
 
   const EnumResult(this.value);
