@@ -12,6 +12,7 @@ export 'provider/enum/enum_unit_weight.dart';
 export 'provider/enum/enum_weight_status.dart';
 export 'provider/health_profile_provider.dart';
 export 'provider/health_profiler_state.dart';
+
 export 'provider/model/activity_item_model.dart';
 export 'provider/model/activity_model.dart';
 export 'provider/model/calculate_bmi_model.dart';
@@ -31,6 +32,7 @@ export 'provider/model/hypertension_item_model.dart';
 export 'provider/model/hypertension_model.dart';
 export 'provider/model/urine_model.dart';
 export 'provider/model/weight_model.dart';
+
 export 'view/health_profile_page.dart';
 export 'view/view.dart';
 export 'view/widgets/btn_activity.dart';

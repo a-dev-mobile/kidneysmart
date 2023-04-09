@@ -4,12 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/core/services/theme/theme_state.dart';
 
-final themeProvider = StateNotifierProvider<ThemeController, ThemeState>(
-  (ref) => ThemeController(storage: ref.read(appStorageServiceProvider)),
+final themeProvider = StateNotifierProvider<ThemeProvider, ThemeState>(
+  (ref) => ThemeProvider(storage: ref.read(appStorageServiceProvider)),
 );
 
-class ThemeController extends StateNotifier<ThemeState> {
-  ThemeController({required AppStorageService storage})
+class ThemeProvider extends StateNotifier<ThemeState> {
+  ThemeProvider({required AppStorageService storage})
       : _storage = storage,
         super(storage.getThemeState());
 

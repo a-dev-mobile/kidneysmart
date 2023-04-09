@@ -4,8 +4,8 @@
 class DartDefine {
   factory DartDefine() => _internalSingleton;
   DartDefine._internal();
-
   static final DartDefine _internalSingleton = DartDefine._internal();
+
   static const IS_DEBUG_MENU_ENABLED =
       bool.fromEnvironment('IS_DEBUG_MENU_ENABLED');
   static const IS_ANALYTICS_ENABLED =
@@ -19,6 +19,37 @@ class DartDefine {
 }
 
 class GlobalDB {
+  factory GlobalDB() => _internalSingleton;
+  GlobalDB._internal();
+  static final GlobalDB _internalSingleton = GlobalDB._internal();
+
   static const name = 'v_1.db';
   static const assetsPath = 'assets/db/$name';
+}
+
+class GlobalString {
+  factory GlobalString() => _internalSingleton;
+  GlobalString._internal();
+  static final GlobalString _internalSingleton = GlobalString._internal();
+  
+  
+  
+  static const styleCssIsLight = '''
+
+    <style type="text/css">
+      body {
+        color: #0B0B0B;
+   
+      }
+    </style>
+''';
+  static const styleCssIsDark = '''
+
+    <style type="text/css">
+      body {
+        color: #E1E2E2;
+
+      }
+    </style>
+''';
 }

@@ -10,7 +10,8 @@ import 'package:nutrition/core/services/navigation/models/app_state.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
 import 'package:nutrition/features/health_profile/view/health_profile_page.dart';
-import 'package:nutrition/features/info_gfr/info_gfr.dart';
+
+import 'package:nutrition/features/info_gfr/view/info_gfr_page.dart';
 import 'package:nutrition/features/onboarding/vew/onboarding_page.dart';
 import 'package:nutrition/features/overlay_widget/view/view.dart';
 import 'package:nutrition/features/registration/name/name.dart';

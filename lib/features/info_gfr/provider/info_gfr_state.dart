@@ -10,7 +10,7 @@ class InfoGfrState {
   /* init: EnumResult.init */
   final EnumResult enumResult;
   /* init: '' */
-  final String textMarkdown;
+  final String textHtml;
   /* init: '' */
   final String url;
   // end
@@ -22,7 +22,7 @@ class InfoGfrState {
 //  *************************************
   const InfoGfrState({
     this.enumResult = EnumResult.init,
-    this.textMarkdown = '',
+    this.textHtml = '',
     this.url = '',
   });
 
@@ -30,7 +30,7 @@ class InfoGfrState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enumResult': enumResult.index, 
-      'textMarkdown': textMarkdown, 
+      'textHtml': textHtml, 
       'url': url, 
     };
   }
@@ -41,19 +41,19 @@ class InfoGfrState {
 
     return InfoGfrState(
       enumResult: map['enumResult'] != null ? EnumResult.values[map['enumResult'] as int] : EnumResult.init, 
-      textMarkdown: map['textMarkdown'] as String? ?? '', 
+      textHtml: map['textHtml'] as String? ?? '', 
       url: map['url'] as String? ?? '', 
     );
   }
 
   InfoGfrState copyWith({
     EnumResult? enumResult,
-    String? textMarkdown,
+    String? textHtml,
     String? url,
   }) {
     return InfoGfrState(
       enumResult: enumResult ?? this.enumResult, 
-      textMarkdown: textMarkdown ?? this.textMarkdown, 
+      textHtml: textHtml ?? this.textHtml, 
       url: url ?? this.url, 
     );
   }
@@ -67,7 +67,7 @@ class InfoGfrState {
         (other.runtimeType == runtimeType &&
             other is InfoGfrState &&
             (identical(other.enumResult, enumResult) || other.enumResult == enumResult) && 
-            (identical(other.textMarkdown, textMarkdown) || other.textMarkdown == textMarkdown) && 
+            (identical(other.textHtml, textHtml) || other.textHtml == textHtml) && 
             (identical(other.url, url) || other.url == url));
   }
 
@@ -75,13 +75,13 @@ class InfoGfrState {
   int get hashCode => Object.hashAll([
         runtimeType,
         enumResult,
-        textMarkdown,
+        textHtml,
         url,
 ]);
 
   @override
   String toString() {
-    return 'InfoGfrState(enumResult: $enumResult, textMarkdown: $textMarkdown, url: $url, )';
+    return 'InfoGfrState(enumResult: $enumResult, textHtml: $textHtml, url: $url, )';
     }
 
 }

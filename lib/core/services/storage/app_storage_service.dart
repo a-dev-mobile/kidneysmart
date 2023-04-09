@@ -216,15 +216,15 @@ class AppStorageService {
   }
 
 // ******************************
-  static const _theme = 'theme';
+  // static const _theme = 'theme';
 
-  String getTheme() {
-    return getString(key: _theme);
-  }
+  // String getTheme() {
+  //   return getString(key: _theme);
+  // }
 
-  Future<void> setTheme(String value) {
-    return setString(key: _theme, value: value);
-  }
+  // Future<void> setTheme(String value) {
+  //   return setString(key: _theme, value: value);
+  // }
 
 // ******************************
 // ******************************

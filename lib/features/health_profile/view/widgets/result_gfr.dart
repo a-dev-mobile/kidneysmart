@@ -5,7 +5,8 @@ import 'package:nutrition/core/services/navigation/app_router_service.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
-import 'package:nutrition/features/info_gfr/info_gfr.dart';
+import 'package:nutrition/features/info_gfr/view/info_gfr_page.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class ResultGfr extends ConsumerWidget {
