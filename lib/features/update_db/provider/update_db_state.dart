@@ -9,26 +9,23 @@ import 'package:nutrition/core/enum/enum.dart';
 class UpdateDbState {
   /* init: EnumResult.init */
   final EnumResult enumResult;
-  /* init: false */
-  final bool isUpdate;
+
 
   // end
    
 //          --TURN_GEN--
-//          v0.8.3 (data)
+//          v0.8.5 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
   const UpdateDbState({
     this.enumResult = EnumResult.init,
-    this.isUpdate = false,
   });
 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enumResult': enumResult.index, 
-      'isUpdate': isUpdate, 
     };
   }
 
@@ -38,17 +35,14 @@ class UpdateDbState {
 
     return UpdateDbState(
       enumResult: map['enumResult'] != null ? EnumResult.values[map['enumResult'] as int] : EnumResult.init, 
-      isUpdate: map['isUpdate'] as bool? ?? false, 
     );
   }
 
   UpdateDbState copyWith({
     EnumResult? enumResult,
-    bool? isUpdate,
   }) {
     return UpdateDbState(
       enumResult: enumResult ?? this.enumResult, 
-      isUpdate: isUpdate ?? this.isUpdate, 
     );
   }
 
@@ -60,20 +54,18 @@ class UpdateDbState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is UpdateDbState &&
-            (identical(other.enumResult, enumResult) || other.enumResult == enumResult) && 
-            (identical(other.isUpdate, isUpdate) || other.isUpdate == isUpdate));
+            (identical(other.enumResult, enumResult) || other.enumResult == enumResult));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         enumResult,
-        isUpdate,
 ]);
 
   @override
   String toString() {
-    return 'UpdateDbState(enumResult: $enumResult, isUpdate: $isUpdate, )';
+    return 'UpdateDbState(enumResult: $enumResult, )';
     }
 
 }

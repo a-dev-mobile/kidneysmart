@@ -10,8 +10,6 @@ import 'package:nutrition/core/log/log.dart';
 import 'package:nutrition/core/services/db/firebase/firebase.dart';
 
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:universal_io/io.dart';
 
 final firebaseServiceProvider = Provider<FirebaseServiceProvider>((ref) {
@@ -65,14 +63,17 @@ class FirebaseServiceProvider {
     return 'https://storage.googleapis.com/prod-ckd-nutrition.appspot.com/db/app_build_$build/v_$versionDb.db';
   }
 
-  Future<DownloadTask> downloadDb() async {
+  Future<DownloadTask> downloadDb({
+  
+    required String path,
+  }) async {
+
+
+
+
     final httpsReference = FirebaseStorage.instance.refFromURL(getUrlDb());
-    final versionDb = _firestoreOnlineDbModel.version_sql_db;
-    final dbPath = await getDatabasesPath();
 
-    final file = File(join(dbPath, 'v_$versionDb.db'));
-
-    return httpsReference.writeToFile(file);
+    return httpsReference.writeToFile(File(path));
   }
 
   Future<RealtimeDbModel> getRealtimeDbModel({

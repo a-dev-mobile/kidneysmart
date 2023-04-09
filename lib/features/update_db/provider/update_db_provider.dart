@@ -1,16 +1,20 @@
 import 'dart:async';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/core/log/log.dart';
 import 'package:nutrition/core/services/db/firebase/firebase.dart';
+
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/network/network_client_service.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/features/update_db/update_db.dart';
 import 'package:nutrition/localization/localization.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 final updateDbProvider =
     StateNotifierProvider.autoDispose<UpdateDbNotifier, UpdateDbState>(
@@ -55,8 +59,22 @@ class UpdateDbNotifier extends StateNotifier<UpdateDbState> {
 
   /// preload
   Future<void> load() async {
+    final dbPath = await getDatabasesPath();
+    final versionDb = _firebase.getVersionOnlineDb();
+    final urlDb = _firebase.getUrlDb();
+    final path = join(dbPath, 'v_$versionDb.db');
+
+    var appState = _storage.getAppState();
+
+    appState = appState.copyWith(dbUrl: urlDb, dbPathUpdate: path);
+// сохраняем тольков релизе
+    if (kReleaseMode) {
+      appState = appState.copyWith(dbVersion: versionDb);
+    }
+
+    await _storage.setAppState(appState);
     try {
-      final task = await _firebase.downloadDb();
+      final task = await _firebase.downloadDb(path: path);
 
       _stream = task.snapshotEvents.listen((taskSnapshot) {
         switch (taskSnapshot.state) {
@@ -69,7 +87,7 @@ class UpdateDbNotifier extends StateNotifier<UpdateDbState> {
             break;
           case TaskState.success:
             log.i('success');
-            state = state.copyWith(enumResult: EnumResult.success);
+            _storage.setAppState(appState.copyWith(isUseUpdateDB: true));
             _go.router.goNamed(HealthProfilePage.name);
             break;
           case TaskState.canceled:

@@ -22,14 +22,11 @@ class UpdateDbPage extends ConsumerWidget {
     final notifier = ref.watch(updateDbProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Информация'),
-      ),
       body: SafeArea(
         child: state.enumResult.mapValue(
           init: const AppLoadPage(),
           // success: AppWebViewPage(url:state.url),
-          success: const Center(child: Text('Copy DB')),
+          success: const Center(child: Text('Копирование выполнено успешно!')),
           error: const AppErrorPage(),
         ),
       ),

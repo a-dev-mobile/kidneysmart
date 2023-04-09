@@ -1,10 +1,14 @@
 //          --TURN_GEN--
-//          v0.8.3 (assets)
+//          v0.8.5 (assets)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 class AssetPaths {
   const AssetPaths._();
+ 
+  /// * Size:	280.0 KB
+  /// * File path: _assets/db/v_1.db
+  static const String v1Db = 'assets/db/v_1.db';
  
   /// * Size:	8.8 KB
   /// * File path: _assets/icons/app_icons.ttf
@@ -94,6 +98,9 @@ class AssetPaths {
   /// * File path: _assets/svg/sort_desc.svg
   static const String sortDescSvg = 'assets/svg/sort_desc.svg';
 
+  /// List of DB assets
+  static const List<String> valuesDB = [v1Db];
+
   /// List of TTF assets
   static const List<String> valuesTTF = [appIconsIcons];
 
@@ -107,7 +114,7 @@ class AssetPaths {
   static const List<String> valuesJSON = [loadBtnLottie, loadPageLottie, waterDownLottie, waterUpLottie];
 
   /// List of all assets
-  static const List<String> valuesAll = [appIconsIcons, onboardingRemindYouImage, splashImage, loadBtnLottie, loadPageLottie, waterDownLottie, waterUpLottie, icErrorSvg, icErrorCloseSvg, icInfoSvg, icInfoCloseSvg, icSuccessSvg, icSuccessCloseSvg, icWarningSvg, icWarningCloseSvg, logoSvg, onb1Svg, onb2Svg, onb3Svg, onb4Svg, sortAscSvg, sortDescSvg];
+  static const List<String> valuesAll = [v1Db, appIconsIcons, onboardingRemindYouImage, splashImage, loadBtnLottie, loadPageLottie, waterDownLottie, waterUpLottie, icErrorSvg, icErrorCloseSvg, icInfoSvg, icInfoCloseSvg, icSuccessSvg, icSuccessCloseSvg, icWarningSvg, icWarningCloseSvg, logoSvg, onb1Svg, onb2Svg, onb3Svg, onb4Svg, sortAscSvg, sortDescSvg];
 
 }
 

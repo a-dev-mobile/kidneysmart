@@ -9,7 +9,7 @@ enum EnumHypertension with Comparable<EnumHypertension> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.3 (enum)
+//          v0.8.5 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
