@@ -12,9 +12,9 @@ class HypertensionItemModel {
   final String value;
 
 // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -23,21 +23,21 @@ class HypertensionItemModel {
     this.value = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumHypertension': enumHypertension.index, 
-      'value': value, 
+      'enumHypertension': enumHypertension.index,
+      'value': value,
     };
   }
-
 
   factory HypertensionItemModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const HypertensionItemModel();
 
     return HypertensionItemModel(
-      enumHypertension: map['enumHypertension'] != null ? EnumHypertension.values[map['enumHypertension'] as int] : EnumHypertension.none, 
-      value: map['value'] as String? ?? '', 
+      enumHypertension: map['enumHypertension'] != null
+          ? EnumHypertension.values[map['enumHypertension'] as int]
+          : EnumHypertension.none,
+      value: map['value'] as String? ?? '',
     );
   }
 
@@ -46,21 +46,32 @@ class HypertensionItemModel {
     String? value,
   }) {
     return HypertensionItemModel(
-      enumHypertension: enumHypertension ?? this.enumHypertension, 
-      value: value ?? this.value, 
+      enumHypertension: enumHypertension ?? this.enumHypertension,
+      value: value ?? this.value,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory HypertensionItemModel.fromJson(String source) => HypertensionItemModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory HypertensionItemModel.fromJson(String source) =>
+      HypertensionItemModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is HypertensionItemModel &&
-            (identical(other.enumHypertension, enumHypertension) || other.enumHypertension == enumHypertension) && 
-            (identical(other.value, value) || other.value == value));
+            (identical(
+                  other.enumHypertension,
+                  enumHypertension,
+                ) ||
+                other.enumHypertension == enumHypertension) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value));
   }
 
   @override
@@ -68,11 +79,10 @@ class HypertensionItemModel {
         runtimeType,
         enumHypertension,
         value,
-]);
+      ]);
 
   @override
   String toString() {
     return 'HypertensionItemModel(enumHypertension: $enumHypertension, value: $value, )';
-    }
-
+  }
 }

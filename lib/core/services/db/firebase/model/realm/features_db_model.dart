@@ -12,9 +12,9 @@ class FeaturesDbModel {
   final GfrDbModel gfr;
 
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -23,21 +23,27 @@ class FeaturesDbModel {
     this.gfr = const GfrDbModel(),
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'onboarding': onboarding.toMap(), 
-      'gfr': gfr.toMap(), 
+      'onboarding': onboarding.toMap(),
+      'gfr': gfr.toMap(),
     };
   }
-
 
   factory FeaturesDbModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const FeaturesDbModel();
 
     return FeaturesDbModel(
-      onboarding: map['onboarding'] != null ? OnboardingDbModel.fromMap(Map<String, dynamic>.from(map['onboarding'] as Map)) : const OnboardingDbModel(), 
-      gfr: map['gfr'] != null ? GfrDbModel.fromMap(Map<String, dynamic>.from(map['gfr'] as Map)) : const GfrDbModel(), 
+      onboarding: map['onboarding'] != null
+          ? OnboardingDbModel.fromMap(
+              Map<String, dynamic>.from(map['onboarding'] as Map),
+            )
+          : const OnboardingDbModel(),
+      gfr: map['gfr'] != null
+          ? GfrDbModel.fromMap(
+              Map<String, dynamic>.from(map['gfr'] as Map),
+            )
+          : const GfrDbModel(),
     );
   }
 
@@ -46,21 +52,31 @@ class FeaturesDbModel {
     GfrDbModel? gfr,
   }) {
     return FeaturesDbModel(
-      onboarding: onboarding ?? this.onboarding, 
-      gfr: gfr ?? this.gfr, 
+      onboarding: onboarding ?? this.onboarding,
+      gfr: gfr ?? this.gfr,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory FeaturesDbModel.fromJson(String source) => FeaturesDbModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory FeaturesDbModel.fromJson(String source) => FeaturesDbModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is FeaturesDbModel &&
-            (identical(other.onboarding, onboarding) || other.onboarding == onboarding) && 
-            (identical(other.gfr, gfr) || other.gfr == gfr));
+            (identical(
+                  other.onboarding,
+                  onboarding,
+                ) ||
+                other.onboarding == onboarding) &&
+            (identical(
+                  other.gfr,
+                  gfr,
+                ) ||
+                other.gfr == gfr));
   }
 
   @override
@@ -68,11 +84,10 @@ class FeaturesDbModel {
         runtimeType,
         onboarding,
         gfr,
-]);
+      ]);
 
   @override
   String toString() {
     return 'FeaturesDbModel(onboarding: $onboarding, gfr: $gfr, )';
-    }
-
+  }
 }

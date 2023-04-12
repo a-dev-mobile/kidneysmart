@@ -11,12 +11,15 @@ enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumTypeCalcBmiPeople fromValue(String? value, {EnumTypeCalcBmiPeople? fallback}) {
+  static EnumTypeCalcBmiPeople fromValue(
+    String? value, {
+    EnumTypeCalcBmiPeople? fallback,
+  }) {
     switch (value) {
       case 'children':
         return children;
@@ -25,11 +28,14 @@ enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
       case 'none':
         return none;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumTypeCalcBmiPeople',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumTypeCalcBmiPeople',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() children,
@@ -46,7 +52,6 @@ enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
     }
   }
 
-
   T mapValue<T>({
     required T children,
     required T adults,
@@ -62,7 +67,6 @@ enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? children,
@@ -70,11 +74,10 @@ enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
     T Function()? none,
   }) =>
       map<T>(
-      children: children ?? orElse,
-      adults: adults ?? orElse,
-      none: none ?? orElse,
+        children: children ?? orElse,
+        adults: adults ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -83,11 +86,10 @@ enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
     T? none,
   }) =>
       mapValue<T>(
-      children: children ?? orElse,
-      adults: adults ?? orElse,
-      none: none ?? orElse,
+        children: children ?? orElse,
+        adults: adults ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? children,
@@ -101,7 +103,6 @@ enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
         none: none,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? children,
     T? adults,
@@ -114,14 +115,12 @@ enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
         none: none,
       );
 
-
-  static List<String> getValues() => EnumTypeCalcBmiPeople.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumTypeCalcBmiPeople.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumTypeCalcBmiPeople other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumTypeCalcBmiPeople.$name($value)';
-
-
 }

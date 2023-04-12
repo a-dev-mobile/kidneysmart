@@ -10,12 +10,15 @@ enum EnumActivity with Comparable<EnumActivity> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumActivity fromValue(String? value, {EnumActivity? fallback}) {
+  static EnumActivity fromValue(
+    String? value, {
+    EnumActivity? fallback,
+  }) {
     switch (value) {
       case 'normal':
         return normal;
@@ -24,11 +27,14 @@ enum EnumActivity with Comparable<EnumActivity> {
       case 'none':
         return none;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumActivity',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumActivity',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() normal,
@@ -45,7 +51,6 @@ enum EnumActivity with Comparable<EnumActivity> {
     }
   }
 
-
   T mapValue<T>({
     required T normal,
     required T light,
@@ -61,7 +66,6 @@ enum EnumActivity with Comparable<EnumActivity> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? normal,
@@ -69,11 +73,10 @@ enum EnumActivity with Comparable<EnumActivity> {
     T Function()? none,
   }) =>
       map<T>(
-      normal: normal ?? orElse,
-      light: light ?? orElse,
-      none: none ?? orElse,
+        normal: normal ?? orElse,
+        light: light ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -82,11 +85,10 @@ enum EnumActivity with Comparable<EnumActivity> {
     T? none,
   }) =>
       mapValue<T>(
-      normal: normal ?? orElse,
-      light: light ?? orElse,
-      none: none ?? orElse,
+        normal: normal ?? orElse,
+        light: light ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? normal,
@@ -100,7 +102,6 @@ enum EnumActivity with Comparable<EnumActivity> {
         none: none,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? normal,
     T? light,
@@ -113,14 +114,12 @@ enum EnumActivity with Comparable<EnumActivity> {
         none: none,
       );
 
-
-  static List<String> getValues() => EnumActivity.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumActivity.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumActivity other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumActivity.$name($value)';
-
-
 }

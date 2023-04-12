@@ -15,9 +15,9 @@ class DebugState {
   /* init: false */
   final bool isShowPaintSizeEnabled;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -28,25 +28,23 @@ class DebugState {
     this.isShowPaintSizeEnabled = false,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'isShowDevice': isShowDevice, 
-      'isShowBtnHttpLog': isShowBtnHttpLog, 
-      'isShowRepaintRainbow': isShowRepaintRainbow, 
-      'isShowPaintSizeEnabled': isShowPaintSizeEnabled, 
+      'isShowDevice': isShowDevice,
+      'isShowBtnHttpLog': isShowBtnHttpLog,
+      'isShowRepaintRainbow': isShowRepaintRainbow,
+      'isShowPaintSizeEnabled': isShowPaintSizeEnabled,
     };
   }
-
 
   factory DebugState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const DebugState();
 
     return DebugState(
-      isShowDevice: map['isShowDevice'] as bool? ?? false, 
-      isShowBtnHttpLog: map['isShowBtnHttpLog'] as bool? ?? false, 
-      isShowRepaintRainbow: map['isShowRepaintRainbow'] as bool? ?? false, 
-      isShowPaintSizeEnabled: map['isShowPaintSizeEnabled'] as bool? ?? false, 
+      isShowDevice: map['isShowDevice'] as bool? ?? false,
+      isShowBtnHttpLog: map['isShowBtnHttpLog'] as bool? ?? false,
+      isShowRepaintRainbow: map['isShowRepaintRainbow'] as bool? ?? false,
+      isShowPaintSizeEnabled: map['isShowPaintSizeEnabled'] as bool? ?? false,
     );
   }
 
@@ -57,25 +55,44 @@ class DebugState {
     bool? isShowPaintSizeEnabled,
   }) {
     return DebugState(
-      isShowDevice: isShowDevice ?? this.isShowDevice, 
-      isShowBtnHttpLog: isShowBtnHttpLog ?? this.isShowBtnHttpLog, 
-      isShowRepaintRainbow: isShowRepaintRainbow ?? this.isShowRepaintRainbow, 
-      isShowPaintSizeEnabled: isShowPaintSizeEnabled ?? this.isShowPaintSizeEnabled, 
+      isShowDevice: isShowDevice ?? this.isShowDevice,
+      isShowBtnHttpLog: isShowBtnHttpLog ?? this.isShowBtnHttpLog,
+      isShowRepaintRainbow: isShowRepaintRainbow ?? this.isShowRepaintRainbow,
+      isShowPaintSizeEnabled:
+          isShowPaintSizeEnabled ?? this.isShowPaintSizeEnabled,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory DebugState.fromJson(String source) => DebugState.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory DebugState.fromJson(String source) => DebugState.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DebugState &&
-            (identical(other.isShowDevice, isShowDevice) || other.isShowDevice == isShowDevice) && 
-            (identical(other.isShowBtnHttpLog, isShowBtnHttpLog) || other.isShowBtnHttpLog == isShowBtnHttpLog) && 
-            (identical(other.isShowRepaintRainbow, isShowRepaintRainbow) || other.isShowRepaintRainbow == isShowRepaintRainbow) && 
-            (identical(other.isShowPaintSizeEnabled, isShowPaintSizeEnabled) || other.isShowPaintSizeEnabled == isShowPaintSizeEnabled));
+            (identical(
+                  other.isShowDevice,
+                  isShowDevice,
+                ) ||
+                other.isShowDevice == isShowDevice) &&
+            (identical(
+                  other.isShowBtnHttpLog,
+                  isShowBtnHttpLog,
+                ) ||
+                other.isShowBtnHttpLog == isShowBtnHttpLog) &&
+            (identical(
+                  other.isShowRepaintRainbow,
+                  isShowRepaintRainbow,
+                ) ||
+                other.isShowRepaintRainbow == isShowRepaintRainbow) &&
+            (identical(
+                  other.isShowPaintSizeEnabled,
+                  isShowPaintSizeEnabled,
+                ) ||
+                other.isShowPaintSizeEnabled == isShowPaintSizeEnabled));
   }
 
   @override
@@ -85,11 +102,10 @@ class DebugState {
         isShowBtnHttpLog,
         isShowRepaintRainbow,
         isShowPaintSizeEnabled,
-]);
+      ]);
 
   @override
   String toString() {
     return 'DebugState(isShowDevice: $isShowDevice, isShowBtnHttpLog: $isShowBtnHttpLog, isShowRepaintRainbow: $isShowRepaintRainbow, isShowPaintSizeEnabled: $isShowPaintSizeEnabled, )';
-    }
-
+  }
 }

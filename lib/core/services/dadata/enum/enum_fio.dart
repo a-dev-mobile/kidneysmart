@@ -12,12 +12,15 @@ enum DaDataEnum with Comparable<DaDataEnum> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static DaDataEnum fromValue(String? value, {DaDataEnum? fallback}) {
+  static DaDataEnum fromValue(
+    String? value, {
+    DaDataEnum? fallback,
+  }) {
     switch (value) {
       case 'name':
         return name;
@@ -28,11 +31,14 @@ enum DaDataEnum with Comparable<DaDataEnum> {
       case 'all':
         return all;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in DaDataEnum',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in DaDataEnum',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() name,
@@ -52,7 +58,6 @@ enum DaDataEnum with Comparable<DaDataEnum> {
     }
   }
 
-
   T mapValue<T>({
     required T name,
     required T surname,
@@ -71,7 +76,6 @@ enum DaDataEnum with Comparable<DaDataEnum> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? name,
@@ -80,12 +84,11 @@ enum DaDataEnum with Comparable<DaDataEnum> {
     T Function()? all,
   }) =>
       map<T>(
-      name: name ?? orElse,
-      surname: surname ?? orElse,
-      patronymic: patronymic ?? orElse,
-      all: all ?? orElse,
+        name: name ?? orElse,
+        surname: surname ?? orElse,
+        patronymic: patronymic ?? orElse,
+        all: all ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -95,12 +98,11 @@ enum DaDataEnum with Comparable<DaDataEnum> {
     T? all,
   }) =>
       mapValue<T>(
-      name: name ?? orElse,
-      surname: surname ?? orElse,
-      patronymic: patronymic ?? orElse,
-      all: all ?? orElse,
+        name: name ?? orElse,
+        surname: surname ?? orElse,
+        patronymic: patronymic ?? orElse,
+        all: all ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? name,
@@ -116,7 +118,6 @@ enum DaDataEnum with Comparable<DaDataEnum> {
         all: all,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? name,
     T? surname,
@@ -131,14 +132,12 @@ enum DaDataEnum with Comparable<DaDataEnum> {
         all: all,
       );
 
-
-  static List<String> getValues() => DaDataEnum.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      DaDataEnum.values.map((e) => e.value).toList();
 
   @override
   int compareTo(DaDataEnum other) => index.compareTo(other.index);
 
   @override
   String toString() => 'DaDataEnum.$name($value)';
-
-
 }

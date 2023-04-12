@@ -68,7 +68,7 @@ class UpdateDbNotifier extends StateNotifier<UpdateDbState> {
     appState = appState.copyWith(dbUrl: urlDb, dbPathUpdate: path);
 // сохраняем тольков релизе
     // if (kReleaseMode) {
-      appState = appState.copyWith(dbVersion: versionDb);
+    appState = appState.copyWith(dbVersion: versionDb);
     // }
 
     await _storage.setAppState(appState);

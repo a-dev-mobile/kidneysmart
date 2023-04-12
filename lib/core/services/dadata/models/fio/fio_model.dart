@@ -11,29 +11,33 @@ class Fio {
   final List<SuggestionsFio> suggestions;
 
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
   const Fio({
-    this.suggestions = const[],
+    this.suggestions = const [],
   });
-
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'suggestions': suggestions.map((e) => e.toMap()).toList(), 
+      'suggestions': suggestions.map((e) => e.toMap()).toList(),
     };
   }
-
 
   factory Fio.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const Fio();
 
     return Fio(
-      suggestions: map['suggestions'] != null ? (map['suggestions'] as List<dynamic>).map((e) => SuggestionsFio.fromMap(e as Map<dynamic, dynamic>)).toList() : const[], 
+      suggestions: map['suggestions'] != null
+          ? (map['suggestions'] as List<dynamic>)
+              .map(
+                (e) => SuggestionsFio.fromMap(e as Map<dynamic, dynamic>),
+              )
+              .toList()
+          : const [],
     );
   }
 
@@ -41,30 +45,36 @@ class Fio {
     List<SuggestionsFio>? suggestions,
   }) {
     return Fio(
-      suggestions: suggestions ?? this.suggestions, 
+      suggestions: suggestions ?? this.suggestions,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory Fio.fromJson(String source) => Fio.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory Fio.fromJson(String source) => Fio.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is Fio &&
-            const DeepCollectionEquality().equals(other.suggestions, suggestions,));
+            const DeepCollectionEquality().equals(
+              other.suggestions,
+              suggestions,
+            ));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(suggestions,),
-]);
+        const DeepCollectionEquality().hash(
+          suggestions,
+        ),
+      ]);
 
   @override
   String toString() {
     return 'Fio(suggestions: $suggestions, )';
-    }
-
+  }
 }

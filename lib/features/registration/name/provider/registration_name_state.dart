@@ -13,9 +13,9 @@ init: const FieldStringValid()
   final FieldStringValid nameValid;
 
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -24,21 +24,23 @@ init: const FieldStringValid()
     this.nameValid = const FieldStringValid(),
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'isValid': isValid, 
-      'nameValid': nameValid.toMap(), 
+      'isValid': isValid,
+      'nameValid': nameValid.toMap(),
     };
   }
-
 
   factory RegistrationNameState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const RegistrationNameState();
 
     return RegistrationNameState(
-      isValid: map['isValid'] as bool? ?? false, 
-      nameValid: map['nameValid'] != null ? FieldStringValid.fromMap(Map<String, dynamic>.from(map['nameValid'] as Map)) : const FieldStringValid(), 
+      isValid: map['isValid'] as bool? ?? false,
+      nameValid: map['nameValid'] != null
+          ? FieldStringValid.fromMap(
+              Map<String, dynamic>.from(map['nameValid'] as Map),
+            )
+          : const FieldStringValid(),
     );
   }
 
@@ -47,21 +49,32 @@ init: const FieldStringValid()
     FieldStringValid? nameValid,
   }) {
     return RegistrationNameState(
-      isValid: isValid ?? this.isValid, 
-      nameValid: nameValid ?? this.nameValid, 
+      isValid: isValid ?? this.isValid,
+      nameValid: nameValid ?? this.nameValid,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory RegistrationNameState.fromJson(String source) => RegistrationNameState.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory RegistrationNameState.fromJson(String source) =>
+      RegistrationNameState.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is RegistrationNameState &&
-            (identical(other.isValid, isValid) || other.isValid == isValid) && 
-            (identical(other.nameValid, nameValid) || other.nameValid == nameValid));
+            (identical(
+                  other.isValid,
+                  isValid,
+                ) ||
+                other.isValid == isValid) &&
+            (identical(
+                  other.nameValid,
+                  nameValid,
+                ) ||
+                other.nameValid == nameValid));
   }
 
   @override
@@ -69,11 +82,10 @@ init: const FieldStringValid()
         runtimeType,
         isValid,
         nameValid,
-]);
+      ]);
 
   @override
   String toString() {
     return 'RegistrationNameState(isValid: $isValid, nameValid: $nameValid, )';
-    }
-
+  }
 }

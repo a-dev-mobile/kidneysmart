@@ -62,13 +62,8 @@ class FirebaseServiceProvider {
   }
 
   Future<DownloadTask> downloadDb({
-  
     required String path,
   }) async {
-
-
-
-
     final httpsReference = FirebaseStorage.instance.refFromURL(getUrlDb());
 
     return httpsReference.writeToFile(File(path));

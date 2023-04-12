@@ -23,9 +23,9 @@ class GenderModel {
   final List<bool> listSelected;
 
 // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -38,29 +38,40 @@ class GenderModel {
     this.selectedIndex,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'selectedIndex': selectedIndex, 
-      'enumGender': enumGender.index, 
-      'enumValid': enumValid.index, 
-      'error': error, 
-      'listGender': listGender.map((e) => e.toMap()).toList(), 
-      'listSelected': listSelected, 
+      'selectedIndex': selectedIndex,
+      'enumGender': enumGender.index,
+      'enumValid': enumValid.index,
+      'error': error,
+      'listGender': listGender.map((e) => e.toMap()).toList(),
+      'listSelected': listSelected,
     };
   }
-
 
   factory GenderModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const GenderModel();
 
     return GenderModel(
-      selectedIndex: (map['selectedIndex'] as num?)?.toInt(), 
-      enumGender: map['enumGender'] != null ? EnumGender.values[map['enumGender'] as int] : EnumGender.none, 
-      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
-      error: map['error'] as String? ?? '', 
-      listGender: map['listGender'] != null ? (map['listGender'] as List<dynamic>).map((e) => GenderItemModel.fromMap(e as Map<dynamic, dynamic>)).toList() : const [], 
-      listSelected: (map['listSelected'] as List<dynamic>?)?.map((e) => e as bool).toList() ?? const [], 
+      selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
+      enumGender: map['enumGender'] != null
+          ? EnumGender.values[map['enumGender'] as int]
+          : EnumGender.none,
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
+      error: map['error'] as String? ?? '',
+      listGender: map['listGender'] != null
+          ? (map['listGender'] as List<dynamic>)
+              .map(
+                (e) => GenderItemModel.fromMap(e as Map<dynamic, dynamic>),
+              )
+              .toList()
+          : const [],
+      listSelected: (map['listSelected'] as List<dynamic>?)
+              ?.map((e) => e as bool)
+              .toList() ??
+          const [],
     );
   }
 
@@ -73,29 +84,53 @@ class GenderModel {
     List<bool>? listSelected,
   }) {
     return GenderModel(
-      selectedIndex: selectedIndex ?? this.selectedIndex, 
-      enumGender: enumGender ?? this.enumGender, 
-      enumValid: enumValid ?? this.enumValid, 
-      error: error ?? this.error, 
-      listGender: listGender ?? this.listGender, 
-      listSelected: listSelected ?? this.listSelected, 
+      selectedIndex: selectedIndex ?? this.selectedIndex,
+      enumGender: enumGender ?? this.enumGender,
+      enumValid: enumValid ?? this.enumValid,
+      error: error ?? this.error,
+      listGender: listGender ?? this.listGender,
+      listSelected: listSelected ?? this.listSelected,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory GenderModel.fromJson(String source) => GenderModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory GenderModel.fromJson(String source) => GenderModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is GenderModel &&
-            (identical(other.selectedIndex, selectedIndex) || other.selectedIndex == selectedIndex) && 
-            (identical(other.enumGender, enumGender) || other.enumGender == enumGender) && 
-            (identical(other.enumValid, enumValid) || other.enumValid == enumValid) && 
-            (identical(other.error, error) || other.error == error) && 
-            const DeepCollectionEquality().equals(other.listGender, listGender,) && 
-            const DeepCollectionEquality().equals(other.listSelected, listSelected,));
+            (identical(
+                  other.selectedIndex,
+                  selectedIndex,
+                ) ||
+                other.selectedIndex == selectedIndex) &&
+            (identical(
+                  other.enumGender,
+                  enumGender,
+                ) ||
+                other.enumGender == enumGender) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            const DeepCollectionEquality().equals(
+              other.listGender,
+              listGender,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.listSelected,
+              listSelected,
+            ));
   }
 
   @override
@@ -105,13 +140,16 @@ class GenderModel {
         enumGender,
         enumValid,
         error,
-        const DeepCollectionEquality().hash(listGender,),
-        const DeepCollectionEquality().hash(listSelected,),
-]);
+        const DeepCollectionEquality().hash(
+          listGender,
+        ),
+        const DeepCollectionEquality().hash(
+          listSelected,
+        ),
+      ]);
 
   @override
   String toString() {
     return 'GenderModel(selectedIndex: $selectedIndex, enumGender: $enumGender, enumValid: $enumValid, error: $error, listGender: $listGender, listSelected: $listSelected, )';
-    }
-
+  }
 }

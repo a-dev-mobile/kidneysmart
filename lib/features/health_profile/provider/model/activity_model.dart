@@ -19,9 +19,9 @@ class ActivityModel {
   /* init: [] */
   final List<bool> listSelected;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -33,27 +33,36 @@ class ActivityModel {
     this.selectedIndex,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'listActivity': listActivity.map((e) => e.toMap()).toList(), 
-      'selectedIndex': selectedIndex, 
-      'enumValid': enumValid.index, 
-      'error': error, 
-      'listSelected': listSelected, 
+      'listActivity': listActivity.map((e) => e.toMap()).toList(),
+      'selectedIndex': selectedIndex,
+      'enumValid': enumValid.index,
+      'error': error,
+      'listSelected': listSelected,
     };
   }
-
 
   factory ActivityModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const ActivityModel();
 
     return ActivityModel(
-      listActivity: map['listActivity'] != null ? (map['listActivity'] as List<dynamic>).map((e) => ActivityItemModel.fromMap(e as Map<dynamic, dynamic>)).toList() : const [], 
-      selectedIndex: (map['selectedIndex'] as num?)?.toInt(), 
-      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
-      error: map['error'] as String? ?? '', 
-      listSelected: (map['listSelected'] as List<dynamic>?)?.map((e) => e as bool).toList() ?? const [], 
+      listActivity: map['listActivity'] != null
+          ? (map['listActivity'] as List<dynamic>)
+              .map(
+                (e) => ActivityItemModel.fromMap(e as Map<dynamic, dynamic>),
+              )
+              .toList()
+          : const [],
+      selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
+      error: map['error'] as String? ?? '',
+      listSelected: (map['listSelected'] as List<dynamic>?)
+              ?.map((e) => e as bool)
+              .toList() ??
+          const [],
     );
   }
 
@@ -65,42 +74,65 @@ class ActivityModel {
     List<bool>? listSelected,
   }) {
     return ActivityModel(
-      listActivity: listActivity ?? this.listActivity, 
-      selectedIndex: selectedIndex ?? this.selectedIndex, 
-      enumValid: enumValid ?? this.enumValid, 
-      error: error ?? this.error, 
-      listSelected: listSelected ?? this.listSelected, 
+      listActivity: listActivity ?? this.listActivity,
+      selectedIndex: selectedIndex ?? this.selectedIndex,
+      enumValid: enumValid ?? this.enumValid,
+      error: error ?? this.error,
+      listSelected: listSelected ?? this.listSelected,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory ActivityModel.fromJson(String source) => ActivityModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory ActivityModel.fromJson(String source) => ActivityModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ActivityModel &&
-            const DeepCollectionEquality().equals(other.listActivity, listActivity,) && 
-            (identical(other.selectedIndex, selectedIndex) || other.selectedIndex == selectedIndex) && 
-            (identical(other.enumValid, enumValid) || other.enumValid == enumValid) && 
-            (identical(other.error, error) || other.error == error) && 
-            const DeepCollectionEquality().equals(other.listSelected, listSelected,));
+            const DeepCollectionEquality().equals(
+              other.listActivity,
+              listActivity,
+            ) &&
+            (identical(
+                  other.selectedIndex,
+                  selectedIndex,
+                ) ||
+                other.selectedIndex == selectedIndex) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            const DeepCollectionEquality().equals(
+              other.listSelected,
+              listSelected,
+            ));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(listActivity,),
+        const DeepCollectionEquality().hash(
+          listActivity,
+        ),
         selectedIndex,
         enumValid,
         error,
-        const DeepCollectionEquality().hash(listSelected,),
-]);
+        const DeepCollectionEquality().hash(
+          listSelected,
+        ),
+      ]);
 
   @override
   String toString() {
     return 'ActivityModel(listActivity: $listActivity, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
-    }
-
+  }
 }

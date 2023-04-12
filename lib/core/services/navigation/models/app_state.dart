@@ -19,12 +19,12 @@ class AppState {
   final String dbPathBase;
   /* init: '' */
   final String dbPathUpdate;
-    /* init: false */
+  /* init: false */
   final bool isUseUpdateDB;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -39,33 +39,31 @@ class AppState {
     this.isUseUpdateDB = false,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'isFirstTime': isFirstTime, 
-      'isOnboardingCompleted': isOnboardingCompleted, 
-      'appBuildNumber': appBuildNumber, 
-      'dbVersion': dbVersion, 
-      'dbUrl': dbUrl, 
-      'dbPathBase': dbPathBase, 
-      'dbPathUpdate': dbPathUpdate, 
-      'isUseUpdateDB': isUseUpdateDB, 
+      'isFirstTime': isFirstTime,
+      'isOnboardingCompleted': isOnboardingCompleted,
+      'appBuildNumber': appBuildNumber,
+      'dbVersion': dbVersion,
+      'dbUrl': dbUrl,
+      'dbPathBase': dbPathBase,
+      'dbPathUpdate': dbPathUpdate,
+      'isUseUpdateDB': isUseUpdateDB,
     };
   }
-
 
   factory AppState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const AppState();
 
     return AppState(
-      isFirstTime: map['isFirstTime'] as bool? ?? true, 
-      isOnboardingCompleted: map['isOnboardingCompleted'] as bool? ?? false, 
-      appBuildNumber: (map['appBuildNumber'] as num?)?.toInt() ?? 1, 
-      dbVersion: (map['dbVersion'] as num?)?.toInt() ?? 1, 
-      dbUrl: map['dbUrl'] as String? ?? '', 
-      dbPathBase: map['dbPathBase'] as String? ?? '', 
-      dbPathUpdate: map['dbPathUpdate'] as String? ?? '', 
-      isUseUpdateDB: map['isUseUpdateDB'] as bool? ?? false, 
+      isFirstTime: map['isFirstTime'] as bool? ?? true,
+      isOnboardingCompleted: map['isOnboardingCompleted'] as bool? ?? false,
+      appBuildNumber: (map['appBuildNumber'] as num?)?.toInt() ?? 1,
+      dbVersion: (map['dbVersion'] as num?)?.toInt() ?? 1,
+      dbUrl: map['dbUrl'] as String? ?? '',
+      dbPathBase: map['dbPathBase'] as String? ?? '',
+      dbPathUpdate: map['dbPathUpdate'] as String? ?? '',
+      isUseUpdateDB: map['isUseUpdateDB'] as bool? ?? false,
     );
   }
 
@@ -80,33 +78,68 @@ class AppState {
     bool? isUseUpdateDB,
   }) {
     return AppState(
-      isFirstTime: isFirstTime ?? this.isFirstTime, 
-      isOnboardingCompleted: isOnboardingCompleted ?? this.isOnboardingCompleted, 
-      appBuildNumber: appBuildNumber ?? this.appBuildNumber, 
-      dbVersion: dbVersion ?? this.dbVersion, 
-      dbUrl: dbUrl ?? this.dbUrl, 
-      dbPathBase: dbPathBase ?? this.dbPathBase, 
-      dbPathUpdate: dbPathUpdate ?? this.dbPathUpdate, 
-      isUseUpdateDB: isUseUpdateDB ?? this.isUseUpdateDB, 
+      isFirstTime: isFirstTime ?? this.isFirstTime,
+      isOnboardingCompleted:
+          isOnboardingCompleted ?? this.isOnboardingCompleted,
+      appBuildNumber: appBuildNumber ?? this.appBuildNumber,
+      dbVersion: dbVersion ?? this.dbVersion,
+      dbUrl: dbUrl ?? this.dbUrl,
+      dbPathBase: dbPathBase ?? this.dbPathBase,
+      dbPathUpdate: dbPathUpdate ?? this.dbPathUpdate,
+      isUseUpdateDB: isUseUpdateDB ?? this.isUseUpdateDB,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory AppState.fromJson(String source) => AppState.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory AppState.fromJson(String source) => AppState.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AppState &&
-            (identical(other.isFirstTime, isFirstTime) || other.isFirstTime == isFirstTime) && 
-            (identical(other.isOnboardingCompleted, isOnboardingCompleted) || other.isOnboardingCompleted == isOnboardingCompleted) && 
-            (identical(other.appBuildNumber, appBuildNumber) || other.appBuildNumber == appBuildNumber) && 
-            (identical(other.dbVersion, dbVersion) || other.dbVersion == dbVersion) && 
-            (identical(other.dbUrl, dbUrl) || other.dbUrl == dbUrl) && 
-            (identical(other.dbPathBase, dbPathBase) || other.dbPathBase == dbPathBase) && 
-            (identical(other.dbPathUpdate, dbPathUpdate) || other.dbPathUpdate == dbPathUpdate) && 
-            (identical(other.isUseUpdateDB, isUseUpdateDB) || other.isUseUpdateDB == isUseUpdateDB));
+            (identical(
+                  other.isFirstTime,
+                  isFirstTime,
+                ) ||
+                other.isFirstTime == isFirstTime) &&
+            (identical(
+                  other.isOnboardingCompleted,
+                  isOnboardingCompleted,
+                ) ||
+                other.isOnboardingCompleted == isOnboardingCompleted) &&
+            (identical(
+                  other.appBuildNumber,
+                  appBuildNumber,
+                ) ||
+                other.appBuildNumber == appBuildNumber) &&
+            (identical(
+                  other.dbVersion,
+                  dbVersion,
+                ) ||
+                other.dbVersion == dbVersion) &&
+            (identical(
+                  other.dbUrl,
+                  dbUrl,
+                ) ||
+                other.dbUrl == dbUrl) &&
+            (identical(
+                  other.dbPathBase,
+                  dbPathBase,
+                ) ||
+                other.dbPathBase == dbPathBase) &&
+            (identical(
+                  other.dbPathUpdate,
+                  dbPathUpdate,
+                ) ||
+                other.dbPathUpdate == dbPathUpdate) &&
+            (identical(
+                  other.isUseUpdateDB,
+                  isUseUpdateDB,
+                ) ||
+                other.isUseUpdateDB == isUseUpdateDB));
   }
 
   @override
@@ -120,11 +153,10 @@ class AppState {
         dbPathBase,
         dbPathUpdate,
         isUseUpdateDB,
-]);
+      ]);
 
   @override
   String toString() {
     return 'AppState(isFirstTime: $isFirstTime, isOnboardingCompleted: $isOnboardingCompleted, appBuildNumber: $appBuildNumber, dbVersion: $dbVersion, dbUrl: $dbUrl, dbPathBase: $dbPathBase, dbPathUpdate: $dbPathUpdate, isUseUpdateDB: $isUseUpdateDB, )';
-    }
-
+  }
 }

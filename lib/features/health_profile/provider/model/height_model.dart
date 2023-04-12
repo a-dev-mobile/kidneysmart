@@ -19,9 +19,9 @@ class HeightModel {
   /* init: const [] */
   final List<String> heightList;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -33,27 +33,30 @@ class HeightModel {
     this.value,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result, 
-      'value': value, 
-      'error': error, 
-      'enumValid': enumValid.index, 
-      'heightList': heightList, 
+      'result': result,
+      'value': value,
+      'error': error,
+      'enumValid': enumValid.index,
+      'heightList': heightList,
     };
   }
-
 
   factory HeightModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const HeightModel();
 
     return HeightModel(
-      result: map['result'] as String? ?? '', 
-      value: (map['value'] as num?)?.toDouble(), 
-      error: map['error'] as String? ?? '', 
-      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
-      heightList: (map['heightList'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
+      result: map['result'] as String? ?? '',
+      value: (map['value'] as num?)?.toDouble(),
+      error: map['error'] as String? ?? '',
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
+      heightList: (map['heightList'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
   }
 
@@ -65,27 +68,48 @@ class HeightModel {
     List<String>? heightList,
   }) {
     return HeightModel(
-      result: result ?? this.result, 
-      value: value ?? this.value, 
-      error: error ?? this.error, 
-      enumValid: enumValid ?? this.enumValid, 
-      heightList: heightList ?? this.heightList, 
+      result: result ?? this.result,
+      value: value ?? this.value,
+      error: error ?? this.error,
+      enumValid: enumValid ?? this.enumValid,
+      heightList: heightList ?? this.heightList,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory HeightModel.fromJson(String source) => HeightModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory HeightModel.fromJson(String source) => HeightModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is HeightModel &&
-            (identical(other.result, result) || other.result == result) && 
-            (identical(other.value, value) || other.value == value) && 
-            (identical(other.error, error) || other.error == error) && 
-            (identical(other.enumValid, enumValid) || other.enumValid == enumValid) && 
-            const DeepCollectionEquality().equals(other.heightList, heightList,));
+            (identical(
+                  other.result,
+                  result,
+                ) ||
+                other.result == result) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid) &&
+            const DeepCollectionEquality().equals(
+              other.heightList,
+              heightList,
+            ));
   }
 
   @override
@@ -95,12 +119,13 @@ class HeightModel {
         value,
         error,
         enumValid,
-        const DeepCollectionEquality().hash(heightList,),
-]);
+        const DeepCollectionEquality().hash(
+          heightList,
+        ),
+      ]);
 
   @override
   String toString() {
     return 'HeightModel(result: $result, value: $value, error: $error, enumValid: $enumValid, heightList: $heightList, )';
-    }
-
+  }
 }

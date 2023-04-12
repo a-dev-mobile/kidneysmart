@@ -11,12 +11,15 @@ enum EnumResultWebView with Comparable<EnumResultWebView> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumResultWebView fromValue(String? value, {EnumResultWebView? fallback}) {
+  static EnumResultWebView fromValue(
+    String? value, {
+    EnumResultWebView? fallback,
+  }) {
     switch (value) {
       case 'load':
         return load;
@@ -27,11 +30,14 @@ enum EnumResultWebView with Comparable<EnumResultWebView> {
       case 'error':
         return error;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumResultWebView',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumResultWebView',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() load,
@@ -51,7 +57,6 @@ enum EnumResultWebView with Comparable<EnumResultWebView> {
     }
   }
 
-
   T mapValue<T>({
     required T load,
     required T successHtml,
@@ -70,7 +75,6 @@ enum EnumResultWebView with Comparable<EnumResultWebView> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? load,
@@ -79,12 +83,11 @@ enum EnumResultWebView with Comparable<EnumResultWebView> {
     T Function()? error,
   }) =>
       map<T>(
-      load: load ?? orElse,
-      successHtml: successHtml ?? orElse,
-      successUrl: successUrl ?? orElse,
-      error: error ?? orElse,
+        load: load ?? orElse,
+        successHtml: successHtml ?? orElse,
+        successUrl: successUrl ?? orElse,
+        error: error ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -94,12 +97,11 @@ enum EnumResultWebView with Comparable<EnumResultWebView> {
     T? error,
   }) =>
       mapValue<T>(
-      load: load ?? orElse,
-      successHtml: successHtml ?? orElse,
-      successUrl: successUrl ?? orElse,
-      error: error ?? orElse,
+        load: load ?? orElse,
+        successHtml: successHtml ?? orElse,
+        successUrl: successUrl ?? orElse,
+        error: error ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? load,
@@ -115,7 +117,6 @@ enum EnumResultWebView with Comparable<EnumResultWebView> {
         error: error,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? load,
     T? successHtml,
@@ -130,14 +131,12 @@ enum EnumResultWebView with Comparable<EnumResultWebView> {
         error: error,
       );
 
-
-  static List<String> getValues() => EnumResultWebView.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumResultWebView.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumResultWebView other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumResultWebView.$name($value)';
-
-
 }

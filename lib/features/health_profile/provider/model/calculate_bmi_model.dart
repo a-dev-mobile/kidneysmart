@@ -17,9 +17,9 @@ class CalculateBmiModel {
   /* init:'' */
   final String markdownError;
 // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -30,25 +30,25 @@ class CalculateBmiModel {
     this.markdownError = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumResult': enumResult.index, 
-      'markdownInit': markdownInit, 
-      'markdownSuccess': markdownSuccess, 
-      'markdownError': markdownError, 
+      'enumResult': enumResult.index,
+      'markdownInit': markdownInit,
+      'markdownSuccess': markdownSuccess,
+      'markdownError': markdownError,
     };
   }
-
 
   factory CalculateBmiModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const CalculateBmiModel();
 
     return CalculateBmiModel(
-      enumResult: map['enumResult'] != null ? EnumResult.values[map['enumResult'] as int] : EnumResult.init, 
-      markdownInit: map['markdownInit'] as String? ?? '', 
-      markdownSuccess: map['markdownSuccess'] as String? ?? '', 
-      markdownError: map['markdownError'] as String? ?? '', 
+      enumResult: map['enumResult'] != null
+          ? EnumResult.values[map['enumResult'] as int]
+          : EnumResult.init,
+      markdownInit: map['markdownInit'] as String? ?? '',
+      markdownSuccess: map['markdownSuccess'] as String? ?? '',
+      markdownError: map['markdownError'] as String? ?? '',
     );
   }
 
@@ -59,25 +59,44 @@ class CalculateBmiModel {
     String? markdownError,
   }) {
     return CalculateBmiModel(
-      enumResult: enumResult ?? this.enumResult, 
-      markdownInit: markdownInit ?? this.markdownInit, 
-      markdownSuccess: markdownSuccess ?? this.markdownSuccess, 
-      markdownError: markdownError ?? this.markdownError, 
+      enumResult: enumResult ?? this.enumResult,
+      markdownInit: markdownInit ?? this.markdownInit,
+      markdownSuccess: markdownSuccess ?? this.markdownSuccess,
+      markdownError: markdownError ?? this.markdownError,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory CalculateBmiModel.fromJson(String source) => CalculateBmiModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory CalculateBmiModel.fromJson(String source) =>
+      CalculateBmiModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CalculateBmiModel &&
-            (identical(other.enumResult, enumResult) || other.enumResult == enumResult) && 
-            (identical(other.markdownInit, markdownInit) || other.markdownInit == markdownInit) && 
-            (identical(other.markdownSuccess, markdownSuccess) || other.markdownSuccess == markdownSuccess) && 
-            (identical(other.markdownError, markdownError) || other.markdownError == markdownError));
+            (identical(
+                  other.enumResult,
+                  enumResult,
+                ) ||
+                other.enumResult == enumResult) &&
+            (identical(
+                  other.markdownInit,
+                  markdownInit,
+                ) ||
+                other.markdownInit == markdownInit) &&
+            (identical(
+                  other.markdownSuccess,
+                  markdownSuccess,
+                ) ||
+                other.markdownSuccess == markdownSuccess) &&
+            (identical(
+                  other.markdownError,
+                  markdownError,
+                ) ||
+                other.markdownError == markdownError));
   }
 
   @override
@@ -87,11 +106,10 @@ class CalculateBmiModel {
         markdownInit,
         markdownSuccess,
         markdownError,
-]);
+      ]);
 
   @override
   String toString() {
     return 'CalculateBmiModel(enumResult: $enumResult, markdownInit: $markdownInit, markdownSuccess: $markdownSuccess, markdownError: $markdownError, )';
-    }
-
+  }
 }

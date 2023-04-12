@@ -12,9 +12,9 @@ class DailyDiuresisItemModel {
   final String value;
 
 // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -23,21 +23,21 @@ class DailyDiuresisItemModel {
     this.value = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumDailyDiuresis': enumDailyDiuresis.index, 
-      'value': value, 
+      'enumDailyDiuresis': enumDailyDiuresis.index,
+      'value': value,
     };
   }
-
 
   factory DailyDiuresisItemModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const DailyDiuresisItemModel();
 
     return DailyDiuresisItemModel(
-      enumDailyDiuresis: map['enumDailyDiuresis'] != null ? EnumDailyDiuresis.values[map['enumDailyDiuresis'] as int] : EnumDailyDiuresis.none, 
-      value: map['value'] as String? ?? '', 
+      enumDailyDiuresis: map['enumDailyDiuresis'] != null
+          ? EnumDailyDiuresis.values[map['enumDailyDiuresis'] as int]
+          : EnumDailyDiuresis.none,
+      value: map['value'] as String? ?? '',
     );
   }
 
@@ -46,21 +46,32 @@ class DailyDiuresisItemModel {
     String? value,
   }) {
     return DailyDiuresisItemModel(
-      enumDailyDiuresis: enumDailyDiuresis ?? this.enumDailyDiuresis, 
-      value: value ?? this.value, 
+      enumDailyDiuresis: enumDailyDiuresis ?? this.enumDailyDiuresis,
+      value: value ?? this.value,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory DailyDiuresisItemModel.fromJson(String source) => DailyDiuresisItemModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory DailyDiuresisItemModel.fromJson(String source) =>
+      DailyDiuresisItemModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DailyDiuresisItemModel &&
-            (identical(other.enumDailyDiuresis, enumDailyDiuresis) || other.enumDailyDiuresis == enumDailyDiuresis) && 
-            (identical(other.value, value) || other.value == value));
+            (identical(
+                  other.enumDailyDiuresis,
+                  enumDailyDiuresis,
+                ) ||
+                other.enumDailyDiuresis == enumDailyDiuresis) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value));
   }
 
   @override
@@ -68,11 +79,10 @@ class DailyDiuresisItemModel {
         runtimeType,
         enumDailyDiuresis,
         value,
-]);
+      ]);
 
   @override
   String toString() {
     return 'DailyDiuresisItemModel(enumDailyDiuresis: $enumDailyDiuresis, value: $value, )';
-    }
-
+  }
 }

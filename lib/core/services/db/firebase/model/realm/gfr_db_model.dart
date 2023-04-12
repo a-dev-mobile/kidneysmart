@@ -9,9 +9,9 @@ class GfrDbModel {
   /* init: const InfoUrlModel() */
   final InfoUrlModel info;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -19,19 +19,21 @@ class GfrDbModel {
     this.info = const InfoUrlModel(),
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'info': info.toMap(), 
+      'info': info.toMap(),
     };
   }
-
 
   factory GfrDbModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const GfrDbModel();
 
     return GfrDbModel(
-      info: map['info'] != null ? InfoUrlModel.fromMap(Map<String, dynamic>.from(map['info'] as Map)) : const InfoUrlModel(), 
+      info: map['info'] != null
+          ? InfoUrlModel.fromMap(
+              Map<String, dynamic>.from(map['info'] as Map),
+            )
+          : const InfoUrlModel(),
     );
   }
 
@@ -39,30 +41,35 @@ class GfrDbModel {
     InfoUrlModel? info,
   }) {
     return GfrDbModel(
-      info: info ?? this.info, 
+      info: info ?? this.info,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory GfrDbModel.fromJson(String source) => GfrDbModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory GfrDbModel.fromJson(String source) => GfrDbModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is GfrDbModel &&
-            (identical(other.info, info) || other.info == info));
+            (identical(
+                  other.info,
+                  info,
+                ) ||
+                other.info == info));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         info,
-]);
+      ]);
 
   @override
   String toString() {
     return 'GfrDbModel(info: $info, )';
-    }
-
+  }
 }

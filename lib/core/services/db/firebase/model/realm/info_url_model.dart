@@ -11,9 +11,9 @@ class InfoUrlModel {
   final String en;
 
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -22,21 +22,19 @@ class InfoUrlModel {
     this.en = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ru': ru, 
-      'en': en, 
+      'ru': ru,
+      'en': en,
     };
   }
-
 
   factory InfoUrlModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const InfoUrlModel();
 
     return InfoUrlModel(
-      ru: map['ru'] as String? ?? '', 
-      en: map['en'] as String? ?? '', 
+      ru: map['ru'] as String? ?? '',
+      en: map['en'] as String? ?? '',
     );
   }
 
@@ -45,21 +43,31 @@ class InfoUrlModel {
     String? en,
   }) {
     return InfoUrlModel(
-      ru: ru ?? this.ru, 
-      en: en ?? this.en, 
+      ru: ru ?? this.ru,
+      en: en ?? this.en,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory InfoUrlModel.fromJson(String source) => InfoUrlModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory InfoUrlModel.fromJson(String source) => InfoUrlModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is InfoUrlModel &&
-            (identical(other.ru, ru) || other.ru == ru) && 
-            (identical(other.en, en) || other.en == en));
+            (identical(
+                  other.ru,
+                  ru,
+                ) ||
+                other.ru == ru) &&
+            (identical(
+                  other.en,
+                  en,
+                ) ||
+                other.en == en));
   }
 
   @override
@@ -67,11 +75,10 @@ class InfoUrlModel {
         runtimeType,
         ru,
         en,
-]);
+      ]);
 
   @override
   String toString() {
     return 'InfoUrlModel(ru: $ru, en: $en, )';
-    }
-
+  }
 }

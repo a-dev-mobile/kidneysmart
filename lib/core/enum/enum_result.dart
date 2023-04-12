@@ -10,25 +10,31 @@ enum EnumResult with Comparable<EnumResult> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumResult fromValue(String? value, {EnumResult? fallback}) {
+  static EnumResult fromValue(
+    String? value, {
+    EnumResult? fallback,
+  }) {
     switch (value) {
       case 'init':
         return init;
-      case 'valid':
+      case 'success':
         return success;
       case 'error':
         return error;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumResult',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumResult',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() init,
@@ -45,7 +51,6 @@ enum EnumResult with Comparable<EnumResult> {
     }
   }
 
-
   T mapValue<T>({
     required T init,
     required T success,
@@ -61,7 +66,6 @@ enum EnumResult with Comparable<EnumResult> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? init,
@@ -69,11 +73,10 @@ enum EnumResult with Comparable<EnumResult> {
     T Function()? error,
   }) =>
       map<T>(
-      init: init ?? orElse,
-      success: success ?? orElse,
-      error: error ?? orElse,
+        init: init ?? orElse,
+        success: success ?? orElse,
+        error: error ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -82,11 +85,10 @@ enum EnumResult with Comparable<EnumResult> {
     T? error,
   }) =>
       mapValue<T>(
-      init: init ?? orElse,
-      success: success ?? orElse,
-      error: error ?? orElse,
+        init: init ?? orElse,
+        success: success ?? orElse,
+        error: error ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? init,
@@ -100,7 +102,6 @@ enum EnumResult with Comparable<EnumResult> {
         error: error,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? init,
     T? success,
@@ -113,14 +114,12 @@ enum EnumResult with Comparable<EnumResult> {
         error: error,
       );
 
-
-  static List<String> getValues() => EnumResult.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumResult.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumResult other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumResult.$name($value)';
-
-
 }

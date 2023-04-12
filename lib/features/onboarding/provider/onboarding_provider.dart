@@ -2,7 +2,6 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 import 'package:nutrition/core/services/db/firebase/firebase.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 
@@ -47,7 +46,7 @@ class OndoardingNotifier extends StateNotifier<OnboardingState> {
     _go.router.goNamed(RegistrationNamePage.name);
   }
 
-  void load()  {
+  void load() {
     // final lang = EnumLang.fromValue(
     //   _loc.localeName,
     //   fallback: EnumLang.ru,

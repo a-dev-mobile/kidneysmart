@@ -15,9 +15,9 @@ class InfoGfrState {
   final String title;
 
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -27,23 +27,23 @@ class InfoGfrState {
     this.title = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumResult': enumResult.index, 
-      'desc': desc, 
-      'title': title, 
+      'enumResult': enumResult.index,
+      'desc': desc,
+      'title': title,
     };
   }
-
 
   factory InfoGfrState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const InfoGfrState();
 
     return InfoGfrState(
-      enumResult: map['enumResult'] != null ? EnumResult.values[map['enumResult'] as int] : EnumResult.init, 
-      desc: map['desc'] as String? ?? '', 
-      title: map['title'] as String? ?? '', 
+      enumResult: map['enumResult'] != null
+          ? EnumResult.values[map['enumResult'] as int]
+          : EnumResult.init,
+      desc: map['desc'] as String? ?? '',
+      title: map['title'] as String? ?? '',
     );
   }
 
@@ -53,23 +53,37 @@ class InfoGfrState {
     String? title,
   }) {
     return InfoGfrState(
-      enumResult: enumResult ?? this.enumResult, 
-      desc: desc ?? this.desc, 
-      title: title ?? this.title, 
+      enumResult: enumResult ?? this.enumResult,
+      desc: desc ?? this.desc,
+      title: title ?? this.title,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory InfoGfrState.fromJson(String source) => InfoGfrState.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory InfoGfrState.fromJson(String source) => InfoGfrState.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is InfoGfrState &&
-            (identical(other.enumResult, enumResult) || other.enumResult == enumResult) && 
-            (identical(other.desc, desc) || other.desc == desc) && 
-            (identical(other.title, title) || other.title == title));
+            (identical(
+                  other.enumResult,
+                  enumResult,
+                ) ||
+                other.enumResult == enumResult) &&
+            (identical(
+                  other.desc,
+                  desc,
+                ) ||
+                other.desc == desc) &&
+            (identical(
+                  other.title,
+                  title,
+                ) ||
+                other.title == title));
   }
 
   @override
@@ -78,11 +92,10 @@ class InfoGfrState {
         enumResult,
         desc,
         title,
-]);
+      ]);
 
   @override
   String toString() {
     return 'InfoGfrState(enumResult: $enumResult, desc: $desc, title: $title, )';
-    }
-
+  }
 }

@@ -19,9 +19,9 @@ class CalculateGfrModel {
   /* init:'' */
   final String markdownError;
 // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -32,25 +32,25 @@ class CalculateGfrModel {
     this.markdownError = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumResult': enumResult.index, 
-      'markdownInit': markdownInit, 
-      'markdownSuccess': markdownSuccess, 
-      'markdownError': markdownError, 
+      'enumResult': enumResult.index,
+      'markdownInit': markdownInit,
+      'markdownSuccess': markdownSuccess,
+      'markdownError': markdownError,
     };
   }
-
 
   factory CalculateGfrModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const CalculateGfrModel();
 
     return CalculateGfrModel(
-      enumResult: map['enumResult'] != null ? EnumResult.values[map['enumResult'] as int] : EnumResult.init, 
-      markdownInit: map['markdownInit'] as String? ?? '', 
-      markdownSuccess: map['markdownSuccess'] as String? ?? '', 
-      markdownError: map['markdownError'] as String? ?? '', 
+      enumResult: map['enumResult'] != null
+          ? EnumResult.values[map['enumResult'] as int]
+          : EnumResult.init,
+      markdownInit: map['markdownInit'] as String? ?? '',
+      markdownSuccess: map['markdownSuccess'] as String? ?? '',
+      markdownError: map['markdownError'] as String? ?? '',
     );
   }
 
@@ -61,25 +61,44 @@ class CalculateGfrModel {
     String? markdownError,
   }) {
     return CalculateGfrModel(
-      enumResult: enumResult ?? this.enumResult, 
-      markdownInit: markdownInit ?? this.markdownInit, 
-      markdownSuccess: markdownSuccess ?? this.markdownSuccess, 
-      markdownError: markdownError ?? this.markdownError, 
+      enumResult: enumResult ?? this.enumResult,
+      markdownInit: markdownInit ?? this.markdownInit,
+      markdownSuccess: markdownSuccess ?? this.markdownSuccess,
+      markdownError: markdownError ?? this.markdownError,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory CalculateGfrModel.fromJson(String source) => CalculateGfrModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory CalculateGfrModel.fromJson(String source) =>
+      CalculateGfrModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CalculateGfrModel &&
-            (identical(other.enumResult, enumResult) || other.enumResult == enumResult) && 
-            (identical(other.markdownInit, markdownInit) || other.markdownInit == markdownInit) && 
-            (identical(other.markdownSuccess, markdownSuccess) || other.markdownSuccess == markdownSuccess) && 
-            (identical(other.markdownError, markdownError) || other.markdownError == markdownError));
+            (identical(
+                  other.enumResult,
+                  enumResult,
+                ) ||
+                other.enumResult == enumResult) &&
+            (identical(
+                  other.markdownInit,
+                  markdownInit,
+                ) ||
+                other.markdownInit == markdownInit) &&
+            (identical(
+                  other.markdownSuccess,
+                  markdownSuccess,
+                ) ||
+                other.markdownSuccess == markdownSuccess) &&
+            (identical(
+                  other.markdownError,
+                  markdownError,
+                ) ||
+                other.markdownError == markdownError));
   }
 
   @override
@@ -89,11 +108,10 @@ class CalculateGfrModel {
         markdownInit,
         markdownSuccess,
         markdownError,
-]);
+      ]);
 
   @override
   String toString() {
     return 'CalculateGfrModel(enumResult: $enumResult, markdownInit: $markdownInit, markdownSuccess: $markdownSuccess, markdownError: $markdownError, )';
-    }
-
+  }
 }

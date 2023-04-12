@@ -31,9 +31,7 @@ class GlobalString {
   factory GlobalString() => _internalSingleton;
   GlobalString._internal();
   static final GlobalString _internalSingleton = GlobalString._internal();
-  
-  
-  
+
   static const styleCssIsLight = '''
 
     <style type="text/css">

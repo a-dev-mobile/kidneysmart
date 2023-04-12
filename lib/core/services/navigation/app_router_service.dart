@@ -99,7 +99,7 @@ class AppRouterService {
               child: const InfoGfrPage(),
             ),
           ),
-           GoRoute(
+          GoRoute(
             path: UpdateDbPage.path,
             name: UpdateDbPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(

@@ -47,9 +47,9 @@ class HealthProfileState {
   /* init: '' */
   final String markdownError;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -71,47 +71,97 @@ class HealthProfileState {
     this.markdownError = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'isValid': isValid, 
-      'dateBirthday': dateBirthday.toMap(), 
-      'diabet': diabet.toMap(), 
-      'height': height.toMap(), 
-      'weight': weight.toMap(), 
-      'gender': gender.toMap(), 
-      'dailyDiuresis': dailyDiuresis.toMap(), 
-      'hypertension': hypertension.toMap(), 
-      'urine': urine.toMap(), 
-      'creatinine': creatinine.toMap(), 
-      'activity': activity.toMap(), 
-      'ckd': ckd.toMap(), 
-      'bmi': bmi.toMap(), 
-      'gfr': gfr.toMap(), 
-      'markdownError': markdownError, 
+      'isValid': isValid,
+      'dateBirthday': dateBirthday.toMap(),
+      'diabet': diabet.toMap(),
+      'height': height.toMap(),
+      'weight': weight.toMap(),
+      'gender': gender.toMap(),
+      'dailyDiuresis': dailyDiuresis.toMap(),
+      'hypertension': hypertension.toMap(),
+      'urine': urine.toMap(),
+      'creatinine': creatinine.toMap(),
+      'activity': activity.toMap(),
+      'ckd': ckd.toMap(),
+      'bmi': bmi.toMap(),
+      'gfr': gfr.toMap(),
+      'markdownError': markdownError,
     };
   }
-
 
   factory HealthProfileState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const HealthProfileState();
 
     return HealthProfileState(
-      isValid: map['isValid'] as bool? ?? false, 
-      dateBirthday: map['dateBirthday'] != null ? DateBirthdayModel.fromMap(Map<String, dynamic>.from(map['dateBirthday'] as Map)) : const DateBirthdayModel(), 
-      diabet: map['diabet'] != null ? DiabetesModel.fromMap(Map<String, dynamic>.from(map['diabet'] as Map)) : const DiabetesModel(), 
-      height: map['height'] != null ? HeightModel.fromMap(Map<String, dynamic>.from(map['height'] as Map)) : const HeightModel(), 
-      weight: map['weight'] != null ? WeightModel.fromMap(Map<String, dynamic>.from(map['weight'] as Map)) : const WeightModel(), 
-      gender: map['gender'] != null ? GenderModel.fromMap(Map<String, dynamic>.from(map['gender'] as Map)) : const GenderModel(), 
-      dailyDiuresis: map['dailyDiuresis'] != null ? DailyDiuresisModel.fromMap(Map<String, dynamic>.from(map['dailyDiuresis'] as Map)) : const DailyDiuresisModel(), 
-      hypertension: map['hypertension'] != null ? HypertensionModel.fromMap(Map<String, dynamic>.from(map['hypertension'] as Map)) : const HypertensionModel(), 
-      urine: map['urine'] != null ? UrineModel.fromMap(Map<String, dynamic>.from(map['urine'] as Map)) : const UrineModel(), 
-      creatinine: map['creatinine'] != null ? CreatinineModel.fromMap(Map<String, dynamic>.from(map['creatinine'] as Map)) : const CreatinineModel(), 
-      activity: map['activity'] != null ? ActivityModel.fromMap(Map<String, dynamic>.from(map['activity'] as Map)) : const ActivityModel(), 
-      ckd: map['ckd'] != null ? CkdModel.fromMap(Map<String, dynamic>.from(map['ckd'] as Map)) : const CkdModel(), 
-      bmi: map['bmi'] != null ? CalculateBmiModel.fromMap(Map<String, dynamic>.from(map['bmi'] as Map)) : const CalculateBmiModel(), 
-      gfr: map['gfr'] != null ? CalculateGfrModel.fromMap(Map<String, dynamic>.from(map['gfr'] as Map)) : const CalculateGfrModel(), 
-      markdownError: map['markdownError'] as String? ?? '', 
+      isValid: map['isValid'] as bool? ?? false,
+      dateBirthday: map['dateBirthday'] != null
+          ? DateBirthdayModel.fromMap(
+              Map<String, dynamic>.from(map['dateBirthday'] as Map),
+            )
+          : const DateBirthdayModel(),
+      diabet: map['diabet'] != null
+          ? DiabetesModel.fromMap(
+              Map<String, dynamic>.from(map['diabet'] as Map),
+            )
+          : const DiabetesModel(),
+      height: map['height'] != null
+          ? HeightModel.fromMap(
+              Map<String, dynamic>.from(map['height'] as Map),
+            )
+          : const HeightModel(),
+      weight: map['weight'] != null
+          ? WeightModel.fromMap(
+              Map<String, dynamic>.from(map['weight'] as Map),
+            )
+          : const WeightModel(),
+      gender: map['gender'] != null
+          ? GenderModel.fromMap(
+              Map<String, dynamic>.from(map['gender'] as Map),
+            )
+          : const GenderModel(),
+      dailyDiuresis: map['dailyDiuresis'] != null
+          ? DailyDiuresisModel.fromMap(
+              Map<String, dynamic>.from(map['dailyDiuresis'] as Map),
+            )
+          : const DailyDiuresisModel(),
+      hypertension: map['hypertension'] != null
+          ? HypertensionModel.fromMap(
+              Map<String, dynamic>.from(map['hypertension'] as Map),
+            )
+          : const HypertensionModel(),
+      urine: map['urine'] != null
+          ? UrineModel.fromMap(
+              Map<String, dynamic>.from(map['urine'] as Map),
+            )
+          : const UrineModel(),
+      creatinine: map['creatinine'] != null
+          ? CreatinineModel.fromMap(
+              Map<String, dynamic>.from(map['creatinine'] as Map),
+            )
+          : const CreatinineModel(),
+      activity: map['activity'] != null
+          ? ActivityModel.fromMap(
+              Map<String, dynamic>.from(map['activity'] as Map),
+            )
+          : const ActivityModel(),
+      ckd: map['ckd'] != null
+          ? CkdModel.fromMap(
+              Map<String, dynamic>.from(map['ckd'] as Map),
+            )
+          : const CkdModel(),
+      bmi: map['bmi'] != null
+          ? CalculateBmiModel.fromMap(
+              Map<String, dynamic>.from(map['bmi'] as Map),
+            )
+          : const CalculateBmiModel(),
+      gfr: map['gfr'] != null
+          ? CalculateGfrModel.fromMap(
+              Map<String, dynamic>.from(map['gfr'] as Map),
+            )
+          : const CalculateGfrModel(),
+      markdownError: map['markdownError'] as String? ?? '',
     );
   }
 
@@ -133,47 +183,110 @@ class HealthProfileState {
     String? markdownError,
   }) {
     return HealthProfileState(
-      isValid: isValid ?? this.isValid, 
-      dateBirthday: dateBirthday ?? this.dateBirthday, 
-      diabet: diabet ?? this.diabet, 
-      height: height ?? this.height, 
-      weight: weight ?? this.weight, 
-      gender: gender ?? this.gender, 
-      dailyDiuresis: dailyDiuresis ?? this.dailyDiuresis, 
-      hypertension: hypertension ?? this.hypertension, 
-      urine: urine ?? this.urine, 
-      creatinine: creatinine ?? this.creatinine, 
-      activity: activity ?? this.activity, 
-      ckd: ckd ?? this.ckd, 
-      bmi: bmi ?? this.bmi, 
-      gfr: gfr ?? this.gfr, 
-      markdownError: markdownError ?? this.markdownError, 
+      isValid: isValid ?? this.isValid,
+      dateBirthday: dateBirthday ?? this.dateBirthday,
+      diabet: diabet ?? this.diabet,
+      height: height ?? this.height,
+      weight: weight ?? this.weight,
+      gender: gender ?? this.gender,
+      dailyDiuresis: dailyDiuresis ?? this.dailyDiuresis,
+      hypertension: hypertension ?? this.hypertension,
+      urine: urine ?? this.urine,
+      creatinine: creatinine ?? this.creatinine,
+      activity: activity ?? this.activity,
+      ckd: ckd ?? this.ckd,
+      bmi: bmi ?? this.bmi,
+      gfr: gfr ?? this.gfr,
+      markdownError: markdownError ?? this.markdownError,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory HealthProfileState.fromJson(String source) => HealthProfileState.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory HealthProfileState.fromJson(String source) =>
+      HealthProfileState.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is HealthProfileState &&
-            (identical(other.isValid, isValid) || other.isValid == isValid) && 
-            (identical(other.dateBirthday, dateBirthday) || other.dateBirthday == dateBirthday) && 
-            (identical(other.diabet, diabet) || other.diabet == diabet) && 
-            (identical(other.height, height) || other.height == height) && 
-            (identical(other.weight, weight) || other.weight == weight) && 
-            (identical(other.gender, gender) || other.gender == gender) && 
-            (identical(other.dailyDiuresis, dailyDiuresis) || other.dailyDiuresis == dailyDiuresis) && 
-            (identical(other.hypertension, hypertension) || other.hypertension == hypertension) && 
-            (identical(other.urine, urine) || other.urine == urine) && 
-            (identical(other.creatinine, creatinine) || other.creatinine == creatinine) && 
-            (identical(other.activity, activity) || other.activity == activity) && 
-            (identical(other.ckd, ckd) || other.ckd == ckd) && 
-            (identical(other.bmi, bmi) || other.bmi == bmi) && 
-            (identical(other.gfr, gfr) || other.gfr == gfr) && 
-            (identical(other.markdownError, markdownError) || other.markdownError == markdownError));
+            (identical(
+                  other.isValid,
+                  isValid,
+                ) ||
+                other.isValid == isValid) &&
+            (identical(
+                  other.dateBirthday,
+                  dateBirthday,
+                ) ||
+                other.dateBirthday == dateBirthday) &&
+            (identical(
+                  other.diabet,
+                  diabet,
+                ) ||
+                other.diabet == diabet) &&
+            (identical(
+                  other.height,
+                  height,
+                ) ||
+                other.height == height) &&
+            (identical(
+                  other.weight,
+                  weight,
+                ) ||
+                other.weight == weight) &&
+            (identical(
+                  other.gender,
+                  gender,
+                ) ||
+                other.gender == gender) &&
+            (identical(
+                  other.dailyDiuresis,
+                  dailyDiuresis,
+                ) ||
+                other.dailyDiuresis == dailyDiuresis) &&
+            (identical(
+                  other.hypertension,
+                  hypertension,
+                ) ||
+                other.hypertension == hypertension) &&
+            (identical(
+                  other.urine,
+                  urine,
+                ) ||
+                other.urine == urine) &&
+            (identical(
+                  other.creatinine,
+                  creatinine,
+                ) ||
+                other.creatinine == creatinine) &&
+            (identical(
+                  other.activity,
+                  activity,
+                ) ||
+                other.activity == activity) &&
+            (identical(
+                  other.ckd,
+                  ckd,
+                ) ||
+                other.ckd == ckd) &&
+            (identical(
+                  other.bmi,
+                  bmi,
+                ) ||
+                other.bmi == bmi) &&
+            (identical(
+                  other.gfr,
+                  gfr,
+                ) ||
+                other.gfr == gfr) &&
+            (identical(
+                  other.markdownError,
+                  markdownError,
+                ) ||
+                other.markdownError == markdownError));
   }
 
   @override
@@ -194,11 +307,10 @@ class HealthProfileState {
         bmi,
         gfr,
         markdownError,
-]);
+      ]);
 
   @override
   String toString() {
     return 'HealthProfileState(isValid: $isValid, dateBirthday: $dateBirthday, diabet: $diabet, height: $height, weight: $weight, gender: $gender, dailyDiuresis: $dailyDiuresis, hypertension: $hypertension, urine: $urine, creatinine: $creatinine, activity: $activity, ckd: $ckd, bmi: $bmi, gfr: $gfr, markdownError: $markdownError, )';
-    }
-
+  }
 }

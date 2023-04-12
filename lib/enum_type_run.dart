@@ -17,12 +17,15 @@ enum TypeRun with Comparable<TypeRun> {
   // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static TypeRun fromValue(String? value, {TypeRun? fallback}) {
+  static TypeRun fromValue(
+    String? value, {
+    TypeRun? fallback,
+  }) {
     switch (value) {
       case 'enum':
         return enum_;
@@ -43,11 +46,14 @@ enum TypeRun with Comparable<TypeRun> {
       case 'none':
         return none;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in TypeRun',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in TypeRun',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() enum_,
@@ -82,7 +88,6 @@ enum TypeRun with Comparable<TypeRun> {
     }
   }
 
-
   T mapValue<T>({
     required T enum_,
     required T enumDefault,
@@ -116,7 +121,6 @@ enum TypeRun with Comparable<TypeRun> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? enum_,
@@ -130,17 +134,16 @@ enum TypeRun with Comparable<TypeRun> {
     T Function()? none,
   }) =>
       map<T>(
-      enum_: enum_ ?? orElse,
-      enumDefault: enumDefault ?? orElse,
-      enumInt: enumInt ?? orElse,
-      enumString: enumString ?? orElse,
-      data: data ?? orElse,
-      assets: assets ?? orElse,
-      build: build ?? orElse,
-      union22222: union22222 ?? orElse,
-      none: none ?? orElse,
+        enum_: enum_ ?? orElse,
+        enumDefault: enumDefault ?? orElse,
+        enumInt: enumInt ?? orElse,
+        enumString: enumString ?? orElse,
+        data: data ?? orElse,
+        assets: assets ?? orElse,
+        build: build ?? orElse,
+        union22222: union22222 ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -155,17 +158,16 @@ enum TypeRun with Comparable<TypeRun> {
     T? none,
   }) =>
       mapValue<T>(
-      enum_: enum_ ?? orElse,
-      enumDefault: enumDefault ?? orElse,
-      enumInt: enumInt ?? orElse,
-      enumString: enumString ?? orElse,
-      data: data ?? orElse,
-      assets: assets ?? orElse,
-      build: build ?? orElse,
-      union22222: union22222 ?? orElse,
-      none: none ?? orElse,
+        enum_: enum_ ?? orElse,
+        enumDefault: enumDefault ?? orElse,
+        enumInt: enumInt ?? orElse,
+        enumString: enumString ?? orElse,
+        data: data ?? orElse,
+        assets: assets ?? orElse,
+        build: build ?? orElse,
+        union22222: union22222 ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? enum_,
@@ -191,7 +193,6 @@ enum TypeRun with Comparable<TypeRun> {
         none: none,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? enum_,
     T? enumDefault,
@@ -216,14 +217,12 @@ enum TypeRun with Comparable<TypeRun> {
         none: none,
       );
 
-
-  static List<String> getValues() => TypeRun.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      TypeRun.values.map((e) => e.value).toList();
 
   @override
   int compareTo(TypeRun other) => index.compareTo(other.index);
 
   @override
   String toString() => 'TypeRun.$name($value)';
-
-
 }

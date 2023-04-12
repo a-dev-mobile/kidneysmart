@@ -10,12 +10,15 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumDailyDiuresis fromValue(String? value, {EnumDailyDiuresis? fallback}) {
+  static EnumDailyDiuresis fromValue(
+    String? value, {
+    EnumDailyDiuresis? fallback,
+  }) {
     switch (value) {
       case 'normal':
         return normal;
@@ -26,11 +29,14 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
       case 'none':
         return none;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumDailyDiuresis',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumDailyDiuresis',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() normal,
@@ -50,7 +56,6 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
     }
   }
 
-
   T mapValue<T>({
     required T normal,
     required T no,
@@ -69,7 +74,6 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? normal,
@@ -78,12 +82,11 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
     T Function()? none,
   }) =>
       map<T>(
-      normal: normal ?? orElse,
-      no: no ?? orElse,
-      enterValue: enterValue ?? orElse,
-      none: none ?? orElse,
+        normal: normal ?? orElse,
+        no: no ?? orElse,
+        enterValue: enterValue ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -93,12 +96,11 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
     T? none,
   }) =>
       mapValue<T>(
-      normal: normal ?? orElse,
-      no: no ?? orElse,
-      enterValue: enterValue ?? orElse,
-      none: none ?? orElse,
+        normal: normal ?? orElse,
+        no: no ?? orElse,
+        enterValue: enterValue ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? normal,
@@ -114,7 +116,6 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
         none: none,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? normal,
     T? no,
@@ -129,14 +130,12 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
         none: none,
       );
 
-
-  static List<String> getValues() => EnumDailyDiuresis.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumDailyDiuresis.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumDailyDiuresis other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumDailyDiuresis.$name($value)';
-
-
 }

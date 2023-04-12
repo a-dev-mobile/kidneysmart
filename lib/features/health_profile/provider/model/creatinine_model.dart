@@ -20,9 +20,9 @@ class CreatinineModel {
   /* init:  EnumInputTypeCreatinine.mcmolL */
   final EnumInputTypeCreatinine inputTypeCreatinine;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -34,27 +34,29 @@ class CreatinineModel {
     this.value,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result, 
-      'value': value, 
-      'error': error, 
-      'enumValid': enumValid.index, 
-      'inputTypeCreatinine': inputTypeCreatinine.index, 
+      'result': result,
+      'value': value,
+      'error': error,
+      'enumValid': enumValid.index,
+      'inputTypeCreatinine': inputTypeCreatinine.index,
     };
   }
-
 
   factory CreatinineModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const CreatinineModel();
 
     return CreatinineModel(
-      result: map['result'] as String? ?? '', 
-      value: (map['value'] as num?)?.toDouble(), 
-      error: map['error'] as String? ?? '', 
-      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
-      inputTypeCreatinine: map['inputTypeCreatinine'] != null ? EnumInputTypeCreatinine.values[map['inputTypeCreatinine'] as int] : EnumInputTypeCreatinine.mcmolL, 
+      result: map['result'] as String? ?? '',
+      value: (map['value'] as num?)?.toDouble(),
+      error: map['error'] as String? ?? '',
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
+      inputTypeCreatinine: map['inputTypeCreatinine'] != null
+          ? EnumInputTypeCreatinine.values[map['inputTypeCreatinine'] as int]
+          : EnumInputTypeCreatinine.mcmolL,
     );
   }
 
@@ -66,27 +68,49 @@ class CreatinineModel {
     EnumInputTypeCreatinine? inputTypeCreatinine,
   }) {
     return CreatinineModel(
-      result: result ?? this.result, 
-      value: value ?? this.value, 
-      error: error ?? this.error, 
-      enumValid: enumValid ?? this.enumValid, 
-      inputTypeCreatinine: inputTypeCreatinine ?? this.inputTypeCreatinine, 
+      result: result ?? this.result,
+      value: value ?? this.value,
+      error: error ?? this.error,
+      enumValid: enumValid ?? this.enumValid,
+      inputTypeCreatinine: inputTypeCreatinine ?? this.inputTypeCreatinine,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory CreatinineModel.fromJson(String source) => CreatinineModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory CreatinineModel.fromJson(String source) => CreatinineModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CreatinineModel &&
-            (identical(other.result, result) || other.result == result) && 
-            (identical(other.value, value) || other.value == value) && 
-            (identical(other.error, error) || other.error == error) && 
-            (identical(other.enumValid, enumValid) || other.enumValid == enumValid) && 
-            (identical(other.inputTypeCreatinine, inputTypeCreatinine) || other.inputTypeCreatinine == inputTypeCreatinine));
+            (identical(
+                  other.result,
+                  result,
+                ) ||
+                other.result == result) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid) &&
+            (identical(
+                  other.inputTypeCreatinine,
+                  inputTypeCreatinine,
+                ) ||
+                other.inputTypeCreatinine == inputTypeCreatinine));
   }
 
   @override
@@ -97,11 +121,10 @@ class CreatinineModel {
         error,
         enumValid,
         inputTypeCreatinine,
-]);
+      ]);
 
   @override
   String toString() {
     return 'CreatinineModel(result: $result, value: $value, error: $error, enumValid: $enumValid, inputTypeCreatinine: $inputTypeCreatinine, )';
-    }
-
+  }
 }

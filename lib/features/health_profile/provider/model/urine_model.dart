@@ -17,9 +17,9 @@ class UrineModel {
   final EnumValid enumValid;
 
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -30,25 +30,25 @@ class UrineModel {
     this.value,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result, 
-      'value': value, 
-      'error': error, 
-      'enumValid': enumValid.index, 
+      'result': result,
+      'value': value,
+      'error': error,
+      'enumValid': enumValid.index,
     };
   }
-
 
   factory UrineModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const UrineModel();
 
     return UrineModel(
-      result: map['result'] as String? ?? '', 
-      value: (map['value'] as num?)?.toDouble(), 
-      error: map['error'] as String? ?? '', 
-      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
+      result: map['result'] as String? ?? '',
+      value: (map['value'] as num?)?.toDouble(),
+      error: map['error'] as String? ?? '',
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
     );
   }
 
@@ -59,25 +59,43 @@ class UrineModel {
     EnumValid? enumValid,
   }) {
     return UrineModel(
-      result: result ?? this.result, 
-      value: value ?? this.value, 
-      error: error ?? this.error, 
-      enumValid: enumValid ?? this.enumValid, 
+      result: result ?? this.result,
+      value: value ?? this.value,
+      error: error ?? this.error,
+      enumValid: enumValid ?? this.enumValid,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory UrineModel.fromJson(String source) => UrineModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory UrineModel.fromJson(String source) => UrineModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is UrineModel &&
-            (identical(other.result, result) || other.result == result) && 
-            (identical(other.value, value) || other.value == value) && 
-            (identical(other.error, error) || other.error == error) && 
-            (identical(other.enumValid, enumValid) || other.enumValid == enumValid));
+            (identical(
+                  other.result,
+                  result,
+                ) ||
+                other.result == result) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid));
   }
 
   @override
@@ -87,11 +105,10 @@ class UrineModel {
         value,
         error,
         enumValid,
-]);
+      ]);
 
   @override
   String toString() {
     return 'UrineModel(result: $result, value: $value, error: $error, enumValid: $enumValid, )';
-    }
-
+  }
 }

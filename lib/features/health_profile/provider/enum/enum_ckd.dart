@@ -16,12 +16,15 @@ enum EnumCkd with Comparable<EnumCkd> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumCkd fromValue(double? value, {EnumCkd? fallback}) {
+  static EnumCkd fromValue(
+    double? value, {
+    EnumCkd? fallback,
+  }) {
     switch (value?.toString()) {
       case '90, 100000':
         return one;
@@ -40,11 +43,14 @@ enum EnumCkd with Comparable<EnumCkd> {
       case '-1, -1':
         return none;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumCkd',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumCkd',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() one,
@@ -76,7 +82,6 @@ enum EnumCkd with Comparable<EnumCkd> {
     }
   }
 
-
   T mapValue<T>({
     required T one,
     required T two,
@@ -107,7 +112,6 @@ enum EnumCkd with Comparable<EnumCkd> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? one,
@@ -120,16 +124,15 @@ enum EnumCkd with Comparable<EnumCkd> {
     T Function()? none,
   }) =>
       map<T>(
-      one: one ?? orElse,
-      two: two ?? orElse,
-      threeA: threeA ?? orElse,
-      threeB: threeB ?? orElse,
-      four: four ?? orElse,
-      five: five ?? orElse,
-      calculate: calculate ?? orElse,
-      none: none ?? orElse,
+        one: one ?? orElse,
+        two: two ?? orElse,
+        threeA: threeA ?? orElse,
+        threeB: threeB ?? orElse,
+        four: four ?? orElse,
+        five: five ?? orElse,
+        calculate: calculate ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -143,16 +146,15 @@ enum EnumCkd with Comparable<EnumCkd> {
     T? none,
   }) =>
       mapValue<T>(
-      one: one ?? orElse,
-      two: two ?? orElse,
-      threeA: threeA ?? orElse,
-      threeB: threeB ?? orElse,
-      four: four ?? orElse,
-      five: five ?? orElse,
-      calculate: calculate ?? orElse,
-      none: none ?? orElse,
+        one: one ?? orElse,
+        two: two ?? orElse,
+        threeA: threeA ?? orElse,
+        threeB: threeB ?? orElse,
+        four: four ?? orElse,
+        five: five ?? orElse,
+        calculate: calculate ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? one,
@@ -176,7 +178,6 @@ enum EnumCkd with Comparable<EnumCkd> {
         none: none,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? one,
     T? two,
@@ -199,14 +200,12 @@ enum EnumCkd with Comparable<EnumCkd> {
         none: none,
       );
 
-
-  static List<double> getValues() => EnumCkd.values.map((e) => e.minValue).toList();
+  static List<double> getValues() =>
+      EnumCkd.values.map((e) => e.minValue).toList();
 
   @override
   int compareTo(EnumCkd other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumCkd.$name($minValue)';
-
-
 }

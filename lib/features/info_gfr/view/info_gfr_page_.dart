@@ -77,15 +77,15 @@
 //               },
 //               onProgressChanged: (controller, progress) {
 //                 print('--onProgressChanged $progress  $controller');
-               
+
 //               },
 //               onUpdateVisitedHistory: (controller, url, androidIsReload) {
 //                 print('--onUpdateVisitedHistory $url  $controller');
-               
+
 //               },
 //               onConsoleMessage: (controller, consoleMessage) {
 //                 print('--onConsoleMessage $consoleMessage  $controller');
-            
+
 //               },
 //             ),
 //           ],
@@ -114,8 +114,6 @@
 //   }
 
 // static void _launchExternalUrl(Uri uri) {
- 
-
 
 //     final _ = launchUrl(
 //       uri,
@@ -199,6 +197,5 @@
 //   </div>
 //   <!-- end .containerHead -->
 // </div>
-
 
 // ''';

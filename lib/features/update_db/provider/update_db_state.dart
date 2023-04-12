@@ -10,11 +10,10 @@ class UpdateDbState {
   /* init: EnumResult.init */
   final EnumResult enumResult;
 
-
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -22,19 +21,19 @@ class UpdateDbState {
     this.enumResult = EnumResult.init,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumResult': enumResult.index, 
+      'enumResult': enumResult.index,
     };
   }
-
 
   factory UpdateDbState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const UpdateDbState();
 
     return UpdateDbState(
-      enumResult: map['enumResult'] != null ? EnumResult.values[map['enumResult'] as int] : EnumResult.init, 
+      enumResult: map['enumResult'] != null
+          ? EnumResult.values[map['enumResult'] as int]
+          : EnumResult.init,
     );
   }
 
@@ -42,30 +41,35 @@ class UpdateDbState {
     EnumResult? enumResult,
   }) {
     return UpdateDbState(
-      enumResult: enumResult ?? this.enumResult, 
+      enumResult: enumResult ?? this.enumResult,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory UpdateDbState.fromJson(String source) => UpdateDbState.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory UpdateDbState.fromJson(String source) => UpdateDbState.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is UpdateDbState &&
-            (identical(other.enumResult, enumResult) || other.enumResult == enumResult));
+            (identical(
+                  other.enumResult,
+                  enumResult,
+                ) ||
+                other.enumResult == enumResult));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         enumResult,
-]);
+      ]);
 
   @override
   String toString() {
     return 'UpdateDbState(enumResult: $enumResult, )';
-    }
-
+  }
 }

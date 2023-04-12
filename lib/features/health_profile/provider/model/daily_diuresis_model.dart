@@ -21,9 +21,9 @@ class DailyDiuresisModel {
 /* init: [] */
   final List<bool> listSelected;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -36,29 +36,39 @@ class DailyDiuresisModel {
     this.selectedIndex,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'listDailyDiuresis': listDailyDiuresis.map((e) => e.toMap()).toList(), 
-      'isShowInput': isShowInput, 
-      'selectedIndex': selectedIndex, 
-      'enumValid': enumValid.index, 
-      'error': error, 
-      'listSelected': listSelected, 
+      'listDailyDiuresis': listDailyDiuresis.map((e) => e.toMap()).toList(),
+      'isShowInput': isShowInput,
+      'selectedIndex': selectedIndex,
+      'enumValid': enumValid.index,
+      'error': error,
+      'listSelected': listSelected,
     };
   }
-
 
   factory DailyDiuresisModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const DailyDiuresisModel();
 
     return DailyDiuresisModel(
-      listDailyDiuresis: map['listDailyDiuresis'] != null ? (map['listDailyDiuresis'] as List<dynamic>).map((e) => DailyDiuresisItemModel.fromMap(e as Map<dynamic, dynamic>)).toList() : const [], 
-      isShowInput: map['isShowInput'] as bool? ?? false, 
-      selectedIndex: (map['selectedIndex'] as num?)?.toInt(), 
-      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
-      error: map['error'] as String? ?? '', 
-      listSelected: (map['listSelected'] as List<dynamic>?)?.map((e) => e as bool).toList() ?? const [], 
+      listDailyDiuresis: map['listDailyDiuresis'] != null
+          ? (map['listDailyDiuresis'] as List<dynamic>)
+              .map(
+                (e) =>
+                    DailyDiuresisItemModel.fromMap(e as Map<dynamic, dynamic>),
+              )
+              .toList()
+          : const [],
+      isShowInput: map['isShowInput'] as bool? ?? false,
+      selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
+      error: map['error'] as String? ?? '',
+      listSelected: (map['listSelected'] as List<dynamic>?)
+              ?.map((e) => e as bool)
+              .toList() ??
+          const [],
     );
   }
 
@@ -71,45 +81,73 @@ class DailyDiuresisModel {
     List<bool>? listSelected,
   }) {
     return DailyDiuresisModel(
-      listDailyDiuresis: listDailyDiuresis ?? this.listDailyDiuresis, 
-      isShowInput: isShowInput ?? this.isShowInput, 
-      selectedIndex: selectedIndex ?? this.selectedIndex, 
-      enumValid: enumValid ?? this.enumValid, 
-      error: error ?? this.error, 
-      listSelected: listSelected ?? this.listSelected, 
+      listDailyDiuresis: listDailyDiuresis ?? this.listDailyDiuresis,
+      isShowInput: isShowInput ?? this.isShowInput,
+      selectedIndex: selectedIndex ?? this.selectedIndex,
+      enumValid: enumValid ?? this.enumValid,
+      error: error ?? this.error,
+      listSelected: listSelected ?? this.listSelected,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory DailyDiuresisModel.fromJson(String source) => DailyDiuresisModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory DailyDiuresisModel.fromJson(String source) =>
+      DailyDiuresisModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DailyDiuresisModel &&
-            const DeepCollectionEquality().equals(other.listDailyDiuresis, listDailyDiuresis,) && 
-            (identical(other.isShowInput, isShowInput) || other.isShowInput == isShowInput) && 
-            (identical(other.selectedIndex, selectedIndex) || other.selectedIndex == selectedIndex) && 
-            (identical(other.enumValid, enumValid) || other.enumValid == enumValid) && 
-            (identical(other.error, error) || other.error == error) && 
-            const DeepCollectionEquality().equals(other.listSelected, listSelected,));
+            const DeepCollectionEquality().equals(
+              other.listDailyDiuresis,
+              listDailyDiuresis,
+            ) &&
+            (identical(
+                  other.isShowInput,
+                  isShowInput,
+                ) ||
+                other.isShowInput == isShowInput) &&
+            (identical(
+                  other.selectedIndex,
+                  selectedIndex,
+                ) ||
+                other.selectedIndex == selectedIndex) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            const DeepCollectionEquality().equals(
+              other.listSelected,
+              listSelected,
+            ));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(listDailyDiuresis,),
+        const DeepCollectionEquality().hash(
+          listDailyDiuresis,
+        ),
         isShowInput,
         selectedIndex,
         enumValid,
         error,
-        const DeepCollectionEquality().hash(listSelected,),
-]);
+        const DeepCollectionEquality().hash(
+          listSelected,
+        ),
+      ]);
 
   @override
   String toString() {
     return 'DailyDiuresisModel(listDailyDiuresis: $listDailyDiuresis, isShowInput: $isShowInput, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
-    }
-
+  }
 }

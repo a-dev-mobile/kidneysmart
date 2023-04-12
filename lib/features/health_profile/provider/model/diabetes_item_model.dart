@@ -12,9 +12,9 @@ class DiabetesItemModel {
   final String value;
 
 // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -23,21 +23,21 @@ class DiabetesItemModel {
     this.value = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumDiabetes': enumDiabetes.index, 
-      'value': value, 
+      'enumDiabetes': enumDiabetes.index,
+      'value': value,
     };
   }
-
 
   factory DiabetesItemModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const DiabetesItemModel();
 
     return DiabetesItemModel(
-      enumDiabetes: map['enumDiabetes'] != null ? EnumDiabetes.values[map['enumDiabetes'] as int] : EnumDiabetes.none, 
-      value: map['value'] as String? ?? '', 
+      enumDiabetes: map['enumDiabetes'] != null
+          ? EnumDiabetes.values[map['enumDiabetes'] as int]
+          : EnumDiabetes.none,
+      value: map['value'] as String? ?? '',
     );
   }
 
@@ -46,21 +46,32 @@ class DiabetesItemModel {
     String? value,
   }) {
     return DiabetesItemModel(
-      enumDiabetes: enumDiabetes ?? this.enumDiabetes, 
-      value: value ?? this.value, 
+      enumDiabetes: enumDiabetes ?? this.enumDiabetes,
+      value: value ?? this.value,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory DiabetesItemModel.fromJson(String source) => DiabetesItemModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory DiabetesItemModel.fromJson(String source) =>
+      DiabetesItemModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DiabetesItemModel &&
-            (identical(other.enumDiabetes, enumDiabetes) || other.enumDiabetes == enumDiabetes) && 
-            (identical(other.value, value) || other.value == value));
+            (identical(
+                  other.enumDiabetes,
+                  enumDiabetes,
+                ) ||
+                other.enumDiabetes == enumDiabetes) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value));
   }
 
   @override
@@ -68,11 +79,10 @@ class DiabetesItemModel {
         runtimeType,
         enumDiabetes,
         value,
-]);
+      ]);
 
   @override
   String toString() {
     return 'DiabetesItemModel(enumDiabetes: $enumDiabetes, value: $value, )';
-    }
-
+  }
 }

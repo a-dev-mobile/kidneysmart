@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/core/services/db/firebase/firebase.dart';
+import 'package:nutrition/core/services/db/sql/model/db_info_model.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/network/network_client_service.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
@@ -63,48 +64,30 @@ class InfoGfrNotifier extends StateNotifier<InfoGfrState> {
     final dbPath = _storage.getAppState().dbPathUpdate;
     final db = await openDatabase(dbPath);
 
-    final list = await db.rawQuery('SELECT * from info');
-    final title = list.first['${lang.value}_title'].toString();
-    final desc = list.first['${lang.value}_description'].toString();
- 
+    final list = await db.rawQuery('SELECT * from info WHERE id = 1');
+
+    final dbCkdInfo = DbInfoModel.fromMap(list.first);
+
     // print(list);
 
     // final realtimeDb = await _firebase.getRealtimeDbModel(storage: _storage);
 
-    // final url = lang.mapValue(
-    //   en: realtimeDb.features.gfr.info.en,
-    //   ru: realtimeDb.features.gfr.info.ru,
-    // );
+    var desc = dbCkdInfo.en_desc;
+    var title = dbCkdInfo.en_title;
 
+    if (lang == EnumLang.ru) {
+      desc = dbCkdInfo.ru_desc;
+      title = dbCkdInfo.ru_title;
+    }
 
-    state = state.copyWith(title: title,
-      desc: getThemeHtmlText(body: desc, isDark: _isDarkTheme),
+    state = state.copyWith(
+      title: title,
+      desc: _getThemeHtmlText(body: desc, isDark: _isDarkTheme),
       enumResult: EnumResult.success,
     );
-    try {
-      // final response = await _client.request<dynamic>(
-      //   method: Method.get,
-      //   url: url,
-      // );
-
-      // if (response.statusCode == 200) {
-      //   state = state.copyWith(
-      //     enumResult: EnumResult.success,
-      //     url: url,
-      //     textMarkdown: response.data.toString(),
-      //   );
-
-      //   return;
-      // }
-    } on Object catch (e, stackTrace) {
-      Error.throwWithStackTrace(e, stackTrace);
-    }
-    // state = state.copyWith(
-    //   enumResult: EnumResult.error,
-    // );
   }
 
-  static String getThemeHtmlText({required String body, bool isDark = false}) {
+  static String _getThemeHtmlText({required String body, bool isDark = false}) {
     return '''
 <html>
   <head>
@@ -120,6 +103,4 @@ $body
 
 ''';
   }
-
-  
 }

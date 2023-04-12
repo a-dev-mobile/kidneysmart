@@ -14,9 +14,9 @@ class SuggestionsFio {
   final DataFio data;
 
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -26,23 +26,25 @@ class SuggestionsFio {
     this.data = const DataFio(),
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': value, 
-      'unrestricted_value': unrestricted_value, 
-      'data': data.toMap(), 
+      'value': value,
+      'unrestricted_value': unrestricted_value,
+      'data': data.toMap(),
     };
   }
-
 
   factory SuggestionsFio.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const SuggestionsFio();
 
     return SuggestionsFio(
-      value: map['value'] as String? ?? '', 
-      unrestricted_value: map['unrestricted_value'] as String? ?? '', 
-      data: map['data'] != null ? DataFio.fromMap(Map<String, dynamic>.from(map['data'] as Map)) : const DataFio(), 
+      value: map['value'] as String? ?? '',
+      unrestricted_value: map['unrestricted_value'] as String? ?? '',
+      data: map['data'] != null
+          ? DataFio.fromMap(
+              Map<String, dynamic>.from(map['data'] as Map),
+            )
+          : const DataFio(),
     );
   }
 
@@ -52,23 +54,37 @@ class SuggestionsFio {
     DataFio? data,
   }) {
     return SuggestionsFio(
-      value: value ?? this.value, 
-      unrestricted_value: unrestricted_value ?? this.unrestricted_value, 
-      data: data ?? this.data, 
+      value: value ?? this.value,
+      unrestricted_value: unrestricted_value ?? this.unrestricted_value,
+      data: data ?? this.data,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory SuggestionsFio.fromJson(String source) => SuggestionsFio.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory SuggestionsFio.fromJson(String source) => SuggestionsFio.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is SuggestionsFio &&
-            (identical(other.value, value) || other.value == value) && 
-            (identical(other.unrestricted_value, unrestricted_value) || other.unrestricted_value == unrestricted_value) && 
-            (identical(other.data, data) || other.data == data));
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value) &&
+            (identical(
+                  other.unrestricted_value,
+                  unrestricted_value,
+                ) ||
+                other.unrestricted_value == unrestricted_value) &&
+            (identical(
+                  other.data,
+                  data,
+                ) ||
+                other.data == data));
   }
 
   @override
@@ -77,11 +93,10 @@ class SuggestionsFio {
         value,
         unrestricted_value,
         data,
-]);
+      ]);
 
   @override
   String toString() {
     return 'SuggestionsFio(value: $value, unrestricted_value: $unrestricted_value, data: $data, )';
-    }
-
+  }
 }

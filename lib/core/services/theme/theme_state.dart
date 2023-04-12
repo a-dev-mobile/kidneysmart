@@ -9,9 +9,9 @@ class ThemeState {
   final ThemeMode themeMode;
 
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -19,19 +19,19 @@ class ThemeState {
     this.themeMode = ThemeMode.light,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'themeMode': themeMode.index, 
+      'themeMode': themeMode.index,
     };
   }
-
 
   factory ThemeState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const ThemeState();
 
     return ThemeState(
-      themeMode: map['themeMode'] != null ? ThemeMode.values[map['themeMode'] as int] : ThemeMode.light, 
+      themeMode: map['themeMode'] != null
+          ? ThemeMode.values[map['themeMode'] as int]
+          : ThemeMode.light,
     );
   }
 
@@ -39,30 +39,35 @@ class ThemeState {
     ThemeMode? themeMode,
   }) {
     return ThemeState(
-      themeMode: themeMode ?? this.themeMode, 
+      themeMode: themeMode ?? this.themeMode,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory ThemeState.fromJson(String source) => ThemeState.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory ThemeState.fromJson(String source) => ThemeState.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ThemeState &&
-            (identical(other.themeMode, themeMode) || other.themeMode == themeMode));
+            (identical(
+                  other.themeMode,
+                  themeMode,
+                ) ||
+                other.themeMode == themeMode));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         themeMode,
-]);
+      ]);
 
   @override
   String toString() {
     return 'ThemeState(themeMode: $themeMode, )';
-    }
-
+  }
 }

@@ -10,9 +10,9 @@ class RealtimeDbModel {
   final FeaturesDbModel features;
 
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -20,19 +20,21 @@ class RealtimeDbModel {
     this.features = const FeaturesDbModel(),
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'features': features.toMap(), 
+      'features': features.toMap(),
     };
   }
-
 
   factory RealtimeDbModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const RealtimeDbModel();
 
     return RealtimeDbModel(
-      features: map['features'] != null ? FeaturesDbModel.fromMap(Map<String, dynamic>.from(map['features'] as Map)) : const FeaturesDbModel(), 
+      features: map['features'] != null
+          ? FeaturesDbModel.fromMap(
+              Map<String, dynamic>.from(map['features'] as Map),
+            )
+          : const FeaturesDbModel(),
     );
   }
 
@@ -40,30 +42,35 @@ class RealtimeDbModel {
     FeaturesDbModel? features,
   }) {
     return RealtimeDbModel(
-      features: features ?? this.features, 
+      features: features ?? this.features,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory RealtimeDbModel.fromJson(String source) => RealtimeDbModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory RealtimeDbModel.fromJson(String source) => RealtimeDbModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is RealtimeDbModel &&
-            (identical(other.features, features) || other.features == features));
+            (identical(
+                  other.features,
+                  features,
+                ) ||
+                other.features == features));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         features,
-]);
+      ]);
 
   @override
   String toString() {
     return 'RealtimeDbModel(features: $features, )';
-    }
-
+  }
 }

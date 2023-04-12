@@ -3,7 +3,6 @@ import 'package:dio_log/interceptor/dio_log_interceptor.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/log/log.dart';
 
-
 final networkClientProvider = Provider<NetworkClientService>((ref) {
   return NetworkClientService();
 });
@@ -70,8 +69,6 @@ class NetworkClientService {
       rethrow;
     }
   }
-
-  
 }
 
 /// {@template network_client}

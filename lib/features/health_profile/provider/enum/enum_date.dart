@@ -9,12 +9,15 @@ enum EnumDate with Comparable<EnumDate> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumDate fromValue(String? value, {EnumDate? fallback}) {
+  static EnumDate fromValue(
+    String? value, {
+    EnumDate? fallback,
+  }) {
     switch (value) {
       case 'day':
         return day;
@@ -23,11 +26,14 @@ enum EnumDate with Comparable<EnumDate> {
       case 'year':
         return year;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumDate',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumDate',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() day,
@@ -44,7 +50,6 @@ enum EnumDate with Comparable<EnumDate> {
     }
   }
 
-
   T mapValue<T>({
     required T day,
     required T month,
@@ -60,7 +65,6 @@ enum EnumDate with Comparable<EnumDate> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? day,
@@ -68,11 +72,10 @@ enum EnumDate with Comparable<EnumDate> {
     T Function()? year,
   }) =>
       map<T>(
-      day: day ?? orElse,
-      month: month ?? orElse,
-      year: year ?? orElse,
+        day: day ?? orElse,
+        month: month ?? orElse,
+        year: year ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -81,11 +84,10 @@ enum EnumDate with Comparable<EnumDate> {
     T? year,
   }) =>
       mapValue<T>(
-      day: day ?? orElse,
-      month: month ?? orElse,
-      year: year ?? orElse,
+        day: day ?? orElse,
+        month: month ?? orElse,
+        year: year ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? day,
@@ -99,7 +101,6 @@ enum EnumDate with Comparable<EnumDate> {
         year: year,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? day,
     T? month,
@@ -112,14 +113,12 @@ enum EnumDate with Comparable<EnumDate> {
         year: year,
       );
 
-
-  static List<String> getValues() => EnumDate.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumDate.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumDate other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumDate.$name($value)';
-
-
 }

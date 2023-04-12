@@ -11,12 +11,15 @@ enum EnumDiabetes with Comparable<EnumDiabetes> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumDiabetes fromValue(String? value, {EnumDiabetes? fallback}) {
+  static EnumDiabetes fromValue(
+    String? value, {
+    EnumDiabetes? fallback,
+  }) {
     switch (value) {
       case 'yes':
         return yes;
@@ -25,11 +28,14 @@ enum EnumDiabetes with Comparable<EnumDiabetes> {
       case 'none':
         return none;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumDiabetes',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumDiabetes',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() yes,
@@ -46,7 +52,6 @@ enum EnumDiabetes with Comparable<EnumDiabetes> {
     }
   }
 
-
   T mapValue<T>({
     required T yes,
     required T no,
@@ -62,7 +67,6 @@ enum EnumDiabetes with Comparable<EnumDiabetes> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? yes,
@@ -70,11 +74,10 @@ enum EnumDiabetes with Comparable<EnumDiabetes> {
     T Function()? none,
   }) =>
       map<T>(
-      yes: yes ?? orElse,
-      no: no ?? orElse,
-      none: none ?? orElse,
+        yes: yes ?? orElse,
+        no: no ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -83,11 +86,10 @@ enum EnumDiabetes with Comparable<EnumDiabetes> {
     T? none,
   }) =>
       mapValue<T>(
-      yes: yes ?? orElse,
-      no: no ?? orElse,
-      none: none ?? orElse,
+        yes: yes ?? orElse,
+        no: no ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? yes,
@@ -101,7 +103,6 @@ enum EnumDiabetes with Comparable<EnumDiabetes> {
         none: none,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? yes,
     T? no,
@@ -114,14 +115,12 @@ enum EnumDiabetes with Comparable<EnumDiabetes> {
         none: none,
       );
 
-
-  static List<String> getValues() => EnumDiabetes.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumDiabetes.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumDiabetes other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumDiabetes.$name($value)';
-
-
 }

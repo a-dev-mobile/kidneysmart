@@ -37,9 +37,9 @@ class DateBirthdayModel {
   /* init: EnumValid.init */
   final EnumValid enumValid;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -58,41 +58,48 @@ class DateBirthdayModel {
     this.dateTime,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'days': days, 
-      'months': months, 
-      'years': years, 
-      'day': day, 
-      'year': year, 
-      'month': month, 
-      'userMonth': userMonth, 
-      'userYearFine': userYearFine, 
-      'userYearCoarse': userYearCoarse, 
-      'error': error, 
-      'dateTime': dateTime?.toIso8601String(), 
-      'enumValid': enumValid.index, 
+      'days': days,
+      'months': months,
+      'years': years,
+      'day': day,
+      'year': year,
+      'month': month,
+      'userMonth': userMonth,
+      'userYearFine': userYearFine,
+      'userYearCoarse': userYearCoarse,
+      'error': error,
+      'dateTime': dateTime?.toIso8601String(),
+      'enumValid': enumValid.index,
     };
   }
-
 
   factory DateBirthdayModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const DateBirthdayModel();
 
     return DateBirthdayModel(
-      days: (map['days'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
-      months: (map['months'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
-      years: (map['years'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [], 
-      day: map['day'] as String? ?? '', 
-      year: map['year'] as String? ?? '', 
-      month: map['month'] as String? ?? '', 
-      userMonth: (map['userMonth'] as num?)?.toInt() ?? -1, 
-      userYearFine: (map['userYearFine'] as num?)?.toInt() ?? -1, 
-      userYearCoarse: (map['userYearCoarse'] as num?)?.toInt() ?? -1, 
-      error: map['error'] as String? ?? '', 
-      dateTime: map['dateTime'] == null ? null : DateTime.parse(map['dateTime'] as String), 
-      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init, 
+      days: (map['days'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+          const [],
+      months:
+          (map['months'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const [],
+      years:
+          (map['years'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const [],
+      day: map['day'] as String? ?? '',
+      year: map['year'] as String? ?? '',
+      month: map['month'] as String? ?? '',
+      userMonth: (map['userMonth'] as num?)?.toInt() ?? -1,
+      userYearFine: (map['userYearFine'] as num?)?.toInt() ?? -1,
+      userYearCoarse: (map['userYearCoarse'] as num?)?.toInt() ?? -1,
+      error: map['error'] as String? ?? '',
+      dateTime: map['dateTime'] == null
+          ? null
+          : DateTime.parse(map['dateTime'] as String),
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
     );
   }
 
@@ -111,49 +118,103 @@ class DateBirthdayModel {
     EnumValid? enumValid,
   }) {
     return DateBirthdayModel(
-      days: days ?? this.days, 
-      months: months ?? this.months, 
-      years: years ?? this.years, 
-      day: day ?? this.day, 
-      year: year ?? this.year, 
-      month: month ?? this.month, 
-      userMonth: userMonth ?? this.userMonth, 
-      userYearFine: userYearFine ?? this.userYearFine, 
-      userYearCoarse: userYearCoarse ?? this.userYearCoarse, 
-      error: error ?? this.error, 
-      dateTime: dateTime ?? this.dateTime, 
-      enumValid: enumValid ?? this.enumValid, 
+      days: days ?? this.days,
+      months: months ?? this.months,
+      years: years ?? this.years,
+      day: day ?? this.day,
+      year: year ?? this.year,
+      month: month ?? this.month,
+      userMonth: userMonth ?? this.userMonth,
+      userYearFine: userYearFine ?? this.userYearFine,
+      userYearCoarse: userYearCoarse ?? this.userYearCoarse,
+      error: error ?? this.error,
+      dateTime: dateTime ?? this.dateTime,
+      enumValid: enumValid ?? this.enumValid,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory DateBirthdayModel.fromJson(String source) => DateBirthdayModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory DateBirthdayModel.fromJson(String source) =>
+      DateBirthdayModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DateBirthdayModel &&
-            const DeepCollectionEquality().equals(other.days, days,) && 
-            const DeepCollectionEquality().equals(other.months, months,) && 
-            const DeepCollectionEquality().equals(other.years, years,) && 
-            (identical(other.day, day) || other.day == day) && 
-            (identical(other.year, year) || other.year == year) && 
-            (identical(other.month, month) || other.month == month) && 
-            (identical(other.userMonth, userMonth) || other.userMonth == userMonth) && 
-            (identical(other.userYearFine, userYearFine) || other.userYearFine == userYearFine) && 
-            (identical(other.userYearCoarse, userYearCoarse) || other.userYearCoarse == userYearCoarse) && 
-            (identical(other.error, error) || other.error == error) && 
-            (identical(other.dateTime, dateTime) || other.dateTime == dateTime) && 
-            (identical(other.enumValid, enumValid) || other.enumValid == enumValid));
+            const DeepCollectionEquality().equals(
+              other.days,
+              days,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.months,
+              months,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.years,
+              years,
+            ) &&
+            (identical(
+                  other.day,
+                  day,
+                ) ||
+                other.day == day) &&
+            (identical(
+                  other.year,
+                  year,
+                ) ||
+                other.year == year) &&
+            (identical(
+                  other.month,
+                  month,
+                ) ||
+                other.month == month) &&
+            (identical(
+                  other.userMonth,
+                  userMonth,
+                ) ||
+                other.userMonth == userMonth) &&
+            (identical(
+                  other.userYearFine,
+                  userYearFine,
+                ) ||
+                other.userYearFine == userYearFine) &&
+            (identical(
+                  other.userYearCoarse,
+                  userYearCoarse,
+                ) ||
+                other.userYearCoarse == userYearCoarse) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            (identical(
+                  other.dateTime,
+                  dateTime,
+                ) ||
+                other.dateTime == dateTime) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(days,),
-        const DeepCollectionEquality().hash(months,),
-        const DeepCollectionEquality().hash(years,),
+        const DeepCollectionEquality().hash(
+          days,
+        ),
+        const DeepCollectionEquality().hash(
+          months,
+        ),
+        const DeepCollectionEquality().hash(
+          years,
+        ),
         day,
         year,
         month,
@@ -163,11 +224,10 @@ class DateBirthdayModel {
         error,
         dateTime,
         enumValid,
-]);
+      ]);
 
   @override
   String toString() {
     return 'DateBirthdayModel(days: $days, months: $months, years: $years, day: $day, year: $year, month: $month, userMonth: $userMonth, userYearFine: $userYearFine, userYearCoarse: $userYearCoarse, error: $error, dateTime: $dateTime, enumValid: $enumValid, )';
-    }
-
+  }
 }

@@ -12,9 +12,9 @@ class GenderItemModel {
   final String value;
 
 // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -23,21 +23,21 @@ class GenderItemModel {
     this.value = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumGender': enumGender.index, 
-      'value': value, 
+      'enumGender': enumGender.index,
+      'value': value,
     };
   }
-
 
   factory GenderItemModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const GenderItemModel();
 
     return GenderItemModel(
-      enumGender: map['enumGender'] != null ? EnumGender.values[map['enumGender'] as int] : EnumGender.none, 
-      value: map['value'] as String? ?? '', 
+      enumGender: map['enumGender'] != null
+          ? EnumGender.values[map['enumGender'] as int]
+          : EnumGender.none,
+      value: map['value'] as String? ?? '',
     );
   }
 
@@ -46,21 +46,31 @@ class GenderItemModel {
     String? value,
   }) {
     return GenderItemModel(
-      enumGender: enumGender ?? this.enumGender, 
-      value: value ?? this.value, 
+      enumGender: enumGender ?? this.enumGender,
+      value: value ?? this.value,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory GenderItemModel.fromJson(String source) => GenderItemModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory GenderItemModel.fromJson(String source) => GenderItemModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is GenderItemModel &&
-            (identical(other.enumGender, enumGender) || other.enumGender == enumGender) && 
-            (identical(other.value, value) || other.value == value));
+            (identical(
+                  other.enumGender,
+                  enumGender,
+                ) ||
+                other.enumGender == enumGender) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value));
   }
 
   @override
@@ -68,11 +78,10 @@ class GenderItemModel {
         runtimeType,
         enumGender,
         value,
-]);
+      ]);
 
   @override
   String toString() {
     return 'GenderItemModel(enumGender: $enumGender, value: $value, )';
-    }
-
+  }
 }

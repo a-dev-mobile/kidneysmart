@@ -20,12 +20,15 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumWeightStatus fromValue(double? value, {EnumWeightStatus? fallback}) {
+  static EnumWeightStatus fromValue(
+    double? value, {
+    EnumWeightStatus? fallback,
+  }) {
     switch (value?.toString()) {
       case '0, 15.9':
         return severe_thinness;
@@ -48,11 +51,14 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
       case '-1, -1':
         return none;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumWeightStatus',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumWeightStatus',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() severe_thinness,
@@ -90,7 +96,6 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
     }
   }
 
-
   T mapValue<T>({
     required T severe_thinness,
     required T moderate_thinness,
@@ -127,7 +132,6 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? severe_thinness,
@@ -142,18 +146,17 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
     T Function()? none,
   }) =>
       map<T>(
-      severe_thinness: severe_thinness ?? orElse,
-      moderate_thinness: moderate_thinness ?? orElse,
-      mild_thinness: mild_thinness ?? orElse,
-      normal: normal ?? orElse,
-      overweight: overweight ?? orElse,
-      obesity_1: obesity_1 ?? orElse,
-      obesity_2: obesity_2 ?? orElse,
-      obesity_3: obesity_3 ?? orElse,
-      obesity_4: obesity_4 ?? orElse,
-      none: none ?? orElse,
+        severe_thinness: severe_thinness ?? orElse,
+        moderate_thinness: moderate_thinness ?? orElse,
+        mild_thinness: mild_thinness ?? orElse,
+        normal: normal ?? orElse,
+        overweight: overweight ?? orElse,
+        obesity_1: obesity_1 ?? orElse,
+        obesity_2: obesity_2 ?? orElse,
+        obesity_3: obesity_3 ?? orElse,
+        obesity_4: obesity_4 ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -169,18 +172,17 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
     T? none,
   }) =>
       mapValue<T>(
-      severe_thinness: severe_thinness ?? orElse,
-      moderate_thinness: moderate_thinness ?? orElse,
-      mild_thinness: mild_thinness ?? orElse,
-      normal: normal ?? orElse,
-      overweight: overweight ?? orElse,
-      obesity_1: obesity_1 ?? orElse,
-      obesity_2: obesity_2 ?? orElse,
-      obesity_3: obesity_3 ?? orElse,
-      obesity_4: obesity_4 ?? orElse,
-      none: none ?? orElse,
+        severe_thinness: severe_thinness ?? orElse,
+        moderate_thinness: moderate_thinness ?? orElse,
+        mild_thinness: mild_thinness ?? orElse,
+        normal: normal ?? orElse,
+        overweight: overweight ?? orElse,
+        obesity_1: obesity_1 ?? orElse,
+        obesity_2: obesity_2 ?? orElse,
+        obesity_3: obesity_3 ?? orElse,
+        obesity_4: obesity_4 ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? severe_thinness,
@@ -208,7 +210,6 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
         none: none,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? severe_thinness,
     T? moderate_thinness,
@@ -235,14 +236,12 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
         none: none,
       );
 
-
-  static List<double> getValues() => EnumWeightStatus.values.map((e) => e.minValue).toList();
+  static List<double> getValues() =>
+      EnumWeightStatus.values.map((e) => e.minValue).toList();
 
   @override
   int compareTo(EnumWeightStatus other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumWeightStatus.$name($minValue)';
-
-
 }

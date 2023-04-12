@@ -9,12 +9,15 @@ enum EnumGender with Comparable<EnumGender> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumGender fromValue(String? value, {EnumGender? fallback}) {
+  static EnumGender fromValue(
+    String? value, {
+    EnumGender? fallback,
+  }) {
     switch (value) {
       case 'female':
         return female;
@@ -23,11 +26,14 @@ enum EnumGender with Comparable<EnumGender> {
       case 'none':
         return none;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumGender',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumGender',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() female,
@@ -44,7 +50,6 @@ enum EnumGender with Comparable<EnumGender> {
     }
   }
 
-
   T mapValue<T>({
     required T female,
     required T male,
@@ -60,7 +65,6 @@ enum EnumGender with Comparable<EnumGender> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? female,
@@ -68,11 +72,10 @@ enum EnumGender with Comparable<EnumGender> {
     T Function()? none,
   }) =>
       map<T>(
-      female: female ?? orElse,
-      male: male ?? orElse,
-      none: none ?? orElse,
+        female: female ?? orElse,
+        male: male ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -81,11 +84,10 @@ enum EnumGender with Comparable<EnumGender> {
     T? none,
   }) =>
       mapValue<T>(
-      female: female ?? orElse,
-      male: male ?? orElse,
-      none: none ?? orElse,
+        female: female ?? orElse,
+        male: male ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? female,
@@ -99,7 +101,6 @@ enum EnumGender with Comparable<EnumGender> {
         none: none,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? female,
     T? male,
@@ -112,14 +113,12 @@ enum EnumGender with Comparable<EnumGender> {
         none: none,
       );
 
-
-  static List<String> getValues() => EnumGender.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumGender.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumGender other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumGender.$name($value)';
-
-
 }

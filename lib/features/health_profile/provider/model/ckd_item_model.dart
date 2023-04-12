@@ -12,9 +12,9 @@ class CkdItemModel {
   final String value;
 
 // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -23,21 +23,21 @@ class CkdItemModel {
     this.value = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumCkd': enumCkd.index, 
-      'value': value, 
+      'enumCkd': enumCkd.index,
+      'value': value,
     };
   }
-
 
   factory CkdItemModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const CkdItemModel();
 
     return CkdItemModel(
-      enumCkd: map['enumCkd'] != null ? EnumCkd.values[map['enumCkd'] as int] : EnumCkd.none, 
-      value: map['value'] as String? ?? '', 
+      enumCkd: map['enumCkd'] != null
+          ? EnumCkd.values[map['enumCkd'] as int]
+          : EnumCkd.none,
+      value: map['value'] as String? ?? '',
     );
   }
 
@@ -46,21 +46,31 @@ class CkdItemModel {
     String? value,
   }) {
     return CkdItemModel(
-      enumCkd: enumCkd ?? this.enumCkd, 
-      value: value ?? this.value, 
+      enumCkd: enumCkd ?? this.enumCkd,
+      value: value ?? this.value,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory CkdItemModel.fromJson(String source) => CkdItemModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory CkdItemModel.fromJson(String source) => CkdItemModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is CkdItemModel &&
-            (identical(other.enumCkd, enumCkd) || other.enumCkd == enumCkd) && 
-            (identical(other.value, value) || other.value == value));
+            (identical(
+                  other.enumCkd,
+                  enumCkd,
+                ) ||
+                other.enumCkd == enumCkd) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value));
   }
 
   @override
@@ -68,11 +78,10 @@ class CkdItemModel {
         runtimeType,
         enumCkd,
         value,
-]);
+      ]);
 
   @override
   String toString() {
     return 'CkdItemModel(enumCkd: $enumCkd, value: $value, )';
-    }
-
+  }
 }

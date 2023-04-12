@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_null_aware_method_calls, avoid-non-null-assertion,prefer-extracting-callbacks
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nutrition/core/widget/page/app_load_page.dart';
@@ -40,10 +39,8 @@ class AppWebViewPageState extends State<AppWebViewPage> {
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(Theme.of(context).colorScheme.background)
-      
       ..setNavigationDelegate(
         NavigationDelegate(
-         
           onProgress: (int progress) {
             debugPrint('WebView is loading (progress : $progress%)');
 
@@ -146,7 +143,7 @@ Page resource error:
 
 
 ''');
-      // ..loadRequest(Uri.parse(widget.url));
+    // ..loadRequest(Uri.parse(widget.url));
   }
 
   @override

@@ -8,23 +8,29 @@ enum EnumUnitWeight with Comparable<EnumUnitWeight> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumUnitWeight fromValue(String? value, {EnumUnitWeight? fallback}) {
+  static EnumUnitWeight fromValue(
+    String? value, {
+    EnumUnitWeight? fallback,
+  }) {
     switch (value) {
       case 'kg':
         return kg;
       case 'lbs':
         return lbs;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumUnitWeight',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumUnitWeight',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() kg,
@@ -38,7 +44,6 @@ enum EnumUnitWeight with Comparable<EnumUnitWeight> {
     }
   }
 
-
   T mapValue<T>({
     required T kg,
     required T lbs,
@@ -51,17 +56,15 @@ enum EnumUnitWeight with Comparable<EnumUnitWeight> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? kg,
     T Function()? lbs,
   }) =>
       map<T>(
-      kg: kg ?? orElse,
-      lbs: lbs ?? orElse,
+        kg: kg ?? orElse,
+        lbs: lbs ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -69,10 +72,9 @@ enum EnumUnitWeight with Comparable<EnumUnitWeight> {
     T? lbs,
   }) =>
       mapValue<T>(
-      kg: kg ?? orElse,
-      lbs: lbs ?? orElse,
+        kg: kg ?? orElse,
+        lbs: lbs ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? kg,
@@ -84,7 +86,6 @@ enum EnumUnitWeight with Comparable<EnumUnitWeight> {
         lbs: lbs,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? kg,
     T? lbs,
@@ -95,14 +96,12 @@ enum EnumUnitWeight with Comparable<EnumUnitWeight> {
         lbs: lbs,
       );
 
-
-  static List<String> getValues() => EnumUnitWeight.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumUnitWeight.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumUnitWeight other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumUnitWeight.$name($value)';
-
-
 }

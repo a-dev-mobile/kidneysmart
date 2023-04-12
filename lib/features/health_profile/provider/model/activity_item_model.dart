@@ -12,9 +12,9 @@ class ActivityItemModel {
   final String value;
 
 // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -23,21 +23,21 @@ class ActivityItemModel {
     this.value = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumActivity': enumActivity.index, 
-      'value': value, 
+      'enumActivity': enumActivity.index,
+      'value': value,
     };
   }
-
 
   factory ActivityItemModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const ActivityItemModel();
 
     return ActivityItemModel(
-      enumActivity: map['enumActivity'] != null ? EnumActivity.values[map['enumActivity'] as int] : EnumActivity.none, 
-      value: map['value'] as String? ?? '', 
+      enumActivity: map['enumActivity'] != null
+          ? EnumActivity.values[map['enumActivity'] as int]
+          : EnumActivity.none,
+      value: map['value'] as String? ?? '',
     );
   }
 
@@ -46,21 +46,32 @@ class ActivityItemModel {
     String? value,
   }) {
     return ActivityItemModel(
-      enumActivity: enumActivity ?? this.enumActivity, 
-      value: value ?? this.value, 
+      enumActivity: enumActivity ?? this.enumActivity,
+      value: value ?? this.value,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory ActivityItemModel.fromJson(String source) => ActivityItemModel.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory ActivityItemModel.fromJson(String source) =>
+      ActivityItemModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ActivityItemModel &&
-            (identical(other.enumActivity, enumActivity) || other.enumActivity == enumActivity) && 
-            (identical(other.value, value) || other.value == value));
+            (identical(
+                  other.enumActivity,
+                  enumActivity,
+                ) ||
+                other.enumActivity == enumActivity) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value));
   }
 
   @override
@@ -68,11 +79,10 @@ class ActivityItemModel {
         runtimeType,
         enumActivity,
         value,
-]);
+      ]);
 
   @override
   String toString() {
     return 'ActivityItemModel(enumActivity: $enumActivity, value: $value, )';
-    }
-
+  }
 }

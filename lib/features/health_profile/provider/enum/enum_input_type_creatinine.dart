@@ -11,12 +11,15 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.5 (enum)
+//          v0.8.7 (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
 
-  static EnumInputTypeCreatinine fromValue(String? value, {EnumInputTypeCreatinine? fallback}) {
+  static EnumInputTypeCreatinine fromValue(
+    String? value, {
+    EnumInputTypeCreatinine? fallback,
+  }) {
     switch (value) {
       case 'mgDl':
         return mgDl;
@@ -25,11 +28,14 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
       case 'mmolL':
         return mmolL;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumInputTypeCreatinine',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumInputTypeCreatinine',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() mgDl,
@@ -46,7 +52,6 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
     }
   }
 
-
   T mapValue<T>({
     required T mgDl,
     required T mcmolL,
@@ -62,7 +67,6 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? mgDl,
@@ -70,11 +74,10 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
     T Function()? mmolL,
   }) =>
       map<T>(
-      mgDl: mgDl ?? orElse,
-      mcmolL: mcmolL ?? orElse,
-      mmolL: mmolL ?? orElse,
+        mgDl: mgDl ?? orElse,
+        mcmolL: mcmolL ?? orElse,
+        mmolL: mmolL ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -83,11 +86,10 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
     T? mmolL,
   }) =>
       mapValue<T>(
-      mgDl: mgDl ?? orElse,
-      mcmolL: mcmolL ?? orElse,
-      mmolL: mmolL ?? orElse,
+        mgDl: mgDl ?? orElse,
+        mcmolL: mcmolL ?? orElse,
+        mmolL: mmolL ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? mgDl,
@@ -101,7 +103,6 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
         mmolL: mmolL,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? mgDl,
     T? mcmolL,
@@ -114,14 +115,12 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
         mmolL: mmolL,
       );
 
-
-  static List<String> getValues() => EnumInputTypeCreatinine.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumInputTypeCreatinine.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumInputTypeCreatinine other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumInputTypeCreatinine.$name($value)';
-
-
 }

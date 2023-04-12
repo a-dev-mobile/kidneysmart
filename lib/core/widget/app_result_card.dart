@@ -18,7 +18,10 @@ class AppResultCard extends StatelessWidget {
         Visibility(
           visible: isHaveInfoBtn,
           child: IconButton(
-            icon:  Icon(Icons.info_outline,color: Theme.of(context).colorScheme.primary),
+            icon: Icon(
+              Icons.info_outline,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             onPressed: onPressedInfo,
           ),
         ),

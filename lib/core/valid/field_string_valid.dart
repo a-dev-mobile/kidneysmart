@@ -11,9 +11,9 @@ class FieldStringValid {
   /* init: false */
   final bool isValid;
   // end
-   
+
 //          --TURN_GEN--
-//          v0.8.5 (data)
+//          v0.8.7 (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
@@ -23,23 +23,21 @@ class FieldStringValid {
     this.errorMessage,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': value, 
-      'errorMessage': errorMessage, 
-      'isValid': isValid, 
+      'value': value,
+      'errorMessage': errorMessage,
+      'isValid': isValid,
     };
   }
-
 
   factory FieldStringValid.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const FieldStringValid();
 
     return FieldStringValid(
-      value: map['value'] as String? ?? '', 
-      errorMessage: map['errorMessage'] as String?, 
-      isValid: map['isValid'] as bool? ?? false, 
+      value: map['value'] as String? ?? '',
+      errorMessage: map['errorMessage'] as String?,
+      isValid: map['isValid'] as bool? ?? false,
     );
   }
 
@@ -49,23 +47,37 @@ class FieldStringValid {
     bool? isValid,
   }) {
     return FieldStringValid(
-      value: value ?? this.value, 
-      errorMessage: errorMessage ?? this.errorMessage, 
-      isValid: isValid ?? this.isValid, 
+      value: value ?? this.value,
+      errorMessage: errorMessage ?? this.errorMessage,
+      isValid: isValid ?? this.isValid,
     );
   }
 
-  String toJson() => json.encode(toMap());  
-  factory FieldStringValid.fromJson(String source) => FieldStringValid.fromMap(json.decode(source) as Map<String, dynamic>,);  
-   
+  String toJson() => json.encode(toMap());
+  factory FieldStringValid.fromJson(String source) => FieldStringValid.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is FieldStringValid &&
-            (identical(other.value, value) || other.value == value) && 
-            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) && 
-            (identical(other.isValid, isValid) || other.isValid == isValid));
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value) &&
+            (identical(
+                  other.errorMessage,
+                  errorMessage,
+                ) ||
+                other.errorMessage == errorMessage) &&
+            (identical(
+                  other.isValid,
+                  isValid,
+                ) ||
+                other.isValid == isValid));
   }
 
   @override
@@ -74,11 +86,10 @@ class FieldStringValid {
         value,
         errorMessage,
         isValid,
-]);
+      ]);
 
   @override
   String toString() {
     return 'FieldStringValid(value: $value, errorMessage: $errorMessage, isValid: $isValid, )';
-    }
-
+  }
 }
