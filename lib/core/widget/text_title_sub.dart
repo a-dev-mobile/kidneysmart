@@ -35,6 +35,7 @@ class TitleSub extends StatelessWidget {
     );
   }
 
+  // ignore: unused_element
   Future<void> _showInfoDialog({
     required BuildContext context,
     required String text,
