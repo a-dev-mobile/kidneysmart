@@ -10,18 +10,16 @@ import 'package:webview_flutter/webview_flutter.dart';
 /// {@endtemplate}
 class InfoGfrPage extends ConsumerWidget {
   /// {@macro info_gfr_page}
-  const InfoGfrPage({super.key});
+  const InfoGfrPage({required this.enumInfoType, super.key});
 
   static const path = '/InfoGfrPage';
   static const name = 'InfoGfrPage';
-
+  final EnumInfoType enumInfoType;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // final l = context.l10n;
 
-    final state = ref.watch(infoGfrProvider);
-    // ignore: unused_local_variable
-    final notifier = ref.watch(infoGfrProvider.notifier);
+    final state = ref.watch(infoGfrProvider(enumInfoType));
 
     return Scaffold(
       appBar: AppBar(

@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/info_gfr/info_gfr.dart';
 import 'package:nutrition/localization/localization.dart';
 
 class FieldUrineOutput extends ConsumerStatefulWidget {
@@ -47,10 +49,12 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
       visible: isEnabled,
       child: Column(
         children: [
-          const TitleSub(
+          TitleSub(
             text: 'Укажите количество выделяемой мочи',
-            dialogText:
-                'Мы используем эти сведения для расчета суточной нормы потребления воды',
+            onPressedInfo: () => ref
+                .read(appRouterServiceProvider)
+                .router
+                .pushNamed(InfoGfrPage.name, extra: EnumInfoType.urine),
           ),
           GestureDetector(
             onTap: () => _showSnack(context),

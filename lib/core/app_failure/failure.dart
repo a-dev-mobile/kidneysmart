@@ -17,7 +17,7 @@ class _Failure implements Exception {
 // end
 
 //          --TURN_GEN--
-//          v0.8.7 (union)
+//             (union)
 //  *************************************
 //         GENERATED CODE
 //  *************************************

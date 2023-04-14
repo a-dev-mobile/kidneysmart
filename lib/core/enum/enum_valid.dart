@@ -10,7 +10,7 @@ enum EnumValid with Comparable<EnumValid> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.7 (enum)
+//             (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************

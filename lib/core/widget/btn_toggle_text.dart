@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nutrition/core/style/app_text_style.dart';
 import 'package:nutrition/core/widget/widget.dart';
 
 class BtnToggleText extends StatelessWidget {
@@ -10,16 +9,15 @@ class BtnToggleText extends StatelessWidget {
     super.key,
     this.title = '',
     this.errorText = '',
-    this.infoBottom = '',
-    this.dialogText = '',
+    this.onPressedInfo,
   });
   final List<String> textList;
   final String title;
   final String? errorText;
-  final String dialogText;
-  final String infoBottom;
+
   final List<bool> isSelected;
   final void Function(int)? onPressed;
+  final void Function()? onPressedInfo;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -36,12 +34,9 @@ class BtnToggleText extends StatelessWidget {
                       text: title,
                     ),
                   ),
-                if (dialogText.isNotEmpty)
+                if (onPressedInfo != null)
                   IconButton(
-                    onPressed: () => _showInfoDialog(
-                      context: context,
-                      text: dialogText,
-                    ),
+                    onPressed: onPressedInfo,
                     icon: Icon(
                       Icons.info_outline,
                       color: Theme.of(context).colorScheme.primary,
@@ -49,7 +44,7 @@ class BtnToggleText extends StatelessWidget {
                   ),
               ],
             ),
-            if (dialogText.isEmpty) const SizedBox(height: 10),
+            if (onPressedInfo == null) const SizedBox(height: 10),
             ToggleButtons(
               constraints: BoxConstraints.expand(
                 // number 3 = becouse if less - ovverflow
@@ -74,30 +69,7 @@ class BtnToggleText extends StatelessWidget {
                 ),
               ),
             ],
-            if (infoBottom.isNotEmpty) ...[
-              const SizedBox(height: 6),
-              Text(
-                infoBottom,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.caption(),
-              ),
-            ],
           ],
-        );
-      },
-    );
-  }
-
-  Future<void> _showInfoDialog({
-    required BuildContext context,
-    required String text,
-  }) async {
-    return showDialog<void>(
-      context: context,
-      useRootNavigator: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: Text(text),
         );
       },
     );

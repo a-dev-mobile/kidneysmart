@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/services/navigation/navigation.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/info_gfr/info_gfr.dart';
 
 class BtnGender extends ConsumerWidget {
   const BtnGender({
@@ -20,8 +22,10 @@ class BtnGender extends ConsumerWidget {
         textList: stateGender.listGender.map((e) => e.value).toList(),
         isSelected: stateGender.listSelected,
         onPressed: notifier.setGender,
-        dialogText:
-            'Пол влияет на скорость метаболизма. Вот почему эта информация нужна для расчета суточной нормы.',
+        onPressedInfo: () => ref
+            .read(appRouterServiceProvider)
+            .router
+            .pushNamed(InfoGfrPage.name, extra: EnumInfoType.activity),
         errorText:
             stateGender.enumValid.maybeMapOrNullValue(error: stateGender.error),
         title: 'Для человека какого пола следует рассчитывать рекомендации?',

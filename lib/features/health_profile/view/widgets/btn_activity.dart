@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/services/navigation/navigation.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/info_gfr/info_gfr.dart';
 
 class BtnActivity extends ConsumerWidget {
   const BtnActivity({
@@ -20,6 +22,10 @@ class BtnActivity extends ConsumerWidget {
         textList: stateActivity.listActivity.map((e) => e.value).toList(),
         isSelected: stateActivity.listSelected,
         onPressed: notifier.setActivity,
+        onPressedInfo: () => ref
+            .read(appRouterServiceProvider)
+            .router
+            .pushNamed(InfoGfrPage.name, extra: EnumInfoType.activity),
         errorText: stateActivity.enumValid
             .maybeMapOrNullValue(error: stateActivity.error),
         title: 'Укажите свою физическую активность',

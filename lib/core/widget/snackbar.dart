@@ -6,7 +6,8 @@ void showMarkdownSnack(BuildContext context, String markdown) {
   final _ = ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: Theme.of(context).colorScheme.background,
-      behavior: SnackBarBehavior.fixed,
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.only(bottom: 80),
       // dismissDirection: DismissDirection.up,
       padding: const EdgeInsets.symmetric(vertical: 20),
       content: Markdown(

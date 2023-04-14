@@ -9,7 +9,7 @@ enum EnumGender with Comparable<EnumGender> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.7 (enum)
+//             (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************

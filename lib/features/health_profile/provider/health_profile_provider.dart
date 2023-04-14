@@ -578,11 +578,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 
     final resultMarkdown = '''
 
-## Расчет клубочковой фильтрации
-
-Формула [2021 CKD-EPI Creatinine](https://www.kidney.org/content/ckd-epi-creatinine-equation-2021) 
-
-Стадии [CKD stage by CKD-EPI Creatinine](https://www.kidney.org/atoz/content/gfr) 
+### Расчет клубочковой фильтрации
 
 ---
 Ваш возраст - **$userYear** ${_getTextYearRu(userYear)} **$userMonth** ${_getTextYearMonth(userMonth)}

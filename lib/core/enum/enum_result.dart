@@ -10,7 +10,7 @@ enum EnumResult with Comparable<EnumResult> {
 // end
 
 //          --TURN_GEN--
-//          v0.8.7 (enum)
+//             (enum)
 //  *************************************
 //         GENERATED CODE
 //  *************************************

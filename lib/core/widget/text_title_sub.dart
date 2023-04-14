@@ -7,10 +7,10 @@ class TitleSub extends StatelessWidget {
   const TitleSub({
     required this.text,
     super.key,
-    this.dialogText,
+    this.onPressedInfo,
   });
   final String text;
-  final String? dialogText;
+  final void Function()? onPressedInfo;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,12 +23,9 @@ class TitleSub extends StatelessWidget {
             // textAlign: TextAlign.center,
           ),
         ),
-        if (dialogText != null)
+        if (onPressedInfo != null)
           IconButton(
-            onPressed: () => _showInfoDialog(
-              context: context,
-              text: dialogText ?? '',
-            ),
+            onPressed: onPressedInfo,
             icon: Icon(
               Icons.info_outline,
               color: context.theme.colorScheme.primary,

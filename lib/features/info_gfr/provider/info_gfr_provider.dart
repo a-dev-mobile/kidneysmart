@@ -11,16 +11,16 @@ import 'package:nutrition/global.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:sqflite/sqflite.dart';
 
-final infoGfrProvider =
-    StateNotifierProvider.autoDispose<InfoGfrNotifier, InfoGfrState>(
-  (ref) {
+final infoGfrProvider = StateNotifierProvider.autoDispose
+    .family<InfoGfrNotifier, InfoGfrState, EnumInfoType>(
+  (ref, enumInfoType) {
     return InfoGfrNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageServiceProvider),
       client: ref.read(networkClientProvider),
       firebase: ref.read(firebaseServiceProvider),
       go: ref.read(appRouterServiceProvider),
-    )..load();
+    )..load(enumInfoType);
   },
 );
 
@@ -54,7 +54,7 @@ class InfoGfrNotifier extends StateNotifier<InfoGfrState> {
   bool _isDarkTheme = false;
 
   /// preload
-  Future<void> load() async {
+  Future<void> load(EnumInfoType enumInfo) async {
     final lang = EnumLang.fromValue(
       _l.localeName,
       fallback: EnumLang.en,
@@ -64,13 +64,10 @@ class InfoGfrNotifier extends StateNotifier<InfoGfrState> {
     final dbPath = _storage.getAppState().dbPathUpdate;
     final db = await openDatabase(dbPath);
 
-    final list = await db.rawQuery('SELECT * from info WHERE id = 1');
+    final list =
+        await db.rawQuery('SELECT * from info WHERE id = ${enumInfo.value}');
 
     final dbCkdInfo = DbInfoModel.fromMap(list.first);
-
-    // print(list);
-
-    // final realtimeDb = await _firebase.getRealtimeDbModel(storage: _storage);
 
     var desc = dbCkdInfo.en_desc;
     var title = dbCkdInfo.en_title;

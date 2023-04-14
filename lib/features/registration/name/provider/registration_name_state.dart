@@ -15,7 +15,7 @@ init: const FieldStringValid()
   // end
 
 //          --TURN_GEN--
-//          v0.8.7 (data)
+//             (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
