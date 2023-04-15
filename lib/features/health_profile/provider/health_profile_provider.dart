@@ -48,11 +48,9 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     // init height
     final listHeight = _initHeight();
     // init gender
-    final listGender = <GenderItemModel>[
-      GenderItemModel(enumGender: EnumGender.male, value: _l.male),
-      GenderItemModel(enumGender: EnumGender.female, value: _l.female),
-    ];
-
+    final listGender = _initGender;
+    // init dialysis
+    final listDialysis = _initDialysis;
     // init diabet
     final listDiabet = <DiabetesItemModel>[
       DiabetesItemModel(
@@ -113,6 +111,13 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
           selectedIndex: state.diabet.selectedIndex,
         ),
       ),
+      dialysis: state.dialysis.copyWith(
+        listDialysis: listDialysis,
+        listSelected: _getListBool(
+          length: listDialysis.length,
+          selectedIndex: state.dialysis.selectedIndex,
+        ),
+      ),
       gender: state.gender.copyWith(
         listGender: listGender,
         listSelected: _getListBool(
@@ -155,6 +160,34 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 
     _saveState(isSaveState);
     setCreatinine(null);
+  }
+
+  void setDialysis(int? v, {bool isSaveState = true}) {
+    var error = '';
+    if (v == null && state.dialysis.selectedIndex == null) {
+      error = 'Укажите есть у вас диализ или нет';
+    }
+    // update
+    final selectedIndex = v ?? state.dialysis.selectedIndex;
+    final listDialysis = state.dialysis.listDialysis;
+
+    final listBool =
+        _getListBool(length: listDialysis.length, selectedIndex: selectedIndex);
+
+    state = state.copyWith(
+      dialysis: state.dialysis.copyWith(
+        listDialysis: listDialysis,
+        selectedIndex: v,
+        listSelected: listBool,
+        enumDialysis: selectedIndex != null
+            ? listDialysis[selectedIndex].enumDialysis
+            : null,
+        error: error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      ),
+    );
+
+    _saveState(isSaveState);
   }
 
   void setDate({EnumDate? enumDate, String? v, bool isSaveState = true}) {
@@ -590,6 +623,13 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 ''';
 
     state = state.copyWith(
+      dialysis: state.dialysis.copyWith(
+        listDialysis: _initDialysis,
+        listSelected: _getListBool(
+          length: _initDialysis.length,
+        ),
+      ),
+      ckd: state.ckd.copyWith(enumCkdSelected: ckdStatus),
       gfr: state.gfr.copyWith(
         markdownSuccess: resultMarkdown,
         enumResult: EnumResult.success,
@@ -612,6 +652,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     setCreatinine(null, isSaveState: false);
     setDailyDiuresis(null, isSaveState: false);
     setDiabetes(null, isSaveState: false);
+    setDialysis(null, isSaveState: false);
 
     final listError = [
       state.gender.enumValid.maybeMapOrNullValue(error: 'Укажите пол'),
@@ -634,6 +675,13 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
         state.creatinine.enumValid.maybeMapOrNullValue(
           error: 'Укажите свой креатинин',
         ),
+      // state.ckd.enumCkdSelected.maybeMapOrNull(
+      //   five: () => {
+      //     state.creatinine.enumValid.maybeMapOrNullValue(
+      //       error: 'Укажите свой креатинин',
+      //     ),
+      //   },
+      // ),
     ];
 
     final sb = StringBuffer();

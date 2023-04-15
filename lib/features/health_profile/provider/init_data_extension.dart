@@ -92,6 +92,21 @@ extension _InitDataExtension on HealthProfileNotifier {
     ];
   }
 
+  List<GenderItemModel> get _initGender {
+    return <GenderItemModel>[
+      GenderItemModel(enumGender: EnumGender.male, value: _l.male),
+      GenderItemModel(enumGender: EnumGender.female, value: _l.female),
+    ];
+  } 
+  
+   List<DialysisItemModel> get _initDialysis {
+    return <DialysisItemModel>[
+      DialysisItemModel(enumDialysis: EnumDialysis.yes, value: _l.yes),
+      DialysisItemModel(enumDialysis: EnumDialysis.no, value: _l.no),
+     
+    ];
+  }
+
   List<HypertensionItemModel> get _initHypertension {
     return <HypertensionItemModel>[
       HypertensionItemModel(

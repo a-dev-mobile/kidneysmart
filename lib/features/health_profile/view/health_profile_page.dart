@@ -56,6 +56,7 @@ class HealthProfilePage extends ConsumerWidget {
               const BtnDailyDiuresis(),
               const BtnCkd(),
               const ResultGfr(),
+              const BtnDialysis(),
               ElevatedButton(
                 onPressed: notifier.checkValid,
                 child: const Text('Проверить'),

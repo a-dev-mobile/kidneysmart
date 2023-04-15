@@ -69,11 +69,11 @@ class AppStorageService {
 // ******************************
   static const _genderState = 'genderState';
 
-  GenderModel getGenderState() {
-    return GenderModel.fromMap(getJson(key: _genderState));
+  DialysisModel getGenderState() {
+    return DialysisModel.fromMap(getJson(key: _genderState));
   }
 
-  Future<void> setGenderState(GenderModel value) {
+  Future<void> setGenderState(DialysisModel value) {
     return setJson(key: _genderState, value: value.toMap());
   }
 
