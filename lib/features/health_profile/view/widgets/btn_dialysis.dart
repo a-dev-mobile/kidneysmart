@@ -18,8 +18,8 @@ class BtnDialysis extends ConsumerWidget {
     final stateDialysis = state.dialysis;
 
     return Visibility(
-      visible:
-          state.ckd.enumCkdSelected.maybeMapValue(orElse: false, five: true),
+      visible: state.ckd.enumCkdSelected
+          .maybeMapValue(orElse: false, five: true, fiveDialysis: true),
       child: AppInputCard(
         child: BtnToggleText(
           textList: stateDialysis.listDialysis.map((e) => e.value).toList(),

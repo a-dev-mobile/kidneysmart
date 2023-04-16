@@ -5,9 +5,10 @@ enum EnumCkd with Comparable<EnumCkd> {
   threeA(45, 59),
   threeB(30, 44),
   four(15, 29),
-  five(-10000, 15),
-  calculate(0, 0),
-  none(-1, -1);
+  five(-100, 15),
+  fiveDialysis(-100, -100),
+  calculate(-200, -200),
+  none(-300, -300);
 
   const EnumCkd(this.minValue, this.maxValue);
   final double minValue;
@@ -36,11 +37,13 @@ enum EnumCkd with Comparable<EnumCkd> {
         return threeB;
       case '15, 29':
         return four;
-      case '-10000, 15':
+      case '-100, 15':
         return five;
-      case '0, 0':
+      case '-100, -100':
+        return fiveDialysis;
+      case '-200, -200':
         return calculate;
-      case '-1, -1':
+      case '-300, -300':
         return none;
       default:
         return fallback ??
@@ -59,6 +62,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     required T Function() threeB,
     required T Function() four,
     required T Function() five,
+    required T Function() fiveDialysis,
     required T Function() calculate,
     required T Function() none,
   }) {
@@ -75,6 +79,8 @@ enum EnumCkd with Comparable<EnumCkd> {
         return four();
       case EnumCkd.five:
         return five();
+      case EnumCkd.fiveDialysis:
+        return fiveDialysis();
       case EnumCkd.calculate:
         return calculate();
       case EnumCkd.none:
@@ -89,6 +95,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     required T threeB,
     required T four,
     required T five,
+    required T fiveDialysis,
     required T calculate,
     required T none,
   }) {
@@ -105,6 +112,8 @@ enum EnumCkd with Comparable<EnumCkd> {
         return four;
       case EnumCkd.five:
         return five;
+      case EnumCkd.fiveDialysis:
+        return fiveDialysis;
       case EnumCkd.calculate:
         return calculate;
       case EnumCkd.none:
@@ -120,6 +129,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     T Function()? threeB,
     T Function()? four,
     T Function()? five,
+    T Function()? fiveDialysis,
     T Function()? calculate,
     T Function()? none,
   }) =>
@@ -130,6 +140,7 @@ enum EnumCkd with Comparable<EnumCkd> {
         threeB: threeB ?? orElse,
         four: four ?? orElse,
         five: five ?? orElse,
+        fiveDialysis: fiveDialysis ?? orElse,
         calculate: calculate ?? orElse,
         none: none ?? orElse,
       );
@@ -142,6 +153,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     T? threeB,
     T? four,
     T? five,
+    T? fiveDialysis,
     T? calculate,
     T? none,
   }) =>
@@ -152,6 +164,7 @@ enum EnumCkd with Comparable<EnumCkd> {
         threeB: threeB ?? orElse,
         four: four ?? orElse,
         five: five ?? orElse,
+        fiveDialysis: fiveDialysis ?? orElse,
         calculate: calculate ?? orElse,
         none: none ?? orElse,
       );
@@ -163,6 +176,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     T Function()? threeB,
     T Function()? four,
     T Function()? five,
+    T Function()? fiveDialysis,
     T Function()? calculate,
     T Function()? none,
   }) =>
@@ -174,6 +188,7 @@ enum EnumCkd with Comparable<EnumCkd> {
         threeB: threeB,
         four: four,
         five: five,
+        fiveDialysis: fiveDialysis,
         calculate: calculate,
         none: none,
       );
@@ -185,6 +200,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     T? threeB,
     T? four,
     T? five,
+    T? fiveDialysis,
     T? calculate,
     T? none,
   }) =>
@@ -196,6 +212,7 @@ enum EnumCkd with Comparable<EnumCkd> {
         threeB: threeB,
         four: four,
         five: five,
+        fiveDialysis: fiveDialysis,
         calculate: calculate,
         none: none,
       );

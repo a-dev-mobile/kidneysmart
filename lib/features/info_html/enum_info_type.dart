@@ -1,10 +1,10 @@
 // turnGen
 enum EnumInfoType with Comparable<EnumInfoType> {
-  creatinine(1),
-  urine(2),
-  diabet(3),
-  activity(4),
-  dialysis(5);
+  creatinine(0),
+  urine(1),
+  diabet(2),
+  activity(3),
+  dialysis(4);
 
   const EnumInfoType(this.value);
   final int value;
@@ -22,15 +22,15 @@ enum EnumInfoType with Comparable<EnumInfoType> {
     EnumInfoType? fallback,
   }) {
     switch (value) {
-      case 1:
+      case 0:
         return creatinine;
-      case 2:
+      case 1:
         return urine;
-      case 3:
+      case 2:
         return diabet;
-      case 4:
+      case 3:
         return activity;
-      case 5:
+      case 4:
         return dialysis;
       default:
         return fallback ??

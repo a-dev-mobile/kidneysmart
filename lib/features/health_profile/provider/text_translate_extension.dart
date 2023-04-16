@@ -76,6 +76,7 @@ extension _TextTranslateExtension on HealthProfileNotifier {
       five: 'Stage V',
       none: '',
       calculate: '',
+      fiveDialysis: 'Stage V (dialysis)',
     );
   }
 }

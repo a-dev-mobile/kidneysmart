@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:nutrition/core/services/locale/locale_provider.dart';
 import 'package:nutrition/core/services/theme/theme_providers.dart';
 import 'package:nutrition/core/widget/widget.dart';
+import 'package:nutrition/features/calc_nutient/view/calc_nutient_page.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 /// {@template health_profile_page}
@@ -21,7 +23,30 @@ class HealthProfilePage extends ConsumerWidget {
     final notifier = ref.watch(healthProfileProvider.notifier);
     ref.listen<HealthProfileState>(healthProfileProvider, (p, c) {
       if (c.markdownError.isNotEmpty) {
-        final _ = showMarkdownSnack(context, c.markdownError);
+        // var _ = context.showFlash<bool>(
+        //   barrierDismissible: true,
+        //   duration: const Duration(seconds: 3),
+        //   builder: (context, controller) => FlashBar(
+        //     controller: controller,
+        //     // behavior: FlashBehavior.floating,
+        //     position: FlashPosition.top,
+        //     indicatorColor: Colors.red,
+        //     // icon: const Icon(Icons.info_outline),
+
+        //     content: SizedBox(
+        //       height: lineLenght * 20,
+        //       child: Markdown(
+        //         data: c.markdownError,
+        //         shrinkWrap: true,
+        //         padding: EdgeInsets.zero,
+        //         physics: const NeverScrollableScrollPhysics(),
+        //       ),
+        //     ),
+        //   ),
+        // );
+
+        // showMarkdownAlertSnack(context, c.markdownError);
+        showMarkdownSnack(context, c.markdownError);
       }
     });
 
@@ -58,7 +83,12 @@ class HealthProfilePage extends ConsumerWidget {
               const ResultGfr(),
               const BtnDialysis(),
               ElevatedButton(
-                onPressed: notifier.checkValid,
+                // ignore: prefer-extracting-callbacks
+                onPressed: () {
+                  if (notifier.isValid()) {
+                    context.pushNamed<void>(CalcNutrientPage.name);
+                  }
+                },
                 child: const Text('Проверить'),
               ),
             ],

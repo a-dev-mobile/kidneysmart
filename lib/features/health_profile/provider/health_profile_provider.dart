@@ -174,19 +174,34 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     final listBool =
         _getListBool(length: listDialysis.length, selectedIndex: selectedIndex);
 
+    final enumDialysis = selectedIndex != null
+        ? listDialysis[selectedIndex].enumDialysis
+        : EnumDialysis.none;
+
+// расчет если у нас 5 стадия и есть диализ, то меняем на 5стадию с диализом
+    var enumCkd = state.ckd.enumCkdSelected;
+
+    final isFiveStage =
+        enumCkd == EnumCkd.five || enumCkd == EnumCkd.fiveDialysis;
+
+    if (isFiveStage && enumDialysis == EnumDialysis.yes) {
+      enumCkd = EnumCkd.fiveDialysis;
+    } else if (isFiveStage && enumDialysis == EnumDialysis.no) {
+      enumCkd = EnumCkd.five;
+    }
+
     state = state.copyWith(
+      ckd: state.ckd.copyWith(enumCkdSelected: enumCkd),
       dialysis: state.dialysis.copyWith(
         listDialysis: listDialysis,
         selectedIndex: v,
         listSelected: listBool,
-        enumDialysis: selectedIndex != null
-            ? listDialysis[selectedIndex].enumDialysis
-            : null,
+        enumDialysis: enumDialysis,
         error: error,
         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
-
+    _calcGfr();
     _saveState(isSaveState);
   }
 
@@ -609,6 +624,12 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
                         ? EnumCkd.four
                         : EnumCkd.five;
 
+    final updateCkdStatus = ckdStatus.maybeMapValue(
+      orElse: ckdStatus,
+      five: state.dialysis.enumDialysis
+          .maybeMapValue(orElse: ckdStatus, yes: EnumCkd.fiveDialysis),
+    );
+
     final resultMarkdown = '''
 
 ### Расчет клубочковой фильтрации
@@ -618,12 +639,14 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 
 Ваш СКФ составляет - **${AppUtilsNumber.getFormatNumber(num: estimatedGFR.toDouble())}** ml/min/1.73 m²
 
-Стадия ХБП - **${_getCkdStage(ckdStatus)}**
+Стадия ХБП - **${_getCkdStage(updateCkdStatus)}**
 
 ''';
 
     state = state.copyWith(
-      ckd: state.ckd.copyWith(enumCkdSelected: ckdStatus),
+      ckd: state.ckd.copyWith(
+        enumCkdSelected: updateCkdStatus,
+      ),
       gfr: state.gfr.copyWith(
         markdownSuccess: resultMarkdown,
         enumResult: EnumResult.success,
@@ -635,7 +658,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     if (isSaveState) _storage.setHealthProfileState(state);
   }
 
-  void checkValid() {
+  bool isValid() {
     setGender(null, isSaveState: false);
     setDate(isSaveState: false);
     setHeight(null, isSaveState: false);
@@ -677,7 +700,8 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
       //   },
       // ),
     ];
-
+    // ignore: cascade_invocations
+    listError.removeWhere((element) => element == null);
     final sb = StringBuffer();
     for (final e in listError) {
       if (e == null || e.isEmpty) continue;
@@ -689,9 +713,12 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
       isValid: listError.isEmpty,
       markdownError: sb.toString(),
     );
+
     // сброс ошибки
     state = state.copyWith(
       markdownError: '',
     );
+
+    return listError.isEmpty;
   }
 }

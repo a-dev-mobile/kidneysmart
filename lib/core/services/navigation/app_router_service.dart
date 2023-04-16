@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/core/services/navigation/models/app_state.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
+import 'package:nutrition/features/calc_nutient/view/calc_nutient_page.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
 import 'package:nutrition/features/health_profile/view/health_profile_page.dart';
 import 'package:nutrition/features/info_html/info_html.dart';
@@ -99,6 +100,14 @@ class AppRouterService {
               child: InfoHtmlPage(
                 enumInfoType: state.extra! as EnumInfoType,
               ),
+            ),
+          ),
+          GoRoute(
+            path: CalcNutrientPage.path,
+            name: CalcNutrientPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const CalcNutrientPage(),
             ),
           ),
           GoRoute(

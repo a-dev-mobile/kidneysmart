@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
@@ -18,28 +17,10 @@ class ResultBmi extends ConsumerWidget {
 
     return AppResultCard(
       child: stateBmi.enumResult.mapValue(
-        init: _Result(markdown: stateBmi.markdownInit),
-        success: _Result(markdown: stateBmi.markdownSuccess),
-        error: _Result(markdown: stateBmi.markdownError),
+        init: WidgetMarkdown(markdown: stateBmi.markdownInit),
+        success: WidgetMarkdown(markdown: stateBmi.markdownSuccess),
+        error: WidgetMarkdown(markdown: stateBmi.markdownError),
       ),
-    );
-  }
-}
-
-class _Result extends StatelessWidget {
-  const _Result({
-    required this.markdown,
-  });
-
-  final String markdown;
-
-  @override
-  Widget build(BuildContext context) {
-    return Markdown(
-      padding: EdgeInsets.zero,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      data: markdown,
     );
   }
 }

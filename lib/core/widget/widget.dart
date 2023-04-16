@@ -9,6 +9,7 @@ export 'clean_focus.dart';
 export 'dropdown.dart';
 export 'icon_text_btn.dart';
 export 'ignore_pop_view.dart';
+export 'markdown_widget.dart';
 export 'page/app_error_page.dart';
 export 'page/app_load_next_page.dart';
 export 'page/app_load_page.dart';
