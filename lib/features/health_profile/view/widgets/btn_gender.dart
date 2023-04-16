@@ -4,7 +4,7 @@ import 'package:nutrition/core/services/navigation/navigation.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
-import 'package:nutrition/features/info_gfr/info_gfr.dart';
+import 'package:nutrition/features/info_html/info_html.dart';
 
 class BtnGender extends ConsumerWidget {
   const BtnGender({
@@ -25,7 +25,7 @@ class BtnGender extends ConsumerWidget {
         onPressedInfo: () => ref
             .read(appRouterServiceProvider)
             .router
-            .pushNamed(InfoGfrPage.name, extra: EnumInfoType.activity),
+            .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.activity),
         errorText:
             stateGender.enumValid.maybeMapOrNullValue(error: stateGender.error),
         title: 'Для человека какого пола следует рассчитывать рекомендации?',

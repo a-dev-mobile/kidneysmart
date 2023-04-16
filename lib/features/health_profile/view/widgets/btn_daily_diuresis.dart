@@ -4,7 +4,7 @@ import 'package:nutrition/core/services/navigation/navigation.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
-import 'package:nutrition/features/info_gfr/info_gfr.dart';
+import 'package:nutrition/features/info_html/info_html.dart';
 
 class BtnDailyDiuresis extends ConsumerWidget {
   const BtnDailyDiuresis({
@@ -36,7 +36,7 @@ class BtnDailyDiuresis extends ConsumerWidget {
             onPressedInfo: () => ref
                 .read(appRouterServiceProvider)
                 .router
-                .pushNamed(InfoGfrPage.name, extra: EnumInfoType.urine),
+                .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.urine),
             title: 'Укажите уровень суточного диуреза (обьем выделяемой мочи)',
           ),
 

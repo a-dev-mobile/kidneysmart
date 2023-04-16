@@ -10,7 +10,7 @@ import 'package:nutrition/core/services/navigation/models/app_state.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
 import 'package:nutrition/features/health_profile/view/health_profile_page.dart';
-import 'package:nutrition/features/info_gfr/info_gfr.dart';
+import 'package:nutrition/features/info_html/info_html.dart';
 
 import 'package:nutrition/features/onboarding/vew/onboarding_page.dart';
 import 'package:nutrition/features/overlay_widget/view/view.dart';
@@ -92,11 +92,11 @@ class AppRouterService {
             ),
           ),
           GoRoute(
-            path: InfoGfrPage.path,
-            name: InfoGfrPage.name,
+            path: InfoHtmlPage.path,
+            name: InfoHtmlPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: InfoGfrPage(
+              child: InfoHtmlPage(
                 enumInfoType: state.extra! as EnumInfoType,
               ),
             ),

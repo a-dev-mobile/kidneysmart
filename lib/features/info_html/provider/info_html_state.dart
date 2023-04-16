@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
-class InfoGfrState {
+class InfoHtmlState {
   /* init: EnumResult.init */
   final EnumResult enumResult;
   /* init: '' */
@@ -21,7 +21,7 @@ class InfoGfrState {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const InfoGfrState({
+  const InfoHtmlState({
     this.enumResult = EnumResult.init,
     this.desc = '',
     this.title = '',
@@ -35,10 +35,10 @@ class InfoGfrState {
     };
   }
 
-  factory InfoGfrState.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const InfoGfrState();
+  factory InfoHtmlState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const InfoHtmlState();
 
-    return InfoGfrState(
+    return InfoHtmlState(
       enumResult: map['enumResult'] != null
           ? EnumResult.values[map['enumResult'] as int]
           : EnumResult.init,
@@ -47,12 +47,12 @@ class InfoGfrState {
     );
   }
 
-  InfoGfrState copyWith({
+  InfoHtmlState copyWith({
     EnumResult? enumResult,
     String? desc,
     String? title,
   }) {
-    return InfoGfrState(
+    return InfoHtmlState(
       enumResult: enumResult ?? this.enumResult,
       desc: desc ?? this.desc,
       title: title ?? this.title,
@@ -60,7 +60,7 @@ class InfoGfrState {
   }
 
   String toJson() => json.encode(toMap());
-  factory InfoGfrState.fromJson(String source) => InfoGfrState.fromMap(
+  factory InfoHtmlState.fromJson(String source) => InfoHtmlState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -68,7 +68,7 @@ class InfoGfrState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is InfoGfrState &&
+            other is InfoHtmlState &&
             (identical(
                   other.enumResult,
                   enumResult,
@@ -96,6 +96,6 @@ class InfoGfrState {
 
   @override
   String toString() {
-    return 'InfoGfrState(enumResult: $enumResult, desc: $desc, title: $title, )';
+    return 'InfoHtmlState(enumResult: $enumResult, desc: $desc, title: $title, )';
   }
 }

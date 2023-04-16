@@ -623,12 +623,6 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 ''';
 
     state = state.copyWith(
-      dialysis: state.dialysis.copyWith(
-        listDialysis: _initDialysis,
-        listSelected: _getListBool(
-          length: _initDialysis.length,
-        ),
-      ),
       ckd: state.ckd.copyWith(enumCkdSelected: ckdStatus),
       gfr: state.gfr.copyWith(
         markdownSuccess: resultMarkdown,

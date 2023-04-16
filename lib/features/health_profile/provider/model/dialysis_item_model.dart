@@ -12,7 +12,7 @@ class DialysisItemModel {
   final String value;
 
 // end
-   
+
 //          --TURN_GEN--
 //             (data)
 //  *************************************
@@ -23,7 +23,6 @@ class DialysisItemModel {
     this.value = '',
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enumDialysis': enumDialysis.index,
@@ -31,12 +30,13 @@ class DialysisItemModel {
     };
   }
 
-
   factory DialysisItemModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const DialysisItemModel();
 
     return DialysisItemModel(
-      enumDialysis: map['enumDialysis'] != null ? EnumDialysis.values[map['enumDialysis'] as int] : EnumDialysis.none,
+      enumDialysis: map['enumDialysis'] != null
+          ? EnumDialysis.values[map['enumDialysis'] as int]
+          : EnumDialysis.none,
       value: map['value'] as String? ?? '',
     );
   }
@@ -52,15 +52,26 @@ class DialysisItemModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory DialysisItemModel.fromJson(String source) => DialysisItemModel.fromMap(json.decode(source) as Map<String, dynamic>,);
-   
+  factory DialysisItemModel.fromJson(String source) =>
+      DialysisItemModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DialysisItemModel &&
-            (identical(other.enumDialysis, enumDialysis,) || other.enumDialysis == enumDialysis) &&
-            (identical(other.value, value,) || other.value == value));
+            (identical(
+                  other.enumDialysis,
+                  enumDialysis,
+                ) ||
+                other.enumDialysis == enumDialysis) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value));
   }
 
   @override
@@ -68,7 +79,7 @@ class DialysisItemModel {
         runtimeType,
         enumDialysis,
         value,
-]);
+      ]);
 
   @override
   String toString() {

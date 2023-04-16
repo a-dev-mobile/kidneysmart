@@ -17,7 +17,10 @@ enum EnumInfoType with Comparable<EnumInfoType> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumInfoType fromValue(int? value, {EnumInfoType? fallback,}) {
+  static EnumInfoType fromValue(
+    int? value, {
+    EnumInfoType? fallback,
+  }) {
     switch (value) {
       case 1:
         return creatinine;
@@ -30,11 +33,14 @@ enum EnumInfoType with Comparable<EnumInfoType> {
       case 5:
         return dialysis;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumInfoType',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumInfoType',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() creatinine,
@@ -57,7 +63,6 @@ enum EnumInfoType with Comparable<EnumInfoType> {
     }
   }
 
-
   T mapValue<T>({
     required T creatinine,
     required T urine,
@@ -79,7 +84,6 @@ enum EnumInfoType with Comparable<EnumInfoType> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? creatinine,
@@ -89,13 +93,12 @@ enum EnumInfoType with Comparable<EnumInfoType> {
     T Function()? dialysis,
   }) =>
       map<T>(
-      creatinine: creatinine ?? orElse,
-      urine: urine ?? orElse,
-      diabet: diabet ?? orElse,
-      activity: activity ?? orElse,
-      dialysis: dialysis ?? orElse,
+        creatinine: creatinine ?? orElse,
+        urine: urine ?? orElse,
+        diabet: diabet ?? orElse,
+        activity: activity ?? orElse,
+        dialysis: dialysis ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -106,13 +109,12 @@ enum EnumInfoType with Comparable<EnumInfoType> {
     T? dialysis,
   }) =>
       mapValue<T>(
-      creatinine: creatinine ?? orElse,
-      urine: urine ?? orElse,
-      diabet: diabet ?? orElse,
-      activity: activity ?? orElse,
-      dialysis: dialysis ?? orElse,
+        creatinine: creatinine ?? orElse,
+        urine: urine ?? orElse,
+        diabet: diabet ?? orElse,
+        activity: activity ?? orElse,
+        dialysis: dialysis ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? creatinine,
@@ -130,7 +132,6 @@ enum EnumInfoType with Comparable<EnumInfoType> {
         dialysis: dialysis,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? creatinine,
     T? urine,
@@ -147,14 +148,12 @@ enum EnumInfoType with Comparable<EnumInfoType> {
         dialysis: dialysis,
       );
 
-
-  static List<int> getValues() => EnumInfoType.values.map((e) => e.value).toList();
+  static List<int> getValues() =>
+      EnumInfoType.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumInfoType other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumInfoType.$name($value)';
-
-
 }

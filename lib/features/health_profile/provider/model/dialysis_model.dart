@@ -23,7 +23,7 @@ class DialysisModel {
   final List<bool> listSelected;
 
 // end
-   
+
 //          --TURN_GEN--
 //             (data)
 //  *************************************
@@ -38,7 +38,6 @@ class DialysisModel {
     this.selectedIndex,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'selectedIndex': selectedIndex,
@@ -50,17 +49,29 @@ class DialysisModel {
     };
   }
 
-
   factory DialysisModel.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const DialysisModel();
 
     return DialysisModel(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
-      enumDialysis: map['enumDialysis'] != null ? EnumDialysis.values[map['enumDialysis'] as int] : EnumDialysis.none,
-      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init,
+      enumDialysis: map['enumDialysis'] != null
+          ? EnumDialysis.values[map['enumDialysis'] as int]
+          : EnumDialysis.none,
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
       error: map['error'] as String? ?? '',
-      listDialysis: map['listDialysis'] != null ? (map['listDialysis'] as List<dynamic>).map((e) => DialysisItemModel.fromMap(e as Map<dynamic, dynamic>),).toList() : const [],
-      listSelected: (map['listSelected'] as List<dynamic>?)?.map((e) => e as bool).toList() ?? const [],
+      listDialysis: map['listDialysis'] != null
+          ? (map['listDialysis'] as List<dynamic>)
+              .map(
+                (e) => DialysisItemModel.fromMap(e as Map<dynamic, dynamic>),
+              )
+              .toList()
+          : const [],
+      listSelected: (map['listSelected'] as List<dynamic>?)
+              ?.map((e) => e as bool)
+              .toList() ??
+          const [],
     );
   }
 
@@ -83,19 +94,43 @@ class DialysisModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory DialysisModel.fromJson(String source) => DialysisModel.fromMap(json.decode(source) as Map<String, dynamic>,);
-   
+  factory DialysisModel.fromJson(String source) => DialysisModel.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DialysisModel &&
-            (identical(other.selectedIndex, selectedIndex,) || other.selectedIndex == selectedIndex) &&
-            (identical(other.enumDialysis, enumDialysis,) || other.enumDialysis == enumDialysis) &&
-            (identical(other.enumValid, enumValid,) || other.enumValid == enumValid) &&
-            (identical(other.error, error,) || other.error == error) &&
-            const DeepCollectionEquality().equals(other.listDialysis, listDialysis,) &&
-            const DeepCollectionEquality().equals(other.listSelected, listSelected,));
+            (identical(
+                  other.selectedIndex,
+                  selectedIndex,
+                ) ||
+                other.selectedIndex == selectedIndex) &&
+            (identical(
+                  other.enumDialysis,
+                  enumDialysis,
+                ) ||
+                other.enumDialysis == enumDialysis) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            const DeepCollectionEquality().equals(
+              other.listDialysis,
+              listDialysis,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other.listSelected,
+              listSelected,
+            ));
   }
 
   @override
@@ -105,9 +140,13 @@ class DialysisModel {
         enumDialysis,
         enumValid,
         error,
-        const DeepCollectionEquality().hash(listDialysis,),
-        const DeepCollectionEquality().hash(listSelected,),
-]);
+        const DeepCollectionEquality().hash(
+          listDialysis,
+        ),
+        const DeepCollectionEquality().hash(
+          listSelected,
+        ),
+      ]);
 
   @override
   String toString() {

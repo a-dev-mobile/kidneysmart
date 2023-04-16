@@ -14,7 +14,10 @@ enum EnumDialysis with Comparable<EnumDialysis> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumDialysis fromValue(String? value, {EnumDialysis? fallback,}) {
+  static EnumDialysis fromValue(
+    String? value, {
+    EnumDialysis? fallback,
+  }) {
     switch (value) {
       case 'yes':
         return yes;
@@ -23,11 +26,14 @@ enum EnumDialysis with Comparable<EnumDialysis> {
       case 'none':
         return none;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          value, '', 'Value not found in EnumDialysis',));
+        return fallback ??
+            (throw ArgumentError.value(
+              value,
+              '',
+              'Value not found in EnumDialysis',
+            ));
     }
   }
-
 
   T map<T>({
     required T Function() yes,
@@ -44,7 +50,6 @@ enum EnumDialysis with Comparable<EnumDialysis> {
     }
   }
 
-
   T mapValue<T>({
     required T yes,
     required T no,
@@ -60,7 +65,6 @@ enum EnumDialysis with Comparable<EnumDialysis> {
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? yes,
@@ -68,11 +72,10 @@ enum EnumDialysis with Comparable<EnumDialysis> {
     T Function()? none,
   }) =>
       map<T>(
-      yes: yes ?? orElse,
-      no: no ?? orElse,
-      none: none ?? orElse,
+        yes: yes ?? orElse,
+        no: no ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -81,11 +84,10 @@ enum EnumDialysis with Comparable<EnumDialysis> {
     T? none,
   }) =>
       mapValue<T>(
-      yes: yes ?? orElse,
-      no: no ?? orElse,
-      none: none ?? orElse,
+        yes: yes ?? orElse,
+        no: no ?? orElse,
+        none: none ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? yes,
@@ -99,7 +101,6 @@ enum EnumDialysis with Comparable<EnumDialysis> {
         none: none,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? yes,
     T? no,
@@ -112,14 +113,12 @@ enum EnumDialysis with Comparable<EnumDialysis> {
         none: none,
       );
 
-
-  static List<String> getValues() => EnumDialysis.values.map((e) => e.value).toList();
+  static List<String> getValues() =>
+      EnumDialysis.values.map((e) => e.value).toList();
 
   @override
   int compareTo(EnumDialysis other) => index.compareTo(other.index);
 
   @override
   String toString() => 'EnumDialysis.$name($value)';
-
-
 }

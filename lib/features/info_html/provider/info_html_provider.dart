@@ -6,15 +6,16 @@ import 'package:nutrition/core/services/db/sql/model/db_info_model.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/network/network_client_service.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
-import 'package:nutrition/features/info_gfr/info_gfr.dart';
+import 'package:nutrition/features/info_html/info_html.dart';
+
 import 'package:nutrition/global.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:sqflite/sqflite.dart';
 
-final infoGfrProvider = StateNotifierProvider.autoDispose
-    .family<InfoGfrNotifier, InfoGfrState, EnumInfoType>(
+final infoHtmlProvider = StateNotifierProvider.autoDispose
+    .family<InfoHtmlNotifier, InfoHtmlState, EnumInfoType>(
   (ref, enumInfoType) {
-    return InfoGfrNotifier(
+    return InfoHtmlNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageServiceProvider),
       client: ref.read(networkClientProvider),
@@ -24,8 +25,8 @@ final infoGfrProvider = StateNotifierProvider.autoDispose
   },
 );
 
-class InfoGfrNotifier extends StateNotifier<InfoGfrState> {
-  InfoGfrNotifier({
+class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
+  InfoHtmlNotifier({
     required AppLocalizations l,
     required AppStorageService storage,
     required NetworkClientService client,
@@ -37,7 +38,7 @@ class InfoGfrNotifier extends StateNotifier<InfoGfrState> {
         _go = go,
         _firebase = firebase,
         super(
-          const InfoGfrState(),
+          const InfoHtmlState(),
         );
 
   final AppStorageService _storage;
