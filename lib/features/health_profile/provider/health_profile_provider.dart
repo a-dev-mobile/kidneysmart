@@ -703,6 +703,12 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     if (isSaveState) _storage.setHealthProfileState(state);
   }
 
+  bool get isDialysis => state.dialysis.enumDialysis
+      .maybeMapValue(orElse: false, homodialysis: true, perinatal: true);
+
+  bool get isCkdFive => state.ckd.enumCkdSelected
+      .maybeMapValue(orElse: false, five: true, fiveDialysis: true);
+
   bool isValid() {
     setGender(null, isSaveState: false);
     setDate(isSaveState: false);
@@ -739,13 +745,11 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
           error: 'Укажите свой креатинин',
         ),
 
-      if (state.ckd.enumCkdSelected
-          .maybeMapValue(five: true, orElse: false, fiveDialysis: true))
+      if (isCkdFive)
         state.dialysis.enumValid.maybeMapOrNullValue(
           error: 'Укажите наличие или нет - диализа',
         ),
-      if (state.dialysis.enumDialysis
-          .maybeMapValue(homodialysis: true, perinatal: true, orElse: false))
+      if (isCkdFive && isDialysis)
         state.weightDry.enumValid
             .maybeMapOrNullValue(error: 'Укажите "сухой" вес'),
 

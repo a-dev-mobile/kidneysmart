@@ -37,9 +37,9 @@ class _FieldNameState extends ConsumerState<FieldWeightDry> {
     final notifier = ref.watch(healthProfileProvider.notifier);
     final stateWeight = state.weightDry;
 
+
     return Visibility(
-      visible: state.dialysis.enumDialysis
-          .maybeMapValue(orElse: false, homodialysis: true, perinatal: true),
+      visible:notifier.isDialysis && notifier.isCkdFive,
       child: AppInputCard(
         child: Column(
           children: [

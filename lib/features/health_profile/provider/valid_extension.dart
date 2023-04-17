@@ -23,8 +23,8 @@ extension _ValidExtension on HealthProfileNotifier {
   }
 
   String _validWeightDry(String? v, HealthProfileState state) {
-    if (v?.isEmpty ?? true && state.weight.result.isEmpty) {
-      return 'Вес не указан';
+    if (v?.isEmpty ?? true && state.weightDry.result.isEmpty) {
+      return '"Сухой" вес не указан';
     }
 
     final doubleValue = _parseValue(v, state);
