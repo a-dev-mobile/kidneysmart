@@ -23,14 +23,18 @@ class CalcNutrientPage extends ConsumerWidget {
         ),
         body: ListView(
           padding: const EdgeInsets.all(10),
-          children: const [
-            WidgetMarkdown(
+          children: [
+            const WidgetMarkdown(
               markdown: '''
 ### Василий, персональные рекомендации для вас готовы!
 **Ежедневные советы по питанию**
 
 ---
 `Можно всегда изменить в приложении`''',
+            ),
+            state.enumResult.maybeMapValue(
+              orElse: const AppPartLoad(),
+              success: WidgetMarkdown(markdown: state.markdownResult),
             ),
           ],
         ),

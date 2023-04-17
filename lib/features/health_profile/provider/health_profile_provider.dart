@@ -183,8 +183,9 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 
     final isFiveStage =
         enumCkd == EnumCkd.five || enumCkd == EnumCkd.fiveDialysis;
-
-    if (isFiveStage && enumDialysis == EnumDialysis.yes) {
+    final isDialysis = enumDialysis == EnumDialysis.homodialysis ||
+        enumDialysis == EnumDialysis.perinatal;
+    if (isFiveStage && isDialysis) {
       enumCkd = EnumCkd.fiveDialysis;
     } else if (isFiveStage && enumDialysis == EnumDialysis.no) {
       enumCkd = EnumCkd.five;
@@ -302,6 +303,23 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 
     _saveState(isSaveState);
     _calcBmi();
+  }
+
+  void setWeightDry(String? v, {bool isSaveState = true}) {
+    var error = '';
+
+    error = _validWeightDry(v, state);
+
+    state = state.copyWith(
+      weightDry: state.weightDry.copyWith(
+        result: v,
+        value: error.isEmpty ? _parseValue(v, state) : null,
+        error: error,
+        enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      ),
+    );
+
+    _saveState(isSaveState);
   }
 
   void changeTypeUnitWeight(EnumUnitWeight? value) {
@@ -470,6 +488,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     final selectedIndex = v ?? state.ckd.selectedIndex;
     final listCkd = state.ckd.listCkd;
     final activeItem = selectedIndex != null ? listCkd[selectedIndex] : null;
+    final selectedCkd = activeItem?.enumCkd ?? EnumCkd.none;
 
     final listBool = _getListBool(
       length: listCkd.length,
@@ -480,12 +499,14 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
         listCkd: listCkd,
         selectedIndex: v,
         listSelected: listBool,
-        enumCkdSelected: activeItem?.enumCkd,
+        enumCkdSelected: selectedCkd,
         error: error,
-        isShowCalcCreatinine: activeItem?.enumCkd == EnumCkd.calculate,
+        isShowCalcCreatinine: selectedCkd == EnumCkd.calculate,
         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
       ),
     );
+
+    if (selectedCkd == EnumCkd.calculate) _calcGfr();
 
     _saveState(isSaveState);
   }
@@ -540,6 +561,22 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 
     final userYear = state.dateBirthday.userYearFine;
     final userMonth = state.dateBirthday.userMonth;
+// https://allcalc.ru/node/190
+    final weightDevineWomen = 45.5 + 2.3 * (height * 0.394 - 60);
+    final weightDevineMen = 50 + 2.3 * (height * 0.394 - 60);
+    final weightRobinsonWomen = 49 + 1.7 * (height * 0.394 - 60);
+    final weightRobinsonMen = 52 + 1.9 * (height * 0.394 - 60);
+    final gender = state.gender.enumGender;
+    final weightDevine = gender.mapValue(
+      female: weightDevineWomen,
+      male: weightDevineMen,
+      none: 0,
+    );
+    final weightRobinson = gender.mapValue(
+      female: weightRobinsonWomen,
+      male: weightRobinsonMen,
+      none: 0,
+    );
 
     final resultMarkdown = '''
 
@@ -555,12 +592,17 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 ### Ваш рекомендуемый вес:
 * Минимальный - **${AppUtilsNumber.getFormatNumber(num: recomWeightMin, numberDigitsAfterPoint: 0)} кг**
 * Максимальный - **${AppUtilsNumber.getFormatNumber(num: recomWeightMax, numberDigitsAfterPoint: 0)} кг**
+### Ваш идеальный вес:
+* по методу Devine (рекомендуемый) - **${AppUtilsNumber.getFormatNumber(num: weightDevine as double, numberDigitsAfterPoint: 1)} кг**
+* по методу Robinson - **${AppUtilsNumber.getFormatNumber(num: weightRobinson as double, numberDigitsAfterPoint: 1)} кг**
 ''';
 
     state = state.copyWith(
       bmi: state.bmi.copyWith(
         markdownSuccess: resultMarkdown,
         enumResult: EnumResult.success,
+        weightRobinson: weightRobinson,
+        weightDevine: weightDevine,
       ),
     );
   }
@@ -626,8 +668,11 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
 
     final updateCkdStatus = ckdStatus.maybeMapValue(
       orElse: ckdStatus,
-      five: state.dialysis.enumDialysis
-          .maybeMapValue(orElse: ckdStatus, yes: EnumCkd.fiveDialysis),
+      five: state.dialysis.enumDialysis.maybeMapValue(
+        orElse: ckdStatus,
+        homodialysis: EnumCkd.fiveDialysis,
+        perinatal: EnumCkd.fiveDialysis,
+      ),
     );
 
     final resultMarkdown = '''
@@ -664,6 +709,7 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
     setHeight(null, isSaveState: false);
     setHypertension(null, isSaveState: false);
     setWeight(null, isSaveState: false);
+    setWeightDry(null, isSaveState: false);
     setActivity(null, isSaveState: false);
     setCkd(null, isSaveState: false);
     setCreatinine(null, isSaveState: false);
@@ -692,6 +738,17 @@ class HealthProfileNotifier extends StateNotifier<HealthProfileState> {
         state.creatinine.enumValid.maybeMapOrNullValue(
           error: 'Укажите свой креатинин',
         ),
+
+      if (state.ckd.enumCkdSelected
+          .maybeMapValue(five: true, orElse: false, fiveDialysis: true))
+        state.dialysis.enumValid.maybeMapOrNullValue(
+          error: 'Укажите наличие или нет - диализа',
+        ),
+      if (state.dialysis.enumDialysis
+          .maybeMapValue(homodialysis: true, perinatal: true, orElse: false))
+        state.weightDry.enumValid
+            .maybeMapOrNullValue(error: 'Укажите "сухой" вес'),
+
       // state.ckd.enumCkdSelected.maybeMapOrNull(
       //   five: () => {
       //     state.creatinine.enumValid.maybeMapOrNullValue(

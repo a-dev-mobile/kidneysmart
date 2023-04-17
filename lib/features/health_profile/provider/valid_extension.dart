@@ -15,7 +15,26 @@ extension _ValidExtension on HealthProfileNotifier {
     if (doubleValue.isMinValue(20)) {
       return 'Указанный вес не поддерживается приложением';
     }
-    if (doubleValue.isMaxValue(1000)) {
+    if (doubleValue.isMaxValue(350)) {
+      return 'Указанный вес не поддерживается приложением';
+    }
+
+    return '';
+  }
+
+  String _validWeightDry(String? v, HealthProfileState state) {
+    if (v?.isEmpty ?? true && state.weight.result.isEmpty) {
+      return 'Вес не указан';
+    }
+
+    final doubleValue = _parseValue(v, state);
+
+    if (doubleValue.isNegative) return 'Неправильное значение';
+
+    if (doubleValue.isMinValue(20)) {
+      return 'Указанный вес не поддерживается приложением';
+    }
+    if (doubleValue.isMaxValue(350)) {
       return 'Указанный вес не поддерживается приложением';
     }
 

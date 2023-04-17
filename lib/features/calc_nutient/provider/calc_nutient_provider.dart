@@ -37,6 +37,10 @@ class CalcNutientNotifier extends StateNotifier<CalcNutientState> {
   /// preload
   bool _isDarkTheme = false;
   Future<void> load() async {
+    state = state.copyWith(enumResult: EnumResult.load);
+
+    // await Future<void>.delayed(const Duration(seconds: 2));
+
     final lang = EnumLang.fromValue(
       _l.localeName,
       fallback: EnumLang.en,
@@ -51,12 +55,16 @@ class CalcNutientNotifier extends StateNotifier<CalcNutientState> {
         await db.rawQuery('SELECT * from nutrient WHERE id = $enumCkdIndex');
 
     // ignore: unused_local_variable
-    final dbCkdInfo = DbNutrientModel.fromMap(list.first);
+    final dbNutrient = DbNutrientModel.fromMap(list.first);
 
     if (lang == EnumLang.ru) {
       state = state.copyWith(
         enumResult: EnumResult.success,
       );
     }
+    state = state.copyWith(
+      markdownResult: dbNutrient.toString(),
+      enumResult: EnumResult.success,
+    );
   }
 }

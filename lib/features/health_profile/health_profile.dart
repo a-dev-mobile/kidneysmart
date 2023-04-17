@@ -34,6 +34,7 @@ export 'provider/model/height_model.dart';
 export 'provider/model/hypertension_item_model.dart';
 export 'provider/model/hypertension_model.dart';
 export 'provider/model/urine_model.dart';
+export 'provider/model/weight_dry_model.dart';
 export 'provider/model/weight_model.dart';
 
 export 'view/health_profile_page.dart';
@@ -50,6 +51,7 @@ export 'view/widgets/drop_height.dart';
 export 'view/widgets/drop_input_type_creatinine.dart';
 export 'view/widgets/drop_unit_weight.dart';
 export 'view/widgets/field_creatinine.dart';
+export 'view/widgets/field_dry_weight.dart';
 export 'view/widgets/field_urine_output.dart';
 export 'view/widgets/field_weight.dart';
 export 'view/widgets/result_bmi.dart';

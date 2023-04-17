@@ -24,6 +24,7 @@ class ResultGfr extends ConsumerWidget {
           success: WidgetMarkdown(markdown: stateGfr.markdownSuccess),
           // success: _Result(markdown: stateGfr.markdownSuccess),
           error: WidgetMarkdown(markdown: stateGfr.markdownError),
+          load: const AppLoadPage(),
         ),
       ),
     );

@@ -16,6 +16,11 @@ class CalculateBmiModel {
   final String markdownSuccess;
   /* init:'' */
   final String markdownError;
+
+  /* init:0 */
+  final double weightRobinson;
+  /* init:0 */
+  final double weightDevine;
 // end
 
 //          --TURN_GEN--
@@ -28,6 +33,8 @@ class CalculateBmiModel {
     this.markdownInit = '',
     this.markdownSuccess = '',
     this.markdownError = '',
+    this.weightRobinson = 0,
+    this.weightDevine = 0,
   });
 
   Map<String, dynamic> toMap() {
@@ -36,6 +43,8 @@ class CalculateBmiModel {
       'markdownInit': markdownInit,
       'markdownSuccess': markdownSuccess,
       'markdownError': markdownError,
+      'weightRobinson': weightRobinson,
+      'weightDevine': weightDevine,
     };
   }
 
@@ -49,6 +58,8 @@ class CalculateBmiModel {
       markdownInit: map['markdownInit'] as String? ?? '',
       markdownSuccess: map['markdownSuccess'] as String? ?? '',
       markdownError: map['markdownError'] as String? ?? '',
+      weightRobinson: (map['weightRobinson'] as num?)?.toDouble() ?? 0,
+      weightDevine: (map['weightDevine'] as num?)?.toDouble() ?? 0,
     );
   }
 
@@ -57,12 +68,16 @@ class CalculateBmiModel {
     String? markdownInit,
     String? markdownSuccess,
     String? markdownError,
+    double? weightRobinson,
+    double? weightDevine,
   }) {
     return CalculateBmiModel(
       enumResult: enumResult ?? this.enumResult,
       markdownInit: markdownInit ?? this.markdownInit,
       markdownSuccess: markdownSuccess ?? this.markdownSuccess,
       markdownError: markdownError ?? this.markdownError,
+      weightRobinson: weightRobinson ?? this.weightRobinson,
+      weightDevine: weightDevine ?? this.weightDevine,
     );
   }
 
@@ -96,7 +111,17 @@ class CalculateBmiModel {
                   other.markdownError,
                   markdownError,
                 ) ||
-                other.markdownError == markdownError));
+                other.markdownError == markdownError) &&
+            (identical(
+                  other.weightRobinson,
+                  weightRobinson,
+                ) ||
+                other.weightRobinson == weightRobinson) &&
+            (identical(
+                  other.weightDevine,
+                  weightDevine,
+                ) ||
+                other.weightDevine == weightDevine));
   }
 
   @override
@@ -106,10 +131,12 @@ class CalculateBmiModel {
         markdownInit,
         markdownSuccess,
         markdownError,
+        weightRobinson,
+        weightDevine,
       ]);
 
   @override
   String toString() {
-    return 'CalculateBmiModel(enumResult: $enumResult, markdownInit: $markdownInit, markdownSuccess: $markdownSuccess, markdownError: $markdownError, )';
+    return 'CalculateBmiModel(enumResult: $enumResult, markdownInit: $markdownInit, markdownSuccess: $markdownSuccess, markdownError: $markdownError, weightRobinson: $weightRobinson, weightDevine: $weightDevine, )';
   }
 }

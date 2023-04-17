@@ -101,7 +101,14 @@ extension _InitDataExtension on HealthProfileNotifier {
 
   List<DialysisItemModel> get _initDialysis {
     return <DialysisItemModel>[
-      DialysisItemModel(enumDialysis: EnumDialysis.yes, value: _l.yes),
+      const DialysisItemModel(
+        enumDialysis: EnumDialysis.homodialysis,
+        value: 'Гомодиализ',
+      ),
+      const DialysisItemModel(
+        enumDialysis: EnumDialysis.perinatal,
+        value: 'Перенатальный',
+      ),
       DialysisItemModel(enumDialysis: EnumDialysis.no, value: _l.no),
     ];
   }

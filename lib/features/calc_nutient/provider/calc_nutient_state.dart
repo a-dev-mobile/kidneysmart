@@ -9,6 +9,8 @@ import 'package:nutrition/core/enum/enum.dart';
 class CalcNutientState {
   /* init: EnumResult.init */
   final EnumResult enumResult;
+/* init: '' */
+  final String markdownResult;
 
   // end
 
@@ -19,11 +21,13 @@ class CalcNutientState {
 //  *************************************
   const CalcNutientState({
     this.enumResult = EnumResult.init,
+    this.markdownResult = '',
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enumResult': enumResult.index,
+      'markdownResult': markdownResult,
     };
   }
 
@@ -34,14 +38,17 @@ class CalcNutientState {
       enumResult: map['enumResult'] != null
           ? EnumResult.values[map['enumResult'] as int]
           : EnumResult.init,
+      markdownResult: map['markdownResult'] as String? ?? '',
     );
   }
 
   CalcNutientState copyWith({
     EnumResult? enumResult,
+    String? markdownResult,
   }) {
     return CalcNutientState(
       enumResult: enumResult ?? this.enumResult,
+      markdownResult: markdownResult ?? this.markdownResult,
     );
   }
 
@@ -59,17 +66,23 @@ class CalcNutientState {
                   other.enumResult,
                   enumResult,
                 ) ||
-                other.enumResult == enumResult));
+                other.enumResult == enumResult) &&
+            (identical(
+                  other.markdownResult,
+                  markdownResult,
+                ) ||
+                other.markdownResult == markdownResult));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         enumResult,
+        markdownResult,
       ]);
 
   @override
   String toString() {
-    return 'CalcNutientState(enumResult: $enumResult, )';
+    return 'CalcNutientState(enumResult: $enumResult, markdownResult: $markdownResult, )';
   }
 }

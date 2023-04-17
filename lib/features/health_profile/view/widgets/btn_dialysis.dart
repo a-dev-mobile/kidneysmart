@@ -22,6 +22,7 @@ class BtnDialysis extends ConsumerWidget {
           .maybeMapValue(orElse: false, five: true, fiveDialysis: true),
       child: AppInputCard(
         child: BtnToggleText(
+          textStyle: const TextStyle(fontSize: 14),
           textList: stateDialysis.listDialysis.map((e) => e.value).toList(),
           isSelected: stateDialysis.listSelected,
           onPressed: notifier.setDialysis,

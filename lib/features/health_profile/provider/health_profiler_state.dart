@@ -20,6 +20,8 @@ class HealthProfileState {
 
   /* init: const WeightModel() */
   final WeightModel weight;
+  /* init: const WeightDryModel() */
+  final WeightDryModel weightDry;
   /* init: const GenderModel() */
   final GenderModel gender;
   /* init: const DialysisModel() */
@@ -60,6 +62,7 @@ class HealthProfileState {
     this.diabet = const DiabetesModel(),
     this.height = const HeightModel(),
     this.weight = const WeightModel(),
+    this.weightDry = const WeightDryModel(),
     this.gender = const GenderModel(),
     this.dialysis = const DialysisModel(),
     this.dailyDiuresis = const DailyDiuresisModel(),
@@ -80,6 +83,7 @@ class HealthProfileState {
       'diabet': diabet.toMap(),
       'height': height.toMap(),
       'weight': weight.toMap(),
+      'weightDry': weightDry.toMap(),
       'gender': gender.toMap(),
       'dialysis': dialysis.toMap(),
       'dailyDiuresis': dailyDiuresis.toMap(),
@@ -119,6 +123,11 @@ class HealthProfileState {
               Map<String, dynamic>.from(map['weight'] as Map),
             )
           : const WeightModel(),
+      weightDry: map['weightDry'] != null
+          ? WeightDryModel.fromMap(
+              Map<String, dynamic>.from(map['weightDry'] as Map),
+            )
+          : const WeightDryModel(),
       gender: map['gender'] != null
           ? GenderModel.fromMap(
               Map<String, dynamic>.from(map['gender'] as Map),
@@ -179,6 +188,7 @@ class HealthProfileState {
     DiabetesModel? diabet,
     HeightModel? height,
     WeightModel? weight,
+    WeightDryModel? weightDry,
     GenderModel? gender,
     DialysisModel? dialysis,
     DailyDiuresisModel? dailyDiuresis,
@@ -197,6 +207,7 @@ class HealthProfileState {
       diabet: diabet ?? this.diabet,
       height: height ?? this.height,
       weight: weight ?? this.weight,
+      weightDry: weightDry ?? this.weightDry,
       gender: gender ?? this.gender,
       dialysis: dialysis ?? this.dialysis,
       dailyDiuresis: dailyDiuresis ?? this.dailyDiuresis,
@@ -247,6 +258,11 @@ class HealthProfileState {
                   weight,
                 ) ||
                 other.weight == weight) &&
+            (identical(
+                  other.weightDry,
+                  weightDry,
+                ) ||
+                other.weightDry == weightDry) &&
             (identical(
                   other.gender,
                   gender,
@@ -312,6 +328,7 @@ class HealthProfileState {
         diabet,
         height,
         weight,
+        weightDry,
         gender,
         dialysis,
         dailyDiuresis,
@@ -327,6 +344,6 @@ class HealthProfileState {
 
   @override
   String toString() {
-    return 'HealthProfileState(isValid: $isValid, dateBirthday: $dateBirthday, diabet: $diabet, height: $height, weight: $weight, gender: $gender, dialysis: $dialysis, dailyDiuresis: $dailyDiuresis, hypertension: $hypertension, urine: $urine, creatinine: $creatinine, activity: $activity, ckd: $ckd, bmi: $bmi, gfr: $gfr, markdownError: $markdownError, )';
+    return 'HealthProfileState(isValid: $isValid, dateBirthday: $dateBirthday, diabet: $diabet, height: $height, weight: $weight, weightDry: $weightDry, gender: $gender, dialysis: $dialysis, dailyDiuresis: $dailyDiuresis, hypertension: $hypertension, urine: $urine, creatinine: $creatinine, activity: $activity, ckd: $ckd, bmi: $bmi, gfr: $gfr, markdownError: $markdownError, )';
   }
 }

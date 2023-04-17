@@ -1,5 +1,6 @@
 enum EnumDialysis with Comparable<EnumDialysis> {
-  yes('yes'),
+  perinatal('perinatal'),
+  homodialysis('homodialysis'),
   no('no'),
   none('none');
 
@@ -19,8 +20,10 @@ enum EnumDialysis with Comparable<EnumDialysis> {
     EnumDialysis? fallback,
   }) {
     switch (value) {
-      case 'yes':
-        return yes;
+      case 'perinatal':
+        return perinatal;
+      case 'homodialysis':
+        return homodialysis;
       case 'no':
         return no;
       case 'none':
@@ -36,13 +39,16 @@ enum EnumDialysis with Comparable<EnumDialysis> {
   }
 
   T map<T>({
-    required T Function() yes,
+    required T Function() perinatal,
+    required T Function() homodialysis,
     required T Function() no,
     required T Function() none,
   }) {
     switch (this) {
-      case EnumDialysis.yes:
-        return yes();
+      case EnumDialysis.perinatal:
+        return perinatal();
+      case EnumDialysis.homodialysis:
+        return homodialysis();
       case EnumDialysis.no:
         return no();
       case EnumDialysis.none:
@@ -51,13 +57,16 @@ enum EnumDialysis with Comparable<EnumDialysis> {
   }
 
   T mapValue<T>({
-    required T yes,
+    required T perinatal,
+    required T homodialysis,
     required T no,
     required T none,
   }) {
     switch (this) {
-      case EnumDialysis.yes:
-        return yes;
+      case EnumDialysis.perinatal:
+        return perinatal;
+      case EnumDialysis.homodialysis:
+        return homodialysis;
       case EnumDialysis.no:
         return no;
       case EnumDialysis.none:
@@ -67,48 +76,56 @@ enum EnumDialysis with Comparable<EnumDialysis> {
 
   T maybeMap<T>({
     required T Function() orElse,
-    T Function()? yes,
+    T Function()? perinatal,
+    T Function()? homodialysis,
     T Function()? no,
     T Function()? none,
   }) =>
       map<T>(
-        yes: yes ?? orElse,
+        perinatal: perinatal ?? orElse,
+        homodialysis: homodialysis ?? orElse,
         no: no ?? orElse,
         none: none ?? orElse,
       );
 
   T maybeMapValue<T>({
     required T orElse,
-    T? yes,
+    T? perinatal,
+    T? homodialysis,
     T? no,
     T? none,
   }) =>
       mapValue<T>(
-        yes: yes ?? orElse,
+        perinatal: perinatal ?? orElse,
+        homodialysis: homodialysis ?? orElse,
         no: no ?? orElse,
         none: none ?? orElse,
       );
 
   T? maybeMapOrNull<T>({
-    T Function()? yes,
+    T Function()? perinatal,
+    T Function()? homodialysis,
     T Function()? no,
     T Function()? none,
   }) =>
       maybeMap<T?>(
         orElse: () => null,
-        yes: yes,
+        perinatal: perinatal,
+        homodialysis: homodialysis,
         no: no,
         none: none,
       );
 
   T? maybeMapOrNullValue<T>({
-    T? yes,
+    T? perinatal,
+    T? homodialysis,
     T? no,
     T? none,
   }) =>
       maybeMapValue<T?>(
         orElse: null,
-        yes: yes,
+        perinatal: perinatal,
+        homodialysis: homodialysis,
         no: no,
         none: none,
       );

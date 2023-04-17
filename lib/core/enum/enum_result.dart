@@ -2,6 +2,7 @@
 enum EnumResult with Comparable<EnumResult> {
   init('init'),
   success('success'),
+  load('load'),
   error('error');
 
   const EnumResult(this.value);
@@ -24,6 +25,8 @@ enum EnumResult with Comparable<EnumResult> {
         return init;
       case 'success':
         return success;
+      case 'load':
+        return load;
       case 'error':
         return error;
       default:
@@ -39,6 +42,7 @@ enum EnumResult with Comparable<EnumResult> {
   T map<T>({
     required T Function() init,
     required T Function() success,
+    required T Function() load,
     required T Function() error,
   }) {
     switch (this) {
@@ -46,6 +50,8 @@ enum EnumResult with Comparable<EnumResult> {
         return init();
       case EnumResult.success:
         return success();
+      case EnumResult.load:
+        return load();
       case EnumResult.error:
         return error();
     }
@@ -54,6 +60,7 @@ enum EnumResult with Comparable<EnumResult> {
   T mapValue<T>({
     required T init,
     required T success,
+    required T load,
     required T error,
   }) {
     switch (this) {
@@ -61,6 +68,8 @@ enum EnumResult with Comparable<EnumResult> {
         return init;
       case EnumResult.success:
         return success;
+      case EnumResult.load:
+        return load;
       case EnumResult.error:
         return error;
     }
@@ -70,11 +79,13 @@ enum EnumResult with Comparable<EnumResult> {
     required T Function() orElse,
     T Function()? init,
     T Function()? success,
+    T Function()? load,
     T Function()? error,
   }) =>
       map<T>(
         init: init ?? orElse,
         success: success ?? orElse,
+        load: load ?? orElse,
         error: error ?? orElse,
       );
 
@@ -82,35 +93,41 @@ enum EnumResult with Comparable<EnumResult> {
     required T orElse,
     T? init,
     T? success,
+    T? load,
     T? error,
   }) =>
       mapValue<T>(
         init: init ?? orElse,
         success: success ?? orElse,
+        load: load ?? orElse,
         error: error ?? orElse,
       );
 
   T? maybeMapOrNull<T>({
     T Function()? init,
     T Function()? success,
+    T Function()? load,
     T Function()? error,
   }) =>
       maybeMap<T?>(
         orElse: () => null,
         init: init,
         success: success,
+        load: load,
         error: error,
       );
 
   T? maybeMapOrNullValue<T>({
     T? init,
     T? success,
+    T? load,
     T? error,
   }) =>
       maybeMapValue<T?>(
         orElse: null,
         init: init,
         success: success,
+        load: load,
         error: error,
       );
 

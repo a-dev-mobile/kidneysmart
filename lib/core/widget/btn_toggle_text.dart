@@ -10,10 +10,12 @@ class BtnToggleText extends StatelessWidget {
     this.title = '',
     this.errorText = '',
     this.onPressedInfo,
+    this.textStyle,
   });
   final List<String> textList;
   final String title;
   final String? errorText;
+  final TextStyle? textStyle;
 
   final List<bool> isSelected;
   final void Function(int)? onPressed;
@@ -46,9 +48,11 @@ class BtnToggleText extends StatelessWidget {
             ),
             if (onPressedInfo == null) const SizedBox(height: 10),
             ToggleButtons(
+              textStyle: textStyle,
               constraints: BoxConstraints.expand(
                 // number 3 = becouse if less - ovverflow
                 height: 40,
+
                 width: (constraint.maxWidth / textList.length) - 3,
               ),
               isSelected: isSelected,

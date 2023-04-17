@@ -23,11 +23,11 @@ class UpdateDbPage extends ConsumerWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: state.enumResult.mapValue(
-          init: const AppLoadPage(),
+        child: state.enumResult.maybeMapValue(
           // success: AppWebViewPage(url:state.url),
           success: const Center(child: Text('Копирование выполнено успешно!')),
           error: const AppErrorPage(),
+          orElse: const AppLoadPage(),
         ),
       ),
     );

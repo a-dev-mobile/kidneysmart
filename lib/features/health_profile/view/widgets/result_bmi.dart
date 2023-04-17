@@ -20,6 +20,7 @@ class ResultBmi extends ConsumerWidget {
         init: WidgetMarkdown(markdown: stateBmi.markdownInit),
         success: WidgetMarkdown(markdown: stateBmi.markdownSuccess),
         error: WidgetMarkdown(markdown: stateBmi.markdownError),
+        load: const AppLoadPage(),
       ),
     );
   }
