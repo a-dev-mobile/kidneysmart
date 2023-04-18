@@ -82,6 +82,7 @@ class HealthProfilePage extends ConsumerWidget {
               const BtnCkd(),
               const ResultGfr(),
               const BtnDialysis(),
+              const BtnDryWeight(),
               const FieldWeightDry(),
               ElevatedButton(
                 // ignore: prefer-extracting-callbacks

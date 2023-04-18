@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/services/navigation/navigation.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/info_html/info_html.dart';
 
 class FieldWeightDry extends ConsumerStatefulWidget {
   const FieldWeightDry({super.key});
@@ -17,7 +19,7 @@ class _FieldNameState extends ConsumerState<FieldWeightDry> {
 
   @override
   void initState() {
-    final initValue = ref.read(healthProfileProvider).weightDry.result;
+    final initValue = ref.read(healthProfileProvider).dryWeightField.result;
 
     controller = TextEditingController(text: initValue);
 
@@ -35,27 +37,30 @@ class _FieldNameState extends ConsumerState<FieldWeightDry> {
     // final l = context.l10n;
     final state = ref.watch(healthProfileProvider);
     final notifier = ref.watch(healthProfileProvider.notifier);
-    final stateWeight = state.weightDry;
-
+    final stateDryWeight = state.dryWeightField;
 
     return Visibility(
-      visible:notifier.isDialysis && notifier.isCkdFive,
+      visible:
+          notifier.isDialysis && notifier.isCkdFive && notifier.isKnowDryWeight,
       child: AppInputCard(
         child: Column(
           children: [
-            TitleSub(text: 'Укажите свой "сухой" вес', onPressedInfo: () {}),
+            TitleSub(
+              text: 'Укажите свой "сухой" вес',
+              onPressedInfo: () => _toInfo(ref),
+            ),
             TextField(
               controller: controller,
               decoration: InputDecoration(
-                labelText: '"Сухой" Вес',
-                errorText: stateWeight.enumValid
-                    .maybeMapOrNullValue(error: stateWeight.error),
+                labelText: 'Введите значение',
+                errorText: stateDryWeight.enumValid
+                    .maybeMapOrNullValue(error: stateDryWeight.error),
                 errorMaxLines: 2,
                 suffixText: 'кг',
               ),
               keyboardType:
                   const TextInputType.numberWithOptions(decimal: true),
-              onChanged: notifier.setWeightDry,
+              onChanged: notifier.setFieldDryWeight,
               inputFormatters: [
                 LengthLimitingTextInputFormatter(6),
                 FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
@@ -65,5 +70,12 @@ class _FieldNameState extends ConsumerState<FieldWeightDry> {
         ),
       ),
     );
+  }
+
+  Future<Object?> _toInfo(WidgetRef ref) {
+    return ref
+        .read(appRouterServiceProvider)
+        .router
+        .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.dryWeight);
   }
 }

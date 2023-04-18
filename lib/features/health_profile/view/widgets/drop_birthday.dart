@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/widget/widget.dart';
 
 import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/info_html/info_html.dart';
 import 'package:nutrition/localization/localization.dart';
 
 class DropBirthday extends ConsumerWidget {
@@ -22,7 +24,9 @@ class DropBirthday extends ConsumerWidget {
     return AppInputCard(
       child: Column(
         children: [
-          const TitleSub(text: 'Укажите дату своего рождения'),
+          TitleSub(
+              text: 'Укажите дату своего рождения',
+              onPressedInfo: () => _toInfo(ref),),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -56,6 +60,13 @@ class DropBirthday extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  Future<Object?> _toInfo(WidgetRef ref) {
+    return ref
+        .read(appRouterServiceProvider)
+        .router
+        .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.dateOfBirth);
   }
 }
 

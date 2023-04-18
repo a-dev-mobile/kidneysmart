@@ -60,8 +60,8 @@ extension _TextTranslateExtension on HealthProfileNotifier {
 
   String _getTypeCalcBmiPeople(EnumTypeCalcBmiPeople enumBmiCalc) {
     return enumBmiCalc.mapValue(
-      children: 'Расчет ИМТ для детей или подросков',
-      adults: 'Расчет ИМТ для взрослых',
+      children: 'Расчет для детей или подросков',
+      adults: 'Расчет для взрослых',
       none: '',
     );
   }

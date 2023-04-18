@@ -23,8 +23,8 @@ extension _ValidExtension on HealthProfileNotifier {
   }
 
   String _validWeightDry(String? v, HealthProfileState state) {
-    if (v?.isEmpty ?? true && state.weightDry.result.isEmpty) {
-      return '"Сухой" вес не указан';
+    if (v?.isEmpty ?? true && state.dryWeightField.result.isEmpty) {
+      return 'Выберите значение';
     }
 
     final doubleValue = _parseValue(v, state);
@@ -136,16 +136,16 @@ extension _ValidExtension on HealthProfileNotifier {
       return '';
     }
 
-    final baseText = _l.calculate_bmi_enter;
-    final dateOfBirth = '**${_l.date_of_birth}**';
-    final height = '**${_l.height}**';
-    final weight = '**${_l.weight}**';
+    final baseText = _l.calculate_enter;
+    final dateOfBirth = _l.date_of_birth;
+    final height = _l.height;
+    final weight = _l.weight;
 
     var changeText = '';
 
     if (isValidHeight && isValidWeight) {
       changeText = '''
-$baseText
+### $baseText
 * $dateOfBirth
 ''';
     } else if (isValidBirthday && isValidWeight) {
@@ -197,16 +197,16 @@ $baseText
       return '';
     }
 
-    final baseText = _l.calculate_gfr_enter;
-    final dateOfBirth = '**${_l.date_of_birth}**';
+    final baseText = _l.calculate_enter;
+    final dateOfBirth = _l.date_of_birth;
 
-    final gender = '**${_l.gender}**';
-    final creatinine = '**${_l.creatinine}**';
+    final gender = _l.gender;
+    final creatinine = _l.creatinine;
     var changeText = '';
 
     if (!isValidGender && !isValidDateBirthday && !isValidCreatinine) {
       changeText = '''
-$baseText
+### $baseText
 * $gender
 * $dateOfBirth
 * $creatinine

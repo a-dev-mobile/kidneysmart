@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/services/navigation/navigation.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/info_html/info_html.dart';
 
 class ResultGfr extends ConsumerWidget {
   const ResultGfr({
@@ -16,17 +18,38 @@ class ResultGfr extends ConsumerWidget {
     final stateGfr = state.gfr;
     final isVisible = state.ckd.isShowCalcCreatinine;
 
+    const title = 'Калькулятор расчёта скорости клубочковой фильтрации';
+
     return Visibility(
       visible: isVisible,
       child: AppResultCard(
         child: stateGfr.enumResult.mapValue(
-          init: WidgetMarkdown(markdown: stateGfr.markdownInit),
-          success: WidgetMarkdown(markdown: stateGfr.markdownSuccess),
+          init: ResultCommon(
+            markdown: stateGfr.markdownInit,
+            title: title,
+            onPressedInfo: () => _toInfo(ref),
+          ),
+          success: ResultCommon(
+            markdown: stateGfr.markdownSuccess,
+            title: title,
+            onPressedInfo: () => _toInfo(ref),
+          ),
           // success: _Result(markdown: stateGfr.markdownSuccess),
-          error: WidgetMarkdown(markdown: stateGfr.markdownError),
+          error: ResultCommon(
+            markdown: stateGfr.markdownError,
+            title: title,
+            onPressedInfo: () => _toInfo(ref),
+          ),
           load: const AppLoadPage(),
         ),
       ),
     );
+  }
+
+  Future<Object?> _toInfo(WidgetRef ref) {
+    return ref
+        .read(appRouterServiceProvider)
+        .router
+        .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.activity);
   }
 }

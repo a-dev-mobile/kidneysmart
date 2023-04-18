@@ -25,7 +25,7 @@ class BtnGender extends ConsumerWidget {
         onPressedInfo: () => ref
             .read(appRouterServiceProvider)
             .router
-            .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.activity),
+            .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.gender),
         errorText:
             stateGender.enumValid.maybeMapOrNullValue(error: stateGender.error),
         title: 'Для человека какого пола следует рассчитывать рекомендации?',

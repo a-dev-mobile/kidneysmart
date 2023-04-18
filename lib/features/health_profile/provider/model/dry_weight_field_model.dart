@@ -7,7 +7,7 @@ import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
 
 @immutable
-class WeightDryModel {
+class DryWeightFieldModel {
   /* init:'' */
   final String result;
 
@@ -16,9 +16,9 @@ class WeightDryModel {
   final String error;
   /* init: EnumValid.init */
   final EnumValid enumValid;
-
   /* init: EnumUnitWeight.kg */
   final EnumUnitWeight enumUnitWeight;
+
   // end
 
 //          --TURN_GEN--
@@ -26,7 +26,7 @@ class WeightDryModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const WeightDryModel({
+  const DryWeightFieldModel({
     this.result = '',
     this.error = '',
     this.enumValid = EnumValid.init,
@@ -44,10 +44,10 @@ class WeightDryModel {
     };
   }
 
-  factory WeightDryModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const WeightDryModel();
+  factory DryWeightFieldModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const DryWeightFieldModel();
 
-    return WeightDryModel(
+    return DryWeightFieldModel(
       result: map['result'] as String? ?? '',
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
@@ -60,14 +60,14 @@ class WeightDryModel {
     );
   }
 
-  WeightDryModel copyWith({
+  DryWeightFieldModel copyWith({
     String? result,
     double? value,
     String? error,
     EnumValid? enumValid,
     EnumUnitWeight? enumUnitWeight,
   }) {
-    return WeightDryModel(
+    return DryWeightFieldModel(
       result: result ?? this.result,
       value: value ?? this.value,
       error: error ?? this.error,
@@ -77,7 +77,8 @@ class WeightDryModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory WeightDryModel.fromJson(String source) => WeightDryModel.fromMap(
+  factory DryWeightFieldModel.fromJson(String source) =>
+      DryWeightFieldModel.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -85,7 +86,7 @@ class WeightDryModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is WeightDryModel &&
+            other is DryWeightFieldModel &&
             (identical(
                   other.result,
                   result,
@@ -125,6 +126,6 @@ class WeightDryModel {
 
   @override
   String toString() {
-    return 'WeightDryModel(result: $result, value: $value, error: $error, enumValid: $enumValid, enumUnitWeight: $enumUnitWeight, )';
+    return 'DryWeightFieldModel(result: $result, value: $value, error: $error, enumValid: $enumValid, enumUnitWeight: $enumUnitWeight, )';
   }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/services/navigation/navigation.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/info_html/info_html.dart';
 
 class FieldWeight extends ConsumerStatefulWidget {
   const FieldWeight({super.key});
@@ -40,7 +42,10 @@ class _FieldNameState extends ConsumerState<FieldWeight> {
     return AppInputCard(
       child: Column(
         children: [
-          const TitleSub(text: 'Укажите свой текущий вес'),
+          TitleSub(
+            text: 'Укажите свой текущий вес',
+            onPressedInfo: () => _toInfo(ref),
+          ),
           Column(
             children: [
               const DropUnitWeight(),
@@ -67,5 +72,12 @@ class _FieldNameState extends ConsumerState<FieldWeight> {
         ],
       ),
     );
+  }
+
+  Future<Object?> _toInfo(WidgetRef ref) {
+    return ref
+        .read(appRouterServiceProvider)
+        .router
+        .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.weight);
   }
 }

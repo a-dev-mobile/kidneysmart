@@ -113,6 +113,19 @@ extension _InitDataExtension on HealthProfileNotifier {
     ];
   }
 
+  List<DryWeightItemModel> get _initDryWeigth {
+    return <DryWeightItemModel>[
+      DryWeightItemModel(
+        enumDryWeight: EnumDryWeight.yes,
+        value: _l.yes,
+      ),
+      DryWeightItemModel(
+        enumDryWeight: EnumDryWeight.no,
+        value: _l.no,
+      ),
+    ];
+  }
+
   List<HypertensionItemModel> get _initHypertension {
     return <HypertensionItemModel>[
       HypertensionItemModel(

@@ -37,7 +37,7 @@ class BtnDailyDiuresis extends ConsumerWidget {
                 .read(appRouterServiceProvider)
                 .router
                 .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.urine),
-            title: 'Укажите уровень суточного диуреза (обьем выделяемой мочи)',
+            title: 'Укажите уровень суточного диуреза\n(обьем выделяемой мочи)',
           ),
 
           //  all last values

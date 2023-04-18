@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/services/navigation/navigation.dart';
 
 import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/info_html/info_html.dart';
 
 class BtnHypertension extends ConsumerWidget {
   const BtnHypertension({
@@ -17,13 +19,17 @@ class BtnHypertension extends ConsumerWidget {
 
     return AppInputCard(
       child: BtnToggleText(
+        onPressedInfo: () => ref
+            .read(appRouterServiceProvider)
+            .router
+            .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.hypertension),
         textList:
             stateHypertension.listHypertension.map((e) => e.value).toList(),
         isSelected: stateHypertension.listSelected,
         onPressed: notifier.setHypertension,
         errorText: stateHypertension.enumValid
             .maybeMapOrNullValue(error: stateHypertension.error),
-        title: 'Наличие гипертензии (высокое кровяное давление)',
+        title: 'Наличие гипертензии\n(высокое кровяное давление)',
       ),
     );
   }

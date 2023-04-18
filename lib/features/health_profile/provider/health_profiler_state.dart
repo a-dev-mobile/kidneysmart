@@ -20,10 +20,15 @@ class HealthProfileState {
 
   /* init: const WeightModel() */
   final WeightModel weight;
-  /* init: const WeightDryModel() */
-  final WeightDryModel weightDry;
+
+  /* init: const DryWeightSelectModel() */
+  final DryWeightSelectModel dryWeightSelect;
+  /* init: const DryWeightFieldModel() */
+  final DryWeightFieldModel dryWeightField;
+
   /* init: const GenderModel() */
   final GenderModel gender;
+
   /* init: const DialysisModel() */
   final DialysisModel dialysis;
   /* init: const DailyDiuresisModel() */
@@ -62,7 +67,8 @@ class HealthProfileState {
     this.diabet = const DiabetesModel(),
     this.height = const HeightModel(),
     this.weight = const WeightModel(),
-    this.weightDry = const WeightDryModel(),
+    this.dryWeightSelect = const DryWeightSelectModel(),
+    this.dryWeightField = const DryWeightFieldModel(),
     this.gender = const GenderModel(),
     this.dialysis = const DialysisModel(),
     this.dailyDiuresis = const DailyDiuresisModel(),
@@ -83,7 +89,8 @@ class HealthProfileState {
       'diabet': diabet.toMap(),
       'height': height.toMap(),
       'weight': weight.toMap(),
-      'weightDry': weightDry.toMap(),
+      'dryWeightSelect': dryWeightSelect.toMap(),
+      'dryWeightField': dryWeightField.toMap(),
       'gender': gender.toMap(),
       'dialysis': dialysis.toMap(),
       'dailyDiuresis': dailyDiuresis.toMap(),
@@ -123,11 +130,16 @@ class HealthProfileState {
               Map<String, dynamic>.from(map['weight'] as Map),
             )
           : const WeightModel(),
-      weightDry: map['weightDry'] != null
-          ? WeightDryModel.fromMap(
-              Map<String, dynamic>.from(map['weightDry'] as Map),
+      dryWeightSelect: map['dryWeightSelect'] != null
+          ? DryWeightSelectModel.fromMap(
+              Map<String, dynamic>.from(map['dryWeightSelect'] as Map),
             )
-          : const WeightDryModel(),
+          : const DryWeightSelectModel(),
+      dryWeightField: map['dryWeightField'] != null
+          ? DryWeightFieldModel.fromMap(
+              Map<String, dynamic>.from(map['dryWeightField'] as Map),
+            )
+          : const DryWeightFieldModel(),
       gender: map['gender'] != null
           ? GenderModel.fromMap(
               Map<String, dynamic>.from(map['gender'] as Map),
@@ -188,7 +200,8 @@ class HealthProfileState {
     DiabetesModel? diabet,
     HeightModel? height,
     WeightModel? weight,
-    WeightDryModel? weightDry,
+    DryWeightSelectModel? dryWeightSelect,
+    DryWeightFieldModel? dryWeightField,
     GenderModel? gender,
     DialysisModel? dialysis,
     DailyDiuresisModel? dailyDiuresis,
@@ -207,7 +220,8 @@ class HealthProfileState {
       diabet: diabet ?? this.diabet,
       height: height ?? this.height,
       weight: weight ?? this.weight,
-      weightDry: weightDry ?? this.weightDry,
+      dryWeightSelect: dryWeightSelect ?? this.dryWeightSelect,
+      dryWeightField: dryWeightField ?? this.dryWeightField,
       gender: gender ?? this.gender,
       dialysis: dialysis ?? this.dialysis,
       dailyDiuresis: dailyDiuresis ?? this.dailyDiuresis,
@@ -259,10 +273,15 @@ class HealthProfileState {
                 ) ||
                 other.weight == weight) &&
             (identical(
-                  other.weightDry,
-                  weightDry,
+                  other.dryWeightSelect,
+                  dryWeightSelect,
                 ) ||
-                other.weightDry == weightDry) &&
+                other.dryWeightSelect == dryWeightSelect) &&
+            (identical(
+                  other.dryWeightField,
+                  dryWeightField,
+                ) ||
+                other.dryWeightField == dryWeightField) &&
             (identical(
                   other.gender,
                   gender,
@@ -328,7 +347,8 @@ class HealthProfileState {
         diabet,
         height,
         weight,
-        weightDry,
+        dryWeightSelect,
+        dryWeightField,
         gender,
         dialysis,
         dailyDiuresis,
@@ -344,6 +364,6 @@ class HealthProfileState {
 
   @override
   String toString() {
-    return 'HealthProfileState(isValid: $isValid, dateBirthday: $dateBirthday, diabet: $diabet, height: $height, weight: $weight, weightDry: $weightDry, gender: $gender, dialysis: $dialysis, dailyDiuresis: $dailyDiuresis, hypertension: $hypertension, urine: $urine, creatinine: $creatinine, activity: $activity, ckd: $ckd, bmi: $bmi, gfr: $gfr, markdownError: $markdownError, )';
+    return 'HealthProfileState(isValid: $isValid, dateBirthday: $dateBirthday, diabet: $diabet, height: $height, weight: $weight, dryWeightSelect: $dryWeightSelect, dryWeightField: $dryWeightField, gender: $gender, dialysis: $dialysis, dailyDiuresis: $dailyDiuresis, hypertension: $hypertension, urine: $urine, creatinine: $creatinine, activity: $activity, ckd: $ckd, bmi: $bmi, gfr: $gfr, markdownError: $markdownError, )';
   }
 }

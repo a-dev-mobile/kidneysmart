@@ -152,10 +152,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get light => 'ЛЕГКАЯ';
 
   @override
-  String get info_diabets => 'Наличие диабета влияет на количество потребления нутриентов.';
+  String get info_diabets =>
+      'Наличие диабета влияет на количество потребления нутриентов.';
 
   @override
-  String get info_hypertension => 'Наличие гипертензии (высокое кровяное давление) влияет на количество потребления нутриентов.';
+  String get info_hypertension =>
+      'Наличие гипертензии (высокое кровяное давление) влияет на количество потребления нутриентов.';
 
   @override
   String get month_january => 'Январь';
@@ -194,7 +196,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get month_december => 'Декабрь';
 
   @override
-  String get welcome_msg => 'Поздравляем! Вы сделали новый шаг на пути к более здоровому образу жизни';
+  String get welcome_msg =>
+      'Поздравляем! Вы сделали новый шаг на пути к более здоровому образу жизни';
 
   @override
   String get no_stage_skd_selected => 'Стадия ХБП не выбрана';
@@ -203,10 +206,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get activity_not_selected => 'Физическая активность не выбрана';
 
   @override
-  String get calculate_bmi_enter => 'Для расчета ИМТ укажите:';
-
-  @override
-  String get calculate_gfr_enter => 'Для расчета клубочковой фильтрации укажите:';
+  String get calculate_enter => 'Для расчета укажите:';
 
   @override
   String get mgDl => 'мг/дл';
