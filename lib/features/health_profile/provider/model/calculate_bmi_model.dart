@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+/* // ignore_for_file: avoid_bool_literals_in_conditional_expressions
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
@@ -140,3 +140,4 @@ class CalculateBmiModel {
     return 'CalculateBmiModel(enumResult: $enumResult, markdownInit: $markdownInit, markdownSuccess: $markdownSuccess, markdownError: $markdownError, weightRobinson: $weightRobinson, weightDevine: $weightDevine, )';
   }
 }
+ */

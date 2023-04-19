@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+/* // ignore_for_file: avoid_bool_literals_in_conditional_expressions
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
@@ -128,3 +128,4 @@ class CreatinineModel {
     return 'CreatinineModel(result: $result, value: $value, error: $error, enumValid: $enumValid, inputTypeCreatinine: $inputTypeCreatinine, )';
   }
 }
+ */

@@ -8,15 +8,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/core/services/navigation/models/app_state.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
-import 'package:nutrition/features/calc_nutient/view/calc_nutient_page.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
-import 'package:nutrition/features/health_profile/view/health_profile_page.dart';
 import 'package:nutrition/features/info_html/info_html.dart';
 
 import 'package:nutrition/features/onboarding/vew/onboarding_page.dart';
 import 'package:nutrition/features/overlay_widget/view/view.dart';
 import 'package:nutrition/features/registration/name/name.dart';
 import 'package:nutrition/features/splash/splash.dart';
+import 'package:nutrition/features/steps/birthday/birthday.dart';
+import 'package:nutrition/features/steps/gender/gender.dart';
+import 'package:nutrition/features/steps/height/height.dart';
+import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/features/update_db/update_db.dart';
 import 'package:nutrition/global.dart';
 
@@ -77,21 +79,21 @@ class AppRouterService {
             ),
           ),
           GoRoute(
-            path: OnBoardingPage.path,
-            name: OnBoardingPage.name,
+            path: OnboardingPage.path,
+            name: OnboardingPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const OnBoardingPage(),
+              child: const OnboardingPage(),
             ),
           ),
-          GoRoute(
-            path: HealthProfilePage.path,
-            name: HealthProfilePage.name,
-            pageBuilder: (context, state) => MaterialPage<void>(
-              key: state.pageKey,
-              child: const HealthProfilePage(),
-            ),
-          ),
+          // GoRoute(
+          //   path: HealthProfilePage.path,
+          //   name: HealthProfilePage.name,
+          //   pageBuilder: (context, state) => MaterialPage<void>(
+          //     key: state.pageKey,
+          //     child: const HealthProfilePage(),
+          //   ),
+          // ),
           GoRoute(
             path: InfoHtmlPage.path,
             name: InfoHtmlPage.name,
@@ -102,20 +104,53 @@ class AppRouterService {
               ),
             ),
           ),
+          // GoRoute(
+          //   path: CalcNutrientPage.path,
+          //   name: CalcNutrientPage.name,
+          //   pageBuilder: (context, state) => MaterialPage<void>(
+          //     key: state.pageKey,
+          //     child: const CalcNutrientPage(),
+          //   ),
+          // ),
           GoRoute(
-            path: CalcNutrientPage.path,
-            name: CalcNutrientPage.name,
+            path: GenderPage.path,
+            name: GenderPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const CalcNutrientPage(),
+              child: const GenderPage(),
             ),
           ),
+
           GoRoute(
             path: UpdateDbPage.path,
             name: UpdateDbPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const UpdateDbPage(),
+            ),
+          ),
+          GoRoute(
+            path: BirthdayPage.path,
+            name: BirthdayPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const BirthdayPage(),
+            ),
+          ),
+          GoRoute(
+            path: HeightPage.path,
+            name: HeightPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const HeightPage(),
+            ),
+          ),
+          GoRoute(
+            path: WeightPage.path,
+            name: WeightPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const WeightPage(),
             ),
           ),
         ],
@@ -172,19 +207,24 @@ class AppRouterService {
   );
 
   Future<void> nextPage(AppState appState) async {
-    router.goNamed(HealthProfilePage.name);
+    // router.goNamed(HealthProfilePage.name);
 
-    return;
+    if (appState.isUseUpdateDB) {
+      router.goNamed(UpdateDbPage.name);
+
+      return;
+    }
 
     if (appState.isFirstTime || !appState.isOnboardingCompleted) {
-      router.goNamed(OnBoardingPage.name);
       await _storage.setAppState(appState.copyWith(isFirstTime: false));
+
+      router.goNamed(OnboardingPage.name);
 
       return;
     }
 
     if (appState.isOnboardingCompleted && !appState.isFirstTime) {
-      router.goNamed(RegistrationNamePage.name);
+      router.goNamed(GenderPage.name);
 
       return;
     }

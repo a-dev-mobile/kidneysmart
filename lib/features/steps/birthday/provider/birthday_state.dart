@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
-class DateBirthdayModel {
+class BirthdayState {
   /* init: const [] */
   final List<String> days;
   /* init: const [] */
@@ -43,7 +43,7 @@ class DateBirthdayModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const DateBirthdayModel({
+  const BirthdayState({
     this.days = const [],
     this.months = const [],
     this.years = const [],
@@ -75,10 +75,10 @@ class DateBirthdayModel {
     };
   }
 
-  factory DateBirthdayModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const DateBirthdayModel();
+  factory BirthdayState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const BirthdayState();
 
-    return DateBirthdayModel(
+    return BirthdayState(
       days: (map['days'] as List<dynamic>?)?.map((e) => e as String).toList() ??
           const [],
       months:
@@ -103,7 +103,7 @@ class DateBirthdayModel {
     );
   }
 
-  DateBirthdayModel copyWith({
+  BirthdayState copyWith({
     List<String>? days,
     List<String>? months,
     List<String>? years,
@@ -117,7 +117,7 @@ class DateBirthdayModel {
     DateTime? dateTime,
     EnumValid? enumValid,
   }) {
-    return DateBirthdayModel(
+    return BirthdayState(
       days: days ?? this.days,
       months: months ?? this.months,
       years: years ?? this.years,
@@ -134,8 +134,7 @@ class DateBirthdayModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory DateBirthdayModel.fromJson(String source) =>
-      DateBirthdayModel.fromMap(
+  factory BirthdayState.fromJson(String source) => BirthdayState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -143,7 +142,7 @@ class DateBirthdayModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DateBirthdayModel &&
+            other is BirthdayState &&
             const DeepCollectionEquality().equals(
               other.days,
               days,
@@ -228,6 +227,6 @@ class DateBirthdayModel {
 
   @override
   String toString() {
-    return 'DateBirthdayModel(days: $days, months: $months, years: $years, day: $day, year: $year, month: $month, userMonth: $userMonth, userYearFine: $userYearFine, userYearCoarse: $userYearCoarse, error: $error, dateTime: $dateTime, enumValid: $enumValid, )';
+    return 'BirthdayState(days: $days, months: $months, years: $years, day: $day, year: $year, month: $month, userMonth: $userMonth, userYearFine: $userYearFine, userYearCoarse: $userYearCoarse, error: $error, dateTime: $dateTime, enumValid: $enumValid, )';
   }
 }

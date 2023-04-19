@@ -24,10 +24,8 @@ class UpdateDbPage extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: state.enumResult.maybeMapValue(
-          // success: AppWebViewPage(url:state.url),
-          success: const Center(child: Text('Копирование выполнено успешно!')),
           error: const AppErrorPage(),
-          orElse: const AppLoadPage(),
+          orElse: const AppLoadPage(title: 'Обновление базы данных'),
         ),
       ),
     );

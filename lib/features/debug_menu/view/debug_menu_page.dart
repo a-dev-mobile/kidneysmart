@@ -8,7 +8,6 @@ import 'package:go_router/go_router.dart';
 import 'package:nutrition/core/services/navigation/app_router_service.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/core/style/app_text_style.dart';
-import 'package:nutrition/features/calc_nutient/view/calc_nutient_page.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
 import 'package:nutrition/features/onboarding/onboarding.dart';
 import 'package:nutrition/features/registration/name/name.dart';
@@ -83,12 +82,12 @@ class DebugMenuPage extends ConsumerWidget {
                   ),
                   _ItemPage(
                     name: 'onboarding',
-                    route: OnBoardingPage.name,
+                    route: OnboardingPage.name,
                   ),
-                  _ItemPage(
-                    name: 'CalcNutrientPage',
-                    route: CalcNutrientPage.name,
-                  ),
+                  // _ItemPage(
+                  //   name: 'CalcNutrientPage',
+                  //   route: CalcNutrientPage.name,
+                  // ),
                   // _ItemPage(
                   //   name: 'favorite',
                   //   route: FavoritePage.name,

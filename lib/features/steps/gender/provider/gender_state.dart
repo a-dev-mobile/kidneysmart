@@ -3,12 +3,12 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/steps/gender/gender.dart';
 
 @immutable
-class GenderModel {
+class GenderState {
   final int? selectedIndex;
   /* init: EnumGender.none */
   final EnumGender enumGender;
@@ -22,14 +22,14 @@ class GenderModel {
 /* init: [] */
   final List<bool> listSelected;
 
-// end
+  // end
 
 //          --TURN_GEN--
 //             (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const GenderModel({
+  const GenderState({
     this.enumGender = EnumGender.none,
     this.enumValid = EnumValid.init,
     this.error = '',
@@ -49,10 +49,10 @@ class GenderModel {
     };
   }
 
-  factory GenderModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const GenderModel();
+  factory GenderState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const GenderState();
 
-    return GenderModel(
+    return GenderState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumGender: map['enumGender'] != null
           ? EnumGender.values[map['enumGender'] as int]
@@ -75,7 +75,7 @@ class GenderModel {
     );
   }
 
-  GenderModel copyWith({
+  GenderState copyWith({
     int? selectedIndex,
     EnumGender? enumGender,
     EnumValid? enumValid,
@@ -83,7 +83,7 @@ class GenderModel {
     List<GenderItemModel>? listGender,
     List<bool>? listSelected,
   }) {
-    return GenderModel(
+    return GenderState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
       enumGender: enumGender ?? this.enumGender,
       enumValid: enumValid ?? this.enumValid,
@@ -94,7 +94,7 @@ class GenderModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory GenderModel.fromJson(String source) => GenderModel.fromMap(
+  factory GenderState.fromJson(String source) => GenderState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -102,7 +102,7 @@ class GenderModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GenderModel &&
+            other is GenderState &&
             (identical(
                   other.selectedIndex,
                   selectedIndex,
@@ -150,6 +150,6 @@ class GenderModel {
 
   @override
   String toString() {
-    return 'GenderModel(selectedIndex: $selectedIndex, enumGender: $enumGender, enumValid: $enumValid, error: $error, listGender: $listGender, listSelected: $listSelected, )';
+    return 'GenderState(selectedIndex: $selectedIndex, enumGender: $enumGender, enumValid: $enumValid, error: $error, listGender: $listGender, listSelected: $listSelected, )';
   }
 }

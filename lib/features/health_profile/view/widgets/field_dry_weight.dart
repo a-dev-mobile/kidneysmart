@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
@@ -79,3 +79,4 @@ class _FieldNameState extends ConsumerState<FieldWeightDry> {
         .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.dryWeight);
   }
 }
+ */

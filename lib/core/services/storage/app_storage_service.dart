@@ -10,8 +10,11 @@ import 'package:nutrition/core/services/navigation/models/app_state.dart';
 import 'package:nutrition/core/services/theme/theme_state.dart';
 import 'package:nutrition/core/valid/field_string_valid.dart';
 import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/features/registration/name/provider/registration_name_provider.dart';
+import 'package:nutrition/features/steps/birthday/birthday.dart';
+import 'package:nutrition/features/steps/gender/gender.dart';
+import 'package:nutrition/features/steps/height/height.dart';
+import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_io/io.dart';
 
@@ -65,65 +68,66 @@ class AppStorageService {
     return setJson(key: _appState, value: value.toMap());
   }
 
+  // ******************************
 // ******************************
-// ******************************
-  static const _genderState = 'genderState';
+  static const _genderState = '_genderState';
 
-  DialysisModel getGenderState() {
-    return DialysisModel.fromMap(getJson(key: _genderState));
+  GenderState getGenderState() {
+    return GenderState.fromMap(getJson(key: _genderState));
   }
 
-  Future<void> setGenderState(DialysisModel value) {
+  Future<void> setGenderState(GenderState value) {
     return setJson(key: _genderState, value: value.toMap());
   }
 
-// ******************************
-// ******************************
-  static const _heightState = '_heightState';
-
-  HeightModel getHeightState() {
-    return HeightModel.fromMap(getJson(key: _heightState));
-  }
-
-  Future<void> setHeightState(HeightModel value) {
-    return setJson(key: _heightState, value: value.toMap());
-  }
-
-// ******************************
-// ******************************
-  static const _activityState = '_activityState';
-
-  ActivityModel getActivityState() {
-    return ActivityModel.fromMap(getJson(key: _activityState));
-  }
-
-  Future<void> setActivityState(ActivityModel value) {
-    return setJson(key: _activityState, value: value.toMap());
-  }
-
-// ******************************
-// ******************************
-  static const _weightState = '_weightState';
-
-  WeightModel getWeightState() {
-    return WeightModel.fromMap(getJson(key: _weightState));
-  }
-
-  Future<void> setWeightState(WeightModel value) {
-    return setJson(key: _weightState, value: value.toMap());
-  }
-
-// ******************************
-// ******************************
   static const _dateBirthdayState = '_dateBirthdayState';
 
-  DateBirthdayModel getDateBirthdayState() {
-    return DateBirthdayModel.fromMap(getJson(key: _dateBirthdayState));
+  BirthdayState getBirthdayState() {
+    return BirthdayState.fromMap(getJson(key: _dateBirthdayState));
   }
 
-  Future<void> setDateBirthdayState(DateBirthdayModel value) {
+  Future<void> setBirthdayState(BirthdayState value) {
     return setJson(key: _dateBirthdayState, value: value.toMap());
   }
+
+// ******************************
+// ******************************
+  // static const _heightState = '_heightState';
+
+  // HeightModel getHeightState() {
+  //   return HeightModel.fromMap(getJson(key: _heightState));
+  // }
+
+  // Future<void> setHeightState(HeightModel value) {
+  //   return setJson(key: _heightState, value: value.toMap());
+  // }
+
+// ******************************
+// ******************************
+  // static const _activityState = '_activityState';
+
+  // ActivityModel getActivityState() {
+  //   return ActivityModel.fromMap(getJson(key: _activityState));
+  // }
+
+  // Future<void> setActivityState(ActivityModel value) {
+  //   return setJson(key: _activityState, value: value.toMap());
+  // }
+
+// ******************************
+// ******************************
+  // static const _weightState = '_weightState';
+
+  // WeightModel getWeightState() {
+  //   return WeightModel.fromMap(getJson(key: _weightState));
+  // }
+
+  // Future<void> setWeightState(WeightModel value) {
+  //   return setJson(key: _weightState, value: value.toMap());
+  // }
+
+// ******************************
+// ******************************
 
 // ******************************
 // ******************************
@@ -145,19 +149,34 @@ class AppStorageService {
 
 // ******************************
 // ******************************
-  static const _healthState = '_healthState';
+  static const _heightState = '_heightState';
 
-  HealthProfileState getHealthProfileState() {
-    return HealthProfileState.fromMap(getJson(key: _healthState));
+  HeightState getHeightState() {
+    return HeightState.fromMap(getJson(key: _heightState));
   }
 
-  Future<void> setHealthProfileState(HealthProfileState value) {
+  Future<void> setHeightState(HeightState value) {
     return setJson(
-      key: _healthState,
+      key: _heightState,
       value: value.toMap(),
     );
   }
 
+// ******************************
+  static const _weightState = '_weightState';
+
+  WeightState getWeightState() {
+    return WeightState.fromMap(getJson(key: _weightState));
+  }
+
+  Future<void> setWeightState(WeightState value) {
+    return setJson(
+      key: _weightState,
+      value: value.toMap(),
+    );
+  }
+
+// ******************************
 // ******************************
   static const _themeState = '_themeState';
 

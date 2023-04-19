@@ -81,7 +81,13 @@ abstract class UtilsRegex {
   }
 }
 
+/// AppUtilsNumber Singleton class
 class AppUtilsNumber {
+  factory AppUtilsNumber() => _internalSingleton;
+  AppUtilsNumber._internal();
+
+  static final AppUtilsNumber _internalSingleton = AppUtilsNumber._internal();
+
   static String getFormatNumber({
     required double num,
     int numberDigitsAfterPoint = 2,
@@ -120,5 +126,23 @@ class AppUtilsNumber {
     if (v % 1 == 0) return v.toStringAsFixed(0);
 
     return v.toString();
+  }
+}
+
+/// AppUtilsNumber Singleton class
+class AppUtilsArray {
+  factory AppUtilsArray() => _internalSingleton;
+  AppUtilsArray._internal();
+
+  static final AppUtilsArray _internalSingleton = AppUtilsArray._internal();
+
+  static List<bool> getListBool({
+    required int length,
+    int? selectedIndex = -1,
+  }) {
+    return List.generate(
+      length,
+      (i) => selectedIndex == i,
+    );
   }
 }

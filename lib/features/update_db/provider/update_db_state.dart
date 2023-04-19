@@ -7,7 +7,7 @@ import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
 class UpdateDbState {
-  /* init: EnumResult.init */
+  /* init: EnumResult.load */
   final EnumResult enumResult;
 
   // end
@@ -18,7 +18,7 @@ class UpdateDbState {
 //         GENERATED CODE
 //  *************************************
   const UpdateDbState({
-    this.enumResult = EnumResult.init,
+    this.enumResult = EnumResult.load,
   });
 
   Map<String, dynamic> toMap() {
@@ -33,7 +33,7 @@ class UpdateDbState {
     return UpdateDbState(
       enumResult: map['enumResult'] != null
           ? EnumResult.values[map['enumResult'] as int]
-          : EnumResult.init,
+          : EnumResult.load,
     );
   }
 

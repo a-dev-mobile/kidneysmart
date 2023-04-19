@@ -1,4 +1,5 @@
 export 'provider/onboarding_provider.dart';
+export 'provider/onboarding_state.dart';
 export 'vew/onboarding_page.dart';
 export 'vew/vew.dart';
 export 'vew/widget/onboarding_item_image.dart';

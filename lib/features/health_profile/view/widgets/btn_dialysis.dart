@@ -1,40 +1,40 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/services/navigation/navigation.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:nutrition/core/services/navigation/navigation.dart';
 
-import 'package:nutrition/core/widget/widget.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
-import 'package:nutrition/features/info_html/info_html.dart';
+// import 'package:nutrition/core/widget/widget.dart';
+// import 'package:nutrition/features/health_profile/health_profile.dart';
+// import 'package:nutrition/features/info_html/info_html.dart';
 
-class BtnDialysis extends ConsumerWidget {
-  const BtnDialysis({
-    super.key,
-  });
+// class BtnDialysis extends ConsumerWidget {
+//   const BtnDialysis({
+//     super.key,
+//   });
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(healthProfileProvider);
-    final notifier = ref.watch(healthProfileProvider.notifier);
-    final stateDialysis = state.dialysis;
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final state = ref.watch(healthProfileProvider);
+//     final notifier = ref.watch(healthProfileProvider.notifier);
+//     final stateDialysis = state.dialysis;
 
-    return Visibility(
-      visible: state.ckd.enumCkdSelected
-          .maybeMapValue(orElse: false, five: true, fiveDialysis: true),
-      child: AppInputCard(
-        child: BtnToggleText(
-          textStyle: const TextStyle(fontSize: 14),
-          textList: stateDialysis.listDialysis.map((e) => e.value).toList(),
-          isSelected: stateDialysis.listSelected,
-          onPressed: notifier.setDialysis,
-          onPressedInfo: () => ref
-              .read(appRouterServiceProvider)
-              .router
-              .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.dialysis),
-          errorText: stateDialysis.enumValid
-              .maybeMapOrNullValue(error: stateDialysis.error),
-          title: 'Укажите на диализе вы или нет',
-        ),
-      ),
-    );
-  }
-}
+//     return Visibility(
+//       visible: state.ckd.enumCkdSelected
+//           .maybeMapValue(orElse: false, five: true, fiveDialysis: true),
+//       child: AppInputCard(
+//         child: BtnToggleText(
+//           textStyle: const TextStyle(fontSize: 14),
+//           textList: stateDialysis.listDialysis.map((e) => e.value).toList(),
+//           isSelected: stateDialysis.listSelected,
+//           onPressed: notifier.setDialysis,
+//           onPressedInfo: () => ref
+//               .read(appRouterServiceProvider)
+//               .router
+//               .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.dialysis),
+//           errorText: stateDialysis.enumValid
+//               .maybeMapOrNullValue(error: stateDialysis.error),
+//           title: 'Укажите на диализе вы или нет',
+//         ),
+//       ),
+//     );
+//   }
+// }

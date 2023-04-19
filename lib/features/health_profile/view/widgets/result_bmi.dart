@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 
@@ -48,3 +48,4 @@ class ResultBmi extends ConsumerWidget {
         .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.bodyMassIndex);
   }
 }
+ */

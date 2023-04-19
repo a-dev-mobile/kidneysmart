@@ -3,37 +3,51 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
-import 'package:nutrition/core/widget/widget.dart';
+import 'package:introduction_screen/introduction_screen.dart';
+
 import 'package:nutrition/features/onboarding/onboarding.dart';
-import 'package:nutrition/features/splash/splash.dart';
 
-class OnBoardingPage extends ConsumerWidget {
-  const OnBoardingPage({super.key});
+class OnboardingPage extends ConsumerWidget {
+  /// {@macro onboarding_page}
+  const OnboardingPage({super.key});
 
-  static const path = '/onboarding';
-  static const name = 'onboarding';
-
-  Future<bool> _willPopScopeCall(BuildContext context) async {
-    GoRouter.of(context).goNamed(SplashPage.name);
-// code to show toast or modal
-
-    return false; // return true to exit app or return false to cancel exit
-  }
-
+  static const path = '/OnboardingPage';
+  static const name = 'OnboardingPage';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final state = ref.watch(onboardingProvider);
-    // final notifier = ref.watch(onboardingProvider.notifier);
-    final state = ref.watch(onboardingProvider);
+    // final l = context.l10n;
 
-    return WillPopScope(
-      onWillPop: () => _willPopScopeCall(context),
-      child: state.maybeMap(
-        success: (v) =>
-            AppMarkDownPage(text: v.textMarkdown, isYesCloseBtn: true),
-        orElse: () => const AppLoadPage(),
+    // ignore: unused_local_variable
+    final state = ref.watch(onboardingProvider);
+    final notifier = ref.watch(onboardingProvider.notifier);
+
+    return Scaffold(
+      body: SafeArea(
+        child: IntroductionScreen(
+          showSkipButton: true,
+          showNextButton: false,
+          skip: const Text('Пропустить'),
+          done: const Text('Далее'),
+          onDone: notifier.onDone,
+          onChange: print,
+          pages: [
+            PageViewModel(
+              title: 'Распределение воды',
+              body: 'Получение займа\nдо 7 минут на карту',
+              image: const OnboardingItemImage(
+                assetName: 'assets/image/onb_1.png',
+              ),
+            ),
+            PageViewModel(
+              body: 'Распределение еды',
+              title: '',
+              image: const OnboardingItemImage(
+                assetName: 'assets/image/onb_2.png',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

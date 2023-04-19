@@ -4,10 +4,10 @@ import 'dart:convert';
 
 import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/steps/weight/weight.dart';
 
 @immutable
-class WeightModel {
+class WeightState {
   /* init:'' */
   final String result;
 
@@ -26,7 +26,7 @@ class WeightModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const WeightModel({
+  const WeightState({
     this.result = '',
     this.error = '',
     this.enumValid = EnumValid.init,
@@ -44,10 +44,10 @@ class WeightModel {
     };
   }
 
-  factory WeightModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const WeightModel();
+  factory WeightState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const WeightState();
 
-    return WeightModel(
+    return WeightState(
       result: map['result'] as String? ?? '',
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
@@ -60,14 +60,14 @@ class WeightModel {
     );
   }
 
-  WeightModel copyWith({
+  WeightState copyWith({
     String? result,
     double? value,
     String? error,
     EnumValid? enumValid,
     EnumUnitWeight? enumUnitWeight,
   }) {
-    return WeightModel(
+    return WeightState(
       result: result ?? this.result,
       value: value ?? this.value,
       error: error ?? this.error,
@@ -77,7 +77,7 @@ class WeightModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory WeightModel.fromJson(String source) => WeightModel.fromMap(
+  factory WeightState.fromJson(String source) => WeightState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -85,7 +85,7 @@ class WeightModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is WeightModel &&
+            other is WeightState &&
             (identical(
                   other.result,
                   result,
@@ -125,6 +125,6 @@ class WeightModel {
 
   @override
   String toString() {
-    return 'WeightModel(result: $result, value: $value, error: $error, enumValid: $enumValid, enumUnitWeight: $enumUnitWeight, )';
+    return 'WeightState(result: $result, value: $value, error: $error, enumValid: $enumValid, enumUnitWeight: $enumUnitWeight, )';
   }
 }

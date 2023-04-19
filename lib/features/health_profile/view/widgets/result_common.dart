@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:nutrition/core/widget/widget.dart';
 
 class ResultCommon extends StatelessWidget {
@@ -23,3 +23,4 @@ class ResultCommon extends StatelessWidget {
     );
   }
 }
+ */

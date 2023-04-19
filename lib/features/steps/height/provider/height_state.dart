@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
-class HeightModel {
+class HeightState {
   /* init:'' */
   final String result;
 
@@ -25,7 +25,7 @@ class HeightModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const HeightModel({
+  const HeightState({
     this.result = '',
     this.error = '',
     this.enumValid = EnumValid.init,
@@ -43,10 +43,10 @@ class HeightModel {
     };
   }
 
-  factory HeightModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const HeightModel();
+  factory HeightState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const HeightState();
 
-    return HeightModel(
+    return HeightState(
       result: map['result'] as String? ?? '',
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
@@ -60,14 +60,14 @@ class HeightModel {
     );
   }
 
-  HeightModel copyWith({
+  HeightState copyWith({
     String? result,
     double? value,
     String? error,
     EnumValid? enumValid,
     List<String>? heightList,
   }) {
-    return HeightModel(
+    return HeightState(
       result: result ?? this.result,
       value: value ?? this.value,
       error: error ?? this.error,
@@ -77,7 +77,7 @@ class HeightModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory HeightModel.fromJson(String source) => HeightModel.fromMap(
+  factory HeightState.fromJson(String source) => HeightState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -85,7 +85,7 @@ class HeightModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is HeightModel &&
+            other is HeightState &&
             (identical(
                   other.result,
                   result,
@@ -126,6 +126,6 @@ class HeightModel {
 
   @override
   String toString() {
-    return 'HeightModel(result: $result, value: $value, error: $error, enumValid: $enumValid, heightList: $heightList, )';
+    return 'HeightState(result: $result, value: $value, error: $error, enumValid: $enumValid, heightList: $heightList, )';
   }
 }

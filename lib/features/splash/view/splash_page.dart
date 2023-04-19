@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/core/widget/page/app_load_page.dart';
 import 'package:nutrition/features/splash/splash.dart';
 
 class SplashPage extends ConsumerWidget {
@@ -13,19 +14,6 @@ class SplashPage extends ConsumerWidget {
     // ignore: unused_local_variable
     final provider = ref.watch(splashProvider);
 
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: const [
-          Align(
-            child: Text('load'),
-          ),
-          Positioned(
-            bottom: 30,
-            child: Text('AppPageLoad'),
-          ),
-        ],
-      ),
-    );
+    return const AppLoadPage();
   }
 }

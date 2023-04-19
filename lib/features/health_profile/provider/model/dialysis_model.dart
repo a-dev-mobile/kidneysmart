@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+/* // ignore_for_file: avoid_bool_literals_in_conditional_expressions
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
@@ -153,3 +153,4 @@ class DialysisModel {
     return 'DialysisModel(selectedIndex: $selectedIndex, enumDialysis: $enumDialysis, enumValid: $enumValid, error: $error, listDialysis: $listDialysis, listSelected: $listSelected, )';
   }
 }
+ */

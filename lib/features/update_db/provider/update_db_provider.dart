@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/core/log/log.dart';
@@ -9,7 +10,6 @@ import 'package:nutrition/core/services/db/firebase/firebase.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/network/network_client_service.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/features/update_db/update_db.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:path/path.dart';
@@ -66,10 +66,11 @@ class UpdateDbNotifier extends StateNotifier<UpdateDbState> {
     var appState = _storage.getAppState();
 
     appState = appState.copyWith(dbUrl: urlDb, dbPathUpdate: path);
-// сохраняем тольков релизе
-    // if (kReleaseMode) {
-    appState = appState.copyWith(dbVersion: versionDb);
-    // }
+
+// сохраняем только в релизе
+    if (kReleaseMode) {
+      appState = appState.copyWith(dbVersion: versionDb);
+    }
 
     await _storage.setAppState(appState);
     try {
@@ -86,8 +87,11 @@ class UpdateDbNotifier extends StateNotifier<UpdateDbState> {
             break;
           case TaskState.success:
             log.i('success');
-            _storage.setAppState(appState.copyWith(isUseUpdateDB: true));
-            _go.router.goNamed(HealthProfilePage.name);
+            appState = appState.copyWith(isUseUpdateDB: false);
+
+            _storage.setAppState(appState);
+
+            _go.nextPage(appState);
             break;
           case TaskState.canceled:
             log.i('canceled');

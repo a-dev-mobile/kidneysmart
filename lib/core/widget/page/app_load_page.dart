@@ -15,7 +15,10 @@ class AppLoadPage extends StatelessWidget {
     final lottie = Lottie.asset(width: size ?? 100, AssetPaths.loadPageLottie);
 
     final result = title != null
-        ? Row(children: [lottie, const SizedBox(width: 5), Text(title!)])
+        ? Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [lottie, const SizedBox(width: 5), Text(title!)],
+          )
         : lottie;
 
     return Material(
