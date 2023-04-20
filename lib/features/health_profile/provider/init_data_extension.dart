@@ -81,16 +81,4 @@
 //     ];
 //   }
 
-//   List<HypertensionItemModel> get _initHypertension {
-//     return <HypertensionItemModel>[
-//       HypertensionItemModel(
-//         enumHypertension: EnumHypertension.yes,
-//         value: _l.yes_caps,
-//       ),
-//       HypertensionItemModel(
-//         enumHypertension: EnumHypertension.no,
-//         value: _l.no_caps,
-//       ),
-//     ];
-//   }
 // }

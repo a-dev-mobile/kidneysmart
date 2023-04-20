@@ -1,8 +1,8 @@
-/* // ignore_for_file: sort_constructors_first, avoid_bool_literals_in_conditional_expressions
+// ignore_for_file: sort_constructors_first, avoid_bool_literals_in_conditional_expressions
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 
 @immutable
 class DiabetesItemModel {
@@ -86,4 +86,3 @@ class DiabetesItemModel {
     return 'DiabetesItemModel(enumDiabetes: $enumDiabetes, value: $value, )';
   }
 }
- */

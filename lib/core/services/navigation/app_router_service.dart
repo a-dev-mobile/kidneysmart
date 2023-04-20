@@ -15,9 +15,13 @@ import 'package:nutrition/features/onboarding/vew/onboarding_page.dart';
 import 'package:nutrition/features/overlay_widget/view/view.dart';
 import 'package:nutrition/features/registration/name/name.dart';
 import 'package:nutrition/features/splash/splash.dart';
+import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
+import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
+import 'package:nutrition/features/steps/hypertension/hypertension.dart';
+import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/features/update_db/update_db.dart';
 import 'package:nutrition/global.dart';
@@ -151,6 +155,38 @@ class AppRouterService {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const WeightPage(),
+            ),
+          ),
+          GoRoute(
+            path: ActivityPage.path,
+            name: ActivityPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const ActivityPage(),
+            ),
+          ),
+          GoRoute(
+            path: HypertensionPage.path,
+            name: HypertensionPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const HypertensionPage(),
+            ),
+          ),
+          GoRoute(
+            path: DiabetesPage.path,
+            name: DiabetesPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const DiabetesPage(),
+            ),
+          ),
+          GoRoute(
+            path: UrinePage.path,
+            name: UrinePage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const UrinePage(),
             ),
           ),
         ],

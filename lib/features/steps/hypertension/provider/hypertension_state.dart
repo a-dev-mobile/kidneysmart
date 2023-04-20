@@ -1,25 +1,28 @@
-/* // ignore_for_file: avoid_bool_literals_in_conditional_expressions
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+
+import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 
 @immutable
-class DailyDiuresisModel {
-  /* init:const [] */
-  final List<DailyDiuresisItemModel> listDailyDiuresis;
-  /* init: false */
-  final bool isShowInput;
+class HypertensionState {
   final int? selectedIndex;
+  /* init: EnumHypertension.none */
+  final EnumHypertension enumHypertension;
   /* init: EnumValid.init */
   final EnumValid enumValid;
   /* init: '' */
   final String error;
+  /* init:const [] */
+  final List<HypertensionItemModel> listHypertension;
+
 /* init: [] */
   final List<bool> listSelected;
+
   // end
 
 //          --TURN_GEN--
@@ -27,44 +30,46 @@ class DailyDiuresisModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const DailyDiuresisModel({
-    this.listDailyDiuresis = const [],
-    this.isShowInput = false,
+  const HypertensionState({
+    this.enumHypertension = EnumHypertension.none,
     this.enumValid = EnumValid.init,
     this.error = '',
+    this.listHypertension = const [],
     this.listSelected = const [],
     this.selectedIndex,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'listDailyDiuresis': listDailyDiuresis.map((e) => e.toMap()).toList(),
-      'isShowInput': isShowInput,
       'selectedIndex': selectedIndex,
+      'enumHypertension': enumHypertension.index,
       'enumValid': enumValid.index,
       'error': error,
+      'listHypertension': listHypertension.map((e) => e.toMap()).toList(),
       'listSelected': listSelected,
     };
   }
 
-  factory DailyDiuresisModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const DailyDiuresisModel();
+  factory HypertensionState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const HypertensionState();
 
-    return DailyDiuresisModel(
-      listDailyDiuresis: map['listDailyDiuresis'] != null
-          ? (map['listDailyDiuresis'] as List<dynamic>)
-              .map(
-                (e) =>
-                    DailyDiuresisItemModel.fromMap(e as Map<dynamic, dynamic>),
-              )
-              .toList()
-          : const [],
-      isShowInput: map['isShowInput'] as bool? ?? false,
+    return HypertensionState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
+      enumHypertension: map['enumHypertension'] != null
+          ? EnumHypertension.values[map['enumHypertension'] as int]
+          : EnumHypertension.none,
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
           : EnumValid.init,
       error: map['error'] as String? ?? '',
+      listHypertension: map['listHypertension'] != null
+          ? (map['listHypertension'] as List<dynamic>)
+              .map(
+                (e) =>
+                    HypertensionItemModel.fromMap(e as Map<dynamic, dynamic>),
+              )
+              .toList()
+          : const [],
       listSelected: (map['listSelected'] as List<dynamic>?)
               ?.map((e) => e as bool)
               .toList() ??
@@ -72,27 +77,27 @@ class DailyDiuresisModel {
     );
   }
 
-  DailyDiuresisModel copyWith({
-    List<DailyDiuresisItemModel>? listDailyDiuresis,
-    bool? isShowInput,
+  HypertensionState copyWith({
     int? selectedIndex,
+    EnumHypertension? enumHypertension,
     EnumValid? enumValid,
     String? error,
+    List<HypertensionItemModel>? listHypertension,
     List<bool>? listSelected,
   }) {
-    return DailyDiuresisModel(
-      listDailyDiuresis: listDailyDiuresis ?? this.listDailyDiuresis,
-      isShowInput: isShowInput ?? this.isShowInput,
+    return HypertensionState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
+      enumHypertension: enumHypertension ?? this.enumHypertension,
       enumValid: enumValid ?? this.enumValid,
       error: error ?? this.error,
+      listHypertension: listHypertension ?? this.listHypertension,
       listSelected: listSelected ?? this.listSelected,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory DailyDiuresisModel.fromJson(String source) =>
-      DailyDiuresisModel.fromMap(
+  factory HypertensionState.fromJson(String source) =>
+      HypertensionState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -100,21 +105,17 @@ class DailyDiuresisModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DailyDiuresisModel &&
-            const DeepCollectionEquality().equals(
-              other.listDailyDiuresis,
-              listDailyDiuresis,
-            ) &&
-            (identical(
-                  other.isShowInput,
-                  isShowInput,
-                ) ||
-                other.isShowInput == isShowInput) &&
+            other is HypertensionState &&
             (identical(
                   other.selectedIndex,
                   selectedIndex,
                 ) ||
                 other.selectedIndex == selectedIndex) &&
+            (identical(
+                  other.enumHypertension,
+                  enumHypertension,
+                ) ||
+                other.enumHypertension == enumHypertension) &&
             (identical(
                   other.enumValid,
                   enumValid,
@@ -126,6 +127,10 @@ class DailyDiuresisModel {
                 ) ||
                 other.error == error) &&
             const DeepCollectionEquality().equals(
+              other.listHypertension,
+              listHypertension,
+            ) &&
+            const DeepCollectionEquality().equals(
               other.listSelected,
               listSelected,
             ));
@@ -134,13 +139,13 @@ class DailyDiuresisModel {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(
-          listDailyDiuresis,
-        ),
-        isShowInput,
         selectedIndex,
+        enumHypertension,
         enumValid,
         error,
+        const DeepCollectionEquality().hash(
+          listHypertension,
+        ),
         const DeepCollectionEquality().hash(
           listSelected,
         ),
@@ -148,7 +153,6 @@ class DailyDiuresisModel {
 
   @override
   String toString() {
-    return 'DailyDiuresisModel(listDailyDiuresis: $listDailyDiuresis, isShowInput: $isShowInput, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
+    return 'HypertensionState(selectedIndex: $selectedIndex, enumHypertension: $enumHypertension, enumValid: $enumValid, error: $error, listHypertension: $listHypertension, listSelected: $listSelected, )';
   }
 }
- */

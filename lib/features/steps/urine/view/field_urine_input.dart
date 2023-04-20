@@ -1,10 +1,11 @@
-/* // ignore_for_file:  avoid-nested-conditional-expressions, lines_longer_than_80_chars
+// ignore_for_file:  avoid-nested-conditional-expressions, lines_longer_than_80_chars
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/widget/widget.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/steps/gender/gender.dart';
+import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/localization/localization.dart';
 
 class FieldUrineOutput extends ConsumerStatefulWidget {
@@ -19,7 +20,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
 
   @override
   void initState() {
-    final initValue = ref.read(healthProfileProvider).urine.result;
+    final initValue = ref.read(urineProvider).input.result;
 
     controller = TextEditingController(text: initValue);
 
@@ -36,12 +37,11 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
   Widget build(BuildContext context) {
     final l = context.l10n;
     // final provider = ref.watch(registrationNameProvider);
-    final state = ref.watch(healthProfileProvider);
-    final notifier = ref.watch(healthProfileProvider.notifier);
-    final stateDailyDiuresis = state.dailyDiuresis;
-    final stateUrinine = state.urine;
+    final state = ref.watch(urineProvider);
+    final stateGender = ref.watch(genderProvider);
+    final notifier = ref.watch(urineProvider.notifier);
 
-    final isEnabled = stateDailyDiuresis.isShowInput;
+    final isEnabled = state.select.isShowInput;
 
     return Visibility(
       visible: isEnabled,
@@ -56,40 +56,26 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
             //     .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.urine),
           ),
           const SizedBox(height: 10),
-          GestureDetector(
-            onTap: () => _showSnack(context),
-            child: TextField(
+          TextField(
               controller: controller,
               enabled: isEnabled,
               decoration: InputDecoration(
-                labelText: _getNorma(type: state.gender.enumGender, l: l),
+                labelText: _getNorma(type: stateGender.enumGender, l: l),
                 errorText: isEnabled
-                    ? stateUrinine.enumValid
-                        .maybeMapOrNullValue(error: stateUrinine.error)
+                    ? state.input.enumValid
+                        .maybeMapOrNullValue(error: state.input.error)
                     : null,
                 errorMaxLines: 2,
                 suffixText: 'мл',
               ),
               keyboardType: TextInputType.number,
-              onChanged: notifier.setUrineOutput,
+              onChanged: notifier.setUrineInput,
               inputFormatters: [
                 LengthLimitingTextInputFormatter(6),
                 FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
               ],
             ),
-          ),
         ],
-      ),
-    );
-  }
-
-  void _showSnack(BuildContext context) {
-    ScaffoldMessenger.of(context).removeCurrentSnackBar();
-    final _ = ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          'Выберите "Ввести значение" чтобы использовать',
-        ),
       ),
     );
   }
@@ -105,4 +91,3 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
     );
   }
 }
- */

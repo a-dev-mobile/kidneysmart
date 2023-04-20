@@ -23,26 +23,6 @@
 //     return '';
 //   }
 
-//   String _validUrineOutput(String? v, HealthProfileState state) {
-//     if (v?.isEmpty ?? true && state.urine.result.isEmpty) {
-//       return 'Не указано количестов выделяемой мочи';
-//     }
-//     final updateV = v ?? state.urine.result;
-
-//     final doubleValue = double.tryParse(updateV) ?? -1;
-
-//     if (doubleValue.isNegative) return 'Неправильное значение';
-
-//     if (doubleValue.isMinValue(0)) {
-//       return 'Указанное значение мочи не поддерживается приложением';
-//     }
-//     if (doubleValue.isMaxValue(3000)) {
-//       return 'Указанное значение мочи не поддерживается приложением';
-//     }
-
-//     return '';
-//   }
-
 //   String _validCreatinine(String? v, HealthProfileState state) {
 //     if (v?.isEmpty ?? true && state.creatinine.result.isEmpty) {
 //       return 'Креатинин не указан';

@@ -11,9 +11,13 @@ import 'package:nutrition/core/services/theme/theme_state.dart';
 import 'package:nutrition/core/valid/field_string_valid.dart';
 import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
 import 'package:nutrition/features/registration/name/provider/registration_name_provider.dart';
+import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
+import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
+import 'package:nutrition/features/steps/hypertension/hypertension.dart';
+import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_io/io.dart';
@@ -80,6 +84,29 @@ class AppStorageService {
     return setJson(key: _genderState, value: value.toMap());
   }
 
+// ******************************
+  static const _activityState = '_activityState';
+
+  ActivityState getActivityState() {
+    return ActivityState.fromMap(getJson(key: _activityState));
+  }
+
+  Future<void> setActivityState(ActivityState value) {
+    return setJson(key: _activityState, value: value.toMap());
+  }
+
+// ******************************
+  static const _hypertensionState = '_hypertensionState';
+
+  HypertensionState getHypertensionState() {
+    return HypertensionState.fromMap(getJson(key: _hypertensionState));
+  }
+
+  Future<void> setHypertensionState(HypertensionState value) {
+    return setJson(key: _hypertensionState, value: value.toMap());
+  }
+
+// ******************************
   static const _dateBirthdayState = '_dateBirthdayState';
 
   BirthdayState getBirthdayState() {
@@ -90,6 +117,28 @@ class AppStorageService {
     return setJson(key: _dateBirthdayState, value: value.toMap());
   }
 
+// ******************************
+  static const _diabetesState = '_diabetesState';
+
+  DiabetesState getDiabetesState() {
+    return DiabetesState.fromMap(getJson(key: _diabetesState));
+  }
+
+  Future<void> setDiabetesState(DiabetesState value) {
+    return setJson(key: _diabetesState, value: value.toMap());
+  }
+
+// ******************************
+// ******************************
+  static const _urineState = '_urineState';
+
+  UrineState getUrineState() {
+    return UrineState.fromMap(getJson(key: _urineState));
+  }
+
+  Future<void> setUrineState(UrineState value) {
+    return setJson(key: _urineState, value: value.toMap());
+  }
 // ******************************
 // ******************************
   // static const _heightState = '_heightState';

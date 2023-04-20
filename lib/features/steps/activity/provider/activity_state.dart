@@ -1,23 +1,27 @@
-/* // ignore_for_file: avoid_bool_literals_in_conditional_expressions
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/steps/activity/activity.dart';
 
 @immutable
-class DiabetesModel {
-  /* init:const [] */
-  final List<DiabetesItemModel> listDiabet;
+class ActivityState {
   final int? selectedIndex;
+  /* init: EnumActivity.none */
+  final EnumActivity enumActivity;
   /* init: EnumValid.init */
   final EnumValid enumValid;
   /* init: '' */
   final String error;
-  /* init: [] */
+  /* init:const [] */
+  final List<ActivityItemModel> listActivity;
+
+/* init: [] */
   final List<bool> listSelected;
+
   // end
 
 //          --TURN_GEN--
@@ -25,40 +29,45 @@ class DiabetesModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const DiabetesModel({
-    this.listDiabet = const [],
+  const ActivityState({
+    this.enumActivity = EnumActivity.none,
     this.enumValid = EnumValid.init,
     this.error = '',
+    this.listActivity = const [],
     this.listSelected = const [],
     this.selectedIndex,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'listDiabet': listDiabet.map((e) => e.toMap()).toList(),
       'selectedIndex': selectedIndex,
+      'enumActivity': enumActivity.index,
       'enumValid': enumValid.index,
       'error': error,
+      'listActivity': listActivity.map((e) => e.toMap()).toList(),
       'listSelected': listSelected,
     };
   }
 
-  factory DiabetesModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const DiabetesModel();
+  factory ActivityState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const ActivityState();
 
-    return DiabetesModel(
-      listDiabet: map['listDiabet'] != null
-          ? (map['listDiabet'] as List<dynamic>)
-              .map(
-                (e) => DiabetesItemModel.fromMap(e as Map<dynamic, dynamic>),
-              )
-              .toList()
-          : const [],
+    return ActivityState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
+      enumActivity: map['enumActivity'] != null
+          ? EnumActivity.values[map['enumActivity'] as int]
+          : EnumActivity.none,
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
           : EnumValid.init,
       error: map['error'] as String? ?? '',
+      listActivity: map['listActivity'] != null
+          ? (map['listActivity'] as List<dynamic>)
+              .map(
+                (e) => ActivityItemModel.fromMap(e as Map<dynamic, dynamic>),
+              )
+              .toList()
+          : const [],
       listSelected: (map['listSelected'] as List<dynamic>?)
               ?.map((e) => e as bool)
               .toList() ??
@@ -66,24 +75,26 @@ class DiabetesModel {
     );
   }
 
-  DiabetesModel copyWith({
-    List<DiabetesItemModel>? listDiabet,
+  ActivityState copyWith({
     int? selectedIndex,
+    EnumActivity? enumActivity,
     EnumValid? enumValid,
     String? error,
+    List<ActivityItemModel>? listActivity,
     List<bool>? listSelected,
   }) {
-    return DiabetesModel(
-      listDiabet: listDiabet ?? this.listDiabet,
+    return ActivityState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
+      enumActivity: enumActivity ?? this.enumActivity,
       enumValid: enumValid ?? this.enumValid,
       error: error ?? this.error,
+      listActivity: listActivity ?? this.listActivity,
       listSelected: listSelected ?? this.listSelected,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory DiabetesModel.fromJson(String source) => DiabetesModel.fromMap(
+  factory ActivityState.fromJson(String source) => ActivityState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -91,16 +102,17 @@ class DiabetesModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DiabetesModel &&
-            const DeepCollectionEquality().equals(
-              other.listDiabet,
-              listDiabet,
-            ) &&
+            other is ActivityState &&
             (identical(
                   other.selectedIndex,
                   selectedIndex,
                 ) ||
                 other.selectedIndex == selectedIndex) &&
+            (identical(
+                  other.enumActivity,
+                  enumActivity,
+                ) ||
+                other.enumActivity == enumActivity) &&
             (identical(
                   other.enumValid,
                   enumValid,
@@ -112,6 +124,10 @@ class DiabetesModel {
                 ) ||
                 other.error == error) &&
             const DeepCollectionEquality().equals(
+              other.listActivity,
+              listActivity,
+            ) &&
+            const DeepCollectionEquality().equals(
               other.listSelected,
               listSelected,
             ));
@@ -120,12 +136,13 @@ class DiabetesModel {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(
-          listDiabet,
-        ),
         selectedIndex,
+        enumActivity,
         enumValid,
         error,
+        const DeepCollectionEquality().hash(
+          listActivity,
+        ),
         const DeepCollectionEquality().hash(
           listSelected,
         ),
@@ -133,7 +150,6 @@ class DiabetesModel {
 
   @override
   String toString() {
-    return 'DiabetesModel(listDiabet: $listDiabet, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
+    return 'ActivityState(selectedIndex: $selectedIndex, enumActivity: $enumActivity, enumValid: $enumValid, error: $error, listActivity: $listActivity, listSelected: $listSelected, )';
   }
 }
- */

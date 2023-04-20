@@ -76,7 +76,7 @@ class _WeightPageState extends ConsumerState<WeightPage> {
 
               const Spacer(),
               BasicButton(
-                onPressed: () {},
+                onPressed: notifier.nextPage,
                 disabled: !notifier.isValid,
                 text: 'Продолжить',
               ),

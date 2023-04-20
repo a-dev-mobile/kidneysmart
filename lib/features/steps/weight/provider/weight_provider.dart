@@ -6,6 +6,7 @@ import 'package:nutrition/core/enum/enum.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/core/valid/valid.dart';
+import 'package:nutrition/features/steps/activity/activity.dart';
 
 import 'package:nutrition/features/steps/weight/weight.dart';
 
@@ -90,5 +91,9 @@ class WeightNotifier extends StateNotifier<WeightState> {
     String? v,
   ) {
     return double.tryParse(v ?? state.result) ?? -1;
+  }
+
+  void nextPage() {
+    _go.router.pushNamed<void>(ActivityPage.name);
   }
 }

@@ -68,10 +68,6 @@
 //     // init Hypertension
 //     final listHypertension = _initHypertension;
 //     // Activity
-//     final listActivity = <ActivityItemModel>[
-//       ActivityItemModel(enumActivity: EnumActivity.light, value: _l.light),
-//       ActivityItemModel(enumActivity: EnumActivity.normal, value: _l.normal),
-//     ];
 
 //     // init ckd
 //     final listCkd = _initCkdStage;
@@ -290,37 +286,6 @@
 //     _saveState(isSaveState);
 //   }
 
-//   void setDailyDiuresis(int? v, {bool isSaveState = true}) {
-//     var error = '';
-//     if (v == null && state.dailyDiuresis.selectedIndex == null) {
-//       error = 'Не указан уровень суточного диуреза';
-//     }
-
-//     final selectedIndex = v ?? state.dailyDiuresis.selectedIndex;
-//     final listDailyDiuresis = state.dailyDiuresis.listDailyDiuresis;
-
-//     final activeItem =
-//         selectedIndex != null ? listDailyDiuresis[selectedIndex] : null;
-
-//     final listBool = _getListBool(
-//       length: listDailyDiuresis.length,
-//       selectedIndex: selectedIndex,
-//     );
-//     state = state.copyWith(
-//       dailyDiuresis: state.dailyDiuresis.copyWith(
-//         listDailyDiuresis: listDailyDiuresis,
-//         selectedIndex: v,
-//         listSelected: listBool,
-//         error: error,
-//         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-//         isShowInput:
-//             activeItem?.enumDailyDiuresis == EnumDailyDiuresis.enterValue,
-//       ),
-//     );
-
-//     _saveState(isSaveState);
-//   }
-
 //   void setHypertension(int? v, {bool isSaveState = true}) {
 //     var error = '';
 //     if (v == null && state.hypertension.selectedIndex == null) {
@@ -341,23 +306,6 @@
 //         selectedIndex: v,
 //         error: error,
 //         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-//       ),
-//     );
-
-//     _saveState(isSaveState);
-//   }
-
-//   void setUrineOutput(String? v, {bool isSaveState = true}) {
-//     var error = '';
-
-//     error = _validUrineOutput(v, state);
-
-//     state = state.copyWith(
-//       urine: state.urine.copyWith(
-//         result: v,
-//         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-//         error: error,
-//         value: error.isEmpty ? double.tryParse(v!) : null,
 //       ),
 //     );
 
@@ -393,30 +341,6 @@
 //   // void _upgradeCreatinine(String error) {
 //   //   if (error.isEmpty) setCreatinine(state.value);
 //   // }
-
-//   void setActivity(int? v, {bool isSaveState = true}) {
-//     var error = '';
-//     if (v == null && state.activity.selectedIndex == null) {
-//       error = _l.activity_not_selected;
-//     }
-
-//     final selectedIndex = v ?? state.activity.selectedIndex;
-//     final listActivity = state.activity.listActivity;
-//     final listBool =
-//         _getListBool(length: listActivity.length, selectedIndex: selectedIndex);
-
-//     state = state.copyWith(
-//       activity: state.activity.copyWith(
-//         listActivity: listActivity,
-//         selectedIndex: v,
-//         error: error,
-//         listSelected: listBool,
-//         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-//       ),
-//     );
-
-//     _saveState(isSaveState);
-//   }
 
 //   void setCkd(int? v, {bool isSaveState = true}) {
 //     var error = '';

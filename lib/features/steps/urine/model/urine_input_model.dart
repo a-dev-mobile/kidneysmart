@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
-class UrineModel {
+class UrineInputModel {
   /* init:'' */
   final String result;
 
@@ -23,7 +23,7 @@ class UrineModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const UrineModel({
+  const UrineInputModel({
     this.result = '',
     this.error = '',
     this.enumValid = EnumValid.init,
@@ -39,10 +39,10 @@ class UrineModel {
     };
   }
 
-  factory UrineModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const UrineModel();
+  factory UrineInputModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const UrineInputModel();
 
-    return UrineModel(
+    return UrineInputModel(
       result: map['result'] as String? ?? '',
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
@@ -52,13 +52,13 @@ class UrineModel {
     );
   }
 
-  UrineModel copyWith({
+  UrineInputModel copyWith({
     String? result,
     double? value,
     String? error,
     EnumValid? enumValid,
   }) {
-    return UrineModel(
+    return UrineInputModel(
       result: result ?? this.result,
       value: value ?? this.value,
       error: error ?? this.error,
@@ -67,7 +67,7 @@ class UrineModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory UrineModel.fromJson(String source) => UrineModel.fromMap(
+  factory UrineInputModel.fromJson(String source) => UrineInputModel.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -75,7 +75,7 @@ class UrineModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UrineModel &&
+            other is UrineInputModel &&
             (identical(
                   other.result,
                   result,
@@ -109,6 +109,6 @@ class UrineModel {
 
   @override
   String toString() {
-    return 'UrineModel(result: $result, value: $value, error: $error, enumValid: $enumValid, )';
+    return 'UrineInputModel(result: $result, value: $value, error: $error, enumValid: $enumValid, )';
   }
 }

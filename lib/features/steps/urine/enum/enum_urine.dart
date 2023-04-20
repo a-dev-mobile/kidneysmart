@@ -1,10 +1,10 @@
-enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
+enum EnumUrine with Comparable<EnumUrine> {
   normal('normal'),
   no('no'),
   enterValue('enterValue'),
   none('none');
 
-  const EnumDailyDiuresis(this.value);
+  const EnumUrine(this.value);
   final String value;
 
 // end
@@ -15,9 +15,9 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumDailyDiuresis fromValue(
+  static EnumUrine fromValue(
     String? value, {
-    EnumDailyDiuresis? fallback,
+    EnumUrine? fallback,
   }) {
     switch (value) {
       case 'normal':
@@ -33,7 +33,7 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
             (throw ArgumentError.value(
               value,
               '',
-              'Value not found in EnumDailyDiuresis',
+              'Value not found in EnumUrine',
             ));
     }
   }
@@ -45,13 +45,13 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
     required T Function() none,
   }) {
     switch (this) {
-      case EnumDailyDiuresis.normal:
+      case EnumUrine.normal:
         return normal();
-      case EnumDailyDiuresis.no:
+      case EnumUrine.no:
         return no();
-      case EnumDailyDiuresis.enterValue:
+      case EnumUrine.enterValue:
         return enterValue();
-      case EnumDailyDiuresis.none:
+      case EnumUrine.none:
         return none();
     }
   }
@@ -63,13 +63,13 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
     required T none,
   }) {
     switch (this) {
-      case EnumDailyDiuresis.normal:
+      case EnumUrine.normal:
         return normal;
-      case EnumDailyDiuresis.no:
+      case EnumUrine.no:
         return no;
-      case EnumDailyDiuresis.enterValue:
+      case EnumUrine.enterValue:
         return enterValue;
-      case EnumDailyDiuresis.none:
+      case EnumUrine.none:
         return none;
     }
   }
@@ -131,11 +131,11 @@ enum EnumDailyDiuresis with Comparable<EnumDailyDiuresis> {
       );
 
   static List<String> getValues() =>
-      EnumDailyDiuresis.values.map((e) => e.value).toList();
+      EnumUrine.values.map((e) => e.value).toList();
 
   @override
-  int compareTo(EnumDailyDiuresis other) => index.compareTo(other.index);
+  int compareTo(EnumUrine other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumDailyDiuresis.$name($value)';
+  String toString() => 'EnumUrine.$name($value)';
 }
