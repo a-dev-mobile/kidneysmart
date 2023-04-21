@@ -15,7 +15,6 @@ class UrinePage extends ConsumerWidget {
     final notifier = ref.watch(urineProvider.notifier);
 
     final stateSelected = state.select;
-    
 
     final listBoolAll = stateSelected.listSelected;
     final listBoolWithoutLast = [...listBoolAll];
@@ -31,14 +30,14 @@ class UrinePage extends ConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Spacer(),
               BtnToggleText(
-                textList: listTextWithoutLast.toList(),
-                isSelected: listBoolWithoutLast.toList(),
+                textList: listTextWithoutLast,
+                isSelected: listBoolWithoutLast,
                 onPressed: notifier.setUrineSelect,
                 title:
-                    'Укажите уровень суточного диуреза\n(обьем выделяемой мочи)',
+                    'Для правильного расчета количества потребляемой жидкости приложению нужно знать, уровень суточного диуреза\n(обьем выделяемой мочи)',
               ),
 
               //  all last values
@@ -50,6 +49,12 @@ class UrinePage extends ConsumerWidget {
                 errorText: stateSelected.error,
               ),
               const FieldUrineOutput(),
+              const Spacer(),
+              BasicButton(
+                onPressed: notifier.nextPage,
+                disabled: !notifier.isValidAll,
+                text: 'Продолжить',
+              ),
             ],
           ),
         ),

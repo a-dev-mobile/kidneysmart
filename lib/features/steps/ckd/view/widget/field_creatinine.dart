@@ -1,12 +1,12 @@
-/* // ignore_for_file:  avoid-nested-conditional-expressions, lines_longer_than_80_chars
+// ignore_for_file:  avoid-nested-conditional-expressions, lines_longer_than_80_chars
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/widget/widget.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
 import 'package:nutrition/features/info_html/info_html.dart';
+import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/localization/localization.dart';
 
 class FieldCreatinine extends ConsumerStatefulWidget {
@@ -21,7 +21,7 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
 
   @override
   void initState() {
-    final initValue = ref.read(healthProfileProvider).creatinine.result;
+    final initValue = ref.read(ckdProvider).input.result;
 
     controller = TextEditingController(text: initValue);
 
@@ -38,14 +38,14 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
   Widget build(BuildContext context) {
     final l = context.l10n;
 
-    final state = ref.watch(healthProfileProvider);
-    final notifier = ref.watch(healthProfileProvider.notifier);
-    final stateCreatinine = state.creatinine;
+    final state = ref.watch(ckdProvider);
+    final notifier = ref.watch(ckdProvider.notifier);
+    final stateInput = state.input;
 
-    final isEnabled = state.ckd.isShowCalcCreatinine;
-    final inputTypeCreatinine = stateCreatinine.inputTypeCreatinine;
+    final isEnabled = notifier.isShowInput;
+    final inputTypeCreatinine = state.input.inputTypeCreatinine;
 
-    final errorMsg = stateCreatinine.error;
+    final errorMsg = stateInput.error;
 
     return Visibility(
       visible: isEnabled,
@@ -72,15 +72,15 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
                     errorText: errorMsg.isEmpty
                         ? null
                         : isEnabled
-                            ? stateCreatinine.enumValid.maybeMapOrNullValue(
-                                error: stateCreatinine.error,
+                            ? stateInput.enumValid.maybeMapOrNullValue(
+                                error: stateInput.error,
                               )
                             : null,
                     errorMaxLines: 2,
                     suffixText: _getSuffix(type: inputTypeCreatinine, l: l),
                   ),
                   keyboardType: TextInputType.number,
-                  onChanged: notifier.setCreatinine,
+                  onChanged: notifier.setCkdInput,
                   inputFormatters: [
                     LengthLimitingTextInputFormatter(6),
                     FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
@@ -127,4 +127,3 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
     );
   }
 }
- */

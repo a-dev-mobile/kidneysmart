@@ -41,7 +41,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
     final stateGender = ref.watch(genderProvider);
     final notifier = ref.watch(urineProvider.notifier);
 
-    final isEnabled = state.select.isShowInput;
+    final isEnabled = notifier.isShowInput;
 
     return Visibility(
       visible: isEnabled,
@@ -57,24 +57,25 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
           ),
           const SizedBox(height: 10),
           TextField(
-              controller: controller,
-              enabled: isEnabled,
-              decoration: InputDecoration(
-                labelText: _getNorma(type: stateGender.enumGender, l: l),
-                errorText: isEnabled
-                    ? state.input.enumValid
-                        .maybeMapOrNullValue(error: state.input.error)
-                    : null,
-                errorMaxLines: 2,
-                suffixText: 'мл',
-              ),
-              keyboardType: TextInputType.number,
-              onChanged: notifier.setUrineInput,
-              inputFormatters: [
-                LengthLimitingTextInputFormatter(6),
-                FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
-              ],
+            autofocus: true,
+            controller: controller,
+            enabled: isEnabled,
+            decoration: InputDecoration(
+              labelText: _getNorma(type: stateGender.enumGender, l: l),
+              errorText: isEnabled
+                  ? state.input.enumValid
+                      .maybeMapOrNullValue(error: state.input.error)
+                  : null,
+              errorMaxLines: 2,
+              suffixText: 'мл',
             ),
+            keyboardType: TextInputType.number,
+            onChanged: notifier.setUrineInput,
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(6),
+              FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)')),
+            ],
+          ),
         ],
       ),
     );

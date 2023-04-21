@@ -8,7 +8,7 @@ import 'package:nutrition/core/services/network/network_client_service.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/info_html/info_html.dart';
 
-import 'package:nutrition/global.dart';
+import 'package:nutrition/global/global.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -93,7 +93,7 @@ class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
-${isDark ? GlobalString.styleCssIsDark : GlobalString.styleCssIsLight}
+${isDark ? AppStringConst.styleCssIsDark : AppStringConst.styleCssIsLight}
 $body
 
   </head>

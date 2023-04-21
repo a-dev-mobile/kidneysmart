@@ -5,6 +5,7 @@ import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/core/utils/utils.dart';
 import 'package:nutrition/core/valid/valid_extension.dart';
+import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/urine/urine.dart';
 
 import 'package:nutrition/localization/localization.dart';
@@ -62,6 +63,11 @@ class UrineNotifier extends StateNotifier<UrineState> {
   bool get isValidInput =>
       state.input.enumValid.maybeMapValue(orElse: false, valid: true);
 
+  bool get isValidAll => isValidSelect && isValidInput;
+
+  bool get isShowInput =>
+      state.select.enumUrine.maybeMapValue(orElse: false, enterValue: true);
+
   void load() {
     state = state.copyWith(
       select: state.select.copyWith(
@@ -88,18 +94,27 @@ class UrineNotifier extends StateNotifier<UrineState> {
     final activeItem =
         selectedIndex != null ? listSelected[selectedIndex] : null;
 
+    final enumUrine = activeItem?.enumUrine ?? EnumUrine.none;
+
     final listBool = AppUtilsArray.getListBool(
       length: listSelected.length,
       selectedIndex: selectedIndex,
     );
+
+    final isValidSelect =
+        enumUrine.maybeMapValue(orElse: false, no: true, normal: true);
+
     state = state.copyWith(
+      input: state.input.copyWith(
+        enumValid: isValidSelect ? EnumValid.valid : EnumValid.error,
+      ),
       select: state.select.copyWith(
         listUrine: listSelected,
         selectedIndex: v,
+        enumUrine: enumUrine,
         listSelected: listBool,
         error: error,
         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-        isShowInput: activeItem?.enumUrine == EnumUrine.enterValue,
       ),
     );
 
@@ -119,6 +134,7 @@ class UrineNotifier extends StateNotifier<UrineState> {
         value: error.isEmpty ? double.tryParse(v!) : null,
       ),
     );
+    _storage.setUrineState(state);
   }
 
 //   void setDailyDiuresis(int? v, {bool isSaveState = true}) {
@@ -154,7 +170,7 @@ class UrineNotifier extends StateNotifier<UrineState> {
 
   String _validUrineOutput(String? v) {
     if (v?.isEmpty ?? true && state.input.result.isEmpty) {
-      return 'Не указано количестов выделяемой мочи';
+      return 'Не указано значение';
     }
     final updateV = v ?? state.input.result;
 
@@ -163,16 +179,16 @@ class UrineNotifier extends StateNotifier<UrineState> {
     if (doubleValue.isNegative) return 'Неправильное значение';
 
     if (doubleValue.isMinValue(0)) {
-      return 'Указанное значение мочи не поддерживается приложением';
+      return 'Указанное значение не поддерживается приложением';
     }
-    if (doubleValue.isMaxValue(3000)) {
-      return 'Указанное значение мочи не поддерживается приложением';
+    if (doubleValue.isMaxValue(10000)) {
+      return 'Указанное значение не поддерживается приложением';
     }
 
     return '';
   }
 
   void nextPage() {
-    // _go.router.pushNamed<void>(BirthdayPage.name);
+    _go.router.pushNamed<void>(CkdPage.name);
   }
 }

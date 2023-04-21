@@ -6,7 +6,7 @@
 // import 'package:firebase_remote_config/firebase_remote_config.dart';
 // import 'package:flutter/foundation.dart';
 // import 'package:freezed_annotation/freezed_annotation.dart';
-// import 'package:nutrition/global.dart';
+// import 'package:nutrition/global/global.dart';
 // import 'package:package_info_plus/package_info_plus.dart';
 
 // class RemoteConfigCubit extends Cubit<RemoteConfigState> {

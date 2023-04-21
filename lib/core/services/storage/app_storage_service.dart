@@ -13,6 +13,7 @@ import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
 import 'package:nutrition/features/registration/name/provider/registration_name_provider.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
+import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
@@ -104,6 +105,18 @@ class AppStorageService {
 
   Future<void> setHypertensionState(HypertensionState value) {
     return setJson(key: _hypertensionState, value: value.toMap());
+  }
+
+// ******************************
+// ******************************
+  static const _ckdState = '_ckdState';
+
+  CkdState getCkdState() {
+    return CkdState.fromMap(getJson(key: _ckdState));
+  }
+
+  Future<void> setCkdState(CkdState value) {
+    return setJson(key: _ckdState, value: value.toMap());
   }
 
 // ******************************

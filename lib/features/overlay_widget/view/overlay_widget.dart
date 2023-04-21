@@ -6,7 +6,7 @@ import 'package:nutrition/core/services/navigation/app_router_service.dart';
 import 'package:nutrition/core/style/app_text_style.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
 import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
-import 'package:nutrition/global.dart';
+import 'package:nutrition/global/global.dart';
 
 class OverlayWidget extends ConsumerWidget {
   const OverlayWidget({
@@ -41,7 +41,7 @@ class OverlayWidget extends ConsumerWidget {
           //     );
           //   },
           // ),
-          if (DartDefine.IS_DEBUG_MENU_ENABLED)
+          if (AppDartDefineConst.IS_DEBUG_MENU_ENABLED)
             Positioned(
               left: 0,
               bottom: 0,
@@ -50,7 +50,7 @@ class OverlayWidget extends ConsumerWidget {
                 style: AppTextStyles.s20w600h24(Colors.red),
               ),
             ),
-          if (DartDefine.IS_DEBUG_MENU_ENABLED)
+          if (AppDartDefineConst.IS_DEBUG_MENU_ENABLED)
             Positioned(
               right: 10,
               bottom: 2,

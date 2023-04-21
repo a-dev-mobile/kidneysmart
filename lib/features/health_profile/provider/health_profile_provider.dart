@@ -312,67 +312,9 @@
 //     _saveState(isSaveState);
 //   }
 
-//   void setCreatinine(String? v, {bool isSaveState = true}) {
-//     var error = '';
-//     final vNew = v ?? state.creatinine.result;
-//     error = _validCreatinine(v, state);
-//     final enumValid = error.isEmpty ? EnumValid.valid : EnumValid.error;
-//     state = state.copyWith(
-//       creatinine: state.creatinine.copyWith(
-//         result: v,
-//         value: error.isEmpty ? double.tryParse(vNew) : null,
-//         error: error,
-//         enumValid: enumValid,
-//       ),
-//     );
-
-//     _calcGfr();
-//     _saveState(isSaveState);
-//   }
-
-//   void changeTypeCreatinine(EnumInputTypeCreatinine? value) {
-//     state = state.copyWith(
-//       creatinine: state.creatinine.copyWith(inputTypeCreatinine: value),
-//     );
-
-//     setCreatinine(null);
-//   }
-
 //   // void _upgradeCreatinine(String error) {
 //   //   if (error.isEmpty) setCreatinine(state.value);
 //   // }
-
-//   void setCkd(int? v, {bool isSaveState = true}) {
-//     var error = '';
-//     if (v == null && state.ckd.selectedIndex == null) {
-//       error = 'Стадия ХБП не выбрана';
-//     }
-
-//     final selectedIndex = v ?? state.ckd.selectedIndex;
-//     final listCkd = state.ckd.listCkd;
-//     final activeItem = selectedIndex != null ? listCkd[selectedIndex] : null;
-//     final selectedCkd = activeItem?.enumCkd ?? EnumCkd.none;
-
-//     final listBool = _getListBool(
-//       length: listCkd.length,
-//       selectedIndex: selectedIndex,
-//     );
-//     state = state.copyWith(
-//       ckd: state.ckd.copyWith(
-//         listCkd: listCkd,
-//         selectedIndex: v,
-//         listSelected: listBool,
-//         enumCkdSelected: selectedCkd,
-//         error: error,
-//         isShowCalcCreatinine: selectedCkd == EnumCkd.calculate,
-//         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-//       ),
-//     );
-
-//     if (selectedCkd == EnumCkd.calculate) _calcGfr();
-
-//     _saveState(isSaveState);
-//   }
 
 //   void _calcBmi() {
 //     final errorMarkdown = _getErrorMarkdownValidCalcBmi(state);
@@ -471,94 +413,6 @@
 //   }
 
 // /* ****************************** */
-//   void _calcGfr() {
-//     final errorText = _getErrorMarkdownValidCalcGfr(state);
-
-//     if (errorText.isNotEmpty) {
-//       state = state.copyWith(
-//         gfr: state.gfr.copyWith(
-//           enumResult: EnumResult.error,
-//           markdownError: errorText,
-//         ),
-//       );
-
-//       return;
-//     }
-
-//     final baseValueCreatinine = state.creatinine.value!;
-// //  in mgDl
-//     final valueMgDl = state.creatinine.inputTypeCreatinine.mapValue(
-//       mgDl: baseValueCreatinine,
-//       mmolL: baseValueCreatinine * 11.3097,
-//       mcmolL: baseValueCreatinine * 0.0113,
-//     );
-//     final gender = state.gender.enumGender;
-//     final genderCoeff = gender.mapValue(female: 1.012, male: 1, none: 0);
-
-//     final kCoeff = gender.mapValue(female: 0.7, male: 0.9, none: 0);
-//     final yearUser = state.dateBirthday.userYearFine;
-//     var alpha = 0.0;
-
-//     if (gender == EnumGender.female && valueMgDl <= kCoeff) {
-//       alpha = -0.241;
-//     } else if (gender == EnumGender.female && valueMgDl > kCoeff) {
-//       alpha = -1.2;
-//     } else if (gender == EnumGender.male && valueMgDl <= kCoeff) {
-//       alpha = -0.302;
-//     } else {
-//       alpha = -1.2;
-//     }
-
-//     final estimatedGFR = 142 *
-//         pow(valueMgDl / kCoeff, alpha) *
-//         pow(0.9938, yearUser) *
-//         genderCoeff;
-
-//     final userYear = state.dateBirthday.userYearFine;
-//     final userMonth = state.dateBirthday.userMonth;
-
-//     final ckdStatus = estimatedGFR >= EnumCkd.one.minValue
-//         ? EnumCkd.one
-//         : estimatedGFR >= EnumCkd.two.minValue
-//             ? EnumCkd.two
-//             : estimatedGFR >= EnumCkd.threeA.minValue
-//                 ? EnumCkd.threeA
-//                 : estimatedGFR >= EnumCkd.threeB.minValue
-//                     ? EnumCkd.threeB
-//                     : estimatedGFR >= EnumCkd.four.minValue
-//                         ? EnumCkd.four
-//                         : EnumCkd.five;
-
-//     final updateCkdStatus = ckdStatus.maybeMapValue(
-//       orElse: ckdStatus,
-//       five: state.dialysis.enumDialysis.maybeMapValue(
-//         orElse: ckdStatus,
-//         homodialysis: EnumCkd.fiveDialysis,
-//         perinatal: EnumCkd.fiveDialysis,
-//       ),
-//     );
-
-//     final resultMarkdown = '''
-
-// ---
-// Ваш возраст - **$userYear** ${_getTextYearRu(userYear)} **$userMonth** ${_getTextYearMonth(userMonth)}
-
-// Ваш СКФ составляет - **${AppUtilsNumber.getFormatNumber(num: estimatedGFR.toDouble())}** ml/min/1.73 m²
-
-// Стадия ХБП - **${_getCkdStage(updateCkdStatus)}**
-
-// ''';
-
-//     state = state.copyWith(
-//       ckd: state.ckd.copyWith(
-//         enumCkdSelected: updateCkdStatus,
-//       ),
-//       gfr: state.gfr.copyWith(
-//         markdownSuccess: resultMarkdown,
-//         enumResult: EnumResult.success,
-//       ),
-//     );
-//   }
 
 //   void setSelectDryWeight(int? v, {bool isSaveState = true}) {
 //     var error = '';

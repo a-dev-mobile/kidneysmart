@@ -17,6 +17,7 @@ import 'package:nutrition/features/registration/name/name.dart';
 import 'package:nutrition/features/splash/splash.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
+import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
@@ -24,7 +25,7 @@ import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/features/update_db/update_db.dart';
-import 'package:nutrition/global.dart';
+import 'package:nutrition/global/global.dart';
 
 final appRouterServiceProvider = Provider<AppRouterService>((ref) {
   final storage = ref.read(appStorageServiceProvider);
@@ -49,7 +50,7 @@ class AppRouterService {
       FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
     ],
     // ignore: avoid_redundant_argument_values
-    debugLogDiagnostics: DartDefine.IS_DEBUG_MENU_ENABLED,
+    debugLogDiagnostics: AppDartDefineConst.IS_DEBUG_MENU_ENABLED,
     navigatorKey: _rootNavigatorKey,
 
     routes: [
@@ -187,6 +188,14 @@ class AppRouterService {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const UrinePage(),
+            ),
+          ),
+          GoRoute(
+            path: CkdPage.path,
+            name: CkdPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const CkdPage(),
             ),
           ),
         ],

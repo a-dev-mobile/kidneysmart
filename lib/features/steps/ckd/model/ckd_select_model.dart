@@ -5,15 +5,15 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
-import 'package:nutrition/features/steps/urine/urine.dart';
+import 'package:nutrition/features/steps/ckd/ckd.dart';
 
 @immutable
-class UrineSelectModel {
+class CkdSelectModel {
   /* init:const [] */
-  final List<UrineItemModel> listUrine;
+  final List<CkdItemModel> listCkd;
 
-/* init: EnumUrine.none */
-  final EnumUrine enumUrine;
+/* init: EnumCkd.none */
+  final EnumCkd enumCkd;
 
   final int? selectedIndex;
   /* init: EnumValid.init */
@@ -30,9 +30,9 @@ class UrineSelectModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const UrineSelectModel({
-    this.listUrine = const [],
-    this.enumUrine = EnumUrine.none,
+  const CkdSelectModel({
+    this.listCkd = const [],
+    this.enumCkd = EnumCkd.none,
     this.enumValid = EnumValid.init,
     this.error = '',
     this.listSelected = const [],
@@ -41,8 +41,8 @@ class UrineSelectModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'listUrine': listUrine.map((e) => e.toMap()).toList(),
-      'enumUrine': enumUrine.index,
+      'listCkd': listCkd.map((e) => e.toMap()).toList(),
+      'enumCkd': enumCkd.index,
       'selectedIndex': selectedIndex,
       'enumValid': enumValid.index,
       'error': error,
@@ -50,20 +50,20 @@ class UrineSelectModel {
     };
   }
 
-  factory UrineSelectModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const UrineSelectModel();
+  factory CkdSelectModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const CkdSelectModel();
 
-    return UrineSelectModel(
-      listUrine: map['listUrine'] != null
-          ? (map['listUrine'] as List<dynamic>)
+    return CkdSelectModel(
+      listCkd: map['listCkd'] != null
+          ? (map['listCkd'] as List<dynamic>)
               .map(
-                (e) => UrineItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) => CkdItemModel.fromMap(e as Map<dynamic, dynamic>),
               )
               .toList()
           : const [],
-      enumUrine: map['enumUrine'] != null
-          ? EnumUrine.values[map['enumUrine'] as int]
-          : EnumUrine.none,
+      enumCkd: map['enumCkd'] != null
+          ? EnumCkd.values[map['enumCkd'] as int]
+          : EnumCkd.none,
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
@@ -76,17 +76,17 @@ class UrineSelectModel {
     );
   }
 
-  UrineSelectModel copyWith({
-    List<UrineItemModel>? listUrine,
-    EnumUrine? enumUrine,
+  CkdSelectModel copyWith({
+    List<CkdItemModel>? listCkd,
+    EnumCkd? enumCkd,
     int? selectedIndex,
     EnumValid? enumValid,
     String? error,
     List<bool>? listSelected,
   }) {
-    return UrineSelectModel(
-      listUrine: listUrine ?? this.listUrine,
-      enumUrine: enumUrine ?? this.enumUrine,
+    return CkdSelectModel(
+      listCkd: listCkd ?? this.listCkd,
+      enumCkd: enumCkd ?? this.enumCkd,
       selectedIndex: selectedIndex ?? this.selectedIndex,
       enumValid: enumValid ?? this.enumValid,
       error: error ?? this.error,
@@ -95,7 +95,7 @@ class UrineSelectModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory UrineSelectModel.fromJson(String source) => UrineSelectModel.fromMap(
+  factory CkdSelectModel.fromJson(String source) => CkdSelectModel.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -103,16 +103,16 @@ class UrineSelectModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UrineSelectModel &&
+            other is CkdSelectModel &&
             const DeepCollectionEquality().equals(
-              other.listUrine,
-              listUrine,
+              other.listCkd,
+              listCkd,
             ) &&
             (identical(
-                  other.enumUrine,
-                  enumUrine,
+                  other.enumCkd,
+                  enumCkd,
                 ) ||
-                other.enumUrine == enumUrine) &&
+                other.enumCkd == enumCkd) &&
             (identical(
                   other.selectedIndex,
                   selectedIndex,
@@ -138,9 +138,9 @@ class UrineSelectModel {
   int get hashCode => Object.hashAll([
         runtimeType,
         const DeepCollectionEquality().hash(
-          listUrine,
+          listCkd,
         ),
-        enumUrine,
+        enumCkd,
         selectedIndex,
         enumValid,
         error,
@@ -151,6 +151,6 @@ class UrineSelectModel {
 
   @override
   String toString() {
-    return 'UrineSelectModel(listUrine: $listUrine, enumUrine: $enumUrine, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
+    return 'CkdSelectModel(listCkd: $listCkd, enumCkd: $enumCkd, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
   }
 }

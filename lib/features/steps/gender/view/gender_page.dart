@@ -19,7 +19,6 @@ class GenderPage extends ConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
               const Spacer(),
               const Text('Ваш пол?'),

@@ -1,7 +1,7 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/steps/ckd/ckd.dart';
 
 import 'package:nutrition/localization/localization.dart';
 
@@ -14,9 +14,9 @@ class DropInputTypeCreatinine extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = context.l10n;
 
-    final state = ref.watch(healthProfileProvider);
-    final notifier = ref.watch(healthProfileProvider.notifier);
-    final stateCreatinine = state.creatinine;
+    final state = ref.watch(ckdProvider);
+    final notifier = ref.watch(ckdProvider.notifier);
+    final stateCreatinine = state.input;
 
     return Row(
       children: [
@@ -48,4 +48,3 @@ String _getText({
     mmolL: l.mmmolL,
   );
 }
- */

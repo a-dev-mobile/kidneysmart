@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:nutrition/global.dart';
+import 'package:nutrition/global/global.dart';
 
 class Analytics {
   factory Analytics() => _internalSingleton;
@@ -20,7 +20,7 @@ class Analytics {
     log('--$value');
     log('--');
 
-    if (DartDefine.IS_ANALYTICS_ENABLED) {
+    if (AppDartDefineConst.IS_ANALYTICS_ENABLED) {
       await FirebaseAnalytics.instance.logEvent(
         name: mainEvent,
         parameters: {subEvent: value},

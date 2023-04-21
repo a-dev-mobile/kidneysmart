@@ -4,52 +4,6 @@
 
 // extension _ValidExtension on HealthProfileNotifier {
 
-//   String _validWeightDry(String? v, HealthProfileState state) {
-//     if (v?.isEmpty ?? true && state.dryWeightField.result.isEmpty) {
-//       return 'Выберите значение';
-//     }
-
-//     final doubleValue = _parseValue(v, state);
-
-//     if (doubleValue.isNegative) return 'Неправильное значение';
-
-//     if (doubleValue.isMinValue(20)) {
-//       return 'Указанный вес не поддерживается приложением';
-//     }
-//     if (doubleValue.isMaxValue(350)) {
-//       return 'Указанный вес не поддерживается приложением';
-//     }
-
-//     return '';
-//   }
-
-//   String _validCreatinine(String? v, HealthProfileState state) {
-//     if (v?.isEmpty ?? true && state.creatinine.result.isEmpty) {
-//       return 'Креатинин не указан';
-//     }
-
-//     final updateV = v ?? state.creatinine.result;
-
-//     final doubleValue = double.tryParse(updateV) ?? -1;
-
-//     if (doubleValue.isNegative) return 'Неправильное значение';
-
-//     if (doubleValue.isMinValue(0)) {
-//       return 'Указанный креатинин не поддерживается приложением';
-//     }
-//     if (doubleValue.isMaxValue(3000)) {
-//       return 'Указанный креатинин не поддерживается приложением';
-//     }
-//     // if (state.dateBirthday.enumValid != EnumValid.valid) {
-//     //   return 'Укажите дату рождения';
-//     // }
-//     // if (state.gender.enumValid != EnumValid.valid) {
-//     //   return 'Укажите пол';
-//     // }
-
-//     return '';
-//   }
-
 //   String _getErrorMarkdownValidCalcBmi(HealthProfileState state) {
 //     final isValidBirthday = state.dateBirthday.enumValid == EnumValid.valid;
 //     final isValidHeight = state.height.enumValid == EnumValid.valid;

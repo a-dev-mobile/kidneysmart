@@ -7,10 +7,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/app_failure/failure.dart';
 import 'package:nutrition/core/log/log.dart';
 import 'package:nutrition/core/services/dadata/dadata.dart';
-import 'package:nutrition/global.dart';
+import 'package:nutrition/global/global.dart';
 
 final dadataServiceProvider = Provider<DaDataService>((ref) {
-  return DaDataService(apiKey: DartDefine.API_KEY_DADATA)
+  return DaDataService(apiKey: AppDartDefineConst.API_KEY_DADATA)
     ..isShowHttpInLog = false;
 });
 
