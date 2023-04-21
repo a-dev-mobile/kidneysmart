@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
+import 'package:nutrition/core/enum/enum.dart';
 
 @immutable
 class AppState {
@@ -9,18 +10,11 @@ class AppState {
   final bool isFirstTime;
   /* init: false */
   final bool isOnboardingCompleted;
-  /* init: 1 */
-  final int appBuildNumber;
-/* init: 1 */
-  final int dbVersion;
+
   /* init: '' */
-  final String dbUrl;
-  /* init: '' */
-  final String dbPathBase;
-  /* init: '' */
-  final String dbPathUpdate;
-  /* init: false */
-  final bool isUseUpdateDB;
+  final String dbPath;
+  /* init: EnumLang.ru */
+  final EnumLang enumLang;
   // end
 
 //          --TURN_GEN--
@@ -31,24 +25,16 @@ class AppState {
   const AppState({
     this.isFirstTime = true,
     this.isOnboardingCompleted = false,
-    this.appBuildNumber = 1,
-    this.dbVersion = 1,
-    this.dbUrl = '',
-    this.dbPathBase = '',
-    this.dbPathUpdate = '',
-    this.isUseUpdateDB = false,
+    this.dbPath = '',
+    this.enumLang = EnumLang.ru,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'isFirstTime': isFirstTime,
       'isOnboardingCompleted': isOnboardingCompleted,
-      'appBuildNumber': appBuildNumber,
-      'dbVersion': dbVersion,
-      'dbUrl': dbUrl,
-      'dbPathBase': dbPathBase,
-      'dbPathUpdate': dbPathUpdate,
-      'isUseUpdateDB': isUseUpdateDB,
+      'dbPath': dbPath,
+      'enumLang': enumLang.index,
     };
   }
 
@@ -58,35 +44,25 @@ class AppState {
     return AppState(
       isFirstTime: map['isFirstTime'] as bool? ?? true,
       isOnboardingCompleted: map['isOnboardingCompleted'] as bool? ?? false,
-      appBuildNumber: (map['appBuildNumber'] as num?)?.toInt() ?? 1,
-      dbVersion: (map['dbVersion'] as num?)?.toInt() ?? 1,
-      dbUrl: map['dbUrl'] as String? ?? '',
-      dbPathBase: map['dbPathBase'] as String? ?? '',
-      dbPathUpdate: map['dbPathUpdate'] as String? ?? '',
-      isUseUpdateDB: map['isUseUpdateDB'] as bool? ?? false,
+      dbPath: map['dbPath'] as String? ?? '',
+      enumLang: map['enumLang'] != null
+          ? EnumLang.values[map['enumLang'] as int]
+          : EnumLang.ru,
     );
   }
 
   AppState copyWith({
     bool? isFirstTime,
     bool? isOnboardingCompleted,
-    int? appBuildNumber,
-    int? dbVersion,
-    String? dbUrl,
-    String? dbPathBase,
-    String? dbPathUpdate,
-    bool? isUseUpdateDB,
+    String? dbPath,
+    EnumLang? enumLang,
   }) {
     return AppState(
       isFirstTime: isFirstTime ?? this.isFirstTime,
       isOnboardingCompleted:
           isOnboardingCompleted ?? this.isOnboardingCompleted,
-      appBuildNumber: appBuildNumber ?? this.appBuildNumber,
-      dbVersion: dbVersion ?? this.dbVersion,
-      dbUrl: dbUrl ?? this.dbUrl,
-      dbPathBase: dbPathBase ?? this.dbPathBase,
-      dbPathUpdate: dbPathUpdate ?? this.dbPathUpdate,
-      isUseUpdateDB: isUseUpdateDB ?? this.isUseUpdateDB,
+      dbPath: dbPath ?? this.dbPath,
+      enumLang: enumLang ?? this.enumLang,
     );
   }
 
@@ -111,35 +87,15 @@ class AppState {
                 ) ||
                 other.isOnboardingCompleted == isOnboardingCompleted) &&
             (identical(
-                  other.appBuildNumber,
-                  appBuildNumber,
+                  other.dbPath,
+                  dbPath,
                 ) ||
-                other.appBuildNumber == appBuildNumber) &&
+                other.dbPath == dbPath) &&
             (identical(
-                  other.dbVersion,
-                  dbVersion,
+                  other.enumLang,
+                  enumLang,
                 ) ||
-                other.dbVersion == dbVersion) &&
-            (identical(
-                  other.dbUrl,
-                  dbUrl,
-                ) ||
-                other.dbUrl == dbUrl) &&
-            (identical(
-                  other.dbPathBase,
-                  dbPathBase,
-                ) ||
-                other.dbPathBase == dbPathBase) &&
-            (identical(
-                  other.dbPathUpdate,
-                  dbPathUpdate,
-                ) ||
-                other.dbPathUpdate == dbPathUpdate) &&
-            (identical(
-                  other.isUseUpdateDB,
-                  isUseUpdateDB,
-                ) ||
-                other.isUseUpdateDB == isUseUpdateDB));
+                other.enumLang == enumLang));
   }
 
   @override
@@ -147,16 +103,12 @@ class AppState {
         runtimeType,
         isFirstTime,
         isOnboardingCompleted,
-        appBuildNumber,
-        dbVersion,
-        dbUrl,
-        dbPathBase,
-        dbPathUpdate,
-        isUseUpdateDB,
+        dbPath,
+        enumLang,
       ]);
 
   @override
   String toString() {
-    return 'AppState(isFirstTime: $isFirstTime, isOnboardingCompleted: $isOnboardingCompleted, appBuildNumber: $appBuildNumber, dbVersion: $dbVersion, dbUrl: $dbUrl, dbPathBase: $dbPathBase, dbPathUpdate: $dbPathUpdate, isUseUpdateDB: $isUseUpdateDB, )';
+    return 'AppState(isFirstTime: $isFirstTime, isOnboardingCompleted: $isOnboardingCompleted, dbPath: $dbPath, enumLang: $enumLang, )';
   }
 }

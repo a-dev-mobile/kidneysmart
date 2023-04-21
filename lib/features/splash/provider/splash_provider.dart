@@ -2,11 +2,10 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/core/info/app_info.dart';
 
-import 'package:nutrition/core/services/db/firebase/firebase.dart';
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
+import 'package:nutrition/global/db.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -17,7 +16,6 @@ final splashProvider =
   return SplashNotifier(
     router: ref.read(appRouterServiceProvider),
     storage: ref.read(appStorageServiceProvider),
-    firebase: ref.read(firebaseServiceProvider),
   )..load();
 });
 
@@ -25,14 +23,11 @@ class SplashNotifier extends StateNotifier<SplashState> {
   SplashNotifier({
     required AppRouterService router,
     required AppStorageService storage,
-    required FirebaseServiceProvider firebase,
   })  : _go = router,
         _storage = storage,
-        _firebase = firebase,
         super(const SplashState.load());
   final AppStorageService _storage;
   final AppRouterService _go;
-  final FirebaseServiceProvider _firebase;
 
   // проверка если есть база новая то на дозагрузку
   Future<void> load() async {
@@ -40,18 +35,11 @@ class SplashNotifier extends StateNotifier<SplashState> {
     // var pathPage = HealthProfilePage.name;
 
     final dbPath = await getDatabasesPath();
-    final basePath = join(dbPath, 'v_1.db');
+    final basePath = join(dbPath, AppDBConst.name);
 
-    final versionOnlineDb = _firebase.getVersionOnlineDb();
-    final appBuildNumber = await AppInfo.getBuildNumber();
-    final versionOfflineDb = appState.dbVersion;
-
-    final isUpdateDb = versionOnlineDb > versionOfflineDb;
     appState = appState.copyWith(
-      dbPathBase: basePath,
-      isUseUpdateDB: isUpdateDb,
+      dbPath: basePath,
       isFirstTime: false,
-      appBuildNumber: appBuildNumber,
     );
 
     await _storage.setAppState(appState);

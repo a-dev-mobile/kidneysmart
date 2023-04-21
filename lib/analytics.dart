@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:nutrition/global/global.dart';
 
 class Analytics {
   factory Analytics() => _internalSingleton;
@@ -20,12 +19,10 @@ class Analytics {
     log('--$value');
     log('--');
 
-    if (AppDartDefineConst.IS_ANALYTICS_ENABLED) {
-      await FirebaseAnalytics.instance.logEvent(
-        name: mainEvent,
-        parameters: {subEvent: value},
-      );
-    }
+    await FirebaseAnalytics.instance.logEvent(
+      name: mainEvent,
+      parameters: {subEvent: value},
+    );
   }
 
   static const _userData = 'User data';

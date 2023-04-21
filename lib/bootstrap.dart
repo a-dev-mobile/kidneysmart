@@ -12,7 +12,8 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/info/app_info.dart';
 import 'package:nutrition/core/log/log.dart';
-import 'package:nutrition/core/services/db/firebase/firebase.dart';
+import 'package:nutrition/core/services/db/db_service_provider.dart';
+
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/firebase_options.dart';
 import 'package:nutrition/global/global.dart';
@@ -118,7 +119,7 @@ Future<void> _showSettingAppInLog() async {
   final userAgent = await AppInfo.getUserAgent();
   final packageName = await AppInfo.getPackageName();
   log.wtf(
-    'IS_DEBUG_MENU_ENABLED = ${AppDartDefineConst.IS_DEBUG_MENU_ENABLED} | IS_ANALYTICS_ENABLED = ${AppDartDefineConst.IS_ANALYTICS_ENABLED}\n$packageName\n$userAgent',
+    'IS_DEBUG_MENU_ENABLED = ${AppDartDefineConst.IS_DEBUG_MENU_ENABLED}\n$packageName\n$userAgent',
   );
 }
 
@@ -131,10 +132,10 @@ Future<void> _initOrientationApp() async {
 /// Triggered from bootstrap() to complete futures
 Future<List<Override>> overrideProviders() async {
   final sp = await SharedPreferences.getInstance();
-  final fb = await FirebaseServiceProvider().load();
+  final db = await DbProvider().load();
 
   return <Override>[
     sharedPreferencesProvider.overrideWithValue(sp),
-    firebaseServiceProvider.overrideWithValue(fb),
+    dbProvider.overrideWithValue(db),
   ];
 }

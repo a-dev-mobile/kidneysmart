@@ -13,7 +13,7 @@ import 'package:nutrition/features/info_html/info_html.dart';
 
 import 'package:nutrition/features/onboarding/vew/onboarding_page.dart';
 import 'package:nutrition/features/overlay_widget/view/view.dart';
-import 'package:nutrition/features/registration/name/name.dart';
+
 import 'package:nutrition/features/splash/splash.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
@@ -24,7 +24,7 @@ import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
-import 'package:nutrition/features/update_db/update_db.dart';
+
 import 'package:nutrition/global/global.dart';
 
 final appRouterServiceProvider = Provider<AppRouterService>((ref) {
@@ -75,14 +75,7 @@ class AppRouterService {
               child: const SplashPage(),
             ),
           ),
-          GoRoute(
-            path: RegistrationNamePage.path,
-            name: RegistrationNamePage.name,
-            pageBuilder: (context, state) => MaterialPage<void>(
-              key: state.pageKey,
-              child: const RegistrationNamePage(),
-            ),
-          ),
+
           GoRoute(
             path: OnboardingPage.path,
             name: OnboardingPage.name,
@@ -126,14 +119,6 @@ class AppRouterService {
             ),
           ),
 
-          GoRoute(
-            path: UpdateDbPage.path,
-            name: UpdateDbPage.name,
-            pageBuilder: (context, state) => MaterialPage<void>(
-              key: state.pageKey,
-              child: const UpdateDbPage(),
-            ),
-          ),
           GoRoute(
             path: BirthdayPage.path,
             name: BirthdayPage.name,
@@ -253,12 +238,6 @@ class AppRouterService {
 
   Future<void> nextPage(AppState appState) async {
     // router.goNamed(HealthProfilePage.name);
-
-    if (appState.isUseUpdateDB) {
-      router.goNamed(UpdateDbPage.name);
-
-      return;
-    }
 
     if (appState.isFirstTime || !appState.isOnboardingCompleted) {
       await _storage.setAppState(appState.copyWith(isFirstTime: false));

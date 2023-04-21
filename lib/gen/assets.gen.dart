@@ -7,8 +7,8 @@ class AssetPaths {
   const AssetPaths._();
 
   /// * Size:	280.0 KB
-  /// * File path: _assets/db/v_1.db
-  static const String v1Db = 'assets/db/v_1.db';
+  /// * File path: _assets/db/db.db
+  static const String dbDb = 'assets/db/db.db';
 
   /// * Size:	8.8 KB
   /// * File path: _assets/icons/app_icons.ttf
@@ -100,7 +100,7 @@ class AssetPaths {
   static const String sortDescSvg = 'assets/svg/sort_desc.svg';
 
   /// List of DB assets
-  static const List<String> valuesDB = [v1Db];
+  static const List<String> valuesDB = [dbDb];
 
   /// List of TTF assets
   static const List<String> valuesTTF = [appIconsIcons];
@@ -138,7 +138,7 @@ class AssetPaths {
 
   /// List of all assets
   static const List<String> valuesAll = [
-    v1Db,
+    dbDb,
     appIconsIcons,
     onboardingRemindYouImage,
     splashImage,

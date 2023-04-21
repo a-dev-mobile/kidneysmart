@@ -1,16 +1,16 @@
 // ignore_for_file: constant_identifier_names, avoid_positional_boolean_parameters
 
 import 'dart:convert';
+import 'dart:io';
 // import 'package:universal_io/io.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/log/log.dart';
-import 'package:nutrition/core/services/db/firebase/firebase.dart';
+
 import 'package:nutrition/core/services/navigation/models/app_state.dart';
 import 'package:nutrition/core/services/theme/theme_state.dart';
-import 'package:nutrition/core/valid/field_string_valid.dart';
 import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
-import 'package:nutrition/features/registration/name/provider/registration_name_provider.dart';
+
 import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
@@ -21,7 +21,7 @@ import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:universal_io/io.dart';
+
 
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError();
@@ -192,24 +192,7 @@ class AppStorageService {
 // ******************************
 
 // ******************************
-// ******************************
-  static const _registrationNameState = '_registrationNameState';
 
-  RegistrationNameState getRegistrationNameState() {
-    return RegistrationNameState.fromMap(getJson(key: _registrationNameState));
-  }
-
-  Future<void> setRegistrationNameState(RegistrationNameState value) {
-    return setJson(
-      key: _registrationNameState,
-      value: value
-          // что бы при загрузке валидация обнулена
-          .copyWith(nameValid: FieldStringValid(value: value.nameValid.value))
-          .toMap(),
-    );
-  }
-
-// ******************************
 // ******************************
   static const _heightState = '_heightState';
 
@@ -319,30 +302,6 @@ class AppStorageService {
     return setBool(key: _is_update_db, value: value);
   }
 
-// ******************************
-  static const _firestoreDbModel = '_firestoreDbModel';
-
-  FireStoreDbModel getFirestoreDbModel() {
-    return FireStoreDbModel.fromMap(getJson(key: _firestoreDbModel));
-  }
-
-  Future<void> setFirestoreDbModel(FireStoreDbModel value) {
-    return setJson(key: _firestoreDbModel, value: value.toMap());
-  }
-
-// ******************************
-// ******************************
-  static const _realtimeDbModel = '_realtimeDbModel';
-
-  RealtimeDbModel getRealtimeDbModel() {
-    return RealtimeDbModel.fromMap(getJson(key: _realtimeDbModel));
-  }
-
-  Future<void> setRealtimeDbModel(RealtimeDbModel value) {
-    return setJson(key: _realtimeDbModel, value: value.toMap());
-  }
-
-// ******************************
 // ******************************
 
   static const _db_version = '_db_version';

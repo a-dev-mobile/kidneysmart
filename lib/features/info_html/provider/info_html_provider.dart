@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/enum/enum.dart';
-import 'package:nutrition/core/services/db/firebase/firebase.dart';
-import 'package:nutrition/core/services/db/sql/model/db_info_model.dart';
+import 'package:nutrition/core/services/db/db.dart';
+
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/network/network_client_service.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
@@ -19,7 +19,6 @@ final infoHtmlProvider = StateNotifierProvider.autoDispose
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageServiceProvider),
       client: ref.read(networkClientProvider),
-      firebase: ref.read(firebaseServiceProvider),
       go: ref.read(appRouterServiceProvider),
     )..load(enumInfoType);
   },
@@ -31,12 +30,10 @@ class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
     required AppStorageService storage,
     required NetworkClientService client,
     required AppRouterService go,
-    required FirebaseServiceProvider firebase,
   })  : _storage = storage,
         _l = l,
         _client = client,
         _go = go,
-        _firebase = firebase,
         super(
           const InfoHtmlState(),
         );
@@ -50,7 +47,6 @@ class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
   // ignore: unused_field
   final AppRouterService _go;
   // ignore: unused_field
-  final FirebaseServiceProvider _firebase;
 
   bool _isDarkTheme = false;
 
@@ -62,7 +58,7 @@ class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
     );
 
     _isDarkTheme = _storage.getThemeState().themeMode == ThemeMode.dark;
-    final dbPath = _storage.getAppState().dbPathUpdate;
+    final dbPath = _storage.getAppState().dbPath;
     final db = await openDatabase(dbPath);
 
     final list =

@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:universal_io/io.dart';
+
 
 /// DeviceInfo Singleton class
 class AppInfo {
