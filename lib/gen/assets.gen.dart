@@ -39,6 +39,10 @@ class AssetPaths {
   /// * File path: _assets/lottie/water_up.json
   static const String waterUpLottie = 'assets/lottie/water_up.json';
 
+  /// * Size:	54.1 KB
+  /// * File path: _assets/svg/gender.svg
+  static const String genderSvg = 'assets/svg/gender.svg';
+
   /// * Size:	746.0 B
   /// * File path: _assets/svg/ic_error.svg
   static const String icErrorSvg = 'assets/svg/ic_error.svg';
@@ -74,6 +78,10 @@ class AssetPaths {
   /// * Size:	14.8 KB
   /// * File path: _assets/svg/logo.svg
   static const String logoSvg = 'assets/svg/logo.svg';
+
+  /// * Size:	57.9 KB
+  /// * File path: _assets/svg/name_step.svg
+  static const String nameStepSvg = 'assets/svg/name_step.svg';
 
   /// * Size:	930.0 B
   /// * File path: _assets/svg/onb_1.svg
@@ -112,6 +120,7 @@ class AssetPaths {
   /// List of SVG assets
   static const List<String> valuesSVG = [
     onboardingRemindYouImage,
+    genderSvg,
     icErrorSvg,
     icErrorCloseSvg,
     icInfoSvg,
@@ -121,6 +130,7 @@ class AssetPaths {
     icWarningSvg,
     icWarningCloseSvg,
     logoSvg,
+    nameStepSvg,
     onb1Svg,
     onb2Svg,
     onb3Svg,
@@ -151,6 +161,7 @@ class AssetPaths {
     loadPageLottie,
     waterDownLottie,
     waterUpLottie,
+    genderSvg,
     icErrorSvg,
     icErrorCloseSvg,
     icInfoSvg,
@@ -160,6 +171,7 @@ class AssetPaths {
     icWarningSvg,
     icWarningCloseSvg,
     logoSvg,
+    nameStepSvg,
     onb1Svg,
     onb2Svg,
     onb3Svg,

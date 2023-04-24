@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nutrition/core/style/app_text_style.dart';
-import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/steps/common/common.dart';
-import 'package:nutrition/features/steps/gender/gender.dart';
+import 'package:nutrition/features/steps/name/name.dart';
+
 import 'package:nutrition/gen/assets.gen.dart';
 import 'package:nutrition/global/global.dart';
 
-class GenderPage extends ConsumerWidget {
-  const GenderPage({super.key});
+class StepNamePage extends ConsumerWidget {
+  const StepNamePage({super.key});
 
-  static const path = '/GenderPage';
-  static const name = 'GenderPage';
+  static const path = '/StepNamePage';
+  static const name = 'StepNamePage';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(genderProvider);
-    final notifier = ref.watch(genderProvider.notifier);
+    // ignore: unused_local_variable
+    final state = ref.watch(stepStepNameProvider);
+    final notifier = ref.watch(stepStepNameProvider.notifier);
 
     return SafeArea(
       child: Scaffold(
@@ -26,7 +27,7 @@ class GenderPage extends ConsumerWidget {
             IconButton(
               onPressed: () {},
               icon: const Icon(Icons.settings_outlined),
-            )
+            ),
           ],
         ),
         body: Padding(
@@ -34,30 +35,25 @@ class GenderPage extends ConsumerWidget {
           child: Column(
             children: [
               Text(
-                'Отлично, продолжим!',
+                'Давайте познакомимся!',
+                textAlign: TextAlign.center,
                 style: AppTextStyles.headlineLarge(),
               ),
               const SizedBox(height: 16),
-              Text(
-                'Здраствуйте Василий!',
-                style: AppTextStyles.headlineSmall(),
-              ),
               SizedBox(
-                height: 280,
-                width: 250,
-                child: SvgPicture.asset(AssetPaths.genderSvg),
+                width: 280,
+                height: 240,
+                child: SvgPicture.asset(AssetPaths.nameStepSvg),
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Укажите свой пол',
+              Text(
+                'Как Вас зовут?',
+                textAlign: TextAlign.center,
+                style: AppTextStyles.headlineLarge(),
               ),
-              BtnToggleText(
-                textList: state.listGender.map((e) => e.value).toList(),
-                isSelected: state.listSelected,
-                onPressed: notifier.setGender,
-                errorText:
-                    state.enumValid.maybeMapOrNullValue(error: state.error),
-              ),
+              const SizedBox(height: 16),
+              const TextField(),
+              const Spacer(),
               const Spacer(),
               BtnStepNextBack(
                 isValid: notifier.isValid,

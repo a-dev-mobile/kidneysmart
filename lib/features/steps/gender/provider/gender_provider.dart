@@ -87,6 +87,10 @@ class GenderNotifier extends StateNotifier<GenderState> {
     _storage.setGenderState(state);
   }
 
+  void backPage() {
+    _go.router.pop();
+  }
+
   void nextPage() {
     _go.router.pushNamed<void>(BirthdayPage.name);
   }

@@ -22,6 +22,7 @@ import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
+import 'package:nutrition/features/steps/name/name.dart';
 import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/features/welcome/view/welcome_page.dart';
@@ -125,6 +126,14 @@ class AppRouterService {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const GenderPage(),
+            ),
+          ),
+          GoRoute(
+            path: StepNamePage.path,
+            name: StepNamePage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const StepNamePage(),
             ),
           ),
 

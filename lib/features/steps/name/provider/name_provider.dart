@@ -2,16 +2,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:nutrition/core/services/navigation/navigation.dart';
 import 'package:nutrition/core/services/storage/app_storage_service.dart';
+import 'package:nutrition/features/steps/gender/view/gender_page.dart';
 import 'package:nutrition/features/steps/name/name.dart';
-
-import 'package:nutrition/features/welcome/welcome.dart';
 
 import 'package:nutrition/localization/localization.dart';
 
-final welcomeProvider =
-    StateNotifierProvider.autoDispose<WelcomeNotifier, WelcomeState>(
+final stepStepNameProvider =
+    StateNotifierProvider.autoDispose<StepNameNotifier, StepNameState>(
   (ref) {
-    return WelcomeNotifier(
+    return StepNameNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageServiceProvider),
       go: ref.read(appRouterServiceProvider),
@@ -19,15 +18,15 @@ final welcomeProvider =
   },
 );
 
-class WelcomeNotifier extends StateNotifier<WelcomeState> {
-  WelcomeNotifier({
+class StepNameNotifier extends StateNotifier<StepNameState> {
+  StepNameNotifier({
     required AppLocalizations l,
     required AppStorageService storage,
     required AppRouterService go,
   })  : _storage = storage,
         _l = l,
         _go = go,
-        super(const WelcomeState());
+        super(const StepNameState());
 
   // ignore: unused_field
   final AppStorageService _storage;
@@ -37,9 +36,15 @@ class WelcomeNotifier extends StateNotifier<WelcomeState> {
   // ignore: unused_field
   final AppRouterService _go;
 
+  bool get isValid => true;
+
   /// preload
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepNamePage.name);
+    _go.router.pushNamed<void>(GenderPage.name);
+  }
+
+  void backPage() {
+    _go.router.pop();
   }
 }

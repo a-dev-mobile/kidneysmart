@@ -41,7 +41,7 @@ abstract class AppTextStyles {
 
   static TextStyle bodyMedium({Color? color}) => TextStyle(
         color: color,
-        fontSize: 20,
+        fontSize: 14,
         fontWeight: regular,
         letterSpacing: 0.25,
       );
