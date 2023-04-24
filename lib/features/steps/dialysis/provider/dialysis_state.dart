@@ -1,14 +1,14 @@
-/* // ignore_for_file: avoid_bool_literals_in_conditional_expressions
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 import 'package:nutrition/core/enum/enum.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:nutrition/features/steps/dialysis/dialysis.dart';
 
 @immutable
-class DialysisModel {
+class DialysisState {
   final int? selectedIndex;
   /* init: EnumDialysis.none */
   final EnumDialysis enumDialysis;
@@ -22,14 +22,14 @@ class DialysisModel {
 /* init: [] */
   final List<bool> listSelected;
 
-// end
+  // end
 
 //          --TURN_GEN--
 //             (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const DialysisModel({
+  const DialysisState({
     this.enumDialysis = EnumDialysis.none,
     this.enumValid = EnumValid.init,
     this.error = '',
@@ -49,10 +49,10 @@ class DialysisModel {
     };
   }
 
-  factory DialysisModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const DialysisModel();
+  factory DialysisState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const DialysisState();
 
-    return DialysisModel(
+    return DialysisState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumDialysis: map['enumDialysis'] != null
           ? EnumDialysis.values[map['enumDialysis'] as int]
@@ -75,7 +75,7 @@ class DialysisModel {
     );
   }
 
-  DialysisModel copyWith({
+  DialysisState copyWith({
     int? selectedIndex,
     EnumDialysis? enumDialysis,
     EnumValid? enumValid,
@@ -83,7 +83,7 @@ class DialysisModel {
     List<DialysisItemModel>? listDialysis,
     List<bool>? listSelected,
   }) {
-    return DialysisModel(
+    return DialysisState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
       enumDialysis: enumDialysis ?? this.enumDialysis,
       enumValid: enumValid ?? this.enumValid,
@@ -94,7 +94,7 @@ class DialysisModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory DialysisModel.fromJson(String source) => DialysisModel.fromMap(
+  factory DialysisState.fromJson(String source) => DialysisState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -102,7 +102,7 @@ class DialysisModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DialysisModel &&
+            other is DialysisState &&
             (identical(
                   other.selectedIndex,
                   selectedIndex,
@@ -150,7 +150,6 @@ class DialysisModel {
 
   @override
   String toString() {
-    return 'DialysisModel(selectedIndex: $selectedIndex, enumDialysis: $enumDialysis, enumValid: $enumValid, error: $error, listDialysis: $listDialysis, listSelected: $listSelected, )';
+    return 'DialysisState(selectedIndex: $selectedIndex, enumDialysis: $enumDialysis, enumValid: $enumValid, error: $error, listDialysis: $listDialysis, listSelected: $listSelected, )';
   }
 }
- */

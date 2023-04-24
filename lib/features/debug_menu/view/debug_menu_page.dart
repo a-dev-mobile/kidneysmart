@@ -17,7 +17,6 @@ import 'package:nutrition/features/splash/splash.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-
 class DebugMenuPage extends ConsumerWidget {
   const DebugMenuPage({super.key});
 
@@ -188,7 +187,7 @@ class _ItemPage extends StatelessWidget {
           : onPressed,
       child: Text(
         name,
-        style: AppTextStyles.s20w600h24(),
+        style: AppTextStyles.bodyLarge(),
       ),
     );
   }

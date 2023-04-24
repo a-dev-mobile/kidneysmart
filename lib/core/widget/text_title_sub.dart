@@ -19,7 +19,7 @@ class TitleSub extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: AppTextStyles.h6(),
+            style: AppTextStyles.headlineSmall(),
             // textAlign: TextAlign.center,
           ),
         ),

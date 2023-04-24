@@ -12,7 +12,7 @@ class FlexTheme {
   /// *---* [Light Theme] *---*
   static ThemeData lightThemeData() {
     return FlexThemeData.light(
-      scheme: FlexScheme.blue,
+      scheme: FlexScheme.materialBaseline,
       surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
       blendLevel: 7,
       subThemesData: const FlexSubThemesData(
@@ -23,17 +23,14 @@ class FlexTheme {
       visualDensity: FlexColorScheme.comfortablePlatformDensity,
       useMaterial3: true,
       swapLegacyOnMaterial3: true,
-      // To use the playground font, add GoogleFonts package and uncomment
-      // fontFamily: GoogleFonts.notoSans().fontFamily,
-
-      fontFamily: GoogleFonts.montserrat().fontFamily,
+      fontFamily: GoogleFonts.roboto().fontFamily,
     );
   }
 
   /// *---* [Dark Theme] *---*
   static ThemeData darkThemeData() {
     return FlexThemeData.dark(
-      scheme: FlexScheme.blue,
+      scheme: FlexScheme.materialBaseline,
       surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
       blendLevel: 13,
       subThemesData: const FlexSubThemesData(
@@ -43,7 +40,7 @@ class FlexTheme {
       visualDensity: FlexColorScheme.comfortablePlatformDensity,
       useMaterial3: true,
       swapLegacyOnMaterial3: true,
-      fontFamily: GoogleFonts.montserrat().fontFamily,
+      fontFamily: GoogleFonts.roboto().fontFamily,
     );
   }
 }

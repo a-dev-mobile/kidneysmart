@@ -14,7 +14,7 @@ class TitleMain extends StatelessWidget {
         const SizedBox(height: 10),
         Text(
           text,
-          style: AppTextStyles.h4(),
+          style: AppTextStyles.headlineLarge(),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 20),

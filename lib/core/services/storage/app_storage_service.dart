@@ -15,13 +15,13 @@ import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
+import 'package:nutrition/features/steps/dialysis/dialysis.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError();
@@ -83,6 +83,17 @@ class AppStorageService {
 
   Future<void> setGenderState(GenderState value) {
     return setJson(key: _genderState, value: value.toMap());
+  }
+
+// ******************************
+  static const _dialysisState = '_dialysisState';
+
+  DialysisState getDialysisState() {
+    return DialysisState.fromMap(getJson(key: _dialysisState));
+  }
+
+  Future<void> setDialysisState(DialysisState value) {
+    return setJson(key: _dialysisState, value: value.toMap());
   }
 
 // ******************************

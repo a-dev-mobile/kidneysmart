@@ -25,7 +25,7 @@ class SnackbarInternet extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Text(
               l.no_internet,
-              style: AppTextStyles.s16w500h24(Colors.white),
+              style: AppTextStyles.bodyLarge(color: Colors.white),
             ),
           ),
         ),

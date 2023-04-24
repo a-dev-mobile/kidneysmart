@@ -71,7 +71,7 @@ class AssetPaths {
   /// * File path: _assets/svg/ic_warning_close.svg
   static const String icWarningCloseSvg = 'assets/svg/ic_warning_close.svg';
 
-  /// * Size:	13.7 KB
+  /// * Size:	14.8 KB
   /// * File path: _assets/svg/logo.svg
   static const String logoSvg = 'assets/svg/logo.svg';
 
@@ -90,6 +90,10 @@ class AssetPaths {
   /// * Size:	1.1 KB
   /// * File path: _assets/svg/onb_4.svg
   static const String onb4Svg = 'assets/svg/onb_4.svg';
+
+  /// * Size:	25.2 KB
+  /// * File path: _assets/svg/remind_you.svg
+  static const String remindYouSvg = 'assets/svg/remind_you.svg';
 
   /// * Size:	211.0 B
   /// * File path: _assets/svg/sort_asc.svg
@@ -121,6 +125,7 @@ class AssetPaths {
     onb2Svg,
     onb3Svg,
     onb4Svg,
+    remindYouSvg,
     sortAscSvg,
     sortDescSvg
   ];
@@ -159,6 +164,7 @@ class AssetPaths {
     onb2Svg,
     onb3Svg,
     onb4Svg,
+    remindYouSvg,
     sortAscSvg,
     sortDescSvg
   ];

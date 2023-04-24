@@ -24,6 +24,7 @@ import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
+import 'package:nutrition/features/welcome/view/welcome_page.dart';
 
 import 'package:nutrition/global/global.dart';
 
@@ -82,6 +83,14 @@ class AppRouterService {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const OnboardingPage(),
+            ),
+          ),
+          GoRoute(
+            path: WelcomePage.path,
+            name: WelcomePage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const WelcomePage(),
             ),
           ),
           // GoRoute(
@@ -242,7 +251,7 @@ class AppRouterService {
     if (appState.isFirstTime || !appState.isOnboardingCompleted) {
       await _storage.setAppState(appState.copyWith(isFirstTime: false));
 
-      router.goNamed(OnboardingPage.name);
+      router.goNamed(WelcomePage.name);
 
       return;
     }

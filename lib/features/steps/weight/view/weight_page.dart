@@ -53,7 +53,7 @@ class _WeightPageState extends ConsumerState<WeightPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Spacer(),
-              const Text('Какой у вас сейчас вес?'),
+              const Text('Пожалуйста, укажите свой вес в килограммах:'),
               // const DropUnitWeight(),
               const SizedBox(height: 10),
               TextField(

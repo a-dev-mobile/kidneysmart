@@ -47,7 +47,7 @@ class OverlayWidget extends ConsumerWidget {
               bottom: 0,
               child: Text(
                 goRouterState.location,
-                style: AppTextStyles.s20w600h24(Colors.red),
+                style: AppTextStyles.bodyLarge(color: Colors.red),
               ),
             ),
           if (AppDartDefineConst.IS_DEBUG_MENU_ENABLED)
@@ -64,7 +64,7 @@ class OverlayWidget extends ConsumerWidget {
                   padding: EdgeInsets.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: Text('debug', style: AppTextStyles.s20w600h24()),
+                child: Text('debug', style: AppTextStyles.bodyLarge()),
               ),
             ),
         ],

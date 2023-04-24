@@ -26,7 +26,7 @@ class HeightPage extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Spacer(),
-              const Text('Какой у вас рост'),
+              const Text('Пожалуйста, укажите свой рост в сантиметрах:'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -39,7 +39,7 @@ class HeightPage extends ConsumerWidget {
                   const SizedBox(width: 10),
                   Text(
                     'см',
-                    style: AppTextStyles.caption(),
+                    style: AppTextStyles.bodyLarge(),
                   ),
                 ],
               ),

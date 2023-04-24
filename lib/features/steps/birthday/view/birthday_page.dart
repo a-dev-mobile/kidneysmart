@@ -27,7 +27,7 @@ class BirthdayPage extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Spacer(),
-              const Text('Когда ваш день рождения?'),
+              const Text('Пожалуйста, укажите свою дату рождения:'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

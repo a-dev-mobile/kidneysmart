@@ -138,50 +138,6 @@
 //     _calcGfr();
 //   }
 
-//   void setDialysis(int? v, {bool isSaveState = true}) {
-//     var error = '';
-//     if (v == null && state.dialysis.selectedIndex == null) {
-//       error = 'Укажите есть у вас диализ или нет';
-//     }
-//     // update
-//     final selectedIndex = v ?? state.dialysis.selectedIndex;
-//     final listDialysis = state.dialysis.listDialysis;
-
-//     final listBool =
-//         _getListBool(length: listDialysis.length, selectedIndex: selectedIndex);
-
-//     final enumDialysis = selectedIndex != null
-//         ? listDialysis[selectedIndex].enumDialysis
-//         : EnumDialysis.none;
-
-// // расчет если у нас 5 стадия и есть диализ, то меняем на 5стадию с диализом
-//     var enumCkd = state.ckd.enumCkdSelected;
-
-//     final isFiveStage =
-//         enumCkd == EnumCkd.five || enumCkd == EnumCkd.fiveDialysis;
-//     final isDialysis = enumDialysis == EnumDialysis.homodialysis ||
-//         enumDialysis == EnumDialysis.perinatal;
-//     if (isFiveStage && isDialysis) {
-//       enumCkd = EnumCkd.fiveDialysis;
-//     } else if (isFiveStage && enumDialysis == EnumDialysis.no) {
-//       enumCkd = EnumCkd.five;
-//     }
-
-//     state = state.copyWith(
-//       ckd: state.ckd.copyWith(enumCkdSelected: enumCkd),
-//       dialysis: state.dialysis.copyWith(
-//         listDialysis: listDialysis,
-//         selectedIndex: v,
-//         listSelected: listBool,
-//         enumDialysis: enumDialysis,
-//         error: error,
-//         enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
-//       ),
-//     );
-//     _calcGfr();
-//     _saveState(isSaveState);
-//   }
-
 //   void setDate({EnumDate? enumDate, String? v, bool isSaveState = true}) {
 //     if (enumDate != null) {
 //       enumDate.map(

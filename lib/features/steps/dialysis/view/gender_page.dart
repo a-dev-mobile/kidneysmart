@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/core/widget/widget.dart';
-import 'package:nutrition/features/steps/gender/gender.dart';
+import 'package:nutrition/features/steps/dialysis/dialysis.dart';
 
-class GenderPage extends ConsumerWidget {
-  const GenderPage({super.key});
+class DialysisPage extends ConsumerWidget {
+  const DialysisPage({super.key});
 
-  static const path = '/GenderPage';
-  static const name = 'GenderPage';
+  static const path = '/DialysisPage';
+  static const name = 'DialysisPage';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(genderProvider);
-    final notifier = ref.watch(genderProvider.notifier);
+    final state = ref.watch(dialysisProvider);
+    final notifier = ref.watch(dialysisProvider.notifier);
 
     return Scaffold(
       body: SafeArea(
@@ -21,12 +21,11 @@ class GenderPage extends ConsumerWidget {
           child: Column(
             children: [
               const Spacer(),
-              const Text(
-                  'Для получения наиболее точных результатов, пожалуйста, укажите свой пол:',),
+              const Text('Ваш пол?'),
               BtnToggleText(
-                textList: state.listGender.map((e) => e.value).toList(),
+                textList: state.listDialysis.map((e) => e.value).toList(),
                 isSelected: state.listSelected,
-                onPressed: notifier.setGender,
+                onPressed: notifier.setDialysis,
                 errorText:
                     state.enumValid.maybeMapOrNullValue(error: state.error),
               ),
