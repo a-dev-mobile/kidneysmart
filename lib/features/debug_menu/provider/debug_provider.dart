@@ -1,19 +1,19 @@
 // ignore_for_file: sort_constructors_first
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 
 final debugProvider = StateNotifierProvider<DebugProvider, DebugState>((ref) {
-  return DebugProvider(storage: ref.watch(appStorageServiceProvider));
+  return DebugProvider(storage: ref.watch(appStorageProvider));
 });
 
 class DebugProvider extends StateNotifier<DebugState> {
-  DebugProvider({required AppStorageService storage})
+  DebugProvider({required AppStorage storage})
       : _storage = storage,
         super(storage.getDebugState());
 
-  final AppStorageService _storage;
+  final AppStorage _storage;
 
   void setDevicePreview({required bool isShow}) {
     state = state.copyWith(isShowDevice: isShow);

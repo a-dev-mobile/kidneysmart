@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/style/app_text_style.dart';
-
-import 'package:nutrition/core/widget/widget.dart';
-
 import 'package:nutrition/features/steps/height/height.dart';
+import 'package:nutrition/shared/theme/app_text_style.dart';
+import 'package:nutrition/shared/widget/widget.dart';
 
 class HeightPage extends ConsumerWidget {
   const HeightPage({super.key});
@@ -37,9 +35,9 @@ class HeightPage extends ConsumerWidget {
                     values: state.heightList,
                   ),
                   const SizedBox(width: 10),
-                  Text(
+                  const Text(
                     'см',
-                    style: AppTextStyles.bodyLarge(),
+                    style: AppTextStyles.bodyLarge,
                   ),
                 ],
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
+import 'package:nutrition/shared/widget/widget.dart';
 
 class ActivityPage extends ConsumerWidget {
   const ActivityPage({super.key});

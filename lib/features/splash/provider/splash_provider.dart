@@ -1,32 +1,29 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meta/meta.dart';
-
-import 'package:nutrition/core/services/navigation/navigation.dart';
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
+import 'package:nutrition/features/splash/splash.dart';
 import 'package:nutrition/global/db.dart';
+import 'package:nutrition/navigation/navigation.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
-part 'splash_state.dart';
 
 final splashProvider =
     StateNotifierProvider.autoDispose<SplashNotifier, SplashState>((ref) {
   return SplashNotifier(
     router: ref.read(appRouterServiceProvider),
-    storage: ref.read(appStorageServiceProvider),
+    storage: ref.read(appStorageProvider),
   )..load();
 });
 
 class SplashNotifier extends StateNotifier<SplashState> {
   SplashNotifier({
     required AppRouterService router,
-    required AppStorageService storage,
+    required AppStorage storage,
   })  : _go = router,
         _storage = storage,
         super(const SplashState.load());
-  final AppStorageService _storage;
+  final AppStorage _storage;
   final AppRouterService _go;
 
   // проверка если есть база новая то на дозагрузку

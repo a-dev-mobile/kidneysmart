@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/services/navigation/navigation.dart';
-
-import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/info_html/info_html.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/navigation/navigation.dart';
+import 'package:nutrition/shared/widget/widget.dart';
 
 class BtnCkd extends ConsumerWidget {
   const BtnCkd({

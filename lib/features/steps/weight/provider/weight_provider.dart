@@ -1,23 +1,20 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/enum/enum.dart';
-
-import 'package:nutrition/core/services/navigation/navigation.dart';
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
-import 'package:nutrition/core/valid/valid.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
-
 import 'package:nutrition/features/steps/weight/weight.dart';
-
 import 'package:nutrition/localization/localization.dart';
+import 'package:nutrition/navigation/navigation.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:nutrition/shared/enum/enum.dart';
+import 'package:nutrition/shared/valid/valid.dart';
 
 final weightProvider =
     StateNotifierProvider.autoDispose<WeightNotifier, WeightState>(
   (ref) {
     return WeightNotifier(
       l: ref.watch(appLocalizationsProvider),
-      storage: ref.read(appStorageServiceProvider),
+      storage: ref.read(appStorageProvider),
       go: ref.read(appRouterServiceProvider),
     );
   },
@@ -26,7 +23,7 @@ final weightProvider =
 class WeightNotifier extends StateNotifier<WeightState> {
   WeightNotifier({
     required AppLocalizations l,
-    required AppStorageService storage,
+    required AppStorage storage,
     required AppRouterService go,
   })  : _storage = storage,
         _l = l,
@@ -34,7 +31,7 @@ class WeightNotifier extends StateNotifier<WeightState> {
         super(storage.getWeightState());
 
   // ignore: unused_field
-  final AppStorageService _storage;
+  final AppStorage _storage;
   // ignore: unused_field
   final AppLocalizations _l;
 

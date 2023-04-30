@@ -10,13 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/info/app_info.dart';
-import 'package:nutrition/core/log/log.dart';
-import 'package:nutrition/core/services/db/db_service_provider.dart';
-
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/firebase_options.dart';
 import 'package:nutrition/global/global.dart';
+import 'package:nutrition/shared/data/local/db/db_service_provider.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:nutrition/shared/info/app_info.dart';
+import 'package:nutrition/shared/log/log.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: prefer-static-class
@@ -39,7 +38,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
             FlutterError.dumpErrorToConsole(details);
           }
 
-          if (kReleaseMode || AppDartDefineConst.IS_DEBUG_MENU_ENABLED) {
+          if (AppDartDefineConst.IS_DEBUG_MENU_ENABLED) {
             // In development mode simply print to console.
             Zone.current.handleUncaughtError(exception, stackTrace);
           }

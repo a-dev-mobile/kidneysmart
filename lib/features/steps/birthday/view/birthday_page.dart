@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:nutrition/core/widget/widget.dart';
-
 import 'package:nutrition/features/steps/birthday/birthday.dart';
-
 import 'package:nutrition/localization/localization.dart';
+import 'package:nutrition/shared/widget/widget.dart';
 
 class BirthdayPage extends ConsumerWidget {
   const BirthdayPage({super.key});

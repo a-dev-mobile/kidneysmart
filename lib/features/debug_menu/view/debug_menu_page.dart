@@ -7,13 +7,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nutrition/core/services/navigation/app_router_service.dart';
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
-import 'package:nutrition/core/style/app_text_style.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
 import 'package:nutrition/features/onboarding/onboarding.dart';
-
 import 'package:nutrition/features/splash/splash.dart';
+import 'package:nutrition/navigation/app_router_service.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:nutrition/shared/theme/app_text_style.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -135,7 +134,7 @@ class DebugMenuPage extends ConsumerWidget {
                   OutlinedButton(
                     // ignore: prefer-extracting-callbacks
                     onPressed: () {
-                      ref.read(appStorageServiceProvider).clearAll();
+                      ref.read(appStorageProvider).clearAll();
                       ref
                           .read(appRouterServiceProvider)
                           .router
@@ -187,7 +186,7 @@ class _ItemPage extends StatelessWidget {
           : onPressed,
       child: Text(
         name,
-        style: AppTextStyles.bodyLarge(),
+        style: AppTextStyles.bodyLarge,
       ),
     );
   }

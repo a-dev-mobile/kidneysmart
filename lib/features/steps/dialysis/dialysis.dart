@@ -1,7 +1,10 @@
+export 'enum/enum.dart';
 export 'enum/enum_dialysis.dart';
 export 'model/dialysis_item_model.dart';
 export 'model/dialysis_model.dart';
-
+export 'model/model.dart';
 export 'provider/dialysis_provider.dart';
 export 'provider/dialysis_state.dart';
+export 'provider/provider.dart';
 export 'view/gender_page.dart';
+export 'view/view.dart';

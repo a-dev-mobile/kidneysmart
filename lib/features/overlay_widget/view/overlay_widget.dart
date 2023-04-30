@@ -2,11 +2,10 @@ import 'package:dio_log/dio_log.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nutrition/core/services/navigation/app_router_service.dart';
-import 'package:nutrition/core/style/app_text_style.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
-import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
 import 'package:nutrition/global/global.dart';
+import 'package:nutrition/navigation/app_router_service.dart';
+import 'package:nutrition/shared/theme/app_text_style.dart';
 
 class OverlayWidget extends ConsumerWidget {
   const OverlayWidget({
@@ -47,7 +46,7 @@ class OverlayWidget extends ConsumerWidget {
               bottom: 0,
               child: Text(
                 goRouterState.location,
-                style: AppTextStyles.bodyLarge(color: Colors.red),
+                style: AppTextStyles.bodyLarge.copyWith(color: Colors.red),
               ),
             ),
           if (AppDartDefineConst.IS_DEBUG_MENU_ENABLED)
@@ -64,7 +63,7 @@ class OverlayWidget extends ConsumerWidget {
                   padding: EdgeInsets.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: Text('debug', style: AppTextStyles.bodyLarge()),
+                child: const Text('debug', style: AppTextStyles.bodyLarge),
               ),
             ),
         ],

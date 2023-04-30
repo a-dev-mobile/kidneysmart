@@ -4,9 +4,8 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:nutrition/core/enum/enum.dart';
-
 import 'package:nutrition/features/steps/dialysis/dialysis.dart';
+import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class DialysisModel {

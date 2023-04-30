@@ -1,22 +1,20 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:feedback/feedback.dart';
 import 'package:flash/flash_helper.dart';
-
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:nutrition/core/services/locale/locale_provider.dart';
-
-import 'package:nutrition/core/services/navigation/app_router_service.dart';
-import 'package:nutrition/core/services/theme/theme_providers.dart';
-import 'package:nutrition/core/style/flex_theme.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
-
+import 'package:nutrition/features/setting/setting.dart';
 import 'package:nutrition/localization/gen/app_localizations.dart';
+import 'package:nutrition/navigation/app_router_service.dart';
+import 'package:nutrition/shared/domain/locale/locale_provider.dart';
+
+import 'package:nutrition/shared/theme/flex_theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -67,15 +65,22 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
   }
   /* #endregion */
 
-  void initStatusBar({required ThemeMode themeMode}) {
+  void initStatusBar({required EnumTheme enumTheme}) {
+    final isDark = enumTheme.maybeMapValue(orElse: false, dark: true);
+
+    final flexScheme = isDark
+        ? FlexColorScheme.dark(scheme: FlexScheme.materialBaseline).toTheme
+        : FlexColorScheme.light(scheme: FlexScheme.materialBaseline).toTheme;
+
     Brightness? statusBarIconBrightness;
 
-    statusBarIconBrightness =
-        themeMode == ThemeMode.light ? Brightness.dark : Brightness.light;
+    statusBarIconBrightness = isDark ? Brightness.light : Brightness.dark;
 
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarIconBrightness: statusBarIconBrightness,
+        statusBarColor: flexScheme.colorScheme.onPrimary,
+        systemNavigationBarColor: flexScheme.colorScheme.onPrimary,
       ),
     );
   }
@@ -84,7 +89,9 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
   @override
   Widget build(BuildContext context) {
     // final go = context.read<AppRouterService>();
-    final themeMode = ref.watch(themeProvider).themeMode;
+
+    final settingState = ref.watch(settingProvider);
+    final settingNotifier = ref.watch(settingProvider.notifier);
     final navigator = ref.watch(appRouterServiceProvider);
     final debug = ref.watch(debugProvider);
     final locale = ref.watch(localeProvider);
@@ -95,7 +102,7 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
 
     //  global
     Intl.defaultLocale = locale.value;
-    initStatusBar(themeMode: themeMode);
+    initStatusBar(enumTheme: settingState.themeSetting.enumTheme);
     // print('main build');
 
     return BetterFeedback(
@@ -119,7 +126,7 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
           onGenerateTitle: (context) => AppLocalizations.of(context).app_name,
           theme: FlexTheme.lightThemeData(),
           darkTheme: FlexTheme.darkThemeData(),
-          themeMode: themeMode,
+          themeMode: settingNotifier.themeMode,
           locale: Locale(locale.name),
           localizationsDelegates: const [
             AppLocalizations.delegate,

@@ -1,18 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:nutrition/core/services/navigation/navigation.dart';
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/steps/gender/view/gender_page.dart';
 import 'package:nutrition/features/steps/name/name.dart';
-
 import 'package:nutrition/localization/localization.dart';
+import 'package:nutrition/navigation/navigation.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 
 final stepStepNameProvider =
     StateNotifierProvider.autoDispose<StepNameNotifier, StepNameState>(
   (ref) {
     return StepNameNotifier(
       l: ref.watch(appLocalizationsProvider),
-      storage: ref.read(appStorageServiceProvider),
+      storage: ref.read(appStorageProvider),
       go: ref.read(appRouterServiceProvider),
     );
   },
@@ -21,7 +19,7 @@ final stepStepNameProvider =
 class StepNameNotifier extends StateNotifier<StepNameState> {
   StepNameNotifier({
     required AppLocalizations l,
-    required AppStorageService storage,
+    required AppStorage storage,
     required AppRouterService go,
   })  : _storage = storage,
         _l = l,
@@ -29,7 +27,7 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
         super(const StepNameState());
 
   // ignore: unused_field
-  final AppStorageService _storage;
+  final AppStorage _storage;
   // ignore: unused_field
   final AppLocalizations _l;
 

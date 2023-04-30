@@ -1,4 +1,4 @@
-part of 'splash_provider.dart';
+import 'package:meta/meta.dart';
 
 class _SplashState {
   const _SplashState.load();

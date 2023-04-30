@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nutrition/core/style/app_text_style.dart';
-
-import 'package:nutrition/core/utils/utils.dart';
 import 'package:nutrition/localization/localization.dart';
+import 'package:nutrition/shared/theme/app_text_style.dart';
+import 'package:nutrition/shared/utils/utils.dart';
 
 class SnackbarInternet extends StatelessWidget {
   const SnackbarInternet({super.key, this.isVisible});
@@ -25,7 +24,7 @@ class SnackbarInternet extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Text(
               l.no_internet,
-              style: AppTextStyles.bodyLarge(color: Colors.white),
+              style: AppTextStyles.bodyLarge.copyWith(color: Colors.white),
             ),
           ),
         ),

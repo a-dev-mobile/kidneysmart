@@ -1,15 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/enum/enum.dart';
-import 'package:nutrition/core/services/db/db.dart';
-
-import 'package:nutrition/core/services/navigation/navigation.dart';
-import 'package:nutrition/core/services/network/network_client_service.dart';
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/info_html/info_html.dart';
-
 import 'package:nutrition/global/global.dart';
 import 'package:nutrition/localization/localization.dart';
+import 'package:nutrition/navigation/navigation.dart';
+import 'package:nutrition/shared/data/local/db/db.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:nutrition/shared/domain/network/network_client_service.dart';
+import 'package:nutrition/shared/enum/enum.dart';
 import 'package:sqflite/sqflite.dart';
 
 final infoHtmlProvider = StateNotifierProvider.autoDispose
@@ -17,7 +14,7 @@ final infoHtmlProvider = StateNotifierProvider.autoDispose
   (ref, enumInfoType) {
     return InfoHtmlNotifier(
       l: ref.watch(appLocalizationsProvider),
-      storage: ref.read(appStorageServiceProvider),
+      storage: ref.read(appStorageProvider),
       client: ref.read(networkClientProvider),
       go: ref.read(appRouterServiceProvider),
     )..load(enumInfoType);
@@ -27,7 +24,7 @@ final infoHtmlProvider = StateNotifierProvider.autoDispose
 class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
   InfoHtmlNotifier({
     required AppLocalizations l,
-    required AppStorageService storage,
+    required AppStorage storage,
     required NetworkClientService client,
     required AppRouterService go,
   })  : _storage = storage,
@@ -38,7 +35,7 @@ class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
           const InfoHtmlState(),
         );
 
-  final AppStorageService _storage;
+  final AppStorage _storage;
   // ignore: unused_field
   final AppLocalizations _l;
   // ignore: unused_field
@@ -57,7 +54,8 @@ class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
       fallback: EnumLang.en,
     );
 
-    _isDarkTheme = _storage.getThemeState().themeMode == ThemeMode.dark;
+    _isDarkTheme = true;
+    // _isDarkTheme = _storage.getThemeState().themeMode == ThemeMode.dark;
     final dbPath = _storage.getAppState().dbPath;
     final db = await openDatabase(dbPath);
 

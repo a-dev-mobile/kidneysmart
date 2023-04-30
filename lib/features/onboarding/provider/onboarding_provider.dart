@@ -1,15 +1,11 @@
 // ignore_for_file: unused_field
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:nutrition/core/services/navigation/navigation.dart';
-
-import 'package:nutrition/core/services/network/network_client_service.dart';
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
-
 import 'package:nutrition/features/onboarding/provider/onboarding_state.dart';
-
 import 'package:nutrition/localization/localization.dart';
+import 'package:nutrition/navigation/navigation.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:nutrition/shared/domain/network/network_client_service.dart';
 
 final onboardingProvider =
     StateNotifierProvider.autoDispose<OndoardingNotifier, OnboardingState>(
@@ -22,7 +18,7 @@ final onboardingProvider =
 
 class OndoardingNotifier extends StateNotifier<OnboardingState> {
   OndoardingNotifier({required Ref ref})
-      : _storage = ref.read(appStorageServiceProvider),
+      : _storage = ref.read(appStorageProvider),
         _client = ref.read(networkClientProvider),
         _go = ref.read(appRouterServiceProvider),
         _loc = ref.watch(appLocalizationsProvider),
@@ -30,7 +26,7 @@ class OndoardingNotifier extends StateNotifier<OnboardingState> {
           const OnboardingState.load(),
         );
   final NetworkClientService _client;
-  final AppStorageService _storage;
+  final AppStorage _storage;
   final AppLocalizations _loc;
   final AppRouterService _go;
 

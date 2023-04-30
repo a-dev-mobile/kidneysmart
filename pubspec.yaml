@@ -25,13 +25,13 @@ dependencies:
   # flutter_localizations from sdk depends on path 1.8.2
   path: ^1.8.2
   platform_info: ^3.2.0
-  device_info_plus: ^8.2.0
-  package_info_plus: ^3.1.0
-  connectivity_plus: ^3.0.4
+  device_info_plus: ^8.2.2
+  package_info_plus: ^3.1.2
+  connectivity_plus: ^3.0.6
 
   # Data manipulation
   # di/state
-  flutter_riverpod: ^2.3.5
+  flutter_riverpod: ^2.3.6
   
   # Internationalization
   intl: ^0.17.0
@@ -52,37 +52,37 @@ dependencies:
          ref: dependabot/pub/dio-5.0.3
 
   # Navigation
-  go_router: ^6.5.7
+  go_router: ^7.0.0
 
   # Native
   url_launcher: ^6.1.10
-  share_plus: ^6.3.2
+  share_plus: ^6.3.4
 
   # Helper for UI
-  flash: ^3.0.1
+  flash: ^3.0.3+5
   lottie: ^2.3.2
   flutter_native_splash: ^2.2.19
   flutter_svg: ^2.0.5
-  flex_color_scheme: ^7.0.3
+  flex_color_scheme: ^7.0.5
   flutter_markdown: ^0.6.14
-  webview_flutter: ^4.1.0
+  webview_flutter: ^4.2.0
   introduction_screen: ^3.1.8
-  google_fonts: ^4.0.3
+  google_fonts: ^4.0.4
 
   # TEST
   device_preview: ^1.1.0
   feedback: ^2.6.0
 
   # firebase
-  firebase_core: ^2.9.0
-  firebase_crashlytics: ^3.1.0
-  firebase_analytics: ^10.2.0
+  firebase_core: ^2.10.0
+  firebase_crashlytics: ^3.1.2
+  firebase_analytics: ^10.2.1
 
 
 
 
 # database
-  sqflite: ^2.2.6
+  sqflite: ^2.2.8
 
 
 
@@ -98,13 +98,15 @@ dev_dependencies:
   dart_code_metrics: ^5.7.2
   very_good_analysis: ^4.0.0+1
 
-  json_serializable: ^6.6.1
   # turn_gen:
     # path: F:/DEV/FLUTTER/project/MY_GITHUB/turn_gen
-  turn_gen: ^0.8.8
+  turn_gen: ^0.8.9
 
 
-
+turn_gen:
+  assets_output: "lib/gen/"
+  # show_method_comments: true
+  folder_barrel: lib\core, 
 
 
 flutter:

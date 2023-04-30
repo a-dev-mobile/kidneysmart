@@ -1,84 +1,44 @@
-// // ignore_for_file: lines_longer_than_80_chars
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/features/setting/setting.dart';
+import 'package:nutrition/shared/theme/theme.dart';
+import 'package:nutrition/shared/widget/widget.dart';
 
-// import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:nutrition/core/widget/widget.dart';
-// import 'package:nutrition/features/setting/setting.dart';
+/// {@template setting_page}
+/// SettingPage widget
+/// {@endtemplate}
+class SettingPage extends ConsumerWidget {
+  /// {@macro setting_page}
+  const SettingPage({super.key});
 
-// import 'package:nutrition/features/widgets/widgets.dart';
-// import 'package:nutrition/localization/localization.dart';
-// import 'package:nutrition/navigation/navigation.dart';
+  static const path = '/SettingPage';
+  static const name = 'SettingPage';
 
-// class SettingPage extends StatelessWidget {
-//   const SettingPage({super.key});
-//   static const path = '/setting';
-//   static const name = 'setting';
-//   @override
-//   Widget build(BuildContext context) {
-//     return MultiBlocProvider(
-//       providers: [
-//         BlocProvider(
-//           create: (context) => SettingCubit(
-//             router: context.read<AppRouterService>(),
-//             cubitTheme: context.read<ThemeCubit>(),
-//             cubitLocale: context.read<LocaleCubit>(),
-//           )..load(),
-//         ),
-//       ],
-//       child: const _SettingPage(),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(settingProvider);
+    final stateTheme = state.themeSetting;
+    final notifier = ref.watch(settingProvider.notifier);
 
-// class _SettingPage extends StatelessWidget {
-//   const _SettingPage();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final cubit = context.read<SettingCubit>();
-
-//     final l = context.l10n;
-
-//     return Scaffold(
-//       appBar: AppBar(title: Text(l.setting)),
-//       body: SafeArea(
-//         child: ClearFocus(
-//           child: Padding(
-//             padding: const EdgeInsets.all(10),
-//             child: Column(
-//               children: [
-//                 AppCard(
-//                   child: BlocBuilder<SettingCubit, SettingState>(
-//                     buildWhen: (p, c) => p.themeActive != c.themeActive,
-//                     builder: (context, state) {
-//                       return BtnToggleText(
-//                         onPressed: cubit.changeTheme,
-//                         textList: [l.light_theme, l.dark_theme],
-//                         isSelected: state.boolsTheme,
-//                         title: l.app_theme,
-//                       );
-//                     },
-//                   ),
-//                 ),
-//                 const SizedBox(height: 20),
-//                 AppCard(
-//                   child: BlocBuilder<SettingCubit, SettingState>(
-//                     buildWhen: (p, c) => p.localeActive != c.localeActive,
-//                     builder: (context, state) {
-//                       return BtnToggleText(
-//                         onPressed: cubit.changeLocale,
-//                         textList: [l.lang_en, l.lang_ru],
-//                         isSelected: state.boolsLocale,
-//                         title: l.app_lang,
-//                       );
-//                     },
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Настройки')),
+        body: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            const Text(
+              'Тема приложения',
+              textAlign: TextAlign.center,
+              style: AppTextStyles.titleLarge,
+            ),
+            BtnToggleText(
+              textList: stateTheme.listTheme.map((e) => e.value).toList(),
+              isSelected: stateTheme.listSelected,
+              onPressed: notifier.setTheme,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

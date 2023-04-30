@@ -1,19 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:nutrition/core/services/navigation/navigation.dart';
-import 'package:nutrition/core/services/storage/app_storage_service.dart';
 import 'package:nutrition/features/steps/name/name.dart';
-
 import 'package:nutrition/features/welcome/welcome.dart';
-
 import 'package:nutrition/localization/localization.dart';
+import 'package:nutrition/navigation/navigation.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 
 final welcomeProvider =
     StateNotifierProvider.autoDispose<WelcomeNotifier, WelcomeState>(
   (ref) {
     return WelcomeNotifier(
       l: ref.watch(appLocalizationsProvider),
-      storage: ref.read(appStorageServiceProvider),
+      storage: ref.read(appStorageProvider),
       go: ref.read(appRouterServiceProvider),
     );
   },
@@ -22,7 +19,7 @@ final welcomeProvider =
 class WelcomeNotifier extends StateNotifier<WelcomeState> {
   WelcomeNotifier({
     required AppLocalizations l,
-    required AppStorageService storage,
+    required AppStorage storage,
     required AppRouterService go,
   })  : _storage = storage,
         _l = l,
@@ -30,7 +27,7 @@ class WelcomeNotifier extends StateNotifier<WelcomeState> {
         super(const WelcomeState());
 
   // ignore: unused_field
-  final AppStorageService _storage;
+  final AppStorage _storage;
   // ignore: unused_field
   final AppLocalizations _l;
 
