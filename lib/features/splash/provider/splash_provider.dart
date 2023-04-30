@@ -11,20 +11,20 @@ import 'package:sqflite/sqflite.dart';
 final splashProvider =
     StateNotifierProvider.autoDispose<SplashNotifier, SplashState>((ref) {
   return SplashNotifier(
-    router: ref.read(appRouterServiceProvider),
+    router: ref.read(appRouterProvider),
     storage: ref.read(appStorageProvider),
   )..load();
 });
 
 class SplashNotifier extends StateNotifier<SplashState> {
   SplashNotifier({
-    required AppRouterService router,
+    required AppRouter router,
     required AppStorage storage,
   })  : _go = router,
         _storage = storage,
         super(const SplashState.load());
   final AppStorage _storage;
-  final AppRouterService _go;
+  final AppRouter _go;
 
   // проверка если есть база новая то на дозагрузку
   Future<void> load() async {

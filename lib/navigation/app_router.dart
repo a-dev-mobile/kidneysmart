@@ -27,14 +27,14 @@ import 'package:nutrition/global/global.dart';
 import 'package:nutrition/navigation/models/app_state.dart';
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 
-final appRouterServiceProvider = Provider<AppRouterService>((ref) {
+final appRouterProvider = Provider<AppRouter>((ref) {
   final storage = ref.read(appStorageProvider);
 
-  return AppRouterService(storage: storage);
+  return AppRouter(storage: storage);
 });
 
-class AppRouterService {
-  AppRouterService({required AppStorage storage}) : _storage = storage;
+class AppRouter {
+  AppRouter({required AppStorage storage}) : _storage = storage;
 
   // private navigators
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();

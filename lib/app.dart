@@ -11,7 +11,7 @@ import 'package:intl/intl.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
 import 'package:nutrition/features/setting/setting.dart';
 import 'package:nutrition/localization/gen/app_localizations.dart';
-import 'package:nutrition/navigation/app_router_service.dart';
+import 'package:nutrition/navigation/app_router.dart';
 import 'package:nutrition/shared/domain/locale/locale_provider.dart';
 
 import 'package:nutrition/shared/theme/flex_theme.dart';
@@ -75,12 +75,12 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
     Brightness? statusBarIconBrightness;
 
     statusBarIconBrightness = isDark ? Brightness.light : Brightness.dark;
-
+    final colorOnPrimary = flexScheme.colorScheme.onPrimary;
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarIconBrightness: statusBarIconBrightness,
-        statusBarColor: flexScheme.colorScheme.onPrimary,
-        systemNavigationBarColor: flexScheme.colorScheme.onPrimary,
+        statusBarColor: colorOnPrimary,
+        systemNavigationBarColor: colorOnPrimary,
       ),
     );
   }
@@ -92,7 +92,7 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
 
     final settingState = ref.watch(settingProvider);
     final settingNotifier = ref.watch(settingProvider.notifier);
-    final navigator = ref.watch(appRouterServiceProvider);
+    final navigator = ref.watch(appRouterProvider);
     final debug = ref.watch(debugProvider);
     final locale = ref.watch(localeProvider);
 
@@ -103,7 +103,6 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
     //  global
     Intl.defaultLocale = locale.value;
     initStatusBar(enumTheme: settingState.themeSetting.enumTheme);
-    // print('main build');
 
     return BetterFeedback(
       child: DevicePreview(

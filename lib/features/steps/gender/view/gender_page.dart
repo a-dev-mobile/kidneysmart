@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nutrition/features/steps/common/common.dart';
+
+import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/gen/assets.gen.dart';
 import 'package:nutrition/global/global.dart';

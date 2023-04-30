@@ -16,7 +16,7 @@ final infoHtmlProvider = StateNotifierProvider.autoDispose
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageProvider),
       client: ref.read(networkClientProvider),
-      go: ref.read(appRouterServiceProvider),
+      go: ref.read(appRouterProvider),
     )..load(enumInfoType);
   },
 );
@@ -26,7 +26,7 @@ class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
     required AppLocalizations l,
     required AppStorage storage,
     required NetworkClientService client,
-    required AppRouterService go,
+    required AppRouter go,
   })  : _storage = storage,
         _l = l,
         _client = client,
@@ -42,7 +42,7 @@ class InfoHtmlNotifier extends StateNotifier<InfoHtmlState> {
   final NetworkClientService _client;
 
   // ignore: unused_field
-  final AppRouterService _go;
+  final AppRouter _go;
   // ignore: unused_field
 
   bool _isDarkTheme = false;

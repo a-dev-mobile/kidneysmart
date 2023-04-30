@@ -1,6 +1,6 @@
 enum EnumGender with Comparable<EnumGender> {
-  female('female'),
-  male('male'),
+  female('FEMALE'),
+  male('MALE'),
   none('none');
 
   const EnumGender(this.value);
@@ -19,9 +19,9 @@ enum EnumGender with Comparable<EnumGender> {
     EnumGender? fallback,
   }) {
     switch (value) {
-      case 'female':
+      case 'FEMALE':
         return female;
-      case 'male':
+      case 'MALE':
         return male;
       case 'none':
         return none;

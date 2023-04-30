@@ -20,7 +20,7 @@ class OndoardingNotifier extends StateNotifier<OnboardingState> {
   OndoardingNotifier({required Ref ref})
       : _storage = ref.read(appStorageProvider),
         _client = ref.read(networkClientProvider),
-        _go = ref.read(appRouterServiceProvider),
+        _go = ref.read(appRouterProvider),
         _loc = ref.watch(appLocalizationsProvider),
         super(
           const OnboardingState.load(),
@@ -28,7 +28,7 @@ class OndoardingNotifier extends StateNotifier<OnboardingState> {
   final NetworkClientService _client;
   final AppStorage _storage;
   final AppLocalizations _loc;
-  final AppRouterService _go;
+  final AppRouter _go;
 
   void load() {
     // final lang = EnumLang.fromValue(

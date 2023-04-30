@@ -16,6 +16,7 @@ import 'package:nutrition/features/steps/dialysis/dialysis.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
+import 'package:nutrition/features/steps/name/name.dart';
 import 'package:nutrition/features/steps/urine/urine.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/navigation/models/app_state.dart';
@@ -71,6 +72,18 @@ class AppStorage {
 
   Future<void> setSettingState(SettingState value) {
     return setJson(key: _settingState, value: value.toMap());
+  }
+// ******************************
+// ******************************
+
+  static const _stepNameState = 'StepNameState';
+
+  StepNameState getStepNameState() {
+    return StepNameState.fromMap(getJson(key: _stepNameState));
+  }
+
+  Future<void> setStepNameState(StepNameState value) {
+    return setJson(key: _stepNameState, value: value.toMap());
   }
 
 // ******************************

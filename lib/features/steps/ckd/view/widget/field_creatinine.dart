@@ -54,7 +54,7 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
           TitleSub(
             text: 'Укажите свой креатинин',
             onPressedInfo: () => ref
-                .read(appRouterServiceProvider)
+                .read(appRouterProvider)
                 .router
                 .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.creatinine),
           ),

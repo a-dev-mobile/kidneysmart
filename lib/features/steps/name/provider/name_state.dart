@@ -3,13 +3,21 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
+import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class StepNameState {
-  /* init: EnumResult.init */
-  final EnumResult enumResult;
+  /* init:'' */
+  final String result;
 
+  /* init:'' */
+  final String error;
+  /* init: EnumValid.init */
+  final EnumValid enumValid;
+
+  /* init: EnumGender.none */
+  final EnumGender enumGender;
   // end
 
 //          --TURN_GEN--
@@ -18,12 +26,18 @@ class StepNameState {
 //         GENERATED CODE
 //  *************************************
   const StepNameState({
-    this.enumResult = EnumResult.init,
+    this.result = '',
+    this.error = '',
+    this.enumValid = EnumValid.init,
+    this.enumGender = EnumGender.none,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumResult': enumResult.index,
+      'result': result,
+      'error': error,
+      'enumValid': enumValid.index,
+      'enumGender': enumGender.index,
     };
   }
 
@@ -31,17 +45,28 @@ class StepNameState {
     if (map == null) return const StepNameState();
 
     return StepNameState(
-      enumResult: map['enumResult'] != null
-          ? EnumResult.values[map['enumResult'] as int]
-          : EnumResult.init,
+      result: map['result'] as String? ?? '',
+      error: map['error'] as String? ?? '',
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
+      enumGender: map['enumGender'] != null
+          ? EnumGender.values[map['enumGender'] as int]
+          : EnumGender.none,
     );
   }
 
   StepNameState copyWith({
-    EnumResult? enumResult,
+    String? result,
+    String? error,
+    EnumValid? enumValid,
+    EnumGender? enumGender,
   }) {
     return StepNameState(
-      enumResult: enumResult ?? this.enumResult,
+      result: result ?? this.result,
+      error: error ?? this.error,
+      enumValid: enumValid ?? this.enumValid,
+      enumGender: enumGender ?? this.enumGender,
     );
   }
 
@@ -56,20 +81,38 @@ class StepNameState {
         (other.runtimeType == runtimeType &&
             other is StepNameState &&
             (identical(
-                  other.enumResult,
-                  enumResult,
+                  other.result,
+                  result,
                 ) ||
-                other.enumResult == enumResult));
+                other.result == result) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid) &&
+            (identical(
+                  other.enumGender,
+                  enumGender,
+                ) ||
+                other.enumGender == enumGender));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        enumResult,
+        result,
+        error,
+        enumValid,
+        enumGender,
       ]);
 
   @override
   String toString() {
-    return 'StepNameState(enumResult: $enumResult, )';
+    return 'StepNameState(result: $result, error: $error, enumValid: $enumValid, enumGender: $enumGender, )';
   }
 }

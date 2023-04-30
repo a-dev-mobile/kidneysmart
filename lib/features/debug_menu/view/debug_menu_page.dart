@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
 import 'package:nutrition/features/onboarding/onboarding.dart';
 import 'package:nutrition/features/splash/splash.dart';
-import 'package:nutrition/navigation/app_router_service.dart';
+import 'package:nutrition/navigation/app_router.dart';
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:nutrition/shared/theme/app_text_style.dart';
 import 'package:path_provider/path_provider.dart';
@@ -116,7 +116,7 @@ class DebugMenuPage extends ConsumerWidget {
                   OutlinedButton(
                     // ignore: prefer-extracting-callbacks
                     onPressed: () {
-                      final router = ref.read(appRouterServiceProvider).router;
+                      final router = ref.read(appRouterProvider).router;
                       if (router.canPop()) {
                         router.pop();
                       }
@@ -136,7 +136,7 @@ class DebugMenuPage extends ConsumerWidget {
                     onPressed: () {
                       ref.read(appStorageProvider).clearAll();
                       ref
-                          .read(appRouterServiceProvider)
+                          .read(appRouterProvider)
                           .router
                           .goNamed(SplashPage.name);
                     },

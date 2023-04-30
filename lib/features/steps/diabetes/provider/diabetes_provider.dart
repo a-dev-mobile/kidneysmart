@@ -13,7 +13,7 @@ final diabetesProvider =
     return DiabetesNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageProvider),
-      go: ref.read(appRouterServiceProvider),
+      go: ref.read(appRouterProvider),
     )..load();
   },
 );
@@ -22,7 +22,7 @@ class DiabetesNotifier extends StateNotifier<DiabetesState> {
   DiabetesNotifier({
     required AppLocalizations l,
     required AppStorage storage,
-    required AppRouterService go,
+    required AppRouter go,
   })  : _storage = storage,
         _l = l,
         _go = go,
@@ -34,7 +34,7 @@ class DiabetesNotifier extends StateNotifier<DiabetesState> {
   final AppLocalizations _l;
 
   // ignore: unused_field
-  final AppRouterService _go;
+  final AppRouter _go;
 
   /// preload
 

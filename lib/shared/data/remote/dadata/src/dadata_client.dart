@@ -4,15 +4,17 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:dio_log/interceptor/dio_log_interceptor.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/global/dart_define.dart';
 import 'package:nutrition/shared/data/remote/dadata/dadata.dart';
-import 'package:nutrition/shared/data/remote/network/network.dart';
 
-enum DaDataEnum { name, surname, patronymic, all }
+final daDataClientProvider = Provider<DaDataClient>((ref) {
+  return DaDataClient(apiKey: AppDartDefineConst.API_KEY_DADATA);
+});
 
 class DaDataClient {
   DaDataClient({
     required String apiKey,
-    required String userAgent,
   }) : _dio = Dio(
           BaseOptions(
             baseUrl: 'https://suggestions.dadata.ru/',
@@ -25,8 +27,6 @@ class DaDataClient {
           ),
         )..interceptors.addAll([
             DioLogInterceptor(),
-            AcceptInterceptor(),
-            UserAgentInterceptor(userAgent),
           ]);
 
   final Dio _dio;

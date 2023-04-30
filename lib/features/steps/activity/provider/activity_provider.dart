@@ -14,7 +14,7 @@ final activityProvider =
     return ActivityNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageProvider),
-      go: ref.read(appRouterServiceProvider),
+      go: ref.read(appRouterProvider),
     )..load();
   },
 );
@@ -23,7 +23,7 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
   ActivityNotifier({
     required AppLocalizations l,
     required AppStorage storage,
-    required AppRouterService go,
+    required AppRouter go,
   })  : _storage = storage,
         _l = l,
         _go = go,
@@ -35,7 +35,7 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
   final AppLocalizations _l;
 
   // ignore: unused_field
-  final AppRouterService _go;
+  final AppRouter _go;
 
   /// preload
 

@@ -28,7 +28,7 @@ class BtnCkd extends ConsumerWidget {
       children: [
         BtnToggleText(
           onPressedInfo: () => ref
-              .read(appRouterServiceProvider)
+              .read(appRouterProvider)
               .router
               .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.activity),
           textList: listTextWithoutLast.toList(),
