@@ -62,11 +62,8 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
 
     error = v?.isEmpty ?? true && state.result.isEmpty ? 'Введите имя' : null;
 
-    final enumGender = EnumGender.fromValue(v, fallback: EnumGender.none);
-
     state = state.copyWith(
       result: v,
-      enumGender: enumGender,
       error: error,
       enumValid: error == null ? EnumValid.valid : EnumValid.error,
     );
@@ -97,6 +94,10 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
     state = state.copyWith(enumGender: enumGender);
 
     _storage.setStepNameState(state);
+    // if guessed right gender - for next page - clean state
+    if (enumGender != EnumGender.none) {
+      _storage.setGenderState(const StepGenderState());
+    }
   }
 
   void setKeyboard({required bool isKeyboardOpen}) {

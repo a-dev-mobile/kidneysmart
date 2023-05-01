@@ -124,11 +124,11 @@ class AppStorage {
 // ******************************
   static const _activityState = '_activityState';
 
-  ActivityState getActivityState() {
-    return ActivityState.fromMap(getJson(key: _activityState));
+  StepActivityState getActivityState() {
+    return StepActivityState.fromMap(getJson(key: _activityState));
   }
 
-  Future<void> setActivityState(ActivityState value) {
+  Future<void> setActivityState(StepActivityState value) {
     return setJson(key: _activityState, value: value.toMap());
   }
 

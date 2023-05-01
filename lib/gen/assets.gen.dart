@@ -39,6 +39,10 @@ class AssetPaths {
   /// * File path: _assets/lottie/water_up.json
   static const String waterUpLottie = 'assets/lottie/water_up.json';
 
+  /// * Size:	130.5 KB
+  /// * File path: _assets/svg/activity.svg
+  static const String activitySvg = 'assets/svg/activity.svg';
+
   /// * Size:	44.9 KB
   /// * File path: _assets/svg/date.svg
   static const String dateSvg = 'assets/svg/date.svg';
@@ -140,6 +144,7 @@ class AssetPaths {
   /// List of SVG assets
   static const List<String> valuesSVG = [
     onboardingRemindYouImage,
+    activitySvg,
     dateSvg,
     genderSvg,
     heightFemaleSvg,
@@ -186,6 +191,7 @@ class AssetPaths {
     loadPageLottie,
     waterDownLottie,
     waterUpLottie,
+    activitySvg,
     dateSvg,
     genderSvg,
     heightFemaleSvg,

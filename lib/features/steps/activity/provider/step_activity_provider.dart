@@ -8,10 +8,10 @@ import 'package:nutrition/shared/enum/enum.dart';
 import 'package:nutrition/shared/utils/app_utils.dart';
 import 'package:nutrition/shared/utils/utils.dart';
 
-final activityProvider =
-    StateNotifierProvider.autoDispose<ActivityNotifier, ActivityState>(
+final stepActivityProvider =
+    StateNotifierProvider.autoDispose<StepActivityNotifier, StepActivityState>(
   (ref) {
-    return ActivityNotifier(
+    return StepActivityNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageProvider),
       go: ref.read(appRouterProvider),
@@ -19,8 +19,8 @@ final activityProvider =
   },
 );
 
-class ActivityNotifier extends StateNotifier<ActivityState> {
-  ActivityNotifier({
+class StepActivityNotifier extends StateNotifier<StepActivityState> {
+  StepActivityNotifier({
     required AppLocalizations l,
     required AppStorage storage,
     required AppRouter go,
@@ -39,10 +39,28 @@ class ActivityNotifier extends StateNotifier<ActivityState> {
 
   /// preload
 
-  List<ActivityItemModel> get _initActivity {
-    return <ActivityItemModel>[
-      ActivityItemModel(enumActivity: EnumActivity.light, value: _l.light),
-      ActivityItemModel(enumActivity: EnumActivity.normal, value: _l.normal),
+  List<StepActivityItemModel> get _initActivity {
+    return <StepActivityItemModel>[
+      const StepActivityItemModel(
+        enumActivity: EnumActivity.slightlyActive_1,
+        title: 'Слегка активный',
+        content: 'Сидячая работа, напр., офисный служащий',
+      ),
+      const StepActivityItemModel(
+        enumActivity: EnumActivity.moderatelyActive_2,
+        title: 'Умеренно активный',
+        content: 'Стоячая работа, например, учителем',
+      ),
+      const StepActivityItemModel(
+        enumActivity: EnumActivity.active_3,
+        title: 'Aктивный',
+        content: 'Ходячая работа, например, продавец',
+      ),
+      const StepActivityItemModel(
+        enumActivity: EnumActivity.veryActive_4,
+        title: 'Очень активный',
+        content: 'Физическая работа, например, строитель',
+      ),
     ];
   }
 

@@ -102,6 +102,7 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
                 ),
                 const SizedBox(height: 16),
                 TextField(
+                  autofocus: true,
                   controller: controller,
                   decoration: InputDecoration(
                     labelText: 'Вес',

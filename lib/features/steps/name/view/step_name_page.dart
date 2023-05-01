@@ -98,9 +98,10 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
                   hideOnLoading: true,
                   hideOnError: true,
                   suggestionsBoxDecoration: const SuggestionsBoxDecoration(
-                    constraints: BoxConstraints(maxHeight: 100),
+                    constraints: BoxConstraints(maxHeight: 150),
                   ),
                   textFieldConfiguration: TextFieldConfiguration(
+                    autofocus: true,
                     decoration: InputDecoration(
                       labelText: 'Введите имя',
                       errorMaxLines: 3,
@@ -124,8 +125,9 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
 
                   // ignore: prefer-extracting-callbacks
                   onSuggestionSelected: (DataFio suggestion) {
-                    notifier.setName(suggestion.name);
-                    // notifier.getSuggestionsName(suggestion.gender);
+                    notifier
+                      ..setName(suggestion.name)
+                      ..setGender(suggestion.gender);
 
                     controller.text = suggestion.name;
                   },

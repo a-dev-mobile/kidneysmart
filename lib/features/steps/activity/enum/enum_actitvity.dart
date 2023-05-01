@@ -1,7 +1,9 @@
 enum EnumActivity with Comparable<EnumActivity> {
 // light
-  normal('normal'),
-  light('light'),
+  slightlyActive_1('slightlyActive'),
+  moderatelyActive_2('moderatelyActive'),
+  active_3('active'),
+  veryActive_4('veryActive'),
   none('none');
 
   const EnumActivity(this.value);
@@ -20,10 +22,14 @@ enum EnumActivity with Comparable<EnumActivity> {
     EnumActivity? fallback,
   }) {
     switch (value) {
-      case 'normal':
-        return normal;
-      case 'light':
-        return light;
+      case 'slightlyActive':
+        return slightlyActive_1;
+      case 'moderatelyActive':
+        return moderatelyActive_2;
+      case 'active':
+        return active_3;
+      case 'veryActive':
+        return veryActive_4;
       case 'none':
         return none;
       default:
@@ -37,30 +43,42 @@ enum EnumActivity with Comparable<EnumActivity> {
   }
 
   T map<T>({
-    required T Function() normal,
-    required T Function() light,
+    required T Function() slightlyActive_1,
+    required T Function() moderatelyActive_2,
+    required T Function() active_3,
+    required T Function() veryActive_4,
     required T Function() none,
   }) {
     switch (this) {
-      case EnumActivity.normal:
-        return normal();
-      case EnumActivity.light:
-        return light();
+      case EnumActivity.slightlyActive_1:
+        return slightlyActive_1();
+      case EnumActivity.moderatelyActive_2:
+        return moderatelyActive_2();
+      case EnumActivity.active_3:
+        return active_3();
+      case EnumActivity.veryActive_4:
+        return veryActive_4();
       case EnumActivity.none:
         return none();
     }
   }
 
   T mapValue<T>({
-    required T normal,
-    required T light,
+    required T slightlyActive_1,
+    required T moderatelyActive_2,
+    required T active_3,
+    required T veryActive_4,
     required T none,
   }) {
     switch (this) {
-      case EnumActivity.normal:
-        return normal;
-      case EnumActivity.light:
-        return light;
+      case EnumActivity.slightlyActive_1:
+        return slightlyActive_1;
+      case EnumActivity.moderatelyActive_2:
+        return moderatelyActive_2;
+      case EnumActivity.active_3:
+        return active_3;
+      case EnumActivity.veryActive_4:
+        return veryActive_4;
       case EnumActivity.none:
         return none;
     }
@@ -68,49 +86,65 @@ enum EnumActivity with Comparable<EnumActivity> {
 
   T maybeMap<T>({
     required T Function() orElse,
-    T Function()? normal,
-    T Function()? light,
+    T Function()? slightlyActive_1,
+    T Function()? moderatelyActive_2,
+    T Function()? active_3,
+    T Function()? veryActive_4,
     T Function()? none,
   }) =>
       map<T>(
-        normal: normal ?? orElse,
-        light: light ?? orElse,
+        slightlyActive_1: slightlyActive_1 ?? orElse,
+        moderatelyActive_2: moderatelyActive_2 ?? orElse,
+        active_3: active_3 ?? orElse,
+        veryActive_4: veryActive_4 ?? orElse,
         none: none ?? orElse,
       );
 
   T maybeMapValue<T>({
     required T orElse,
-    T? normal,
-    T? light,
+    T? slightlyActive_1,
+    T? moderatelyActive_2,
+    T? active_3,
+    T? veryActive_4,
     T? none,
   }) =>
       mapValue<T>(
-        normal: normal ?? orElse,
-        light: light ?? orElse,
+        slightlyActive_1: slightlyActive_1 ?? orElse,
+        moderatelyActive_2: moderatelyActive_2 ?? orElse,
+        active_3: active_3 ?? orElse,
+        veryActive_4: veryActive_4 ?? orElse,
         none: none ?? orElse,
       );
 
   T? maybeMapOrNull<T>({
-    T Function()? normal,
-    T Function()? light,
+    T Function()? slightlyActive_1,
+    T Function()? moderatelyActive_2,
+    T Function()? active_3,
+    T Function()? veryActive_4,
     T Function()? none,
   }) =>
       maybeMap<T?>(
         orElse: () => null,
-        normal: normal,
-        light: light,
+        slightlyActive_1: slightlyActive_1,
+        moderatelyActive_2: moderatelyActive_2,
+        active_3: active_3,
+        veryActive_4: veryActive_4,
         none: none,
       );
 
   T? maybeMapOrNullValue<T>({
-    T? normal,
-    T? light,
+    T? slightlyActive_1,
+    T? moderatelyActive_2,
+    T? active_3,
+    T? veryActive_4,
     T? none,
   }) =>
       maybeMapValue<T?>(
         orElse: null,
-        normal: normal,
-        light: light,
+        slightlyActive_1: slightlyActive_1,
+        moderatelyActive_2: moderatelyActive_2,
+        active_3: active_3,
+        veryActive_4: veryActive_4,
         none: none,
       );
 

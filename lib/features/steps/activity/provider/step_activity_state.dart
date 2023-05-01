@@ -8,7 +8,7 @@ import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
-class ActivityState {
+class StepActivityState {
   final int? selectedIndex;
   /* init: EnumActivity.none */
   final EnumActivity enumActivity;
@@ -17,7 +17,7 @@ class ActivityState {
   /* init: '' */
   final String error;
   /* init:const [] */
-  final List<ActivityItemModel> listActivity;
+  final List<StepActivityItemModel> listActivity;
 
 /* init: [] */
   final List<bool> listSelected;
@@ -29,7 +29,7 @@ class ActivityState {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const ActivityState({
+  const StepActivityState({
     this.enumActivity = EnumActivity.none,
     this.enumValid = EnumValid.init,
     this.error = '',
@@ -49,10 +49,10 @@ class ActivityState {
     };
   }
 
-  factory ActivityState.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const ActivityState();
+  factory StepActivityState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const StepActivityState();
 
-    return ActivityState(
+    return StepActivityState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumActivity: map['enumActivity'] != null
           ? EnumActivity.values[map['enumActivity'] as int]
@@ -64,7 +64,8 @@ class ActivityState {
       listActivity: map['listActivity'] != null
           ? (map['listActivity'] as List<dynamic>)
               .map(
-                (e) => ActivityItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) =>
+                    StepActivityItemModel.fromMap(e as Map<dynamic, dynamic>),
               )
               .toList()
           : const [],
@@ -75,15 +76,15 @@ class ActivityState {
     );
   }
 
-  ActivityState copyWith({
+  StepActivityState copyWith({
     int? selectedIndex,
     EnumActivity? enumActivity,
     EnumValid? enumValid,
     String? error,
-    List<ActivityItemModel>? listActivity,
+    List<StepActivityItemModel>? listActivity,
     List<bool>? listSelected,
   }) {
-    return ActivityState(
+    return StepActivityState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
       enumActivity: enumActivity ?? this.enumActivity,
       enumValid: enumValid ?? this.enumValid,
@@ -94,7 +95,8 @@ class ActivityState {
   }
 
   String toJson() => json.encode(toMap());
-  factory ActivityState.fromJson(String source) => ActivityState.fromMap(
+  factory StepActivityState.fromJson(String source) =>
+      StepActivityState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -102,7 +104,7 @@ class ActivityState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ActivityState &&
+            other is StepActivityState &&
             (identical(
                   other.selectedIndex,
                   selectedIndex,
@@ -150,6 +152,6 @@ class ActivityState {
 
   @override
   String toString() {
-    return 'ActivityState(selectedIndex: $selectedIndex, enumActivity: $enumActivity, enumValid: $enumValid, error: $error, listActivity: $listActivity, listSelected: $listSelected, )';
+    return 'StepActivityState(selectedIndex: $selectedIndex, enumActivity: $enumActivity, enumValid: $enumValid, error: $error, listActivity: $listActivity, listSelected: $listSelected, )';
   }
 }

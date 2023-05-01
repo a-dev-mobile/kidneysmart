@@ -5,12 +5,13 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
 
 @immutable
-class ActivityItemModel {
+class StepActivityItemModel {
 /* init: EnumActivity.none */
   final EnumActivity enumActivity;
 /* init: '' */
-  final String value;
-
+  final String title;
+/* init: '' */
+  final String content;
 // end
 
 //          --TURN_GEN--
@@ -18,42 +19,47 @@ class ActivityItemModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const ActivityItemModel({
+  const StepActivityItemModel({
     this.enumActivity = EnumActivity.none,
-    this.value = '',
+    this.title = '',
+    this.content = '',
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enumActivity': enumActivity.index,
-      'value': value,
+      'title': title,
+      'content': content,
     };
   }
 
-  factory ActivityItemModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const ActivityItemModel();
+  factory StepActivityItemModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const StepActivityItemModel();
 
-    return ActivityItemModel(
+    return StepActivityItemModel(
       enumActivity: map['enumActivity'] != null
           ? EnumActivity.values[map['enumActivity'] as int]
           : EnumActivity.none,
-      value: map['value'] as String? ?? '',
+      title: map['title'] as String? ?? '',
+      content: map['content'] as String? ?? '',
     );
   }
 
-  ActivityItemModel copyWith({
+  StepActivityItemModel copyWith({
     EnumActivity? enumActivity,
-    String? value,
+    String? title,
+    String? content,
   }) {
-    return ActivityItemModel(
+    return StepActivityItemModel(
       enumActivity: enumActivity ?? this.enumActivity,
-      value: value ?? this.value,
+      title: title ?? this.title,
+      content: content ?? this.content,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory ActivityItemModel.fromJson(String source) =>
-      ActivityItemModel.fromMap(
+  factory StepActivityItemModel.fromJson(String source) =>
+      StepActivityItemModel.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -61,28 +67,34 @@ class ActivityItemModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ActivityItemModel &&
+            other is StepActivityItemModel &&
             (identical(
                   other.enumActivity,
                   enumActivity,
                 ) ||
                 other.enumActivity == enumActivity) &&
             (identical(
-                  other.value,
-                  value,
+                  other.title,
+                  title,
                 ) ||
-                other.value == value));
+                other.title == title) &&
+            (identical(
+                  other.content,
+                  content,
+                ) ||
+                other.content == content));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         enumActivity,
-        value,
+        title,
+        content,
       ]);
 
   @override
   String toString() {
-    return 'ActivityItemModel(enumActivity: $enumActivity, value: $value, )';
+    return 'StepActivityItemModel(enumActivity: $enumActivity, title: $title, content: $content, )';
   }
 }
