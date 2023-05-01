@@ -8,7 +8,7 @@ import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
-class GenderState {
+class StepGenderState {
   final int? selectedIndex;
   /* init: EnumGender.none */
   final EnumGender enumGender;
@@ -18,10 +18,12 @@ class GenderState {
   final String error;
   /* init:const [] */
   final List<GenderItemModel> listGender;
-
-/* init: [] */
+  /* init: false */
+  final bool isDefinedGenderInStepName;
+  /* init: [] */
   final List<bool> listSelected;
-
+  /* init: '' */
+  final String name;
   // end
 
 //          --TURN_GEN--
@@ -29,12 +31,14 @@ class GenderState {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const GenderState({
+  const StepGenderState({
     this.enumGender = EnumGender.none,
     this.enumValid = EnumValid.init,
     this.error = '',
     this.listGender = const [],
+    this.isDefinedGenderInStepName = false,
     this.listSelected = const [],
+    this.name = '',
     this.selectedIndex,
   });
 
@@ -45,14 +49,16 @@ class GenderState {
       'enumValid': enumValid.index,
       'error': error,
       'listGender': listGender.map((e) => e.toMap()).toList(),
+      'isDefinedGenderInStepName': isDefinedGenderInStepName,
       'listSelected': listSelected,
+      'name': name,
     };
   }
 
-  factory GenderState.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const GenderState();
+  factory StepGenderState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const StepGenderState();
 
-    return GenderState(
+    return StepGenderState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumGender: map['enumGender'] != null
           ? EnumGender.values[map['enumGender'] as int]
@@ -68,33 +74,41 @@ class GenderState {
               )
               .toList()
           : const [],
+      isDefinedGenderInStepName:
+          map['isDefinedGenderInStepName'] as bool? ?? false,
       listSelected: (map['listSelected'] as List<dynamic>?)
               ?.map((e) => e as bool)
               .toList() ??
           const [],
+      name: map['name'] as String? ?? '',
     );
   }
 
-  GenderState copyWith({
+  StepGenderState copyWith({
     int? selectedIndex,
     EnumGender? enumGender,
     EnumValid? enumValid,
     String? error,
     List<GenderItemModel>? listGender,
+    bool? isDefinedGenderInStepName,
     List<bool>? listSelected,
+    String? name,
   }) {
-    return GenderState(
+    return StepGenderState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
       enumGender: enumGender ?? this.enumGender,
       enumValid: enumValid ?? this.enumValid,
       error: error ?? this.error,
       listGender: listGender ?? this.listGender,
+      isDefinedGenderInStepName:
+          isDefinedGenderInStepName ?? this.isDefinedGenderInStepName,
       listSelected: listSelected ?? this.listSelected,
+      name: name ?? this.name,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory GenderState.fromJson(String source) => GenderState.fromMap(
+  factory StepGenderState.fromJson(String source) => StepGenderState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -102,7 +116,7 @@ class GenderState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GenderState &&
+            other is StepGenderState &&
             (identical(
                   other.selectedIndex,
                   selectedIndex,
@@ -127,10 +141,20 @@ class GenderState {
               other.listGender,
               listGender,
             ) &&
+            (identical(
+                  other.isDefinedGenderInStepName,
+                  isDefinedGenderInStepName,
+                ) ||
+                other.isDefinedGenderInStepName == isDefinedGenderInStepName) &&
             const DeepCollectionEquality().equals(
               other.listSelected,
               listSelected,
-            ));
+            ) &&
+            (identical(
+                  other.name,
+                  name,
+                ) ||
+                other.name == name));
   }
 
   @override
@@ -143,13 +167,15 @@ class GenderState {
         const DeepCollectionEquality().hash(
           listGender,
         ),
+        isDefinedGenderInStepName,
         const DeepCollectionEquality().hash(
           listSelected,
         ),
+        name,
       ]);
 
   @override
   String toString() {
-    return 'GenderState(selectedIndex: $selectedIndex, enumGender: $enumGender, enumValid: $enumValid, error: $error, listGender: $listGender, listSelected: $listSelected, )';
+    return 'StepGenderState(selectedIndex: $selectedIndex, enumGender: $enumGender, enumValid: $enumValid, error: $error, listGender: $listGender, isDefinedGenderInStepName: $isDefinedGenderInStepName, listSelected: $listSelected, name: $name, )';
   }
 }

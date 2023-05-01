@@ -7,10 +7,10 @@ import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 import 'package:nutrition/shared/utils/utils.dart';
 
-final genderProvider =
-    StateNotifierProvider.autoDispose<GenderNotifier, GenderState>(
+final stepGenderProvider =
+    StateNotifierProvider.autoDispose<StepGenderNotifier, StepGenderState>(
   (ref) {
-    return GenderNotifier(
+    return StepGenderNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageProvider),
       go: ref.read(appRouterProvider),
@@ -18,8 +18,8 @@ final genderProvider =
   },
 );
 
-class GenderNotifier extends StateNotifier<GenderState> {
-  GenderNotifier({
+class StepGenderNotifier extends StateNotifier<StepGenderState> {
+  StepGenderNotifier({
     required AppLocalizations l,
     required AppStorage storage,
     required AppRouter go,
@@ -48,16 +48,29 @@ class GenderNotifier extends StateNotifier<GenderState> {
   bool get isValid => state.enumValid.maybeMapValue(orElse: false, valid: true);
 
   void load() {
+    final stateStepName = _storage.getStepNameState();
+
     state = state.copyWith(
       listGender: _initGender,
+      name: stateStepName.result,
       listSelected: AppUtilsArray.getListBool(
         length: _initGender.length,
         selectedIndex: state.selectedIndex,
       ),
     );
+// если на предыдущем шаге определен пол
+    var selectedIndex = state.selectedIndex;
+    if (selectedIndex == null &&
+        stateStepName.enumGender.maybeMapValue(orElse: true, none: false)) {
+      selectedIndex = _initGender
+          .indexWhere((e) => e.enumGender == stateStepName.enumGender);
+
+      setGender(selectedIndex, true);
+    }
   }
 
-  void setGender(int? v) {
+  // ignore: avoid_positional_boolean_parameters
+  void setGender(int? v, [bool isDefinedGenderInStepName = false]) {
     var error = '';
     if (v == null && state.selectedIndex == null) {
       error = _l.gender_not_selected;
@@ -74,6 +87,7 @@ class GenderNotifier extends StateNotifier<GenderState> {
     state = state.copyWith(
       listGender: listGender,
       selectedIndex: v,
+      isDefinedGenderInStepName: isDefinedGenderInStepName,
       listSelected: listBool,
       enumGender:
           selectedIndex != null ? listGender[selectedIndex].enumGender : null,
@@ -84,11 +98,7 @@ class GenderNotifier extends StateNotifier<GenderState> {
     _storage.setGenderState(state);
   }
 
-  void backPage() {
-    _go.router.pop();
-  }
-
   void nextPage() {
-    _go.router.pushNamed<void>(BirthdayPage.name);
+    _go.router.pushNamed<void>(StepBirthdayPage.name);
   }
 }

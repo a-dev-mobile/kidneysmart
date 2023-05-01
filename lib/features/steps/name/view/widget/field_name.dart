@@ -52,7 +52,6 @@ class _FieldNameState extends State<FieldName> {
         constraints: BoxConstraints(maxHeight: 100),
       ),
       textFieldConfiguration: TextFieldConfiguration(
-        autofocus: true,
         decoration: InputDecoration(
           labelText: 'Введите имя',
           errorMaxLines: 3,

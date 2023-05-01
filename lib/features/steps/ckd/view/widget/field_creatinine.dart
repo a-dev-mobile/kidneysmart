@@ -65,7 +65,6 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
               GestureDetector(
                 onTap: () => _showSnack(context),
                 child: TextField(
-                  autofocus: true,
                   enabled: isEnabled,
                   controller: controller,
                   decoration: InputDecoration(

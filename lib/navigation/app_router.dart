@@ -119,11 +119,11 @@ class AppRouter {
           //   ),
           // ),
           GoRoute(
-            path: GenderPage.path,
-            name: GenderPage.name,
+            path: StepGenderPage.path,
+            name: StepGenderPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const GenderPage(),
+              child: const StepGenderPage(),
             ),
           ),
           GoRoute(
@@ -143,27 +143,27 @@ class AppRouter {
             ),
           ),
           GoRoute(
-            path: BirthdayPage.path,
-            name: BirthdayPage.name,
+            path: StepBirthdayPage.path,
+            name: StepBirthdayPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const BirthdayPage(),
+              child: const StepBirthdayPage(),
             ),
           ),
           GoRoute(
-            path: HeightPage.path,
-            name: HeightPage.name,
+            path: StepHeightPage.path,
+            name: StepHeightPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const HeightPage(),
+              child: const StepHeightPage(),
             ),
           ),
           GoRoute(
-            path: WeightPage.path,
-            name: WeightPage.name,
+            path: StepWeightPage.path,
+            name: StepWeightPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const WeightPage(),
+              child: const StepWeightPage(),
             ),
           ),
           GoRoute(
@@ -271,7 +271,7 @@ class AppRouter {
     }
 
     if (appState.isOnboardingCompleted && !appState.isFirstTime) {
-      router.goNamed(GenderPage.name);
+      router.goNamed(StepGenderPage.name);
 
       return;
     }

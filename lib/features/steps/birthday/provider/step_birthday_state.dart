@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
-class BirthdayState {
+class StepBirthdayState {
   /* init: const [] */
   final List<String> days;
   /* init: const [] */
@@ -43,7 +43,7 @@ class BirthdayState {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const BirthdayState({
+  const StepBirthdayState({
     this.days = const [],
     this.months = const [],
     this.years = const [],
@@ -75,10 +75,10 @@ class BirthdayState {
     };
   }
 
-  factory BirthdayState.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const BirthdayState();
+  factory StepBirthdayState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const StepBirthdayState();
 
-    return BirthdayState(
+    return StepBirthdayState(
       days: (map['days'] as List<dynamic>?)?.map((e) => e as String).toList() ??
           const [],
       months:
@@ -103,7 +103,7 @@ class BirthdayState {
     );
   }
 
-  BirthdayState copyWith({
+  StepBirthdayState copyWith({
     List<String>? days,
     List<String>? months,
     List<String>? years,
@@ -117,7 +117,7 @@ class BirthdayState {
     DateTime? dateTime,
     EnumValid? enumValid,
   }) {
-    return BirthdayState(
+    return StepBirthdayState(
       days: days ?? this.days,
       months: months ?? this.months,
       years: years ?? this.years,
@@ -134,7 +134,8 @@ class BirthdayState {
   }
 
   String toJson() => json.encode(toMap());
-  factory BirthdayState.fromJson(String source) => BirthdayState.fromMap(
+  factory StepBirthdayState.fromJson(String source) =>
+      StepBirthdayState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -142,7 +143,7 @@ class BirthdayState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is BirthdayState &&
+            other is StepBirthdayState &&
             const DeepCollectionEquality().equals(
               other.days,
               days,
@@ -227,6 +228,6 @@ class BirthdayState {
 
   @override
   String toString() {
-    return 'BirthdayState(days: $days, months: $months, years: $years, day: $day, year: $year, month: $month, userMonth: $userMonth, userYearFine: $userYearFine, userYearCoarse: $userYearCoarse, error: $error, dateTime: $dateTime, enumValid: $enumValid, )';
+    return 'StepBirthdayState(days: $days, months: $months, years: $years, day: $day, year: $year, month: $month, userMonth: $userMonth, userYearFine: $userYearFine, userYearCoarse: $userYearCoarse, error: $error, dateTime: $dateTime, enumValid: $enumValid, )';
   }
 }

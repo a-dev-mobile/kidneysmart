@@ -9,10 +9,10 @@ import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 import 'package:nutrition/shared/utils/utils.dart';
 
-final birthdayProvider =
-    StateNotifierProvider.autoDispose<BirthdayNotifier, BirthdayState>(
+final stepBirthdayProvider =
+    StateNotifierProvider.autoDispose<StepBirthdayNotifier, StepBirthdayState>(
   (ref) {
-    return BirthdayNotifier(
+    return StepBirthdayNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageProvider),
       go: ref.read(appRouterProvider),
@@ -20,8 +20,8 @@ final birthdayProvider =
   },
 );
 
-class BirthdayNotifier extends StateNotifier<BirthdayState> {
-  BirthdayNotifier({
+class StepBirthdayNotifier extends StateNotifier<StepBirthdayState> {
+  StepBirthdayNotifier({
     required AppLocalizations l,
     required AppStorage storage,
     required AppRouter go,
@@ -165,6 +165,6 @@ class BirthdayNotifier extends StateNotifier<BirthdayState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(HeightPage.name);
+    _go.router.pushNamed<void>(StepHeightPage.name);
   }
 }

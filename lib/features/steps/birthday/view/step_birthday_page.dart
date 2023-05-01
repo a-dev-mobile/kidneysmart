@@ -1,30 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
+import 'package:nutrition/features/steps/common/widget/widget.dart';
+import 'package:nutrition/gen/gen.dart';
 import 'package:nutrition/localization/localization.dart';
+import 'package:nutrition/shared/theme/theme.dart';
 import 'package:nutrition/shared/widget/widget.dart';
 
-class BirthdayPage extends ConsumerWidget {
-  const BirthdayPage({super.key});
+class StepBirthdayPage extends ConsumerWidget {
+  const StepBirthdayPage({super.key});
 
   static const path = '/BirthdayPage';
   static const name = 'BirthdayPage';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(birthdayProvider);
-    final notifier = ref.watch(birthdayProvider.notifier);
+    final state = ref.watch(stepBirthdayProvider);
+    final notifier = ref.watch(stepBirthdayProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: const AppMyAppBar(),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(16),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
-              const Spacer(),
-              const Text('Пожалуйста, укажите свою дату рождения:'),
+              const Text(
+                'Еще несколько вопросов!',
+                style: AppTextStyles.headlineLarge,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 185,
+                width: 360,
+                child: SvgPicture.asset(AssetPaths.dateSvg),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Когда Ваш день рождения?',
+                style: AppTextStyles.headlineLarge,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -55,10 +75,10 @@ class BirthdayPage extends ConsumerWidget {
                 error: state.enumValid.maybeMapOrNullValue(error: state.error),
               ),
               const Spacer(),
-              BasicButton(
-                onPressed: notifier.nextPage,
-                disabled: !notifier.isValid,
-                text: 'Продолжить',
+              BtnStepNextBack(
+                isValid: notifier.isValid,
+                backPressed: context.pop<void>,
+                nextPressed: notifier.nextPage,
               ),
             ],
           ),

@@ -102,11 +102,11 @@ class AppStorage {
 // ******************************
   static const _genderState = '_genderState';
 
-  GenderState getGenderState() {
-    return GenderState.fromMap(getJson(key: _genderState));
+  StepGenderState getGenderState() {
+    return StepGenderState.fromMap(getJson(key: _genderState));
   }
 
-  Future<void> setGenderState(GenderState value) {
+  Future<void> setGenderState(StepGenderState value) {
     return setJson(key: _genderState, value: value.toMap());
   }
 
@@ -158,11 +158,11 @@ class AppStorage {
 // ******************************
   static const _dateBirthdayState = '_dateBirthdayState';
 
-  BirthdayState getBirthdayState() {
-    return BirthdayState.fromMap(getJson(key: _dateBirthdayState));
+  StepBirthdayState getBirthdayState() {
+    return StepBirthdayState.fromMap(getJson(key: _dateBirthdayState));
   }
 
-  Future<void> setBirthdayState(BirthdayState value) {
+  Future<void> setBirthdayState(StepBirthdayState value) {
     return setJson(key: _dateBirthdayState, value: value.toMap());
   }
 
@@ -232,11 +232,11 @@ class AppStorage {
 // ******************************
   static const _heightState = '_heightState';
 
-  HeightState getHeightState() {
-    return HeightState.fromMap(getJson(key: _heightState));
+  StepHeightState getHeightState() {
+    return StepHeightState.fromMap(getJson(key: _heightState));
   }
 
-  Future<void> setHeightState(HeightState value) {
+  Future<void> setHeightState(StepHeightState value) {
     return setJson(
       key: _heightState,
       value: value.toMap(),

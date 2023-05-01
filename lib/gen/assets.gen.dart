@@ -39,9 +39,21 @@ class AssetPaths {
   /// * File path: _assets/lottie/water_up.json
   static const String waterUpLottie = 'assets/lottie/water_up.json';
 
+  /// * Size:	44.9 KB
+  /// * File path: _assets/svg/date.svg
+  static const String dateSvg = 'assets/svg/date.svg';
+
   /// * Size:	54.1 KB
   /// * File path: _assets/svg/gender.svg
   static const String genderSvg = 'assets/svg/gender.svg';
+
+  /// * Size:	24.6 KB
+  /// * File path: _assets/svg/height_female.svg
+  static const String heightFemaleSvg = 'assets/svg/height_female.svg';
+
+  /// * Size:	28.2 KB
+  /// * File path: _assets/svg/height_male.svg
+  static const String heightMaleSvg = 'assets/svg/height_male.svg';
 
   /// * Size:	746.0 B
   /// * File path: _assets/svg/ic_error.svg
@@ -111,6 +123,14 @@ class AssetPaths {
   /// * File path: _assets/svg/sort_desc.svg
   static const String sortDescSvg = 'assets/svg/sort_desc.svg';
 
+  /// * Size:	23.6 KB
+  /// * File path: _assets/svg/weight_male.svg
+  static const String weightMaleSvg = 'assets/svg/weight_male.svg';
+
+  /// * Size:	32.1 KB
+  /// * File path: _assets/svg/weigh_female.svg
+  static const String weighFemaleSvg = 'assets/svg/weigh_female.svg';
+
   /// List of DB assets
   static const List<String> valuesDB = [dbDb];
 
@@ -120,7 +140,10 @@ class AssetPaths {
   /// List of SVG assets
   static const List<String> valuesSVG = [
     onboardingRemindYouImage,
+    dateSvg,
     genderSvg,
+    heightFemaleSvg,
+    heightMaleSvg,
     icErrorSvg,
     icErrorCloseSvg,
     icInfoSvg,
@@ -137,7 +160,9 @@ class AssetPaths {
     onb4Svg,
     remindYouSvg,
     sortAscSvg,
-    sortDescSvg
+    sortDescSvg,
+    weightMaleSvg,
+    weighFemaleSvg
   ];
 
   /// List of PNG assets
@@ -161,7 +186,10 @@ class AssetPaths {
     loadPageLottie,
     waterDownLottie,
     waterUpLottie,
+    dateSvg,
     genderSvg,
+    heightFemaleSvg,
+    heightMaleSvg,
     icErrorSvg,
     icErrorCloseSvg,
     icInfoSvg,
@@ -178,6 +206,8 @@ class AssetPaths {
     onb4Svg,
     remindYouSvg,
     sortAscSvg,
-    sortDescSvg
+    sortDescSvg,
+    weightMaleSvg,
+    weighFemaleSvg
   ];
 }

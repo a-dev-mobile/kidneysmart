@@ -38,7 +38,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
     final l = context.l10n;
     // final provider = ref.watch(registrationNameProvider);
     final state = ref.watch(urineProvider);
-    final stateGender = ref.watch(genderProvider);
+    final stateGender = ref.watch(stepGenderProvider);
     final notifier = ref.watch(urineProvider.notifier);
 
     final isEnabled = notifier.isShowInput;
@@ -57,7 +57,6 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
           ),
           const SizedBox(height: 10),
           TextField(
-            autofocus: true,
             controller: controller,
             enabled: isEnabled,
             decoration: InputDecoration(

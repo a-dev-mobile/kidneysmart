@@ -2,16 +2,16 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/height/height.dart';
-import 'package:nutrition/features/steps/weight/view/weight_page.dart';
+import 'package:nutrition/features/steps/weight/view/step_weight_page.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
-final heightProvider =
-    StateNotifierProvider.autoDispose<HeightNotifier, HeightState>(
+final stepHeightProvider =
+    StateNotifierProvider.autoDispose<StepHeightNotifier, StepHeightState>(
   (ref) {
-    return HeightNotifier(
+    return StepHeightNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageProvider),
       go: ref.read(appRouterProvider),
@@ -19,8 +19,8 @@ final heightProvider =
   },
 );
 
-class HeightNotifier extends StateNotifier<HeightState> {
-  HeightNotifier({
+class StepHeightNotifier extends StateNotifier<StepHeightState> {
+  StepHeightNotifier({
     required AppLocalizations l,
     required AppStorage storage,
     required AppRouter go,
@@ -44,7 +44,11 @@ class HeightNotifier extends StateNotifier<HeightState> {
   static const _MIN_HEIGHT = 50;
   static const _MAX_HEIGHT = 220;
   void load() {
-    state = state.copyWith(heightList: _initHeight());
+    final stateGender = _storage.getGenderState();
+    state = state.copyWith(
+      heightList: _initHeight(),
+      enumGender: stateGender.enumGender,
+    );
   }
 
   List<String> _initHeight() {
@@ -75,6 +79,6 @@ class HeightNotifier extends StateNotifier<HeightState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(WeightPage.name);
+    _go.router.pushNamed<void>(StepWeightPage.name);
   }
 }

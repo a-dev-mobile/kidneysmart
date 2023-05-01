@@ -16,7 +16,7 @@ final weightProvider =
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageProvider),
       go: ref.read(appRouterProvider),
-    );
+    ).._load();
   },
 );
 
@@ -44,6 +44,13 @@ class WeightNotifier extends StateNotifier<WeightState> {
 
   void changeTypeUnitWeight(EnumUnitWeight? value) {
     state = state.copyWith(enumUnitWeight: value);
+  }
+
+  void _load() {
+    final stateGender = _storage.getGenderState();
+    state = state.copyWith(
+      enumGender: stateGender.enumGender,
+    );
   }
 
   void setWeight(

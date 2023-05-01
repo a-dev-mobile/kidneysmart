@@ -48,7 +48,7 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
   /// preload
 
   void nextPage() {
-    _go.router.pushNamed<void>(GenderPage.name);
+    _go.router.pushNamed<void>(StepGenderPage.name);
   }
 
   void backPage() {
@@ -97,5 +97,7 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
   void setGender(String v) {
     final enumGender = EnumGender.fromValue(v, fallback: EnumGender.none);
     state = state.copyWith(enumGender: enumGender);
+
+    _storage.setStepNameState(state);
   }
 }

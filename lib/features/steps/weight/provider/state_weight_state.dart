@@ -2,22 +2,25 @@
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
-import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
+import 'package:nutrition/features/steps/gender/gender.dart';
+import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
-class HeightState {
+class WeightState {
   /* init:'' */
   final String result;
-
+  /* init: EnumGender.none */
+  final EnumGender enumGender;
   final double? value;
   /* init:'' */
   final String error;
   /* init: EnumValid.init */
   final EnumValid enumValid;
-  /* init: const [] */
-  final List<String> heightList;
+
+  /* init: EnumUnitWeight.kg */
+  final EnumUnitWeight enumUnitWeight;
   // end
 
 //          --TURN_GEN--
@@ -25,59 +28,65 @@ class HeightState {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const HeightState({
+  const WeightState({
     this.result = '',
+    this.enumGender = EnumGender.none,
     this.error = '',
     this.enumValid = EnumValid.init,
-    this.heightList = const [],
+    this.enumUnitWeight = EnumUnitWeight.kg,
     this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'result': result,
+      'enumGender': enumGender.index,
       'value': value,
       'error': error,
       'enumValid': enumValid.index,
-      'heightList': heightList,
+      'enumUnitWeight': enumUnitWeight.index,
     };
   }
 
-  factory HeightState.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const HeightState();
+  factory WeightState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const WeightState();
 
-    return HeightState(
+    return WeightState(
       result: map['result'] as String? ?? '',
+      enumGender: map['enumGender'] != null
+          ? EnumGender.values[map['enumGender'] as int]
+          : EnumGender.none,
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
           : EnumValid.init,
-      heightList: (map['heightList'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      enumUnitWeight: map['enumUnitWeight'] != null
+          ? EnumUnitWeight.values[map['enumUnitWeight'] as int]
+          : EnumUnitWeight.kg,
     );
   }
 
-  HeightState copyWith({
+  WeightState copyWith({
     String? result,
+    EnumGender? enumGender,
     double? value,
     String? error,
     EnumValid? enumValid,
-    List<String>? heightList,
+    EnumUnitWeight? enumUnitWeight,
   }) {
-    return HeightState(
+    return WeightState(
       result: result ?? this.result,
+      enumGender: enumGender ?? this.enumGender,
       value: value ?? this.value,
       error: error ?? this.error,
       enumValid: enumValid ?? this.enumValid,
-      heightList: heightList ?? this.heightList,
+      enumUnitWeight: enumUnitWeight ?? this.enumUnitWeight,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory HeightState.fromJson(String source) => HeightState.fromMap(
+  factory WeightState.fromJson(String source) => WeightState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -85,12 +94,17 @@ class HeightState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is HeightState &&
+            other is WeightState &&
             (identical(
                   other.result,
                   result,
                 ) ||
                 other.result == result) &&
+            (identical(
+                  other.enumGender,
+                  enumGender,
+                ) ||
+                other.enumGender == enumGender) &&
             (identical(
                   other.value,
                   value,
@@ -106,26 +120,26 @@ class HeightState {
                   enumValid,
                 ) ||
                 other.enumValid == enumValid) &&
-            const DeepCollectionEquality().equals(
-              other.heightList,
-              heightList,
-            ));
+            (identical(
+                  other.enumUnitWeight,
+                  enumUnitWeight,
+                ) ||
+                other.enumUnitWeight == enumUnitWeight));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
         result,
+        enumGender,
         value,
         error,
         enumValid,
-        const DeepCollectionEquality().hash(
-          heightList,
-        ),
+        enumUnitWeight,
       ]);
 
   @override
   String toString() {
-    return 'HeightState(result: $result, value: $value, error: $error, enumValid: $enumValid, heightList: $heightList, )';
+    return 'WeightState(result: $result, enumGender: $enumGender, value: $value, error: $error, enumValid: $enumValid, enumUnitWeight: $enumUnitWeight, )';
   }
 }

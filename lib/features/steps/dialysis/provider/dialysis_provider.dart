@@ -124,6 +124,6 @@ class DialysisNotifier extends StateNotifier<DialysisState> {
   // }
 
   void nextPage() {
-    _go.router.pushNamed<void>(BirthdayPage.name);
+    _go.router.pushNamed<void>(StepBirthdayPage.name);
   }
 }
