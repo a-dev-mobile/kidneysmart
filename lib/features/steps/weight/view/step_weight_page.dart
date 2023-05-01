@@ -148,7 +148,7 @@ class _SetGenderImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      height: isKeyboardOpen ? 0 : 250,
+      height: isKeyboardOpen ? 50 : 250,
       child: SizedBox(
         height: 250,
         child: SvgPicture.asset(assetPaths),

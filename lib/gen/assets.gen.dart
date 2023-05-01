@@ -43,9 +43,17 @@ class AssetPaths {
   /// * File path: _assets/svg/activity.svg
   static const String activitySvg = 'assets/svg/activity.svg';
 
+  /// * Size:	3.6 KB
+  /// * File path: _assets/svg/blood_pressure.svg
+  static const String bloodPressureSvg = 'assets/svg/blood_pressure.svg';
+
   /// * Size:	44.9 KB
   /// * File path: _assets/svg/date.svg
   static const String dateSvg = 'assets/svg/date.svg';
+
+  /// * Size:	2.3 KB
+  /// * File path: _assets/svg/diabet.svg
+  static const String diabetSvg = 'assets/svg/diabet.svg';
 
   /// * Size:	54.1 KB
   /// * File path: _assets/svg/gender.svg
@@ -145,7 +153,9 @@ class AssetPaths {
   static const List<String> valuesSVG = [
     onboardingRemindYouImage,
     activitySvg,
+    bloodPressureSvg,
     dateSvg,
+    diabetSvg,
     genderSvg,
     heightFemaleSvg,
     heightMaleSvg,
@@ -192,7 +202,9 @@ class AssetPaths {
     waterDownLottie,
     waterUpLottie,
     activitySvg,
+    bloodPressureSvg,
     dateSvg,
+    diabetSvg,
     genderSvg,
     heightFemaleSvg,
     heightMaleSvg,

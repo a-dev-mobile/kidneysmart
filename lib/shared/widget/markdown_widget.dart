@@ -14,7 +14,7 @@ class WidgetMarkdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return Markdown(
       padding: EdgeInsets.zero,
-      shrinkWrap: true,
+      // shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       data: markdown,
       onTapLink: (text, href, title) => _launchExternalUrl(href),

@@ -27,14 +27,14 @@ class ActivityPage extends ConsumerWidget {
           child: Column(
             children: [
               const Text(
-                'Вот вот и закончим общие вопросы!',
+                'Вот вот и закончим\nобщие вопросы!',
                 textAlign: TextAlign.center,
                 style: AppTextStyles.headlineSmall,
               ),
               const SizedBox(height: 16),
               SizedBox(
-                width: 285,
-                height: 220,
+                width: 180,
+                height: 140,
                 child: SvgPicture.asset(AssetPaths.activitySvg),
               ),
               const SizedBox(height: 16),

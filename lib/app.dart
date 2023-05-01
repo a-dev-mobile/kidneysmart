@@ -81,6 +81,7 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
         statusBarIconBrightness: statusBarIconBrightness,
         statusBarColor: colorOnPrimary,
         systemNavigationBarColor: colorOnPrimary,
+        systemNavigationBarIconBrightness: statusBarIconBrightness,
       ),
     );
   }

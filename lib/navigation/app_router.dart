@@ -175,11 +175,11 @@ class AppRouter {
             ),
           ),
           GoRoute(
-            path: HypertensionPage.path,
-            name: HypertensionPage.name,
+            path: StepHypertensionPage.path,
+            name: StepHypertensionPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const HypertensionPage(),
+              child: const StepHypertensionPage(),
             ),
           ),
           GoRoute(

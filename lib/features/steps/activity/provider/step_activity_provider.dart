@@ -105,6 +105,6 @@ class StepActivityNotifier extends StateNotifier<StepActivityState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(HypertensionPage.name);
+    _go.router.pushNamed<void>(StepHypertensionPage.name);
   }
 }

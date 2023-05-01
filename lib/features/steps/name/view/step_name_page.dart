@@ -79,7 +79,7 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
                 const SizedBox(height: 16),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
-                  height: state.isKeyboardOpen ? 0 : 280,
+                  height: state.isKeyboardOpen ? 50 : 280,
                   child: SizedBox(
                     width: 280,
                     height: 240,
@@ -97,9 +97,7 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
                   hideOnEmpty: true,
                   hideOnLoading: true,
                   hideOnError: true,
-                  suggestionsBoxDecoration: const SuggestionsBoxDecoration(
-                    constraints: BoxConstraints(maxHeight: 150),
-                  ),
+
                   textFieldConfiguration: TextFieldConfiguration(
                     autofocus: true,
                     decoration: InputDecoration(
