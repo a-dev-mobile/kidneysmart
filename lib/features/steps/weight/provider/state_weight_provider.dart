@@ -100,4 +100,10 @@ class WeightNotifier extends StateNotifier<WeightState> {
   void nextPage() {
     _go.router.pushNamed<void>(ActivityPage.name);
   }
+
+  void setKeyboard({required bool isKeyboardOpen}) {
+    if (state.isKeyboardOpen == isKeyboardOpen) return;
+
+    state = state.copyWith(isKeyboardOpen: isKeyboardOpen);
+  }
 }

@@ -11,13 +11,14 @@ class StepNameState {
   /* init:'' */
   final String result;
 
-  /* init:'' */
-  final String error;
+  final String? error;
   /* init: EnumValid.init */
   final EnumValid enumValid;
 
   /* init: EnumGender.none */
   final EnumGender enumGender;
+  /* init: false */
+  final bool isKeyboardOpen;
   // end
 
 //          --TURN_GEN--
@@ -27,9 +28,10 @@ class StepNameState {
 //  *************************************
   const StepNameState({
     this.result = '',
-    this.error = '',
     this.enumValid = EnumValid.init,
     this.enumGender = EnumGender.none,
+    this.isKeyboardOpen = false,
+    this.error,
   });
 
   Map<String, dynamic> toMap() {
@@ -38,6 +40,7 @@ class StepNameState {
       'error': error,
       'enumValid': enumValid.index,
       'enumGender': enumGender.index,
+      'isKeyboardOpen': isKeyboardOpen,
     };
   }
 
@@ -46,13 +49,14 @@ class StepNameState {
 
     return StepNameState(
       result: map['result'] as String? ?? '',
-      error: map['error'] as String? ?? '',
+      error: map['error'] as String?,
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
           : EnumValid.init,
       enumGender: map['enumGender'] != null
           ? EnumGender.values[map['enumGender'] as int]
           : EnumGender.none,
+      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? false,
     );
   }
 
@@ -61,12 +65,14 @@ class StepNameState {
     String? error,
     EnumValid? enumValid,
     EnumGender? enumGender,
+    bool? isKeyboardOpen,
   }) {
     return StepNameState(
       result: result ?? this.result,
       error: error ?? this.error,
       enumValid: enumValid ?? this.enumValid,
       enumGender: enumGender ?? this.enumGender,
+      isKeyboardOpen: isKeyboardOpen ?? this.isKeyboardOpen,
     );
   }
 
@@ -99,7 +105,12 @@ class StepNameState {
                   other.enumGender,
                   enumGender,
                 ) ||
-                other.enumGender == enumGender));
+                other.enumGender == enumGender) &&
+            (identical(
+                  other.isKeyboardOpen,
+                  isKeyboardOpen,
+                ) ||
+                other.isKeyboardOpen == isKeyboardOpen));
   }
 
   @override
@@ -109,10 +120,11 @@ class StepNameState {
         error,
         enumValid,
         enumGender,
+        isKeyboardOpen,
       ]);
 
   @override
   String toString() {
-    return 'StepNameState(result: $result, error: $error, enumValid: $enumValid, enumGender: $enumGender, )';
+    return 'StepNameState(result: $result, error: $error, enumValid: $enumValid, enumGender: $enumGender, isKeyboardOpen: $isKeyboardOpen, )';
   }
 }

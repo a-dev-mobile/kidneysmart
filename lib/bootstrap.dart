@@ -34,12 +34,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
           final exception = details.exception;
           final stackTrace = details.stack ?? StackTrace.current;
 
-          if (AppDartDefineConst.IS_DEBUG_MENU_ENABLED) {
+          if (DartDefineConst.IS_DEBUG_MENU_ENABLED) {
             FlutterError.dumpErrorToConsole(details);
-          }
-
-          if (AppDartDefineConst.IS_DEBUG_MENU_ENABLED) {
-            // In development mode simply print to console.
             Zone.current.handleUncaughtError(exception, stackTrace);
           }
         };
@@ -91,18 +87,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
 }
 
 Future<void> _recordError(dynamic exception, StackTrace stack) async {
-  // await FirebaseCrashlytics.instance.setCustomKey('phone', '22e2222e22');
-  // await FirebaseCrashlytics.instance.setCustomKey('loan', '22e2222e22');
-  // await FirebaseCrashlytics.instance.setCustomKey('last_step', '22e2222e22');
-  // await FirebaseCrashlytics.instance.setCustomKey('BASE_URL', '22e2222e22');
-  // await FirebaseCrashlytics.instance
-  //     .setCustomKey('IS_DEBUG_MENU_ENABLED', DartDefine.IS_DEBUG_MENU_ENABLED);
-  // await FirebaseCrashlytics.instance
-  //     .setCustomKey('IS_ANALYTICS_ENABLED', DartDefine.IS_ANALYTICS_ENABLED);
-
-  // await FirebaseCrashlytics.instance.setUserIdentifier("5858512555e1");
-
-  const typeError = AppDartDefineConst.IS_DEBUG_MENU_ENABLED ? 'TEST' : 'PROD';
+  final typeError = _getErrorType();
 
   await FirebaseCrashlytics.instance.recordError(
     exception,
@@ -112,16 +97,19 @@ Future<void> _recordError(dynamic exception, StackTrace stack) async {
   );
 }
 
-/* ****************************** */
+String _getErrorType() =>
+    DartDefineConst.IS_DEBUG_MENU_ENABLED ? 'TEST' : 'PROD';
 
+// Show information about the app in the logcat
 Future<void> _showSettingAppInLog() async {
   final userAgent = await AppInfo.getUserAgent();
   final packageName = await AppInfo.getPackageName();
   log.wtf(
-    'IS_DEBUG_MENU_ENABLED = ${AppDartDefineConst.IS_DEBUG_MENU_ENABLED}\n$packageName\n$userAgent',
+    'IS_DEBUG_MENU_ENABLED = ${DartDefineConst.IS_DEBUG_MENU_ENABLED}\n$packageName\n$userAgent',
   );
 }
 
+// Initialize the orientation of the app to portrait up
 Future<void> _initOrientationApp() async {
   await SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp],

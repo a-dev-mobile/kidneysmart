@@ -9,7 +9,7 @@ import 'package:nutrition/global/dart_define.dart';
 import 'package:nutrition/shared/data/remote/dadata/dadata.dart';
 
 final daDataClientProvider = Provider<DaDataClient>((ref) {
-  return DaDataClient(apiKey: AppDartDefineConst.API_KEY_DADATA);
+  return DaDataClient(apiKey: DartDefineConst.API_KEY_DADATA);
 });
 
 class DaDataClient {

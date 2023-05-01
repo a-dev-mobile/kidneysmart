@@ -40,7 +40,7 @@ class OverlayWidget extends ConsumerWidget {
           //     );
           //   },
           // ),
-          if (AppDartDefineConst.IS_DEBUG_MENU_ENABLED)
+          if (DartDefineConst.IS_DEBUG_MENU_ENABLED)
             Positioned(
               left: 0,
               bottom: 0,
@@ -49,7 +49,7 @@ class OverlayWidget extends ConsumerWidget {
                 style: AppTextStyles.bodyLarge.copyWith(color: Colors.red),
               ),
             ),
-          if (AppDartDefineConst.IS_DEBUG_MENU_ENABLED)
+          if (DartDefineConst.IS_DEBUG_MENU_ENABLED)
             Positioned(
               right: 10,
               bottom: 2,

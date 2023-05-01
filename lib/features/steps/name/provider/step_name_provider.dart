@@ -9,7 +9,7 @@ import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:nutrition/shared/data/remote/dadata/dadata.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
-final stepStepNameProvider =
+final stepNameProvider =
     StateNotifierProvider.autoDispose<StepNameNotifier, StepNameState>(
   (ref) {
     return StepNameNotifier(
@@ -58,11 +58,9 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
   void setName(
     String? v,
   ) {
-    var error = '';
+    String? error;
 
-    if (v?.isEmpty ?? true && state.result.isEmpty) {
-      error = 'Введите имя';
-    }
+    error = v?.isEmpty ?? true && state.result.isEmpty ? 'Введите имя' : null;
 
     final enumGender = EnumGender.fromValue(v, fallback: EnumGender.none);
 
@@ -70,7 +68,7 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
       result: v,
       enumGender: enumGender,
       error: error,
-      enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
+      enumValid: error == null ? EnumValid.valid : EnumValid.error,
     );
 
     _storage.setStepNameState(state);
@@ -99,5 +97,11 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
     state = state.copyWith(enumGender: enumGender);
 
     _storage.setStepNameState(state);
+  }
+
+  void setKeyboard({required bool isKeyboardOpen}) {
+    if (state.isKeyboardOpen == isKeyboardOpen) return;
+
+    state = state.copyWith(isKeyboardOpen: isKeyboardOpen);
   }
 }

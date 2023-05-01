@@ -21,6 +21,9 @@ class WeightState {
 
   /* init: EnumUnitWeight.kg */
   final EnumUnitWeight enumUnitWeight;
+/* init: false */
+  final bool isKeyboardOpen;
+
   // end
 
 //          --TURN_GEN--
@@ -34,6 +37,7 @@ class WeightState {
     this.error = '',
     this.enumValid = EnumValid.init,
     this.enumUnitWeight = EnumUnitWeight.kg,
+    this.isKeyboardOpen = false,
     this.value,
   });
 
@@ -45,6 +49,7 @@ class WeightState {
       'error': error,
       'enumValid': enumValid.index,
       'enumUnitWeight': enumUnitWeight.index,
+      'isKeyboardOpen': isKeyboardOpen,
     };
   }
 
@@ -64,6 +69,7 @@ class WeightState {
       enumUnitWeight: map['enumUnitWeight'] != null
           ? EnumUnitWeight.values[map['enumUnitWeight'] as int]
           : EnumUnitWeight.kg,
+      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? false,
     );
   }
 
@@ -74,6 +80,7 @@ class WeightState {
     String? error,
     EnumValid? enumValid,
     EnumUnitWeight? enumUnitWeight,
+    bool? isKeyboardOpen,
   }) {
     return WeightState(
       result: result ?? this.result,
@@ -82,6 +89,7 @@ class WeightState {
       error: error ?? this.error,
       enumValid: enumValid ?? this.enumValid,
       enumUnitWeight: enumUnitWeight ?? this.enumUnitWeight,
+      isKeyboardOpen: isKeyboardOpen ?? this.isKeyboardOpen,
     );
   }
 
@@ -124,7 +132,12 @@ class WeightState {
                   other.enumUnitWeight,
                   enumUnitWeight,
                 ) ||
-                other.enumUnitWeight == enumUnitWeight));
+                other.enumUnitWeight == enumUnitWeight) &&
+            (identical(
+                  other.isKeyboardOpen,
+                  isKeyboardOpen,
+                ) ||
+                other.isKeyboardOpen == isKeyboardOpen));
   }
 
   @override
@@ -136,10 +149,11 @@ class WeightState {
         error,
         enumValid,
         enumUnitWeight,
+        isKeyboardOpen,
       ]);
 
   @override
   String toString() {
-    return 'WeightState(result: $result, enumGender: $enumGender, value: $value, error: $error, enumValid: $enumValid, enumUnitWeight: $enumUnitWeight, )';
+    return 'WeightState(result: $result, enumGender: $enumGender, value: $value, error: $error, enumValid: $enumValid, enumUnitWeight: $enumUnitWeight, isKeyboardOpen: $isKeyboardOpen, )';
   }
 }
