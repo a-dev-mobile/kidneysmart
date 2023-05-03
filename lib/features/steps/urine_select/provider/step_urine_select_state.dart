@@ -4,11 +4,12 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/urine/urine.dart';
+
+import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
-class UrineSelectModel {
+class StepUrineSelectState {
   /* init:const [] */
   final List<UrineItemModel> listUrine;
 
@@ -19,8 +20,7 @@ class UrineSelectModel {
   /* init: EnumValid.init */
 
   final EnumValid enumValid;
-  /* init: '' */
-  final String error;
+
 /* init: [] */
   final List<bool> listSelected;
   // end
@@ -30,11 +30,10 @@ class UrineSelectModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const UrineSelectModel({
+  const StepUrineSelectState({
     this.listUrine = const [],
     this.enumUrine = EnumUrine.none,
     this.enumValid = EnumValid.init,
-    this.error = '',
     this.listSelected = const [],
     this.selectedIndex,
   });
@@ -45,15 +44,14 @@ class UrineSelectModel {
       'enumUrine': enumUrine.index,
       'selectedIndex': selectedIndex,
       'enumValid': enumValid.index,
-      'error': error,
       'listSelected': listSelected,
     };
   }
 
-  factory UrineSelectModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const UrineSelectModel();
+  factory StepUrineSelectState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const StepUrineSelectState();
 
-    return UrineSelectModel(
+    return StepUrineSelectState(
       listUrine: map['listUrine'] != null
           ? (map['listUrine'] as List<dynamic>)
               .map(
@@ -68,7 +66,6 @@ class UrineSelectModel {
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
           : EnumValid.init,
-      error: map['error'] as String? ?? '',
       listSelected: (map['listSelected'] as List<dynamic>?)
               ?.map((e) => e as bool)
               .toList() ??
@@ -76,26 +73,25 @@ class UrineSelectModel {
     );
   }
 
-  UrineSelectModel copyWith({
+  StepUrineSelectState copyWith({
     List<UrineItemModel>? listUrine,
     EnumUrine? enumUrine,
     int? selectedIndex,
     EnumValid? enumValid,
-    String? error,
     List<bool>? listSelected,
   }) {
-    return UrineSelectModel(
+    return StepUrineSelectState(
       listUrine: listUrine ?? this.listUrine,
       enumUrine: enumUrine ?? this.enumUrine,
       selectedIndex: selectedIndex ?? this.selectedIndex,
       enumValid: enumValid ?? this.enumValid,
-      error: error ?? this.error,
       listSelected: listSelected ?? this.listSelected,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory UrineSelectModel.fromJson(String source) => UrineSelectModel.fromMap(
+  factory StepUrineSelectState.fromJson(String source) =>
+      StepUrineSelectState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -103,7 +99,7 @@ class UrineSelectModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UrineSelectModel &&
+            other is StepUrineSelectState &&
             const DeepCollectionEquality().equals(
               other.listUrine,
               listUrine,
@@ -123,11 +119,6 @@ class UrineSelectModel {
                   enumValid,
                 ) ||
                 other.enumValid == enumValid) &&
-            (identical(
-                  other.error,
-                  error,
-                ) ||
-                other.error == error) &&
             const DeepCollectionEquality().equals(
               other.listSelected,
               listSelected,
@@ -143,7 +134,6 @@ class UrineSelectModel {
         enumUrine,
         selectedIndex,
         enumValid,
-        error,
         const DeepCollectionEquality().hash(
           listSelected,
         ),
@@ -151,6 +141,6 @@ class UrineSelectModel {
 
   @override
   String toString() {
-    return 'UrineSelectModel(listUrine: $listUrine, enumUrine: $enumUrine, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
+    return 'StepUrineSelectState(listUrine: $listUrine, enumUrine: $enumUrine, selectedIndex: $selectedIndex, enumValid: $enumValid, listSelected: $listSelected, )';
   }
 }

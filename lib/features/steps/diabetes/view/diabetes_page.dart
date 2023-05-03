@@ -8,8 +8,8 @@ import 'package:nutrition/gen/gen.dart';
 import 'package:nutrition/shared/theme/theme.dart';
 import 'package:nutrition/shared/widget/widget.dart';
 
-class DiabetesPage extends ConsumerWidget {
-  const DiabetesPage({super.key});
+class StepDiabetesPage extends ConsumerWidget {
+  const StepDiabetesPage({super.key});
 
   static const path = '/DiabetesPage';
   static const name = 'DiabetesPage';

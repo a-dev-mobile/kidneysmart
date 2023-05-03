@@ -20,7 +20,9 @@ import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/name/name.dart';
-import 'package:nutrition/features/steps/urine/urine.dart';
+import 'package:nutrition/features/steps/urine_input/urine_input.dart';
+import 'package:nutrition/features/steps/urine_select/urine_select.dart';
+
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/features/welcome/view/welcome_page.dart';
 import 'package:nutrition/global/global.dart';
@@ -183,19 +185,27 @@ class AppRouter {
             ),
           ),
           GoRoute(
-            path: DiabetesPage.path,
-            name: DiabetesPage.name,
+            path: StepDiabetesPage.path,
+            name: StepDiabetesPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const DiabetesPage(),
+              child: const StepDiabetesPage(),
             ),
           ),
           GoRoute(
-            path: UrinePage.path,
-            name: UrinePage.name,
+            path: StepUrineInputPage.path,
+            name: StepUrineInputPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const UrinePage(),
+              child: const StepUrineInputPage(),
+            ),
+          ),
+          GoRoute(
+            path: StepUrineSelectPage.path,
+            name: StepUrineSelectPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const StepUrineSelectPage(),
             ),
           ),
           GoRoute(

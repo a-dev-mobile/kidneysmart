@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
-import 'package:nutrition/features/steps/urine/urine.dart';
+import 'package:nutrition/features/steps/urine_select/urine_select.dart';
+
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
@@ -92,6 +93,6 @@ class DiabetesNotifier extends StateNotifier<DiabetesState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(UrinePage.name);
+    _go.router.pushNamed<void>(StepUrineSelectPage.name);
   }
 }

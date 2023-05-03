@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
@@ -41,9 +40,9 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
     final _ = WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
   @override
@@ -77,11 +76,13 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
                 ),
                 const SizedBox(height: 16),
                 state.enumGender.maybeMapValue(
-                  male: _SetGenderImage(
+                  male: ImageAnimateContainer(
                     assetPaths: AssetPaths.weightMaleSvg,
                     isKeyboardOpen: state.isKeyboardOpen,
+                    heightMax: 250,
                   ),
-                  orElse: _SetGenderImage(
+                  orElse: ImageAnimateContainer(
+                    heightMax: 250,
                     assetPaths: AssetPaths.weighFemaleSvg,
                     isKeyboardOpen: state.isKeyboardOpen,
                   ),
@@ -132,26 +133,6 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _SetGenderImage extends StatelessWidget {
-  const _SetGenderImage({
-    required this.assetPaths,
-    this.isKeyboardOpen = false,
-  });
-  final String assetPaths;
-  final bool isKeyboardOpen;
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      height: isKeyboardOpen ? 50 : 250,
-      child: SizedBox(
-        height: 250,
-        child: SvgPicture.asset(assetPaths),
       ),
     );
   }

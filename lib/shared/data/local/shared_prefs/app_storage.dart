@@ -17,7 +17,9 @@ import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/name/name.dart';
-import 'package:nutrition/features/steps/urine/urine.dart';
+import 'package:nutrition/features/steps/urine_input/urine_input.dart';
+
+import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/navigation/models/app_state.dart';
 import 'package:nutrition/shared/log/log.dart';
@@ -179,14 +181,28 @@ class AppStorage {
 
 // ******************************
 // ******************************
-  static const _urineState = '_urineState';
+  static const _urineSelectState = '_urineSelectState';
 
-  UrineState getUrineState() {
-    return UrineState.fromMap(getJson(key: _urineState));
+  StepUrineSelectState getUrineSelectState() {
+    return StepUrineSelectState.fromMap(getJson(key: _urineSelectState));
   }
 
-  Future<void> setUrineState(UrineState value) {
-    return setJson(key: _urineState, value: value.toMap());
+  Future<void> setUrineSelectState(StepUrineSelectState value) {
+    return setJson(key: _urineSelectState, value: value.toMap());
+  }
+
+// ******************************
+// ******************************
+// ******************************
+
+  static const _urineInputState = '_urineInputState';
+
+  StepUrineInputState getUrineInputState() {
+    return StepUrineInputState.fromMap(getJson(key: _urineInputState));
+  }
+
+  Future<void> setUrineInputState(StepUrineInputState value) {
+    return setJson(key: _urineInputState, value: value.toMap());
   }
 // ******************************
 // ******************************

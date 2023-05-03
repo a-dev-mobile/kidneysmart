@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:meta/meta.dart';
 
-import 'package:nutrition/features/steps/urine/urine.dart';
+import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 
 @immutable
 class UrineItemModel {

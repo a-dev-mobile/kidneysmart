@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
@@ -77,14 +76,20 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
                   style: AppTextStyles.headlineLarge,
                 ),
                 const SizedBox(height: 16),
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  height: state.isKeyboardOpen ? 50 : 280,
-                  child: SizedBox(
-                    width: 280,
-                    height: 240,
-                    child: SvgPicture.asset(AssetPaths.nameStepSvg),
-                  ),
+                // AnimatedContainer(
+                //   duration: const Duration(milliseconds: 300),
+                //   height: state.isKeyboardOpen ? 50 : 280,
+                //   child: SizedBox(
+                //     width: 280,
+                //     height: 240,
+                //     child: SvgPicture.asset(AssetPaths.nameStepSvg),
+                //   ),
+                // ),
+
+                ImageAnimateContainer(
+                  assetPaths: AssetPaths.nameStepSvg,
+                  heightMax: 280,
+                  isKeyboardOpen: state.isKeyboardOpen,
                 ),
                 const SizedBox(height: 16),
                 const Text(

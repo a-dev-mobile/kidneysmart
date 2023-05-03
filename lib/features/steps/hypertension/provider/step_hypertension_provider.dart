@@ -92,6 +92,6 @@ class HypertensionNotifier extends StateNotifier<HypertensionState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(DiabetesPage.name);
+    _go.router.pushNamed<void>(StepDiabetesPage.name);
   }
 }
