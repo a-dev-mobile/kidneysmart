@@ -36,7 +36,7 @@ class StepUrineInputPage extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 ImageAnimateContainer(
-                  assetPaths: AssetPaths.urineSvg,
+                  assetPaths: AssetPaths.urineInputSvg,
                   heightMax: 120,
                   isKeyboardOpen: state.isKeyboardOpen,
                 ),

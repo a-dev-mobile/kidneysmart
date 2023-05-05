@@ -47,6 +47,10 @@ class AssetPaths {
   /// * File path: _assets/svg/blood_pressure.svg
   static const String bloodPressureSvg = 'assets/svg/blood_pressure.svg';
 
+  /// * Size:	42.6 KB
+  /// * File path: _assets/svg/ckd.svg
+  static const String ckdSvg = 'assets/svg/ckd.svg';
+
   /// * Size:	44.9 KB
   /// * File path: _assets/svg/date.svg
   static const String dateSvg = 'assets/svg/date.svg';
@@ -139,6 +143,10 @@ class AssetPaths {
   /// * File path: _assets/svg/urine.svg
   static const String urineSvg = 'assets/svg/urine.svg';
 
+  /// * Size:	3.7 KB
+  /// * File path: _assets/svg/urine_input.svg
+  static const String urineInputSvg = 'assets/svg/urine_input.svg';
+
   /// * Size:	1.2 KB
   /// * File path: _assets/svg/urine_no.svg
   static const String urineNoSvg = 'assets/svg/urine_no.svg';
@@ -162,6 +170,7 @@ class AssetPaths {
     onboardingRemindYouImage,
     activitySvg,
     bloodPressureSvg,
+    ckdSvg,
     dateSvg,
     diabetSvg,
     genderSvg,
@@ -185,6 +194,7 @@ class AssetPaths {
     sortAscSvg,
     sortDescSvg,
     urineSvg,
+    urineInputSvg,
     urineNoSvg,
     weightMaleSvg,
     weighFemaleSvg
@@ -213,6 +223,7 @@ class AssetPaths {
     waterUpLottie,
     activitySvg,
     bloodPressureSvg,
+    ckdSvg,
     dateSvg,
     diabetSvg,
     genderSvg,
@@ -236,6 +247,7 @@ class AssetPaths {
     sortAscSvg,
     sortDescSvg,
     urineSvg,
+    urineInputSvg,
     urineNoSvg,
     weightMaleSvg,
     weighFemaleSvg

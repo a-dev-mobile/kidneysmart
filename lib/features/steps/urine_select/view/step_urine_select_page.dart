@@ -43,12 +43,13 @@ class StepUrineSelectPage extends ConsumerWidget {
               const SizedBox(height: 16),
               SizedBox(
                 height: 120,
-                child: SvgPicture.asset(AssetPaths.urineNoSvg),
+                child: SvgPicture.asset(AssetPaths.urineSvg),
               ),
               const SizedBox(height: 16),
               const Text(
-                'Укажите уровень суточного\nдиуреза за сутки',
+                'Укажите уровень\nсуточного диуреза',
                 style: AppTextStyles.headlineSmall,
+                textAlign: TextAlign.center,
               ),
               BtnToggleText(
                 textList: listTextWithoutLast,
@@ -63,7 +64,7 @@ class StepUrineSelectPage extends ConsumerWidget {
                 onPressed: (v) =>
                     notifier.setUrineSelect(v + listBoolWithoutLast.length),
               ),
-
+              const SizedBox(height: 16),
               Expanded(
                 child: Scrollbar(
                   thumbVisibility: true,

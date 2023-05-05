@@ -58,6 +58,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput>
 
     return TextField(
       controller: controller,
+      autofocus: true,
       decoration: InputDecoration(
         labelText: _getNorma(type: stateGender.enumGender, l: l),
         errorText: state.enumValid.maybeMapOrNullValue(error: state.error),
