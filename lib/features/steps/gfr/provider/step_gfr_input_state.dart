@@ -3,11 +3,12 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+
+import 'package:nutrition/features/steps/gfr/gfr.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
-class CkdInputModel {
+class StepGfrInputState {
   /* init:'' */
   final String result;
 
@@ -16,7 +17,8 @@ class CkdInputModel {
   final String error;
   /* init: EnumValid.init */
   final EnumValid enumValid;
-
+  /* init: false */
+  final bool isKeyboardOpen;
   /* init:  EnumInputTypeCreatinine.mcmolL */
   final EnumInputTypeCreatinine inputTypeCreatinine;
   // end
@@ -26,10 +28,11 @@ class CkdInputModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const CkdInputModel({
+  const StepGfrInputState({
     this.result = '',
     this.error = '',
     this.enumValid = EnumValid.init,
+    this.isKeyboardOpen = false,
     this.inputTypeCreatinine = EnumInputTypeCreatinine.mcmolL,
     this.value,
   });
@@ -40,44 +43,49 @@ class CkdInputModel {
       'value': value,
       'error': error,
       'enumValid': enumValid.index,
+      'isKeyboardOpen': isKeyboardOpen,
       'inputTypeCreatinine': inputTypeCreatinine.index,
     };
   }
 
-  factory CkdInputModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const CkdInputModel();
+  factory StepGfrInputState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const StepGfrInputState();
 
-    return CkdInputModel(
+    return StepGfrInputState(
       result: map['result'] as String? ?? '',
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
           : EnumValid.init,
+      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? false,
       inputTypeCreatinine: map['inputTypeCreatinine'] != null
           ? EnumInputTypeCreatinine.values[map['inputTypeCreatinine'] as int]
           : EnumInputTypeCreatinine.mcmolL,
     );
   }
 
-  CkdInputModel copyWith({
+  StepGfrInputState copyWith({
     String? result,
     double? value,
     String? error,
     EnumValid? enumValid,
+    bool? isKeyboardOpen,
     EnumInputTypeCreatinine? inputTypeCreatinine,
   }) {
-    return CkdInputModel(
+    return StepGfrInputState(
       result: result ?? this.result,
       value: value ?? this.value,
       error: error ?? this.error,
       enumValid: enumValid ?? this.enumValid,
+      isKeyboardOpen: isKeyboardOpen ?? this.isKeyboardOpen,
       inputTypeCreatinine: inputTypeCreatinine ?? this.inputTypeCreatinine,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory CkdInputModel.fromJson(String source) => CkdInputModel.fromMap(
+  factory StepGfrInputState.fromJson(String source) =>
+      StepGfrInputState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -85,7 +93,7 @@ class CkdInputModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CkdInputModel &&
+            other is StepGfrInputState &&
             (identical(
                   other.result,
                   result,
@@ -107,6 +115,11 @@ class CkdInputModel {
                 ) ||
                 other.enumValid == enumValid) &&
             (identical(
+                  other.isKeyboardOpen,
+                  isKeyboardOpen,
+                ) ||
+                other.isKeyboardOpen == isKeyboardOpen) &&
+            (identical(
                   other.inputTypeCreatinine,
                   inputTypeCreatinine,
                 ) ||
@@ -120,11 +133,12 @@ class CkdInputModel {
         value,
         error,
         enumValid,
+        isKeyboardOpen,
         inputTypeCreatinine,
       ]);
 
   @override
   String toString() {
-    return 'CkdInputModel(result: $result, value: $value, error: $error, enumValid: $enumValid, inputTypeCreatinine: $inputTypeCreatinine, )';
+    return 'StepGfrInputState(result: $result, value: $value, error: $error, enumValid: $enumValid, isKeyboardOpen: $isKeyboardOpen, inputTypeCreatinine: $inputTypeCreatinine, )';
   }
 }

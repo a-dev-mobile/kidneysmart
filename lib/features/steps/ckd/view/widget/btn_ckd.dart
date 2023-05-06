@@ -10,15 +10,14 @@ class BtnCkd extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(ckdProvider);
-    final notifier = ref.watch(ckdProvider.notifier);
-    final stateSelect = state.select;
+    final state = ref.watch(stepCkdSelectProvider);
+    final notifier = ref.watch(stepCkdSelectProvider.notifier);
 
-    final listBoolAll = stateSelect.listSelected;
+    final listBoolAll = state.listSelected;
     final listBoolWithoutLast = [...listBoolAll];
     final boolLast = listBoolWithoutLast.removeLast();
 
-    final listTextAll = stateSelect.listCkd.map((e) => e.value);
+    final listTextAll = state.listCkd.map((e) => e.value);
     final listTextWithoutLast = [...listTextAll];
     final textLast = listTextWithoutLast.removeLast();
 
@@ -36,7 +35,7 @@ class BtnCkd extends ConsumerWidget {
           isSelected: [boolLast],
           onPressed: (v) =>
               notifier.setCkdSelect(v + listBoolWithoutLast.length),
-          errorText: stateSelect.error,
+          errorText: state.error,
         ),
       ],
     );

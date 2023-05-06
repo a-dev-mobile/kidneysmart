@@ -34,9 +34,10 @@ class StepUrineInputPage extends ConsumerWidget {
                   style: AppTextStyles.headlineLarge,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 16),
+                if (!state.isKeyboardOpen) const SizedBox(height: 16),
                 ImageAnimateContainer(
                   assetPaths: AssetPaths.urineInputSvg,
+                  heightMin: 0,
                   heightMax: 120,
                   isKeyboardOpen: state.isKeyboardOpen,
                 ),

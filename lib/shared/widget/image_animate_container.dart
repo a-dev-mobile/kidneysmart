@@ -20,7 +20,10 @@ class ImageAnimateContainer extends StatelessWidget {
       height: isKeyboardOpen ? heightMin : heightMax,
       child: SizedBox(
         height: heightMax,
-        child: SvgPicture.asset(assetPaths),
+        child: SvgPicture.asset(
+          assetPaths,
+          height: heightMax,
+        ),
       ),
     );
   }

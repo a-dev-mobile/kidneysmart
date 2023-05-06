@@ -17,6 +17,7 @@ import 'package:nutrition/features/steps/birthday/birthday.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
+import 'package:nutrition/features/steps/gfr/gfr.dart';
 import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/name/name.dart';
@@ -214,6 +215,14 @@ class AppRouter {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const StepCkdSelectPage(),
+            ),
+          ),
+          GoRoute(
+            path: StepGfrInputPage.path,
+            name: StepGfrInputPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const StepGfrInputPage(),
             ),
           ),
         ],

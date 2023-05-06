@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+
+import 'package:nutrition/features/steps/gfr/gfr.dart';
 
 import 'package:nutrition/localization/localization.dart';
 
@@ -14,16 +15,15 @@ class DropInputTypeCreatinine extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = context.l10n;
 
-    final state = ref.watch(ckdProvider);
-    final notifier = ref.watch(ckdProvider.notifier);
-    final stateCreatinine = state.input;
+    final state = ref.watch(stepGfrInputProvider);
+    final notifier = ref.watch(stepGfrInputProvider.notifier);
 
     return Row(
       children: [
         const Expanded(child: Text('Выберите единицу измерения')),
         const SizedBox(width: 10),
         DropdownButton<EnumInputTypeCreatinine>(
-          value: stateCreatinine.inputTypeCreatinine,
+          value: state.inputTypeCreatinine,
           items: [
             for (var v in EnumInputTypeCreatinine.values)
               DropdownMenuItem(

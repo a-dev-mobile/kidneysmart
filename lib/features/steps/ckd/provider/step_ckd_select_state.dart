@@ -4,11 +4,12 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
+
 import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
-class CkdSelectModel {
+class StepCkdSelectState {
   /* init:const [] */
   final List<CkdItemModel> listCkd;
 
@@ -30,7 +31,7 @@ class CkdSelectModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const CkdSelectModel({
+  const StepCkdSelectState({
     this.listCkd = const [],
     this.enumCkd = EnumCkd.none,
     this.enumValid = EnumValid.init,
@@ -50,10 +51,10 @@ class CkdSelectModel {
     };
   }
 
-  factory CkdSelectModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const CkdSelectModel();
+  factory StepCkdSelectState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const StepCkdSelectState();
 
-    return CkdSelectModel(
+    return StepCkdSelectState(
       listCkd: map['listCkd'] != null
           ? (map['listCkd'] as List<dynamic>)
               .map(
@@ -76,7 +77,7 @@ class CkdSelectModel {
     );
   }
 
-  CkdSelectModel copyWith({
+  StepCkdSelectState copyWith({
     List<CkdItemModel>? listCkd,
     EnumCkd? enumCkd,
     int? selectedIndex,
@@ -84,7 +85,7 @@ class CkdSelectModel {
     String? error,
     List<bool>? listSelected,
   }) {
-    return CkdSelectModel(
+    return StepCkdSelectState(
       listCkd: listCkd ?? this.listCkd,
       enumCkd: enumCkd ?? this.enumCkd,
       selectedIndex: selectedIndex ?? this.selectedIndex,
@@ -95,7 +96,8 @@ class CkdSelectModel {
   }
 
   String toJson() => json.encode(toMap());
-  factory CkdSelectModel.fromJson(String source) => CkdSelectModel.fromMap(
+  factory StepCkdSelectState.fromJson(String source) =>
+      StepCkdSelectState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -103,7 +105,7 @@ class CkdSelectModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CkdSelectModel &&
+            other is StepCkdSelectState &&
             const DeepCollectionEquality().equals(
               other.listCkd,
               listCkd,
@@ -151,6 +153,6 @@ class CkdSelectModel {
 
   @override
   String toString() {
-    return 'CkdSelectModel(listCkd: $listCkd, enumCkd: $enumCkd, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
+    return 'StepCkdSelectState(listCkd: $listCkd, enumCkd: $enumCkd, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
   }
 }

@@ -17,8 +17,8 @@ class StepCkdSelectPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ignore: unused_local_variable
-    final state = ref.watch(ckdProvider);
-    final notifier = ref.watch(ckdProvider.notifier);
+    final state = ref.watch(stepCkdSelectProvider);
+    final notifier = ref.watch(stepCkdSelectProvider.notifier);
     final colorSecondary = Theme.of(context).colorScheme.secondary;
 
     return SafeArea(

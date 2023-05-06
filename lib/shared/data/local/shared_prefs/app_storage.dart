@@ -10,10 +10,12 @@ import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
 import 'package:nutrition/features/setting/setting.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
+
 import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/dialysis/dialysis.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
+import 'package:nutrition/features/steps/gfr/provider/step_gfr_input_state.dart';
 import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/name/name.dart';
@@ -149,12 +151,23 @@ class AppStorage {
 // ******************************
   static const _ckdState = '_ckdState';
 
-  CkdState getCkdState() {
-    return CkdState.fromMap(getJson(key: _ckdState));
+  StepCkdSelectState getCkdState() {
+    return StepCkdSelectState.fromMap(getJson(key: _ckdState));
   }
 
-  Future<void> setCkdState(CkdState value) {
+  Future<void> setCkdState(StepCkdSelectState value) {
     return setJson(key: _ckdState, value: value.toMap());
+  }
+
+// ******************************
+  static const _gfrState = '_gfrState';
+
+  StepGfrInputState getGfrState() {
+    return StepGfrInputState.fromMap(getJson(key: _gfrState));
+  }
+
+  Future<void> setGfrState(StepGfrInputState value) {
+    return setJson(key: _gfrState, value: value.toMap());
   }
 
 // ******************************
