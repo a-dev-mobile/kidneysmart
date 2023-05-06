@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/gen/gen.dart';
-import 'package:nutrition/shared/log/log.dart';
+
 import 'package:nutrition/shared/theme/theme.dart';
 import 'package:nutrition/shared/widget/widget.dart';
 

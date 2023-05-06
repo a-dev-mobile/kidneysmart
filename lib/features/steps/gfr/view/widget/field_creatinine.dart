@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:nutrition/features/steps/gfr/gfr.dart';
 import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/shared/log/log.dart';
+
 
 class FieldCreatinine extends ConsumerStatefulWidget {
   const FieldCreatinine({super.key});

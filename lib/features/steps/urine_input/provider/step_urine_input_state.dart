@@ -10,7 +10,7 @@ import 'package:nutrition/shared/enum/enum.dart';
 class StepUrineInputState {
   /* init:'' */
   final String result;
-  /* init:false */
+  /* init: true */
   final bool isKeyboardOpen;
 
   final double? value;
@@ -19,7 +19,7 @@ class StepUrineInputState {
   /* init: EnumValid.init */
   final EnumValid enumValid;
   // end
-
+   
 //          --TURN_GEN--
 //             (data)
 //  *************************************
@@ -27,11 +27,12 @@ class StepUrineInputState {
 //  *************************************
   const StepUrineInputState({
     this.result = '',
-    this.isKeyboardOpen = false,
+    this.isKeyboardOpen = true,
     this.error = '',
     this.enumValid = EnumValid.init,
     this.value,
   });
+
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,17 +44,16 @@ class StepUrineInputState {
     };
   }
 
+
   factory StepUrineInputState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const StepUrineInputState();
 
     return StepUrineInputState(
       result: map['result'] as String? ?? '',
-      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? false,
+      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? true,
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
-      enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
-          : EnumValid.init,
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init,
     );
   }
 
@@ -74,41 +74,18 @@ class StepUrineInputState {
   }
 
   String toJson() => json.encode(toMap());
-  factory StepUrineInputState.fromJson(String source) =>
-      StepUrineInputState.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
+  factory StepUrineInputState.fromJson(String source) => StepUrineInputState.fromMap(json.decode(source) as Map<String, dynamic>,);
+   
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is StepUrineInputState &&
-            (identical(
-                  other.result,
-                  result,
-                ) ||
-                other.result == result) &&
-            (identical(
-                  other.isKeyboardOpen,
-                  isKeyboardOpen,
-                ) ||
-                other.isKeyboardOpen == isKeyboardOpen) &&
-            (identical(
-                  other.value,
-                  value,
-                ) ||
-                other.value == value) &&
-            (identical(
-                  other.error,
-                  error,
-                ) ||
-                other.error == error) &&
-            (identical(
-                  other.enumValid,
-                  enumValid,
-                ) ||
-                other.enumValid == enumValid));
+            (identical(other.result, result,) || other.result == result) &&
+            (identical(other.isKeyboardOpen, isKeyboardOpen,) || other.isKeyboardOpen == isKeyboardOpen) &&
+            (identical(other.value, value,) || other.value == value) &&
+            (identical(other.error, error,) || other.error == error) &&
+            (identical(other.enumValid, enumValid,) || other.enumValid == enumValid));
   }
 
   @override
@@ -119,7 +96,7 @@ class StepUrineInputState {
         value,
         error,
         enumValid,
-      ]);
+]);
 
   @override
   String toString() {

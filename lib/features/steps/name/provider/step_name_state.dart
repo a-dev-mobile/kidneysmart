@@ -17,10 +17,10 @@ class StepNameState {
 
   /* init: EnumGender.none */
   final EnumGender enumGender;
-  /* init: false */
+  /* init: true */
   final bool isKeyboardOpen;
   // end
-
+   
 //          --TURN_GEN--
 //             (data)
 //  *************************************
@@ -30,9 +30,10 @@ class StepNameState {
     this.result = '',
     this.enumValid = EnumValid.init,
     this.enumGender = EnumGender.none,
-    this.isKeyboardOpen = false,
+    this.isKeyboardOpen = true,
     this.error,
   });
+
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,19 +45,16 @@ class StepNameState {
     };
   }
 
+
   factory StepNameState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const StepNameState();
 
     return StepNameState(
       result: map['result'] as String? ?? '',
       error: map['error'] as String?,
-      enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
-          : EnumValid.init,
-      enumGender: map['enumGender'] != null
-          ? EnumGender.values[map['enumGender'] as int]
-          : EnumGender.none,
-      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? false,
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init,
+      enumGender: map['enumGender'] != null ? EnumGender.values[map['enumGender'] as int] : EnumGender.none,
+      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? true,
     );
   }
 
@@ -77,40 +75,18 @@ class StepNameState {
   }
 
   String toJson() => json.encode(toMap());
-  factory StepNameState.fromJson(String source) => StepNameState.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
+  factory StepNameState.fromJson(String source) => StepNameState.fromMap(json.decode(source) as Map<String, dynamic>,);
+   
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is StepNameState &&
-            (identical(
-                  other.result,
-                  result,
-                ) ||
-                other.result == result) &&
-            (identical(
-                  other.error,
-                  error,
-                ) ||
-                other.error == error) &&
-            (identical(
-                  other.enumValid,
-                  enumValid,
-                ) ||
-                other.enumValid == enumValid) &&
-            (identical(
-                  other.enumGender,
-                  enumGender,
-                ) ||
-                other.enumGender == enumGender) &&
-            (identical(
-                  other.isKeyboardOpen,
-                  isKeyboardOpen,
-                ) ||
-                other.isKeyboardOpen == isKeyboardOpen));
+            (identical(other.result, result,) || other.result == result) &&
+            (identical(other.error, error,) || other.error == error) &&
+            (identical(other.enumValid, enumValid,) || other.enumValid == enumValid) &&
+            (identical(other.enumGender, enumGender,) || other.enumGender == enumGender) &&
+            (identical(other.isKeyboardOpen, isKeyboardOpen,) || other.isKeyboardOpen == isKeyboardOpen));
   }
 
   @override
@@ -121,7 +97,7 @@ class StepNameState {
         enumValid,
         enumGender,
         isKeyboardOpen,
-      ]);
+]);
 
   @override
   String toString() {

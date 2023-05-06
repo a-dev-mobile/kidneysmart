@@ -7,7 +7,7 @@ import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/urine_input/urine_input.dart';
 
 import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/shared/log/log.dart';
+
 
 class FieldUrineOutput extends ConsumerStatefulWidget {
   const FieldUrineOutput({super.key});
