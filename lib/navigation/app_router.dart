@@ -209,11 +209,11 @@ class AppRouter {
             ),
           ),
           GoRoute(
-            path: CkdPage.path,
-            name: CkdPage.name,
+            path: StepCkdSelectPage.path,
+            name: StepCkdSelectPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const CkdPage(),
+              child: const StepCkdSelectPage(),
             ),
           ),
         ],

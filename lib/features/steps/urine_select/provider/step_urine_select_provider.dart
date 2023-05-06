@@ -104,7 +104,7 @@ class StepUrineSelectNotifier extends StateNotifier<StepUrineSelectState> {
 
   void nextPage() {
     final nextPage = state.enumUrine.maybeMapValue(
-      orElse: CkdPage.name,
+      orElse: StepCkdSelectPage.name,
       enterValue: StepUrineInputPage.name,
     );
 

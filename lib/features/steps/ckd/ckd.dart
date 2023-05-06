@@ -5,7 +5,7 @@ export 'model/ckd_item_model.dart';
 export 'model/ckd_select_model.dart';
 export 'provider/ckd_provider.dart';
 export 'provider/ckd_state.dart';
-export 'view/ckd_page.dart';
+export 'view/step_ckd_select_page.dart';
 export 'view/widget/btn_ckd.dart';
 export 'view/widget/drop_input_type_creatinine.dart';
 export 'view/widget/field_creatinine.dart';

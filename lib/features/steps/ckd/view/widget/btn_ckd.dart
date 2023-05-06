@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/info_html/info_html.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
-import 'package:nutrition/navigation/navigation.dart';
 import 'package:nutrition/shared/widget/widget.dart';
 
 class BtnCkd extends ConsumerWidget {
@@ -27,15 +25,9 @@ class BtnCkd extends ConsumerWidget {
     return Column(
       children: [
         BtnToggleText(
-          onPressedInfo: () => ref
-              .read(appRouterProvider)
-              .router
-              .pushNamed(InfoHtmlPage.name, extra: EnumInfoType.activity),
           textList: listTextWithoutLast.toList(),
           isSelected: listBoolWithoutLast.toList(),
           onPressed: notifier.setCkdSelect,
-          title:
-              'Чтобы наше приложение могло адаптироваться к вашим потребностям, пожалуйста, выберите свою стадию ХБП\n(Хроническая болезнь почек)',
         ),
 
         //  all last values

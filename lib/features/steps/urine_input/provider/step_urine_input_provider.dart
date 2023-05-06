@@ -109,7 +109,7 @@ class StepUrineInputNotifier extends StateNotifier<StepUrineInputState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(CkdPage.name);
+    _go.router.pushNamed<void>(StepCkdSelectPage.name);
   }
 
   void setKeyboard({required bool isKeyboardOpen}) {

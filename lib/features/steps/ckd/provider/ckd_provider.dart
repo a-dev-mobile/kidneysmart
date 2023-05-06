@@ -80,6 +80,8 @@ class CkdNotifier extends StateNotifier<CkdState> {
   bool get isShowInput =>
       state.select.enumCkd.maybeMapValue(orElse: false, calculate: true);
 
+  bool get isValid => true;
+
   void load() {
     state = state.copyWith(
       select: state.select.copyWith(
