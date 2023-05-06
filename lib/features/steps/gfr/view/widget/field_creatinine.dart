@@ -43,7 +43,7 @@ class _FieldNameState extends ConsumerState<FieldCreatinine>
     super.didChangeMetrics();
     final isKeyboardOpen =
         WidgetsBinding.instance.window.viewInsets.bottom != 0;
-    log.i('isKeyboardClosed = $isKeyboardOpen');
+
 
     ref
         .read(stepGfrInputProvider.notifier)
@@ -62,6 +62,7 @@ class _FieldNameState extends ConsumerState<FieldCreatinine>
     final errorMsg = state.error;
 
     return TextField(
+      autofocus: true,
       controller: controller,
       decoration: InputDecoration(
         labelText: _getNorma(type: inputTypeCreatinine, l: l),

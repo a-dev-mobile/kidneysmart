@@ -17,12 +17,12 @@ class StepGfrInputState {
   final String error;
   /* init: EnumValid.init */
   final EnumValid enumValid;
-  /* init: false */
+  /* init: true */
   final bool isKeyboardOpen;
   /* init:  EnumInputTypeCreatinine.mcmolL */
   final EnumInputTypeCreatinine inputTypeCreatinine;
   // end
-
+   
 //          --TURN_GEN--
 //             (data)
 //  *************************************
@@ -32,10 +32,11 @@ class StepGfrInputState {
     this.result = '',
     this.error = '',
     this.enumValid = EnumValid.init,
-    this.isKeyboardOpen = false,
+    this.isKeyboardOpen = true,
     this.inputTypeCreatinine = EnumInputTypeCreatinine.mcmolL,
     this.value,
   });
+
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,6 +49,7 @@ class StepGfrInputState {
     };
   }
 
+
   factory StepGfrInputState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const StepGfrInputState();
 
@@ -55,13 +57,9 @@ class StepGfrInputState {
       result: map['result'] as String? ?? '',
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
-      enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
-          : EnumValid.init,
-      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? false,
-      inputTypeCreatinine: map['inputTypeCreatinine'] != null
-          ? EnumInputTypeCreatinine.values[map['inputTypeCreatinine'] as int]
-          : EnumInputTypeCreatinine.mcmolL,
+      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init,
+      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? true,
+      inputTypeCreatinine: map['inputTypeCreatinine'] != null ? EnumInputTypeCreatinine.values[map['inputTypeCreatinine'] as int] : EnumInputTypeCreatinine.mcmolL,
     );
   }
 
@@ -84,46 +82,19 @@ class StepGfrInputState {
   }
 
   String toJson() => json.encode(toMap());
-  factory StepGfrInputState.fromJson(String source) =>
-      StepGfrInputState.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
+  factory StepGfrInputState.fromJson(String source) => StepGfrInputState.fromMap(json.decode(source) as Map<String, dynamic>,);
+   
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is StepGfrInputState &&
-            (identical(
-                  other.result,
-                  result,
-                ) ||
-                other.result == result) &&
-            (identical(
-                  other.value,
-                  value,
-                ) ||
-                other.value == value) &&
-            (identical(
-                  other.error,
-                  error,
-                ) ||
-                other.error == error) &&
-            (identical(
-                  other.enumValid,
-                  enumValid,
-                ) ||
-                other.enumValid == enumValid) &&
-            (identical(
-                  other.isKeyboardOpen,
-                  isKeyboardOpen,
-                ) ||
-                other.isKeyboardOpen == isKeyboardOpen) &&
-            (identical(
-                  other.inputTypeCreatinine,
-                  inputTypeCreatinine,
-                ) ||
-                other.inputTypeCreatinine == inputTypeCreatinine));
+            (identical(other.result, result,) || other.result == result) &&
+            (identical(other.value, value,) || other.value == value) &&
+            (identical(other.error, error,) || other.error == error) &&
+            (identical(other.enumValid, enumValid,) || other.enumValid == enumValid) &&
+            (identical(other.isKeyboardOpen, isKeyboardOpen,) || other.isKeyboardOpen == isKeyboardOpen) &&
+            (identical(other.inputTypeCreatinine, inputTypeCreatinine,) || other.inputTypeCreatinine == inputTypeCreatinine));
   }
 
   @override
@@ -135,7 +106,7 @@ class StepGfrInputState {
         enumValid,
         isKeyboardOpen,
         inputTypeCreatinine,
-      ]);
+]);
 
   @override
   String toString() {

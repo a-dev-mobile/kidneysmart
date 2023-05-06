@@ -50,7 +50,7 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
     super.didChangeMetrics();
     final isKeyboardOpen =
         WidgetsBinding.instance.window.viewInsets.bottom != 0;
-    log.i('isKeyboardClosed = $isKeyboardOpen');
+
     ref
         .read(weightProvider.notifier)
         .setKeyboard(isKeyboardOpen: isKeyboardOpen);

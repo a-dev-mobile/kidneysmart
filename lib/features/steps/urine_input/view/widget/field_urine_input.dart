@@ -42,7 +42,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput>
     super.didChangeMetrics();
     final isKeyboardOpen =
         WidgetsBinding.instance.window.viewInsets.bottom != 0;
-    log.i('isKeyboardClosed = $isKeyboardOpen');
+
     ref
         .read(stepUrineInputProvider.notifier)
         .setKeyboard(isKeyboardOpen: isKeyboardOpen);

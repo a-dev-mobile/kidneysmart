@@ -5,8 +5,8 @@ class ImageAnimateContainer extends StatelessWidget {
   const ImageAnimateContainer({
     required this.assetPaths,
     required this.heightMax,
+   required this.isKeyboardOpen,
     this.heightMin = 50,
-    this.isKeyboardOpen = false,
     super.key,
   });
   final String assetPaths;
