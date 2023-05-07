@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/gfr/gfr.dart';
 
-import 'package:nutrition/gen/gen.dart';
 import 'package:nutrition/shared/theme/theme.dart';
 import 'package:nutrition/shared/widget/widget.dart';
 
@@ -31,24 +30,18 @@ class StepGfrInputPage extends ConsumerWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
+                _Title(state: state, colorSecondary: colorSecondary),
                 const Text(
-                  'Расчет СКФ',
-                  style: AppTextStyles.headlineLarge,
+                  'Укажите уровень креатинина\nв сыворотке/плазме',
+                  style: AppTextStyles.headlineSmall,
                   textAlign: TextAlign.center,
                 ),
                 Text(
-                  '(скорость клубочковой фильтрации)',
+                  '(метод расчета CKD-EPI)',
                   style: AppTextStyles.labelLarge.copyWith(
                     color: colorSecondary,
                   ),
                   textAlign: TextAlign.center,
-                ),
-                if (!state.isKeyboardOpen) const SizedBox(height: 16),
-                ImageAnimateContainer(
-                  heightMin: 0,
-                  assetPaths: AssetPaths.ckdSvg,
-                  heightMax: 200,
-                  isKeyboardOpen: state.isKeyboardOpen,
                 ),
                 const SizedBox(height: 16),
                 const DropInputTypeCreatinine(),
@@ -62,17 +55,17 @@ class StepGfrInputPage extends ConsumerWidget {
                       physics: const BouncingScrollPhysics(),
                       child: Text(
                         '''
-Для больных ХБП (хронической почечной болезнью), знание уровня креатинина в крови является крайне важным, так как он выполняет несколько функций:
+   Для больных ХБП (хронической почечной болезнью), знание уровня креатинина в крови является крайне важным, так как он выполняет несколько функций:
 
-Во-первых, креатинин является маркером функции почек. Его уровень в крови позволяет оценить эффективность работы почек по удалению отходов из крови. Уровень креатинина может повышаться при ХБП, когда почки функционируют менее эффективно.
+   Во-первых, креатинин является маркером функции почек. Его уровень в крови позволяет оценить эффективность работы почек по удалению отходов из крови. Уровень креатинина может повышаться при ХБП, когда почки функционируют менее эффективно.
 
-Во-вторых, уровень креатинина используется для определения стадии ХБП. Она оценивается на основе скорости клубочковой фильтрации (СКФ), которая измеряет, насколько быстро почки очищают кровь от креатинина. Чем выше уровень креатинина, тем ниже СКФ и тем более продвинута стадия ХБП.
+   Во-вторых, уровень креатинина используется для определения стадии ХБП. Она оценивается на основе скорости клубочковой фильтрации (СКФ), которая измеряет, насколько быстро почки очищают кровь от креатинина. Чем выше уровень креатинина, тем ниже СКФ и тем более продвинута стадия ХБП.
 
-В-третьих, знание уровня креатинина позволяет врачам отслеживать прогрессирование ХБП и корректировать лечение. Если уровень креатинина увеличивается, это может указывать на то, что заболевание продвигается.
+   В-третьих, знание уровня креатинина позволяет врачам отслеживать прогрессирование ХБП и корректировать лечение. Если уровень креатинина увеличивается, это может указывать на то, что заболевание продвигается.
   
-Наконец, уровень креатинина используется для расчета дозы лекарств, которые могут использоваться для лечения ХБП. Если функция почек нарушена, необходимо корректировать дозировку лекарств, чтобы избежать их накопления в организме и возможных побочных эффектов.
+   Наконец, уровень креатинина используется для расчета дозы лекарств, которые могут использоваться для лечения ХБП. Если функция почек нарушена, необходимо корректировать дозировку лекарств, чтобы избежать их накопления в организме и возможных побочных эффектов.
 
-В целом, знание уровня креатинина в крови помогает оценить функцию почек и определить стадию ХБП. Это важно для выбора подходящей терапии и контроля прогрессирования болезни.
+   В целом, знание уровня креатинина в крови помогает оценить функцию почек и определить стадию ХБП. Это важно для выбора подходящей терапии и контроля прогрессирования болезни.
 ''',
                         style: AppTextStyles.labelLarge.copyWith(
                           color: Theme.of(context).colorScheme.secondary,
@@ -90,6 +83,40 @@ class StepGfrInputPage extends ConsumerWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _Title extends StatelessWidget {
+  const _Title({
+    required this.state,
+    required this.colorSecondary,
+  });
+
+  final StepGfrInputState state;
+  final Color colorSecondary;
+
+  @override
+  Widget build(BuildContext context) {
+    return Visibility(
+      visible: !state.isKeyboardOpen,
+      child: Column(
+        children: [
+          const Text(
+            'Расчет СКФ',
+            style: AppTextStyles.headlineLarge,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            '(скорость клубочковой фильтрации)',
+            style: AppTextStyles.labelLarge.copyWith(
+              color: colorSecondary,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 16),
+        ],
       ),
     );
   }

@@ -8,7 +8,6 @@ import 'package:nutrition/features/steps/urine_input/urine_input.dart';
 
 import 'package:nutrition/localization/localization.dart';
 
-
 class FieldUrineOutput extends ConsumerStatefulWidget {
   const FieldUrineOutput({super.key});
 
@@ -58,7 +57,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput>
 
     return TextField(
       controller: controller,
-      autofocus: true,
+      // autofocus: true,
       decoration: InputDecoration(
         labelText: _getNorma(type: stateGender.enumGender, l: l),
         errorText: state.enumValid.maybeMapOrNullValue(error: state.error),

@@ -86,7 +86,7 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
                 //   ),
                 // ),
 
-                ImageAnimateContainer(
+                ContainerSvgAnimate(
                   assetPaths: AssetPaths.nameStepSvg,
                   heightMax: 280,
                   isKeyboardOpen: state.isKeyboardOpen,
@@ -104,7 +104,7 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
                   hideOnError: true,
 
                   textFieldConfiguration: TextFieldConfiguration(
-                    autofocus: true,
+                    // autofocus: true,
                     decoration: InputDecoration(
                       labelText: 'Введите имя',
                       errorMaxLines: 3,

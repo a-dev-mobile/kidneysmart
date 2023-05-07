@@ -67,7 +67,7 @@ class WeightNotifier extends StateNotifier<WeightState> {
       enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
     );
 
-    _storage.setWeightState(state);
+    _storage.setWeightState(state.copyWith(isKeyboardOpen: false));
   }
 
   String _validWeight(

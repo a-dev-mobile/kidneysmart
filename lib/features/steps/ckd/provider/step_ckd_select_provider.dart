@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/gfr/gfr.dart';
 import 'package:nutrition/localization/localization.dart';
@@ -99,8 +100,6 @@ class StepCkdSelectNotifier extends StateNotifier<StepCkdSelectState> {
       selectedIndex: selectedIndex,
     );
 
-
-
     state = state.copyWith(
       listCkd: listCkd,
       selectedIndex: v,
@@ -115,7 +114,7 @@ class StepCkdSelectNotifier extends StateNotifier<StepCkdSelectState> {
 
   void nextPage() {
     final nextPage = state.enumCkd.maybeMapValue(
-      orElse: StepCkdSelectPage.name,
+      orElse: CalcNutrientPage.name,
       five: StepCkdSelectPage.name,
       calculate: StepGfrInputPage.name,
     );

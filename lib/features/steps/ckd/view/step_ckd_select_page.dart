@@ -35,7 +35,7 @@ class StepCkdSelectPage extends ConsumerWidget {
               ),
 
               Text(
-                'Взависимости от ответа',
+                '(взависимости от ответа)',
                 style: AppTextStyles.labelLarge.copyWith(
                   color: colorSecondary,
                 ),

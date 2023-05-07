@@ -76,12 +76,12 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
                 ),
                 const SizedBox(height: 16),
                 state.enumGender.maybeMapValue(
-                  male: ImageAnimateContainer(
+                  male: ContainerSvgAnimate(
                     assetPaths: AssetPaths.weightMaleSvg,
                     isKeyboardOpen: state.isKeyboardOpen,
                     heightMax: 250,
                   ),
-                  orElse: ImageAnimateContainer(
+                  orElse: ContainerSvgAnimate(
                     heightMax: 250,
                     assetPaths: AssetPaths.weighFemaleSvg,
                     isKeyboardOpen: state.isKeyboardOpen,
@@ -103,7 +103,7 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
                 ),
                 const SizedBox(height: 16),
                 TextField(
-                  autofocus: true,
+                  // autofocus: true,
                   controller: controller,
                   decoration: InputDecoration(
                     labelText: 'Вес',

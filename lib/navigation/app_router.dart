@@ -6,6 +6,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
 import 'package:nutrition/features/info_html/info_html.dart';
 import 'package:nutrition/features/onboarding/vew/onboarding_page.dart';
@@ -113,14 +114,14 @@ class AppRouter {
               ),
             ),
           ),
-          // GoRoute(
-          //   path: CalcNutrientPage.path,
-          //   name: CalcNutrientPage.name,
-          //   pageBuilder: (context, state) => MaterialPage<void>(
-          //     key: state.pageKey,
-          //     child: const CalcNutrientPage(),
-          //   ),
-          // ),
+          GoRoute(
+            path: CalcNutrientPage.path,
+            name: CalcNutrientPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const CalcNutrientPage(),
+            ),
+          ),
           GoRoute(
             path: StepGenderPage.path,
             name: StepGenderPage.name,

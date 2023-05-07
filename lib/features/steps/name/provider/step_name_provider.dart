@@ -68,7 +68,11 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
       enumValid: error == null ? EnumValid.valid : EnumValid.error,
     );
 
-    _storage.setStepNameState(state);
+    _saveState();
+  }
+
+  void _saveState() {
+    _storage.setStepNameState(state.copyWith(isKeyboardOpen: false));
   }
 
   List<DataFio> _getTips(FioTooltip result) {
@@ -93,7 +97,7 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
     final enumGender = EnumGender.fromValue(v, fallback: EnumGender.none);
     state = state.copyWith(enumGender: enumGender);
 
-    _storage.setStepNameState(state);
+    _saveState();
     // if guessed right gender - for next page - clean state
     if (enumGender != EnumGender.none) {
       _storage.setGenderState(const StepGenderState());

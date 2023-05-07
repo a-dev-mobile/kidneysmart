@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ImageAnimateContainer extends StatelessWidget {
-  const ImageAnimateContainer({
+class ContainerSvgAnimate extends StatelessWidget {
+  const ContainerSvgAnimate({
     required this.assetPaths,
     required this.heightMax,
-   required this.isKeyboardOpen,
+    required this.isKeyboardOpen,
     this.heightMin = 50,
     super.key,
   });

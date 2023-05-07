@@ -1,8 +1,7 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:nutrition/core/widget/widget.dart';
 import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
+import 'package:nutrition/shared/widget/widget.dart';
 
 class CalcNutrientPage extends ConsumerWidget {
   const CalcNutrientPage({super.key});
@@ -42,4 +41,3 @@ class CalcNutrientPage extends ConsumerWidget {
     );
   }
 }
- */

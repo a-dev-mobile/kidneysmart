@@ -42,7 +42,7 @@ class StepBirthdayNotifier extends StateNotifier<StepBirthdayState> {
 
   bool get isValid => state.enumValid.maybeMapValue(orElse: false, valid: true);
 
-  static const _MIN_AGE = 2;
+  static const _MIN_AGE = 18;
   static const _MAX_AGE = 150;
   void load() {
     final days = _initDayMonth(start: 1, end: 31);

@@ -7,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/gfr/gfr.dart';
 import 'package:nutrition/localization/localization.dart';
 
-
 class FieldCreatinine extends ConsumerStatefulWidget {
   const FieldCreatinine({super.key});
 
@@ -44,7 +43,6 @@ class _FieldNameState extends ConsumerState<FieldCreatinine>
     final isKeyboardOpen =
         WidgetsBinding.instance.window.viewInsets.bottom != 0;
 
-
     ref
         .read(stepGfrInputProvider.notifier)
         .setKeyboard(isKeyboardOpen: isKeyboardOpen);
@@ -62,7 +60,7 @@ class _FieldNameState extends ConsumerState<FieldCreatinine>
     final errorMsg = state.error;
 
     return TextField(
-      autofocus: true,
+      // autofocus: true,
       controller: controller,
       decoration: InputDecoration(
         labelText: _getNorma(type: inputTypeCreatinine, l: l),

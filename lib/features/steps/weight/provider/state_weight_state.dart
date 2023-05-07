@@ -21,11 +21,11 @@ class WeightState {
 
   /* init: EnumUnitWeight.kg */
   final EnumUnitWeight enumUnitWeight;
-/* init: true */
+/* init: false */
   final bool isKeyboardOpen;
 
   // end
-   
+
 //          --TURN_GEN--
 //             (data)
 //  *************************************
@@ -37,10 +37,9 @@ class WeightState {
     this.error = '',
     this.enumValid = EnumValid.init,
     this.enumUnitWeight = EnumUnitWeight.kg,
-    this.isKeyboardOpen = true,
+    this.isKeyboardOpen = false,
     this.value,
   });
-
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,18 +53,23 @@ class WeightState {
     };
   }
 
-
   factory WeightState.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return const WeightState();
 
     return WeightState(
       result: map['result'] as String? ?? '',
-      enumGender: map['enumGender'] != null ? EnumGender.values[map['enumGender'] as int] : EnumGender.none,
+      enumGender: map['enumGender'] != null
+          ? EnumGender.values[map['enumGender'] as int]
+          : EnumGender.none,
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
-      enumValid: map['enumValid'] != null ? EnumValid.values[map['enumValid'] as int] : EnumValid.init,
-      enumUnitWeight: map['enumUnitWeight'] != null ? EnumUnitWeight.values[map['enumUnitWeight'] as int] : EnumUnitWeight.kg,
-      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? true,
+      enumValid: map['enumValid'] != null
+          ? EnumValid.values[map['enumValid'] as int]
+          : EnumValid.init,
+      enumUnitWeight: map['enumUnitWeight'] != null
+          ? EnumUnitWeight.values[map['enumUnitWeight'] as int]
+          : EnumUnitWeight.kg,
+      isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? false,
     );
   }
 
@@ -90,20 +94,50 @@ class WeightState {
   }
 
   String toJson() => json.encode(toMap());
-  factory WeightState.fromJson(String source) => WeightState.fromMap(json.decode(source) as Map<String, dynamic>,);
-   
+  factory WeightState.fromJson(String source) => WeightState.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is WeightState &&
-            (identical(other.result, result,) || other.result == result) &&
-            (identical(other.enumGender, enumGender,) || other.enumGender == enumGender) &&
-            (identical(other.value, value,) || other.value == value) &&
-            (identical(other.error, error,) || other.error == error) &&
-            (identical(other.enumValid, enumValid,) || other.enumValid == enumValid) &&
-            (identical(other.enumUnitWeight, enumUnitWeight,) || other.enumUnitWeight == enumUnitWeight) &&
-            (identical(other.isKeyboardOpen, isKeyboardOpen,) || other.isKeyboardOpen == isKeyboardOpen));
+            (identical(
+                  other.result,
+                  result,
+                ) ||
+                other.result == result) &&
+            (identical(
+                  other.enumGender,
+                  enumGender,
+                ) ||
+                other.enumGender == enumGender) &&
+            (identical(
+                  other.value,
+                  value,
+                ) ||
+                other.value == value) &&
+            (identical(
+                  other.error,
+                  error,
+                ) ||
+                other.error == error) &&
+            (identical(
+                  other.enumValid,
+                  enumValid,
+                ) ||
+                other.enumValid == enumValid) &&
+            (identical(
+                  other.enumUnitWeight,
+                  enumUnitWeight,
+                ) ||
+                other.enumUnitWeight == enumUnitWeight) &&
+            (identical(
+                  other.isKeyboardOpen,
+                  isKeyboardOpen,
+                ) ||
+                other.isKeyboardOpen == isKeyboardOpen));
   }
 
   @override
@@ -116,7 +150,7 @@ class WeightState {
         enumValid,
         enumUnitWeight,
         isKeyboardOpen,
-]);
+      ]);
 
   @override
   String toString() {

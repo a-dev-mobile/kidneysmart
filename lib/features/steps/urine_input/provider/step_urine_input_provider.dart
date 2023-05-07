@@ -54,7 +54,7 @@ class StepUrineInputNotifier extends StateNotifier<StepUrineInputState> {
       error: error,
       value: error.isEmpty ? double.tryParse(v!) : null,
     );
-    _storage.setUrineInputState(state);
+    _storage.setUrineInputState(state.copyWith(isKeyboardOpen: false));
   }
 
 //   void setDailyDiuresis(int? v, {bool isSaveState = true}) {
