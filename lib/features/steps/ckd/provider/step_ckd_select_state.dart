@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 
 import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/gender/enum/enum_gender.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
@@ -15,6 +16,9 @@ class StepCkdSelectState {
 
 /* init: EnumCkd.none */
   final EnumCkd enumCkd;
+
+/* init: EnumGender.none */
+  final EnumGender enumGender;
 
   final int? selectedIndex;
   /* init: EnumValid.init */
@@ -34,6 +38,7 @@ class StepCkdSelectState {
   const StepCkdSelectState({
     this.listCkd = const [],
     this.enumCkd = EnumCkd.none,
+    this.enumGender = EnumGender.none,
     this.enumValid = EnumValid.init,
     this.error = '',
     this.listSelected = const [],
@@ -44,6 +49,7 @@ class StepCkdSelectState {
     return <String, dynamic>{
       'listCkd': listCkd.map((e) => e.toMap()).toList(),
       'enumCkd': enumCkd.index,
+      'enumGender': enumGender.index,
       'selectedIndex': selectedIndex,
       'enumValid': enumValid.index,
       'error': error,
@@ -65,6 +71,9 @@ class StepCkdSelectState {
       enumCkd: map['enumCkd'] != null
           ? EnumCkd.values[map['enumCkd'] as int]
           : EnumCkd.none,
+      enumGender: map['enumGender'] != null
+          ? EnumGender.values[map['enumGender'] as int]
+          : EnumGender.none,
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
@@ -80,6 +89,7 @@ class StepCkdSelectState {
   StepCkdSelectState copyWith({
     List<CkdItemModel>? listCkd,
     EnumCkd? enumCkd,
+    EnumGender? enumGender,
     int? selectedIndex,
     EnumValid? enumValid,
     String? error,
@@ -88,6 +98,7 @@ class StepCkdSelectState {
     return StepCkdSelectState(
       listCkd: listCkd ?? this.listCkd,
       enumCkd: enumCkd ?? this.enumCkd,
+      enumGender: enumGender ?? this.enumGender,
       selectedIndex: selectedIndex ?? this.selectedIndex,
       enumValid: enumValid ?? this.enumValid,
       error: error ?? this.error,
@@ -116,6 +127,11 @@ class StepCkdSelectState {
                 ) ||
                 other.enumCkd == enumCkd) &&
             (identical(
+                  other.enumGender,
+                  enumGender,
+                ) ||
+                other.enumGender == enumGender) &&
+            (identical(
                   other.selectedIndex,
                   selectedIndex,
                 ) ||
@@ -143,6 +159,7 @@ class StepCkdSelectState {
           listCkd,
         ),
         enumCkd,
+        enumGender,
         selectedIndex,
         enumValid,
         error,
@@ -153,6 +170,6 @@ class StepCkdSelectState {
 
   @override
   String toString() {
-    return 'StepCkdSelectState(listCkd: $listCkd, enumCkd: $enumCkd, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
+    return 'StepCkdSelectState(listCkd: $listCkd, enumCkd: $enumCkd, enumGender: $enumGender, selectedIndex: $selectedIndex, enumValid: $enumValid, error: $error, listSelected: $listSelected, )';
   }
 }

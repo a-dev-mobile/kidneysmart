@@ -75,17 +75,13 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
                   style: AppTextStyles.headlineLarge,
                 ),
                 const SizedBox(height: 16),
-                state.enumGender.maybeMapValue(
-                  male: ContainerSvgAnimate(
-                    assetPaths: AssetPaths.weightMaleSvg,
-                    isKeyboardOpen: state.isKeyboardOpen,
-                    heightMax: 250,
+                ContainerSvgAnimate(
+                  assetPaths: state.enumGender.maybeMapValue(
+                    male: AssetPaths.weightMaleSvg,
+                    orElse: AssetPaths.weighFemaleSvg,
                   ),
-                  orElse: ContainerSvgAnimate(
-                    heightMax: 250,
-                    assetPaths: AssetPaths.weighFemaleSvg,
-                    isKeyboardOpen: state.isKeyboardOpen,
-                  ),
+                  isKeyboardOpen: state.isKeyboardOpen,
+                  heightMax: 250,
                 ),
                 const SizedBox(height: 16),
                 const Text(

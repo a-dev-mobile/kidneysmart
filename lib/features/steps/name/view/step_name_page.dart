@@ -88,7 +88,7 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
 
                 ContainerSvgAnimate(
                   assetPaths: AssetPaths.nameStepSvg,
-                  heightMax: 280,
+                  heightMax: 240,
                   isKeyboardOpen: state.isKeyboardOpen,
                 ),
                 const SizedBox(height: 16),

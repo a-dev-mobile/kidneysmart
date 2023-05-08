@@ -51,6 +51,14 @@ class AssetPaths {
   /// * File path: _assets/svg/ckd.svg
   static const String ckdSvg = 'assets/svg/ckd.svg';
 
+  /// * Size:	34.7 KB
+  /// * File path: _assets/svg/ckd_female.svg
+  static const String ckdFemaleSvg = 'assets/svg/ckd_female.svg';
+
+  /// * Size:	43.4 KB
+  /// * File path: _assets/svg/ckd_male.svg
+  static const String ckdMaleSvg = 'assets/svg/ckd_male.svg';
+
   /// * Size:	44.9 KB
   /// * File path: _assets/svg/date.svg
   static const String dateSvg = 'assets/svg/date.svg';
@@ -58,6 +66,10 @@ class AssetPaths {
   /// * Size:	2.3 KB
   /// * File path: _assets/svg/diabet.svg
   static const String diabetSvg = 'assets/svg/diabet.svg';
+
+  /// * Size:	7.8 KB
+  /// * File path: _assets/svg/dialysis.svg
+  static const String dialysisSvg = 'assets/svg/dialysis.svg';
 
   /// * Size:	54.1 KB
   /// * File path: _assets/svg/gender.svg
@@ -171,8 +183,11 @@ class AssetPaths {
     activitySvg,
     bloodPressureSvg,
     ckdSvg,
+    ckdFemaleSvg,
+    ckdMaleSvg,
     dateSvg,
     diabetSvg,
+    dialysisSvg,
     genderSvg,
     heightFemaleSvg,
     heightMaleSvg,
@@ -224,8 +239,11 @@ class AssetPaths {
     activitySvg,
     bloodPressureSvg,
     ckdSvg,
+    ckdFemaleSvg,
+    ckdMaleSvg,
     dateSvg,
     diabetSvg,
+    dialysisSvg,
     genderSvg,
     heightFemaleSvg,
     heightMaleSvg,

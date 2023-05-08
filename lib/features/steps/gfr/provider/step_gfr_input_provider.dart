@@ -46,14 +46,12 @@ class StepGfrInputNotifier extends StateNotifier<StepGfrInputState> {
   EnumGender _gender = EnumGender.male;
   int _yearUser = 0;
 
-
   void _load() {
     state = state.copyWith(enumResult: EnumResult.load);
 
     _gender = _storage.getGenderState().enumGender;
     final birthDay = _storage.getBirthdayState();
     _yearUser = birthDay.userYearFine;
-
 
     state = state.copyWith(enumResult: EnumResult.success);
   }

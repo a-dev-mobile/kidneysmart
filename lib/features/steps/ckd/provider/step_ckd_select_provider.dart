@@ -75,7 +75,10 @@ class StepCkdSelectNotifier extends StateNotifier<StepCkdSelectState> {
   bool get isValid => state.enumValid.maybeMapValue(orElse: false, valid: true);
 
   void load() {
+    final enumGender = _storage.getGenderState().enumGender;
+
     state = state.copyWith(
+      enumGender: enumGender,
       listCkd: _initCkd,
       listSelected: AppUtilsArray.getListBool(
         length: _initCkd.length,
