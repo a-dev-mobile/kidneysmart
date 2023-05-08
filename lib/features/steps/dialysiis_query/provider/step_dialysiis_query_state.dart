@@ -3,37 +3,38 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
-import 'package:nutrition/features/steps/dialysis/dialysis.dart';
+import 'package:meta/meta.dart';
+import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
+
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
-class DialysisModel {
+class DialysisQueryState {
   final int? selectedIndex;
-  /* init: EnumDialysis.none */
-  final EnumDialysis enumDialysis;
+  /* init: EnumDialysisQuery.none */
+  final EnumDialysisQuery enumDialysisQuery;
   /* init: EnumValid.init */
   final EnumValid enumValid;
   /* init: '' */
   final String error;
   /* init:const [] */
-  final List<DialysisItemModel> listDialysis;
+  final List<DialysisQueryItemModel> listDialysisQuery;
 
 /* init: [] */
   final List<bool> listSelected;
 
-// end
+  // end
 
 //          --TURN_GEN--
 //             (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const DialysisModel({
-    this.enumDialysis = EnumDialysis.none,
+  const DialysisQueryState({
+    this.enumDialysisQuery = EnumDialysisQuery.none,
     this.enumValid = EnumValid.init,
     this.error = '',
-    this.listDialysis = const [],
+    this.listDialysisQuery = const [],
     this.listSelected = const [],
     this.selectedIndex,
   });
@@ -41,30 +42,31 @@ class DialysisModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'selectedIndex': selectedIndex,
-      'enumDialysis': enumDialysis.index,
+      'enumDialysisQuery': enumDialysisQuery.index,
       'enumValid': enumValid.index,
       'error': error,
-      'listDialysis': listDialysis.map((e) => e.toMap()).toList(),
+      'listDialysisQuery': listDialysisQuery.map((e) => e.toMap()).toList(),
       'listSelected': listSelected,
     };
   }
 
-  factory DialysisModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const DialysisModel();
+  factory DialysisQueryState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const DialysisQueryState();
 
-    return DialysisModel(
+    return DialysisQueryState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
-      enumDialysis: map['enumDialysis'] != null
-          ? EnumDialysis.values[map['enumDialysis'] as int]
-          : EnumDialysis.none,
+      enumDialysisQuery: map['enumDialysisQuery'] != null
+          ? EnumDialysisQuery.values[map['enumDialysisQuery'] as int]
+          : EnumDialysisQuery.none,
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
           : EnumValid.init,
       error: map['error'] as String? ?? '',
-      listDialysis: map['listDialysis'] != null
-          ? (map['listDialysis'] as List<dynamic>)
+      listDialysisQuery: map['listDialysisQuery'] != null
+          ? (map['listDialysisQuery'] as List<dynamic>)
               .map(
-                (e) => DialysisItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) =>
+                    DialysisQueryItemModel.fromMap(e as Map<dynamic, dynamic>),
               )
               .toList()
           : const [],
@@ -75,26 +77,27 @@ class DialysisModel {
     );
   }
 
-  DialysisModel copyWith({
+  DialysisQueryState copyWith({
     int? selectedIndex,
-    EnumDialysis? enumDialysis,
+    EnumDialysisQuery? enumDialysisQuery,
     EnumValid? enumValid,
     String? error,
-    List<DialysisItemModel>? listDialysis,
+    List<DialysisQueryItemModel>? listDialysisQuery,
     List<bool>? listSelected,
   }) {
-    return DialysisModel(
+    return DialysisQueryState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
-      enumDialysis: enumDialysis ?? this.enumDialysis,
+      enumDialysisQuery: enumDialysisQuery ?? this.enumDialysisQuery,
       enumValid: enumValid ?? this.enumValid,
       error: error ?? this.error,
-      listDialysis: listDialysis ?? this.listDialysis,
+      listDialysisQuery: listDialysisQuery ?? this.listDialysisQuery,
       listSelected: listSelected ?? this.listSelected,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory DialysisModel.fromJson(String source) => DialysisModel.fromMap(
+  factory DialysisQueryState.fromJson(String source) =>
+      DialysisQueryState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -102,17 +105,17 @@ class DialysisModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DialysisModel &&
+            other is DialysisQueryState &&
             (identical(
                   other.selectedIndex,
                   selectedIndex,
                 ) ||
                 other.selectedIndex == selectedIndex) &&
             (identical(
-                  other.enumDialysis,
-                  enumDialysis,
+                  other.enumDialysisQuery,
+                  enumDialysisQuery,
                 ) ||
-                other.enumDialysis == enumDialysis) &&
+                other.enumDialysisQuery == enumDialysisQuery) &&
             (identical(
                   other.enumValid,
                   enumValid,
@@ -124,8 +127,8 @@ class DialysisModel {
                 ) ||
                 other.error == error) &&
             const DeepCollectionEquality().equals(
-              other.listDialysis,
-              listDialysis,
+              other.listDialysisQuery,
+              listDialysisQuery,
             ) &&
             const DeepCollectionEquality().equals(
               other.listSelected,
@@ -137,11 +140,11 @@ class DialysisModel {
   int get hashCode => Object.hashAll([
         runtimeType,
         selectedIndex,
-        enumDialysis,
+        enumDialysisQuery,
         enumValid,
         error,
         const DeepCollectionEquality().hash(
-          listDialysis,
+          listDialysisQuery,
         ),
         const DeepCollectionEquality().hash(
           listSelected,
@@ -150,6 +153,6 @@ class DialysisModel {
 
   @override
   String toString() {
-    return 'DialysisModel(selectedIndex: $selectedIndex, enumDialysis: $enumDialysis, enumValid: $enumValid, error: $error, listDialysis: $listDialysis, listSelected: $listSelected, )';
+    return 'DialysisQueryState(selectedIndex: $selectedIndex, enumDialysisQuery: $enumDialysisQuery, enumValid: $enumValid, error: $error, listDialysisQuery: $listDialysisQuery, listSelected: $listSelected, )';
   }
 }

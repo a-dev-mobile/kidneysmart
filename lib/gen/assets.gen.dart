@@ -71,6 +71,14 @@ class AssetPaths {
   /// * File path: _assets/svg/dialysis.svg
   static const String dialysisSvg = 'assets/svg/dialysis.svg';
 
+  /// * Size:	21.1 KB
+  /// * File path: _assets/svg/dialysis_type.svg
+  static const String dialysisTypeSvg = 'assets/svg/dialysis_type.svg';
+
+  /// * Size:	21.8 KB
+  /// * File path: _assets/svg/dry_weight.svg
+  static const String dryWeightSvg = 'assets/svg/dry_weight.svg';
+
   /// * Size:	54.1 KB
   /// * File path: _assets/svg/gender.svg
   static const String genderSvg = 'assets/svg/gender.svg';
@@ -163,6 +171,10 @@ class AssetPaths {
   /// * File path: _assets/svg/urine_no.svg
   static const String urineNoSvg = 'assets/svg/urine_no.svg';
 
+  /// * Size:	4.6 KB
+  /// * File path: _assets/svg/weight_dry.svg
+  static const String weightDrySvg = 'assets/svg/weight_dry.svg';
+
   /// * Size:	23.6 KB
   /// * File path: _assets/svg/weight_male.svg
   static const String weightMaleSvg = 'assets/svg/weight_male.svg';
@@ -188,6 +200,8 @@ class AssetPaths {
     dateSvg,
     diabetSvg,
     dialysisSvg,
+    dialysisTypeSvg,
+    dryWeightSvg,
     genderSvg,
     heightFemaleSvg,
     heightMaleSvg,
@@ -211,6 +225,7 @@ class AssetPaths {
     urineSvg,
     urineInputSvg,
     urineNoSvg,
+    weightDrySvg,
     weightMaleSvg,
     weighFemaleSvg
   ];
@@ -244,6 +259,8 @@ class AssetPaths {
     dateSvg,
     diabetSvg,
     dialysisSvg,
+    dialysisTypeSvg,
+    dryWeightSvg,
     genderSvg,
     heightFemaleSvg,
     heightMaleSvg,
@@ -267,6 +284,7 @@ class AssetPaths {
     urineSvg,
     urineInputSvg,
     urineNoSvg,
+    weightDrySvg,
     weightMaleSvg,
     weighFemaleSvg
   ];

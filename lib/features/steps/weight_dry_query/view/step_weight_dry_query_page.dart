@@ -3,21 +3,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
-import 'package:nutrition/features/steps/hypertension/hypertension.dart';
+import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
+
 import 'package:nutrition/gen/gen.dart';
 import 'package:nutrition/shared/theme/theme.dart';
 import 'package:nutrition/shared/widget/widget.dart';
 
-class StepHypertensionPage extends ConsumerWidget {
-  const StepHypertensionPage({super.key});
+class StepWeightDryQueryPage extends ConsumerWidget {
+  const StepWeightDryQueryPage({super.key});
 
-  static const path = '/HypertensionPage';
-  static const name = 'HypertensionPage';
+  static const path = '/WeightDryQueryPage';
+  static const name = 'WeightDryQueryPage';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(hypertensionProvider);
-    final notifier = ref.watch(hypertensionProvider.notifier);
+    final state = ref.watch(weightDryQueryProvider);
+    final notifier = ref.watch(weightDryQueryProvider.notifier);
 
     return SafeArea(
       child: Scaffold(
@@ -27,26 +28,26 @@ class StepHypertensionPage extends ConsumerWidget {
           child: Column(
             children: [
               const Text(
-                'Немного\nмедицинских вопросов',
+                'Мы заканчиваем!',
                 style: AppTextStyles.headlineLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              SizedBox(
-                height: 118,
-                width: 335,
-                child: SvgPicture.asset(AssetPaths.bloodPressureSvg),
+              SvgPicture.asset(
+                AssetPaths.dryWeightSvg,
+                height: 200,
               ),
               const SizedBox(height: 16),
               const Text(
-                'Бывает ли у Вас\nвысокое давление?',
-                style: AppTextStyles.headlineLarge,
+                'Знаете ли вы\nсвой “сухой” вес?',
+                style: AppTextStyles.headlineSmall,
               ),
+              // const SizedBox(height: 16),
               const SizedBox(height: 16),
               BtnToggleText(
-                textList: state.listHypertension.map((e) => e.value).toList(),
+                textList: state.listWeightDryQuery.map((e) => e.value).toList(),
                 isSelected: state.listSelected,
-                onPressed: notifier.setHypertension,
+                onPressed: notifier.setWeightDryQuery,
                 errorText:
                     state.enumValid.maybeMapOrNullValue(error: state.error),
               ),
@@ -56,9 +57,9 @@ class StepHypertensionPage extends ConsumerWidget {
                   physics: const BouncingScrollPhysics(),
                   child: Text(
                     '''
-   Высокое кровяное давление (артериальная гипертензия) является общей проблемой для больных ХБП (хронической болезнью почек). 
-                
-   При ХБП почки не могут полностью выполнять свою функцию очищения крови от избытка жидкости и солей, что может привести к увеличению объема жидкости в организме и ухудшению кровотока.''',
+   Сухой вес - это вес тела без жидкости, важный для расчета доз лекарств и количества удаляемой жидкости во время диализа. 
+
+   Не знание своего сухого веса может указывать на отсутствие регулярных медицинских обследований и помощи.''',
                     style: AppTextStyles.labelLarge.copyWith(
                       color: Theme.of(context).colorScheme.secondary,
                     ),

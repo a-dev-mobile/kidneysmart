@@ -51,6 +51,7 @@ class StepUrineSelectPage extends ConsumerWidget {
                 style: AppTextStyles.headlineSmall,
                 textAlign: TextAlign.center,
               ),
+              const SizedBox(height: 16),
               BtnToggleText(
                 textList: listTextWithoutLast,
                 isSelected: listBoolWithoutLast,

@@ -4,36 +4,37 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/dialysis/dialysis.dart';
+
+import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
-class DialysisState {
+class DialysisTypeState {
   final int? selectedIndex;
-  /* init: EnumDialysis.none */
-  final EnumDialysis enumDialysis;
+  /* init: EnumDialysisType.none */
+  final EnumDialysisType enumDialysisType;
   /* init: EnumValid.init */
   final EnumValid enumValid;
   /* init: '' */
   final String error;
   /* init:const [] */
-  final List<DialysisItemModel> listDialysis;
+  final List<DialysisTypeItemModel> listDialysisType;
 
 /* init: [] */
   final List<bool> listSelected;
 
-  // end
+// end
 
 //          --TURN_GEN--
 //             (data)
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const DialysisState({
-    this.enumDialysis = EnumDialysis.none,
+  const DialysisTypeState({
+    this.enumDialysisType = EnumDialysisType.none,
     this.enumValid = EnumValid.init,
     this.error = '',
-    this.listDialysis = const [],
+    this.listDialysisType = const [],
     this.listSelected = const [],
     this.selectedIndex,
   });
@@ -41,30 +42,31 @@ class DialysisState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'selectedIndex': selectedIndex,
-      'enumDialysis': enumDialysis.index,
+      'enumDialysisType': enumDialysisType.index,
       'enumValid': enumValid.index,
       'error': error,
-      'listDialysis': listDialysis.map((e) => e.toMap()).toList(),
+      'listDialysisType': listDialysisType.map((e) => e.toMap()).toList(),
       'listSelected': listSelected,
     };
   }
 
-  factory DialysisState.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const DialysisState();
+  factory DialysisTypeState.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const DialysisTypeState();
 
-    return DialysisState(
+    return DialysisTypeState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
-      enumDialysis: map['enumDialysis'] != null
-          ? EnumDialysis.values[map['enumDialysis'] as int]
-          : EnumDialysis.none,
+      enumDialysisType: map['enumDialysisType'] != null
+          ? EnumDialysisType.values[map['enumDialysisType'] as int]
+          : EnumDialysisType.none,
       enumValid: map['enumValid'] != null
           ? EnumValid.values[map['enumValid'] as int]
           : EnumValid.init,
       error: map['error'] as String? ?? '',
-      listDialysis: map['listDialysis'] != null
-          ? (map['listDialysis'] as List<dynamic>)
+      listDialysisType: map['listDialysisType'] != null
+          ? (map['listDialysisType'] as List<dynamic>)
               .map(
-                (e) => DialysisItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) =>
+                    DialysisTypeItemModel.fromMap(e as Map<dynamic, dynamic>),
               )
               .toList()
           : const [],
@@ -75,26 +77,27 @@ class DialysisState {
     );
   }
 
-  DialysisState copyWith({
+  DialysisTypeState copyWith({
     int? selectedIndex,
-    EnumDialysis? enumDialysis,
+    EnumDialysisType? enumDialysisType,
     EnumValid? enumValid,
     String? error,
-    List<DialysisItemModel>? listDialysis,
+    List<DialysisTypeItemModel>? listDialysisType,
     List<bool>? listSelected,
   }) {
-    return DialysisState(
+    return DialysisTypeState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
-      enumDialysis: enumDialysis ?? this.enumDialysis,
+      enumDialysisType: enumDialysisType ?? this.enumDialysisType,
       enumValid: enumValid ?? this.enumValid,
       error: error ?? this.error,
-      listDialysis: listDialysis ?? this.listDialysis,
+      listDialysisType: listDialysisType ?? this.listDialysisType,
       listSelected: listSelected ?? this.listSelected,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory DialysisState.fromJson(String source) => DialysisState.fromMap(
+  factory DialysisTypeState.fromJson(String source) =>
+      DialysisTypeState.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -102,17 +105,17 @@ class DialysisState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DialysisState &&
+            other is DialysisTypeState &&
             (identical(
                   other.selectedIndex,
                   selectedIndex,
                 ) ||
                 other.selectedIndex == selectedIndex) &&
             (identical(
-                  other.enumDialysis,
-                  enumDialysis,
+                  other.enumDialysisType,
+                  enumDialysisType,
                 ) ||
-                other.enumDialysis == enumDialysis) &&
+                other.enumDialysisType == enumDialysisType) &&
             (identical(
                   other.enumValid,
                   enumValid,
@@ -124,8 +127,8 @@ class DialysisState {
                 ) ||
                 other.error == error) &&
             const DeepCollectionEquality().equals(
-              other.listDialysis,
-              listDialysis,
+              other.listDialysisType,
+              listDialysisType,
             ) &&
             const DeepCollectionEquality().equals(
               other.listSelected,
@@ -137,11 +140,11 @@ class DialysisState {
   int get hashCode => Object.hashAll([
         runtimeType,
         selectedIndex,
-        enumDialysis,
+        enumDialysisType,
         enumValid,
         error,
         const DeepCollectionEquality().hash(
-          listDialysis,
+          listDialysisType,
         ),
         const DeepCollectionEquality().hash(
           listSelected,
@@ -150,6 +153,6 @@ class DialysisState {
 
   @override
   String toString() {
-    return 'DialysisState(selectedIndex: $selectedIndex, enumDialysis: $enumDialysis, enumValid: $enumValid, error: $error, listDialysis: $listDialysis, listSelected: $listSelected, )';
+    return 'DialysisTypeState(selectedIndex: $selectedIndex, enumDialysisType: $enumDialysisType, enumValid: $enumValid, error: $error, listDialysisType: $listDialysisType, listSelected: $listSelected, )';
   }
 }

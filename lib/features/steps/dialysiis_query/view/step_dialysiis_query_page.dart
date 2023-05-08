@@ -3,21 +3,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
-import 'package:nutrition/features/steps/hypertension/hypertension.dart';
+import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
+
 import 'package:nutrition/gen/gen.dart';
 import 'package:nutrition/shared/theme/theme.dart';
 import 'package:nutrition/shared/widget/widget.dart';
 
-class StepHypertensionPage extends ConsumerWidget {
-  const StepHypertensionPage({super.key});
+class StepDialysisQueryPage extends ConsumerWidget {
+  const StepDialysisQueryPage({super.key});
 
-  static const path = '/HypertensionPage';
-  static const name = 'HypertensionPage';
+  static const path = '/DialysisQueryPage';
+  static const name = 'DialysisQueryPage';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(hypertensionProvider);
-    final notifier = ref.watch(hypertensionProvider.notifier);
+    final state = ref.watch(dialysisQueryProvider);
+    final notifier = ref.watch(dialysisQueryProvider.notifier);
 
     return SafeArea(
       child: Scaffold(
@@ -27,26 +28,27 @@ class StepHypertensionPage extends ConsumerWidget {
           child: Column(
             children: [
               const Text(
-                'Немного\nмедицинских вопросов',
+                'Уточняющие вопросы!',
                 style: AppTextStyles.headlineLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              SizedBox(
-                height: 118,
-                width: 335,
-                child: SvgPicture.asset(AssetPaths.bloodPressureSvg),
+              SvgPicture.asset(
+                AssetPaths.dialysisSvg,
+                width: 200,
+                height: 200,
               ),
               const SizedBox(height: 16),
               const Text(
-                'Бывает ли у Вас\nвысокое давление?',
-                style: AppTextStyles.headlineLarge,
+                'Проходите ли вы лечение\nдиализом в настоящее время?',
+                style: AppTextStyles.headlineSmall,
               ),
+              // const SizedBox(height: 16),
               const SizedBox(height: 16),
               BtnToggleText(
-                textList: state.listHypertension.map((e) => e.value).toList(),
+                textList: state.listDialysisQuery.map((e) => e.value).toList(),
                 isSelected: state.listSelected,
-                onPressed: notifier.setHypertension,
+                onPressed: notifier.setDialysisQuery,
                 errorText:
                     state.enumValid.maybeMapOrNullValue(error: state.error),
               ),
@@ -56,9 +58,9 @@ class StepHypertensionPage extends ConsumerWidget {
                   physics: const BouncingScrollPhysics(),
                   child: Text(
                     '''
-   Высокое кровяное давление (артериальная гипертензия) является общей проблемой для больных ХБП (хронической болезнью почек). 
-                
-   При ХБП почки не могут полностью выполнять свою функцию очищения крови от избытка жидкости и солей, что может привести к увеличению объема жидкости в организме и ухудшению кровотока.''',
+  Диализ - это медицинская процедура, которая используется для очистки крови от вредных веществ, которые обычно удаляются через почки, но которые в некоторых случаях могут накапливаться в крови, если почки не функционируют должным образом. 
+
+  Диализ может быть жизненно важной процедурой для людей с хронической почечной недостаточностью или другими заболеваниями, которые приводят к нарушению функции почек.''',
                     style: AppTextStyles.labelLarge.copyWith(
                       color: Theme.of(context).colorScheme.secondary,
                     ),

@@ -42,7 +42,7 @@ class StepDiabetesPage extends ConsumerWidget {
                 'У Вас есть диабет?',
                 style: AppTextStyles.headlineLarge,
               ),
-              // const SizedBox(height: 16),
+              const SizedBox(height: 16),
               BtnToggleText(
                 textList: state.listDiabetes.map((e) => e.value).toList(),
                 isSelected: state.listSelected,

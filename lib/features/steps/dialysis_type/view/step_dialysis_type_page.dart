@@ -3,50 +3,51 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
-import 'package:nutrition/features/steps/hypertension/hypertension.dart';
+import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
 import 'package:nutrition/gen/gen.dart';
 import 'package:nutrition/shared/theme/theme.dart';
+
 import 'package:nutrition/shared/widget/widget.dart';
 
-class StepHypertensionPage extends ConsumerWidget {
-  const StepHypertensionPage({super.key});
+class StepDialysisTypePage extends ConsumerWidget {
+  const StepDialysisTypePage({super.key});
 
-  static const path = '/HypertensionPage';
-  static const name = 'HypertensionPage';
+  static const path = '/DialysisTypePage';
+  static const name = 'DialysisTypePage';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(hypertensionProvider);
-    final notifier = ref.watch(hypertensionProvider.notifier);
+    final state = ref.watch(dialysisTypeProvider);
+    final notifier = ref.watch(dialysisTypeProvider.notifier);
 
     return SafeArea(
       child: Scaffold(
-        appBar: const AppMyAppBar(),
         body: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(8),
           child: Column(
             children: [
               const Text(
-                'Немного\nмедицинских вопросов',
+                'Уточняющие вопросы о применяемом диализе!',
+                style: AppTextStyles.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              SvgPicture.asset(
+                AssetPaths.dialysisTypeSvg,
+                width: 200,
+                height: 200,
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Какой тип диализа\nвы получаете?',
                 style: AppTextStyles.headlineLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              SizedBox(
-                height: 118,
-                width: 335,
-                child: SvgPicture.asset(AssetPaths.bloodPressureSvg),
-              ),
-              const SizedBox(height: 16),
-              const Text(
-                'Бывает ли у Вас\nвысокое давление?',
-                style: AppTextStyles.headlineLarge,
-              ),
-              const SizedBox(height: 16),
               BtnToggleText(
-                textList: state.listHypertension.map((e) => e.value).toList(),
+                textList: state.listDialysisType.map((e) => e.value).toList(),
                 isSelected: state.listSelected,
-                onPressed: notifier.setHypertension,
+                onPressed: notifier.setDialysisType,
                 errorText:
                     state.enumValid.maybeMapOrNullValue(error: state.error),
               ),
@@ -56,9 +57,12 @@ class StepHypertensionPage extends ConsumerWidget {
                   physics: const BouncingScrollPhysics(),
                   child: Text(
                     '''
-   Высокое кровяное давление (артериальная гипертензия) является общей проблемой для больных ХБП (хронической болезнью почек). 
-                
-   При ХБП почки не могут полностью выполнять свою функцию очищения крови от избытка жидкости и солей, что может привести к увеличению объема жидкости в организме и ухудшению кровотока.''',
+  Диализ - это процедура очищения крови, которая может быть выполнена двумя способами:
+
+  Гемодиализ: кровь выводится через катетер, очищается в специальной машине и возвращается в организм через другой катетер.
+
+  Перитонеальный диализ: специальное решение вводится в брюшную полость через катетер, где оно очищает кровь в течение нескольких часов, затем удаляется через тот же катетер.
+''',
                     style: AppTextStyles.labelLarge.copyWith(
                       color: Theme.of(context).colorScheme.secondary,
                     ),

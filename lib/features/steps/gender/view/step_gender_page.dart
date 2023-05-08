@@ -47,6 +47,7 @@ class StepGenderPage extends ConsumerWidget {
                 const _SetTitle(text: 'Проверте свой пол')
               else
                 const _SetTitle(text: 'Укажите свой пол'),
+              const SizedBox(height: 16),
               BtnToggleText(
                 textList: state.listGender.map((e) => e.value).toList(),
                 isSelected: state.listSelected,

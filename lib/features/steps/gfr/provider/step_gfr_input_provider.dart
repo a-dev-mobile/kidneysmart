@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
 import 'package:nutrition/features/steps/gender/enum/enum_gender.dart';
 import 'package:nutrition/features/steps/gfr/gfr.dart';
 
@@ -93,7 +94,7 @@ class StepGfrInputNotifier extends StateNotifier<StepGfrInputState> {
     if (doubleValue.isMinValue(0)) {
       return 'Указанный креатинин не поддерживается приложением';
     }
-    if (doubleValue.isMaxValue(3000)) {
+    if (doubleValue.isMaxValue(10000)) {
       return 'Указанный креатинин не поддерживается приложением';
     }
 
@@ -144,12 +145,12 @@ class StepGfrInputNotifier extends StateNotifier<StepGfrInputState> {
   }
 
   void nextPage() {
-    // final nextPage = state.enumUrine.maybeMapValue(
-    //     orElse: StepCkdSelectPage.name,
-    //     enterValue: StepUrineInputPage.name,
-    //   );
+    final nextPage = state.enumCkd.maybeMapValue(
+      orElse: StepCkdSelectPage.name,
+      five: StepDialysisQueryPage.name,
+    );
 
-    //   _go.router.pushNamed<void>(nextPage);
+    _go.router.pushNamed<void>(nextPage);
   }
 
   void setKeyboard({required bool isKeyboardOpen}) {

@@ -31,6 +31,7 @@ class SettingPage extends ConsumerWidget {
               textAlign: TextAlign.center,
               style: AppTextStyles.titleLarge,
             ),
+            const SizedBox(height: 16),
             BtnToggleText(
               textList: stateTheme.listTheme.map((e) => e.value).toList(),
               isSelected: stateTheme.listSelected,

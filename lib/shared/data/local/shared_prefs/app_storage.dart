@@ -13,7 +13,9 @@ import 'package:nutrition/features/steps/birthday/birthday.dart';
 
 import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
-import 'package:nutrition/features/steps/dialysis/dialysis.dart';
+import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
+import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
+
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/gfr/provider/step_gfr_input_state.dart';
 import 'package:nutrition/features/steps/height/height.dart';
@@ -23,6 +25,8 @@ import 'package:nutrition/features/steps/urine_input/urine_input.dart';
 
 import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
+import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart';
+import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
 import 'package:nutrition/navigation/models/app_state.dart';
 import 'package:nutrition/shared/log/log.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -80,6 +84,54 @@ class AppStorage {
 // ******************************
 // ******************************
 
+  static const _weightDryInputState = '_weightDryInputState';
+
+  WeightDryInputState getWeightDryInputState() {
+    return WeightDryInputState.fromMap(getJson(key: _weightDryInputState));
+  }
+
+  Future<void> setWeightDryInputState(WeightDryInputState value) {
+    return setJson(key: _weightDryInputState, value: value.toMap());
+  }
+// ******************************
+// ******************************
+
+  static const _dialysisType = '_dialysisType';
+
+  DialysisTypeState getDialysisTypeState() {
+    return DialysisTypeState.fromMap(getJson(key: _dialysisType));
+  }
+
+  Future<void> setDialysisTypeState(DialysisTypeState value) {
+    return setJson(key: _dialysisType, value: value.toMap());
+  }
+// ******************************
+// ******************************
+
+  static const _dialysisQuery = '_dialysisQuery';
+
+  DialysisQueryState getDialysisQueryState() {
+    return DialysisQueryState.fromMap(getJson(key: _dialysisQuery));
+  }
+
+  Future<void> setDialysisQueryState(DialysisQueryState value) {
+    return setJson(key: _dialysisQuery, value: value.toMap());
+  }
+// ******************************
+// ******************************
+
+  static const _weightDryQuery = '_weightDryQuery';
+
+  WeightDryQueryState getWeightDryQueryState() {
+    return WeightDryQueryState.fromMap(getJson(key: _weightDryQuery));
+  }
+
+  Future<void> setWeightDryQueryState(WeightDryQueryState value) {
+    return setJson(key: _weightDryQuery, value: value.toMap());
+  }
+// ******************************
+// ******************************
+
   static const _stepNameState = 'StepNameState';
 
   StepNameState getStepNameState() {
@@ -112,17 +164,6 @@ class AppStorage {
 
   Future<void> setGenderState(StepGenderState value) {
     return setJson(key: _genderState, value: value.toMap());
-  }
-
-// ******************************
-  static const _dialysisState = '_dialysisState';
-
-  DialysisState getDialysisState() {
-    return DialysisState.fromMap(getJson(key: _dialysisState));
-  }
-
-  Future<void> setDialysisState(DialysisState value) {
-    return setJson(key: _dialysisState, value: value.toMap());
   }
 
 // ******************************

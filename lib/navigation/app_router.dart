@@ -17,6 +17,8 @@ import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
+import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
+import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/gfr/gfr.dart';
 import 'package:nutrition/features/steps/height/height.dart';
@@ -26,6 +28,8 @@ import 'package:nutrition/features/steps/urine_input/urine_input.dart';
 import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 
 import 'package:nutrition/features/steps/weight/weight.dart';
+import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart';
+import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
 import 'package:nutrition/features/welcome/view/welcome_page.dart';
 import 'package:nutrition/global/global.dart';
 import 'package:nutrition/navigation/models/app_state.dart';
@@ -120,6 +124,38 @@ class AppRouter {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const CalcNutrientPage(),
+            ),
+          ),
+          GoRoute(
+            path: StepDialysisQueryPage.path,
+            name: StepDialysisQueryPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const StepDialysisQueryPage(),
+            ),
+          ),
+          GoRoute(
+            path: StepWeightDryQueryPage.path,
+            name: StepWeightDryQueryPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const StepWeightDryQueryPage(),
+            ),
+          ),
+          GoRoute(
+            path: StepWeightDryInputPage.path,
+            name: StepWeightDryInputPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const StepWeightDryInputPage(),
+            ),
+          ),
+          GoRoute(
+            path: StepDialysisTypePage.path,
+            name: StepDialysisTypePage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const StepDialysisTypePage(),
             ),
           ),
           GoRoute(
