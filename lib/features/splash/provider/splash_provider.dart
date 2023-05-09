@@ -2,11 +2,8 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/splash/splash.dart';
-import 'package:nutrition/global/db.dart';
 import 'package:nutrition/navigation/navigation.dart';
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
 
 final splashProvider =
     StateNotifierProvider.autoDispose<SplashNotifier, SplashState>((ref) {
@@ -28,20 +25,19 @@ class SplashNotifier extends StateNotifier<SplashState> {
 
   // проверка если есть база новая то на дозагрузку
   Future<void> load() async {
-    var appState = _storage.getAppState();
     // var pathPage = HealthProfilePage.name;
 
-    final dbPath = await getDatabasesPath();
-    final basePath = join(dbPath, AppDBConst.name);
+    // final dbPath = await getDatabasesPath();
+    // final basePath = join(dbPath, AppDBConst.name);
 
-    appState = appState.copyWith(
-      dbPath: basePath,
-      isFirstTime: false,
-    );
+    // appState = appState.copyWith(
+    //   dbPath: basePath,
+    // );
 
-    await _storage.setAppState(appState);
+    // await _storage.setAppState(appState);
+    final appState = _storage.getAppState();
+    await Future<void>.delayed(const Duration(seconds: 1));
 
-    unawaited(_go.nextPage(appState));
-    state = const SplashState.success();
+    await _go.nextPage(appState);
   }
 }

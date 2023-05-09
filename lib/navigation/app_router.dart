@@ -32,7 +32,8 @@ import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart'
 import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
 import 'package:nutrition/features/welcome/view/welcome_page.dart';
 import 'package:nutrition/global/global.dart';
-import 'package:nutrition/navigation/models/app_state.dart';
+import 'package:nutrition/shared/app/app.dart';
+
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 
 final appRouterProvider = Provider<AppRouter>((ref) {
@@ -317,17 +318,15 @@ class AppRouter {
 
   Future<void> nextPage(AppState appState) async {
     // router.goNamed(HealthProfilePage.name);
-
-    if (appState.isFirstTime || !appState.isOnboardingCompleted) {
+    final lastNamePage = appState.lastNamePage;
+    if (appState.isFirstTime || lastNamePage == SplashPage.name) {
       await _storage.setAppState(appState.copyWith(isFirstTime: false));
 
       router.goNamed(WelcomePage.name);
 
       return;
-    }
-
-    if (appState.isOnboardingCompleted && !appState.isFirstTime) {
-      router.goNamed(StepGenderPage.name);
+    } else {
+      router.goNamed(appState.lastNamePage);
 
       return;
     }

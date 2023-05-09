@@ -43,12 +43,12 @@ class DialysisTypeNotifier extends StateNotifier<DialysisTypeState> {
   List<DialysisTypeItemModel> get _initDialysisType {
     return <DialysisTypeItemModel>[
       const DialysisTypeItemModel(
-        enumDialysisType: EnumDialysisType.homodialysisType,
-        value: 'Гомодиализ',
-      ),
-      const DialysisTypeItemModel(
         enumDialysisType: EnumDialysisType.perinatal,
         value: 'Перинатальный',
+      ),
+      const DialysisTypeItemModel(
+        enumDialysisType: EnumDialysisType.homodialysisType,
+        value: 'Гемодиализ',
       ),
     ];
   }

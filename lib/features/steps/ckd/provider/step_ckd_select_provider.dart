@@ -69,7 +69,7 @@ class StepCkdSelectNotifier extends StateNotifier<StepCkdSelectState> {
       ),
       CkdItemModel(
         enumCkd: EnumCkd.calculate,
-        value: _l.calculate,
+        value: _l.no_know,
       ),
     ];
   }

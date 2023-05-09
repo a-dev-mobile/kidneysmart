@@ -68,8 +68,7 @@ class OndoardingNotifier extends StateNotifier<OnboardingState> {
   }
 
   void onDone() {
-    final appState =
-        _storage.getAppState().copyWith(isOnboardingCompleted: true);
+    final appState = _storage.getAppState().copyWith();
 
     _storage.setAppState(appState);
 

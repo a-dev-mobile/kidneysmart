@@ -40,6 +40,7 @@ class StepHypertensionPage extends ConsumerWidget {
               const Text(
                 'Бывает ли у Вас\nвысокое давление?',
                 style: AppTextStyles.headlineLarge,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
               BtnToggleText(

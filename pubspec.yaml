@@ -6,8 +6,8 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.19.0 <3.0.0"
-  flutter: ">=3.7.0 <4.0.0"
+  sdk: ">=2.18.0 <4.0.0"
+  flutter: ">=3.3.0"
 
 dependencies:
   flutter:
@@ -15,37 +15,37 @@ dependencies:
 
   # SDK extensions
   # flutter_localizations from sdk depends on meta 1.8.0
-  meta: ^1.8.0
+  meta: ^1.9.1
   # flutter_localizations from sdk depends on collection 1.16.0
-  collection: ^1.17.0
-  async: ^2.10.0
-
+  collection: ^1.17.1
+  async: ^2.11.0
+  characters: ^1.3.0
   # System
-  path_provider: ^2.0.14
+  path_provider: ^2.0.15
   # flutter_localizations from sdk depends on path 1.8.2
-  path: ^1.8.2
+  path: ^1.8.3
   platform_info: ^3.2.0
   device_info_plus: ^8.2.2
-  package_info_plus: ^3.1.2
-  connectivity_plus: ^3.0.6
+  package_info_plus: ^4.0.0
+  connectivity_plus: ^4.0.0
 
   # Data manipulation
   # di/state
   flutter_riverpod: ^2.3.6
   
   # Internationalization
-  intl: ^0.17.0
+  intl: ^0.18.1
   flutter_localizations:
     sdk: flutter
 
   # Logging
   logger: ^1.3.0
-  shared_preferences: ^2.1.0
+  shared_preferences: ^2.1.1
   # sqflite_sqlcipher: ^2.1.1+1
 
 
   # HTTP
-  dio: ^5.1.1
+  dio: ^5.1.2
   dio_log:
     git:
          url: https://github.com/flutterplugin/dio_log.git
@@ -56,7 +56,7 @@ dependencies:
 
   # Native
   url_launcher: ^6.1.10
-  share_plus: ^6.3.4
+  share_plus: ^7.0.0
 
   # Helper for UI
   flutter_typeahead: ^4.3.8
@@ -83,7 +83,7 @@ dependencies:
 
 
 # database
-  sqflite: ^2.2.8+1
+  sqflite: ^2.2.8+2
 
 
 
@@ -96,7 +96,7 @@ dependencies:
 
 dev_dependencies:
   # Analyzer extensions
-  dart_code_metrics: ^5.7.2
+  dart_code_metrics: ^5.7.3
   very_good_analysis: ^4.0.0+1
 
   # turn_gen:

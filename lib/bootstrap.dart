@@ -12,9 +12,9 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/firebase_options.dart';
 import 'package:nutrition/global/global.dart';
+import 'package:nutrition/shared/app/info/app_info.dart';
 import 'package:nutrition/shared/data/local/db/db_service_provider.dart';
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:nutrition/shared/info/app_info.dart';
 import 'package:nutrition/shared/log/log.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

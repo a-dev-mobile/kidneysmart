@@ -12,8 +12,13 @@ class SplashPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ignore: unused_local_variable
-    final provider = ref.watch(splashProvider);
+    final state = ref.watch(splashProvider);
 
-    return const AppLoadPage();
+    return state.map(
+      load: (v) => const AppLoadPage(),
+      success: (v) {
+        return const AppLoadPage();
+      },
+    );
   }
 }

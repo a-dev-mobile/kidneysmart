@@ -27,7 +27,7 @@ import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart';
 import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
-import 'package:nutrition/navigation/models/app_state.dart';
+import 'package:nutrition/shared/app/info/app_state.dart';
 import 'package:nutrition/shared/log/log.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,7 +1,10 @@
 import 'dart:io';
 
+import 'package:characters/characters.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
+
+import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 /// DeviceInfo Singleton class
@@ -9,6 +12,19 @@ class AppInfo {
   factory AppInfo() => _internalSingleton;
   AppInfo._internal();
   static final AppInfo _internalSingleton = AppInfo._internal();
+
+  static Future<void> setLastPageName({
+    required AppStorage storage,
+    required String? name,
+  }) async {
+    final appState = storage.getAppState();
+    var newName = appState.lastNamePage;
+    if (name != null && name.startsWith('/')) {
+      newName = name.characters.getRange(1, name.length).string;
+    }
+
+    await storage.setAppState(appState.copyWith(lastNamePage: newName));
+  }
 
   static Future<String> getUserAgent() async {
     final deviceInfo = DeviceInfoPlugin();

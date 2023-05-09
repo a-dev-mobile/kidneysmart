@@ -69,7 +69,7 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
             child: Column(
               children: [
                 const Text(
-                  'Отличная работа!',
+                  'Еще чуть-чуть...',
                   textAlign: TextAlign.center,
                   style: AppTextStyles.headlineLarge,
                 ),

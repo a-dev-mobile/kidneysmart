@@ -528,6 +528,12 @@ abstract class AppLocalizations {
   /// **'Рассчитать'**
   String get calculate;
 
+  /// No description provided for @no_know.
+  ///
+  /// In ru, this message translates to:
+  /// **'Незнаю'**
+  String get no_know;
+
   /// No description provided for @date_of_birth.
   ///
   /// In ru, this message translates to:

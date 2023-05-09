@@ -2,18 +2,17 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
+import 'package:nutrition/features/welcome/welcome.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class AppState {
   /* init: true */
   final bool isFirstTime;
-  /* init: false */
-  final bool isOnboardingCompleted;
 
   /* init: '' */
   final String dbPath;
-  /* init: '' */
+  /* init: WelcomePage.name */
   final String lastNamePage;
   /* init: EnumLang.ru */
   final EnumLang enumLang;
@@ -26,16 +25,14 @@ class AppState {
 //  *************************************
   const AppState({
     this.isFirstTime = true,
-    this.isOnboardingCompleted = false,
     this.dbPath = '',
-    this.lastNamePage = '',
+    this.lastNamePage = WelcomePage.name,
     this.enumLang = EnumLang.ru,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'isFirstTime': isFirstTime,
-      'isOnboardingCompleted': isOnboardingCompleted,
       'dbPath': dbPath,
       'lastNamePage': lastNamePage,
       'enumLang': enumLang.index,
@@ -47,9 +44,8 @@ class AppState {
 
     return AppState(
       isFirstTime: map['isFirstTime'] as bool? ?? true,
-      isOnboardingCompleted: map['isOnboardingCompleted'] as bool? ?? false,
       dbPath: map['dbPath'] as String? ?? '',
-      lastNamePage: map['lastNamePage'] as String? ?? '',
+      lastNamePage: map['lastNamePage'] as String? ?? WelcomePage.name,
       enumLang: map['enumLang'] != null
           ? EnumLang.values[map['enumLang'] as int]
           : EnumLang.ru,
@@ -58,15 +54,12 @@ class AppState {
 
   AppState copyWith({
     bool? isFirstTime,
-    bool? isOnboardingCompleted,
     String? dbPath,
     String? lastNamePage,
     EnumLang? enumLang,
   }) {
     return AppState(
       isFirstTime: isFirstTime ?? this.isFirstTime,
-      isOnboardingCompleted:
-          isOnboardingCompleted ?? this.isOnboardingCompleted,
       dbPath: dbPath ?? this.dbPath,
       lastNamePage: lastNamePage ?? this.lastNamePage,
       enumLang: enumLang ?? this.enumLang,
@@ -89,11 +82,6 @@ class AppState {
                 ) ||
                 other.isFirstTime == isFirstTime) &&
             (identical(
-                  other.isOnboardingCompleted,
-                  isOnboardingCompleted,
-                ) ||
-                other.isOnboardingCompleted == isOnboardingCompleted) &&
-            (identical(
                   other.dbPath,
                   dbPath,
                 ) ||
@@ -114,7 +102,6 @@ class AppState {
   int get hashCode => Object.hashAll([
         runtimeType,
         isFirstTime,
-        isOnboardingCompleted,
         dbPath,
         lastNamePage,
         enumLang,
@@ -122,6 +109,6 @@ class AppState {
 
   @override
   String toString() {
-    return 'AppState(isFirstTime: $isFirstTime, isOnboardingCompleted: $isOnboardingCompleted, dbPath: $dbPath, lastNamePage: $lastNamePage, enumLang: $enumLang, )';
+    return 'AppState(isFirstTime: $isFirstTime, dbPath: $dbPath, lastNamePage: $lastNamePage, enumLang: $enumLang, )';
   }
 }

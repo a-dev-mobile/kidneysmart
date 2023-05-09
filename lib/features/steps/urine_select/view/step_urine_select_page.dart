@@ -35,7 +35,7 @@ class StepUrineSelectPage extends ConsumerWidget {
           child: Column(
             children: [
               const Text(
-                'Остались самые важные вопросы!',
+                'Остались самые\nважные вопросы!',
                 style: AppTextStyles.headlineLarge,
                 textAlign: TextAlign.center,
               ),

@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/debug_menu/debug_menu.dart';
+import 'package:nutrition/features/splash/splash.dart';
 import 'package:nutrition/global/global.dart';
 import 'package:nutrition/navigation/app_router.dart';
+import 'package:nutrition/shared/data/local/shared_prefs/storage.dart';
+import 'package:nutrition/shared/info/info.dart';
 import 'package:nutrition/shared/theme/app_text_style.dart';
 
 class OverlayWidget extends ConsumerWidget {
@@ -25,6 +28,14 @@ class OverlayWidget extends ConsumerWidget {
         final _ = dismissDebugBtn();
       }
     });
+// save last page
+    final path = goRouterState.location;
+    if (path != SplashPage.path) {
+      AppInfo.setLastPageName(
+        storage: ref.read(appStorageProvider),
+        name: goRouterState.location,
+      );
+    }
 
     return Scaffold(
       body: Stack(

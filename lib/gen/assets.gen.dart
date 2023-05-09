@@ -51,7 +51,7 @@ class AssetPaths {
   /// * File path: _assets/svg/ckd.svg
   static const String ckdSvg = 'assets/svg/ckd.svg';
 
-  /// * Size:	34.7 KB
+  /// * Size:	43.5 KB
   /// * File path: _assets/svg/ckd_female.svg
   static const String ckdFemaleSvg = 'assets/svg/ckd_female.svg';
 

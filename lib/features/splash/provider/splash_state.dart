@@ -8,11 +8,10 @@ class _SplashState {
 // end
 
 //          --TURN_GEN--
-//             v0.4.1
+//             (union)
 //  *************************************
-//           GENERATED CODE
+//         GENERATED CODE
 //  *************************************
-
 // coverage:ignore-file
 // ignore_for_file: avoid_unused_constructor_parameters, unused_element, avoid-non-null-assertion,  library_private_types_in_public_api,non_constant_identifier_names, always_put_required_named_parameters_first,  avoid_positional_boolean_parameters, strict_raw_type, curly_braces_in_flow_control_structures
 @immutable
@@ -20,18 +19,6 @@ class SplashState {
   const SplashState.load() : _tag = _SplashStateTag.load;
 
   const SplashState.success() : _tag = _SplashStateTag.success;
-
-  T? mapOrNull<T>({
-    T? Function(_SplashStateLoad v)? load,
-    T? Function(_SplashStateSuccess v)? success,
-  }) {
-    switch (_tag) {
-      case _SplashStateTag.load:
-        return load?.call(const _SplashStateLoad());
-      case _SplashStateTag.success:
-        return success?.call(const _SplashStateSuccess());
-    }
-  }
 
   T map<T>({
     required T Function(_SplashStateLoad v) load,
@@ -57,6 +44,32 @@ class SplashState {
       case _SplashStateTag.success:
         if (success != null) return success(const _SplashStateSuccess());
         return orElse();
+    }
+  }
+
+  T? mapOrNull<T>({
+    T? Function(_SplashStateLoad v)? load,
+    T? Function(_SplashStateSuccess v)? success,
+  }) {
+    switch (_tag) {
+      case _SplashStateTag.load:
+        return load?.call(const _SplashStateLoad());
+      case _SplashStateTag.success:
+        return success?.call(const _SplashStateSuccess());
+    }
+  }
+
+  T? maybeMapOrNull<T>({
+    T? Function(_SplashStateLoad v)? load,
+    T? Function(_SplashStateSuccess v)? success,
+  }) {
+    switch (_tag) {
+      case _SplashStateTag.load:
+        if (load != null) return load(const _SplashStateLoad());
+        return null;
+      case _SplashStateTag.success:
+        if (success != null) return success(const _SplashStateSuccess());
+        return null;
     }
   }
 
