@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
 import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart';
+import 'package:nutrition/features/steps/weight_dry_query/view/step_weight_dry_query_page.dart';
 
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
@@ -78,7 +79,11 @@ class StepWeightDryInputNotifier extends StateNotifier<WeightDryInputState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepCkdSelectPage.name);
+    _go.router.pushNamed<void>(CalcNutrientPage.name);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepWeightDryQueryPage.name);
   }
 
   void setKeyboard({required bool isKeyboardOpen}) {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
 
@@ -34,7 +33,7 @@ class StepWeightDryQueryPage extends ConsumerWidget {
               ),
               const SizedBox(height: 16),
               SvgPicture.asset(
-                AssetPaths.dryWeightSvg,
+                AssetPaths.dryWeightQuerySvg,
                 height: 200,
               ),
               const SizedBox(height: 16),
@@ -69,7 +68,7 @@ class StepWeightDryQueryPage extends ConsumerWidget {
               const SizedBox(height: 16),
               BtnStepNextBack(
                 isValid: notifier.isValid,
-                backPressed: context.pop<void>,
+                backPressed: notifier.previousPage,
                 nextPressed: notifier.nextPage,
               ),
             ],

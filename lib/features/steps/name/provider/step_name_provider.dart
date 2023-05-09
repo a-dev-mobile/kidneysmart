@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/name/name.dart';
+import 'package:nutrition/features/welcome/view/welcome_page.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
@@ -48,11 +49,11 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
   /// preload
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepGenderPage.name);
+    _go.router.goNamed(StepGenderPage.name);
   }
 
-  void backPage() {
-    _go.router.pop();
+  void previousPage() {
+    _go.router.goNamed(WelcomePage.name);
   }
 
   void setName(

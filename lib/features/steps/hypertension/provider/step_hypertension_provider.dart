@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/localization/localization.dart';
@@ -92,6 +93,10 @@ class HypertensionNotifier extends StateNotifier<HypertensionState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepDiabetesPage.name);
+    _go.router.goNamed(StepDiabetesPage.name);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepActivityPage.name);
   }
 }

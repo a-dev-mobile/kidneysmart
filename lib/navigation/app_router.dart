@@ -207,11 +207,11 @@ class AppRouter {
             ),
           ),
           GoRoute(
-            path: ActivityPage.path,
-            name: ActivityPage.name,
+            path: StepActivityPage.path,
+            name: StepActivityPage.name,
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
-              child: const ActivityPage(),
+              child: const StepActivityPage(),
             ),
           ),
           GoRoute(

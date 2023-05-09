@@ -53,7 +53,7 @@ class _FieldNameState extends ConsumerState<FieldWeightDryInput>
     final l = context.l10n;
     // final provider = ref.watch(registrationNameProvider);
     final state = ref.watch(stepWeightDryInputProvider);
-    
+
     final notifier = ref.watch(stepWeightDryInputProvider.notifier);
 
     return TextField(

@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/features/steps/birthday/birthday.dart';
 import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/weight/view/step_weight_page.dart';
 import 'package:nutrition/localization/localization.dart';
@@ -79,6 +80,10 @@ class StepHeightNotifier extends StateNotifier<StepHeightState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepWeightPage.name);
+    _go.router.goNamed(StepWeightPage.name);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepBirthdayPage.name);
   }
 }

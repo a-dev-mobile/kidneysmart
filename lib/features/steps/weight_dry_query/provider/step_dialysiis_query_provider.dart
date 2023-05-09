@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
+import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
 import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart';
 import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
 
@@ -94,11 +95,15 @@ class WeightDryQueryNotifier extends StateNotifier<WeightDryQueryState> {
   }
 
   void nextPage() {
-    final nextPage = state.enumWeightDryQuery.maybeMapValue(
-      yes: StepWeightDryInputPage.name,
-      orElse: CalcNutrientPage.name,
+ state.enumWeightDryQuery.maybeMap(
+      yes: ()=> _go.router.goNamed(StepWeightDryInputPage.name),
+      orElse:()=>  _go.router.pushNamed(CalcNutrientPage.name),
     );
 
-    _go.router.pushNamed<void>(nextPage);
+
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepDialysisTypePage.name);
   }
 }

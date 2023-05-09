@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/gfr/gfr.dart';
 import 'package:nutrition/gen/gen.dart';
@@ -76,7 +74,7 @@ class StepGfrInputPage extends ConsumerWidget {
                 ),
                 BtnStepNextBack(
                   isValid: notifier.isValid,
-                  backPressed: context.pop<void>,
+                  backPressed: notifier.previousPage,
                   nextPressed: notifier.nextPage,
                 ),
               ],

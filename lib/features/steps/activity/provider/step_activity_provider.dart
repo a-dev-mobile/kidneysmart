@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/hypertension/hypertension.dart';
+import 'package:nutrition/features/steps/weight/view/step_weight_page.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
@@ -105,6 +106,10 @@ class StepActivityNotifier extends StateNotifier<StepActivityState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepHypertensionPage.name);
+    _go.router.goNamed(StepHypertensionPage.name);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepWeightPage.name);
   }
 }

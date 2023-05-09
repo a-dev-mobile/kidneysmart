@@ -37,6 +37,6 @@ class WelcomeNotifier extends StateNotifier<WelcomeState> {
   /// preload
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepNamePage.name);
+    _go.router.goNamed(StepNamePage.name);
   }
 }

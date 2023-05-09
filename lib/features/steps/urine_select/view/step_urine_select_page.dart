@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 
 import 'package:nutrition/features/steps/urine_select/urine_select.dart';
@@ -87,7 +86,7 @@ class StepUrineSelectPage extends ConsumerWidget {
               ),
               BtnStepNextBack(
                 isValid: notifier.isValid,
-                backPressed: context.pop<void>,
+                backPressed: notifier.previousPage,
                 nextPressed: notifier.nextPage,
               ),
             ],

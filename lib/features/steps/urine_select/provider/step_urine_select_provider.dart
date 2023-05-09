@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/urine_input/urine_input.dart';
 
 import 'package:nutrition/features/steps/urine_select/urine_select.dart';
@@ -108,6 +109,10 @@ class StepUrineSelectNotifier extends StateNotifier<StepUrineSelectState> {
       enterValue: StepUrineInputPage.name,
     );
 
-    _go.router.pushNamed<void>(nextPage);
+    _go.router.goNamed(nextPage);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepDiabetesPage.name);
   }
 }

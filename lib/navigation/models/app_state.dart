@@ -13,6 +13,8 @@ class AppState {
 
   /* init: '' */
   final String dbPath;
+  /* init: '' */
+  final String lastNamePage;
   /* init: EnumLang.ru */
   final EnumLang enumLang;
   // end
@@ -26,6 +28,7 @@ class AppState {
     this.isFirstTime = true,
     this.isOnboardingCompleted = false,
     this.dbPath = '',
+    this.lastNamePage = '',
     this.enumLang = EnumLang.ru,
   });
 
@@ -34,6 +37,7 @@ class AppState {
       'isFirstTime': isFirstTime,
       'isOnboardingCompleted': isOnboardingCompleted,
       'dbPath': dbPath,
+      'lastNamePage': lastNamePage,
       'enumLang': enumLang.index,
     };
   }
@@ -45,6 +49,7 @@ class AppState {
       isFirstTime: map['isFirstTime'] as bool? ?? true,
       isOnboardingCompleted: map['isOnboardingCompleted'] as bool? ?? false,
       dbPath: map['dbPath'] as String? ?? '',
+      lastNamePage: map['lastNamePage'] as String? ?? '',
       enumLang: map['enumLang'] != null
           ? EnumLang.values[map['enumLang'] as int]
           : EnumLang.ru,
@@ -55,6 +60,7 @@ class AppState {
     bool? isFirstTime,
     bool? isOnboardingCompleted,
     String? dbPath,
+    String? lastNamePage,
     EnumLang? enumLang,
   }) {
     return AppState(
@@ -62,6 +68,7 @@ class AppState {
       isOnboardingCompleted:
           isOnboardingCompleted ?? this.isOnboardingCompleted,
       dbPath: dbPath ?? this.dbPath,
+      lastNamePage: lastNamePage ?? this.lastNamePage,
       enumLang: enumLang ?? this.enumLang,
     );
   }
@@ -92,6 +99,11 @@ class AppState {
                 ) ||
                 other.dbPath == dbPath) &&
             (identical(
+                  other.lastNamePage,
+                  lastNamePage,
+                ) ||
+                other.lastNamePage == lastNamePage) &&
+            (identical(
                   other.enumLang,
                   enumLang,
                 ) ||
@@ -104,11 +116,12 @@ class AppState {
         isFirstTime,
         isOnboardingCompleted,
         dbPath,
+        lastNamePage,
         enumLang,
       ]);
 
   @override
   String toString() {
-    return 'AppState(isFirstTime: $isFirstTime, isOnboardingCompleted: $isOnboardingCompleted, dbPath: $dbPath, enumLang: $enumLang, )';
+    return 'AppState(isFirstTime: $isFirstTime, isOnboardingCompleted: $isOnboardingCompleted, dbPath: $dbPath, lastNamePage: $lastNamePage, enumLang: $enumLang, )';
   }
 }

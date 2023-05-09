@@ -2,6 +2,7 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
+import 'package:nutrition/features/steps/gender/gender.dart';
 import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
@@ -165,6 +166,10 @@ class StepBirthdayNotifier extends StateNotifier<StepBirthdayState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepHeightPage.name);
+    _go.router.goNamed(StepHeightPage.name);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepGenderPage.name);
   }
 }

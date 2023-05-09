@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart';
 
@@ -36,7 +35,7 @@ class StepWeightDryInputPage extends ConsumerWidget {
                 ),
                 if (!state.isKeyboardOpen) const SizedBox(height: 16),
                 ContainerSvgAnimate(
-                  assetPaths: AssetPaths.dryWeightSvg,
+                  assetPaths: AssetPaths.dryWeightInputSvg,
                   heightMin: 0,
                   heightMax: 200,
                   isKeyboardOpen: state.isKeyboardOpen,
@@ -69,7 +68,7 @@ class StepWeightDryInputPage extends ConsumerWidget {
                 ),
                 BtnStepNextBack(
                   isValid: notifier.isValidInput,
-                  backPressed: context.pop<void>,
+                  backPressed: notifier.previousPage,
                   nextPressed: notifier.nextPage,
                 ),
               ],

@@ -75,9 +75,13 @@ class AssetPaths {
   /// * File path: _assets/svg/dialysis_type.svg
   static const String dialysisTypeSvg = 'assets/svg/dialysis_type.svg';
 
+  /// * Size:	4.6 KB
+  /// * File path: _assets/svg/dry_weight_input.svg
+  static const String dryWeightInputSvg = 'assets/svg/dry_weight_input.svg';
+
   /// * Size:	21.8 KB
-  /// * File path: _assets/svg/dry_weight.svg
-  static const String dryWeightSvg = 'assets/svg/dry_weight.svg';
+  /// * File path: _assets/svg/dry_weight_query.svg
+  static const String dryWeightQuerySvg = 'assets/svg/dry_weight_query.svg';
 
   /// * Size:	54.1 KB
   /// * File path: _assets/svg/gender.svg
@@ -201,7 +205,8 @@ class AssetPaths {
     diabetSvg,
     dialysisSvg,
     dialysisTypeSvg,
-    dryWeightSvg,
+    dryWeightInputSvg,
+    dryWeightQuerySvg,
     genderSvg,
     heightFemaleSvg,
     heightMaleSvg,
@@ -260,7 +265,8 @@ class AssetPaths {
     diabetSvg,
     dialysisSvg,
     dialysisTypeSvg,
-    dryWeightSvg,
+    dryWeightInputSvg,
+    dryWeightQuerySvg,
     genderSvg,
     heightFemaleSvg,
     heightMaleSvg,

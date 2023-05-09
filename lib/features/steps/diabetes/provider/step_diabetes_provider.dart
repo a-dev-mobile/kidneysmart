@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
+import 'package:nutrition/features/steps/hypertension/hypertension.dart';
 import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 
 import 'package:nutrition/localization/localization.dart';
@@ -93,6 +94,10 @@ class DiabetesNotifier extends StateNotifier<DiabetesState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepUrineSelectPage.name);
+    _go.router.goNamed(StepUrineSelectPage.name);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepHypertensionPage.name);
   }
 }

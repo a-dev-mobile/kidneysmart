@@ -150,7 +150,11 @@ class StepGfrInputNotifier extends StateNotifier<StepGfrInputState> {
       five: StepDialysisQueryPage.name,
     );
 
-    _go.router.pushNamed<void>(nextPage);
+    _go.router.goNamed(nextPage);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepCkdSelectPage.name);
   }
 
   void setKeyboard({required bool isKeyboardOpen}) {

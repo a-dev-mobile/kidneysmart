@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/name/name.dart';
 import 'package:nutrition/gen/gen.dart';
@@ -138,7 +137,7 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
                 const Spacer(),
                 BtnStepNextBack(
                   isValid: notifier.isValid,
-                  backPressed: context.pop<void>,
+                  backPressed: notifier.previousPage,
                   nextPressed: notifier.nextPage,
                 ),
               ],

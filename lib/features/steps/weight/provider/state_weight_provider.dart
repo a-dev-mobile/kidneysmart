@@ -2,6 +2,7 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
+import 'package:nutrition/features/steps/height/height.dart';
 import 'package:nutrition/features/steps/weight/weight.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
@@ -98,7 +99,11 @@ class WeightNotifier extends StateNotifier<WeightState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(ActivityPage.name);
+    _go.router.goNamed(StepActivityPage.name);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepHeightPage.name);
   }
 
   void setKeyboard({required bool isKeyboardOpen}) {

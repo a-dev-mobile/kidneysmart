@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
 
 import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
 import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
@@ -96,6 +97,10 @@ class DialysisTypeNotifier extends StateNotifier<DialysisTypeState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepWeightDryQueryPage.name);
+    _go.router.goNamed(StepWeightDryQueryPage.name);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepDialysisQueryPage.name);
   }
 }

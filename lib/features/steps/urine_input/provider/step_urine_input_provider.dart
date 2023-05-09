@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
 import 'package:nutrition/features/steps/urine_input/urine_input.dart';
+import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
@@ -109,7 +110,11 @@ class StepUrineInputNotifier extends StateNotifier<StepUrineInputState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(StepCkdSelectPage.name);
+    _go.router.goNamed(StepCkdSelectPage.name);
+  }
+
+  void previousPage() {
+    _go.router.goNamed(StepUrineSelectPage.name);
   }
 
   void setKeyboard({required bool isKeyboardOpen}) {

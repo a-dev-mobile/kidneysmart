@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
 import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
 import 'package:nutrition/features/steps/gfr/gfr.dart';
+import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
 import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
@@ -116,12 +118,14 @@ class StepCkdSelectNotifier extends StateNotifier<StepCkdSelectState> {
   }
 
   void nextPage() {
-    final nextPage = state.enumCkd.maybeMapValue(
-      orElse: CalcNutrientPage.name,
-      five: StepCkdSelectPage.name,
-      calculate: StepGfrInputPage.name,
+    state.enumCkd.maybeMap(
+      orElse: () => _go.router.pushNamed<void>(CalcNutrientPage.name),
+      five: () => _go.router.goNamed(StepDialysisQueryPage.name),
+      calculate: () => _go.router.goNamed(StepGfrInputPage.name),
     );
+  }
 
-    _go.router.pushNamed<void>(nextPage);
+  void previousPage() {
+    _go.router.goNamed(StepUrineSelectPage.name);
   }
 }

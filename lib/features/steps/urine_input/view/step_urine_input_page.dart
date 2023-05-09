@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/urine_input/urine_input.dart';
 
@@ -71,7 +70,7 @@ class StepUrineInputPage extends ConsumerWidget {
                 ),
                 BtnStepNextBack(
                   isValid: notifier.isValidInput,
-                  backPressed: context.pop<void>,
+                  backPressed: notifier.previousPage,
                   nextPressed: notifier.nextPage,
                 ),
               ],

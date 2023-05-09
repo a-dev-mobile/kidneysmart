@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
 import 'package:nutrition/gen/gen.dart';
@@ -72,7 +71,7 @@ class StepDialysisTypePage extends ConsumerWidget {
               const SizedBox(height: 16),
               BtnStepNextBack(
                 isValid: notifier.isValid,
-                backPressed: context.pop<void>,
+                backPressed: notifier.previousPage,
                 nextPressed: notifier.nextPage,
               ),
             ],
