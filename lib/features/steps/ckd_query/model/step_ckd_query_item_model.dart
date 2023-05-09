@@ -3,12 +3,12 @@ import 'dart:convert';
 
 import 'package:meta/meta.dart';
 
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/ckd_query/ckd_query.dart';
 
 @immutable
-class CkdItemModel {
-/* init: EnumCkd.none */
-  final EnumCkd enumCkd;
+class CkdQueryItemModel {
+/* init: EnumCkdQuery.none */
+  final EnumCkdQuery enumCkdQuery;
 /* init: '' */
   final String value;
 
@@ -19,41 +19,42 @@ class CkdItemModel {
 //  *************************************
 //         GENERATED CODE
 //  *************************************
-  const CkdItemModel({
-    this.enumCkd = EnumCkd.none,
+  const CkdQueryItemModel({
+    this.enumCkdQuery = EnumCkdQuery.none,
     this.value = '',
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumCkd': enumCkd.index,
+      'enumCkdQuery': enumCkdQuery.index,
       'value': value,
     };
   }
 
-  factory CkdItemModel.fromMap(Map<dynamic, dynamic>? map) {
-    if (map == null) return const CkdItemModel();
+  factory CkdQueryItemModel.fromMap(Map<dynamic, dynamic>? map) {
+    if (map == null) return const CkdQueryItemModel();
 
-    return CkdItemModel(
-      enumCkd: map['enumCkd'] != null
-          ? EnumCkd.values[map['enumCkd'] as int]
-          : EnumCkd.none,
+    return CkdQueryItemModel(
+      enumCkdQuery: map['enumCkdQuery'] != null
+          ? EnumCkdQuery.values[map['enumCkdQuery'] as int]
+          : EnumCkdQuery.none,
       value: map['value'] as String? ?? '',
     );
   }
 
-  CkdItemModel copyWith({
-    EnumCkd? enumCkd,
+  CkdQueryItemModel copyWith({
+    EnumCkdQuery? enumCkdQuery,
     String? value,
   }) {
-    return CkdItemModel(
-      enumCkd: enumCkd ?? this.enumCkd,
+    return CkdQueryItemModel(
+      enumCkdQuery: enumCkdQuery ?? this.enumCkdQuery,
       value: value ?? this.value,
     );
   }
 
   String toJson() => json.encode(toMap());
-  factory CkdItemModel.fromJson(String source) => CkdItemModel.fromMap(
+  factory CkdQueryItemModel.fromJson(String source) =>
+      CkdQueryItemModel.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 
@@ -61,12 +62,12 @@ class CkdItemModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CkdItemModel &&
+            other is CkdQueryItemModel &&
             (identical(
-                  other.enumCkd,
-                  enumCkd,
+                  other.enumCkdQuery,
+                  enumCkdQuery,
                 ) ||
-                other.enumCkd == enumCkd) &&
+                other.enumCkdQuery == enumCkdQuery) &&
             (identical(
                   other.value,
                   value,
@@ -77,12 +78,12 @@ class CkdItemModel {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        enumCkd,
+        enumCkdQuery,
         value,
       ]);
 
   @override
   String toString() {
-    return 'CkdItemModel(enumCkd: $enumCkd, value: $value, )';
+    return 'CkdQueryItemModel(enumCkdQuery: $enumCkdQuery, value: $value, )';
   }
 }

@@ -19,62 +19,53 @@ class StepWeightDryQueryPage extends ConsumerWidget {
     final state = ref.watch(weightDryQueryProvider);
     final notifier = ref.watch(weightDryQueryProvider.notifier);
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: const AppMyAppBar(),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              const Text(
-                'Мы заканчиваем!',
-                style: AppTextStyles.headlineLarge,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 16),
-              SvgPicture.asset(
-                AssetPaths.dryWeightQuerySvg,
-                height: 200,
-              ),
-              const SizedBox(height: 16),
-              const Text(
-                'Знаете ли вы\nсвой “сухой” вес?',
-                style: AppTextStyles.headlineSmall,
-              ),
-              // const SizedBox(height: 16),
-              const SizedBox(height: 16),
-              BtnToggleText(
-                textList: state.listWeightDryQuery.map((e) => e.value).toList(),
-                isSelected: state.listSelected,
-                onPressed: notifier.setWeightDryQuery,
-                errorText:
-                    state.enumValid.maybeMapOrNullValue(error: state.error),
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Text(
-                    '''
+    return StepContainer(
+      widgets: [
+        const Text(
+          'Мы заканчиваем!',
+          style: AppTextStyles.headlineLarge,
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 16),
+        SvgPicture.asset(
+          AssetPaths.dryWeightQuerySvg,
+          height: 200,
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'Знаете ли вы\nсвой “сухой” вес?',
+          style: AppTextStyles.headlineSmall,
+        ),
+        // const SizedBox(height: 16),
+        const SizedBox(height: 16),
+        BtnToggleText(
+          textList: state.listWeightDryQuery.map((e) => e.value).toList(),
+          isSelected: state.listSelected,
+          onPressed: notifier.setWeightDryQuery,
+          errorText: state.enumValid.maybeMapOrNullValue(error: state.error),
+        ),
+        const SizedBox(height: 16),
+        Expanded(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Text(
+              '''
    Сухой вес - это вес тела без жидкости, важный для расчета доз лекарств и количества удаляемой жидкости во время диализа. 
 
    Не знание своего сухого веса может указывать на отсутствие регулярных медицинских обследований и помощи.''',
-                    style: AppTextStyles.labelLarge.copyWith(
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                  ),
-                ),
+              style: AppTextStyles.labelLarge.copyWith(
+                color: Theme.of(context).colorScheme.secondary,
               ),
-              const SizedBox(height: 16),
-              BtnStepNextBack(
-                isValid: notifier.isValid,
-                backPressed: notifier.previousPage,
-                nextPressed: notifier.nextPage,
-              ),
-            ],
+            ),
           ),
         ),
-      ),
+        const SizedBox(height: 16),
+        BtnStepNextBack(
+          isValid: notifier.isValid,
+          backPressed: notifier.previousPage,
+          nextPressed: notifier.nextPage,
+        ),
+      ],
     );
   }
 }

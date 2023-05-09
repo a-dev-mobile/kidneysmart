@@ -60,75 +60,64 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
     final state = ref.watch(weightProvider);
     final notifier = ref.watch(weightProvider.notifier);
 
-    return ClearFocus(
-      child: SafeArea(
-        child: Scaffold(
-          appBar: const AppMyAppBar(),
-          body: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                const Text(
-                  'Еще чуть-чуть...',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.headlineLarge,
-                ),
-                const SizedBox(height: 16),
-                ContainerSvgAnimate(
-                  assetPaths: state.enumGender.maybeMapValue(
-                    male: AssetPaths.weightMaleSvg,
-                    orElse: AssetPaths.weighFemaleSvg,
-                  ),
-                  isKeyboardOpen: state.isKeyboardOpen,
-                  heightMax: 250,
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Укажите свой текущий вес',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.headlineLarge,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Можно указать примерно.\nВы сможете изменить вес позже',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.labelLarge.copyWith(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                TextField(
-                  // autofocus: true,
-                  controller: controller,
-                  decoration: InputDecoration(
-                    labelText: 'Вес',
-                    errorText:
-                        state.enumValid.maybeMapOrNullValue(error: state.error),
-                    errorMaxLines: 2,
-                    suffixText: 'кг',
-                  ),
-                  keyboardType: const TextInputType.numberWithOptions(
-                    decimal: true,
-                  ),
-                  onChanged: notifier.setWeight,
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(6),
-                    FilteringTextInputFormatter.allow(
-                      RegExp(r'(^\d*\.?\d*)'),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                BtnStepNextBack(
-                  isValid: notifier.isValid,
-                  backPressed: notifier.previousPage,
-                  nextPressed: notifier.nextPage,
-                ),
-              ],
-            ),
+    return StepContainer(
+      widgets: [
+        const Text(
+          'Еще чуть-чуть...',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.headlineLarge,
+        ),
+        const SizedBox(height: 16),
+        ContainerSvgAnimate(
+          assetPaths: state.enumGender.maybeMapValue(
+            male: AssetPaths.weightMaleSvg,
+            orElse: AssetPaths.weighFemaleSvg,
+          ),
+          isKeyboardOpen: state.isKeyboardOpen,
+          heightMax: 250,
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'Укажите свой текущий вес',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.headlineLarge,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Можно указать примерно.\nВы сможете изменить вес позже',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.labelLarge.copyWith(
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
-      ),
+        const SizedBox(height: 16),
+        TextField(
+          // autofocus: true,
+          controller: controller,
+          decoration: InputDecoration(
+            labelText: 'Вес',
+            errorText: state.enumValid.maybeMapOrNullValue(error: state.error),
+            errorMaxLines: 2,
+            suffixText: 'кг',
+          ),
+          keyboardType: const TextInputType.numberWithOptions(
+            decimal: true,
+          ),
+          onChanged: notifier.setWeight,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(6),
+            FilteringTextInputFormatter.allow(
+              RegExp(r'(^\d*\.?\d*)'),
+            ),
+          ],
+        ),
+        const Spacer(),
+        BtnStepNextBack(
+          isValid: notifier.isValid,
+          backPressed: notifier.previousPage,
+          nextPressed: notifier.nextPage,
+        ),
+      ],
     );
   }
 }

@@ -531,7 +531,7 @@ abstract class AppLocalizations {
   /// No description provided for @no_know.
   ///
   /// In ru, this message translates to:
-  /// **'Незнаю'**
+  /// **'Не знаю'**
   String get no_know;
 
   /// No description provided for @date_of_birth.

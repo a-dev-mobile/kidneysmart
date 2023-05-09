@@ -18,60 +18,52 @@ class StepHeightPage extends ConsumerWidget {
     final state = ref.watch(stepHeightProvider);
     final notifier = ref.watch(stepHeightProvider.notifier);
 
-    return Scaffold(
-      appBar: const AppMyAppBar(),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              const Text(
-                'Спасибо!',
-                style: AppTextStyles.headlineLarge,
-              ),
-              const SizedBox(height: 16),
-              state.enumGender.maybeMapValue(
-                male: const _SetGenderImage(
-                  assetPaths: AssetPaths.heightMaleSvg,
-                ),
-                orElse: const _SetGenderImage(
-                  assetPaths: AssetPaths.heightFemaleSvg,
-                ),
-              ),
-              const SizedBox(height: 16),
-              const Text(
-                'Какой у Вас рост?',
-                style: AppTextStyles.headlineLarge,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AppDropDown(
-                    hint: 'Рост',
-                    value: state.result,
-                    onChanged: notifier.setHeight,
-                    values: state.heightList,
-                  ),
-                  const SizedBox(width: 10),
-                  const Text(
-                    'см',
-                    style: AppTextStyles.bodyLarge,
-                  ),
-                ],
-              ),
-              ErrorMsg(
-                error: state.enumValid.maybeMapOrNullValue(error: state.error),
-              ),
-              const Spacer(),
-              BtnStepNextBack(
-                isValid: notifier.isValid,
-                backPressed: notifier.previousPage,
-                nextPressed: notifier.nextPage,
-              ),
-            ],
+    return StepContainer(
+      widgets: [
+        const Text(
+          'Спасибо!',
+          style: AppTextStyles.headlineLarge,
+        ),
+        const SizedBox(height: 16),
+        state.enumGender.maybeMapValue(
+          male: const _SetGenderImage(
+            assetPaths: AssetPaths.heightMaleSvg,
+          ),
+          orElse: const _SetGenderImage(
+            assetPaths: AssetPaths.heightFemaleSvg,
           ),
         ),
-      ),
+        const SizedBox(height: 16),
+        const Text(
+          'Какой у Вас рост?',
+          style: AppTextStyles.headlineLarge,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AppDropDown(
+              hint: 'Рост',
+              value: state.result,
+              onChanged: notifier.setHeight,
+              values: state.heightList,
+            ),
+            const SizedBox(width: 10),
+            const Text(
+              'см',
+              style: AppTextStyles.bodyLarge,
+            ),
+          ],
+        ),
+        ErrorMsg(
+          error: state.enumValid.maybeMapOrNullValue(error: state.error),
+        ),
+        const Spacer(),
+        BtnStepNextBack(
+          isValid: notifier.isValid,
+          backPressed: notifier.previousPage,
+          nextPressed: notifier.nextPage,
+        ),
+      ],
     );
   }
 }

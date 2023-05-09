@@ -3,7 +3,7 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/ckd_select/ckd.dart';
 
 import 'package:nutrition/features/steps/gfr/gfr.dart';
 import 'package:nutrition/shared/enum/enum.dart';

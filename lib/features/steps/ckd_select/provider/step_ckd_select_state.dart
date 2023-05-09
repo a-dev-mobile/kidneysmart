@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/ckd_select/ckd.dart';
 import 'package:nutrition/features/steps/gender/enum/enum_gender.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 

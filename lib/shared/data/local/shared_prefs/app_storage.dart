@@ -10,8 +10,9 @@ import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
 import 'package:nutrition/features/setting/setting.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
+import 'package:nutrition/features/steps/ckd_query/ckd_query.dart';
 
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/ckd_select/ckd.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
 import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
@@ -93,9 +94,21 @@ class AppStorage {
   Future<void> setWeightDryInputState(WeightDryInputState value) {
     return setJson(key: _weightDryInputState, value: value.toMap());
   }
-// ******************************
-// ******************************
 
+// ******************************
+// ******************************
+  static const _ckdQueryState = '_ckdQueryState';
+
+  CkdQueryState getCkdQueryState() {
+    return CkdQueryState.fromMap(getJson(key: _ckdQueryState));
+  }
+
+  Future<void> setCkdQueryState(CkdQueryState value) {
+    return setJson(key: _ckdQueryState, value: value.toMap());
+  }
+
+// ******************************
+// ******************************
   static const _dialysisType = '_dialysisType';
 
   DialysisTypeState getDialysisTypeState() {

@@ -15,7 +15,8 @@ import 'package:nutrition/features/setting/setting.dart';
 import 'package:nutrition/features/splash/splash.dart';
 import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/birthday/birthday.dart';
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/ckd_query/ckd_query.dart';
+import 'package:nutrition/features/steps/ckd_select/ckd.dart';
 import 'package:nutrition/features/steps/diabetes/diabetes.dart';
 import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
 import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
@@ -253,6 +254,14 @@ class AppRouter {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               child: const StepCkdSelectPage(),
+            ),
+          ),
+          GoRoute(
+            path: StepCkdQueryPage.path,
+            name: StepCkdQueryPage.name,
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: const StepCkdQueryPage(),
             ),
           ),
           GoRoute(

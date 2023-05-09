@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/ckd_query/ckd_query.dart';
+import 'package:nutrition/features/steps/ckd_select/ckd.dart';
 import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
-import 'package:nutrition/features/steps/gfr/gfr.dart';
 import 'package:nutrition/features/steps/urine_select/urine_select.dart';
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
@@ -68,7 +68,7 @@ class StepCkdSelectNotifier extends StateNotifier<StepCkdSelectState> {
         value: '5',
       ),
       CkdItemModel(
-        enumCkd: EnumCkd.calculate,
+        enumCkd: EnumCkd.noKnow,
         value: _l.no_know,
       ),
     ];
@@ -119,9 +119,9 @@ class StepCkdSelectNotifier extends StateNotifier<StepCkdSelectState> {
 
   void nextPage() {
     state.enumCkd.maybeMap(
-      orElse: () => _go.router.pushNamed<void>(CalcNutrientPage.name),
+      orElse: () => _go.router.goNamed(CalcNutrientPage.name),
       five: () => _go.router.goNamed(StepDialysisQueryPage.name),
-      calculate: () => _go.router.goNamed(StepGfrInputPage.name),
+      noKnow: () => _go.router.goNamed(StepCkdQueryPage.name),
     );
   }
 

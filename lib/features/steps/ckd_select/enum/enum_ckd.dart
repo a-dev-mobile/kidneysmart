@@ -6,7 +6,7 @@ enum EnumCkd with Comparable<EnumCkd> {
   threeB(30, 44),
   four(15, 29),
   five(0, 15),
-  calculate(-2, -2),
+  noKnow(-2, -2),
   none(-1, -1);
 
   const EnumCkd(this.minValue, this.maxValue);
@@ -39,7 +39,7 @@ enum EnumCkd with Comparable<EnumCkd> {
       case '0, 15':
         return five;
       case '-2, -2':
-        return calculate;
+        return noKnow;
       case '-1, -1':
         return none;
       default:
@@ -59,7 +59,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     required T Function() threeB,
     required T Function() four,
     required T Function() five,
-    required T Function() calculate,
+    required T Function() noKnow,
     required T Function() none,
   }) {
     switch (this) {
@@ -75,8 +75,8 @@ enum EnumCkd with Comparable<EnumCkd> {
         return four();
       case EnumCkd.five:
         return five();
-      case EnumCkd.calculate:
-        return calculate();
+      case EnumCkd.noKnow:
+        return noKnow();
       case EnumCkd.none:
         return none();
     }
@@ -89,7 +89,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     required T threeB,
     required T four,
     required T five,
-    required T calculate,
+    required T noKnow,
     required T none,
   }) {
     switch (this) {
@@ -105,8 +105,8 @@ enum EnumCkd with Comparable<EnumCkd> {
         return four;
       case EnumCkd.five:
         return five;
-      case EnumCkd.calculate:
-        return calculate;
+      case EnumCkd.noKnow:
+        return noKnow;
       case EnumCkd.none:
         return none;
     }
@@ -120,7 +120,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     T Function()? threeB,
     T Function()? four,
     T Function()? five,
-    T Function()? calculate,
+    T Function()? noKnow,
     T Function()? none,
   }) =>
       map<T>(
@@ -130,7 +130,7 @@ enum EnumCkd with Comparable<EnumCkd> {
         threeB: threeB ?? orElse,
         four: four ?? orElse,
         five: five ?? orElse,
-        calculate: calculate ?? orElse,
+        noKnow: noKnow ?? orElse,
         none: none ?? orElse,
       );
 
@@ -142,7 +142,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     T? threeB,
     T? four,
     T? five,
-    T? calculate,
+    T? noKnow,
     T? none,
   }) =>
       mapValue<T>(
@@ -152,7 +152,7 @@ enum EnumCkd with Comparable<EnumCkd> {
         threeB: threeB ?? orElse,
         four: four ?? orElse,
         five: five ?? orElse,
-        calculate: calculate ?? orElse,
+        noKnow: noKnow ?? orElse,
         none: none ?? orElse,
       );
 
@@ -163,7 +163,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     T Function()? threeB,
     T Function()? four,
     T Function()? five,
-    T Function()? calculate,
+    T Function()? noKnow,
     T Function()? none,
   }) =>
       maybeMap<T?>(
@@ -174,7 +174,7 @@ enum EnumCkd with Comparable<EnumCkd> {
         threeB: threeB,
         four: four,
         five: five,
-        calculate: calculate,
+        noKnow: noKnow,
         none: none,
       );
 
@@ -185,7 +185,7 @@ enum EnumCkd with Comparable<EnumCkd> {
     T? threeB,
     T? four,
     T? five,
-    T? calculate,
+    T? noKnow,
     T? none,
   }) =>
       maybeMapValue<T?>(
@@ -196,7 +196,7 @@ enum EnumCkd with Comparable<EnumCkd> {
         threeB: threeB,
         four: four,
         five: five,
-        calculate: calculate,
+        noKnow: noKnow,
         none: none,
       );
 

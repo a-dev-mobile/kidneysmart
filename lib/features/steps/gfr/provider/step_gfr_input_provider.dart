@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/ckd/ckd.dart';
+import 'package:nutrition/features/steps/ckd_select/ckd.dart';
 import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
 import 'package:nutrition/features/steps/gender/enum/enum_gender.dart';
 import 'package:nutrition/features/steps/gfr/gfr.dart';

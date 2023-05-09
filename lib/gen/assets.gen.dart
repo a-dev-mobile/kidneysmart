@@ -163,6 +163,10 @@ class AssetPaths {
   /// * File path: _assets/svg/sort_desc.svg
   static const String sortDescSvg = 'assets/svg/sort_desc.svg';
 
+  /// * Size:	22.4 KB
+  /// * File path: _assets/svg/stage_determine.svg
+  static const String stageDetermineSvg = 'assets/svg/stage_determine.svg';
+
   /// * Size:	2.3 KB
   /// * File path: _assets/svg/urine.svg
   static const String urineSvg = 'assets/svg/urine.svg';
@@ -227,6 +231,7 @@ class AssetPaths {
     remindYouSvg,
     sortAscSvg,
     sortDescSvg,
+    stageDetermineSvg,
     urineSvg,
     urineInputSvg,
     urineNoSvg,
@@ -287,6 +292,7 @@ class AssetPaths {
     remindYouSvg,
     sortAscSvg,
     sortDescSvg,
+    stageDetermineSvg,
     urineSvg,
     urineInputSvg,
     urineNoSvg,

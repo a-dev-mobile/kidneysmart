@@ -224,7 +224,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get calculate => 'Calculate';
 
   @override
-  String get no_know => 'Незнаю';
+  String get no_know => 'Не знаю';
 
   @override
   String get date_of_birth => 'Дата рождения';

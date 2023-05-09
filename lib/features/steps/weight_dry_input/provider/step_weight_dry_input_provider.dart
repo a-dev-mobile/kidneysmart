@@ -79,7 +79,7 @@ class StepWeightDryInputNotifier extends StateNotifier<WeightDryInputState> {
   }
 
   void nextPage() {
-    _go.router.pushNamed<void>(CalcNutrientPage.name);
+    _go.router.goNamed(CalcNutrientPage.name);
   }
 
   void previousPage() {

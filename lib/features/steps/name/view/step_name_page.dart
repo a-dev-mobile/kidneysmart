@@ -61,90 +61,80 @@ class _StepNamePageState extends ConsumerState<StepNamePage>
     final state = ref.watch(stepNameProvider);
     final notifier = ref.watch(stepNameProvider.notifier);
 
-    return ClearFocus(
-      child: SafeArea(
-        child: Scaffold(
-          appBar: const AppMyAppBar(),
-          body: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                const Text(
-                  'Давайте познакомимся!',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.headlineLarge,
-                ),
-                const SizedBox(height: 16),
-                // AnimatedContainer(
-                //   duration: const Duration(milliseconds: 300),
-                //   height: state.isKeyboardOpen ? 50 : 280,
-                //   child: SizedBox(
-                //     width: 280,
-                //     height: 240,
-                //     child: SvgPicture.asset(AssetPaths.nameStepSvg),
-                //   ),
-                // ),
-
-                ContainerSvgAnimate(
-                  assetPaths: AssetPaths.nameStepSvg,
-                  heightMax: 240,
-                  isKeyboardOpen: state.isKeyboardOpen,
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Как Вас зовут?',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.headlineLarge,
-                ),
-                const SizedBox(height: 16),
-                TypeAheadField<DataFio>(
-                  hideOnEmpty: true,
-                  hideOnLoading: true,
-                  hideOnError: true,
-
-                  textFieldConfiguration: TextFieldConfiguration(
-                    // autofocus: true,
-                    decoration: InputDecoration(
-                      labelText: 'Введите имя',
-                      errorMaxLines: 3,
-                      errorText: state.enumValid
-                          .maybeMapOrNullValue(error: state.error),
-                    ),
-                    controller: controller,
-                    onChanged: notifier.setName,
-                    keyboardType: TextInputType.name,
-                    minLines: 1,
-                    maxLines: 5,
-                    textInputAction: TextInputAction.done,
-                  ),
-                  suggestionsCallback: notifier.getSuggestionsName,
-                  itemBuilder: (context, DataFio suggestion) {
-                    return ListTile(
-                      visualDensity: const VisualDensity(vertical: -4),
-                      title: Text(suggestion.name),
-                    );
-                  },
-
-                  // ignore: prefer-extracting-callbacks
-                  onSuggestionSelected: (DataFio suggestion) {
-                    notifier
-                      ..setName(suggestion.name)
-                      ..setGender(suggestion.gender);
-
-                    controller.text = suggestion.name;
-                  },
-                ),
-                const Spacer(),
-                BtnStepNextBack(
-                  isValid: notifier.isValid,
-                  backPressed: notifier.previousPage,
-                  nextPressed: notifier.nextPage,
-                ),
-              ],
-            ),
-          ),
+    return StepContainer(
+      widgets: [
+        const Text(
+          'Давайте познакомимся!',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.headlineLarge,
         ),
-      ),
+        const SizedBox(height: 16),
+        // AnimatedContainer(
+        //   duration: const Duration(milliseconds: 300),
+        //   height: state.isKeyboardOpen ? 50 : 280,
+        //   child: SizedBox(
+        //     width: 280,
+        //     height: 240,
+        //     child: SvgPicture.asset(AssetPaths.nameStepSvg),
+        //   ),
+        // ),
+
+        ContainerSvgAnimate(
+          assetPaths: AssetPaths.nameStepSvg,
+          heightMax: 240,
+          isKeyboardOpen: state.isKeyboardOpen,
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'Как Вас зовут?',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.headlineLarge,
+        ),
+        const SizedBox(height: 16),
+        TypeAheadField<DataFio>(
+          hideOnEmpty: true,
+          hideOnLoading: true,
+          hideOnError: true,
+
+          textFieldConfiguration: TextFieldConfiguration(
+            // autofocus: true,
+            decoration: InputDecoration(
+              labelText: 'Введите имя',
+              errorMaxLines: 3,
+              errorText:
+                  state.enumValid.maybeMapOrNullValue(error: state.error),
+            ),
+            controller: controller,
+            onChanged: notifier.setName,
+            keyboardType: TextInputType.name,
+            minLines: 1,
+            maxLines: 5,
+            textInputAction: TextInputAction.done,
+          ),
+          suggestionsCallback: notifier.getSuggestionsName,
+          itemBuilder: (context, DataFio suggestion) {
+            return ListTile(
+              visualDensity: const VisualDensity(vertical: -4),
+              title: Text(suggestion.name),
+            );
+          },
+
+          // ignore: prefer-extracting-callbacks
+          onSuggestionSelected: (DataFio suggestion) {
+            notifier
+              ..setName(suggestion.name)
+              ..setGender(suggestion.gender);
+
+            controller.text = suggestion.name;
+          },
+        ),
+        const Spacer(),
+        BtnStepNextBack(
+          isValid: notifier.isValid,
+          backPressed: notifier.previousPage,
+          nextPressed: notifier.nextPage,
+        ),
+      ],
     );
   }
 }

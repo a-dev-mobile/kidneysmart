@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
+import 'package:nutrition/features/steps/ckd_query/ckd_query.dart';
 import 'package:nutrition/features/steps/ckd_select/ckd.dart';
-import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
-import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
-import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
+import 'package:nutrition/features/steps/gfr/gfr.dart';
 
 import 'package:nutrition/localization/localization.dart';
 import 'package:nutrition/navigation/navigation.dart';
@@ -10,10 +10,10 @@ import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:nutrition/shared/enum/enum.dart';
 import 'package:nutrition/shared/utils/utils.dart';
 
-final dialysisQueryProvider = StateNotifierProvider.autoDispose<
-    DialysisQueryNotifier, DialysisQueryState>(
+final ckdQueryProvider =
+    StateNotifierProvider.autoDispose<CkdQueryNotifier, CkdQueryState>(
   (ref) {
-    return DialysisQueryNotifier(
+    return CkdQueryNotifier(
       l: ref.watch(appLocalizationsProvider),
       storage: ref.read(appStorageProvider),
       go: ref.read(appRouterProvider),
@@ -21,15 +21,15 @@ final dialysisQueryProvider = StateNotifierProvider.autoDispose<
   },
 );
 
-class DialysisQueryNotifier extends StateNotifier<DialysisQueryState> {
-  DialysisQueryNotifier({
+class CkdQueryNotifier extends StateNotifier<CkdQueryState> {
+  CkdQueryNotifier({
     required AppLocalizations l,
     required AppStorage storage,
     required AppRouter go,
   })  : _storage = storage,
         _l = l,
         _go = go,
-        super(storage.getDialysisQueryState());
+        super(storage.getCkdQueryState());
 
   // ignore: unused_field
   final AppStorage _storage;
@@ -41,14 +41,14 @@ class DialysisQueryNotifier extends StateNotifier<DialysisQueryState> {
 
   /// preload
 
-  List<DialysisQueryItemModel> get _initDialysisQuery {
-    return <DialysisQueryItemModel>[
-      DialysisQueryItemModel(
-        enumDialysisQuery: EnumDialysisQuery.yes,
+  List<CkdQueryItemModel> get _initCkdQuery {
+    return <CkdQueryItemModel>[
+      CkdQueryItemModel(
+        enumCkdQuery: EnumCkdQuery.yes,
         value: _l.yes_caps,
       ),
-      DialysisQueryItemModel(
-        enumDialysisQuery: EnumDialysisQuery.no,
+      CkdQueryItemModel(
+        enumCkdQuery: EnumCkdQuery.no,
         value: _l.no_caps,
       ),
     ];
@@ -58,49 +58,49 @@ class DialysisQueryNotifier extends StateNotifier<DialysisQueryState> {
 
   void load() {
     state = state.copyWith(
-      listDialysisQuery: _initDialysisQuery,
+      listCkdQuery: _initCkdQuery,
       listSelected: AppUtilsArray.getListBool(
-        length: _initDialysisQuery.length,
+        length: _initCkdQuery.length,
         selectedIndex: state.selectedIndex,
       ),
     );
   }
 
-  void setDialysisQuery(int? v) {
+  void setCkdQuery(int? v) {
     var error = '';
     if (v == null && state.selectedIndex == null) {
       error = 'Выберите значение';
     }
     // update
     final selectedIndex = v ?? state.selectedIndex;
-    final listDialysisQuery = state.listDialysisQuery;
+    final listCkdQuery = state.listCkdQuery;
 
     final listBool = AppUtilsArray.getListBool(
-      length: listDialysisQuery.length,
+      length: listCkdQuery.length,
       selectedIndex: selectedIndex,
     );
 
     state = state.copyWith(
-      listDialysisQuery: listDialysisQuery,
+      listCkdQuery: listCkdQuery,
       selectedIndex: v,
       listSelected: listBool,
-      enumDialysisQuery: selectedIndex != null
-          ? listDialysisQuery[selectedIndex].enumDialysisQuery
+      enumCkdQuery: selectedIndex != null
+          ? listCkdQuery[selectedIndex].enumCkdQuery
           : null,
       error: error,
       enumValid: error.isEmpty ? EnumValid.valid : EnumValid.error,
     );
 
-    _storage.setDialysisQueryState(state);
+    _storage.setCkdQueryState(state);
   }
 
   void nextPage() {
-    final nextPage = state.enumDialysisQuery.maybeMapValue(
-      yes: StepDialysisTypePage.name,
-      orElse: StepWeightDryQueryPage.name,
+    final namePage = state.enumCkdQuery.maybeMapValue(
+      orElse: CalcNutrientPage.name,
+      yes: StepGfrInputPage.name,
     );
 
-    _go.router.pushNamed<void>(nextPage);
+    _go.router.goNamed(namePage);
   }
 
   void previousPage() {

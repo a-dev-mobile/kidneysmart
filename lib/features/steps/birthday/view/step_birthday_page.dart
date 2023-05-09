@@ -19,70 +19,60 @@ class StepBirthdayPage extends ConsumerWidget {
     final state = ref.watch(stepBirthdayProvider);
     final notifier = ref.watch(stepBirthdayProvider.notifier);
 
-    return Scaffold(
-      appBar: const AppMyAppBar(),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              const Text(
-                'Еще несколько вопросов!',
-                style: AppTextStyles.headlineLarge,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 16),
-              SizedBox(
-                height: 185,
-                width: 360,
-                child: SvgPicture.asset(AssetPaths.dateSvg),
-              ),
-              const SizedBox(height: 16),
-              const Text(
-                'Когда Ваш день рождения?',
-                style: AppTextStyles.headlineLarge,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  AppDropDown(
-                    hint: 'ДЕНЬ',
-                    value: state.day,
-                    onChanged: (v) =>
-                        notifier.setDate(v: v, enumDate: EnumDate.day),
-                    values: state.days,
-                  ),
-                  _DropDownMonth(
-                    hint: 'MЕСЯЦ',
-                    onChanged: (v) =>
-                        notifier.setDate(v: v, enumDate: EnumDate.month),
-                    value: state.month,
-                    values: state.months,
-                  ),
-                  AppDropDown(
-                    hint: 'ГОД',
-                    onChanged: (v) =>
-                        notifier.setDate(v: v, enumDate: EnumDate.year),
-                    value: state.year,
-                    values: state.years,
-                  ),
-                ],
-              ),
-              ErrorMsg(
-                error: state.enumValid.maybeMapOrNullValue(error: state.error),
-              ),
-              const Spacer(),
-              BtnStepNextBack(
-                isValid: notifier.isValid,
-                backPressed: notifier.previousPage,
-                nextPressed: notifier.nextPage,
-              ),
-            ],
-          ),
+    return StepContainer(
+      widgets: [
+        const Text(
+          'Еще несколько вопросов!',
+          style: AppTextStyles.headlineLarge,
+          textAlign: TextAlign.center,
         ),
-      ),
+        const SizedBox(height: 16),
+        SizedBox(
+          height: 185,
+          width: 360,
+          child: SvgPicture.asset(AssetPaths.dateSvg),
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'Когда Ваш день рождения?',
+          style: AppTextStyles.headlineLarge,
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            AppDropDown(
+              hint: 'ДЕНЬ',
+              value: state.day,
+              onChanged: (v) => notifier.setDate(v: v, enumDate: EnumDate.day),
+              values: state.days,
+            ),
+            _DropDownMonth(
+              hint: 'MЕСЯЦ',
+              onChanged: (v) =>
+                  notifier.setDate(v: v, enumDate: EnumDate.month),
+              value: state.month,
+              values: state.months,
+            ),
+            AppDropDown(
+              hint: 'ГОД',
+              onChanged: (v) => notifier.setDate(v: v, enumDate: EnumDate.year),
+              value: state.year,
+              values: state.years,
+            ),
+          ],
+        ),
+        ErrorMsg(
+          error: state.enumValid.maybeMapOrNullValue(error: state.error),
+        ),
+        const Spacer(),
+        BtnStepNextBack(
+          isValid: notifier.isValid,
+          backPressed: notifier.previousPage,
+          nextPressed: notifier.nextPage,
+        ),
+      ],
     );
   }
 }

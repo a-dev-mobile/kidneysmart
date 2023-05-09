@@ -5,7 +5,6 @@ import 'package:nutrition/features/steps/activity/activity.dart';
 import 'package:nutrition/features/steps/common/widget/widget.dart';
 import 'package:nutrition/gen/gen.dart';
 import 'package:nutrition/shared/theme/theme.dart';
-import 'package:nutrition/shared/widget/widget.dart';
 
 class StepActivityPage extends ConsumerWidget {
   const StepActivityPage({super.key});
@@ -18,58 +17,50 @@ class StepActivityPage extends ConsumerWidget {
     final state = ref.watch(stepActivityProvider);
     final notifier = ref.watch(stepActivityProvider.notifier);
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: const AppMyAppBar(),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              const Text(
-                'Вот вот и закончим\nобщие вопросы!',
-                textAlign: TextAlign.center,
-                style: AppTextStyles.headlineSmall,
-              ),
-              const SizedBox(height: 16),
-              SizedBox(
-                width: 180,
-                height: 140,
-                child: SvgPicture.asset(AssetPaths.activitySvg),
-              ),
-              const SizedBox(height: 16),
-              const Text(
-                'Насколько вы активны?',
-                textAlign: TextAlign.center,
-                style: AppTextStyles.headlineMedium,
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: state.listActivity.length,
-                  itemBuilder: (context, index) {
-                    final item = state.listActivity[index];
-                    final isActive = index == state.selectedIndex;
+    return StepContainer(
+      widgets: [
+        const Text(
+          'Вот вот и закончим\nобщие вопросы!',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.headlineSmall,
+        ),
+        const SizedBox(height: 16),
+        SizedBox(
+          width: 180,
+          height: 140,
+          child: SvgPicture.asset(AssetPaths.activitySvg),
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'Насколько вы активны?',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.headlineMedium,
+        ),
+        const SizedBox(height: 16),
+        Expanded(
+          child: ListView.builder(
+            itemCount: state.listActivity.length,
+            itemBuilder: (context, index) {
+              final item = state.listActivity[index];
+              final isActive = index == state.selectedIndex;
 
-                    return Card(
-                      elevation: isActive ? 10 : 0,
-                      child: ListTile(
-                        title: Text(item.title),
-                        subtitle: Text(item.content),
-                        onTap: () => notifier.setActivity(index),
-                      ),
-                    );
-                  },
+              return Card(
+                elevation: isActive ? 10 : 0,
+                child: ListTile(
+                  title: Text(item.title),
+                  subtitle: Text(item.content),
+                  onTap: () => notifier.setActivity(index),
                 ),
-              ),
-              BtnStepNextBack(
-                isValid: notifier.isValid,
-                backPressed: notifier.previousPage,
-                nextPressed: notifier.nextPage,
-              ),
-            ],
+              );
+            },
           ),
         ),
-      ),
+        BtnStepNextBack(
+          isValid: notifier.isValid,
+          backPressed: notifier.previousPage,
+          nextPressed: notifier.nextPage,
+        ),
+      ],
     );
   }
 }

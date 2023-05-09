@@ -20,62 +20,50 @@ class StepWeightDryInputPage extends ConsumerWidget {
     final state = ref.watch(stepWeightDryInputProvider);
     final notifier = ref.watch(stepWeightDryInputProvider.notifier);
 
-    return ClearFocus(
-      child: SafeArea(
-        child: Scaffold(
-          appBar: const AppMyAppBar(),
-          body: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                const Text(
-                  'Мы заверяем Вас, что это будет последний вопрос!',
-                  style: AppTextStyles.headlineSmall,
-                  textAlign: TextAlign.center,
-                ),
-                if (!state.isKeyboardOpen) const SizedBox(height: 16),
-                ContainerSvgAnimate(
-                  assetPaths: AssetPaths.dryWeightInputSvg,
-                  heightMin: 0,
-                  heightMax: 200,
-                  isKeyboardOpen: state.isKeyboardOpen,
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Введите Ваш “сухой” вес',
-                  style: AppTextStyles.headlineLarge,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 16),
-                const FieldWeightDryInput(),
-                const SizedBox(height: 16),
-                Expanded(
-                  child: Scrollbar(
-                    thumbVisibility: true,
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: Text(
-                        '''
+    return StepContainer(widgets: [
+      const Text(
+        'Мы заверяем Вас, что это будет последний вопрос!',
+        style: AppTextStyles.headlineSmall,
+        textAlign: TextAlign.center,
+      ),
+      if (!state.isKeyboardOpen) const SizedBox(height: 16),
+      ContainerSvgAnimate(
+        assetPaths: AssetPaths.dryWeightInputSvg,
+        heightMin: 0,
+        heightMax: 200,
+        isKeyboardOpen: state.isKeyboardOpen,
+      ),
+      const SizedBox(height: 16),
+      const Text(
+        'Введите Ваш “сухой” вес',
+        style: AppTextStyles.headlineLarge,
+        textAlign: TextAlign.center,
+      ),
+      const SizedBox(height: 16),
+      const FieldWeightDryInput(),
+      const SizedBox(height: 16),
+      Expanded(
+        child: Scrollbar(
+          thumbVisibility: true,
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Text(
+              '''
    Определение и контроль сухого веса на диализе - важнейший аспект ухода, который помогает избежать осложнений и сохранить здоровье пациентов.
                         
    Возврат пациентов к своему сухому весу после диализа предотвращает обезвоживание и задержку жидкости в организме.''',
-                        style: AppTextStyles.labelLarge.copyWith(
-                          color: Theme.of(context).colorScheme.secondary,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                BtnStepNextBack(
-                  isValid: notifier.isValidInput,
-                  backPressed: notifier.previousPage,
-                  nextPressed: notifier.nextPage,
-                ),
-              ],
+              style: AppTextStyles.labelLarge.copyWith(
+                color: Theme.of(context).colorScheme.secondary,
+              ),
             ),
           ),
         ),
       ),
-    );
+      BtnStepNextBack(
+        isValid: notifier.isValidInput,
+        backPressed: notifier.previousPage,
+        nextPressed: notifier.nextPage,
+      ),
+    ]);
   }
 }
