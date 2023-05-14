@@ -6,7 +6,7 @@ on: [push]
   #     - "release/**"
   # pull_request:
   #   branches:
-  #     - develop
+  #     - develop 
   #     - master
 jobs:
   build_apk:
