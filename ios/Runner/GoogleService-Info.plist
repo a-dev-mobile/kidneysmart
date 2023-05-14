@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>96038361233-84c7pk658vu43m55j3rki2t48n9863nh.apps.googleusercontent.com</string>
+	<string>989827426867-ag67ovhv4v1cv0h3i2mkp7qd4khu819a.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.96038361233-84c7pk658vu43m55j3rki2t48n9863nh</string>
+	<string>com.googleusercontent.apps.989827426867-ag67ovhv4v1cv0h3i2mkp7qd4khu819a</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD9y_DoTj_ULI7R4aqEKzsXAyWiZLOvHYw</string>
+	<string>AIzaSyCfNdVWqmaEkEtkO-EbWAkfVErZpB4SZjg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>96038361233</string>
+	<string>989827426867</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>mobile.ckd.nutrition</string>
+	<string>com.ckc.kidneysmart</string>
 	<key>PROJECT_ID</key>
-	<string>prod-ckd-nutrition</string>
+	<string>kidneysmart-868f2</string>
 	<key>STORAGE_BUCKET</key>
-	<string>prod-ckd-nutrition.appspot.com</string>
+	<string>kidneysmart-868f2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:96038361233:ios:67b2ab1497aa8d2abf8730</string>
+	<string>1:989827426867:ios:517fca22a50406902c5146</string>
+	<key>DATABASE_URL</key>
+	<string>https://kidneysmart-868f2-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

@@ -3,13 +3,13 @@
 // import 'dart:math';
 
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:nutrition/core/enum/enum.dart';
-// import 'package:nutrition/core/services/storage/app_storage_service.dart';
-// import 'package:nutrition/core/utils/app_utils.dart';
-// import 'package:nutrition/core/valid/valid_extension.dart';
+// import 'package:kidneysmart/core/enum/enum.dart';
+// import 'package:kidneysmart/core/services/storage/app_storage_service.dart';
+// import 'package:kidneysmart/core/utils/app_utils.dart';
+// import 'package:kidneysmart/core/valid/valid_extension.dart';
 
-// import 'package:nutrition/features/health_profile/health_profile.dart';
-// import 'package:nutrition/localization/localization.dart';
+// import 'package:kidneysmart/features/health_profile/health_profile.dart';
+// import 'package:kidneysmart/localization/localization.dart';
 
 // part 'init_data_extension.dart';
 // part 'text_translate_extension.dart';

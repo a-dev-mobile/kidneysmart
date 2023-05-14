@@ -3,10 +3,9 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:kidneysmart/features/steps/weight_dry_query/weight_dry_query.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
-
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class WeightDryQueryState {
@@ -65,8 +64,9 @@ class WeightDryQueryState {
       listWeightDryQuery: map['listWeightDryQuery'] != null
           ? (map['listWeightDryQuery'] as List<dynamic>)
               .map(
-                (e) =>
-                    WeightDryQueryItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) => WeightDryQueryItemModel.fromMap(
+                  e as Map<dynamic, dynamic>,
+                ),
               )
               .toList()
           : const [],

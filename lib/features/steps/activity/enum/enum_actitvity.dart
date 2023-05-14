@@ -1,4 +1,4 @@
-enum EnumActivity with Comparable<EnumActivity> {
+enum EnumActivity implements Comparable<EnumActivity> {
 // light
   slightlyActive_1('slightlyActive'),
   moderatelyActive_2('moderatelyActive'),
@@ -156,4 +156,12 @@ enum EnumActivity with Comparable<EnumActivity> {
 
   @override
   String toString() => 'EnumActivity.$name($value)';
+}
+
+extension EnumActivityX on EnumActivity {
+  bool get slightlyActive_1 => this == EnumActivity.slightlyActive_1;
+  bool get moderatelyActive_2 => this == EnumActivity.moderatelyActive_2;
+  bool get active_3 => this == EnumActivity.active_3;
+  bool get veryActive_4 => this == EnumActivity.veryActive_4;
+  bool get none => this == EnumActivity.none;
 }

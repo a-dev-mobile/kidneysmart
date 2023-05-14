@@ -2,8 +2,8 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:kidneysmart/features/setting/setting.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/setting/setting.dart';
 
 @immutable
 class ThemeSetting {
@@ -52,7 +52,9 @@ class ThemeSetting {
       listTheme: map['listTheme'] != null
           ? (map['listTheme'] as List<dynamic>)
               .map(
-                (e) => ThemeItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) => ThemeItemModel.fromMap(
+                  e as Map<dynamic, dynamic>,
+                ),
               )
               .toList()
           : const [],

@@ -1,4 +1,4 @@
-enum EnumTheme with Comparable<EnumTheme> {
+enum EnumTheme implements Comparable<EnumTheme> {
   light('light'),
   dark('dark');
 
@@ -104,4 +104,9 @@ enum EnumTheme with Comparable<EnumTheme> {
 
   @override
   String toString() => 'EnumTheme.$name($value)';
+}
+
+extension EnumThemeX on EnumTheme {
+  bool get light => this == EnumTheme.light;
+  bool get dark => this == EnumTheme.dark;
 }

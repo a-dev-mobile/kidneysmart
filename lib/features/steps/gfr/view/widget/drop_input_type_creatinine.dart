@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:nutrition/features/steps/gfr/gfr.dart';
+import 'package:kidneysmart/features/steps/gfr/gfr.dart';
 
-import 'package:nutrition/localization/localization.dart';
+import 'package:kidneysmart/localization/localization.dart';
 
 class DropInputTypeCreatinine extends ConsumerWidget {
   const DropInputTypeCreatinine({

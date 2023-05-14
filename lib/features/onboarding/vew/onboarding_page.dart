@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:introduction_screen/introduction_screen.dart';
 
-import 'package:nutrition/features/onboarding/onboarding.dart';
+import 'package:kidneysmart/features/onboarding/onboarding.dart';
 
 class OnboardingPage extends ConsumerWidget {
   /// {@macro onboarding_page}

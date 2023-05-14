@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:nutrition/features/steps/gfr/gfr.dart';
-import 'package:nutrition/localization/localization.dart';
+import 'package:kidneysmart/features/steps/gfr/gfr.dart';
+import 'package:kidneysmart/localization/localization.dart';
 
 class FieldCreatinine extends ConsumerStatefulWidget {
   const FieldCreatinine({super.key});
@@ -40,8 +40,7 @@ class _FieldNameState extends ConsumerState<FieldCreatinine>
   @override
   void didChangeMetrics() {
     super.didChangeMetrics();
-    final isKeyboardOpen =
-        WidgetsBinding.instance.window.viewInsets.bottom != 0;
+    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
 
     ref
         .read(stepGfrInputProvider.notifier)

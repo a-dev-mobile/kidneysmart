@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names, lines_longer_than_80_chars
 
-enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
+enum EnumInputTypeCreatinine implements Comparable<EnumInputTypeCreatinine> {
   mgDl('mgDl'),
   mcmolL('mcmolL'),
   mmolL('mmolL');
@@ -123,4 +123,10 @@ enum EnumInputTypeCreatinine with Comparable<EnumInputTypeCreatinine> {
 
   @override
   String toString() => 'EnumInputTypeCreatinine.$name($value)';
+}
+
+extension EnumInputTypeCreatinineX on EnumInputTypeCreatinine {
+  bool get mgDl => this == EnumInputTypeCreatinine.mgDl;
+  bool get mcmolL => this == EnumInputTypeCreatinine.mcmolL;
+  bool get mmolL => this == EnumInputTypeCreatinine.mmolL;
 }

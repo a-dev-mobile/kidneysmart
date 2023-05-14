@@ -1,4 +1,4 @@
-enum EnumHypertension with Comparable<EnumHypertension> {
+enum EnumHypertension implements Comparable<EnumHypertension> {
   yes('yes'),
   no('no'),
   none('none');
@@ -121,4 +121,10 @@ enum EnumHypertension with Comparable<EnumHypertension> {
 
   @override
   String toString() => 'EnumHypertension.$name($value)';
+}
+
+extension EnumHypertensionX on EnumHypertension {
+  bool get yes => this == EnumHypertension.yes;
+  bool get no => this == EnumHypertension.no;
+  bool get none => this == EnumHypertension.none;
 }

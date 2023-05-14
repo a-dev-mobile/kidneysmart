@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nutrition/gen/assets.gen.dart';
+import 'package:kidneysmart/gen/assets.gen.dart';
 
 class AppLogo extends StatelessWidget {
   const AppLogo({

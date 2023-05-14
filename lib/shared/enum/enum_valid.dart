@@ -1,5 +1,5 @@
 // turnGen
-enum EnumValid with Comparable<EnumValid> {
+enum EnumValid implements Comparable<EnumValid> {
   init('init'),
   valid('valid'),
   error('error');
@@ -122,4 +122,10 @@ enum EnumValid with Comparable<EnumValid> {
 
   @override
   String toString() => 'EnumValid.$name($value)';
+}
+
+extension EnumValidX on EnumValid {
+  bool get init => this == EnumValid.init;
+  bool get valid => this == EnumValid.valid;
+  bool get error => this == EnumValid.error;
 }

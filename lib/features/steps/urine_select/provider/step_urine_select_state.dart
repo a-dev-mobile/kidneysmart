@@ -3,10 +3,9 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:kidneysmart/features/steps/urine_select/urine_select.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-
-import 'package:nutrition/features/steps/urine_select/urine_select.dart';
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class StepUrineSelectState {
@@ -55,7 +54,9 @@ class StepUrineSelectState {
       listUrine: map['listUrine'] != null
           ? (map['listUrine'] as List<dynamic>)
               .map(
-                (e) => UrineItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) => UrineItemModel.fromMap(
+                  e as Map<dynamic, dynamic>,
+                ),
               )
               .toList()
           : const [],

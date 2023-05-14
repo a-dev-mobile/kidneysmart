@@ -1,7 +1,7 @@
 // turnGen
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
-enum EnumWeightStatus with Comparable<EnumWeightStatus> {
+enum EnumWeightStatus implements Comparable<EnumWeightStatus> {
   severe_thinness(0, 15.9),
   moderate_thinness(16, 16.9),
   mild_thinness(17, 18.4),
@@ -244,4 +244,17 @@ enum EnumWeightStatus with Comparable<EnumWeightStatus> {
 
   @override
   String toString() => 'EnumWeightStatus.$name($minValue)';
+}
+
+extension EnumWeightStatusX on EnumWeightStatus {
+  bool get severe_thinness => this == EnumWeightStatus.severe_thinness;
+  bool get moderate_thinness => this == EnumWeightStatus.moderate_thinness;
+  bool get mild_thinness => this == EnumWeightStatus.mild_thinness;
+  bool get normal => this == EnumWeightStatus.normal;
+  bool get overweight => this == EnumWeightStatus.overweight;
+  bool get obesity_1 => this == EnumWeightStatus.obesity_1;
+  bool get obesity_2 => this == EnumWeightStatus.obesity_2;
+  bool get obesity_3 => this == EnumWeightStatus.obesity_3;
+  bool get obesity_4 => this == EnumWeightStatus.obesity_4;
+  bool get none => this == EnumWeightStatus.none;
 }

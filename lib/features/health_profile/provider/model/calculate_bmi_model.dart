@@ -3,7 +3,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:nutrition/core/enum/enum.dart';
+import 'package:kidneysmart/core/enum/enum.dart';
 
 @immutable
 class CalculateBmiModel {

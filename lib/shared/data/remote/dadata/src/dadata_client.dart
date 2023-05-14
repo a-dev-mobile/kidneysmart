@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:dio_log/interceptor/dio_log_interceptor.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/global/dart_define.dart';
-import 'package:nutrition/shared/data/remote/dadata/dadata.dart';
+import 'package:kidneysmart/global/dart_define.dart';
+import 'package:kidneysmart/shared/data/remote/dadata/dadata.dart';
 
 final daDataClientProvider = Provider<DaDataClient>((ref) {
   return DaDataClient(apiKey: DartDefineConst.API_KEY_DADATA);

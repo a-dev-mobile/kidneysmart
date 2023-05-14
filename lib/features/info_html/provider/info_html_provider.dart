@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/info_html/info_html.dart';
-import 'package:nutrition/global/global.dart';
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/navigation/navigation.dart';
-import 'package:nutrition/shared/data/local/db/db.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:nutrition/shared/domain/network/network_client_service.dart';
-import 'package:nutrition/shared/enum/enum.dart';
+import 'package:kidneysmart/features/info_html/info_html.dart';
+import 'package:kidneysmart/global/global.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/shared/data/local/db/db.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/shared/domain/network/network_client_service.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:sqflite/sqflite.dart';
 
 final infoHtmlProvider = StateNotifierProvider.autoDispose

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrition/shared/utils/utils.dart';
+import 'package:kidneysmart/shared/utils/utils.dart';
 
 extension ContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);

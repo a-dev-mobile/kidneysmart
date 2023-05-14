@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/setting/setting.dart';
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/navigation/navigation.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:nutrition/shared/utils/utils.dart';
+import 'package:kidneysmart/features/setting/setting.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/shared/utils/utils.dart';
 
 final settingProvider =
     StateNotifierProvider.autoDispose<SettingNotifier, SettingState>(

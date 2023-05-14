@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names, lines_longer_than_80_chars
 
-enum EnumDiabetes with Comparable<EnumDiabetes> {
+enum EnumDiabetes implements Comparable<EnumDiabetes> {
   yes('yes'),
   no('no'),
   none('none');
@@ -123,4 +123,10 @@ enum EnumDiabetes with Comparable<EnumDiabetes> {
 
   @override
   String toString() => 'EnumDiabetes.$name($value)';
+}
+
+extension EnumDiabetesX on EnumDiabetes {
+  bool get yes => this == EnumDiabetes.yes;
+  bool get no => this == EnumDiabetes.no;
+  bool get none => this == EnumDiabetes.none;
 }

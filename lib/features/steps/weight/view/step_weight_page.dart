@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/common/widget/widget.dart';
-import 'package:nutrition/features/steps/weight/weight.dart';
-import 'package:nutrition/gen/gen.dart';
+import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+import 'package:kidneysmart/features/steps/weight/weight.dart';
+import 'package:kidneysmart/gen/gen.dart';
 
-import 'package:nutrition/shared/theme/theme.dart';
-import 'package:nutrition/shared/widget/widget.dart';
+import 'package:kidneysmart/shared/theme/theme.dart';
+import 'package:kidneysmart/shared/widget/widget.dart';
 
 /// {@template weight_page}
 /// WeightPage widget
@@ -47,8 +47,7 @@ class _WeightPageState extends ConsumerState<StepWeightPage>
   @override
   void didChangeMetrics() {
     super.didChangeMetrics();
-    final isKeyboardOpen =
-        WidgetsBinding.instance.window.viewInsets.bottom != 0;
+    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
 
     ref
         .read(weightProvider.notifier)

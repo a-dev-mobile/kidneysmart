@@ -1,7 +1,7 @@
 // ignore: prefer-single-widget-per-file
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nutrition/features/setting/setting.dart';
+import 'package:kidneysmart/features/setting/setting.dart';
 
 class AppMyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AppMyAppBar({

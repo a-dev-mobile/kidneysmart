@@ -1,5 +1,5 @@
 // turngen
-enum EnumCkd with Comparable<EnumCkd> {
+enum EnumCkd implements Comparable<EnumCkd> {
   one(90, 100000),
   two(60, 89),
   threeA(45, 59),
@@ -208,4 +208,15 @@ enum EnumCkd with Comparable<EnumCkd> {
 
   @override
   String toString() => 'EnumCkd.$name($minValue)';
+}
+
+extension EnumCkdX on EnumCkd {
+  bool get one => this == EnumCkd.one;
+  bool get two => this == EnumCkd.two;
+  bool get threeA => this == EnumCkd.threeA;
+  bool get threeB => this == EnumCkd.threeB;
+  bool get four => this == EnumCkd.four;
+  bool get five => this == EnumCkd.five;
+  bool get noKnow => this == EnumCkd.noKnow;
+  bool get none => this == EnumCkd.none;
 }

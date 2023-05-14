@@ -1,7 +1,7 @@
 // // ignore_for_file: sort_constructors_first
 
 // import 'package:meta/meta.dart';
-// import 'package:nutrition/localization/localization.dart';
+// import 'package:kidneysmart/localization/localization.dart';
 // // part 'extended_formz_input.dart';
 
 // /// Enum representing the submission status of a form.

@@ -1,4 +1,4 @@
-# nutrition
+# kidneysmart
 
 A new Flutter project.
 

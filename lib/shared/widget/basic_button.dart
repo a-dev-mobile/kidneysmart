@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kidneysmart/gen/assets.gen.dart';
 import 'package:lottie/lottie.dart';
-import 'package:nutrition/gen/assets.gen.dart';
 
 /// Cupertino-styled rectangle button with rounded corners
 ///  // ignore_for_file: avoid-nested-conditional-expressions

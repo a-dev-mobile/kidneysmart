@@ -1,9 +1,9 @@
 // ignore_for_file: sort_constructors_first, avoid_bool_literals_in_conditional_expressions
 import 'dart:convert';
 
+import 'package:kidneysmart/features/welcome/welcome.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/welcome/welcome.dart';
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class AppState {

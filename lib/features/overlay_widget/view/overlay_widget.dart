@@ -2,13 +2,13 @@ import 'package:dio_log/dio_log.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nutrition/features/debug_menu/debug_menu.dart';
-import 'package:nutrition/features/splash/splash.dart';
-import 'package:nutrition/global/global.dart';
-import 'package:nutrition/navigation/app_router.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/storage.dart';
-import 'package:nutrition/shared/info/info.dart';
-import 'package:nutrition/shared/theme/app_text_style.dart';
+import 'package:kidneysmart/features/debug_menu/debug_menu.dart';
+import 'package:kidneysmart/features/splash/splash.dart';
+import 'package:kidneysmart/global/global.dart';
+import 'package:kidneysmart/navigation/app_router.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/storage.dart';
+import 'package:kidneysmart/shared/info/info.dart';
+import 'package:kidneysmart/shared/theme/app_text_style.dart';
 
 class OverlayWidget extends ConsumerWidget {
   const OverlayWidget({

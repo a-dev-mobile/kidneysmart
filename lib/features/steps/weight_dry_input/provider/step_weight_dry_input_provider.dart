@@ -1,14 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
-import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart';
-import 'package:nutrition/features/steps/weight_dry_query/view/step_weight_dry_query_page.dart';
+import 'package:kidneysmart/features/calc_nutient/calc_nutient.dart';
+import 'package:kidneysmart/features/steps/weight_dry_input/weight_dry_input.dart';
+import 'package:kidneysmart/features/steps/weight_dry_query/view/step_weight_dry_query_page.dart';
 
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/navigation/navigation.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:nutrition/shared/enum/enum.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 
-import 'package:nutrition/shared/valid/valid_extension.dart';
+import 'package:kidneysmart/shared/valid/valid_extension.dart';
 
 final stepWeightDryInputProvider = StateNotifierProvider.autoDispose<
     StepWeightDryInputNotifier, WeightDryInputState>(

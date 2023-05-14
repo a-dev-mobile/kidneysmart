@@ -1,42 +1,35 @@
 {
   "project_info": {
-    "project_number": "96038361233",
-    "firebase_url": "https://prod-ckd-nutrition-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "prod-ckd-nutrition",
-    "storage_bucket": "prod-ckd-nutrition.appspot.com"
+    "project_number": "989827426867",
+    "firebase_url": "https://kidneysmart-868f2-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "kidneysmart-868f2",
+    "storage_bucket": "kidneysmart-868f2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:96038361233:android:c43ba1f8da1740abbf8730",
+        "mobilesdk_app_id": "1:989827426867:android:36e613d3a430f01e2c5146",
         "android_client_info": {
-          "package_name": "mobile.ckd.nutrition"
+          "package_name": "com.ckc.kidneysmart"
         }
       },
       "oauth_client": [
         {
-          "client_id": "96038361233-3b6e110ekdkbodekjds911urvaesck1k.apps.googleusercontent.com",
+          "client_id": "989827426867-r3o8p8c7aq58s3rvnnuueo2prglhhh69.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDE0LdtI3V3MYd0S0ms_uhsq2kJ78uEwrA"
+          "current_key": "AIzaSyBDp2eXw4gfdxExveefyTp-L3CXpQAI9pc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "96038361233-3b6e110ekdkbodekjds911urvaesck1k.apps.googleusercontent.com",
+              "client_id": "989827426867-r3o8p8c7aq58s3rvnnuueo2prglhhh69.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "96038361233-84c7pk658vu43m55j3rki2t48n9863nh.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "mobile.ckd.nutrition"
-              }
             }
           ]
         }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/info_html/info_html.dart';
-import 'package:nutrition/shared/widget/widget.dart';
+import 'package:kidneysmart/features/info_html/info_html.dart';
+import 'package:kidneysmart/shared/widget/widget.dart';
 
 // ignore_for_file: prefer-extracting-callbacks
 /// {@template info_gfr_page}

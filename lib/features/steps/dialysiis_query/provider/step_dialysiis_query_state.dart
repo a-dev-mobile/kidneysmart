@@ -3,10 +3,9 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:kidneysmart/features/steps/dialysiis_query/dialysiis_query.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
-
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class DialysisQueryState {
@@ -65,8 +64,9 @@ class DialysisQueryState {
       listDialysisQuery: map['listDialysisQuery'] != null
           ? (map['listDialysisQuery'] as List<dynamic>)
               .map(
-                (e) =>
-                    DialysisQueryItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) => DialysisQueryItemModel.fromMap(
+                  e as Map<dynamic, dynamic>,
+                ),
               )
               .toList()
           : const [],

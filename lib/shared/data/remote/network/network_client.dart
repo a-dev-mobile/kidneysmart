@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:dio_log/interceptor/dio_log_interceptor.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:nutrition/shared/data/remote/network/model/crashlytic_network_model.dart';
-import 'package:nutrition/shared/data/remote/network/network.dart';
-import 'package:nutrition/shared/log/log.dart';
+import 'package:kidneysmart/shared/data/remote/network/model/crashlytic_network_model.dart';
+import 'package:kidneysmart/shared/data/remote/network/network.dart';
+import 'package:kidneysmart/shared/log/log.dart';
 
 class NetworkClient {
   NetworkClient({

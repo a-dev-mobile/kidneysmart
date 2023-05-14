@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names, lines_longer_than_80_chars
 
-enum EnumCkdQuery with Comparable<EnumCkdQuery> {
+enum EnumCkdQuery implements Comparable<EnumCkdQuery> {
   yes('yes'),
   no('no'),
   none('none');
@@ -123,4 +123,10 @@ enum EnumCkdQuery with Comparable<EnumCkdQuery> {
 
   @override
   String toString() => 'EnumCkdQuery.$name($value)';
+}
+
+extension EnumCkdQueryX on EnumCkdQuery {
+  bool get yes => this == EnumCkdQuery.yes;
+  bool get no => this == EnumCkdQuery.no;
+  bool get none => this == EnumCkdQuery.none;
 }

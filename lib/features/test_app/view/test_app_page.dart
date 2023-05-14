@@ -3,10 +3,10 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// import 'package:nutrition/app/app.dart';
-// import 'package:nutrition/core/widget/widget.dart';
-// import 'package:nutrition/features/test_app/test_app.dart';
-// import 'package:nutrition/localization/localization.dart';
+// import 'package:kidneysmart/app/app.dart';
+// import 'package:kidneysmart/core/widget/widget.dart';
+// import 'package:kidneysmart/features/test_app/test_app.dart';
+// import 'package:kidneysmart/localization/localization.dart';
 
 // class TestAppPage extends StatelessWidget {
 //   const TestAppPage({super.key});

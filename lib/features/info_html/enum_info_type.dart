@@ -1,5 +1,5 @@
 // turnGen
-enum EnumInfoType with Comparable<EnumInfoType> {
+enum EnumInfoType implements Comparable<EnumInfoType> {
   glomerularFiltration(0),
   urine(1),
   diabet(2),
@@ -309,4 +309,21 @@ enum EnumInfoType with Comparable<EnumInfoType> {
 
   @override
   String toString() => 'EnumInfoType.$name($value)';
+}
+
+extension EnumInfoTypeX on EnumInfoType {
+  bool get glomerularFiltration => this == EnumInfoType.glomerularFiltration;
+  bool get urine => this == EnumInfoType.urine;
+  bool get diabet => this == EnumInfoType.diabet;
+  bool get activity => this == EnumInfoType.activity;
+  bool get dialysis => this == EnumInfoType.dialysis;
+  bool get creatinine => this == EnumInfoType.creatinine;
+  bool get gender => this == EnumInfoType.gender;
+  bool get dateOfBirth => this == EnumInfoType.dateOfBirth;
+  bool get height => this == EnumInfoType.height;
+  bool get weight => this == EnumInfoType.weight;
+  bool get bodyMassIndex => this == EnumInfoType.bodyMassIndex;
+  bool get hypertension => this == EnumInfoType.hypertension;
+  bool get stagesCKD => this == EnumInfoType.stagesCKD;
+  bool get dryWeight => this == EnumInfoType.dryWeight;
 }

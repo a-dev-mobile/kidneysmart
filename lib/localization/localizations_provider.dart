@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/shared/domain/locale/locale_provider.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/shared/domain/locale/locale_provider.dart';
 
 /// provider used to access the AppLocalizations object for the current locale
 final appLocalizationsProvider = Provider<AppLocalizations>((ref) {

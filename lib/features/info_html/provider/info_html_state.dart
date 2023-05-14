@@ -2,8 +2,8 @@
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class InfoHtmlState {

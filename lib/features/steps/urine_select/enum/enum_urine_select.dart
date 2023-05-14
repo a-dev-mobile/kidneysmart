@@ -1,4 +1,4 @@
-enum EnumUrine with Comparable<EnumUrine> {
+enum EnumUrine implements Comparable<EnumUrine> {
   normal('normal'),
   no('no'),
   enterValue('enterValue'),
@@ -138,4 +138,11 @@ enum EnumUrine with Comparable<EnumUrine> {
 
   @override
   String toString() => 'EnumUrine.$name($value)';
+}
+
+extension EnumUrineX on EnumUrine {
+  bool get normal => this == EnumUrine.normal;
+  bool get no => this == EnumUrine.no;
+  bool get enterValue => this == EnumUrine.enterValue;
+  bool get none => this == EnumUrine.none;
 }

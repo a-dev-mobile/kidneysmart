@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/gender/gender.dart';
-import 'package:nutrition/features/steps/urine_input/urine_input.dart';
+import 'package:kidneysmart/features/steps/gender/gender.dart';
+import 'package:kidneysmart/features/steps/urine_input/urine_input.dart';
 
-import 'package:nutrition/localization/localization.dart';
+import 'package:kidneysmart/localization/localization.dart';
 
 class FieldUrineOutput extends ConsumerStatefulWidget {
   const FieldUrineOutput({super.key});
@@ -39,8 +39,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput>
   @override
   void didChangeMetrics() {
     super.didChangeMetrics();
-    final isKeyboardOpen =
-        WidgetsBinding.instance.window.viewInsets.bottom != 0;
+    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
 
     ref
         .read(stepUrineInputProvider.notifier)

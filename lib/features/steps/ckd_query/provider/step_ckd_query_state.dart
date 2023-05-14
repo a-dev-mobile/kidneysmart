@@ -3,9 +3,9 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:kidneysmart/features/steps/ckd_query/ckd_query.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/ckd_query/ckd_query.dart';
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class CkdQueryState {
@@ -64,7 +64,9 @@ class CkdQueryState {
       listCkdQuery: map['listCkdQuery'] != null
           ? (map['listCkdQuery'] as List<dynamic>)
               .map(
-                (e) => CkdQueryItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) => CkdQueryItemModel.fromMap(
+                  e as Map<dynamic, dynamic>,
+                ),
               )
               .toList()
           : const [],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrition/shared/widget/widget.dart';
+import 'package:kidneysmart/shared/widget/widget.dart';
 
 class StepContainer extends StatelessWidget {
   /// {@macro btn_bottom}

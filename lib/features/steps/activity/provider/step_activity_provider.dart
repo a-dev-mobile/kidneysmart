@@ -1,13 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/activity/activity.dart';
-import 'package:nutrition/features/steps/hypertension/hypertension.dart';
-import 'package:nutrition/features/steps/weight/view/step_weight_page.dart';
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/navigation/navigation.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:nutrition/shared/enum/enum.dart';
-import 'package:nutrition/shared/utils/app_utils.dart';
-import 'package:nutrition/shared/utils/utils.dart';
+import 'package:kidneysmart/features/steps/activity/activity.dart';
+import 'package:kidneysmart/features/steps/hypertension/hypertension.dart';
+import 'package:kidneysmart/features/steps/weight/view/step_weight_page.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
+import 'package:kidneysmart/shared/utils/app_utils.dart';
+import 'package:kidneysmart/shared/utils/utils.dart';
 
 final stepActivityProvider =
     StateNotifierProvider.autoDispose<StepActivityNotifier, StepActivityState>(

@@ -2,11 +2,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:nutrition/core/services/locale/locale_provider.dart';
-import 'package:nutrition/core/services/theme/theme_providers.dart';
-import 'package:nutrition/core/widget/widget.dart';
-import 'package:nutrition/features/calc_nutient/view/calc_nutient_page.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:kidneysmart/core/services/locale/locale_provider.dart';
+import 'package:kidneysmart/core/services/theme/theme_providers.dart';
+import 'package:kidneysmart/core/widget/widget.dart';
+import 'package:kidneysmart/features/calc_nutient/view/calc_nutient_page.dart';
+import 'package:kidneysmart/features/health_profile/health_profile.dart';
 
 /// {@template health_profile_page}
 /// HealthProfilePage widget

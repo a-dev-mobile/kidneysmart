@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:96038361233:ios:67b2ab1497aa8d2abf8730",
-  "FIREBASE_PROJECT_ID": "prod-ckd-nutrition",
-  "GCM_SENDER_ID": "96038361233"
+  "GOOGLE_APP_ID": "1:989827426867:ios:517fca22a50406902c5146",
+  "FIREBASE_PROJECT_ID": "kidneysmart-868f2",
+  "GCM_SENDER_ID": "989827426867"
 }

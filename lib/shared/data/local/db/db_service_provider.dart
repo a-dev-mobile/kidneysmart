@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/global/db.dart';
-import 'package:nutrition/shared/log/log.dart';
+import 'package:kidneysmart/global/db.dart';
+import 'package:kidneysmart/shared/log/log.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 

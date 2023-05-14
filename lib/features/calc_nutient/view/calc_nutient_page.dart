@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
+import 'package:kidneysmart/features/calc_nutient/calc_nutient.dart';
 
 class CalcNutrientPage extends ConsumerWidget {
   const CalcNutrientPage({super.key});

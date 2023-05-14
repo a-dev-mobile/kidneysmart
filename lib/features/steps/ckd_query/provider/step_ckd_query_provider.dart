@@ -1,14 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
-import 'package:nutrition/features/steps/ckd_query/ckd_query.dart';
-import 'package:nutrition/features/steps/ckd_select/ckd.dart';
-import 'package:nutrition/features/steps/gfr/gfr.dart';
+import 'package:kidneysmart/features/calc_nutient/calc_nutient.dart';
+import 'package:kidneysmart/features/steps/ckd_query/ckd_query.dart';
+import 'package:kidneysmart/features/steps/ckd_select/ckd.dart';
+import 'package:kidneysmart/features/steps/gfr/gfr.dart';
 
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/navigation/navigation.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:nutrition/shared/enum/enum.dart';
-import 'package:nutrition/shared/utils/utils.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
+import 'package:kidneysmart/shared/utils/utils.dart';
 
 final ckdQueryProvider =
     StateNotifierProvider.autoDispose<CkdQueryNotifier, CkdQueryState>(

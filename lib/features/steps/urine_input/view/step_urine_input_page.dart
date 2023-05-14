@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/common/widget/widget.dart';
-import 'package:nutrition/features/steps/urine_input/urine_input.dart';
+import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+import 'package:kidneysmart/features/steps/urine_input/urine_input.dart';
 
-import 'package:nutrition/gen/gen.dart';
-import 'package:nutrition/shared/theme/theme.dart';
-import 'package:nutrition/shared/widget/widget.dart';
+import 'package:kidneysmart/gen/gen.dart';
+import 'package:kidneysmart/shared/theme/theme.dart';
+import 'package:kidneysmart/shared/widget/widget.dart';
 
 class StepUrineInputPage extends ConsumerWidget {
   const StepUrineInputPage({super.key});

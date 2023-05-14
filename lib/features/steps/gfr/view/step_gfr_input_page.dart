@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:nutrition/features/steps/common/widget/widget.dart';
-import 'package:nutrition/features/steps/gfr/gfr.dart';
-import 'package:nutrition/gen/gen.dart';
+import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+import 'package:kidneysmart/features/steps/gfr/gfr.dart';
+import 'package:kidneysmart/gen/gen.dart';
 
-import 'package:nutrition/shared/theme/theme.dart';
-import 'package:nutrition/shared/widget/widget.dart';
+import 'package:kidneysmart/shared/theme/theme.dart';
+import 'package:kidneysmart/shared/widget/widget.dart';
 
 class StepGfrInputPage extends ConsumerWidget {
   const StepGfrInputPage({super.key});

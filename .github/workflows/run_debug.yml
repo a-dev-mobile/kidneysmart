@@ -24,7 +24,7 @@ jobs:
           channel: "stable" # or: 'beta', 'dev' or 'master'
 
       - run: flutter doctor -v
-      - run: flutter update-packages --force-upgrade
+
       - run: flutter pub get
       
       - run: dart fix --apply

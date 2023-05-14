@@ -1,5 +1,5 @@
 // turnGen
-enum EnumResultWebView with Comparable<EnumResultWebView> {
+enum EnumResultWebView implements Comparable<EnumResultWebView> {
   load('load'),
   successHtml('successHtml'),
   successUrl('successUrl'),
@@ -139,4 +139,11 @@ enum EnumResultWebView with Comparable<EnumResultWebView> {
 
   @override
   String toString() => 'EnumResultWebView.$name($value)';
+}
+
+extension EnumResultWebViewX on EnumResultWebView {
+  bool get load => this == EnumResultWebView.load;
+  bool get successHtml => this == EnumResultWebView.successHtml;
+  bool get successUrl => this == EnumResultWebView.successUrl;
+  bool get error => this == EnumResultWebView.error;
 }

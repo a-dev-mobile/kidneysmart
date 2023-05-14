@@ -1,10 +1,10 @@
 /* import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/core/services/navigation/navigation.dart';
+import 'package:kidneysmart/core/services/navigation/navigation.dart';
 
-import 'package:nutrition/core/widget/widget.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
-import 'package:nutrition/features/info_html/info_html.dart';
+import 'package:kidneysmart/core/widget/widget.dart';
+import 'package:kidneysmart/features/health_profile/health_profile.dart';
+import 'package:kidneysmart/features/info_html/info_html.dart';
 
 class ResultBmi extends ConsumerWidget {
   const ResultBmi({

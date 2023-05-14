@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:nutrition/shared/widget/page/app_load_page.dart';
+import 'package:kidneysmart/shared/widget/page/app_load_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 /// {@template app_webview_page}
@@ -87,7 +87,7 @@ Page resource error:
           controller: _controler
             ..setBackgroundColor(Theme.of(context).colorScheme.background),
         ),
-        if (_isLoad) const AppLoadPage() else Stack(),
+        if (_isLoad) const AppLoadPage() else const Stack(),
       ],
     );
   }

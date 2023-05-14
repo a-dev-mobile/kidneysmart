@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/shared/domain/connectivity/connectivity_state.dart';
+import 'package:kidneysmart/shared/domain/connectivity/connectivity_state.dart';
 
 class ConnectivityController extends StateNotifier<ConnectivityState> {
   ConnectivityController() : super(const ConnectivityState.notDetermined()) {

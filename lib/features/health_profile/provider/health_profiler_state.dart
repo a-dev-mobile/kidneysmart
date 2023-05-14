@@ -3,7 +3,7 @@
 // import 'dart:convert';
 
 // import 'package:flutter/material.dart';
-// import 'package:nutrition/features/health_profile/health_profile.dart';
+// import 'package:kidneysmart/features/health_profile/health_profile.dart';
 
 // @immutable
 // class HealthProfileState {

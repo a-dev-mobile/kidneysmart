@@ -1,8 +1,8 @@
 // // ignore_for_file: lines_longer_than_80_chars
 
 // import 'package:flutter/material.dart';
-// import 'package:nutrition/app/style/style.dart';
-// import 'package:nutrition/core/widget/widget.dart';
+// import 'package:kidneysmart/app/style/style.dart';
+// import 'package:kidneysmart/core/widget/widget.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
 // class UpdateAppPage extends StatelessWidget {

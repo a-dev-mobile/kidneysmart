@@ -2,10 +2,10 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:nutrition/features/calc_nutient/calc_nutient.dart';
+import 'package:kidneysmart/features/calc_nutient/calc_nutient.dart';
 
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/storage.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/storage.dart';
 
 final calcNutientProvider =
     StateNotifierProvider.autoDispose<CalcNutientNotifier, CalcNutientState>(

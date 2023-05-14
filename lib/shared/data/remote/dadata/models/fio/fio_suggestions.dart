@@ -5,7 +5,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:nutrition/shared/data/remote/dadata/dadata.dart';
+import 'package:kidneysmart/shared/data/remote/dadata/dadata.dart';
 
 @immutable
 class SuggestionsFio {

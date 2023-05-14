@@ -1,5 +1,5 @@
 // turnGen
-enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
+enum EnumTypeCalcBmiPeople implements Comparable<EnumTypeCalcBmiPeople> {
   children('children'),
 
   adults('adults'),
@@ -123,4 +123,10 @@ enum EnumTypeCalcBmiPeople with Comparable<EnumTypeCalcBmiPeople> {
 
   @override
   String toString() => 'EnumTypeCalcBmiPeople.$name($value)';
+}
+
+extension EnumTypeCalcBmiPeopleX on EnumTypeCalcBmiPeople {
+  bool get children => this == EnumTypeCalcBmiPeople.children;
+  bool get adults => this == EnumTypeCalcBmiPeople.adults;
+  bool get none => this == EnumTypeCalcBmiPeople.none;
 }

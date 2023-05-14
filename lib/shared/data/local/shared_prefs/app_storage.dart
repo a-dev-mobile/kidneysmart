@@ -6,30 +6,30 @@ import 'dart:io';
 // import 'package:universal_io/io.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/debug_menu/provider/debug_state.dart';
-import 'package:nutrition/features/setting/setting.dart';
-import 'package:nutrition/features/steps/activity/activity.dart';
-import 'package:nutrition/features/steps/birthday/birthday.dart';
-import 'package:nutrition/features/steps/ckd_query/ckd_query.dart';
+import 'package:kidneysmart/features/debug_menu/provider/debug_state.dart';
+import 'package:kidneysmart/features/setting/setting.dart';
+import 'package:kidneysmart/features/steps/activity/activity.dart';
+import 'package:kidneysmart/features/steps/birthday/birthday.dart';
+import 'package:kidneysmart/features/steps/ckd_query/ckd_query.dart';
 
-import 'package:nutrition/features/steps/ckd_select/ckd.dart';
-import 'package:nutrition/features/steps/diabetes/diabetes.dart';
-import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
-import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
+import 'package:kidneysmart/features/steps/ckd_select/ckd.dart';
+import 'package:kidneysmart/features/steps/diabetes/diabetes.dart';
+import 'package:kidneysmart/features/steps/dialysiis_query/dialysiis_query.dart';
+import 'package:kidneysmart/features/steps/dialysis_type/dialysis_type.dart';
 
-import 'package:nutrition/features/steps/gender/gender.dart';
-import 'package:nutrition/features/steps/gfr/provider/step_gfr_input_state.dart';
-import 'package:nutrition/features/steps/height/height.dart';
-import 'package:nutrition/features/steps/hypertension/hypertension.dart';
-import 'package:nutrition/features/steps/name/name.dart';
-import 'package:nutrition/features/steps/urine_input/urine_input.dart';
+import 'package:kidneysmart/features/steps/gender/gender.dart';
+import 'package:kidneysmart/features/steps/gfr/provider/step_gfr_input_state.dart';
+import 'package:kidneysmart/features/steps/height/height.dart';
+import 'package:kidneysmart/features/steps/hypertension/hypertension.dart';
+import 'package:kidneysmart/features/steps/name/name.dart';
+import 'package:kidneysmart/features/steps/urine_input/urine_input.dart';
 
-import 'package:nutrition/features/steps/urine_select/urine_select.dart';
-import 'package:nutrition/features/steps/weight/weight.dart';
-import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart';
-import 'package:nutrition/features/steps/weight_dry_query/weight_dry_query.dart';
-import 'package:nutrition/shared/app/info/app_state.dart';
-import 'package:nutrition/shared/log/log.dart';
+import 'package:kidneysmart/features/steps/urine_select/urine_select.dart';
+import 'package:kidneysmart/features/steps/weight/weight.dart';
+import 'package:kidneysmart/features/steps/weight_dry_input/weight_dry_input.dart';
+import 'package:kidneysmart/features/steps/weight_dry_query/weight_dry_query.dart';
+import 'package:kidneysmart/shared/app/info/app_state.dart';
+import 'package:kidneysmart/shared/log/log.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {

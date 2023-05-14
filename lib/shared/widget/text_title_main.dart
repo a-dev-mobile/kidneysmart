@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrition/shared/theme/app_text_style.dart';
+import 'package:kidneysmart/shared/theme/app_text_style.dart';
 
 class TitleMain extends StatelessWidget {
   const TitleMain({

@@ -2,9 +2,9 @@
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
+import 'package:kidneysmart/features/steps/gender/gender.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/gender/gender.dart';
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class StepNameState {

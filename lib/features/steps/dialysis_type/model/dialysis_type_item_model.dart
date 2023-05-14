@@ -1,9 +1,8 @@
 // ignore_for_file: sort_constructors_first, avoid_bool_literals_in_conditional_expressions
 import 'dart:convert';
 
+import 'package:kidneysmart/features/steps/dialysis_type/dialysis_type.dart';
 import 'package:meta/meta.dart';
-
-import 'package:nutrition/features/steps/dialysis_type/dialysis_type.dart';
 
 @immutable
 class DialysisTypeItemModel {

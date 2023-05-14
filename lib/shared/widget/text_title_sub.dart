@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nutrition/shared/theme/app_text_style.dart';
+import 'package:kidneysmart/shared/theme/app_text_style.dart';
 
-import 'package:nutrition/shared/utils/utils.dart';
+import 'package:kidneysmart/shared/utils/utils.dart';
 
 class TitleSub extends StatelessWidget {
   const TitleSub({

@@ -1,4 +1,4 @@
-enum EnumDialysisQuery with Comparable<EnumDialysisQuery> {
+enum EnumDialysisQuery implements Comparable<EnumDialysisQuery> {
   yes('yes'),
   no('no'),
   none('none');
@@ -121,4 +121,10 @@ enum EnumDialysisQuery with Comparable<EnumDialysisQuery> {
 
   @override
   String toString() => 'EnumDialysisQuery.$name($value)';
+}
+
+extension EnumDialysisQueryX on EnumDialysisQuery {
+  bool get yes => this == EnumDialysisQuery.yes;
+  bool get no => this == EnumDialysisQuery.no;
+  bool get none => this == EnumDialysisQuery.none;
 }

@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/health_profile/health_profile.dart';
+import 'package:kidneysmart/features/health_profile/health_profile.dart';
 
 @immutable
 class DryWeightItemModel {

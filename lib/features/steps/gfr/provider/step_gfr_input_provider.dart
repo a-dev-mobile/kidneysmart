@@ -1,16 +1,16 @@
 import 'dart:math';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/ckd_select/ckd.dart';
-import 'package:nutrition/features/steps/dialysiis_query/dialysiis_query.dart';
-import 'package:nutrition/features/steps/gender/enum/enum_gender.dart';
-import 'package:nutrition/features/steps/gfr/gfr.dart';
+import 'package:kidneysmart/features/steps/ckd_select/ckd.dart';
+import 'package:kidneysmart/features/steps/dialysiis_query/dialysiis_query.dart';
+import 'package:kidneysmart/features/steps/gender/enum/enum_gender.dart';
+import 'package:kidneysmart/features/steps/gfr/gfr.dart';
 
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/navigation/navigation.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:nutrition/shared/enum/enum.dart';
-import 'package:nutrition/shared/valid/valid_extension.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
+import 'package:kidneysmart/shared/valid/valid_extension.dart';
 
 final stepGfrInputProvider =
     StateNotifierProvider.autoDispose<StepGfrInputNotifier, StepGfrInputState>(

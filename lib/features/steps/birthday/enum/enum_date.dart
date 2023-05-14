@@ -1,4 +1,4 @@
-enum EnumDate with Comparable<EnumDate> {
+enum EnumDate implements Comparable<EnumDate> {
   day('day'),
   month('month'),
   year('year');
@@ -121,4 +121,10 @@ enum EnumDate with Comparable<EnumDate> {
 
   @override
   String toString() => 'EnumDate.$name($value)';
+}
+
+extension EnumDateX on EnumDate {
+  bool get day => this == EnumDate.day;
+  bool get month => this == EnumDate.month;
+  bool get year => this == EnumDate.year;
 }

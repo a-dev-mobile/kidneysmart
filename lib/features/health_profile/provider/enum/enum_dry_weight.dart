@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names, lines_longer_than_80_chars
 
-enum EnumDryWeight with Comparable<EnumDryWeight> {
+enum EnumDryWeight implements Comparable<EnumDryWeight> {
   yes('yes'),
   no('no'),
   none('none');
@@ -123,4 +123,10 @@ enum EnumDryWeight with Comparable<EnumDryWeight> {
 
   @override
   String toString() => 'EnumDryWeight.$name($value)';
+}
+
+extension EnumDryWeightX on EnumDryWeight {
+  bool get yes => this == EnumDryWeight.yes;
+  bool get no => this == EnumDryWeight.no;
+  bool get none => this == EnumDryWeight.none;
 }

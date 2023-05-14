@@ -1,5 +1,5 @@
 // turnGen
-enum DaDataEnum with Comparable<DaDataEnum> {
+enum DaDataEnum implements Comparable<DaDataEnum> {
   name('name'),
   surname('surname'),
   patronymic('patronymic'),
@@ -139,4 +139,11 @@ enum DaDataEnum with Comparable<DaDataEnum> {
 
   @override
   String toString() => 'DaDataEnum.$name($value)';
+}
+
+extension DaDataEnumX on DaDataEnum {
+  bool get name => this == DaDataEnum.name;
+  bool get surname => this == DaDataEnum.surname;
+  bool get patronymic => this == DaDataEnum.patronymic;
+  bool get all => this == DaDataEnum.all;
 }

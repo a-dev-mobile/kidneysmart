@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nutrition/features/steps/common/widget/widget.dart';
-import 'package:nutrition/features/steps/height/height.dart';
-import 'package:nutrition/gen/gen.dart';
-import 'package:nutrition/shared/theme/app_text_style.dart';
-import 'package:nutrition/shared/widget/widget.dart';
+import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+import 'package:kidneysmart/features/steps/height/height.dart';
+import 'package:kidneysmart/gen/gen.dart';
+import 'package:kidneysmart/shared/theme/app_text_style.dart';
+import 'package:kidneysmart/shared/widget/widget.dart';
 
 class StepHeightPage extends ConsumerWidget {
   const StepHeightPage({super.key});

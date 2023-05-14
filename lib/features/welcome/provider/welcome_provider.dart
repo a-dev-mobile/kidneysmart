@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/name/name.dart';
-import 'package:nutrition/features/welcome/welcome.dart';
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/navigation/navigation.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/features/steps/name/name.dart';
+import 'package:kidneysmart/features/welcome/welcome.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
 
 final welcomeProvider =
     StateNotifierProvider.autoDispose<WelcomeNotifier, WelcomeState>(

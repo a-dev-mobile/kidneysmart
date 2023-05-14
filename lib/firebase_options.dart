@@ -45,50 +45,50 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAK3OfhGtaBBa5PckYaL7K0U3H90gBz8g4',
-    appId: '1:96038361233:web:0c709ebcb2bee52ebf8730',
-    messagingSenderId: '96038361233',
-    projectId: 'prod-ckd-nutrition',
-    authDomain: 'prod-ckd-nutrition.firebaseapp.com',
+    apiKey: 'AIzaSyAkVF2A_-VZghUhJn23VDAs9qlZlzTEOMc',
+    appId: '1:989827426867:web:839adf9a5d3cf3b02c5146',
+    messagingSenderId: '989827426867',
+    projectId: 'kidneysmart-868f2',
+    authDomain: 'kidneysmart-868f2.firebaseapp.com',
     databaseURL:
-        'https://prod-ckd-nutrition-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'prod-ckd-nutrition.appspot.com',
-    measurementId: 'G-TQV5C90G0N',
+        'https://kidneysmart-868f2-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'kidneysmart-868f2.appspot.com',
+    measurementId: 'G-3MB5D9KE0Y',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDE0LdtI3V3MYd0S0ms_uhsq2kJ78uEwrA',
-    appId: '1:96038361233:android:c43ba1f8da1740abbf8730',
-    messagingSenderId: '96038361233',
-    projectId: 'prod-ckd-nutrition',
+    apiKey: 'AIzaSyBDp2eXw4gfdxExveefyTp-L3CXpQAI9pc',
+    appId: '1:989827426867:android:36e613d3a430f01e2c5146',
+    messagingSenderId: '989827426867',
+    projectId: 'kidneysmart-868f2',
     databaseURL:
-        'https://prod-ckd-nutrition-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'prod-ckd-nutrition.appspot.com',
+        'https://kidneysmart-868f2-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'kidneysmart-868f2.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD9y_DoTj_ULI7R4aqEKzsXAyWiZLOvHYw',
-    appId: '1:96038361233:ios:67b2ab1497aa8d2abf8730',
-    messagingSenderId: '96038361233',
-    projectId: 'prod-ckd-nutrition',
+    apiKey: 'AIzaSyCfNdVWqmaEkEtkO-EbWAkfVErZpB4SZjg',
+    appId: '1:989827426867:ios:517fca22a50406902c5146',
+    messagingSenderId: '989827426867',
+    projectId: 'kidneysmart-868f2',
     databaseURL:
-        'https://prod-ckd-nutrition-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'prod-ckd-nutrition.appspot.com',
+        'https://kidneysmart-868f2-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'kidneysmart-868f2.appspot.com',
     iosClientId:
-        '96038361233-84c7pk658vu43m55j3rki2t48n9863nh.apps.googleusercontent.com',
-    iosBundleId: 'mobile.ckd.nutrition',
+        '989827426867-ag67ovhv4v1cv0h3i2mkp7qd4khu819a.apps.googleusercontent.com',
+    iosBundleId: 'com.ckc.kidneysmart',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD9y_DoTj_ULI7R4aqEKzsXAyWiZLOvHYw',
-    appId: '1:96038361233:ios:67b2ab1497aa8d2abf8730',
-    messagingSenderId: '96038361233',
-    projectId: 'prod-ckd-nutrition',
+    apiKey: 'AIzaSyCfNdVWqmaEkEtkO-EbWAkfVErZpB4SZjg',
+    appId: '1:989827426867:ios:db5035d9f06213b22c5146',
+    messagingSenderId: '989827426867',
+    projectId: 'kidneysmart-868f2',
     databaseURL:
-        'https://prod-ckd-nutrition-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'prod-ckd-nutrition.appspot.com',
+        'https://kidneysmart-868f2-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'kidneysmart-868f2.appspot.com',
     iosClientId:
-        '96038361233-84c7pk658vu43m55j3rki2t48n9863nh.apps.googleusercontent.com',
-    iosBundleId: 'mobile.ckd.nutrition',
+        '989827426867-c11d9g1adb3022vv59pb5ubmbaugltif.apps.googleusercontent.com',
+    iosBundleId: 'com.ckc.kidneysmart.RunnerTests',
   );
 }

@@ -1,4 +1,4 @@
-enum EnumWeightDryQuery with Comparable<EnumWeightDryQuery> {
+enum EnumWeightDryQuery implements Comparable<EnumWeightDryQuery> {
   yes('yes'),
   no('no'),
   none('none');
@@ -121,4 +121,10 @@ enum EnumWeightDryQuery with Comparable<EnumWeightDryQuery> {
 
   @override
   String toString() => 'EnumWeightDryQuery.$name($value)';
+}
+
+extension EnumWeightDryQueryX on EnumWeightDryQuery {
+  bool get yes => this == EnumWeightDryQuery.yes;
+  bool get no => this == EnumWeightDryQuery.no;
+  bool get none => this == EnumWeightDryQuery.none;
 }

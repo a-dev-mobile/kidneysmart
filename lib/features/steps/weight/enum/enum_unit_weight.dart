@@ -1,4 +1,4 @@
-enum EnumUnitWeight with Comparable<EnumUnitWeight> {
+enum EnumUnitWeight implements Comparable<EnumUnitWeight> {
   kg('kg'),
   lbs('lbs');
 
@@ -104,4 +104,9 @@ enum EnumUnitWeight with Comparable<EnumUnitWeight> {
 
   @override
   String toString() => 'EnumUnitWeight.$name($value)';
+}
+
+extension EnumUnitWeightX on EnumUnitWeight {
+  bool get kg => this == EnumUnitWeight.kg;
+  bool get lbs => this == EnumUnitWeight.lbs;
 }

@@ -1,7 +1,7 @@
 // import 'package:flash/flash.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_svg/svg.dart';
-// import 'package:nutrition/app/style/style.dart';
+// import 'package:kidneysmart/app/style/style.dart';
 
 // class MySnackBar {
 //   static void show({

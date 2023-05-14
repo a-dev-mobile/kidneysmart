@@ -1,5 +1,5 @@
 // turnGen
-enum EnumLang with Comparable<EnumLang> {
+enum EnumLang implements Comparable<EnumLang> {
   ru('ru'),
   en('en');
 
@@ -105,4 +105,9 @@ enum EnumLang with Comparable<EnumLang> {
 
   @override
   String toString() => 'EnumLang.$name($value)';
+}
+
+extension EnumLangX on EnumLang {
+  bool get ru => this == EnumLang.ru;
+  bool get en => this == EnumLang.en;
 }

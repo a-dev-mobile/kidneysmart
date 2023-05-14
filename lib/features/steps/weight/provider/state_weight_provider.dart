@@ -1,14 +1,14 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/activity/activity.dart';
-import 'package:nutrition/features/steps/height/height.dart';
-import 'package:nutrition/features/steps/weight/weight.dart';
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/navigation/navigation.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:nutrition/shared/enum/enum.dart';
-import 'package:nutrition/shared/valid/valid.dart';
+import 'package:kidneysmart/features/steps/activity/activity.dart';
+import 'package:kidneysmart/features/steps/height/height.dart';
+import 'package:kidneysmart/features/steps/weight/weight.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
+import 'package:kidneysmart/shared/valid/valid.dart';
 
 final weightProvider =
     StateNotifierProvider.autoDispose<WeightNotifier, WeightState>(

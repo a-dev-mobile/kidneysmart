@@ -4,7 +4,7 @@ import 'package:characters/characters.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 /// DeviceInfo Singleton class

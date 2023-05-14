@@ -1,5 +1,5 @@
 /* import 'package:flutter/material.dart';
-import 'package:nutrition/core/widget/widget.dart';
+import 'package:kidneysmart/core/widget/widget.dart';
 
 class ResultCommon extends StatelessWidget {
   const ResultCommon({

@@ -6,7 +6,7 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:nutrition/shared/data/remote/dadata/dadata.dart';
+import 'package:kidneysmart/shared/data/remote/dadata/dadata.dart';
 
 @immutable
 class FioTooltip {
@@ -37,7 +37,9 @@ class FioTooltip {
       suggestions: map['suggestions'] != null
           ? (map['suggestions'] as List<dynamic>)
               .map(
-                (e) => SuggestionsFio.fromMap(e as Map<dynamic, dynamic>),
+                (e) => SuggestionsFio.fromMap(
+                  e as Map<dynamic, dynamic>,
+                ),
               )
               .toList()
           : const [],

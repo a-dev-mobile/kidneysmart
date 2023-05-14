@@ -1,4 +1,4 @@
-enum EnumGender with Comparable<EnumGender> {
+enum EnumGender implements Comparable<EnumGender> {
   female('FEMALE'),
   male('MALE'),
   none('none');
@@ -121,4 +121,10 @@ enum EnumGender with Comparable<EnumGender> {
 
   @override
   String toString() => 'EnumGender.$name($value)';
+}
+
+extension EnumGenderX on EnumGender {
+  bool get female => this == EnumGender.female;
+  bool get male => this == EnumGender.male;
+  bool get none => this == EnumGender.none;
 }

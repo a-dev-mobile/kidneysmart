@@ -2,11 +2,10 @@
 // ignore_for_file: sort_constructors_first
 import 'dart:convert';
 
+import 'package:kidneysmart/features/steps/ckd_select/ckd.dart';
+import 'package:kidneysmart/features/steps/gfr/gfr.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/ckd_select/ckd.dart';
-
-import 'package:nutrition/features/steps/gfr/gfr.dart';
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class StepGfrInputState {

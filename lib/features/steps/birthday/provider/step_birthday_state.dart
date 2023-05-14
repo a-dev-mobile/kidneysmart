@@ -3,8 +3,8 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class StepBirthdayState {

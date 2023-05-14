@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:nutrition/shared/widget/widget.dart';
+import 'package:kidneysmart/shared/widget/widget.dart';
 
 /// {@template load_page}
 /// Widget with disabling user action during load

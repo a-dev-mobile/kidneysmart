@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:nutrition/features/steps/weight_dry_input/weight_dry_input.dart';
+import 'package:kidneysmart/features/steps/weight_dry_input/weight_dry_input.dart';
 
-import 'package:nutrition/localization/localization.dart';
+import 'package:kidneysmart/localization/localization.dart';
 
 class FieldWeightDryInput extends ConsumerStatefulWidget {
   const FieldWeightDryInput({super.key});
@@ -39,8 +39,7 @@ class _FieldNameState extends ConsumerState<FieldWeightDryInput>
   @override
   void didChangeMetrics() {
     super.didChangeMetrics();
-    final isKeyboardOpen =
-        WidgetsBinding.instance.window.viewInsets.bottom != 0;
+    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
 
     ref
         .read(stepWeightDryInputProvider.notifier)

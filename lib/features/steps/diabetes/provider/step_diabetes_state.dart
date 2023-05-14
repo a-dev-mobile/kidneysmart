@@ -3,9 +3,9 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:kidneysmart/features/steps/diabetes/diabetes.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/diabetes/diabetes.dart';
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class DiabetesState {
@@ -64,7 +64,9 @@ class DiabetesState {
       listDiabetes: map['listDiabetes'] != null
           ? (map['listDiabetes'] as List<dynamic>)
               .map(
-                (e) => DiabetesItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) => DiabetesItemModel.fromMap(
+                  e as Map<dynamic, dynamic>,
+                ),
               )
               .toList()
           : const [],

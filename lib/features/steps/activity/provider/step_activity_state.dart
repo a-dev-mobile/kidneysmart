@@ -3,9 +3,9 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:kidneysmart/features/steps/activity/activity.dart';
+import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
-import 'package:nutrition/features/steps/activity/activity.dart';
-import 'package:nutrition/shared/enum/enum.dart';
 
 @immutable
 class StepActivityState {
@@ -64,8 +64,9 @@ class StepActivityState {
       listActivity: map['listActivity'] != null
           ? (map['listActivity'] as List<dynamic>)
               .map(
-                (e) =>
-                    StepActivityItemModel.fromMap(e as Map<dynamic, dynamic>),
+                (e) => StepActivityItemModel.fromMap(
+                  e as Map<dynamic, dynamic>,
+                ),
               )
               .toList()
           : const [],

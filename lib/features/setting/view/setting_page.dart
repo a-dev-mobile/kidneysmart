@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/setting/setting.dart';
-import 'package:nutrition/shared/theme/theme.dart';
-import 'package:nutrition/shared/widget/widget.dart';
+import 'package:kidneysmart/features/setting/setting.dart';
+import 'package:kidneysmart/shared/theme/theme.dart';
+import 'package:kidneysmart/shared/widget/widget.dart';
 
 /// {@template setting_page}
 /// SettingPage widget

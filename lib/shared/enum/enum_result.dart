@@ -1,5 +1,5 @@
 // turnGen
-enum EnumResult with Comparable<EnumResult> {
+enum EnumResult implements Comparable<EnumResult> {
   init('init'),
   success('success'),
   load('load'),
@@ -139,4 +139,11 @@ enum EnumResult with Comparable<EnumResult> {
 
   @override
   String toString() => 'EnumResult.$name($value)';
+}
+
+extension EnumResultX on EnumResult {
+  bool get init => this == EnumResult.init;
+  bool get success => this == EnumResult.success;
+  bool get load => this == EnumResult.load;
+  bool get error => this == EnumResult.error;
 }

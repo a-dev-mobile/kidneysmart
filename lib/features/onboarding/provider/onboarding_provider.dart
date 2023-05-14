@@ -1,11 +1,11 @@
 // ignore_for_file: unused_field
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/onboarding/provider/onboarding_state.dart';
-import 'package:nutrition/localization/localization.dart';
-import 'package:nutrition/navigation/navigation.dart';
-import 'package:nutrition/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:nutrition/shared/domain/network/network_client_service.dart';
+import 'package:kidneysmart/features/onboarding/provider/onboarding_state.dart';
+import 'package:kidneysmart/localization/localization.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/shared/domain/network/network_client_service.dart';
 
 final onboardingProvider =
     StateNotifierProvider.autoDispose<OndoardingNotifier, OnboardingState>(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nutrition/features/steps/ckd_select/ckd.dart';
-import 'package:nutrition/shared/widget/widget.dart';
+import 'package:kidneysmart/features/steps/ckd_select/ckd.dart';
+import 'package:kidneysmart/shared/widget/widget.dart';
 
 class BtnCkd extends ConsumerWidget {
   const BtnCkd({

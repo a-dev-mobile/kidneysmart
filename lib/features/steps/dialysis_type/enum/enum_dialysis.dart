@@ -1,4 +1,4 @@
-enum EnumDialysisType with Comparable<EnumDialysisType> {
+enum EnumDialysisType implements Comparable<EnumDialysisType> {
   perinatal('perinatal'),
   homodialysisType('homodialysis'),
 
@@ -122,4 +122,10 @@ enum EnumDialysisType with Comparable<EnumDialysisType> {
 
   @override
   String toString() => 'EnumDialysisType.$name($value)';
+}
+
+extension EnumDialysisTypeX on EnumDialysisType {
+  bool get perinatal => this == EnumDialysisType.perinatal;
+  bool get homodialysisType => this == EnumDialysisType.homodialysisType;
+  bool get none => this == EnumDialysisType.none;
 }
