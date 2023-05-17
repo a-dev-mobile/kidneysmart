@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidneysmart/features/steps/common/common.dart';
 import 'package:kidneysmart/features/steps/gender/gender.dart';
 import 'package:kidneysmart/features/steps/urine_input/urine_input.dart';
 
@@ -15,35 +16,30 @@ class FieldUrineOutput extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _FieldNameState();
 }
 
-class _FieldNameState extends ConsumerState<FieldUrineOutput>
-    with WidgetsBindingObserver {
+class _FieldNameState extends ConsumerState<FieldUrineOutput> {
   late final TextEditingController controller;
-
+  late final ListenerKeyboard keyboardListener;
   @override
   void initState() {
     super.initState();
     final initValue = ref.read(stepUrineInputProvider).result;
 
     controller = TextEditingController(text: initValue);
-    // регистрируем слушателя
-    WidgetsBinding.instance.addObserver(this);
+
+    keyboardListener = ListenerKeyboard(
+      context: context,
+      onKeyboardStateChanged: (isKeyboardOpen) => ref
+          .read(stepUrineInputProvider.notifier)
+          .setKeyboard(isKeyboardOpen: isKeyboardOpen),
+    );
+    keyboardListener.startListening();
   }
 
   @override
   void dispose() {
     controller.dispose();
-    final _ = WidgetsBinding.instance.removeObserver(this);
+    keyboardListener.dispose();
     super.dispose();
-  }
-
-  @override
-  void didChangeMetrics() {
-    super.didChangeMetrics();
-    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
-
-    ref
-        .read(stepUrineInputProvider.notifier)
-        .setKeyboard(isKeyboardOpen: isKeyboardOpen);
   }
 
   @override

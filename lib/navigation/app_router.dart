@@ -8,7 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/features/calc_nutient/calc_nutient.dart';
 import 'package:kidneysmart/features/debug_menu/debug_menu.dart';
-import 'package:kidneysmart/features/info_html/info_html.dart';
 import 'package:kidneysmart/features/onboarding/vew/onboarding_page.dart';
 import 'package:kidneysmart/features/overlay_widget/view/view.dart';
 import 'package:kidneysmart/features/setting/setting.dart';
@@ -110,16 +109,16 @@ class AppRouter {
           //     child: const HealthProfilePage(),
           //   ),
           // ),
-          GoRoute(
-            path: InfoHtmlPage.path,
-            name: InfoHtmlPage.name,
-            pageBuilder: (context, state) => MaterialPage<void>(
-              key: state.pageKey,
-              child: InfoHtmlPage(
-                enumInfoType: state.extra! as EnumInfoType,
-              ),
-            ),
-          ),
+          // GoRoute(
+          //   path: InfoHtmlPage.path,
+          //   name: InfoHtmlPage.name,
+          //   pageBuilder: (context, state) => MaterialPage<void>(
+          //     key: state.pageKey,
+          //     child: InfoHtmlPage(
+          //       enumInfoType: state.extra! as EnumInfoType,
+          //     ),
+          //   ),
+          // ),
           GoRoute(
             path: CalcNutrientPage.path,
             name: CalcNutrientPage.name,

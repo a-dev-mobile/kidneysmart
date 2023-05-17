@@ -13,7 +13,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/firebase_options.dart';
 import 'package:kidneysmart/global/global.dart';
 import 'package:kidneysmart/shared/app/info/app_info.dart';
-import 'package:kidneysmart/shared/data/local/db/db_service_provider.dart';
 import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:kidneysmart/shared/log/log.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -119,10 +118,10 @@ Future<void> _initOrientationApp() async {
 /// Triggered from bootstrap() to complete futures
 Future<List<Override>> overrideProviders() async {
   final sp = await SharedPreferences.getInstance();
-  final db = await DbProvider().load();
+  // final db = await DbProvider().load();
 
   return <Override>[
     sharedPreferencesProvider.overrideWithValue(sp),
-    dbProvider.overrideWithValue(db),
+    // dbProvider.overrideWithValue(db),
   ];
 }

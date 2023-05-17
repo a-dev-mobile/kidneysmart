@@ -27,7 +27,7 @@ class WelcomePage extends ConsumerWidget {
             child: ListView(
               children: [
                 const Text(
-                  'Добро пожаловать\nв наше приложение',
+                  'Добро пожаловать в наше приложение',
                   textAlign: TextAlign.center,
                   style: AppTextStyles.headlineSmall,
                 ),

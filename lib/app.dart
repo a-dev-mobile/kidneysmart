@@ -1,6 +1,3 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:feedback/feedback.dart';
-import 'package:flash/flash_helper.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -105,38 +102,23 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
     Intl.defaultLocale = locale.value;
     initStatusBar(enumTheme: settingState.themeSetting.enumTheme);
 
-    return BetterFeedback(
-      child: DevicePreview(
-        enabled: debug.isShowDevice,
-        builder: (context) => MaterialApp.router(
-          routeInformationProvider: navigator.router.routeInformationProvider,
-          routeInformationParser: navigator.router.routeInformationParser,
-          routerDelegate: navigator.router.routerDelegate,
-
-          // routerConfig: go.router,
-          builder: (context, _) {
-            var child = _!;
-            child = DevicePreview.appBuilder(context, _);
-            // Wrap with toast.
-            child = Toast(navigatorKey: navigatorKey, child: child);
-
-            return DevicePreview.appBuilder(context, child);
-          },
-          onGenerateTitle: (context) => AppLocalizations.of(context).app_name,
-          theme: FlexTheme.lightThemeData(),
-          darkTheme: FlexTheme.darkThemeData(),
-          themeMode: settingNotifier.themeMode,
-          locale: Locale(locale.name),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: AppLocalizations.supportedLocales,
-          debugShowCheckedModeBanner: false,
-        ),
-      ),
+    return MaterialApp.router(
+      routeInformationProvider: navigator.router.routeInformationProvider,
+      routeInformationParser: navigator.router.routeInformationParser,
+      routerDelegate: navigator.router.routerDelegate,
+      onGenerateTitle: (context) => AppLocalizations.of(context).app_name,
+      theme: FlexTheme.lightThemeData(),
+      darkTheme: FlexTheme.darkThemeData(),
+      themeMode: settingNotifier.themeMode,
+      locale: Locale(locale.name),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: AppLocalizations.supportedLocales,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

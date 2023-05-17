@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+import 'package:kidneysmart/features/steps/common/common.dart';
 import 'package:kidneysmart/features/steps/name/name.dart';
 import 'package:kidneysmart/gen/gen.dart';
 import 'package:kidneysmart/shared/data/remote/dadata/dadata.dart';
@@ -22,36 +22,30 @@ class StepNamePage extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _StepNamePageState();
 }
 
-/// State for widget WeightPage
-class _StepNamePageState extends ConsumerState<StepNamePage>
-    with WidgetsBindingObserver {
+class _StepNamePageState extends ConsumerState<StepNamePage> {
   late final TextEditingController controller;
-
+  late final ListenerKeyboard keyboardListener;
   @override
   void initState() {
     super.initState();
     final initValue = ref.read(stepNameProvider).result;
 
     controller = TextEditingController(text: initValue);
-    // регистрируем слушателя
-    WidgetsBinding.instance.addObserver(this);
+
+    keyboardListener = ListenerKeyboard(
+      context: context,
+      onKeyboardStateChanged: (isKeyboardOpen) => ref
+          .read(stepNameProvider.notifier)
+          .setKeyboard(isKeyboardOpen: isKeyboardOpen),
+    );
+    keyboardListener.startListening();
   }
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
-    final _ = WidgetsBinding.instance.removeObserver(this);
-  }
-
-  @override
-  void didChangeMetrics() {
-    super.didChangeMetrics();
-    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
-
-    ref
-        .read(stepNameProvider.notifier)
-        .setKeyboard(isKeyboardOpen: isKeyboardOpen);
+    keyboardListener.dispose();
+    super.dispose();
   }
 
   @override

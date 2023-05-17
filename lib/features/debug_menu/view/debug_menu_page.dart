@@ -2,7 +2,6 @@
 
 import 'dart:io';
 
-import 'package:feedback/feedback.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +13,6 @@ import 'package:kidneysmart/navigation/app_router.dart';
 import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
 import 'package:kidneysmart/shared/theme/app_text_style.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
 
 class DebugMenuPage extends ConsumerWidget {
   const DebugMenuPage({super.key});
@@ -113,24 +111,6 @@ class DebugMenuPage extends ConsumerWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  OutlinedButton(
-                    // ignore: prefer-extracting-callbacks
-                    onPressed: () {
-                      final router = ref.read(appRouterProvider).router;
-                      if (router.canPop()) {
-                        router.pop();
-                      }
-                      BetterFeedback.of(context).show((feedback) async {
-                        final screenshotFilePath =
-                            await writeImageToStorage(feedback.screenshot);
-                        final _ = await Share.shareXFiles(
-                          [XFile(screenshotFilePath)],
-                          text: feedback.text,
-                        );
-                      });
-                    },
-                    child: const Text('FEEDBACK'),
-                  ),
                   OutlinedButton(
                     // ignore: prefer-extracting-callbacks
                     onPressed: () {

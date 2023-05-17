@@ -5,6 +5,7 @@ import 'dart:io';
 
 // import 'package:universal_io/io.dart';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/features/debug_menu/provider/debug_state.dart';
 import 'package:kidneysmart/features/setting/setting.dart';
@@ -376,9 +377,31 @@ class AppStorage {
   static const _locale = 'locale';
 
   String getLocale() {
+    var locale = '';
+
+    final regExpSplit = RegExp('(_|-)');
+
+    const initLocale = 'ru';
+
+    if (kIsWeb) {
+      locale = initLocale;
+    } else {
+      final platformLocale = Platform.localeName;
+      locale = platformLocale.split(regExpSplit).first;
+    }
+
+    if (locale.isEmpty) {
+      locale = initLocale; // Значение по умолчанию, если локаль не определена
+      log.v(
+        'Локаль не определена. Используется значение по умолчанию "$initLocale".',
+      );
+    }
+
+    // return locale;
+
     return getString(
       key: _locale,
-      defaultValue: Platform.localeName.split(RegExp('(_|-)')).first,
+      defaultValue: locale,
     );
   }
 
