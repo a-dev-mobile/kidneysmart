@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidneysmart/features/steps/common/models/keyboard_state.dart';
 import 'package:kidneysmart/features/steps/gender/gender.dart';
 import 'package:kidneysmart/features/steps/name/name.dart';
 import 'package:kidneysmart/features/welcome/view/welcome_page.dart';
@@ -73,7 +74,7 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
   }
 
   void _saveState() {
-    _storage.setStepNameState(state.copyWith(isKeyboardOpen: false));
+    _storage.setStepNameState(state.copyWith(keyboard: const KeyboardState()));
   }
 
   List<DataFio> _getTips(FioTooltip result) {
@@ -105,9 +106,14 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
     }
   }
 
-  void setKeyboard({required bool isKeyboardOpen}) {
-    if (state.isKeyboardOpen == isKeyboardOpen) return;
+  void setKeyboard({
+    required bool isKeyboardOpen,
+    required double height,
+  }) {
+    if (state.keyboard.height == height) return;
 
-    state = state.copyWith(isKeyboardOpen: isKeyboardOpen);
+    state = state.copyWith(
+      keyboard: KeyboardState(isOpen: isKeyboardOpen, height: height),
+    );
   }
 }

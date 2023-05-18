@@ -21,65 +21,56 @@ class WelcomePage extends ConsumerWidget {
 
     return StepContainer(
       widgets: [
-        Expanded(
-          child: Scrollbar(
-            thumbVisibility: true,
-            child: ListView(
-              children: [
-                const Text(
-                  'Добро пожаловать в наше приложение',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.headlineSmall,
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Питание при ХБП',
-                      style: AppTextStyles.headlineLarge,
-                    ),
-                    SizedBox(
-                      width: 65,
-                      height: 38,
-                      child: SvgPicture.asset(AssetPaths.logoSvg),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  '(ХБП - хроническая болезнь почек)',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.labelLarge.copyWith(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Поздравляем! Вы сделали новый шаг на пути к более здоровому образу жизни',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.bodyLarge,
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: 200,
-                  height: 150,
-                  child: SvgPicture.asset(AssetPaths.remindYouSvg),
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  '   Хотим напомнить, что все представленные в приложении данные имеют исключительно информативный характер.\n\n   Лучше всего придерживаться рекомендаций врача и не забывать о профессиональной медицинской помощи.\n\n   Мы надеемся, что наше приложение будет для вас полезным инструментом в поддержании здоровья и благополучия.',
-                  style: AppTextStyles.bodyLarge,
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Спасибо за использование нашего приложения!',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.bodyMedium,
-                ),
-              ],
+        const Text(
+          'Добро пожаловать в наше приложение',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.headlineSmall,
+        ),
+        const SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Питание при ХБП',
+              style: AppTextStyles.headlineLarge,
             ),
+            SizedBox(
+              width: 65,
+              height: 38,
+              child: SvgPicture.asset(AssetPaths.logoSvg),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
+        Text(
+          '(ХБП - хроническая болезнь почек)',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.labelLarge.copyWith(
+            color: Theme.of(context).colorScheme.secondary,
           ),
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'Поздравляем! Вы сделали новый шаг на пути к более здоровому образу жизни',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.bodyLarge,
+        ),
+        const SizedBox(height: 16),
+        SizedBox(
+          width: 200,
+          height: 150,
+          child: SvgPicture.asset(AssetPaths.remindYouSvg),
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          '   Хотим напомнить, что все представленные в приложении данные имеют исключительно информативный характер.\n\n   Лучше всего придерживаться рекомендаций врача и не забывать о профессиональной медицинской помощи.\n\n   Мы надеемся, что наше приложение будет для вас полезным инструментом в поддержании здоровья и благополучия.',
+          style: AppTextStyles.bodyLarge,
+        ),
+        const SizedBox(height: 8),
+        const Text(
+          'Спасибо за использование нашего приложения!',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.bodyMedium,
         ),
         BasicButton(
           onPressed: notifier.nextPage,

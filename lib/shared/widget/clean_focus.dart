@@ -10,24 +10,24 @@ class ClearFocus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        // final focusScope = FocusScope.of(context);
+      // behavior: HitTestBehavior.translucent,
+      // сбросить фокус при нажатии на любую часть экрана
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode())
+      // final focusScope = FocusScope.of(context);
 
-        // Wrong way
-        // focusScope.unfocus();
+      // Wrong way
+      // focusScope.unfocus();
 
-        // Method1
-        // if (!focusScope.hasPrimaryFocus) {
-        //   focusScope.focusedChild?.unfocus();
-        // }
+      // Method1
+      // if (!focusScope.hasPrimaryFocus) {
+      //   focusScope.focusedChild?.unfocus();
+      // }
 
-        // Method2
-        FocusManager.instance.primaryFocus?.unfocus();
+      // Method2
 
-        // Method3
-        // WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus();
-      },
+      // Method3
+      // WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus();
+      ,
       child: child,
     );
   }
