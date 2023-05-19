@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:kidneysmart/core/constants/app_insets.dart';
-import 'package:kidneysmart/core/data/remote/dadata/dadata.dart';
-import 'package:kidneysmart/core/enum/enum.dart';
 import 'package:kidneysmart/core/theme/theme.dart';
 import 'package:kidneysmart/core/widget/universal/page_body.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
@@ -72,87 +69,95 @@ class _StepNamePageState extends ConsumerState<StepNamePage> {
     });
 
     return Scaffold(
-        extendBodyBehindAppBar: true,
-        extendBody: true,
-        appBar: const AppMyAppBar(),
-        drawer: const AppDrawer(),
-        body: PageBody(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+      appBar: const AppMyAppBar(),
+      drawer: const AppDrawer(),
+      body: PageBody(
+        controller: _scrollController,
+        child: ListView(
           controller: _scrollController,
-          child: ListView(
-            controller: _scrollController,
-            padding: const EdgeInsets.all(AppInsets.l),
-            children: [
-              const Text(
-                'Давайте познакомимся!',
-                textAlign: TextAlign.center,
-                style: AppTextStyles.headlineLarge,
-              ),
-              const SizedBox(height: 16),
-              SvgPicture.asset(
-                AssetPaths.nameStepSvg,
-                height: 240,
-              ),
-              const SizedBox(height: 16),
-              const Text(
-                'Как Вас зовут?',
-                textAlign: TextAlign.center,
-                style: AppTextStyles.headlineLarge,
-              ),
-              const SizedBox(height: 16),
-              TypeAheadField<DataFio>(
-                hideOnEmpty: true,
-                hideOnLoading: true,
-                hideOnError: true,
+          padding: const EdgeInsets.all(AppInsets.l),
+          children: [
+            const Text(
+              'Давайте познакомимся!',
+              textAlign: TextAlign.center,
+              style: AppTextStyles.headlineLarge,
+            ),
+            const SizedBox(height: 16),
+            SvgPicture.asset(
+              AssetPaths.nameStepSvg,
+              height: 240,
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Как Вас зовут?',
+              textAlign: TextAlign.center,
+              style: AppTextStyles.headlineLarge,
+            ),
+            const SizedBox(height: 16),
 
-                textFieldConfiguration: TextFieldConfiguration(
-                  // autofocus: true,
-                  decoration: InputDecoration(
-                    labelText: 'Введите имя',
-                    errorMaxLines: 3,
-                    errorText:
-                        state.enumValid.maybeMapOrNullValue(error: state.error),
-                  ),
-                  controller: controller,
-                  onChanged: notifier.setName,
-                  keyboardType: TextInputType.name,
-                  minLines: 1,
-                  maxLines: 5,
-                  textInputAction: TextInputAction.done,
-                ),
-                suggestionsCallback: notifier.getSuggestionsName,
-                suggestionsBoxDecoration: const SuggestionsBoxDecoration(
-                  constraints: BoxConstraints(maxHeight: offsetSuggestion),
-                ),
-                itemBuilder: (context, DataFio suggestion) {
-                  return ListTile(
-                    visualDensity: const VisualDensity(vertical: -4),
-                    title: Text(suggestion.name),
-                  );
-                },
-
-                // ignore: prefer-extracting-callbacks
-                onSuggestionSelected: (DataFio suggestion) {
-                  notifier
-                    ..setName(suggestion.name)
-                    ..setGender(suggestion.gender);
-
-                  controller.text = suggestion.name;
-                },
+            TextField(
+              controller: controller,
+              onChanged: notifier.setName,
+              keyboardType: TextInputType.name,
+              minLines: 1,
+              maxLines: 5,
+              textInputAction: TextInputAction.done,
+              decoration: InputDecoration(
+                labelText: 'Введите имя',
+                errorMaxLines: 3,
+                errorText:
+                    state.enumValid.maybeMapOrNullValue(error: state.error),
               ),
-              Column(
-                children: [
-                  SizedBox(
-                    height: state.enumValid == EnumValid.error
-                        ? offsetSuggestion
-                        : offsetSuggestion + 16 + 8,
-                  ),
-                  _Btn(notifier: notifier),
-                ],
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 16),
+
+            _Btn(notifier: notifier),
+            // TypeAheadField<DataFio>(
+            //   hideOnEmpty: true,
+            //   hideOnLoading: true,
+            //   hideOnError: true,
+
+            //   textFieldConfiguration: TextFieldConfiguration(
+            //     // autofocus: true,
+            //     decoration: InputDecoration(
+            //       labelText: 'Введите имя',
+            //       errorMaxLines: 3,
+            //       errorText:
+            //           state.enumValid.maybeMapOrNullValue(error: state.error),
+            //     ),
+            //     controller: controller,
+            //     onChanged: notifier.setName,
+            //     keyboardType: TextInputType.name,
+            //     minLines: 1,
+            //     maxLines: 5,
+            //     textInputAction: TextInputAction.done,
+            //   ),
+            //   suggestionsCallback: notifier.getSuggestionsName,
+            //   suggestionsBoxDecoration: const SuggestionsBoxDecoration(
+            //     constraints: BoxConstraints(maxHeight: offsetSuggestion),
+            //   ),
+            //   itemBuilder: (context, DataFio suggestion) {
+            //     return ListTile(
+            //       visualDensity: const VisualDensity(vertical: -4),
+            //       title: Text(suggestion.name),
+            //     );
+            //   },
+
+            //   // ignore: prefer-extracting-callbacks
+            //   onSuggestionSelected: (DataFio suggestion) {
+            //     notifier
+            //       ..setName(suggestion.name)
+            //       ..setGender(suggestion.gender);
+
+            //     controller.text = suggestion.name;
+            //   },
+            // ),
+          ],
         ),
-      );
+      ),
+    );
   }
 
   Future<void> _scroll({bool isKeyboardOpen = false}) async {
