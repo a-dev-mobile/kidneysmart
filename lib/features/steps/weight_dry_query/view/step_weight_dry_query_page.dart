@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kidneysmart/core/theme/theme.dart';
+import 'package:kidneysmart/core/widget/widget.dart';
 import 'package:kidneysmart/features/steps/common/widget/widget.dart';
 import 'package:kidneysmart/features/steps/weight_dry_query/weight_dry_query.dart';
-
 import 'package:kidneysmart/gen/gen.dart';
-import 'package:kidneysmart/shared/theme/theme.dart';
-import 'package:kidneysmart/shared/widget/widget.dart';
 
 class StepWeightDryQueryPage extends ConsumerWidget {
   const StepWeightDryQueryPage({super.key});

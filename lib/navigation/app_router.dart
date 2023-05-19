@@ -6,6 +6,8 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kidneysmart/core/app/app.dart';
+import 'package:kidneysmart/core/data/local/shared_prefs/app_storage.dart';
 import 'package:kidneysmart/features/calc_nutient/calc_nutient.dart';
 import 'package:kidneysmart/features/debug_menu/debug_menu.dart';
 import 'package:kidneysmart/features/onboarding/vew/onboarding_page.dart';
@@ -26,15 +28,11 @@ import 'package:kidneysmart/features/steps/hypertension/hypertension.dart';
 import 'package:kidneysmart/features/steps/name/name.dart';
 import 'package:kidneysmart/features/steps/urine_input/urine_input.dart';
 import 'package:kidneysmart/features/steps/urine_select/urine_select.dart';
-
 import 'package:kidneysmart/features/steps/weight/weight.dart';
 import 'package:kidneysmart/features/steps/weight_dry_input/weight_dry_input.dart';
 import 'package:kidneysmart/features/steps/weight_dry_query/weight_dry_query.dart';
 import 'package:kidneysmart/features/welcome/view/welcome_page.dart';
 import 'package:kidneysmart/global/global.dart';
-import 'package:kidneysmart/shared/app/app.dart';
-
-import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
 
 final appRouterProvider = Provider<AppRouter>((ref) {
   final storage = ref.read(appStorageProvider);

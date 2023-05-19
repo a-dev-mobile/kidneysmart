@@ -1,15 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidneysmart/core/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/core/data/remote/dadata/dadata.dart';
+import 'package:kidneysmart/core/enum/enum.dart';
 import 'package:kidneysmart/features/steps/common/models/keyboard_state.dart';
 import 'package:kidneysmart/features/steps/gender/gender.dart';
 import 'package:kidneysmart/features/steps/name/name.dart';
 import 'package:kidneysmart/features/welcome/view/welcome_page.dart';
 import 'package:kidneysmart/localization/localization.dart';
 import 'package:kidneysmart/navigation/navigation.dart';
-import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:kidneysmart/shared/data/remote/dadata/dadata.dart';
-import 'package:kidneysmart/shared/enum/enum.dart';
 
 final stepNameProvider =
     StateNotifierProvider.autoDispose<StepNameNotifier, StepNameState>(

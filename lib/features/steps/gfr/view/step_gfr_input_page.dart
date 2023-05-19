@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:kidneysmart/core/theme/theme.dart';
+import 'package:kidneysmart/core/widget/widget.dart';
 import 'package:kidneysmart/features/steps/common/widget/widget.dart';
 import 'package:kidneysmart/features/steps/gfr/gfr.dart';
 import 'package:kidneysmart/gen/gen.dart';
-
-import 'package:kidneysmart/shared/theme/theme.dart';
-import 'package:kidneysmart/shared/widget/widget.dart';
 
 class StepGfrInputPage extends ConsumerWidget {
   const StepGfrInputPage({super.key});

@@ -5,13 +5,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:kidneysmart/core/constants/app_const.dart';
+
+import 'package:kidneysmart/core/domain/locale/locale_provider.dart';
+import 'package:kidneysmart/core/theme/flex_theme.dart';
+import 'package:kidneysmart/core/utils/utils.dart';
 import 'package:kidneysmart/features/debug_menu/debug_menu.dart';
+import 'package:kidneysmart/features/drawer/controllers/drawer_width_provider.dart';
 import 'package:kidneysmart/features/setting/setting.dart';
 import 'package:kidneysmart/localization/gen/app_localizations.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
-import 'package:kidneysmart/shared/domain/locale/locale_provider.dart';
-
-import 'package:kidneysmart/shared/theme/flex_theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -34,12 +37,13 @@ class _MobileApp extends ConsumerStatefulWidget {
 }
 
 /// State for widget _MobileApp
-class __MobileAppState extends ConsumerState<_MobileApp> {
+class __MobileAppState extends ConsumerState<_MobileApp>
+    with WidgetsBindingObserver {
   /* #region Lifecycle */
   @override
   void initState() {
     super.initState();
-    // Initial state initialization
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -56,8 +60,13 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
   }
 
   @override
+  void didChangeMetrics() {
+    ref.read(drawerWidthProvider.notifier).state = drawerWidth();
+  }
+
+  @override
   void dispose() {
-    // Permanent removal of a tree stent
+    final _ = WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
   /* #endregion */
@@ -103,6 +112,7 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
     initStatusBar(enumTheme: settingState.themeSetting.enumTheme);
 
     return MaterialApp.router(
+      title: AppConst.appName,
       routeInformationProvider: navigator.router.routeInformationProvider,
       routeInformationParser: navigator.router.routeInformationParser,
       routerDelegate: navigator.router.routerDelegate,

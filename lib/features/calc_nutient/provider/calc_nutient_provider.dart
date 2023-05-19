@@ -1,11 +1,9 @@
 // ignore_for_file: unused_field
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:kidneysmart/core/data/local/shared_prefs/storage.dart';
 import 'package:kidneysmart/features/calc_nutient/calc_nutient.dart';
-
 import 'package:kidneysmart/localization/localization.dart';
-import 'package:kidneysmart/shared/data/local/shared_prefs/storage.dart';
 
 final calcNutientProvider =
     StateNotifierProvider.autoDispose<CalcNutientNotifier, CalcNutientState>(

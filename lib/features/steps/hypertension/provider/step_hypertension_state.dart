@@ -3,8 +3,8 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:kidneysmart/core/enum/enum.dart';
 import 'package:kidneysmart/features/steps/hypertension/hypertension.dart';
-import 'package:kidneysmart/shared/enum/enum.dart';
 import 'package:meta/meta.dart';
 
 @immutable

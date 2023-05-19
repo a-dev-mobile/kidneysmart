@@ -1,8 +1,8 @@
 // ignore_for_file: sort_constructors_first
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidneysmart/core/data/local/shared_prefs/app_storage.dart';
 import 'package:kidneysmart/features/debug_menu/provider/debug_state.dart';
-import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
 
 final debugProvider = StateNotifierProvider<DebugProvider, DebugState>((ref) {
   return DebugProvider(storage: ref.watch(appStorageProvider));

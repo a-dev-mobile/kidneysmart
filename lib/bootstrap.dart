@@ -10,11 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidneysmart/core/app/info/app_info.dart';
+import 'package:kidneysmart/core/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/core/log/log.dart';
 import 'package:kidneysmart/firebase_options.dart';
 import 'package:kidneysmart/global/global.dart';
-import 'package:kidneysmart/shared/app/info/app_info.dart';
-import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:kidneysmart/shared/log/log.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: prefer-static-class

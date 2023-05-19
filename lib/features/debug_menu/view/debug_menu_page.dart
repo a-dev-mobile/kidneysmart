@@ -6,12 +6,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kidneysmart/core/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/core/theme/app_text_style.dart';
 import 'package:kidneysmart/features/debug_menu/debug_menu.dart';
 import 'package:kidneysmart/features/onboarding/onboarding.dart';
 import 'package:kidneysmart/features/splash/splash.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
-import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:kidneysmart/shared/theme/app_text_style.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DebugMenuPage extends ConsumerWidget {

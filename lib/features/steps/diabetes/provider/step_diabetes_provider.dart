@@ -1,13 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidneysmart/core/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/core/enum/enum.dart';
+import 'package:kidneysmart/core/utils/utils.dart';
 import 'package:kidneysmart/features/steps/diabetes/diabetes.dart';
 import 'package:kidneysmart/features/steps/hypertension/hypertension.dart';
 import 'package:kidneysmart/features/steps/urine_select/urine_select.dart';
-
 import 'package:kidneysmart/localization/localization.dart';
 import 'package:kidneysmart/navigation/navigation.dart';
-import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:kidneysmart/shared/enum/enum.dart';
-import 'package:kidneysmart/shared/utils/utils.dart';
 
 final diabetesProvider =
     StateNotifierProvider.autoDispose<DiabetesNotifier, DiabetesState>(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kidneysmart/shared/widget/widget.dart';
+import 'package:kidneysmart/core/widget/universal/page_body.dart';
+import 'package:kidneysmart/core/widget/widget.dart';
+import 'package:kidneysmart/features/drawer/views/app_drawer.dart';
 
 class StepContainer extends StatefulWidget {
   /// {@macro btn_bottom}
@@ -21,9 +23,12 @@ class _StepContainerState extends State<StepContainer> {
   Widget build(BuildContext context) => SafeArea(
         child: ClearFocus(
           child: Scaffold(
+            drawer: const AppDrawer(),
+            extendBodyBehindAppBar: true,
+            extendBody: true,
             // resizeToAvoidBottomInset: false,
             appBar: const AppMyAppBar(),
-            body: SingleChildScrollView(
+            body: PageBody(
               child: Container(
                 padding: EdgeInsets.only(
                   right: 16,

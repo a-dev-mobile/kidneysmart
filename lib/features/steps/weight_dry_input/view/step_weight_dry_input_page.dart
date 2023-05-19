@@ -2,12 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidneysmart/core/theme/theme.dart';
+import 'package:kidneysmart/core/widget/widget.dart';
 import 'package:kidneysmart/features/steps/common/widget/widget.dart';
 import 'package:kidneysmart/features/steps/weight_dry_input/weight_dry_input.dart';
-
 import 'package:kidneysmart/gen/gen.dart';
-import 'package:kidneysmart/shared/theme/theme.dart';
-import 'package:kidneysmart/shared/widget/widget.dart';
 
 class StepWeightDryInputPage extends ConsumerWidget {
   const StepWeightDryInputPage({super.key});

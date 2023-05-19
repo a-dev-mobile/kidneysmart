@@ -1,14 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidneysmart/core/data/local/shared_prefs/app_storage.dart';
+import 'package:kidneysmart/core/enum/enum.dart';
+import 'package:kidneysmart/core/valid/valid_extension.dart';
 import 'package:kidneysmart/features/steps/ckd_select/ckd.dart';
 import 'package:kidneysmart/features/steps/urine_input/urine_input.dart';
 import 'package:kidneysmart/features/steps/urine_select/urine_select.dart';
-
 import 'package:kidneysmart/localization/localization.dart';
 import 'package:kidneysmart/navigation/navigation.dart';
-import 'package:kidneysmart/shared/data/local/shared_prefs/app_storage.dart';
-import 'package:kidneysmart/shared/enum/enum.dart';
-
-import 'package:kidneysmart/shared/valid/valid_extension.dart';
 
 final stepUrineInputProvider = StateNotifierProvider.autoDispose<
     StepUrineInputNotifier, StepUrineInputState>(
