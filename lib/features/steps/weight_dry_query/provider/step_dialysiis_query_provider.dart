@@ -93,14 +93,14 @@ class WeightDryQueryNotifier extends StateNotifier<WeightDryQueryState> {
     _storage.setWeightDryQueryState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     state.enumWeightDryQuery.maybeMap(
       yes: () => _go.router.goNamed(StepWeightDryInputPage.name),
       orElse: () => _go.router.goNamed(CalcNutrientPage.name),
     );
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepDialysisTypePage.name);
   }
 }

@@ -3,15 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/core/theme/theme.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/features/steps/hypertension/hypertension.dart';
 import 'package:kidneysmart/gen/gen.dart';
 
 class StepHypertensionPage extends ConsumerWidget {
   const StepHypertensionPage({super.key});
 
-  static const path = '/HypertensionPage';
-  static const name = 'HypertensionPage';
+  static const path = '/StepHypertensionPage';
+  static const name = 'StepHypertensionPage';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,13 +19,11 @@ class StepHypertensionPage extends ConsumerWidget {
     final notifier = ref.watch(hypertensionProvider.notifier);
 
     return StepContainer(
+      enumValid: state.enumValid,
+      backPressed: notifier.backPressed,
+      nextPressed: notifier.nextPressed,
+      titleAppBar: 'Немного медицинских вопросов',
       widgets: [
-        const Text(
-          'Немного\nмедицинских вопросов',
-          style: AppTextStyles.headlineLarge,
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 16),
         SizedBox(
           height: 118,
           width: 335,
@@ -45,26 +43,15 @@ class StepHypertensionPage extends ConsumerWidget {
           errorText: state.enumValid.maybeMapOrNullValue(error: state.error),
         ),
         const SizedBox(height: 16),
-        Expanded(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Text(
-              '''
+        Text(
+          '''
    Высокое кровяное давление (артериальная гипертензия) является общей проблемой для больных ХБП (хронической болезнью почек). 
                 
    При ХБП почки не могут полностью выполнять свою функцию очищения крови от избытка жидкости и солей, что может привести к увеличению объема жидкости в организме и ухудшению кровотока.''',
-              style: AppTextStyles.labelLarge.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-            ),
+          style: AppTextStyles.labelLarge.copyWith(
+            color: Theme.of(context).colorScheme.secondary,
           ),
-        ),
-        const SizedBox(height: 16),
-        BtnStepNextBack(
-          isValid: notifier.isValid,
-          backPressed: notifier.previousPage,
-          nextPressed: notifier.nextPage,
-        ),
+        )
       ],
     );
   }

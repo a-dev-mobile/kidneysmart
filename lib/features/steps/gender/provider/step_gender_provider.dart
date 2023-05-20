@@ -99,11 +99,11 @@ class StepGenderNotifier extends StateNotifier<StepGenderState> {
     _storage.setGenderState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepBirthdayPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepNamePage.name);
   }
 }

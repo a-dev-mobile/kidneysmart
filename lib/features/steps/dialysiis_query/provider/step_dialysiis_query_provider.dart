@@ -93,7 +93,7 @@ class DialysisQueryNotifier extends StateNotifier<DialysisQueryState> {
     _storage.setDialysisQueryState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     final nextPage = state.enumDialysisQuery.maybeMapValue(
       yes: StepDialysisTypePage.name,
       orElse: StepWeightDryQueryPage.name,
@@ -102,7 +102,7 @@ class DialysisQueryNotifier extends StateNotifier<DialysisQueryState> {
     _go.router.pushNamed<void>(nextPage);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepCkdSelectPage.name);
   }
 }

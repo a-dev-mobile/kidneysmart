@@ -98,11 +98,11 @@ class WeightNotifier extends StateNotifier<WeightState> {
     return double.tryParse(v ?? state.result) ?? -1;
   }
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepActivityPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepHeightPage.name);
   }
 

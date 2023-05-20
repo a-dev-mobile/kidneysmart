@@ -92,11 +92,11 @@ class DiabetesNotifier extends StateNotifier<DiabetesState> {
     _storage.setDiabetesState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepUrineSelectPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepHypertensionPage.name);
   }
 }

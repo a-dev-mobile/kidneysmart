@@ -102,7 +102,7 @@ class StepUrineSelectNotifier extends StateNotifier<StepUrineSelectState> {
     _storage.setUrineSelectState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     final nextPage = state.enumUrine.maybeMapValue(
       orElse: StepCkdSelectPage.name,
       enterValue: StepUrineInputPage.name,
@@ -111,7 +111,7 @@ class StepUrineSelectNotifier extends StateNotifier<StepUrineSelectState> {
     _go.router.goNamed(nextPage);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepDiabetesPage.name);
   }
 }

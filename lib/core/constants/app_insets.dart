@@ -7,11 +7,23 @@ class AppInsets {
   // name spaces them and gives them a self documenting group and context that
   // they belong to.
   AppInsets._();
+
+  ///2
   static const double xs = 2;
+
+  ///4
   static const double s = 4;
+
+  ///8
   static const double m = 8;
+
+  ///16
   static const double l = 16;
+
+  ///32
   static const double xl = 32;
+
+  ///64
   static const double xxl = 64;
 
   // Edge padding for page content on the screen. A better looking result

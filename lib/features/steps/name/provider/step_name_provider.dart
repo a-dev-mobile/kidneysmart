@@ -45,15 +45,13 @@ class StepNameNotifier extends StateNotifier<StepNameState> {
   // ignore: unused_field
   final AppRouter _go;
 
-  bool get isValid => state.enumValid.maybeMapValue(orElse: false, valid: true);
-
   /// preload
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepGenderPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(WelcomePage.name);
   }
 

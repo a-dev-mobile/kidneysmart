@@ -107,11 +107,11 @@ class StepUrineInputNotifier extends StateNotifier<StepUrineInputState> {
     return '';
   }
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepCkdSelectPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepUrineSelectPage.name);
   }
 

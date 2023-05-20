@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/core/theme/theme.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/features/steps/dialysis_type/dialysis_type.dart';
 import 'package:kidneysmart/gen/gen.dart';
 
@@ -19,13 +19,11 @@ class StepDialysisTypePage extends ConsumerWidget {
     final notifier = ref.watch(dialysisTypeProvider.notifier);
 
     return StepContainer(
+      enumValid: state.enumValid,
+      backPressed: notifier.backPressed,
+      nextPressed: notifier.nextPressed,
+      titleAppBar: 'Уточняющие вопросы!',
       widgets: [
-        const Text(
-          'Уточняющие вопросы о применяемом диализе!',
-          style: AppTextStyles.headlineMedium,
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 16),
         SvgPicture.asset(
           AssetPaths.dialysisTypeSvg,
           width: 200,
@@ -45,28 +43,17 @@ class StepDialysisTypePage extends ConsumerWidget {
           errorText: state.enumValid.maybeMapOrNullValue(error: state.error),
         ),
         const SizedBox(height: 16),
-        Expanded(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Text(
-              '''
+        Text(
+          '''
   Диализ - это процедура очищения крови, которая может быть выполнена двумя способами:
 
   Гемодиализ: кровь выводится через катетер, очищается в специальной машине и возвращается в организм через другой катетер.
 
   Перитонеальный диализ: специальное решение вводится в брюшную полость через катетер, где оно очищает кровь в течение нескольких часов, затем удаляется через тот же катетер.
 ''',
-              style: AppTextStyles.labelLarge.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-            ),
+          style: AppTextStyles.labelLarge.copyWith(
+            color: Theme.of(context).colorScheme.secondary,
           ),
-        ),
-        const SizedBox(height: 16),
-        BtnStepNextBack(
-          isValid: notifier.isValid,
-          backPressed: notifier.previousPage,
-          nextPressed: notifier.nextPage,
         ),
       ],
     );

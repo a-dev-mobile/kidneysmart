@@ -165,11 +165,11 @@ class StepBirthdayNotifier extends StateNotifier<StepBirthdayState> {
     return errorMsg;
   }
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepHeightPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepGenderPage.name);
   }
 }

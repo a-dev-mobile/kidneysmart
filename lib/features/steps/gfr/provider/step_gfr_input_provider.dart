@@ -143,7 +143,7 @@ class StepGfrInputNotifier extends StateNotifier<StepGfrInputState> {
                         : EnumCkd.five;
   }
 
-  void nextPage() {
+  void nextPressed() {
     final nextPage = state.enumCkd.maybeMapValue(
       orElse: StepCkdSelectPage.name,
       five: StepDialysisQueryPage.name,
@@ -152,7 +152,7 @@ class StepGfrInputNotifier extends StateNotifier<StepGfrInputState> {
     _go.router.goNamed(nextPage);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepCkdSelectPage.name);
   }
 

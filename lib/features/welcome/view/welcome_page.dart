@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/core/theme/app_text_style.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/features/welcome/welcome.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 
@@ -20,13 +20,15 @@ class WelcomePage extends ConsumerWidget {
     final notifier = ref.watch(welcomeProvider.notifier);
 
     return StepContainer(
+      isShowBtnNextBack: false,
+      titleAppBar: 'Добро пожаловать',
       widgets: [
-        const Text(
-          'Добро пожаловать в наше приложение',
-          textAlign: TextAlign.center,
-          style: AppTextStyles.headlineSmall,
-        ),
-        const SizedBox(height: 16),
+        // const Text(
+        //   'Добро пожаловать в наше приложение',
+        //   textAlign: TextAlign.center,
+        //   style: AppTextStyles.headlineSmall,
+        // ),
+        // const SizedBox(height: 16),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -73,12 +75,12 @@ class WelcomePage extends ConsumerWidget {
           style: AppTextStyles.bodyMedium,
         ),
         BasicButton(
-          onPressed: notifier.nextPage,
+          onPressed: () {},
           isTextBtn: true,
           text: 'Политика конфиденциальности',
         ),
         BasicButton(
-          onPressed: notifier.nextPage,
+          onPressed: notifier.nextPressed,
           text: 'Начать',
         ),
       ],

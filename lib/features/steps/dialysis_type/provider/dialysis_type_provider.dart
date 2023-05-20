@@ -95,11 +95,11 @@ class DialysisTypeNotifier extends StateNotifier<DialysisTypeState> {
     _storage.setDialysisTypeState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepWeightDryQueryPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepDialysisQueryPage.name);
   }
 }

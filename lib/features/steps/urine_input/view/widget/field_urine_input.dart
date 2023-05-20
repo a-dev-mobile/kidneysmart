@@ -29,7 +29,7 @@ class _FieldNameState extends ConsumerState<FieldUrineOutput> {
 
     keyboardListener = ListenerKeyboard(
       context: context,
-      onKeyboardStateChanged: (isKeyboardOpen) => ref
+      onKeyboardStateChanged: (isKeyboardOpen, height) => ref
           .read(stepUrineInputProvider.notifier)
           .setKeyboard(isKeyboardOpen: isKeyboardOpen),
     );

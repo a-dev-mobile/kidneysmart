@@ -27,7 +27,7 @@ class _FieldNameState extends ConsumerState<FieldCreatinine> {
 
     keyboardListener = ListenerKeyboard(
       context: context,
-      onKeyboardStateChanged: (bool isKeyboardOpen) => ref
+      onKeyboardStateChanged: (bool isKeyboardOpen, height) => ref
           .read(stepGfrInputProvider.notifier)
           .setKeyboard(isKeyboardOpen: isKeyboardOpen),
     );

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/core/theme/app_text_style.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/features/steps/height/height.dart';
 import 'package:kidneysmart/gen/gen.dart';
 
@@ -19,12 +19,11 @@ class StepHeightPage extends ConsumerWidget {
     final notifier = ref.watch(stepHeightProvider.notifier);
 
     return StepContainer(
+      enumValid: state.enumValid,
+      backPressed: notifier.backPressed,
+      nextPressed: notifier.nextPressed,
+      titleAppBar: 'Спасибо!',
       widgets: [
-        const Text(
-          'Спасибо!',
-          style: AppTextStyles.headlineLarge,
-        ),
-        const SizedBox(height: 16),
         state.enumGender.maybeMapValue(
           male: const _SetGenderImage(
             assetPaths: AssetPaths.heightMaleSvg,
@@ -37,6 +36,7 @@ class StepHeightPage extends ConsumerWidget {
         const Text(
           'Какой у Вас рост?',
           style: AppTextStyles.headlineLarge,
+          textAlign: TextAlign.center,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -56,12 +56,6 @@ class StepHeightPage extends ConsumerWidget {
         ),
         ErrorMsg(
           error: state.enumValid.maybeMapOrNullValue(error: state.error),
-        ),
-        const Spacer(),
-        BtnStepNextBack(
-          isValid: notifier.isValid,
-          backPressed: notifier.previousPage,
-          nextPressed: notifier.nextPage,
         ),
       ],
     );

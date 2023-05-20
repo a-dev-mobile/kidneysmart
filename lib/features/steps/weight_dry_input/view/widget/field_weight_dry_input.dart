@@ -28,7 +28,7 @@ class _FieldNameState extends ConsumerState<FieldWeightDryInput> {
 
     keyboardListener = ListenerKeyboard(
       context: context,
-      onKeyboardStateChanged: (isKeyboardOpen) => ref
+      onKeyboardStateChanged: (isKeyboardOpen, height) => ref
           .read(stepWeightDryInputProvider.notifier)
           .setKeyboard(isKeyboardOpen: isKeyboardOpen),
     );

@@ -3,15 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/core/theme/theme.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/features/steps/dialysiis_query/dialysiis_query.dart';
 import 'package:kidneysmart/gen/gen.dart';
 
 class StepDialysisQueryPage extends ConsumerWidget {
   const StepDialysisQueryPage({super.key});
 
-  static const path = '/DialysisQueryPage';
-  static const name = 'DialysisQueryPage';
+  static const path = '/StepDialysisQueryPage';
+  static const name = 'StepDialysisQueryPage';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,13 +19,11 @@ class StepDialysisQueryPage extends ConsumerWidget {
     final notifier = ref.watch(dialysisQueryProvider.notifier);
 
     return StepContainer(
+      enumValid: state.enumValid,
+      backPressed: notifier.backPressed,
+      nextPressed: notifier.nextPressed,
+      titleAppBar: 'Уточняющие вопросы!',
       widgets: [
-        const Text(
-          'Уточняющие вопросы!',
-          style: AppTextStyles.headlineLarge,
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 16),
         SvgPicture.asset(
           AssetPaths.dialysisSvg,
           width: 200,
@@ -34,6 +32,7 @@ class StepDialysisQueryPage extends ConsumerWidget {
         const SizedBox(height: 16),
         const Text(
           'Проходите ли вы лечение\nдиализом в настоящее время?',
+          textAlign: TextAlign.center,
           style: AppTextStyles.headlineSmall,
         ),
         // const SizedBox(height: 16),
@@ -45,25 +44,14 @@ class StepDialysisQueryPage extends ConsumerWidget {
           errorText: state.enumValid.maybeMapOrNullValue(error: state.error),
         ),
         const SizedBox(height: 16),
-        Expanded(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Text(
-              '''
+        Text(
+          '''
   Диализ - это медицинская процедура, которая используется для очистки крови от вредных веществ, которые обычно удаляются через почки, но которые в некоторых случаях могут накапливаться в крови, если почки не функционируют должным образом. 
 
   Диализ может быть жизненно важной процедурой для людей с хронической почечной недостаточностью или другими заболеваниями, которые приводят к нарушению функции почек.''',
-              style: AppTextStyles.labelLarge.copyWith(
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-            ),
+          style: AppTextStyles.labelLarge.copyWith(
+            color: Theme.of(context).colorScheme.secondary,
           ),
-        ),
-        const SizedBox(height: 16),
-        BtnStepNextBack(
-          isValid: notifier.isValid,
-          backPressed: notifier.previousPage,
-          nextPressed: notifier.nextPage,
         ),
       ],
     );

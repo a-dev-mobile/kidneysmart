@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/core/theme/theme.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/features/steps/gfr/gfr.dart';
 import 'package:kidneysmart/gen/gen.dart';
 
@@ -20,6 +20,10 @@ class StepGfrInputPage extends ConsumerWidget {
     final colorSecondary = Theme.of(context).colorScheme.secondary;
 
     return StepContainer(
+      enumValid: state.enumValid,
+      backPressed: notifier.backPressed,
+      nextPressed: notifier.nextPressed,
+      titleAppBar: 'Давайте сделаем это!',
       widgets: [
         _Title(state: state, colorSecondary: colorSecondary),
         ContainerSvgAnimate(
@@ -46,29 +50,16 @@ class StepGfrInputPage extends ConsumerWidget {
         const SizedBox(height: 16),
         const FieldCreatinine(),
         const SizedBox(height: 16),
-        Expanded(
-          child: Scrollbar(
-            thumbVisibility: true,
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Text(
-                '''
+        Text(
+          '''
    Уровень креатинина в крови является важным маркером функции почек для больных ХБП. Он используется для оценки эффективности работы почек по удалению отходов из крови, определения стадии ХБП и отслеживания прогрессирования болезни. 
 
    Кроме того, уровень креатинина используется для расчета дозы лекарств при лечении ХБП. 
 
    Знание уровня креатинина в крови помогает врачам выбрать подходящую терапию и контролировать прогрессирование болезни.''',
-                style: AppTextStyles.labelLarge.copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              ),
-            ),
+          style: AppTextStyles.labelLarge.copyWith(
+            color: Theme.of(context).colorScheme.secondary,
           ),
-        ),
-        BtnStepNextBack(
-          isValid: notifier.isValid,
-          backPressed: notifier.previousPage,
-          nextPressed: notifier.nextPage,
         ),
       ],
     );

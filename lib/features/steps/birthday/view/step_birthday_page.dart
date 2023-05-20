@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kidneysmart/core/constants/app_insets.dart';
 import 'package:kidneysmart/core/theme/theme.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
 import 'package:kidneysmart/features/steps/birthday/birthday.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/gen/gen.dart';
 import 'package:kidneysmart/localization/localization.dart';
 
 class StepBirthdayPage extends ConsumerWidget {
   const StepBirthdayPage({super.key});
 
-  static const path = '/BirthdayPage';
-  static const name = 'BirthdayPage';
+  static const path = '/StepBirthdayPage';
+  static const name = 'StepBirthdayPage';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,13 +21,11 @@ class StepBirthdayPage extends ConsumerWidget {
     final notifier = ref.watch(stepBirthdayProvider.notifier);
 
     return StepContainer(
+      enumValid: state.enumValid,
+      backPressed: notifier.backPressed,
+      nextPressed: notifier.nextPressed,
+      titleAppBar: 'Еще несколько вопросов!',
       widgets: [
-        const Text(
-          'Еще несколько вопросов!',
-          style: AppTextStyles.headlineLarge,
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 16),
         SizedBox(
           height: 185,
           width: 360,
@@ -40,7 +39,7 @@ class StepBirthdayPage extends ConsumerWidget {
         ),
         const SizedBox(height: 16),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppDropDown(
               hint: 'ДЕНЬ',
@@ -48,12 +47,18 @@ class StepBirthdayPage extends ConsumerWidget {
               onChanged: (v) => notifier.setDate(v: v, enumDate: EnumDate.day),
               values: state.days,
             ),
+            const SizedBox(
+              width: AppInsets.l,
+            ),
             _DropDownMonth(
               hint: 'MЕСЯЦ',
               onChanged: (v) =>
                   notifier.setDate(v: v, enumDate: EnumDate.month),
               value: state.month,
               values: state.months,
+            ),
+            const SizedBox(
+              width: AppInsets.l,
             ),
             AppDropDown(
               hint: 'ГОД',
@@ -65,12 +70,6 @@ class StepBirthdayPage extends ConsumerWidget {
         ),
         ErrorMsg(
           error: state.enumValid.maybeMapOrNullValue(error: state.error),
-        ),
-        const Spacer(),
-        BtnStepNextBack(
-          isValid: notifier.isValid,
-          backPressed: notifier.previousPage,
-          nextPressed: notifier.nextPage,
         ),
       ],
     );

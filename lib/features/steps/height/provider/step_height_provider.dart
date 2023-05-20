@@ -79,11 +79,11 @@ class StepHeightNotifier extends StateNotifier<StepHeightState> {
     _storage.setHeightState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepWeightPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepBirthdayPage.name);
   }
 }

@@ -93,7 +93,7 @@ class CkdQueryNotifier extends StateNotifier<CkdQueryState> {
     _storage.setCkdQueryState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     final namePage = state.enumCkdQuery.maybeMapValue(
       orElse: CalcNutrientPage.name,
       yes: StepGfrInputPage.name,
@@ -102,7 +102,7 @@ class CkdQueryNotifier extends StateNotifier<CkdQueryState> {
     _go.router.goNamed(namePage);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepCkdSelectPage.name);
   }
 }

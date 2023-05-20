@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/core/theme/theme.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
 import 'package:kidneysmart/features/steps/ckd_query/ckd_query.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/gen/gen.dart';
 
 class StepCkdQueryPage extends ConsumerWidget {
@@ -19,6 +19,10 @@ class StepCkdQueryPage extends ConsumerWidget {
     final notifier = ref.watch(ckdQueryProvider.notifier);
 
     return StepContainer(
+      enumValid: state.enumValid,
+      backPressed: notifier.backPressed,
+      nextPressed: notifier.nextPressed,
+      titleAppBar: 'Мы можем помочь Вам',
       widgets: [
         const Text(
           'Вам определить\nстадию ХБП?',
@@ -42,27 +46,14 @@ class StepCkdQueryPage extends ConsumerWidget {
           errorText: state.enumValid.maybeMapOrNullValue(error: state.error),
         ),
         const SizedBox(height: 16),
-        Expanded(
-          child: Scrollbar(
-            thumbVisibility: true,
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Text(
-                '''
+        Text(
+          '''
    Для диагностики стадии хронической болезни почек (ХБП) требуется комплексное обследование пациента, включающее анализы мочи и крови, ультразвуковое исследование почек и измерение скорости клубочковой фильтрации (СКФ). 
 
    СКФ - это наиболее точный показатель функции почек, который выражается в мл/мин/1,73 м² и измеряется на основе анализа содержания креатинина в крови.''',
-                style: AppTextStyles.labelLarge.copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              ),
-            ),
+          style: AppTextStyles.labelLarge.copyWith(
+            color: Theme.of(context).colorScheme.secondary,
           ),
-        ),
-        BtnStepNextBack(
-          isValid: notifier.isValid,
-          backPressed: notifier.previousPage,
-          nextPressed: notifier.nextPage,
         ),
       ],
     );

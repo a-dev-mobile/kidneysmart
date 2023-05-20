@@ -92,11 +92,11 @@ class HypertensionNotifier extends StateNotifier<HypertensionState> {
     _storage.setHypertensionState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepDiabetesPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepActivityPage.name);
   }
 }

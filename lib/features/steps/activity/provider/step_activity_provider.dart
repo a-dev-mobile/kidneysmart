@@ -105,11 +105,11 @@ class StepActivityNotifier extends StateNotifier<StepActivityState> {
     _storage.setActivityState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     _go.router.goNamed(StepHypertensionPage.name);
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepWeightPage.name);
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/core/theme/app_text_style.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/features/steps/gender/gender.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 
@@ -19,15 +19,15 @@ class StepGenderPage extends ConsumerWidget {
     final notifier = ref.watch(stepGenderProvider.notifier);
 
     return StepContainer(
+      enumValid: state.enumValid,
+      backPressed: notifier.backPressed,
+      nextPressed: notifier.nextPressed,
+      titleAppBar: 'Отлично, продолжим',
       widgets: [
-        const Text(
-          'Отлично, продолжим!',
-          style: AppTextStyles.headlineLarge,
-        ),
-        const SizedBox(height: 16),
         Text(
           'Здраствуйте ${state.name}!',
           style: AppTextStyles.headlineSmall,
+          textAlign: TextAlign.center,
         ),
         SizedBox(
           height: 280,
@@ -46,12 +46,6 @@ class StepGenderPage extends ConsumerWidget {
           onPressed: notifier.setGender,
           errorText: state.enumValid.maybeMapOrNullValue(error: state.error),
         ),
-        const Spacer(),
-        BtnStepNextBack(
-          isValid: notifier.isValid,
-          backPressed: notifier.previousPage,
-          nextPressed: notifier.nextPage,
-        ),
       ],
     );
   }
@@ -67,6 +61,7 @@ class _SetTitle extends StatelessWidget {
     return Text(
       text,
       style: AppTextStyles.headlineLarge,
+      textAlign: TextAlign.center,
     );
   }
 }

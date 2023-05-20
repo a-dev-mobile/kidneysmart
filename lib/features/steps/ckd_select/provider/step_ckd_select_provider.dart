@@ -117,7 +117,7 @@ class StepCkdSelectNotifier extends StateNotifier<StepCkdSelectState> {
     _storage.setCkdState(state);
   }
 
-  void nextPage() {
+  void nextPressed() {
     state.enumCkd.maybeMap(
       orElse: () => _go.router.goNamed(CalcNutrientPage.name),
       five: () => _go.router.goNamed(StepDialysisQueryPage.name),
@@ -125,7 +125,7 @@ class StepCkdSelectNotifier extends StateNotifier<StepCkdSelectState> {
     );
   }
 
-  void previousPage() {
+  void backPressed() {
     _go.router.goNamed(StepUrineSelectPage.name);
   }
 }

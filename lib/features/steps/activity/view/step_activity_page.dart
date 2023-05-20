@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/core/theme/theme.dart';
+import 'package:kidneysmart/core/widget/app/step_container.dart';
 import 'package:kidneysmart/features/steps/activity/activity.dart';
-import 'package:kidneysmart/features/steps/common/widget/widget.dart';
+
 import 'package:kidneysmart/gen/gen.dart';
 
 class StepActivityPage extends ConsumerWidget {
@@ -18,16 +19,13 @@ class StepActivityPage extends ConsumerWidget {
     final notifier = ref.watch(stepActivityProvider.notifier);
 
     return StepContainer(
+      enumValid: state.enumValid,
+      backPressed: notifier.backPressed,
+      nextPressed: notifier.nextPressed,
+      titleAppBar: 'Мы прошли общие вопросы!',
       widgets: [
-        const Text(
-          'Вот вот и закончим\nобщие вопросы!',
-          textAlign: TextAlign.center,
-          style: AppTextStyles.headlineSmall,
-        ),
-        const SizedBox(height: 16),
         SizedBox(
-          width: 180,
-          height: 140,
+          height: 200,
           child: SvgPicture.asset(AssetPaths.activitySvg),
         ),
         const SizedBox(height: 16),
@@ -37,28 +35,22 @@ class StepActivityPage extends ConsumerWidget {
           style: AppTextStyles.headlineMedium,
         ),
         const SizedBox(height: 16),
-        Expanded(
-          child: ListView.builder(
-            itemCount: state.listActivity.length,
-            itemBuilder: (context, index) {
-              final item = state.listActivity[index];
-              final isActive = index == state.selectedIndex;
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: state.listActivity.length,
+          itemBuilder: (context, index) {
+            final item = state.listActivity[index];
+            final isActive = index == state.selectedIndex;
 
-              return Card(
-                elevation: isActive ? 10 : 0,
-                child: ListTile(
-                  title: Text(item.title),
-                  subtitle: Text(item.content),
-                  onTap: () => notifier.setActivity(index),
-                ),
-              );
-            },
-          ),
-        ),
-        BtnStepNextBack(
-          isValid: notifier.isValid,
-          backPressed: notifier.previousPage,
-          nextPressed: notifier.nextPage,
+            return Card(
+              elevation: isActive ? 10 : 0,
+              child: ListTile(
+                title: Text(item.title),
+                subtitle: Text(item.content),
+                onTap: () => notifier.setActivity(index),
+              ),
+            );
+          },
         ),
       ],
     );

@@ -7,7 +7,8 @@ class ListenerKeyboard extends WidgetsBindingObserver {
   });
 
   // ignore: avoid_positional_boolean_parameters
-  final void Function(bool isKeyboardOpen) onKeyboardStateChanged;
+  final void Function(bool isKeyboardOpen, double height)
+      onKeyboardStateChanged;
   final BuildContext context;
 
   bool _isDisposed = false;
@@ -29,9 +30,13 @@ class ListenerKeyboard extends WidgetsBindingObserver {
     super.didChangeMetrics();
 
     final view = View.of(context);
-    final isKeyboardOpen = view.viewInsets.bottom != 0;
+    final viewInsetsBottom = view.viewInsets.bottom;
+    final isKeyboardOpen = viewInsetsBottom != 0;
 
-    onKeyboardStateChanged(isKeyboardOpen);
+    onKeyboardStateChanged(
+      isKeyboardOpen,
+      viewInsetsBottom / view.devicePixelRatio,
+    );
   }
 
   void dispose() {
