@@ -13,12 +13,45 @@ class _SplashState {
 //         GENERATED CODE
 //  *************************************
 // coverage:ignore-file
-// ignore_for_file: avoid_unused_constructor_parameters, unused_element, avoid-non-null-assertion,  library_private_types_in_public_api,non_constant_identifier_names, always_put_required_named_parameters_first,  avoid_positional_boolean_parameters, strict_raw_type, curly_braces_in_flow_control_structures
+// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: avoid-non-null-assertion
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: unnecessary_null_checks
+// ignore_for_file: unused_element
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: avoid_positional_boolean_parameters,
+// ignore_for_file: always_put_required_named_parameters_first
+
 @immutable
 class SplashState {
   const SplashState.load() : _tag = _SplashStateTag.load;
 
   const SplashState.success() : _tag = _SplashStateTag.success;
+
+  Map<String, dynamic> toMap() {
+    switch (_tag) {
+      case _SplashStateTag.load:
+        return {
+          'tag': 'load',
+        };
+      case _SplashStateTag.success:
+        return {
+          'tag': 'success',
+        };
+    }
+  }
+
+  static SplashState fromMap(Map<dynamic, dynamic> map) {
+    final tag = map['tag'];
+    switch (tag) {
+      case 'load':
+        return const SplashState.load();
+      case 'success':
+        return const SplashState.success();
+      default:
+        throw ArgumentError('Invalid map: $map');
+    }
+  }
 
   T map<T>({
     required T Function(_SplashStateLoad v) load,
@@ -26,23 +59,35 @@ class SplashState {
   }) {
     switch (_tag) {
       case _SplashStateTag.load:
-        return load(const _SplashStateLoad());
+        return load(
+          const _SplashStateLoad(),
+        );
       case _SplashStateTag.success:
-        return success(const _SplashStateSuccess());
+        return success(
+          const _SplashStateSuccess(),
+        );
     }
   }
 
   T maybeMap<T>({
+    required T Function() orElse,
     T Function(_SplashStateLoad v)? load,
     T Function(_SplashStateSuccess v)? success,
-    required T Function() orElse,
   }) {
     switch (_tag) {
       case _SplashStateTag.load:
-        if (load != null) return load(const _SplashStateLoad());
+        if (load != null) {
+          return load(
+            const _SplashStateLoad(),
+          );
+        }
         return orElse();
       case _SplashStateTag.success:
-        if (success != null) return success(const _SplashStateSuccess());
+        if (success != null) {
+          return success(
+            const _SplashStateSuccess(),
+          );
+        }
         return orElse();
     }
   }
@@ -53,9 +98,13 @@ class SplashState {
   }) {
     switch (_tag) {
       case _SplashStateTag.load:
-        return load?.call(const _SplashStateLoad());
+        return load?.call(
+          const _SplashStateLoad(),
+        );
       case _SplashStateTag.success:
-        return success?.call(const _SplashStateSuccess());
+        return success?.call(
+          const _SplashStateSuccess(),
+        );
     }
   }
 
@@ -65,10 +114,18 @@ class SplashState {
   }) {
     switch (_tag) {
       case _SplashStateTag.load:
-        if (load != null) return load(const _SplashStateLoad());
+        if (load != null) {
+          return load(
+            const _SplashStateLoad(),
+          );
+        }
         return null;
       case _SplashStateTag.success:
-        if (success != null) return success(const _SplashStateSuccess());
+        if (success != null) {
+          return success(
+            const _SplashStateSuccess(),
+          );
+        }
         return null;
     }
   }
@@ -102,9 +159,17 @@ class SplashState {
   int get hashCode {
     switch (_tag) {
       case _SplashStateTag.load:
-        return Object.hashAll([runtimeType]);
+        return Object.hashAll(
+          [
+            runtimeType,
+          ],
+        );
       case _SplashStateTag.success:
-        return Object.hashAll([runtimeType]);
+        return Object.hashAll(
+          [
+            runtimeType,
+          ],
+        );
     }
   }
 

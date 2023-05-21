@@ -36,16 +36,12 @@ class DaDataClient {
     switch (type) {
       case DaDataEnum.name:
         typeFio = 'NAME';
-        break;
       case DaDataEnum.patronymic:
         typeFio = 'PATRONYMIC';
-        break;
       case DaDataEnum.surname:
         typeFio = 'SURNAME';
-        break;
       case DaDataEnum.all:
         typeFio = '';
-        break;
     }
     final response = await _dio.post<dynamic>(
       'suggestions/api/4_1/rs/suggest/fio',

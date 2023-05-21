@@ -14,7 +14,15 @@ class _OnboardingState {
 //         GENERATED CODE
 //  *************************************
 // coverage:ignore-file
-// ignore_for_file: avoid_unused_constructor_parameters, unused_element, avoid-non-null-assertion,  library_private_types_in_public_api,non_constant_identifier_names, always_put_required_named_parameters_first,  avoid_positional_boolean_parameters, strict_raw_type, curly_braces_in_flow_control_structures
+// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: avoid-non-null-assertion
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: unnecessary_null_checks
+// ignore_for_file: unused_element
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: avoid_positional_boolean_parameters,
+// ignore_for_file: always_put_required_named_parameters_first
+
 @immutable
 class OnboardingState {
   const OnboardingState.error([String msg = 'error'])
@@ -32,6 +40,47 @@ class OnboardingState {
         _msg_error = null,
         _textMarkdown_success = textMarkdown;
 
+  Map<String, dynamic> toMap() {
+    switch (_tag) {
+      case _OnboardingStateTag.error:
+        return {
+          'tag': 'error',
+          'msg': _msg_error,
+        };
+      case _OnboardingStateTag.load:
+        return {
+          'tag': 'load',
+        };
+      case _OnboardingStateTag.success:
+        return {
+          'tag': 'success',
+          'textMarkdown': _textMarkdown_success,
+        };
+    }
+  }
+
+  static OnboardingState fromMap(Map<dynamic, dynamic> map) {
+    final tag = map['tag'];
+    switch (tag) {
+      case 'error':
+        return OnboardingState.error(
+          map['msg'] as String? ?? 'error',
+        );
+      case 'load':
+        return const OnboardingState.load();
+      case 'success':
+        return OnboardingState.success(
+          textMarkdown: map['textMarkdown'] != null
+              ? map['textMarkdown'] as String
+              : throw Exception(
+                  "map['textMarkdown']_type_'Null'",
+                ),
+        );
+      default:
+        throw ArgumentError('Invalid map: $map');
+    }
+  }
+
   T map<T>({
     required T Function(_OnboardingStateError v) error,
     required T Function(_OnboardingStateLoad v) load,
@@ -39,30 +88,55 @@ class OnboardingState {
   }) {
     switch (_tag) {
       case _OnboardingStateTag.error:
-        return error(_OnboardingStateError(_msg_error!));
+        return error(
+          _OnboardingStateError(
+            _msg_error!,
+          ),
+        );
       case _OnboardingStateTag.load:
-        return load(const _OnboardingStateLoad());
+        return load(
+          const _OnboardingStateLoad(),
+        );
       case _OnboardingStateTag.success:
-        return success(_OnboardingStateSuccess(_textMarkdown_success!));
+        return success(
+          _OnboardingStateSuccess(
+            _textMarkdown_success!,
+          ),
+        );
     }
   }
 
   T maybeMap<T>({
+    required T Function() orElse,
     T Function(_OnboardingStateError v)? error,
     T Function(_OnboardingStateLoad v)? load,
     T Function(_OnboardingStateSuccess v)? success,
-    required T Function() orElse,
   }) {
     switch (_tag) {
       case _OnboardingStateTag.error:
-        if (error != null) return error(_OnboardingStateError(_msg_error!));
+        if (error != null) {
+          return error(
+            _OnboardingStateError(
+              _msg_error!,
+            ),
+          );
+        }
         return orElse();
       case _OnboardingStateTag.load:
-        if (load != null) return load(const _OnboardingStateLoad());
+        if (load != null) {
+          return load(
+            const _OnboardingStateLoad(),
+          );
+        }
         return orElse();
       case _OnboardingStateTag.success:
-        if (success != null)
-          return success(_OnboardingStateSuccess(_textMarkdown_success!));
+        if (success != null) {
+          return success(
+            _OnboardingStateSuccess(
+              _textMarkdown_success!,
+            ),
+          );
+        }
         return orElse();
     }
   }
@@ -74,11 +148,21 @@ class OnboardingState {
   }) {
     switch (_tag) {
       case _OnboardingStateTag.error:
-        return error?.call(_OnboardingStateError(_msg_error!));
+        return error?.call(
+          _OnboardingStateError(
+            _msg_error!,
+          ),
+        );
       case _OnboardingStateTag.load:
-        return load?.call(const _OnboardingStateLoad());
+        return load?.call(
+          const _OnboardingStateLoad(),
+        );
       case _OnboardingStateTag.success:
-        return success?.call(_OnboardingStateSuccess(_textMarkdown_success!));
+        return success?.call(
+          _OnboardingStateSuccess(
+            _textMarkdown_success!,
+          ),
+        );
     }
   }
 
@@ -89,30 +173,53 @@ class OnboardingState {
   }) {
     switch (_tag) {
       case _OnboardingStateTag.error:
-        if (error != null) return error(_OnboardingStateError(_msg_error!));
+        if (error != null) {
+          return error(
+            _OnboardingStateError(
+              _msg_error!,
+            ),
+          );
+        }
         return null;
       case _OnboardingStateTag.load:
-        if (load != null) return load(const _OnboardingStateLoad());
+        if (load != null) {
+          return load(
+            const _OnboardingStateLoad(),
+          );
+        }
         return null;
       case _OnboardingStateTag.success:
-        if (success != null)
-          return success(_OnboardingStateSuccess(_textMarkdown_success!));
+        if (success != null) {
+          return success(
+            _OnboardingStateSuccess(
+              _textMarkdown_success!,
+            ),
+          );
+        }
         return null;
     }
   }
 
   T when<T>({
-    required T Function(String msg) error,
+    required T Function(
+      String msg,
+    ) error,
     required T Function() load,
-    required T Function(String textMarkdown) success,
+    required T Function(
+      String textMarkdown,
+    ) success,
   }) {
     switch (_tag) {
       case _OnboardingStateTag.error:
-        return error(_msg_error!);
+        return error(
+          _msg_error!,
+        );
       case _OnboardingStateTag.load:
         return load();
       case _OnboardingStateTag.success:
-        return success(_textMarkdown_success!);
+        return success(
+          _textMarkdown_success!,
+        );
     }
   }
 
@@ -148,11 +255,25 @@ class OnboardingState {
   int get hashCode {
     switch (_tag) {
       case _OnboardingStateTag.error:
-        return Object.hashAll([runtimeType, _msg_error]);
+        return Object.hashAll(
+          [
+            runtimeType,
+            _msg_error,
+          ],
+        );
       case _OnboardingStateTag.load:
-        return Object.hashAll([runtimeType]);
+        return Object.hashAll(
+          [
+            runtimeType,
+          ],
+        );
       case _OnboardingStateTag.success:
-        return Object.hashAll([runtimeType, _textMarkdown_success]);
+        return Object.hashAll(
+          [
+            runtimeType,
+            _textMarkdown_success,
+          ],
+        );
     }
   }
 
@@ -181,8 +302,20 @@ enum _OnboardingStateTag {
 
 @immutable
 class _OnboardingStateError extends OnboardingState {
-  const _OnboardingStateError(this.msg) : super.error(msg);
+  const _OnboardingStateError(
+    this.msg,
+  ) : super.error(
+          msg,
+        );
   final String msg;
+
+  _OnboardingStateError copyWith({
+    String? msg,
+  }) {
+    return _OnboardingStateError(
+      msg ?? this.msg,
+    );
+  }
 }
 
 @immutable
@@ -192,7 +325,18 @@ class _OnboardingStateLoad extends OnboardingState {
 
 @immutable
 class _OnboardingStateSuccess extends OnboardingState {
-  const _OnboardingStateSuccess(this.textMarkdown)
-      : super.success(textMarkdown: textMarkdown);
+  const _OnboardingStateSuccess(
+    this.textMarkdown,
+  ) : super.success(
+          textMarkdown: textMarkdown,
+        );
   final String textMarkdown;
+
+  _OnboardingStateSuccess copyWith({
+    String? textMarkdown,
+  }) {
+    return _OnboardingStateSuccess(
+      textMarkdown ?? this.textMarkdown,
+    );
+  }
 }

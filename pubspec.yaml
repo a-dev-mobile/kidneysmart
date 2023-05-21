@@ -57,14 +57,14 @@ dependencies:
 
   # Native
   url_launcher: ^6.1.11
-  share_plus: ^7.0.0
+  share_plus: ^7.0.1
 
   # Helper for UI
-  flutter_typeahead: ^4.3.8
+  flutter_typeahead: ^4.4.0
   lottie: ^2.3.2
   flutter_native_splash: ^2.3.0
-  flutter_svg: ^2.0.5
-  flex_color_scheme: ^7.1.1
+  flutter_svg: ^2.0.6
+  flex_color_scheme: ^7.1.2
   flutter_markdown: ^0.6.14
   webview_flutter: ^4.2.0
   introduction_screen: ^3.1.8
@@ -75,7 +75,7 @@ dependencies:
   # firebase
   firebase_core: ^2.13.0
   firebase_crashlytics: ^3.3.1
-  firebase_analytics: ^10.4.0
+  firebase_analytics: ^10.4.1
 
 
 
@@ -94,12 +94,12 @@ dependencies:
 
 dev_dependencies:
   # Analyzer extensions
-  dart_code_metrics: ^5.7.3
-  very_good_analysis: ^4.0.0+1
+  dart_code_metrics: ^5.7.4
+  very_good_analysis: ^5.0.0+1
 
   # turn_gen:
     # path: c:/DEV/MY/MY_GITHUB/turn_gen
-  turn_gen: ^0.9.2
+  turn_gen: ^0.9.4
 
 
 turn_gen:
