@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kidneysmart/core/app/info/app_info.dart';
 import 'package:kidneysmart/core/data/local/shared_prefs/app_storage.dart';
 import 'package:kidneysmart/features/splash/splash.dart';
 import 'package:kidneysmart/navigation/navigation.dart';
@@ -33,10 +34,17 @@ class SplashNotifier extends StateNotifier<SplashState> {
     // appState = appState.copyWith(
     //   dbPath: basePath,
     // );
-
-    // await _storage.setAppState(appState);
     final appState = _storage.getAppState();
-    await Future<void>.delayed(const Duration(seconds: 1));
+
+    final appVersion = await AppInfo.getVersion();
+    final userAgent = await AppInfo.getUserAgent();
+    final appBuildVersion = await AppInfo.getBuildNumber();
+
+    await _storage.setAppState(appState.copyWith(
+        appVersion: appVersion,
+        appBuildVersion: appBuildVersion,
+        userAgent: userAgent,));
+    // await Future<void>.delayed(const Duration(seconds: 1));
 
     await _go.nextPage(appState);
   }

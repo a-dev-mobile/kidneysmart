@@ -16,6 +16,14 @@ class AppState {
   final String lastNamePage;
   /* init: EnumLang.ru */
   final EnumLang enumLang;
+
+  /* init: '1.0' */
+  final String appVersion;
+
+  /* init: '' */
+  final String userAgent;
+  /* init: 1 */
+  final int appBuildVersion;
   // end
 
 //          --TURN_GEN--
@@ -28,6 +36,9 @@ class AppState {
     this.dbPath = '',
     this.lastNamePage = WelcomePage.name,
     this.enumLang = EnumLang.ru,
+    this.appVersion = '1.0',
+    this.userAgent = '',
+    this.appBuildVersion = 1,
   });
 
   Map<String, dynamic> toMap() {
@@ -36,6 +47,9 @@ class AppState {
       'dbPath': dbPath,
       'lastNamePage': lastNamePage,
       'enumLang': enumLang.index,
+      'appVersion': appVersion,
+      'userAgent': userAgent,
+      'appBuildVersion': appBuildVersion,
     };
   }
 
@@ -49,6 +63,9 @@ class AppState {
       enumLang: map['enumLang'] != null
           ? EnumLang.values[map['enumLang'] as int]
           : EnumLang.ru,
+      appVersion: map['appVersion'] as String? ?? '1.0',
+      userAgent: map['userAgent'] as String? ?? '',
+      appBuildVersion: (map['appBuildVersion'] as num?)?.toInt() ?? 1,
     );
   }
 
@@ -57,12 +74,18 @@ class AppState {
     String? dbPath,
     String? lastNamePage,
     EnumLang? enumLang,
+    String? appVersion,
+    String? userAgent,
+    int? appBuildVersion,
   }) {
     return AppState(
       isFirstTime: isFirstTime ?? this.isFirstTime,
       dbPath: dbPath ?? this.dbPath,
       lastNamePage: lastNamePage ?? this.lastNamePage,
       enumLang: enumLang ?? this.enumLang,
+      appVersion: appVersion ?? this.appVersion,
+      userAgent: userAgent ?? this.userAgent,
+      appBuildVersion: appBuildVersion ?? this.appBuildVersion,
     );
   }
 
@@ -95,7 +118,22 @@ class AppState {
                   other.enumLang,
                   enumLang,
                 ) ||
-                other.enumLang == enumLang));
+                other.enumLang == enumLang) &&
+            (identical(
+                  other.appVersion,
+                  appVersion,
+                ) ||
+                other.appVersion == appVersion) &&
+            (identical(
+                  other.userAgent,
+                  userAgent,
+                ) ||
+                other.userAgent == userAgent) &&
+            (identical(
+                  other.appBuildVersion,
+                  appBuildVersion,
+                ) ||
+                other.appBuildVersion == appBuildVersion));
   }
 
   @override
@@ -105,10 +143,13 @@ class AppState {
         dbPath,
         lastNamePage,
         enumLang,
+        appVersion,
+        userAgent,
+        appBuildVersion,
       ]);
 
   @override
   String toString() {
-    return 'AppState(isFirstTime: $isFirstTime, dbPath: $dbPath, lastNamePage: $lastNamePage, enumLang: $enumLang, )';
+    return 'AppState(isFirstTime: $isFirstTime, dbPath: $dbPath, lastNamePage: $lastNamePage, enumLang: $enumLang, appVersion: $appVersion, userAgent: $userAgent, appBuildVersion: $appBuildVersion, )';
   }
 }

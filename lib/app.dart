@@ -14,6 +14,7 @@ import 'package:kidneysmart/features/debug_menu/debug_menu.dart';
 import 'package:kidneysmart/features/drawer/controllers/drawer_width_provider.dart';
 import 'package:kidneysmart/features/setting/setting.dart';
 import 'package:kidneysmart/localization/gen/app_localizations.dart';
+import 'package:kidneysmart/localization/localization.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
 class App extends StatelessWidget {
@@ -112,7 +113,7 @@ class __MobileAppState extends ConsumerState<_MobileApp>
     initStatusBar(enumTheme: settingState.themeSetting.enumTheme);
 
     return MaterialApp.router(
-      title: AppConst.appName,
+      title: 'KidneySmart',
       routeInformationProvider: navigator.router.routeInformationProvider,
       routeInformationParser: navigator.router.routeInformationParser,
       routerDelegate: navigator.router.routerDelegate,

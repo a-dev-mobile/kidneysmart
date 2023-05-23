@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_const.dart';
 import 'package:kidneysmart/core/constants/app_insets.dart';
-import 'package:kidneysmart/features/about/views/about.dart';
+import 'package:kidneysmart/core/data/local/shared_prefs/storage.dart';
+import 'package:kidneysmart/core/widget/widget.dart';
+
+import 'package:kidneysmart/features/setting/setting.dart';
+import 'package:kidneysmart/localization/localization.dart';
 
 /// An AppDrawer widget used on two pages in this demo application.
 ///
@@ -14,15 +19,10 @@ class AppDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-
-    final drawerWidth =
-        theme.drawerTheme.width ?? (theme.useMaterial3 ? 360 : 304);
-
-    final screenWidth = MediaQuery.of(context).size.width;
+    final l = context.l10n;
 
     return Drawer(
       child: GestureDetector(
-        // Close Drawer when tapping on background elements.
         onTap: () => Navigator.pop(context),
         child: ListView(
           physics: const AlwaysScrollableScrollPhysics(),
@@ -43,80 +43,25 @@ class AppDrawer extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    AppConst.appName,
+                    l.app_name,
                     style: theme.primaryTextTheme.headlineMedium,
-                  ),
-                  Text(
-                    'Screen width: ${screenWidth.toStringAsFixed(0)}',
-                    style: theme.primaryTextTheme.labelSmall,
-                  ),
-                  Text(
-                    'Drawer theme: ${drawerWidth.toStringAsFixed(0)}',
-                    style: theme.primaryTextTheme.labelSmall,
                   ),
                 ],
               ),
             ),
-            const _Header('Pages'),
             ListTile(
-              title: const Text('Home'),
-              trailing: const Icon(Icons.arrow_right),
-              onTap: () async {
-                Navigator.pop(context);
-                // await Navigator.pushReplacementNamed(context, HomePage.route);
-              },
+              leading: const Icon(Icons.settings),
+              title: const Text('Настройки'),
+              onTap: () =>
+                  {Navigator.pop(context), context.pushNamed(SettingPage.name)},
             ),
-            ListTile(
-              title: const Text('Theme showcase'),
-              trailing: const Icon(Icons.arrow_right),
-              onTap: () async {
-                Navigator.pop(context);
-                // await Navigator.pushReplacementNamed(
-                //     context, ThemeShowcasePage.route);
-              },
-            ),
-            // ListTile(
-            //   title: const Text('Bottom sheet'),
-            //    trailing: const Icon(Icons.arrow_right),
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //     showBottomSheet<void>(
-            //       context: context,
-            //       builder: (BuildContext context) =>
-            //           const BottomSheetSettings(),
-            //     );
-            //   },
-            // ),
-
-            // The logout option is only shown if we are logged in.
             const Divider(),
-            const _Header('Theme'),
-
-            // const ThemeModeListTile(title: Text('Theme')),
-
-            // ListTile(
-            //   title: const Text('Reset settings'),
-            //   onTap: () async {
-            //     final reset = await showDialog<bool?>(
-            //       context: context,
-            //       builder: (BuildContext context) {
-            //         return const ResetSettingsDialog();
-            //       },
-            //     );
-            //     if (reset ?? false) {
-            //       Settings.reset(ref);
-            //     }
-            //   },
-            // ),
-            const Divider(),
-            const _Header('About'),
-
             ListTile(
-              title: const Text('About ${AppConst.appName}'),
-              trailing: const Icon(Icons.arrow_right),
+              title: Text(l.about),
+              leading: const Icon(Icons.info_outline),
               onTap: () {
                 Navigator.pop(context);
-                showAppAboutDialog(context);
+                _showAppAboutDialog(context, ref);
               },
             ),
           ],
@@ -126,27 +71,53 @@ class AppDrawer extends ConsumerWidget {
   }
 }
 
-class _Header extends StatelessWidget {
-  const _Header(this.title);
+void _showAppAboutDialog(BuildContext context, WidgetRef ref) {
+  final themeData = Theme.of(context);
+  final aboutTextStyle = themeData.textTheme.bodyLarge!;
+  final footerStyle = themeData.textTheme.bodySmall!;
+  final linkStyle =
+      themeData.textTheme.bodyLarge!.copyWith(color: themeData.primaryColor);
+  final l = context.l10n;
 
-  final String title;
+  final storage = ref.read(appStorageProvider);
+  final appState = storage.getAppState();
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(
-        AppInsets.l,
-        AppInsets.s,
-        AppInsets.l,
-        AppInsets.xs,
-      ),
-      child: Text(
-        title,
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.primary,
-          fontWeight: FontWeight.bold,
+  showAboutDialog(
+    context: context,
+    applicationName: l.app_name,
+    applicationVersion: appState.appVersion,
+    applicationIcon: AppLogo(size: 36),
+    applicationLegalese: '@ 2023 Dmitriy Trofimov',
+    children: <Widget>[
+      Padding(
+        padding: const EdgeInsets.only(top: AppInsets.l),
+        child: RichText(
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                style: aboutTextStyle,
+                text: '''
+Диета для умных почек - это приложение, разработанное для людей, которые хотят улучшить здоровье своих почек и поддерживать их оптимальное функционирование. 
+''',
+              ),
+              // LinkTextSpan(
+              //   style: linkStyle,
+              //   uri: AppConst.packageUri,
+              //   text: 'pub.dev',
+              // ),
+              // TextSpan(
+              //   style: aboutTextStyle,
+              //   text: '.\n\n',
+              // ),
+              // TextSpan(
+              //   style: footerStyle,
+              //   text: 'Built with Flutter ${AppConst.flutterVersion}, using '
+              //       'FlexColorScheme package ${AppConst.packageVersion}\n\n',
+              // ),
+            ],
+          ),
         ),
       ),
-    );
-  }
+    ],
+  );
 }
