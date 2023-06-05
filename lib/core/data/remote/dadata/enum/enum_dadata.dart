@@ -138,7 +138,7 @@ enum DaDataEnum implements Comparable<DaDataEnum> {
   int compareTo(DaDataEnum other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'DaDataEnum.$name($value)';
+  String toString() => 'DaDataEnum.$value';
 }
 
 extension DaDataEnumX on DaDataEnum {

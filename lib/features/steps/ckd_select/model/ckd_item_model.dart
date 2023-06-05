@@ -35,7 +35,17 @@ class CkdItemModel {
 
     return CkdItemModel(
       enumCkd: map['enumCkd'] != null
-          ? EnumCkd.values[map['enumCkd'] as int]
+          ? map['enumCkd'] is int
+              ? EnumCkd.values[map['enumCkd'] as int]
+              : map['enumCkd'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumCkd.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumCkd.')[1] ==
+                          map['enumCkd'].toString(),
+                      orElse: () => EnumCkd.none,
+                    )
+                  : EnumCkd.none
           : EnumCkd.none,
       value: map['value'] as String? ?? '',
     );

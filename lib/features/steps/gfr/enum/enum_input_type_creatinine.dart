@@ -122,7 +122,7 @@ enum EnumInputTypeCreatinine implements Comparable<EnumInputTypeCreatinine> {
   int compareTo(EnumInputTypeCreatinine other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumInputTypeCreatinine.$name($value)';
+  String toString() => 'EnumInputTypeCreatinine.$value';
 }
 
 extension EnumInputTypeCreatinineX on EnumInputTypeCreatinine {

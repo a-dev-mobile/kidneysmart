@@ -44,7 +44,9 @@ class SuggestionsFio {
       unrestricted_value: map['unrestricted_value'] as String? ?? '',
       data: map['data'] != null
           ? DataFio.fromMap(
-              Map<String, dynamic>.from(map['data'] as Map),
+              Map<String, dynamic>.from(
+                map['data'] as Map,
+              ),
             )
           : const DataFio(),
     );

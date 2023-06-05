@@ -47,7 +47,17 @@ class UrineInputModel {
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
     );
   }

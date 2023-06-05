@@ -35,7 +35,17 @@ class HypertensionItemModel {
 
     return HypertensionItemModel(
       enumHypertension: map['enumHypertension'] != null
-          ? EnumHypertension.values[map['enumHypertension'] as int]
+          ? map['enumHypertension'] is int
+              ? EnumHypertension.values[map['enumHypertension'] as int]
+              : map['enumHypertension'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumHypertension.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumHypertension.')[1] ==
+                          map['enumHypertension'].toString(),
+                      orElse: () => EnumHypertension.none,
+                    )
+                  : EnumHypertension.none
           : EnumHypertension.none,
       value: map['value'] as String? ?? '',
     );

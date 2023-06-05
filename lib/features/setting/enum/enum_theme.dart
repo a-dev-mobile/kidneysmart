@@ -103,7 +103,7 @@ enum EnumTheme implements Comparable<EnumTheme> {
   int compareTo(EnumTheme other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumTheme.$name($value)';
+  String toString() => 'EnumTheme.$value';
 }
 
 extension EnumThemeX on EnumTheme {

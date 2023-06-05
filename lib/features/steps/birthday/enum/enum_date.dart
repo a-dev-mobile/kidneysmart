@@ -120,7 +120,7 @@ enum EnumDate implements Comparable<EnumDate> {
   int compareTo(EnumDate other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumDate.$name($value)';
+  String toString() => 'EnumDate.$value';
 }
 
 extension EnumDateX on EnumDate {

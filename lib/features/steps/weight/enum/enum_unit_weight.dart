@@ -103,7 +103,7 @@ enum EnumUnitWeight implements Comparable<EnumUnitWeight> {
   int compareTo(EnumUnitWeight other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumUnitWeight.$name($value)';
+  String toString() => 'EnumUnitWeight.$value';
 }
 
 extension EnumUnitWeightX on EnumUnitWeight {

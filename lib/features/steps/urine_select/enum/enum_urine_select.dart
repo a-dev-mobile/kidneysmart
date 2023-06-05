@@ -137,7 +137,7 @@ enum EnumUrine implements Comparable<EnumUrine> {
   int compareTo(EnumUrine other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumUrine.$name($value)';
+  String toString() => 'EnumUrine.$value';
 }
 
 extension EnumUrineX on EnumUrine {

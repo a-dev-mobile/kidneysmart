@@ -67,7 +67,8 @@ class AppInfo {
 
     return int.parse(packageInfo.buildNumber);
   }
-    static Future<String> getVersion() async {
+
+  static Future<String> getVersion() async {
     final packageInfo = await PackageInfo.fromPlatform();
 
     return packageInfo.version;

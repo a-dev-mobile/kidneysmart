@@ -46,7 +46,17 @@ class CalculateGfrModel {
 
     return CalculateGfrModel(
       enumResult: map['enumResult'] != null
-          ? EnumResult.values[map['enumResult'] as int]
+          ? map['enumResult'] is int
+              ? EnumResult.values[map['enumResult'] as int]
+              : map['enumResult'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumResult.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumResult.')[1] ==
+                          map['enumResult'].toString(),
+                      orElse: () => EnumResult.init,
+                    )
+                  : EnumResult.init
           : EnumResult.init,
       markdownInit: map['markdownInit'] as String? ?? '',
       markdownSuccess: map['markdownSuccess'] as String? ?? '',

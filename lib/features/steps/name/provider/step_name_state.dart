@@ -53,14 +53,36 @@ class StepNameState {
       result: map['result'] as String? ?? '',
       error: map['error'] as String?,
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       enumGender: map['enumGender'] != null
-          ? EnumGender.values[map['enumGender'] as int]
+          ? map['enumGender'] is int
+              ? EnumGender.values[map['enumGender'] as int]
+              : map['enumGender'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumGender.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumGender.')[1] ==
+                          map['enumGender'].toString(),
+                      orElse: () => EnumGender.none,
+                    )
+                  : EnumGender.none
           : EnumGender.none,
       keyboard: map['keyboard'] != null
           ? KeyboardState.fromMap(
-              Map<String, dynamic>.from(map['keyboard'] as Map),
+              Map<String, dynamic>.from(
+                map['keyboard'] as Map,
+              ),
             )
           : const KeyboardState(),
     );

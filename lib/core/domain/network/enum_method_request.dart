@@ -119,7 +119,7 @@ enum EnumMethodRequest implements Comparable<EnumMethodRequest> {
   int compareTo(EnumMethodRequest other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumMethodRequest.$name($value)';
+  String toString() => 'EnumMethodRequest.$value';
 }
 
 extension EnumMethodRequestX on EnumMethodRequest {

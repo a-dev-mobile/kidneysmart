@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kidneysmart/core/constants/app_const.dart';
 import 'package:kidneysmart/core/constants/app_insets.dart';
 import 'package:kidneysmart/core/data/local/shared_prefs/storage.dart';
 import 'package:kidneysmart/core/widget/widget.dart';
@@ -86,7 +85,7 @@ void _showAppAboutDialog(BuildContext context, WidgetRef ref) {
     context: context,
     applicationName: l.app_name,
     applicationVersion: appState.appVersion,
-    applicationIcon: AppLogo(size: 36),
+    applicationIcon: const AppLogo(size: 36),
     applicationLegalese: '@ 2023 Dmitriy Trofimov',
     children: <Widget>[
       Padding(

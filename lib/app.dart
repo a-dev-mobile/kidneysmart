@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:kidneysmart/core/constants/app_const.dart';
 
 import 'package:kidneysmart/core/domain/locale/locale_provider.dart';
 import 'package:kidneysmart/core/theme/flex_theme.dart';

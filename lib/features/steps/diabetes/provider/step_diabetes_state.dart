@@ -55,10 +55,30 @@ class DiabetesState {
     return DiabetesState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumDiabetes: map['enumDiabetes'] != null
-          ? EnumDiabetes.values[map['enumDiabetes'] as int]
+          ? map['enumDiabetes'] is int
+              ? EnumDiabetes.values[map['enumDiabetes'] as int]
+              : map['enumDiabetes'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumDiabetes.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumDiabetes.')[1] ==
+                          map['enumDiabetes'].toString(),
+                      orElse: () => EnumDiabetes.none,
+                    )
+                  : EnumDiabetes.none
           : EnumDiabetes.none,
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       error: map['error'] as String? ?? '',
       listDiabetes: map['listDiabetes'] != null

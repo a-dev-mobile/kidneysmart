@@ -122,7 +122,7 @@ enum EnumCkdQuery implements Comparable<EnumCkdQuery> {
   int compareTo(EnumCkdQuery other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumCkdQuery.$name($value)';
+  String toString() => 'EnumCkdQuery.$value';
 }
 
 extension EnumCkdQueryX on EnumCkdQuery {

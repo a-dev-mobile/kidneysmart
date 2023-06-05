@@ -61,10 +61,30 @@ class StepGenderState {
     return StepGenderState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumGender: map['enumGender'] != null
-          ? EnumGender.values[map['enumGender'] as int]
+          ? map['enumGender'] is int
+              ? EnumGender.values[map['enumGender'] as int]
+              : map['enumGender'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumGender.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumGender.')[1] ==
+                          map['enumGender'].toString(),
+                      orElse: () => EnumGender.none,
+                    )
+                  : EnumGender.none
           : EnumGender.none,
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       error: map['error'] as String? ?? '',
       listGender: map['listGender'] != null

@@ -155,7 +155,7 @@ enum EnumActivity implements Comparable<EnumActivity> {
   int compareTo(EnumActivity other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumActivity.$name($value)';
+  String toString() => 'EnumActivity.$value';
 }
 
 extension EnumActivityX on EnumActivity {

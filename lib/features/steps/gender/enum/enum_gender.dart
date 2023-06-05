@@ -120,7 +120,7 @@ enum EnumGender implements Comparable<EnumGender> {
   int compareTo(EnumGender other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumGender.$name($value)';
+  String toString() => 'EnumGender.$value';
 }
 
 extension EnumGenderX on EnumGender {

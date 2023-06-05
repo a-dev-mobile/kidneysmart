@@ -38,7 +38,17 @@ class StepActivityItemModel {
 
     return StepActivityItemModel(
       enumActivity: map['enumActivity'] != null
-          ? EnumActivity.values[map['enumActivity'] as int]
+          ? map['enumActivity'] is int
+              ? EnumActivity.values[map['enumActivity'] as int]
+              : map['enumActivity'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumActivity.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumActivity.')[1] ==
+                          map['enumActivity'].toString(),
+                      orElse: () => EnumActivity.none,
+                    )
+                  : EnumActivity.none
           : EnumActivity.none,
       title: map['title'] as String? ?? '',
       content: map['content'] as String? ?? '',

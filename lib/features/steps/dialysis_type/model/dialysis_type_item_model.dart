@@ -35,7 +35,17 @@ class DialysisTypeItemModel {
 
     return DialysisTypeItemModel(
       enumDialysisType: map['enumDialysisType'] != null
-          ? EnumDialysisType.values[map['enumDialysisType'] as int]
+          ? map['enumDialysisType'] is int
+              ? EnumDialysisType.values[map['enumDialysisType'] as int]
+              : map['enumDialysisType'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumDialysisType.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumDialysisType.')[1] ==
+                          map['enumDialysisType'].toString(),
+                      orElse: () => EnumDialysisType.none,
+                    )
+                  : EnumDialysisType.none
           : EnumDialysisType.none,
       value: map['value'] as String? ?? '',
     );

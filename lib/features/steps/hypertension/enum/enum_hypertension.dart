@@ -120,7 +120,7 @@ enum EnumHypertension implements Comparable<EnumHypertension> {
   int compareTo(EnumHypertension other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumHypertension.$name($value)';
+  String toString() => 'EnumHypertension.$value';
 }
 
 extension EnumHypertensionX on EnumHypertension {

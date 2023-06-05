@@ -55,10 +55,30 @@ class WeightDryQueryState {
     return WeightDryQueryState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumWeightDryQuery: map['enumWeightDryQuery'] != null
-          ? EnumWeightDryQuery.values[map['enumWeightDryQuery'] as int]
+          ? map['enumWeightDryQuery'] is int
+              ? EnumWeightDryQuery.values[map['enumWeightDryQuery'] as int]
+              : map['enumWeightDryQuery'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumWeightDryQuery.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumWeightDryQuery.')[1] ==
+                          map['enumWeightDryQuery'].toString(),
+                      orElse: () => EnumWeightDryQuery.none,
+                    )
+                  : EnumWeightDryQuery.none
           : EnumWeightDryQuery.none,
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       error: map['error'] as String? ?? '',
       listWeightDryQuery: map['listWeightDryQuery'] != null

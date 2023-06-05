@@ -32,9 +32,23 @@ class ThemeItemModel {
   factory ThemeItemModel.fromMap(Map<dynamic, dynamic> map) {
     return ThemeItemModel(
       enumTheme: map['enumTheme'] != null
-          ? EnumTheme.values[map['enumTheme'] as int]
+          ? map['enumTheme'] is int
+              ? EnumTheme.values[map['enumTheme'] as int]
+              : map['enumTheme'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumTheme.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumTheme.')[1] ==
+                          map['enumTheme'].toString(),
+                      orElse: () => throw Exception(
+                        "EnumTheme - No matching value found for map['enumTheme']",
+                      ),
+                    )
+                  : throw Exception(
+                      "EnumTheme - Wrong type for map['enumTheme']'",
+                    )
           : throw Exception(
-              "map['enumTheme']_type_'Null'",
+              "EnumTheme - map['enumTheme']' is null",
             ),
       value: map['value'] as String? ?? '',
     );

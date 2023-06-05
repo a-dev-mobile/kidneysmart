@@ -138,7 +138,7 @@ enum EnumResultWebView implements Comparable<EnumResultWebView> {
   int compareTo(EnumResultWebView other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumResultWebView.$name($value)';
+  String toString() => 'EnumResultWebView.$value';
 }
 
 extension EnumResultWebViewX on EnumResultWebView {

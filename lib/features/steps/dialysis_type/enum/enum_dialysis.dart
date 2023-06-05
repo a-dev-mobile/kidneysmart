@@ -121,7 +121,7 @@ enum EnumDialysisType implements Comparable<EnumDialysisType> {
   int compareTo(EnumDialysisType other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumDialysisType.$name($value)';
+  String toString() => 'EnumDialysisType.$value';
 }
 
 extension EnumDialysisTypeX on EnumDialysisType {

@@ -26,34 +26,34 @@ enum EnumWeightStatus implements Comparable<EnumWeightStatus> {
 //  *************************************
 
   static EnumWeightStatus fromValue(
-    double? value, {
+    double? minValue, {
     EnumWeightStatus? fallback,
   }) {
-    switch (value?.toString()) {
-      case '0, 15.9':
+    switch (minValue?.toString()) {
+      case '0':
         return severe_thinness;
-      case '16, 16.9':
+      case '16':
         return moderate_thinness;
-      case '17, 18.4':
+      case '17':
         return mild_thinness;
-      case '18.5, 24.9':
+      case '18.5':
         return normal;
-      case '25, 29.9':
+      case '25':
         return overweight;
-      case '30, 34.9':
+      case '30':
         return obesity_1;
-      case '35, 39.9':
+      case '35':
         return obesity_2;
-      case '40, 44.9':
+      case '40':
         return obesity_3;
-      case '45, 1000000':
+      case '45':
         return obesity_4;
-      case '-1, -1':
+      case '-1':
         return none;
       default:
         return fallback ??
             (throw ArgumentError.value(
-              value,
+              minValue,
               '',
               'Value not found in EnumWeightStatus',
             ));
@@ -243,7 +243,7 @@ enum EnumWeightStatus implements Comparable<EnumWeightStatus> {
   int compareTo(EnumWeightStatus other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumWeightStatus.$name($minValue)';
+  String toString() => 'EnumWeightStatus.$minValue';
 }
 
 extension EnumWeightStatusX on EnumWeightStatus {

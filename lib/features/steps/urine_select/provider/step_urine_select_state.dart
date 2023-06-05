@@ -61,11 +61,31 @@ class StepUrineSelectState {
               .toList()
           : const [],
       enumUrine: map['enumUrine'] != null
-          ? EnumUrine.values[map['enumUrine'] as int]
+          ? map['enumUrine'] is int
+              ? EnumUrine.values[map['enumUrine'] as int]
+              : map['enumUrine'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumUrine.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumUrine.')[1] ==
+                          map['enumUrine'].toString(),
+                      orElse: () => EnumUrine.none,
+                    )
+                  : EnumUrine.none
           : EnumUrine.none,
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       listSelected: (map['listSelected'] as List<dynamic>?)
               ?.map((e) => e as bool)

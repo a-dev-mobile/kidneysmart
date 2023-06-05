@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:meta/meta.dart';
 
 // turngen
@@ -19,39 +21,63 @@ class _OnboardingState {
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: unnecessary_null_checks
 // ignore_for_file: unused_element
+// ignore_for_file: sort_constructors_first
 // ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: avoid_positional_boolean_parameters,
 // ignore_for_file: always_put_required_named_parameters_first
 
+enum OnboardingStateTag {
+  error,
+  load,
+  success,
+}
+
 @immutable
 class OnboardingState {
+  final OnboardingStateTag _tag;
+  final String? _msg_error;
+  final String? _textMarkdown_success;
+
   const OnboardingState.error([String msg = 'error'])
-      : _tag = _OnboardingStateTag.error,
+      : _tag = OnboardingStateTag.error,
         _msg_error = msg,
         _textMarkdown_success = null;
 
   const OnboardingState.load()
-      : _tag = _OnboardingStateTag.load,
+      : _tag = OnboardingStateTag.load,
         _msg_error = null,
         _textMarkdown_success = null;
 
   const OnboardingState.success({required String textMarkdown})
-      : _tag = _OnboardingStateTag.success,
+      : _tag = OnboardingStateTag.success,
         _msg_error = null,
         _textMarkdown_success = textMarkdown;
 
+  bool get isError => _tag == OnboardingStateTag.error;
+  bool get isLoad => _tag == OnboardingStateTag.load;
+  bool get isSuccess => _tag == OnboardingStateTag.success;
+
+  factory OnboardingState.fromJson(
+    String source, [
+    OnboardingStateTag? tag,
+  ]) =>
+      OnboardingState.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+        tag,
+      );
+
   Map<String, dynamic> toMap() {
     switch (_tag) {
-      case _OnboardingStateTag.error:
+      case OnboardingStateTag.error:
         return {
           'tag': 'error',
           'msg': _msg_error,
         };
-      case _OnboardingStateTag.load:
+      case OnboardingStateTag.load:
         return {
           'tag': 'load',
         };
-      case _OnboardingStateTag.success:
+      case OnboardingStateTag.success:
         return {
           'tag': 'success',
           'textMarkdown': _textMarkdown_success,
@@ -59,16 +85,21 @@ class OnboardingState {
     }
   }
 
-  static OnboardingState fromMap(Map<dynamic, dynamic> map) {
-    final tag = map['tag'];
+  String toJson() => json.encode(toMap());
+
+  factory OnboardingState.fromMap(
+    Map<dynamic, dynamic> map, [
+    OnboardingStateTag? tag,
+  ]) {
+    tag ??= OnboardingStateTag.values.byName(map['tag'].toString());
     switch (tag) {
-      case 'error':
+      case OnboardingStateTag.error:
         return OnboardingState.error(
           map['msg'] as String? ?? 'error',
         );
-      case 'load':
+      case OnboardingStateTag.load:
         return const OnboardingState.load();
-      case 'success':
+      case OnboardingStateTag.success:
         return OnboardingState.success(
           textMarkdown: map['textMarkdown'] != null
               ? map['textMarkdown'] as String
@@ -76,8 +107,6 @@ class OnboardingState {
                   "map['textMarkdown']_type_'Null'",
                 ),
         );
-      default:
-        throw ArgumentError('Invalid map: $map');
     }
   }
 
@@ -87,17 +116,17 @@ class OnboardingState {
     required T Function(_OnboardingStateSuccess v) success,
   }) {
     switch (_tag) {
-      case _OnboardingStateTag.error:
+      case OnboardingStateTag.error:
         return error(
           _OnboardingStateError(
             _msg_error!,
           ),
         );
-      case _OnboardingStateTag.load:
+      case OnboardingStateTag.load:
         return load(
           const _OnboardingStateLoad(),
         );
-      case _OnboardingStateTag.success:
+      case OnboardingStateTag.success:
         return success(
           _OnboardingStateSuccess(
             _textMarkdown_success!,
@@ -113,7 +142,7 @@ class OnboardingState {
     T Function(_OnboardingStateSuccess v)? success,
   }) {
     switch (_tag) {
-      case _OnboardingStateTag.error:
+      case OnboardingStateTag.error:
         if (error != null) {
           return error(
             _OnboardingStateError(
@@ -122,14 +151,14 @@ class OnboardingState {
           );
         }
         return orElse();
-      case _OnboardingStateTag.load:
+      case OnboardingStateTag.load:
         if (load != null) {
           return load(
             const _OnboardingStateLoad(),
           );
         }
         return orElse();
-      case _OnboardingStateTag.success:
+      case OnboardingStateTag.success:
         if (success != null) {
           return success(
             _OnboardingStateSuccess(
@@ -147,17 +176,17 @@ class OnboardingState {
     T? Function(_OnboardingStateSuccess v)? success,
   }) {
     switch (_tag) {
-      case _OnboardingStateTag.error:
+      case OnboardingStateTag.error:
         return error?.call(
           _OnboardingStateError(
             _msg_error!,
           ),
         );
-      case _OnboardingStateTag.load:
+      case OnboardingStateTag.load:
         return load?.call(
           const _OnboardingStateLoad(),
         );
-      case _OnboardingStateTag.success:
+      case OnboardingStateTag.success:
         return success?.call(
           _OnboardingStateSuccess(
             _textMarkdown_success!,
@@ -172,7 +201,7 @@ class OnboardingState {
     T? Function(_OnboardingStateSuccess v)? success,
   }) {
     switch (_tag) {
-      case _OnboardingStateTag.error:
+      case OnboardingStateTag.error:
         if (error != null) {
           return error(
             _OnboardingStateError(
@@ -181,14 +210,14 @@ class OnboardingState {
           );
         }
         return null;
-      case _OnboardingStateTag.load:
+      case OnboardingStateTag.load:
         if (load != null) {
           return load(
             const _OnboardingStateLoad(),
           );
         }
         return null;
-      case _OnboardingStateTag.success:
+      case OnboardingStateTag.success:
         if (success != null) {
           return success(
             _OnboardingStateSuccess(
@@ -210,13 +239,13 @@ class OnboardingState {
     ) success,
   }) {
     switch (_tag) {
-      case _OnboardingStateTag.error:
+      case OnboardingStateTag.error:
         return error(
           _msg_error!,
         );
-      case _OnboardingStateTag.load:
+      case OnboardingStateTag.load:
         return load();
-      case _OnboardingStateTag.success:
+      case OnboardingStateTag.success:
         return success(
           _textMarkdown_success!,
         );
@@ -226,7 +255,7 @@ class OnboardingState {
   @override
   bool operator ==(dynamic other) {
     switch (_tag) {
-      case _OnboardingStateTag.error:
+      case OnboardingStateTag.error:
         return identical(this, other) ||
             (other.runtimeType == runtimeType &&
                 other is OnboardingState &&
@@ -235,11 +264,11 @@ class OnboardingState {
                       _msg_error,
                     ) ||
                     other._msg_error == _msg_error));
-      case _OnboardingStateTag.load:
+      case OnboardingStateTag.load:
         return identical(this, other) ||
             (other.runtimeType == runtimeType && other is OnboardingState);
 
-      case _OnboardingStateTag.success:
+      case OnboardingStateTag.success:
         return identical(this, other) ||
             (other.runtimeType == runtimeType &&
                 other is OnboardingState &&
@@ -254,20 +283,20 @@ class OnboardingState {
   @override
   int get hashCode {
     switch (_tag) {
-      case _OnboardingStateTag.error:
+      case OnboardingStateTag.error:
         return Object.hashAll(
           [
             runtimeType,
             _msg_error,
           ],
         );
-      case _OnboardingStateTag.load:
+      case OnboardingStateTag.load:
         return Object.hashAll(
           [
             runtimeType,
           ],
         );
-      case _OnboardingStateTag.success:
+      case OnboardingStateTag.success:
         return Object.hashAll(
           [
             runtimeType,
@@ -280,24 +309,14 @@ class OnboardingState {
   @override
   String toString() {
     switch (_tag) {
-      case _OnboardingStateTag.error:
+      case OnboardingStateTag.error:
         return 'OnboardingState.error(msg: $_msg_error)';
-      case _OnboardingStateTag.load:
+      case OnboardingStateTag.load:
         return 'OnboardingState.load()';
-      case _OnboardingStateTag.success:
+      case OnboardingStateTag.success:
         return 'OnboardingState.success(textMarkdown: $_textMarkdown_success)';
     }
   }
-
-  final _OnboardingStateTag _tag;
-  final String? _msg_error;
-  final String? _textMarkdown_success;
-}
-
-enum _OnboardingStateTag {
-  error,
-  load,
-  success,
 }
 
 @immutable

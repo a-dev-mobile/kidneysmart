@@ -121,7 +121,7 @@ enum EnumValid implements Comparable<EnumValid> {
   int compareTo(EnumValid other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumValid.$name($value)';
+  String toString() => 'EnumValid.$value';
 }
 
 extension EnumValidX on EnumValid {

@@ -35,7 +35,17 @@ class DiabetesItemModel {
 
     return DiabetesItemModel(
       enumDiabetes: map['enumDiabetes'] != null
-          ? EnumDiabetes.values[map['enumDiabetes'] as int]
+          ? map['enumDiabetes'] is int
+              ? EnumDiabetes.values[map['enumDiabetes'] as int]
+              : map['enumDiabetes'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumDiabetes.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumDiabetes.')[1] ==
+                          map['enumDiabetes'].toString(),
+                      orElse: () => EnumDiabetes.none,
+                    )
+                  : EnumDiabetes.none
           : EnumDiabetes.none,
       value: map['value'] as String? ?? '',
     );

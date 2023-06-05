@@ -66,19 +66,60 @@ class StepGfrInputState {
     return StepGfrInputState(
       result: map['result'] as String? ?? '',
       enumResult: map['enumResult'] != null
-          ? EnumResult.values[map['enumResult'] as int]
+          ? map['enumResult'] is int
+              ? EnumResult.values[map['enumResult'] as int]
+              : map['enumResult'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumResult.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumResult.')[1] ==
+                          map['enumResult'].toString(),
+                      orElse: () => EnumResult.init,
+                    )
+                  : EnumResult.init
           : EnumResult.init,
       value: (map['value'] as num?)?.toDouble(),
       error: map['error'] as String? ?? '',
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       enumCkd: map['enumCkd'] != null
-          ? EnumCkd.values[map['enumCkd'] as int]
+          ? map['enumCkd'] is int
+              ? EnumCkd.values[map['enumCkd'] as int]
+              : map['enumCkd'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumCkd.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumCkd.')[1] ==
+                          map['enumCkd'].toString(),
+                      orElse: () => EnumCkd.none,
+                    )
+                  : EnumCkd.none
           : EnumCkd.none,
       isKeyboardOpen: map['isKeyboardOpen'] as bool? ?? false,
       inputTypeCreatinine: map['inputTypeCreatinine'] != null
-          ? EnumInputTypeCreatinine.values[map['inputTypeCreatinine'] as int]
+          ? map['inputTypeCreatinine'] is int
+              ? EnumInputTypeCreatinine
+                  .values[map['inputTypeCreatinine'] as int]
+              : map['inputTypeCreatinine'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumInputTypeCreatinine.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumInputTypeCreatinine.')[1] ==
+                          map['inputTypeCreatinine'].toString(),
+                      orElse: () => EnumInputTypeCreatinine.mcmolL,
+                    )
+                  : EnumInputTypeCreatinine.mcmolL
           : EnumInputTypeCreatinine.mcmolL,
     );
   }

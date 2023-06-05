@@ -120,7 +120,7 @@ enum EnumWeightDryQuery implements Comparable<EnumWeightDryQuery> {
   int compareTo(EnumWeightDryQuery other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumWeightDryQuery.$name($value)';
+  String toString() => 'EnumWeightDryQuery.$value';
 }
 
 extension EnumWeightDryQueryX on EnumWeightDryQuery {

@@ -35,7 +35,17 @@ class GenderItemModel {
 
     return GenderItemModel(
       enumGender: map['enumGender'] != null
-          ? EnumGender.values[map['enumGender'] as int]
+          ? map['enumGender'] is int
+              ? EnumGender.values[map['enumGender'] as int]
+              : map['enumGender'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumGender.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumGender.')[1] ==
+                          map['enumGender'].toString(),
+                      orElse: () => EnumGender.none,
+                    )
+                  : EnumGender.none
           : EnumGender.none,
       value: map['value'] as String? ?? '',
     );

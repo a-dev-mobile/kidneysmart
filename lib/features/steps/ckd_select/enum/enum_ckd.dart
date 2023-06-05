@@ -6,8 +6,9 @@ enum EnumCkd implements Comparable<EnumCkd> {
   threeB(30, 44),
   four(15, 29),
   five(0, 15),
-  noKnow(-2, -2),
-  none(-1, -1);
+  //
+  noKnow(-2, 0),
+  none(-1, 0);
 
   const EnumCkd(this.minValue, this.maxValue);
   final double minValue;
@@ -22,30 +23,30 @@ enum EnumCkd implements Comparable<EnumCkd> {
 //  *************************************
 
   static EnumCkd fromValue(
-    double? value, {
+    double? minValue, {
     EnumCkd? fallback,
   }) {
-    switch (value?.toString()) {
-      case '90, 100000':
+    switch (minValue?.toString()) {
+      case '90':
         return one;
-      case '60, 89':
+      case '60':
         return two;
-      case '45, 59':
+      case '45':
         return threeA;
-      case '30, 44':
+      case '30':
         return threeB;
-      case '15, 29':
+      case '15':
         return four;
-      case '0, 15':
+      case '0':
         return five;
-      case '-2, -2':
+      case '-2':
         return noKnow;
-      case '-1, -1':
+      case '-1':
         return none;
       default:
         return fallback ??
             (throw ArgumentError.value(
-              value,
+              minValue,
               '',
               'Value not found in EnumCkd',
             ));
@@ -207,7 +208,7 @@ enum EnumCkd implements Comparable<EnumCkd> {
   int compareTo(EnumCkd other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumCkd.$name($minValue)';
+  String toString() => 'EnumCkd.$minValue';
 }
 
 extension EnumCkdX on EnumCkd {

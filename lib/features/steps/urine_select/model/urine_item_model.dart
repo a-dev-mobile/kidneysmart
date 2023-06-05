@@ -35,7 +35,17 @@ class UrineItemModel {
 
     return UrineItemModel(
       enumUrine: map['enumUrine'] != null
-          ? EnumUrine.values[map['enumUrine'] as int]
+          ? map['enumUrine'] is int
+              ? EnumUrine.values[map['enumUrine'] as int]
+              : map['enumUrine'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumUrine.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumUrine.')[1] ==
+                          map['enumUrine'].toString(),
+                      orElse: () => EnumUrine.none,
+                    )
+                  : EnumUrine.none
           : EnumUrine.none,
       value: map['value'] as String? ?? '',
     );

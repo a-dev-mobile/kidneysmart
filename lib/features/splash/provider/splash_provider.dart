@@ -40,10 +40,13 @@ class SplashNotifier extends StateNotifier<SplashState> {
     final userAgent = await AppInfo.getUserAgent();
     final appBuildVersion = await AppInfo.getBuildNumber();
 
-    await _storage.setAppState(appState.copyWith(
+    await _storage.setAppState(
+      appState.copyWith(
         appVersion: appVersion,
         appBuildVersion: appBuildVersion,
-        userAgent: userAgent,));
+        userAgent: userAgent,
+      ),
+    );
     // await Future<void>.delayed(const Duration(seconds: 1));
 
     await _go.nextPage(appState);

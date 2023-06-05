@@ -308,7 +308,7 @@ enum EnumInfoType implements Comparable<EnumInfoType> {
   int compareTo(EnumInfoType other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumInfoType.$name($value)';
+  String toString() => 'EnumInfoType.$value';
 }
 
 extension EnumInfoTypeX on EnumInfoType {

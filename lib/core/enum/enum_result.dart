@@ -138,7 +138,7 @@ enum EnumResult implements Comparable<EnumResult> {
   int compareTo(EnumResult other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumResult.$name($value)';
+  String toString() => 'EnumResult.$value';
 }
 
 extension EnumResultX on EnumResult {

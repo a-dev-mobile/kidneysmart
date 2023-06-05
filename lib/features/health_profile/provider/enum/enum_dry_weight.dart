@@ -122,7 +122,7 @@ enum EnumDryWeight implements Comparable<EnumDryWeight> {
   int compareTo(EnumDryWeight other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumDryWeight.$name($value)';
+  String toString() => 'EnumDryWeight.$value';
 }
 
 extension EnumDryWeightX on EnumDryWeight {

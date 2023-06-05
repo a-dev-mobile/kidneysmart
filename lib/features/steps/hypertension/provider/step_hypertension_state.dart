@@ -55,10 +55,30 @@ class HypertensionState {
     return HypertensionState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumHypertension: map['enumHypertension'] != null
-          ? EnumHypertension.values[map['enumHypertension'] as int]
+          ? map['enumHypertension'] is int
+              ? EnumHypertension.values[map['enumHypertension'] as int]
+              : map['enumHypertension'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumHypertension.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumHypertension.')[1] ==
+                          map['enumHypertension'].toString(),
+                      orElse: () => EnumHypertension.none,
+                    )
+                  : EnumHypertension.none
           : EnumHypertension.none,
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       error: map['error'] as String? ?? '',
       listHypertension: map['listHypertension'] != null

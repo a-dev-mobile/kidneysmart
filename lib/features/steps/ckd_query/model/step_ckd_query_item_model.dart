@@ -35,7 +35,17 @@ class CkdQueryItemModel {
 
     return CkdQueryItemModel(
       enumCkdQuery: map['enumCkdQuery'] != null
-          ? EnumCkdQuery.values[map['enumCkdQuery'] as int]
+          ? map['enumCkdQuery'] is int
+              ? EnumCkdQuery.values[map['enumCkdQuery'] as int]
+              : map['enumCkdQuery'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumCkdQuery.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumCkdQuery.')[1] ==
+                          map['enumCkdQuery'].toString(),
+                      orElse: () => EnumCkdQuery.none,
+                    )
+                  : EnumCkdQuery.none
           : EnumCkdQuery.none,
       value: map['value'] as String? ?? '',
     );

@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:meta/meta.dart';
 
+// turngen
 /// Represents all app failures
 class _Failure implements Exception {
   /// Expected value is null or empty
@@ -27,56 +30,83 @@ class _Failure implements Exception {
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: unnecessary_null_checks
 // ignore_for_file: unused_element
+// ignore_for_file: sort_constructors_first
 // ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: avoid_positional_boolean_parameters,
 // ignore_for_file: always_put_required_named_parameters_first
+
+enum FailureTag {
+  empty,
+  badRequest,
+  unprocessableEntity,
+  other,
+}
 
 @immutable
 
 /// Represents all app failures
 class Failure implements Exception {
-  const Failure.empty() : _tag = _FailureTag.empty;
+  final FailureTag _tag;
 
-  const Failure.badRequest() : _tag = _FailureTag.badRequest;
+  const Failure.empty() : _tag = FailureTag.empty;
 
-  const Failure.unprocessableEntity() : _tag = _FailureTag.unprocessableEntity;
+  const Failure.badRequest() : _tag = FailureTag.badRequest;
 
-  const Failure.other() : _tag = _FailureTag.other;
+  const Failure.unprocessableEntity() : _tag = FailureTag.unprocessableEntity;
+
+  const Failure.other() : _tag = FailureTag.other;
+
+  bool get isEmpty => _tag == FailureTag.empty;
+  bool get isBadRequest => _tag == FailureTag.badRequest;
+  bool get isUnprocessableEntity => _tag == FailureTag.unprocessableEntity;
+  bool get isOther => _tag == FailureTag.other;
+
+  factory Failure.fromJson(
+    String source, [
+    FailureTag? tag,
+  ]) =>
+      Failure.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+        tag,
+      );
 
   Map<String, dynamic> toMap() {
     switch (_tag) {
-      case _FailureTag.empty:
+      case FailureTag.empty:
         return {
           'tag': 'empty',
         };
-      case _FailureTag.badRequest:
+      case FailureTag.badRequest:
         return {
           'tag': 'badRequest',
         };
-      case _FailureTag.unprocessableEntity:
+      case FailureTag.unprocessableEntity:
         return {
           'tag': 'unprocessableEntity',
         };
-      case _FailureTag.other:
+      case FailureTag.other:
         return {
           'tag': 'other',
         };
     }
   }
 
-  static Failure fromMap(Map<dynamic, dynamic> map) {
-    final tag = map['tag'];
+  String toJson() => json.encode(toMap());
+
+  factory Failure.fromMap(
+    Map<dynamic, dynamic> map, [
+    FailureTag? tag,
+  ]) {
+    tag ??= FailureTag.values.byName(map['tag'].toString());
     switch (tag) {
-      case 'empty':
+      case FailureTag.empty:
         return const Failure.empty();
-      case 'badRequest':
+      case FailureTag.badRequest:
         return const Failure.badRequest();
-      case 'unprocessableEntity':
+      case FailureTag.unprocessableEntity:
         return const Failure.unprocessableEntity();
-      case 'other':
+      case FailureTag.other:
         return const Failure.other();
-      default:
-        throw ArgumentError('Invalid map: $map');
     }
   }
 
@@ -87,19 +117,19 @@ class Failure implements Exception {
     required T Function(_FailureOther v) other,
   }) {
     switch (_tag) {
-      case _FailureTag.empty:
+      case FailureTag.empty:
         return empty(
           const _FailureEmpty(),
         );
-      case _FailureTag.badRequest:
+      case FailureTag.badRequest:
         return badRequest(
           const _FailureBadRequest(),
         );
-      case _FailureTag.unprocessableEntity:
+      case FailureTag.unprocessableEntity:
         return unprocessableEntity(
           const _FailureUnprocessableEntity(),
         );
-      case _FailureTag.other:
+      case FailureTag.other:
         return other(
           const _FailureOther(),
         );
@@ -114,28 +144,28 @@ class Failure implements Exception {
     T Function(_FailureOther v)? other,
   }) {
     switch (_tag) {
-      case _FailureTag.empty:
+      case FailureTag.empty:
         if (empty != null) {
           return empty(
             const _FailureEmpty(),
           );
         }
         return orElse();
-      case _FailureTag.badRequest:
+      case FailureTag.badRequest:
         if (badRequest != null) {
           return badRequest(
             const _FailureBadRequest(),
           );
         }
         return orElse();
-      case _FailureTag.unprocessableEntity:
+      case FailureTag.unprocessableEntity:
         if (unprocessableEntity != null) {
           return unprocessableEntity(
             const _FailureUnprocessableEntity(),
           );
         }
         return orElse();
-      case _FailureTag.other:
+      case FailureTag.other:
         if (other != null) {
           return other(
             const _FailureOther(),
@@ -152,19 +182,19 @@ class Failure implements Exception {
     T? Function(_FailureOther v)? other,
   }) {
     switch (_tag) {
-      case _FailureTag.empty:
+      case FailureTag.empty:
         return empty?.call(
           const _FailureEmpty(),
         );
-      case _FailureTag.badRequest:
+      case FailureTag.badRequest:
         return badRequest?.call(
           const _FailureBadRequest(),
         );
-      case _FailureTag.unprocessableEntity:
+      case FailureTag.unprocessableEntity:
         return unprocessableEntity?.call(
           const _FailureUnprocessableEntity(),
         );
-      case _FailureTag.other:
+      case FailureTag.other:
         return other?.call(
           const _FailureOther(),
         );
@@ -178,28 +208,28 @@ class Failure implements Exception {
     T? Function(_FailureOther v)? other,
   }) {
     switch (_tag) {
-      case _FailureTag.empty:
+      case FailureTag.empty:
         if (empty != null) {
           return empty(
             const _FailureEmpty(),
           );
         }
         return null;
-      case _FailureTag.badRequest:
+      case FailureTag.badRequest:
         if (badRequest != null) {
           return badRequest(
             const _FailureBadRequest(),
           );
         }
         return null;
-      case _FailureTag.unprocessableEntity:
+      case FailureTag.unprocessableEntity:
         if (unprocessableEntity != null) {
           return unprocessableEntity(
             const _FailureUnprocessableEntity(),
           );
         }
         return null;
-      case _FailureTag.other:
+      case FailureTag.other:
         if (other != null) {
           return other(
             const _FailureOther(),
@@ -216,13 +246,13 @@ class Failure implements Exception {
     required T Function() other,
   }) {
     switch (_tag) {
-      case _FailureTag.empty:
+      case FailureTag.empty:
         return empty();
-      case _FailureTag.badRequest:
+      case FailureTag.badRequest:
         return badRequest();
-      case _FailureTag.unprocessableEntity:
+      case FailureTag.unprocessableEntity:
         return unprocessableEntity();
-      case _FailureTag.other:
+      case FailureTag.other:
         return other();
     }
   }
@@ -230,19 +260,19 @@ class Failure implements Exception {
   @override
   bool operator ==(dynamic other) {
     switch (_tag) {
-      case _FailureTag.empty:
+      case FailureTag.empty:
         return identical(this, other) ||
             (other.runtimeType == runtimeType && other is Failure);
 
-      case _FailureTag.badRequest:
+      case FailureTag.badRequest:
         return identical(this, other) ||
             (other.runtimeType == runtimeType && other is Failure);
 
-      case _FailureTag.unprocessableEntity:
+      case FailureTag.unprocessableEntity:
         return identical(this, other) ||
             (other.runtimeType == runtimeType && other is Failure);
 
-      case _FailureTag.other:
+      case FailureTag.other:
         return identical(this, other) ||
             (other.runtimeType == runtimeType && other is Failure);
     }
@@ -251,25 +281,25 @@ class Failure implements Exception {
   @override
   int get hashCode {
     switch (_tag) {
-      case _FailureTag.empty:
+      case FailureTag.empty:
         return Object.hashAll(
           [
             runtimeType,
           ],
         );
-      case _FailureTag.badRequest:
+      case FailureTag.badRequest:
         return Object.hashAll(
           [
             runtimeType,
           ],
         );
-      case _FailureTag.unprocessableEntity:
+      case FailureTag.unprocessableEntity:
         return Object.hashAll(
           [
             runtimeType,
           ],
         );
-      case _FailureTag.other:
+      case FailureTag.other:
         return Object.hashAll(
           [
             runtimeType,
@@ -281,25 +311,16 @@ class Failure implements Exception {
   @override
   String toString() {
     switch (_tag) {
-      case _FailureTag.empty:
+      case FailureTag.empty:
         return 'Failure.empty()';
-      case _FailureTag.badRequest:
+      case FailureTag.badRequest:
         return 'Failure.badRequest()';
-      case _FailureTag.unprocessableEntity:
+      case FailureTag.unprocessableEntity:
         return 'Failure.unprocessableEntity()';
-      case _FailureTag.other:
+      case FailureTag.other:
         return 'Failure.other()';
     }
   }
-
-  final _FailureTag _tag;
-}
-
-enum _FailureTag {
-  empty,
-  badRequest,
-  unprocessableEntity,
-  other,
 }
 
 @immutable

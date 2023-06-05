@@ -120,7 +120,7 @@ enum EnumDialysisQuery implements Comparable<EnumDialysisQuery> {
   int compareTo(EnumDialysisQuery other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumDialysisQuery.$name($value)';
+  String toString() => 'EnumDialysisQuery.$value';
 }
 
 extension EnumDialysisQueryX on EnumDialysisQuery {

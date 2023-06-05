@@ -26,8 +26,8 @@ dependencies:
   # flutter_localizations from sdk depends on path 1.8.2
   path: ^1.8.3
   platform_info: ^4.0.0
-  device_info_plus: ^9.0.1
-  package_info_plus: ^4.0.1
+  device_info_plus: ^9.0.2
+  package_info_plus: ^4.0.2
   connectivity_plus: ^4.0.1
 
   # Data manipulation
@@ -57,25 +57,24 @@ dependencies:
 
   # Native
   url_launcher: ^6.1.11
-  share_plus: ^7.0.1
+  share_plus: ^7.0.2
 
   # Helper for UI
-  flutter_typeahead: ^4.4.0
-  lottie: ^2.3.2
-  flutter_native_splash: ^2.3.0
+  flutter_typeahead: ^4.6.1
+  lottie: ^2.4.0
+  flutter_native_splash: ^2.3.1
   flutter_svg: ^2.0.6
   flex_color_scheme: ^7.1.2
-  flutter_markdown: ^0.6.14
+  flutter_markdown: ^0.6.15
   webview_flutter: ^4.2.1
   introduction_screen: ^3.1.8
   google_fonts: ^4.0.4
 
 
-
   # firebase
-  firebase_core: ^2.13.0
-  firebase_crashlytics: ^3.3.1
-  firebase_analytics: ^10.4.1
+  firebase_core: ^2.13.1
+  firebase_crashlytics: ^3.3.2
+  firebase_analytics: ^10.4.2
 
 
 
@@ -99,8 +98,8 @@ dev_dependencies:
 
   # turn_gen:
     # path: c:/DEV/MY/MY_GITHUB/turn_gen
-  turn_gen: ^0.9.4
-
+  turn_gen: ^1.0.3
+# 
 
 turn_gen:
   assets_output: "lib/gen/"

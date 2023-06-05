@@ -4,8 +4,6 @@ class AppConst {
   // prevents instantiation and extension.
   AppConst._();
 
-  
-
   /// Link to the FlexColorScheme package.
   static final Uri packageUri = Uri(
     scheme: 'https',

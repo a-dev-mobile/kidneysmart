@@ -122,7 +122,7 @@ enum EnumTypeCalcBmiPeople implements Comparable<EnumTypeCalcBmiPeople> {
   int compareTo(EnumTypeCalcBmiPeople other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumTypeCalcBmiPeople.$name($value)';
+  String toString() => 'EnumTypeCalcBmiPeople.$value';
 }
 
 extension EnumTypeCalcBmiPeopleX on EnumTypeCalcBmiPeople {

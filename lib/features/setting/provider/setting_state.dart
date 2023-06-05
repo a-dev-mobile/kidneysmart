@@ -33,7 +33,9 @@ class SettingState {
     return SettingState(
       themeSetting: map['themeSetting'] != null
           ? ThemeSetting.fromMap(
-              Map<String, dynamic>.from(map['themeSetting'] as Map),
+              Map<String, dynamic>.from(
+                map['themeSetting'] as Map,
+              ),
             )
           : const ThemeSetting(),
     );

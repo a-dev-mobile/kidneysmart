@@ -47,7 +47,17 @@ class ThemeSetting {
     return ThemeSetting(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumTheme: map['enumTheme'] != null
-          ? EnumTheme.values[map['enumTheme'] as int]
+          ? map['enumTheme'] is int
+              ? EnumTheme.values[map['enumTheme'] as int]
+              : map['enumTheme'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumTheme.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumTheme.')[1] ==
+                          map['enumTheme'].toString(),
+                      orElse: () => EnumTheme.light,
+                    )
+                  : EnumTheme.light
           : EnumTheme.light,
       listTheme: map['listTheme'] != null
           ? (map['listTheme'] as List<dynamic>)

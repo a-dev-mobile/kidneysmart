@@ -55,10 +55,30 @@ class DialysisTypeState {
     return DialysisTypeState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumDialysisType: map['enumDialysisType'] != null
-          ? EnumDialysisType.values[map['enumDialysisType'] as int]
+          ? map['enumDialysisType'] is int
+              ? EnumDialysisType.values[map['enumDialysisType'] as int]
+              : map['enumDialysisType'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumDialysisType.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumDialysisType.')[1] ==
+                          map['enumDialysisType'].toString(),
+                      orElse: () => EnumDialysisType.none,
+                    )
+                  : EnumDialysisType.none
           : EnumDialysisType.none,
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       error: map['error'] as String? ?? '',
       listDialysisType: map['listDialysisType'] != null

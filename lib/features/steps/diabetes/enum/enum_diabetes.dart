@@ -122,7 +122,7 @@ enum EnumDiabetes implements Comparable<EnumDiabetes> {
   int compareTo(EnumDiabetes other) => index.compareTo(other.index);
 
   @override
-  String toString() => 'EnumDiabetes.$name($value)';
+  String toString() => 'EnumDiabetes.$value';
 }
 
 extension EnumDiabetesX on EnumDiabetes {

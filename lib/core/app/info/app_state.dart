@@ -61,7 +61,17 @@ class AppState {
       dbPath: map['dbPath'] as String? ?? '',
       lastNamePage: map['lastNamePage'] as String? ?? WelcomePage.name,
       enumLang: map['enumLang'] != null
-          ? EnumLang.values[map['enumLang'] as int]
+          ? map['enumLang'] is int
+              ? EnumLang.values[map['enumLang'] as int]
+              : map['enumLang'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumLang.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumLang.')[1] ==
+                          map['enumLang'].toString(),
+                      orElse: () => EnumLang.ru,
+                    )
+                  : EnumLang.ru
           : EnumLang.ru,
       appVersion: map['appVersion'] as String? ?? '1.0',
       userAgent: map['userAgent'] as String? ?? '',

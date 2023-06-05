@@ -55,10 +55,30 @@ class StepActivityState {
     return StepActivityState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumActivity: map['enumActivity'] != null
-          ? EnumActivity.values[map['enumActivity'] as int]
+          ? map['enumActivity'] is int
+              ? EnumActivity.values[map['enumActivity'] as int]
+              : map['enumActivity'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumActivity.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumActivity.')[1] ==
+                          map['enumActivity'].toString(),
+                      orElse: () => EnumActivity.none,
+                    )
+                  : EnumActivity.none
           : EnumActivity.none,
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       error: map['error'] as String? ?? '',
       listActivity: map['listActivity'] != null

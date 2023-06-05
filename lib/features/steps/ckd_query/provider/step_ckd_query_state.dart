@@ -55,10 +55,30 @@ class CkdQueryState {
     return CkdQueryState(
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumCkdQuery: map['enumCkdQuery'] != null
-          ? EnumCkdQuery.values[map['enumCkdQuery'] as int]
+          ? map['enumCkdQuery'] is int
+              ? EnumCkdQuery.values[map['enumCkdQuery'] as int]
+              : map['enumCkdQuery'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumCkdQuery.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumCkdQuery.')[1] ==
+                          map['enumCkdQuery'].toString(),
+                      orElse: () => EnumCkdQuery.none,
+                    )
+                  : EnumCkdQuery.none
           : EnumCkdQuery.none,
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       error: map['error'] as String? ?? '',
       listCkdQuery: map['listCkdQuery'] != null

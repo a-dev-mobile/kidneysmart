@@ -70,14 +70,44 @@ class StepCkdSelectState {
               .toList()
           : const [],
       enumCkd: map['enumCkd'] != null
-          ? EnumCkd.values[map['enumCkd'] as int]
+          ? map['enumCkd'] is int
+              ? EnumCkd.values[map['enumCkd'] as int]
+              : map['enumCkd'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumCkd.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumCkd.')[1] ==
+                          map['enumCkd'].toString(),
+                      orElse: () => EnumCkd.none,
+                    )
+                  : EnumCkd.none
           : EnumCkd.none,
       enumGender: map['enumGender'] != null
-          ? EnumGender.values[map['enumGender'] as int]
+          ? map['enumGender'] is int
+              ? EnumGender.values[map['enumGender'] as int]
+              : map['enumGender'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumGender.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumGender.')[1] ==
+                          map['enumGender'].toString(),
+                      orElse: () => EnumGender.none,
+                    )
+                  : EnumGender.none
           : EnumGender.none,
       selectedIndex: (map['selectedIndex'] as num?)?.toInt(),
       enumValid: map['enumValid'] != null
-          ? EnumValid.values[map['enumValid'] as int]
+          ? map['enumValid'] is int
+              ? EnumValid.values[map['enumValid'] as int]
+              : map['enumValid'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumValid.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumValid.')[1] ==
+                          map['enumValid'].toString(),
+                      orElse: () => EnumValid.init,
+                    )
+                  : EnumValid.init
           : EnumValid.init,
       error: map['error'] as String? ?? '',
       listSelected: (map['listSelected'] as List<dynamic>?)

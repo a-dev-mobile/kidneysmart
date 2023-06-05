@@ -35,7 +35,17 @@ class WeightDryQueryItemModel {
 
     return WeightDryQueryItemModel(
       enumWeightDryQuery: map['enumWeightDryQuery'] != null
-          ? EnumWeightDryQuery.values[map['enumWeightDryQuery'] as int]
+          ? map['enumWeightDryQuery'] is int
+              ? EnumWeightDryQuery.values[map['enumWeightDryQuery'] as int]
+              : map['enumWeightDryQuery'] is String
+                  // ignore: prefer-enums-by-name
+                  ? EnumWeightDryQuery.values.firstWhere(
+                      (e) =>
+                          e.toString().split('EnumWeightDryQuery.')[1] ==
+                          map['enumWeightDryQuery'].toString(),
+                      orElse: () => EnumWeightDryQuery.none,
+                    )
+                  : EnumWeightDryQuery.none
           : EnumWeightDryQuery.none,
       value: map['value'] as String? ?? '',
     );
