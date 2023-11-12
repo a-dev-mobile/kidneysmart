@@ -8,7 +8,7 @@
 PRODUCT_NAME = kidneysmart
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.ckc.kidneysmart
+PRODUCT_BUNDLE_IDENTIFIER = com.wayofdt.kidneysmart
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 com.ckc. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 com.wayofdt. All rights reserved.

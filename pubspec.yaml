@@ -1,132 +1,107 @@
 name: kidneysmart
 description: A new Flutter project.
-
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
+publish_to: none
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '>=3.1.5 <4.0.0'
+
 
 dependencies:
   flutter:
     sdk: flutter
 
   # SDK extensions
-  # flutter_localizations from sdk depends on meta 1.8.0
   meta: ^1.9.1
-  # flutter_localizations from sdk depends on collection 1.16.0
-  collection: ^1.17.1
+  collection: ^1.17.2
   async: ^2.11.0
-  characters: ^1.3.0
   # System
-  path_provider: ^2.0.15
-  # flutter_localizations from sdk depends on path 1.8.2
+  path_provider: ^2.1.1
   path: ^1.8.3
-  platform_info: ^4.0.0
-  device_info_plus: ^9.0.2
-  package_info_plus: ^4.0.2
-  connectivity_plus: ^4.0.1
+  platform_info: ^4.0.2
+  device_info_plus: ^9.1.0
+  package_info_plus: ^4.2.0
+  connectivity_plus: ^4.0.2
 
-  # Data manipulation
-  # di/state
-  flutter_riverpod: ^2.3.6
-  
   # Internationalization
   intl: ^0.18.0
   flutter_localizations:
     sdk: flutter
-  # flutter_test:
-  #   sdk: flutter
   # Logging
-  logger: ^1.3.0
-  shared_preferences: ^2.1.1
-  # sqflite_sqlcipher: ^2.1.1+1
-
+  logging: ^1.2.0
+  # local storage
+  shared_preferences: ^2.2.2
   # HTTP
-  dio: ^5.1.2
-  dio_log:
-    git:
-         url: https://github.com/flutterplugin/dio_log.git
-         ref: dependabot/pub/dio-5.0.3
+  dio: ^5.3.3
 
+  # parser html
+  html: ^0.15.4
   # Navigation
-  go_router: ^7.1.1
+  go_router: ^8.2.0
+ # Native
+  permission_handler: ^11.0.1
 
-  # Native
-  url_launcher: ^6.1.11
-  share_plus: ^7.0.2
+  url_launcher: ^6.2.1
+  share_plus: ^7.2.1
+
+
+  webview_flutter: ^4.4.2
+
+  # syncfusion_flutter_pdfviewer: ^23.1.44
+  flutter_native_splash: ^2.3.5
 
   # Helper for UI
-  flutter_typeahead: ^4.6.1
-  lottie: ^2.4.0
-  flutter_native_splash: ^2.3.1
-  flutter_svg: ^2.0.6
-  flex_color_scheme: ^7.1.2
-  flutter_markdown: ^0.6.15
-  webview_flutter: ^4.2.1
-  introduction_screen: ^3.1.8
-  google_fonts: ^4.0.4
-
-
-  # firebase
-  firebase_core: ^2.13.1
-  firebase_crashlytics: ^3.3.2
-  firebase_analytics: ^10.4.2
-
-
-
-
-# database
-  # sqflite: ^2.2.8+3
-
+  flutter_svg: ^2.0.9
+  flex_color_scheme: ^7.3.1
+  # TEST
+  device_preview: ^1.1.0
+  feedback: ^2.6.0
 
 
 
   # ******************************
   #  local packages
   # ******************************
-
-
-
+  
 dev_dependencies:
-  # Analyzer extensions
-  dart_code_metrics: ^5.7.4
-  very_good_analysis: ^5.0.0+1
+  flutter_test:
+    sdk: flutter
+
+  very_good_analysis: ^5.1.0
+  # Code generation
+  freezed: ^2.4.5
+  build_runner: ^2.4.6
+  json_serializable: ^6.7.1
+  turn_gen: ^2.0.0
 
   # turn_gen:
     # path: c:/DEV/MY/MY_GITHUB/turn_gen
-  turn_gen: ^1.0.3
-# 
-
-turn_gen:
-  assets_output: "lib/gen/"
-  # show_method_comments: true
-  folder_barrel: lib\core, 
-
-
 flutter:
-  generate: true
+
+
   uses-material-design: true
+
+
   assets:
     - assets/svg/
-    - assets/lottie/
     - assets/image/
-    - assets/icons/
-    - assets/db/
 
-  fonts:
-    - family: app_icons
-      fonts:
-        - asset: assets/icons/app_icons.ttf
+# dart run turn_gen
+turn_gen:
+  assets_output: "lib/gen/"
+# flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  ios: true
+  android: false
+  remove_alpha_ios: true
+  image_path: "assets/image/icon.png"
+
 # flutter pub get && flutter pub run flutter_native_splash:create
-# flutter_native_splash:
-#   android: true
-#   ios: true
-#   web: true
-#   desktop: true
-#   color: "#ffffff"
-#   image: assets/image/splash.png
-
+flutter_native_splash:
+  android: true
+  ios: true
+  web: true
+  desktop: false
+  color: "#ffffff"
+  image: assets/image/logo.png
