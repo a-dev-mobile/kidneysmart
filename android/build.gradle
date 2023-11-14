@@ -1,5 +1,3 @@
-
-
 buildscript {
 //    https://docs.flutter.dev/release/breaking-changes/kotlin-version
     ext.kotlin_version = '1.8.22'
@@ -22,9 +20,9 @@ allprojects {
 }
 
 rootProject.buildDir = '../build'
-
+subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-
+}
 subprojects {
     project.evaluationDependsOn(':app')
 }

@@ -9,8 +9,10 @@ linter:
     # non_constant_identifier_names: false
     # constant_identifier_names: false
 
-analyzer:
 
+analyzer:
+  plugins:
+    - custom_lint
   exclude:
     # - "packages/**"
     - "plugin/**"

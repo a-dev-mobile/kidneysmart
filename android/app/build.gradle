@@ -2,7 +2,6 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
-
 }
 
 def localProperties = new Properties()
@@ -12,7 +11,6 @@ if (localPropertiesFile.exists()) {
         localProperties.load(reader)
     }
 }
-
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
@@ -50,30 +48,27 @@ android {
     defaultConfig {
  
         applicationId "com.wayofdt.kidneysmart"
-           minSdkVersion flutter.minSdkVersion
+        minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
-
 
     applicationVariants.all { variant ->
         variant.outputs.all {
             def variantName = variant.name
             def versionName = variant.versionName
             def versionCode = variant.versionCode
-
             outputFileName = "KS_v${versionName}(${versionCode})_${variantName}.apk"
         }
     }
     signingConfigs {
-
         release {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
             storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
             storePassword keystoreProperties['storePassword']
-
         }
     }
     buildTypes {
@@ -82,7 +77,6 @@ android {
 
             minifyEnabled false
             shrinkResources false
-
         }
         debug {
             signingConfig signingConfigs.debug
@@ -95,6 +89,6 @@ flutter {
 }
 
 dependencies {
-
-
+    def multidex_version = "2.0.1"
+    implementation "androidx.multidex:multidex:$multidex_version"
 }
