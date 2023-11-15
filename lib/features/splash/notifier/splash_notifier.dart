@@ -1,8 +1,12 @@
-import 'dart:convert';
+// ignore_for_file: noop_primitive_operations, avoid_print
 
+import 'dart:convert';
+import 'dart:developer';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/enum/enum_page_status.dart';
+import 'package:kidneysmart/models/api/app_update/req/api_app_update_check_req.dart';
+import 'package:kidneysmart/services/api_client/api_client.dart';
 import 'package:meta/meta.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -19,15 +23,30 @@ class SplashNotifier extends _$SplashNotifier {
     return const SplashState();
   }
 
+  late final _client = ref.read(apiClientProvider);
   Future<void> load() async {
-    await loadStart();
-    await Future<void>.delayed(const Duration(seconds: 2));
-    await loadStart();
-  }
-
-  Future<void> loadStart() async {
-    state = state.copyWith(enumPageStatus: EnumPageStatus.init);
+    state = state.copyWith(enumPageStatus: EnumPageStatus.load);
     await Future<void>.delayed(const Duration(seconds: 3));
+    const req = ApiAppUpdateCheckReq(
+      currentVersionCode: 2,
+      packageName: 'com.wayofdt.kidneysmart',
+      installerPackageName: 'apk',
+    );
+
+    final a = await _client.fetchAppVersion(req);
+
+    a.when(
+      success: (v) {
+        log(v.toString());
+
+       
+        log(v.enumAppUpdateType.mapValue(hard: 'hard', none: 'none', soft: 'soft'));
+      },
+      error: (v) {
+        log(v.toString());
+      },
+    );
+
     state = state.copyWith(enumPageStatus: EnumPageStatus.load);
     await Future<void>.delayed(const Duration(seconds: 3));
     state = state.copyWith(enumPageStatus: EnumPageStatus.success);
@@ -35,6 +54,10 @@ class SplashNotifier extends _$SplashNotifier {
     state = state.copyWith(enumPageStatus: EnumPageStatus.error);
   }
 }
+
+
+
+
 
 // class SplashCubit extends Cubit<SplashNotifier> {
 //   final AppRouter _router;

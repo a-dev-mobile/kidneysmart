@@ -2,14 +2,14 @@
 
 import 'dart:convert';
 
-
+import 'package:kidneysmart/providers/debug/debug_notifier.dart';
 import 'package:kidneysmart/services/app_logger/app_logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'app_storage.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 AppStorage appStorage(AppStorageRef ref) {
   return throw UnimplementedError('init with override');
 }
@@ -39,7 +39,21 @@ class AppStorage {
   }
 
 // ******************************
+// ******************************
+// ******************************
+  static const _debugState = '_debugState';
 
+  DebugState getDebugState() {
+    final map = getJson(key: _debugState);
+    if (map.isEmpty) return const DebugState();
+    return DebugState.fromJson(getJson(key: _debugState));
+  }
+
+  Future<void> setDebugState(DebugState value) {
+    return setJson(key: _debugState, value: value.toJson());
+  }
+
+// ******************************
 // ******************************
   /// SaveString.
   Future<void> setString({required String key, required String value}) async {

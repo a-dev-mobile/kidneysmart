@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/common/styles/app_text_styles.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
-import 'package:kidneysmart/providers/internet/internet_notifier.dart';
 
 
-class NoInternetWidget extends ConsumerWidget {
+
+class NoInternetWidget extends StatelessWidget {
   const NoInternetWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(internerNotifierProvider);
+  Widget build(BuildContext context) {
+   
 
-    return Visibility(
-      visible: state.enumInternetStatus
-          .maybeMapValue(orElse: false, notConnected: true),
-      child: Scaffold(
+    return Scaffold(
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -52,7 +49,6 @@ class NoInternetWidget extends ConsumerWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

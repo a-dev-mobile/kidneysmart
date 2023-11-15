@@ -1,0 +1,202 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'api_app_update_check_req.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+ApiAppUpdateCheckReq _$ApiAppUpdateCheckReqFromJson(Map<String, dynamic> json) {
+  return _ApiAppUpdateCheckReq.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ApiAppUpdateCheckReq {
+  int get currentVersionCode => throw _privateConstructorUsedError;
+  String get installerPackageName => throw _privateConstructorUsedError;
+  String get packageName => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApiAppUpdateCheckReqCopyWith<ApiAppUpdateCheckReq> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApiAppUpdateCheckReqCopyWith<$Res> {
+  factory $ApiAppUpdateCheckReqCopyWith(ApiAppUpdateCheckReq value,
+          $Res Function(ApiAppUpdateCheckReq) then) =
+      _$ApiAppUpdateCheckReqCopyWithImpl<$Res, ApiAppUpdateCheckReq>;
+  @useResult
+  $Res call(
+      {int currentVersionCode,
+      String installerPackageName,
+      String packageName});
+}
+
+/// @nodoc
+class _$ApiAppUpdateCheckReqCopyWithImpl<$Res,
+        $Val extends ApiAppUpdateCheckReq>
+    implements $ApiAppUpdateCheckReqCopyWith<$Res> {
+  _$ApiAppUpdateCheckReqCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentVersionCode = null,
+    Object? installerPackageName = null,
+    Object? packageName = null,
+  }) {
+    return _then(_value.copyWith(
+      currentVersionCode: null == currentVersionCode
+          ? _value.currentVersionCode
+          : currentVersionCode // ignore: cast_nullable_to_non_nullable
+              as int,
+      installerPackageName: null == installerPackageName
+          ? _value.installerPackageName
+          : installerPackageName // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ApiAppUpdateCheckReqImplCopyWith<$Res>
+    implements $ApiAppUpdateCheckReqCopyWith<$Res> {
+  factory _$$ApiAppUpdateCheckReqImplCopyWith(_$ApiAppUpdateCheckReqImpl value,
+          $Res Function(_$ApiAppUpdateCheckReqImpl) then) =
+      __$$ApiAppUpdateCheckReqImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int currentVersionCode,
+      String installerPackageName,
+      String packageName});
+}
+
+/// @nodoc
+class __$$ApiAppUpdateCheckReqImplCopyWithImpl<$Res>
+    extends _$ApiAppUpdateCheckReqCopyWithImpl<$Res, _$ApiAppUpdateCheckReqImpl>
+    implements _$$ApiAppUpdateCheckReqImplCopyWith<$Res> {
+  __$$ApiAppUpdateCheckReqImplCopyWithImpl(_$ApiAppUpdateCheckReqImpl _value,
+      $Res Function(_$ApiAppUpdateCheckReqImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentVersionCode = null,
+    Object? installerPackageName = null,
+    Object? packageName = null,
+  }) {
+    return _then(_$ApiAppUpdateCheckReqImpl(
+      currentVersionCode: null == currentVersionCode
+          ? _value.currentVersionCode
+          : currentVersionCode // ignore: cast_nullable_to_non_nullable
+              as int,
+      installerPackageName: null == installerPackageName
+          ? _value.installerPackageName
+          : installerPackageName // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ApiAppUpdateCheckReqImpl implements _ApiAppUpdateCheckReq {
+  const _$ApiAppUpdateCheckReqImpl(
+      {required this.currentVersionCode,
+      required this.installerPackageName,
+      required this.packageName});
+
+  factory _$ApiAppUpdateCheckReqImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiAppUpdateCheckReqImplFromJson(json);
+
+  @override
+  final int currentVersionCode;
+  @override
+  final String installerPackageName;
+  @override
+  final String packageName;
+
+  @override
+  String toString() {
+    return 'ApiAppUpdateCheckReq(currentVersionCode: $currentVersionCode, installerPackageName: $installerPackageName, packageName: $packageName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApiAppUpdateCheckReqImpl &&
+            (identical(other.currentVersionCode, currentVersionCode) ||
+                other.currentVersionCode == currentVersionCode) &&
+            (identical(other.installerPackageName, installerPackageName) ||
+                other.installerPackageName == installerPackageName) &&
+            (identical(other.packageName, packageName) ||
+                other.packageName == packageName));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, currentVersionCode, installerPackageName, packageName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApiAppUpdateCheckReqImplCopyWith<_$ApiAppUpdateCheckReqImpl>
+      get copyWith =>
+          __$$ApiAppUpdateCheckReqImplCopyWithImpl<_$ApiAppUpdateCheckReqImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ApiAppUpdateCheckReqImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApiAppUpdateCheckReq implements ApiAppUpdateCheckReq {
+  const factory _ApiAppUpdateCheckReq(
+      {required final int currentVersionCode,
+      required final String installerPackageName,
+      required final String packageName}) = _$ApiAppUpdateCheckReqImpl;
+
+  factory _ApiAppUpdateCheckReq.fromJson(Map<String, dynamic> json) =
+      _$ApiAppUpdateCheckReqImpl.fromJson;
+
+  @override
+  int get currentVersionCode;
+  @override
+  String get installerPackageName;
+  @override
+  String get packageName;
+  @override
+  @JsonKey(ignore: true)
+  _$$ApiAppUpdateCheckReqImplCopyWith<_$ApiAppUpdateCheckReqImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

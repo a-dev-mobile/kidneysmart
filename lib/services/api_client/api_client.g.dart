@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_router.dart';
+part of 'api_client.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appRouterHash() => r'446e2bd337e05d57e01238b0b8166a6faac39201';
+String _$apiClientHash() => r'104dc746419d048c9684b8792456ae2e2c6bcb0b';
 
-/// See also [appRouter].
-@ProviderFor(appRouter)
-final appRouterProvider = Provider<AppRouter>.internal(
-  appRouter,
-  name: r'appRouterProvider',
+/// See also [apiClient].
+@ProviderFor(apiClient)
+final apiClientProvider = Provider<ApiClient>.internal(
+  apiClient,
+  name: r'apiClientProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$appRouterHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$apiClientHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef AppRouterRef = ProviderRef<AppRouter>;
+typedef ApiClientRef = ProviderRef<ApiClient>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

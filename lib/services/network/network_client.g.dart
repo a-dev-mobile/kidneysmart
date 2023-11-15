@@ -6,11 +6,11 @@ part of 'network_client.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$networkClientHash() => r'a6c8e03a634970a1cfb26b358b4f50ed4736bf59';
+String _$networkClientHash() => r'e206287abe1a0d59c4a60c3f514657abdac8070c';
 
 /// See also [networkClient].
 @ProviderFor(networkClient)
-final networkClientProvider = AutoDisposeProvider<NetworkClient>.internal(
+final networkClientProvider = Provider<NetworkClient>.internal(
   networkClient,
   name: r'networkClientProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -20,6 +20,6 @@ final networkClientProvider = AutoDisposeProvider<NetworkClient>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef NetworkClientRef = AutoDisposeProviderRef<NetworkClient>;
+typedef NetworkClientRef = ProviderRef<NetworkClient>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

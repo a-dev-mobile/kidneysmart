@@ -30,7 +30,7 @@ const _$EnumInternetStatusEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$internerNotifierHash() => r'17fccc92d3d49b4051d75f13b2074cef393dd116';
+String _$internerNotifierHash() => r'ea18efa8c8c3d7ca62182c5fc89e29ccab986522';
 
 /// See also [InternerNotifier].
 @ProviderFor(InternerNotifier)

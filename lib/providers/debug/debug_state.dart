@@ -5,7 +5,7 @@ sealed class DebugState with _$DebugState {
   // const DebugState._();
 
   const factory DebugState({
-    @Default(EnumProject.prod_ND) EnumProject enumProject,
+    @Default(EnumProject.prod) EnumProject enumProject,
     @Default(EnumStore.unknown) EnumStore enumStore,
     @Default(false) bool isDebugMenuEnabled,
     @Default(false) bool isShowDevicePreview,

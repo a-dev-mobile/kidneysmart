@@ -6,11 +6,11 @@ part of 'app_storage.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appStorageHash() => r'20187531790fe6e9c22dd9611141376d941c5783';
+String _$appStorageHash() => r'042d0b117f3b4331d34f7918041cccb41c59e18c';
 
 /// See also [appStorage].
 @ProviderFor(appStorage)
-final appStorageProvider = AutoDisposeProvider<AppStorage>.internal(
+final appStorageProvider = Provider<AppStorage>.internal(
   appStorage,
   name: r'appStorageProvider',
   debugGetCreateSourceHash:
@@ -19,6 +19,6 @@ final appStorageProvider = AutoDisposeProvider<AppStorage>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef AppStorageRef = AutoDisposeProviderRef<AppStorage>;
+typedef AppStorageRef = ProviderRef<AppStorage>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

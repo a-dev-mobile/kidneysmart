@@ -16,9 +16,11 @@ import 'package:kidneysmart/app/app.dart';
 import 'package:kidneysmart/firebase_options.dart';
 
 import 'package:kidneysmart/services/about_device/about_device.dart';
+import 'package:kidneysmart/services/api_client/api_client.dart';
 import 'package:kidneysmart/services/app_logger/app_logger.dart';
 import 'package:kidneysmart/services/app_logger/log_state.dart';
 import 'package:kidneysmart/services/navigation/app_router.dart';
+import 'package:kidneysmart/services/network/network_client.dart';
 import 'package:kidneysmart/services/storage/app_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,13 +30,25 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
       () async {
         final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
         FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+    
+     final _ = await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        );
+
 
         final sharedPreferences = await SharedPreferences.getInstance();
         final appStorage = AppStorage(pref: sharedPreferences);
+        final debugState = appStorage.getDebugState();
+        final appRouter = AppRouter();
 
-        final _ = await Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform,
+        final networkClient = NetworkClient(
+          baseUrl: debugState.enumProject.api,
+          router: appRouter,
+          userAgent: '',
         );
+        final apiClient = ApiClient(client: networkClient, storage: appStorage);
+
+   
 
         // _debugState = await appStorage.getDebugState();
 
@@ -70,7 +84,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
           ProviderScope(
             overrides: [
               appStorageProvider.overrideWithValue(appStorage),
-              appRouterProvider.overrideWithValue(AppRouter()),
+              appRouterProvider.overrideWithValue(appRouter),
+              networkClientProvider.overrideWithValue(networkClient),
+              apiClientProvider.overrideWithValue(apiClient),
             ],
             observers: [if (kDebugMode) LogState()],
             child: const App(),

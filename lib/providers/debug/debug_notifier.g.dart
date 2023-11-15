@@ -10,7 +10,7 @@ _$DebugStateImpl _$$DebugStateImplFromJson(Map<String, dynamic> json) =>
     _$DebugStateImpl(
       enumProject:
           $enumDecodeNullable(_$EnumProjectEnumMap, json['enumProject']) ??
-              EnumProject.prod_ND,
+              EnumProject.prod,
       enumStore: $enumDecodeNullable(_$EnumStoreEnumMap, json['enumStore']) ??
           EnumStore.unknown,
       isDebugMenuEnabled: json['isDebugMenuEnabled'] as bool? ?? false,
@@ -34,18 +34,8 @@ Map<String, dynamic> _$$DebugStateImplToJson(_$DebugStateImpl instance) =>
     };
 
 const _$EnumProjectEnumMap = {
-  EnumProject.prod_C7: 'prod_C7',
-  EnumProject.prod_ND: 'prod_ND',
-  EnumProject.prod_BLK: 'prod_BLK',
-  EnumProject.stage_1_C7: 'stage_1_C7',
-  EnumProject.stage_2_C7: 'stage_2_C7',
-  EnumProject.stage_0_ND: 'stage_0_ND',
-  EnumProject.stage_1_ND: 'stage_1_ND',
-  EnumProject.stage_2_ND: 'stage_2_ND',
-  EnumProject.stage_3_ND: 'stage_3_ND',
-  EnumProject.stage_0_BLK: 'stage_0_BLK',
-  EnumProject.stage_4_BLK: 'stage_4_BLK',
-  EnumProject.stage_5_BLK: 'stage_5_BLK',
+  EnumProject.prod: 'prod',
+  EnumProject.dev: 'dev',
 };
 
 const _$EnumStoreEnumMap = {
@@ -63,7 +53,7 @@ const _$EnumStoreEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$debugNotifierHash() => r'bda5e174e5aa533555a53b11981c3972243a785b';
+String _$debugNotifierHash() => r'817aa49fb8772b3c8327fe3f442cb48dce71cc6f';
 
 /// See also [DebugNotifier].
 @ProviderFor(DebugNotifier)

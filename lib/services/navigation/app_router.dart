@@ -15,7 +15,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_router.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 AppRouter appRouter(AppRouterRef ref) {
   return throw UnimplementedError('init with override');
 }

@@ -29,7 +29,7 @@ const _$EnumPageStatusEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$splashNotifierHash() => r'13dce1fac7439ce05becf2ad6dc7d938f27b0c7f';
+String _$splashNotifierHash() => r'adf5dfcb336abfb66567f2e831170a168e0b40c5';
 
 /// See also [SplashNotifier].
 @ProviderFor(SplashNotifier)

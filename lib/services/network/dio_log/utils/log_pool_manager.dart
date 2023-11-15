@@ -4,19 +4,20 @@ import 'package:kidneysmart/services/network/dio_log/bean/err_options.dart';
 import 'package:kidneysmart/services/network/dio_log/bean/net_options.dart';
 import 'package:kidneysmart/services/network/dio_log/bean/req_options.dart';
 import 'package:kidneysmart/services/network/dio_log/bean/res_options.dart';
+
 ///управление журналом
 class LogPoolManager {
   LogPoolManager._singleton() {
-   final Map<String, NetOptions>  logMap = <String, NetOptions>{};
+    logMap = LinkedHashMap<String, NetOptions>();
     keys = <String>[];
   }
 
-///Запросить хранение журнала
+  ///Запросить хранение журнала
   late LinkedHashMap<String, NetOptions> logMap;
 
   late List<String> keys;
 
-///Максимальное количество запросов на хранение
+  ///Максимальное количество запросов на хранение
   int maxCount = 50;
 
   ResError isError =
@@ -61,7 +62,7 @@ class LogPoolManager {
     }
   }
 
-  ///日志清除
+  ///Очистка журнала
   void clear() {
     logMap.clear();
     keys.clear();

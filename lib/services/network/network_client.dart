@@ -9,8 +9,10 @@ import 'package:kidneysmart/services/network/dio_log/interceptor/dio_log_interce
 import 'package:kidneysmart/services/network/interceptors.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'network_client.g.dart';
-@riverpod
-NetworkClient networkClient() => throw UnimplementedError('init with override');
+
+@Riverpod(keepAlive: true)
+NetworkClient networkClient(NetworkClientRef ref) =>
+    throw UnimplementedError('init with override');
 
 class NetworkClient {
   NetworkClient({
