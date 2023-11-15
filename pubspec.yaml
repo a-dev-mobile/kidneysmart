@@ -81,12 +81,12 @@ dev_dependencies:
   freezed: ^2.4.5
   build_runner: ^2.4.6
   json_serializable: ^6.7.1
-  turn_gen: ^2.0.0
+  # turn_gen: ^2.0.0
   riverpod_generator: ^2.3.5
   custom_lint: ^0.5.6
 
-  # turn_gen:
-  # path: c:/DEV/MY/MY_GITHUB/turn_gen
+  turn_gen:
+    path: c:/DEV/MY/MY_GITHUB/turn_gen
 flutter:
   uses-material-design: true
 

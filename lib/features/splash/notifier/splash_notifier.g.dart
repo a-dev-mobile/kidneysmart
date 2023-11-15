@@ -3,6 +3,29 @@
 part of 'splash_notifier.dart';
 
 // **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$SplashStateImpl _$$SplashStateImplFromJson(Map<String, dynamic> json) =>
+    _$SplashStateImpl(
+      enumPageStatus: $enumDecodeNullable(
+              _$EnumPageStatusEnumMap, json['enumPageStatus']) ??
+          EnumPageStatus.init,
+    );
+
+Map<String, dynamic> _$$SplashStateImplToJson(_$SplashStateImpl instance) =>
+    <String, dynamic>{
+      'enumPageStatus': _$EnumPageStatusEnumMap[instance.enumPageStatus]!,
+    };
+
+const _$EnumPageStatusEnumMap = {
+  EnumPageStatus.init: 'init',
+  EnumPageStatus.load: 'load',
+  EnumPageStatus.success: 'success',
+  EnumPageStatus.error: 'error',
+};
+
+// **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 

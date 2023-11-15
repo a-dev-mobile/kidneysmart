@@ -109,7 +109,7 @@ enum EnumProject implements Comparable<EnumProject> {
         return fallback ??
             (throw ArgumentError.value(
               api,
-              '',
+              'api',
               'Value not found in EnumProject',
             ));
     }
@@ -148,7 +148,7 @@ enum EnumProject implements Comparable<EnumProject> {
         return fallback ??
             (throw ArgumentError.value(
               url,
-              '',
+              'url',
               'Value not found in EnumProject',
             ));
     }
@@ -187,9 +187,108 @@ enum EnumProject implements Comparable<EnumProject> {
         return fallback ??
             (throw ArgumentError.value(
               name,
-              '',
+              'name',
               'Value not found in EnumProject',
             ));
+    }
+  }
+
+  static EnumProject? fromApiOrNull(
+    String? api,
+  ) {
+    switch (api) {
+      case 'https://api.credit7.ru/':
+        return prod_C7;
+      case 'https://api.nadodeneg.ru/':
+        return prod_ND;
+      case 'https://api.belkacredit.ru/':
+        return prod_BLK;
+      case 'https://api1.credit7.online.aventus.work/':
+        return stage_1_C7;
+      case 'https://api2.credit7.online.aventus.work/':
+        return stage_2_C7;
+      case 'https://api0.nd.aventus.work/':
+        return stage_0_ND;
+      case 'https://api1.nd.aventus.work/':
+        return stage_1_ND;
+      case 'https://api2.nd.aventus.work/':
+        return stage_2_ND;
+      case 'https://api3.nd.aventus.work/':
+        return stage_3_ND;
+      case 'https://api0.belka.aventus.work/':
+        return stage_0_BLK;
+      case 'https://api4.belka.aventus.work/':
+        return stage_4_BLK;
+      case 'https://api5.belka.aventus.work/':
+        return stage_5_BLK;
+      default:
+        return null;
+    }
+  }
+
+  static EnumProject? fromUrlOrNull(
+    String? url,
+  ) {
+    switch (url) {
+      case 'https://credit7.ru/':
+        return prod_C7;
+      case 'https://nadodeneg.ru/':
+        return prod_ND;
+      case 'https://belkacredit.ru/':
+        return prod_BLK;
+      case 'https://c7-api1-ru-credit7.wp.mendep.ru/':
+        return stage_1_C7;
+      case 'https://c7-api2-ru-credit7.wp.mendep.ru/':
+        return stage_2_C7;
+      case 'https://nd-api0-ru-nadodeneg.wp.mendep.ru/':
+        return stage_0_ND;
+      case 'https://nd-api1-ru-nadodeneg.wp.mendep.ru/':
+        return stage_1_ND;
+      case 'https://nd-api1-ru-nadodeneg.wp.mendep.ru/':
+        return stage_2_ND;
+      case 'https://nd-api3-ru-nadodeneg.wp.mendep.ru/':
+        return stage_3_ND;
+      case 'https://bc-api0-ru-belkacredit.wp.mendep.ru/':
+        return stage_0_BLK;
+      case 'https://bc-api4-ru-belkacredit.wp.mendep.ru/':
+        return stage_4_BLK;
+      case 'https://bc-api5-ru-belkacredit.wp.mendep.ru/':
+        return stage_5_BLK;
+      default:
+        return null;
+    }
+  }
+
+  static EnumProject? fromNameOrNull(
+    String? name,
+  ) {
+    switch (name) {
+      case 'C7 Prod':
+        return prod_C7;
+      case 'ND Prod':
+        return prod_ND;
+      case 'BLK Prod':
+        return prod_BLK;
+      case 'C7 stage 1':
+        return stage_1_C7;
+      case 'C7 mob stage 2':
+        return stage_2_C7;
+      case 'ND stage 0':
+        return stage_0_ND;
+      case 'ND stage 1':
+        return stage_1_ND;
+      case 'ND stage 2':
+        return stage_2_ND;
+      case 'ND mob stage 3':
+        return stage_3_ND;
+      case 'BLK mob stage 0':
+        return stage_0_BLK;
+      case 'BLK stage 4':
+        return stage_4_BLK;
+      case 'BLK stage 5':
+        return stage_5_BLK;
+      default:
+        return null;
     }
   }
 

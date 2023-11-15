@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:kidneysmart/features/overlay_widget/view/widget/no_internet_widget.dart';
 
 class OverlayWidget extends StatefulWidget {
   const OverlayWidget({
@@ -23,6 +24,14 @@ class _OverlayWidgetState extends State<OverlayWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+        body: Stack(
+          children: [
+            widget.child,
+            const NoInternetWidget(),
+          
+          ],
+        ),
+      );
   }
 }

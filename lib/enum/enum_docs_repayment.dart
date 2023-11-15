@@ -31,9 +31,22 @@ enum EnumDocsRepayment implements Comparable<EnumDocsRepayment> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumDocsRepayment',
             ));
+    }
+  }
+
+  static EnumDocsRepayment? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'agreementRule':
+        return agreementRule;
+      case 'cardProtection':
+        return cardProtection;
+      default:
+        return null;
     }
   }
 

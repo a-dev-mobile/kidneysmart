@@ -41,9 +41,26 @@ enum EnumDocsExtension implements Comparable<EnumDocsExtension> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumDocsExtension',
             ));
+    }
+  }
+
+  static EnumDocsExtension? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'agreementRule':
+        return agreementRule;
+      case 'collectiveInsurance':
+        return collectiveInsurance;
+      case 'insuranceProlongation':
+        return insuranceProlongation;
+      case 'stayInTouch':
+        return stayInTouch;
+      default:
+        return null;
     }
   }
 

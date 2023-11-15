@@ -1,13 +1,15 @@
 import 'dart:convert';
 
 
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/enum/enum_page_status.dart';
 import 'package:meta/meta.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'splash_notifier.g.dart';
-part '../state/splash_state.dart';
+part 'splash_notifier.freezed.dart';
+part 'splash_state.dart';
 
 @riverpod
 class SplashNotifier extends _$SplashNotifier {

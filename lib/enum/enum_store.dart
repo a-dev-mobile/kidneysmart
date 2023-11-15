@@ -109,7 +109,7 @@ enum EnumStore implements Comparable<EnumStore> {
     return fallback ??
         (throw ArgumentError.value(
           packageId,
-          '',
+          'EnumStore',
           'Value not found in EnumStore',
         ));
   }
@@ -139,7 +139,7 @@ enum EnumStore implements Comparable<EnumStore> {
         return fallback ??
             (throw ArgumentError.value(
               url,
-              '',
+              'url',
               'Value not found in EnumStore',
             ));
     }
@@ -170,7 +170,7 @@ enum EnumStore implements Comparable<EnumStore> {
         return fallback ??
             (throw ArgumentError.value(
               name,
-              '',
+              'name',
               'Value not found in EnumStore',
             ));
     }
@@ -201,9 +201,96 @@ enum EnumStore implements Comparable<EnumStore> {
         return fallback ??
             (throw ArgumentError.value(
               vendor,
-              '',
+              'vendor',
               'Value not found in EnumStore',
             ));
+    }
+  }
+
+  static EnumStore? fromPackageIdOrNull(
+    String? packageId,
+  ) {
+    for (final enumValue in EnumStore.values) {
+      if (enumValue.packageId.contains(packageId)) {
+        return enumValue;
+      }
+    }
+
+    return null;
+  }
+
+  static EnumStore? fromUrlOrNull(
+    String? url,
+  ) {
+    switch (url) {
+      case '':
+        return appStore;
+      case '':
+        return googlePlay;
+      case '':
+        return getApps;
+      case '':
+        return packageInstaller;
+      case '':
+        return ruStore;
+      case '':
+        return appGallery;
+      case '':
+        return other;
+      case '':
+        return unknown;
+      default:
+        return null;
+    }
+  }
+
+  static EnumStore? fromNameOrNull(
+    String? name,
+  ) {
+    switch (name) {
+      case 'AppStore':
+        return appStore;
+      case 'GooglePlay':
+        return googlePlay;
+      case 'GetApps':
+        return getApps;
+      case 'PackageInstaller':
+        return packageInstaller;
+      case 'RuStore':
+        return ruStore;
+      case 'AppGallery':
+        return appGallery;
+      case 'Other':
+        return other;
+      case 'Unknown':
+        return unknown;
+      default:
+        return null;
+    }
+  }
+
+  static EnumStore? fromVendorOrNull(
+    String? vendor,
+  ) {
+    switch (vendor) {
+      case '(apple)':
+        return appStore;
+      case '(google)':
+        return googlePlay;
+      case '(xiaomi)':
+        return getApps;
+      case '(apk)':
+        return packageInstaller;
+      case '(vk)':
+        return ruStore;
+      case '(huawei)':
+        return appGallery;
+      case '':
+        return other;
+      case '':
+        return unknown;
+      default:
+        return null;
     }
   }
 

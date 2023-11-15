@@ -45,9 +45,26 @@ enum EnumPageStatus implements Comparable<EnumPageStatus> {
         return fallback ??
             (throw ArgumentError.value(
               desc,
-              '',
+              'desc',
               'Value not found in EnumPageStatus',
             ));
+    }
+  }
+
+  static EnumPageStatus? fromDescOrNull(
+    String? desc,
+  ) {
+    switch (desc) {
+      case 'Запуск...':
+        return init;
+      case 'Загрузка данных...':
+        return load;
+      case 'Данные успешно загружены!':
+        return success;
+      case 'Упс! Что-то пошло не так.':
+        return error;
+      default:
+        return null;
     }
   }
 

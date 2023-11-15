@@ -14,8 +14,8 @@ class LogState extends ProviderObserver {
   ) {
     log.t({
       '🙌 didUpdateProvider': '${provider.name ?? provider.runtimeType}',
-      '🙌 prev': '$previousValue',
-      '🙌 curr': '$newValue',
+      'prev': '$previousValue',
+      'curr': '$newValue',
     });
   }
 
@@ -28,7 +28,7 @@ class LogState extends ProviderObserver {
     log.d({
       '👍 didAddProvider ${provider.name ?? provider.runtimeType}':
           '${provider.name ?? provider.runtimeType}',
-      '👍 value': value,
+      'value': value,
     });
   }
 

@@ -33,9 +33,26 @@ enum EnumFio implements Comparable<EnumFio> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumFio',
             ));
+    }
+  }
+
+  static EnumFio? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'all':
+        return all;
+      case 'name':
+        return name;
+      case 'surname':
+        return surname;
+      case 'patronymic':
+        return patronymic;
+      default:
+        return null;
     }
   }
 

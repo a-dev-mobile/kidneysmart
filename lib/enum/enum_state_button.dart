@@ -30,9 +30,24 @@ enum EnumStateButton implements Comparable<EnumStateButton> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumStateButton',
             ));
+    }
+  }
+
+  static EnumStateButton? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'init':
+        return init;
+      case 'standard':
+        return standard;
+      case 'loading':
+        return loading;
+      default:
+        return null;
     }
   }
 

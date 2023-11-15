@@ -26,7 +26,6 @@ final _pageNavigatorKey = GlobalKey<NavigatorState>();
 final _tabNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppRouter {
-
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   static FirebaseAnalyticsObserver observer =
       FirebaseAnalyticsObserver(analytics: analytics);
@@ -43,8 +42,13 @@ class AppRouter {
     // initialLocation: TextFieldPage.path,
     observers: <NavigatorObserver>[observer],
     debugLogDiagnostics: true,
-   
-      routes: [
+
+    routes: [
+      ShellRoute(
+        builder: (_, GoRouterState state, child) {
+          return OverlayWidget(goRouterState: state, child: child);
+        },
+        routes: [
           GoRoute(
             path: DebugMenuPage.path,
             name: DebugMenuPage.name,
@@ -94,7 +98,8 @@ class AppRouter {
             ),
           ),
         ],
-    
+      ),
+    ],
   );
 
   Future<void> toAutoRouter() async {}

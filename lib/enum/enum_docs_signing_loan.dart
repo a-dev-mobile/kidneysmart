@@ -71,9 +71,38 @@ enum EnumDocsSigning implements Comparable<EnumDocsSigning> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumDocsSigning',
             ));
+    }
+  }
+
+  static EnumDocsSigning? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'agreementUseSimpleElectronicSign':
+        return agreementUseSimpleElectronicSign;
+      case 'agreementProcessingPersonalData':
+        return agreementProcessingPersonalData;
+      case 'agreementCreditReport':
+        return agreementCreditReport;
+      case 'agreementService':
+        return agreementService;
+      case 'agreementContractLongPeriod':
+        return agreementContractLongPeriod;
+      case 'advertising':
+        return advertising;
+      case 'collectiveInsurance':
+        return collectiveInsurance;
+      case 'insuranceProlongation':
+        return insuranceProlongation;
+      case 'stayInTouch':
+        return stayInTouch;
+      case 'autoCharge':
+        return autoCharge;
+      default:
+        return null;
     }
   }
 

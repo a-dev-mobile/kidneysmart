@@ -27,9 +27,22 @@ enum EnumTypeDocs implements Comparable<EnumTypeDocs> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumTypeDocs',
             ));
+    }
+  }
+
+  static EnumTypeDocs? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'signing':
+        return signing;
+      case 'extension':
+        return extension;
+      default:
+        return null;
     }
   }
 

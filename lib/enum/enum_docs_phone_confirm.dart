@@ -51,9 +51,30 @@ enum EnumDocsPhoneConfirm implements Comparable<EnumDocsPhoneConfirm> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumDocsPhoneConfirm',
             ));
+    }
+  }
+
+  static EnumDocsPhoneConfirm? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'pep':
+        return pep;
+      case 'consentBorrower':
+        return consentBorrower;
+      case 'agreementProcessingPersonalData':
+        return agreementProcessingPersonalData;
+      case 'agreementCreditReport':
+        return agreementCreditReport;
+      case 'generalConditions':
+        return generalConditions;
+      case 'loanRules':
+        return loanRules;
+      default:
+        return null;
     }
   }
 

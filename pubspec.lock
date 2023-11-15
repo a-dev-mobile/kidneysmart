@@ -1101,10 +1101,9 @@ packages:
   turn_gen:
     dependency: "direct dev"
     description:
-      name: turn_gen
-      sha256: ec1ee11436348f6a5e145266da7fd2b562849394becfa968278355c25d2b0e89
-      url: "https://pub.dev"
-    source: hosted
+      path: "c:/DEV/MY/MY_GITHUB/turn_gen"
+      relative: false
+    source: path
     version: "2.1.0"
   typed_data:
     dependency: transitive

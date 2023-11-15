@@ -65,9 +65,30 @@ enum EnumDocsConfirmLoan implements Comparable<EnumDocsConfirmLoan> {
         return fallback ??
             (throw ArgumentError.value(
               key,
-              '',
+              'key',
               'Value not found in EnumDocsConfirmLoan',
             ));
+    }
+  }
+
+  static EnumDocsConfirmLoan? fromKeyOrNull(
+    String? key,
+  ) {
+    switch (key) {
+      case 'loanRepaymentCondition':
+        return loanRepaymentCondition;
+      case 'agreementProcessingPersonalData':
+        return agreementProcessingPersonalData;
+      case 'agreementCreditReport':
+        return agreementCreditReport;
+      case 'agreementService':
+        return agreementService;
+      case 'agreementElectronicSignature':
+        return agreementElectronicSignature;
+      case 'cessionAllowed':
+        return cessionAllowed;
+      default:
+        return null;
     }
   }
 

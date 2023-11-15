@@ -41,9 +41,26 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumSmsStatus',
             ));
+    }
+  }
+
+  static EnumSmsStatus? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'init':
+        return init;
+      case 'waitingForCode':
+        return waitingForCode;
+      case 'success':
+        return success;
+      case 'error':
+        return error;
+      default:
+        return null;
     }
   }
 

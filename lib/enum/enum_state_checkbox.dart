@@ -36,9 +36,28 @@ enum EnumStateCheckboxValue implements Comparable<EnumStateCheckboxValue> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumStateCheckboxValue',
             ));
+    }
+  }
+
+  static EnumStateCheckboxValue? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'checked':
+        return checked;
+      case 'unchecked':
+        return unchecked;
+      case 'indeterminate':
+        return indeterminate;
+      case 'disabled':
+        return disabled;
+      case 'error':
+        return error;
+      default:
+        return null;
     }
   }
 

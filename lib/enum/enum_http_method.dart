@@ -30,9 +30,24 @@ enum EnumHttpMethod implements Comparable<EnumHttpMethod> {
         return fallback ??
             (throw ArgumentError.value(
               value,
-              '',
+              'value',
               'Value not found in EnumHttpMethod',
             ));
+    }
+  }
+
+  static EnumHttpMethod? fromValueOrNull(
+    String? value,
+  ) {
+    switch (value) {
+      case 'post':
+        return post;
+      case 'get':
+        return get;
+      case 'patch':
+        return patch;
+      default:
+        return null;
     }
   }
 
