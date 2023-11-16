@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/features/overlay_widget/view/widget/update_hard_app_page.dart';
 import 'package:kidneysmart/features/splash/view/splash_page.dart';
-import 'package:kidneysmart/providers/debug/debug_notifier.dart';
+import 'package:kidneysmart/providers/debug/app_setting_notifier.dart';
 import 'package:kidneysmart/providers/internet/internet_notifier.dart';
 import 'package:kidneysmart/services/network/dio_log/http_log_list_widget.dart';
 import 'package:meta/meta.dart';
@@ -61,7 +61,7 @@ class _OverlayWidgetState extends ConsumerState<OverlayWidget> {
     final enumInternetStatus = ref
         .watch(internerNotifierProvider.select((it) => it.enumInternetStatus));
     final isDebugMenuEnabled =
-        ref.watch(debugNotifierProvider.select((it) => it.isDebugMenuEnabled));
+        ref.watch(appSettingNotifierProvider.select((it) => it.isDebugMenuEnabled));
 
     final location = widget.goRouterState.location;
     final isActiveClickDebug =
@@ -80,7 +80,7 @@ class _OverlayWidgetState extends ConsumerState<OverlayWidget> {
           if (isDebugMenuEnabled) const _DebugBtn(),
 
            if (isActiveClickDebug)
-              _BtnActivateDebug(onTap: ref.read(debugNotifierProvider.notifier).setClickDebug),
+              _BtnActivateDebug(onTap: ref.read(appSettingNotifierProvider.notifier).setClickDebug),
         ],
       ),
     );

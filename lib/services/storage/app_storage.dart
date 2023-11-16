@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:kidneysmart/providers/debug/debug_notifier.dart';
+import 'package:kidneysmart/providers/debug/app_setting_notifier.dart';
 import 'package:kidneysmart/services/app_logger/app_logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,13 +43,13 @@ class AppStorage {
 // ******************************
   static const _debugState = '_debugState';
 
-  DebugState getDebugState() {
+  AppSettingState getAppSettingState() {
     final map = getJson(key: _debugState);
-    if (map.isEmpty) return const DebugState();
-    return DebugState.fromJson(getJson(key: _debugState));
+    if (map.isEmpty) return  const AppSettingState();
+    return AppSettingState.fromJson(getJson(key: _debugState));
   }
 
-  Future<void> setDebugState(DebugState value) {
+  Future<void> setAppSettingState(AppSettingState value) {
     return setJson(key: _debugState, value: value.toJson());
   }
 

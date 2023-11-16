@@ -44,23 +44,14 @@ class ApiClient {
       );
 
       // Check if the response is successful and decode it
+      final jsonResponse = response.data as Map<String, dynamic>;
       if (response.statusCode == 200) {
-        final jsonResponse = response.data as Map<String, dynamic>;
-
-        // Determine response type based on the content of the response
-        if (jsonResponse.containsKey('updateType')) {
-          return ApiAppUpdateCheckRes.success(
-            SuccessResponse.fromJson(jsonResponse),
-          );
-        } else {
-          return ApiAppUpdateCheckRes.error(
-            ErrorResponse.fromJson(jsonResponse),
-          );
-        }
+        return ApiAppUpdateCheckRes.success(
+          ApiAppUpdateCheckResSuccess.fromJson(jsonResponse),
+        );
       } else {
-        // Handle non-200 responses here
         return ApiAppUpdateCheckRes.error(
-          ErrorResponse(message: 'Error: ${response.statusCode}'),
+          ApiAppUpdateCheckResError.fromJson(jsonResponse),
         );
       }
     } on Object catch (e, stackTrace) {
@@ -72,7 +63,7 @@ class ApiClient {
         },
       );
       return const ApiAppUpdateCheckRes.error(
-        ErrorResponse(),
+        ApiAppUpdateCheckResError(),
       );
     }
   }

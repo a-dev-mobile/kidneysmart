@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/app/app_lifecycle_manager.dart';
 import 'package:kidneysmart/common/styles/app_theme.dart';
 import 'package:kidneysmart/l10n/app_localizations.dart';
-import 'package:kidneysmart/providers/debug/debug_notifier.dart';
+import 'package:kidneysmart/providers/debug/app_setting_notifier.dart';
 
 import 'package:kidneysmart/providers/internet/internet_notifier.dart';
 import 'package:kidneysmart/services/navigation/app_router.dart';
@@ -19,7 +19,7 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref
-      ..read(debugNotifierProvider)
+      ..read(appSettingNotifierProvider)
       ..read(internerNotifierProvider);
     return const _MobileApp();
   }

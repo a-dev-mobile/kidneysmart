@@ -34,20 +34,21 @@ ApiAppUpdateCheckRes _$ApiAppUpdateCheckResFromJson(Map<String, dynamic> json) {
 mixin _$ApiAppUpdateCheckRes {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SuccessResponse successResponse) success,
-    required TResult Function(ErrorResponse errorResponse) error,
+    required TResult Function(ApiAppUpdateCheckResSuccess successResponse)
+        success,
+    required TResult Function(ApiAppUpdateCheckResError errorResponse) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SuccessResponse successResponse)? success,
-    TResult? Function(ErrorResponse errorResponse)? error,
+    TResult? Function(ApiAppUpdateCheckResSuccess successResponse)? success,
+    TResult? Function(ApiAppUpdateCheckResError errorResponse)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SuccessResponse successResponse)? success,
-    TResult Function(ErrorResponse errorResponse)? error,
+    TResult Function(ApiAppUpdateCheckResSuccess successResponse)? success,
+    TResult Function(ApiAppUpdateCheckResError errorResponse)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -98,9 +99,9 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SuccessResponse successResponse});
+  $Res call({ApiAppUpdateCheckResSuccess successResponse});
 
-  $SuccessResponseCopyWith<$Res> get successResponse;
+  $ApiAppUpdateCheckResSuccessCopyWith<$Res> get successResponse;
 }
 
 /// @nodoc
@@ -120,14 +121,15 @@ class __$$SuccessImplCopyWithImpl<$Res>
       null == successResponse
           ? _value.successResponse
           : successResponse // ignore: cast_nullable_to_non_nullable
-              as SuccessResponse,
+              as ApiAppUpdateCheckResSuccess,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $SuccessResponseCopyWith<$Res> get successResponse {
-    return $SuccessResponseCopyWith<$Res>(_value.successResponse, (value) {
+  $ApiAppUpdateCheckResSuccessCopyWith<$Res> get successResponse {
+    return $ApiAppUpdateCheckResSuccessCopyWith<$Res>(_value.successResponse,
+        (value) {
       return _then(_value.copyWith(successResponse: value));
     });
   }
@@ -143,7 +145,7 @@ class _$SuccessImpl implements _Success {
       _$$SuccessImplFromJson(json);
 
   @override
-  final SuccessResponse successResponse;
+  final ApiAppUpdateCheckResSuccess successResponse;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -175,8 +177,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SuccessResponse successResponse) success,
-    required TResult Function(ErrorResponse errorResponse) error,
+    required TResult Function(ApiAppUpdateCheckResSuccess successResponse)
+        success,
+    required TResult Function(ApiAppUpdateCheckResError errorResponse) error,
   }) {
     return success(successResponse);
   }
@@ -184,8 +187,8 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SuccessResponse successResponse)? success,
-    TResult? Function(ErrorResponse errorResponse)? error,
+    TResult? Function(ApiAppUpdateCheckResSuccess successResponse)? success,
+    TResult? Function(ApiAppUpdateCheckResError errorResponse)? error,
   }) {
     return success?.call(successResponse);
   }
@@ -193,8 +196,8 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SuccessResponse successResponse)? success,
-    TResult Function(ErrorResponse errorResponse)? error,
+    TResult Function(ApiAppUpdateCheckResSuccess successResponse)? success,
+    TResult Function(ApiAppUpdateCheckResError errorResponse)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -243,11 +246,12 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements ApiAppUpdateCheckRes {
-  const factory _Success(final SuccessResponse successResponse) = _$SuccessImpl;
+  const factory _Success(final ApiAppUpdateCheckResSuccess successResponse) =
+      _$SuccessImpl;
 
   factory _Success.fromJson(Map<String, dynamic> json) = _$SuccessImpl.fromJson;
 
-  SuccessResponse get successResponse;
+  ApiAppUpdateCheckResSuccess get successResponse;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -259,9 +263,9 @@ abstract class _$$ErrorImplCopyWith<$Res> {
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ErrorResponse errorResponse});
+  $Res call({ApiAppUpdateCheckResError errorResponse});
 
-  $ErrorResponseCopyWith<$Res> get errorResponse;
+  $ApiAppUpdateCheckResErrorCopyWith<$Res> get errorResponse;
 }
 
 /// @nodoc
@@ -281,14 +285,15 @@ class __$$ErrorImplCopyWithImpl<$Res>
       null == errorResponse
           ? _value.errorResponse
           : errorResponse // ignore: cast_nullable_to_non_nullable
-              as ErrorResponse,
+              as ApiAppUpdateCheckResError,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ErrorResponseCopyWith<$Res> get errorResponse {
-    return $ErrorResponseCopyWith<$Res>(_value.errorResponse, (value) {
+  $ApiAppUpdateCheckResErrorCopyWith<$Res> get errorResponse {
+    return $ApiAppUpdateCheckResErrorCopyWith<$Res>(_value.errorResponse,
+        (value) {
       return _then(_value.copyWith(errorResponse: value));
     });
   }
@@ -304,7 +309,7 @@ class _$ErrorImpl implements _Error {
       _$$ErrorImplFromJson(json);
 
   @override
-  final ErrorResponse errorResponse;
+  final ApiAppUpdateCheckResError errorResponse;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -336,8 +341,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SuccessResponse successResponse) success,
-    required TResult Function(ErrorResponse errorResponse) error,
+    required TResult Function(ApiAppUpdateCheckResSuccess successResponse)
+        success,
+    required TResult Function(ApiAppUpdateCheckResError errorResponse) error,
   }) {
     return error(errorResponse);
   }
@@ -345,8 +351,8 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SuccessResponse successResponse)? success,
-    TResult? Function(ErrorResponse errorResponse)? error,
+    TResult? Function(ApiAppUpdateCheckResSuccess successResponse)? success,
+    TResult? Function(ApiAppUpdateCheckResError errorResponse)? error,
   }) {
     return error?.call(errorResponse);
   }
@@ -354,8 +360,8 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SuccessResponse successResponse)? success,
-    TResult Function(ErrorResponse errorResponse)? error,
+    TResult Function(ApiAppUpdateCheckResSuccess successResponse)? success,
+    TResult Function(ApiAppUpdateCheckResError errorResponse)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -404,22 +410,24 @@ class _$ErrorImpl implements _Error {
 }
 
 abstract class _Error implements ApiAppUpdateCheckRes {
-  const factory _Error(final ErrorResponse errorResponse) = _$ErrorImpl;
+  const factory _Error(final ApiAppUpdateCheckResError errorResponse) =
+      _$ErrorImpl;
 
   factory _Error.fromJson(Map<String, dynamic> json) = _$ErrorImpl.fromJson;
 
-  ErrorResponse get errorResponse;
+  ApiAppUpdateCheckResError get errorResponse;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-SuccessResponse _$SuccessResponseFromJson(Map<String, dynamic> json) {
-  return _SuccessResponse.fromJson(json);
+ApiAppUpdateCheckResSuccess _$ApiAppUpdateCheckResSuccessFromJson(
+    Map<String, dynamic> json) {
+  return _ApiAppUpdateCheckResSuccess.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SuccessResponse {
+mixin _$ApiAppUpdateCheckResSuccess {
   @JsonKey(
       name: 'updateType',
       toJson: enumAppUpdateTypeToJson,
@@ -428,15 +436,17 @@ mixin _$SuccessResponse {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SuccessResponseCopyWith<SuccessResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ApiAppUpdateCheckResSuccessCopyWith<ApiAppUpdateCheckResSuccess>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SuccessResponseCopyWith<$Res> {
-  factory $SuccessResponseCopyWith(
-          SuccessResponse value, $Res Function(SuccessResponse) then) =
-      _$SuccessResponseCopyWithImpl<$Res, SuccessResponse>;
+abstract class $ApiAppUpdateCheckResSuccessCopyWith<$Res> {
+  factory $ApiAppUpdateCheckResSuccessCopyWith(
+          ApiAppUpdateCheckResSuccess value,
+          $Res Function(ApiAppUpdateCheckResSuccess) then) =
+      _$ApiAppUpdateCheckResSuccessCopyWithImpl<$Res,
+          ApiAppUpdateCheckResSuccess>;
   @useResult
   $Res call(
       {@JsonKey(
@@ -447,9 +457,10 @@ abstract class $SuccessResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SuccessResponseCopyWithImpl<$Res, $Val extends SuccessResponse>
-    implements $SuccessResponseCopyWith<$Res> {
-  _$SuccessResponseCopyWithImpl(this._value, this._then);
+class _$ApiAppUpdateCheckResSuccessCopyWithImpl<$Res,
+        $Val extends ApiAppUpdateCheckResSuccess>
+    implements $ApiAppUpdateCheckResSuccessCopyWith<$Res> {
+  _$ApiAppUpdateCheckResSuccessCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -471,11 +482,12 @@ class _$SuccessResponseCopyWithImpl<$Res, $Val extends SuccessResponse>
 }
 
 /// @nodoc
-abstract class _$$SuccessResponseImplCopyWith<$Res>
-    implements $SuccessResponseCopyWith<$Res> {
-  factory _$$SuccessResponseImplCopyWith(_$SuccessResponseImpl value,
-          $Res Function(_$SuccessResponseImpl) then) =
-      __$$SuccessResponseImplCopyWithImpl<$Res>;
+abstract class _$$ApiAppUpdateCheckResSuccessImplCopyWith<$Res>
+    implements $ApiAppUpdateCheckResSuccessCopyWith<$Res> {
+  factory _$$ApiAppUpdateCheckResSuccessImplCopyWith(
+          _$ApiAppUpdateCheckResSuccessImpl value,
+          $Res Function(_$ApiAppUpdateCheckResSuccessImpl) then) =
+      __$$ApiAppUpdateCheckResSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -487,11 +499,13 @@ abstract class _$$SuccessResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SuccessResponseImplCopyWithImpl<$Res>
-    extends _$SuccessResponseCopyWithImpl<$Res, _$SuccessResponseImpl>
-    implements _$$SuccessResponseImplCopyWith<$Res> {
-  __$$SuccessResponseImplCopyWithImpl(
-      _$SuccessResponseImpl _value, $Res Function(_$SuccessResponseImpl) _then)
+class __$$ApiAppUpdateCheckResSuccessImplCopyWithImpl<$Res>
+    extends _$ApiAppUpdateCheckResSuccessCopyWithImpl<$Res,
+        _$ApiAppUpdateCheckResSuccessImpl>
+    implements _$$ApiAppUpdateCheckResSuccessImplCopyWith<$Res> {
+  __$$ApiAppUpdateCheckResSuccessImplCopyWithImpl(
+      _$ApiAppUpdateCheckResSuccessImpl _value,
+      $Res Function(_$ApiAppUpdateCheckResSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -499,7 +513,7 @@ class __$$SuccessResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? enumAppUpdateType = null,
   }) {
-    return _then(_$SuccessResponseImpl(
+    return _then(_$ApiAppUpdateCheckResSuccessImpl(
       enumAppUpdateType: null == enumAppUpdateType
           ? _value.enumAppUpdateType
           : enumAppUpdateType // ignore: cast_nullable_to_non_nullable
@@ -510,16 +524,18 @@ class __$$SuccessResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SuccessResponseImpl implements _SuccessResponse {
-  const _$SuccessResponseImpl(
+class _$ApiAppUpdateCheckResSuccessImpl
+    implements _ApiAppUpdateCheckResSuccess {
+  const _$ApiAppUpdateCheckResSuccessImpl(
       {@JsonKey(
           name: 'updateType',
           toJson: enumAppUpdateTypeToJson,
           fromJson: enumAppUpdateTypeFromJson)
       this.enumAppUpdateType = EnumAppUpdateType.none});
 
-  factory _$SuccessResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SuccessResponseImplFromJson(json);
+  factory _$ApiAppUpdateCheckResSuccessImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ApiAppUpdateCheckResSuccessImplFromJson(json);
 
   @override
   @JsonKey(
@@ -530,14 +546,14 @@ class _$SuccessResponseImpl implements _SuccessResponse {
 
   @override
   String toString() {
-    return 'SuccessResponse(enumAppUpdateType: $enumAppUpdateType)';
+    return 'ApiAppUpdateCheckResSuccess(enumAppUpdateType: $enumAppUpdateType)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessResponseImpl &&
+            other is _$ApiAppUpdateCheckResSuccessImpl &&
             (identical(other.enumAppUpdateType, enumAppUpdateType) ||
                 other.enumAppUpdateType == enumAppUpdateType));
   }
@@ -549,28 +565,30 @@ class _$SuccessResponseImpl implements _SuccessResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessResponseImplCopyWith<_$SuccessResponseImpl> get copyWith =>
-      __$$SuccessResponseImplCopyWithImpl<_$SuccessResponseImpl>(
-          this, _$identity);
+  _$$ApiAppUpdateCheckResSuccessImplCopyWith<_$ApiAppUpdateCheckResSuccessImpl>
+      get copyWith => __$$ApiAppUpdateCheckResSuccessImplCopyWithImpl<
+          _$ApiAppUpdateCheckResSuccessImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SuccessResponseImplToJson(
+    return _$$ApiAppUpdateCheckResSuccessImplToJson(
       this,
     );
   }
 }
 
-abstract class _SuccessResponse implements SuccessResponse {
-  const factory _SuccessResponse(
-      {@JsonKey(
-          name: 'updateType',
-          toJson: enumAppUpdateTypeToJson,
-          fromJson: enumAppUpdateTypeFromJson)
-      final EnumAppUpdateType enumAppUpdateType}) = _$SuccessResponseImpl;
+abstract class _ApiAppUpdateCheckResSuccess
+    implements ApiAppUpdateCheckResSuccess {
+  const factory _ApiAppUpdateCheckResSuccess(
+          {@JsonKey(
+              name: 'updateType',
+              toJson: enumAppUpdateTypeToJson,
+              fromJson: enumAppUpdateTypeFromJson)
+          final EnumAppUpdateType enumAppUpdateType}) =
+      _$ApiAppUpdateCheckResSuccessImpl;
 
-  factory _SuccessResponse.fromJson(Map<String, dynamic> json) =
-      _$SuccessResponseImpl.fromJson;
+  factory _ApiAppUpdateCheckResSuccess.fromJson(Map<String, dynamic> json) =
+      _$ApiAppUpdateCheckResSuccessImpl.fromJson;
 
   @override
   @JsonKey(
@@ -580,37 +598,39 @@ abstract class _SuccessResponse implements SuccessResponse {
   EnumAppUpdateType get enumAppUpdateType;
   @override
   @JsonKey(ignore: true)
-  _$$SuccessResponseImplCopyWith<_$SuccessResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ApiAppUpdateCheckResSuccessImplCopyWith<_$ApiAppUpdateCheckResSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
-  return _ErrorResponse.fromJson(json);
+ApiAppUpdateCheckResError _$ApiAppUpdateCheckResErrorFromJson(
+    Map<String, dynamic> json) {
+  return _ApiAppUpdateCheckResError.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ErrorResponse {
+mixin _$ApiAppUpdateCheckResError {
   String get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ErrorResponseCopyWith<ErrorResponse> get copyWith =>
+  $ApiAppUpdateCheckResErrorCopyWith<ApiAppUpdateCheckResError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ErrorResponseCopyWith<$Res> {
-  factory $ErrorResponseCopyWith(
-          ErrorResponse value, $Res Function(ErrorResponse) then) =
-      _$ErrorResponseCopyWithImpl<$Res, ErrorResponse>;
+abstract class $ApiAppUpdateCheckResErrorCopyWith<$Res> {
+  factory $ApiAppUpdateCheckResErrorCopyWith(ApiAppUpdateCheckResError value,
+          $Res Function(ApiAppUpdateCheckResError) then) =
+      _$ApiAppUpdateCheckResErrorCopyWithImpl<$Res, ApiAppUpdateCheckResError>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
-    implements $ErrorResponseCopyWith<$Res> {
-  _$ErrorResponseCopyWithImpl(this._value, this._then);
+class _$ApiAppUpdateCheckResErrorCopyWithImpl<$Res,
+        $Val extends ApiAppUpdateCheckResError>
+    implements $ApiAppUpdateCheckResErrorCopyWith<$Res> {
+  _$ApiAppUpdateCheckResErrorCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -632,22 +652,25 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
 }
 
 /// @nodoc
-abstract class _$$ErrorResponseImplCopyWith<$Res>
-    implements $ErrorResponseCopyWith<$Res> {
-  factory _$$ErrorResponseImplCopyWith(
-          _$ErrorResponseImpl value, $Res Function(_$ErrorResponseImpl) then) =
-      __$$ErrorResponseImplCopyWithImpl<$Res>;
+abstract class _$$ApiAppUpdateCheckResErrorImplCopyWith<$Res>
+    implements $ApiAppUpdateCheckResErrorCopyWith<$Res> {
+  factory _$$ApiAppUpdateCheckResErrorImplCopyWith(
+          _$ApiAppUpdateCheckResErrorImpl value,
+          $Res Function(_$ApiAppUpdateCheckResErrorImpl) then) =
+      __$$ApiAppUpdateCheckResErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ErrorResponseImplCopyWithImpl<$Res>
-    extends _$ErrorResponseCopyWithImpl<$Res, _$ErrorResponseImpl>
-    implements _$$ErrorResponseImplCopyWith<$Res> {
-  __$$ErrorResponseImplCopyWithImpl(
-      _$ErrorResponseImpl _value, $Res Function(_$ErrorResponseImpl) _then)
+class __$$ApiAppUpdateCheckResErrorImplCopyWithImpl<$Res>
+    extends _$ApiAppUpdateCheckResErrorCopyWithImpl<$Res,
+        _$ApiAppUpdateCheckResErrorImpl>
+    implements _$$ApiAppUpdateCheckResErrorImplCopyWith<$Res> {
+  __$$ApiAppUpdateCheckResErrorImplCopyWithImpl(
+      _$ApiAppUpdateCheckResErrorImpl _value,
+      $Res Function(_$ApiAppUpdateCheckResErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -655,7 +678,7 @@ class __$$ErrorResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$ErrorResponseImpl(
+    return _then(_$ApiAppUpdateCheckResErrorImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -666,11 +689,11 @@ class __$$ErrorResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ErrorResponseImpl implements _ErrorResponse {
-  const _$ErrorResponseImpl({this.message = 'что то'});
+class _$ApiAppUpdateCheckResErrorImpl implements _ApiAppUpdateCheckResError {
+  const _$ApiAppUpdateCheckResErrorImpl({this.message = 'Something happened'});
 
-  factory _$ErrorResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ErrorResponseImplFromJson(json);
+  factory _$ApiAppUpdateCheckResErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiAppUpdateCheckResErrorImplFromJson(json);
 
   @override
   @JsonKey()
@@ -678,14 +701,14 @@ class _$ErrorResponseImpl implements _ErrorResponse {
 
   @override
   String toString() {
-    return 'ErrorResponse(message: $message)';
+    return 'ApiAppUpdateCheckResError(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorResponseImpl &&
+            other is _$ApiAppUpdateCheckResErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -696,27 +719,29 @@ class _$ErrorResponseImpl implements _ErrorResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorResponseImplCopyWith<_$ErrorResponseImpl> get copyWith =>
-      __$$ErrorResponseImplCopyWithImpl<_$ErrorResponseImpl>(this, _$identity);
+  _$$ApiAppUpdateCheckResErrorImplCopyWith<_$ApiAppUpdateCheckResErrorImpl>
+      get copyWith => __$$ApiAppUpdateCheckResErrorImplCopyWithImpl<
+          _$ApiAppUpdateCheckResErrorImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ErrorResponseImplToJson(
+    return _$$ApiAppUpdateCheckResErrorImplToJson(
       this,
     );
   }
 }
 
-abstract class _ErrorResponse implements ErrorResponse {
-  const factory _ErrorResponse({final String message}) = _$ErrorResponseImpl;
+abstract class _ApiAppUpdateCheckResError implements ApiAppUpdateCheckResError {
+  const factory _ApiAppUpdateCheckResError({final String message}) =
+      _$ApiAppUpdateCheckResErrorImpl;
 
-  factory _ErrorResponse.fromJson(Map<String, dynamic> json) =
-      _$ErrorResponseImpl.fromJson;
+  factory _ApiAppUpdateCheckResError.fromJson(Map<String, dynamic> json) =
+      _$ApiAppUpdateCheckResErrorImpl.fromJson;
 
   @override
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$ErrorResponseImplCopyWith<_$ErrorResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ApiAppUpdateCheckResErrorImplCopyWith<_$ApiAppUpdateCheckResErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

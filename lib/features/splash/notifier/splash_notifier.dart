@@ -6,6 +6,8 @@ import 'dart:developer';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/enum/enum_page_status.dart';
 import 'package:kidneysmart/models/api/app_update/req/api_app_update_check_req.dart';
+import 'package:kidneysmart/models/api/app_update/res/api_app_update_check_res.dart';
+import 'package:kidneysmart/providers/debug/app_setting_notifier.dart';
 import 'package:kidneysmart/services/api_client/api_client.dart';
 import 'package:meta/meta.dart';
 
@@ -24,6 +26,9 @@ class SplashNotifier extends _$SplashNotifier {
   }
 
   late final _client = ref.read(apiClientProvider);
+  late final _appSettingNotifier =
+      ref.read(appSettingNotifierProvider.notifier);
+
   Future<void> load() async {
     state = state.copyWith(enumPageStatus: EnumPageStatus.load);
     await Future<void>.delayed(const Duration(seconds: 3));
@@ -33,14 +38,17 @@ class SplashNotifier extends _$SplashNotifier {
       installerPackageName: 'apk',
     );
 
-    final a = await _client.fetchAppVersion(req);
+    final resultApi = await _client.fetchAppVersion(req);
 
-    a.when(
+    final currentSetting = _appSettingNotifier.state;
+    resultApi.when(
       success: (v) {
+        _appSettingNotifier.state =
+            currentSetting.copyWith(apiAppUpdateCheckResSuccess: v);
         log(v.toString());
 
-       
-        log(v.enumAppUpdateType.mapValue(hard: 'hard', none: 'none', soft: 'soft'));
+        log(v.enumAppUpdateType
+            .mapValue(hard: 'hard', none: 'none', soft: 'soft'));
       },
       error: (v) {
         log(v.toString());

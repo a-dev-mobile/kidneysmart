@@ -14,6 +14,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/app/app.dart';
 import 'package:kidneysmart/firebase_options.dart';
+import 'package:kidneysmart/providers/debug/app_setting_notifier.dart';
 
 import 'package:kidneysmart/services/about_device/about_device.dart';
 import 'package:kidneysmart/services/api_client/api_client.dart';
@@ -30,33 +31,37 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
       () async {
         final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
         FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-    
-     final _ = await Firebase.initializeApp(
+
+        final _ = await Firebase.initializeApp(
           options: DefaultFirebaseOptions.currentPlatform,
         );
 
-
         final sharedPreferences = await SharedPreferences.getInstance();
         final appStorage = AppStorage(pref: sharedPreferences);
-        final debugState = appStorage.getDebugState();
+        // Получение информации о пакете и версии
+        final packageName = await AboutDevice.getPackageName();
+        final currentVersionApp = await AboutDevice.getAppVersion();
+
+        final appSettingState = appStorage.getAppSettingState().copyWith(
+              appInfoSettings: AppInfoSettings(
+                appPackage: packageName,
+                currentVersion: currentVersionApp,
+              ),
+            );
+        await appStorage.setAppSettingState(appSettingState);
         final appRouter = AppRouter();
 
         final networkClient = NetworkClient(
-          baseUrl: debugState.enumProject.api,
+          baseUrl: appSettingState.enumProject.api,
           router: appRouter,
           userAgent: '',
         );
         final apiClient = ApiClient(client: networkClient, storage: appStorage);
 
-   
-
-        // _debugState = await appStorage.getDebugState();
-
         // final userAgent = await AboutDevice.getAgent(
         // _debugState.isDebugMenuEnabled ? _debugState.enumStore.name : null,
         // );
-        final packageName = await AboutDevice.getPackageName();
-        final currentVersionApp = await AboutDevice.getAppVersion();
+
 
         // final versionCheckService = VersionCheckService(storage: appStorage);
         // await versionCheckService

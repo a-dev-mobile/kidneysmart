@@ -6,33 +6,54 @@ import 'package:kidneysmart/services/network/dio_log/bean/net_options.dart';
 import 'package:kidneysmart/services/network/dio_log/dio_log.dart';
 import 'package:kidneysmart/services/network/dio_log/page/log_widget.dart';
 
-///Список журнала сетевых запросов
 class HttpLogListWidget extends StatefulWidget {
   const HttpLogListWidget({super.key});
   static const path = '/HttpLogListWidget';
   static const name = 'HttpLogListWidget';
+
   @override
   _HttpLogListWidgetState createState() => _HttpLogListWidgetState();
 }
 
 class _HttpLogListWidgetState extends State<HttpLogListWidget> {
-  LinkedHashMap<String, NetOptions>? logMap;
-  List<String>? keys;
+  LinkedHashMap<String, NetOptions>? _cachedLogMap;
+  List<String>? _cachedKeys;
+  String currentFilter = 'ALL';
+  bool isFilterAscending = true;
+
+  String currentSort = 'Time';
+  bool isSortAscending = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _updateCache();
+  }
+
+  void _updateCache() {
+    _cachedLogMap = LogPoolManager.getInstance().logMap;
+    _cachedKeys = LogPoolManager.getInstance().keys;
+  }
 
   @override
   Widget build(BuildContext context) {
-    logMap = LogPoolManager.getInstance().logMap;
-    keys = LogPoolManager.getInstance().keys;
+    if (_cachedLogMap != LogPoolManager.getInstance().logMap ||
+        _cachedKeys != LogPoolManager.getInstance().keys) {
+      _updateCache();
+    }
+    _cachedLogMap = LogPoolManager.getInstance().logMap;
+    _cachedKeys = LogPoolManager.getInstance().keys;
     final theme = Theme.of(context);
+    applyFiltersAndSorting();
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Request Logs',
-        ),
-        backgroundColor: theme.scaffoldBackgroundColor,
+        title: const Text('Request Logs'),
         elevation: 1,
         iconTheme: theme.iconTheme,
         actions: <Widget>[
+          _buildFilterAction(),
+          _buildSortAction(),
           InkWell(
             onTap: () {
               if (debugBtnIsShow()) {
@@ -53,52 +74,165 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
               ),
             ),
           ),
-          InkWell(
-            onTap: () {
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () {
               LogPoolManager.getInstance().clear();
               setState(() {});
             },
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Align(
-                child: Text(
-                  'clear',
-                  style: theme.textTheme.bodySmall!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
           ),
         ],
       ),
-      body: logMap!.isEmpty
+      body: _cachedLogMap!.isEmpty
           ? const Center(
-              child: Text('no request log'),
+              child: Text('No request logs found. Try again later.'),
             )
           : ListView.builder(
-              itemCount: keys!.length,
+              itemCount: _cachedKeys!.length,
               itemBuilder: (BuildContext context, int index) {
-                final item = logMap![keys![index]]!;
-                return _buildItem(item);
+                final item = _cachedLogMap![_cachedKeys![index]]!;
+                return LogEntryWidget(item: item);
               },
             ),
     );
   }
 
-  ///Создаем простую информацию о запросе
-  Widget _buildItem(NetOptions item) {
+  Widget _buildSortAction() {
+    return PopupMenuButton<String>(
+      onSelected: (String value) {
+        setState(() {
+          if (currentSort == value) {
+            isSortAscending = !isSortAscending;
+          } else {
+            currentSort = value;
+            isSortAscending = true;
+          }
+        });
+      },
+      itemBuilder: (BuildContext context) {
+        return ['Time', 'Status', 'Duration'].map((String choice) {
+          return PopupMenuItem<String>(
+            value: choice,
+            child: Text(choice),
+          );
+        }).toList();
+      },
+      icon: const Icon(Icons.sort),
+    );
+  }
+
+  Widget _buildFilterAction() {
+    return PopupMenuButton<String>(
+      onSelected: (String value) {
+        setState(() {
+          if (currentFilter == value) {
+            isFilterAscending = !isFilterAscending;
+          } else {
+            currentFilter = value;
+            isFilterAscending = true;
+          }
+        });
+      },
+      itemBuilder: (BuildContext context) {
+        return ['ALL', 'GET', 'POST', 'PUT', 'DELETE'].map((String choice) {
+          return PopupMenuItem<String>(
+            value: choice,
+            child: Text(choice),
+          );
+        }).toList();
+      },
+      icon: const Icon(Icons.filter_list),
+    );
+  }
+
+  void applyFiltersAndSorting() {
+    if (currentFilter != 'ALL') {
+      _cachedKeys = LogPoolManager.getInstance()
+          .logMap
+          .keys
+          .where(
+            (key) =>
+                LogPoolManager.getInstance().logMap[key]?.reqOptions?.method ==
+                currentFilter,
+          )
+          .toList();
+    } else {
+      _cachedKeys = LogPoolManager.getInstance().keys;
+    }
+    // Apply sorting with order
+    int Function(String, String) comparator;
+    switch (currentSort) {
+      case 'Time':
+        comparator = (String a, String b) => LogPoolManager.getInstance()
+            .logMap[a]!
+            .reqOptions!
+            .requestTime!
+            .compareTo(
+              LogPoolManager.getInstance().logMap[b]!.reqOptions!.requestTime!,
+            );
+
+      case 'Status':
+        comparator = (String a, String b) => LogPoolManager.getInstance()
+            .logMap[a]!
+            .resOptions!
+            .statusCode!
+            .compareTo(
+              LogPoolManager.getInstance().logMap[b]!.resOptions!.statusCode!,
+            );
+
+      case 'Duration':
+        comparator = (String a, String b) => LogPoolManager.getInstance()
+            .logMap[a]!
+            .resOptions!
+            .duration!
+            .compareTo(
+              LogPoolManager.getInstance().logMap[b]!.resOptions!.duration!,
+            );
+
+      default:
+        throw Exception('Invalid sort criteria');
+    }
+
+    if (isSortAscending) {
+      _cachedKeys!.sort(comparator);
+    } else {
+      _cachedKeys!.sort((a, b) => comparator(b, a));
+    }
+  }
+}
+
+class LogEntryWidget extends StatelessWidget {
+  const LogEntryWidget({required this.item, super.key});
+  final NetOptions item;
+
+  IconData _getMethodIcon(String? method) {
+    switch (method) {
+      case 'GET':
+        return Icons.cloud_download;
+      case 'POST':
+        return Icons.cloud_upload;
+      case 'PUT':
+        return Icons.system_update_alt;
+      case 'DELETE':
+        return Icons.delete_forever;
+
+      default:
+        return Icons.error_outline;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final resOpt = item.resOptions;
     final reqOpt = item.reqOptions!;
-
-    ///Форматируем время запроса
     final requestTime = getTimeStr1(reqOpt.requestTime!);
+    final methodColor = _getRequestMethodColor(reqOpt.method ?? '');
+    final statusCodeIcon = _getResponseStatusCodeIcon(resOpt?.statusCode);
+    final statusCodeColor = _getResponseStatusCodeColor(resOpt?.statusCode);
 
-    final textColor = LogPoolManager.getInstance().isError(item)
-        ? Colors.red
-        : Theme.of(context).textTheme.bodyLarge!.color;
     return Card(
-      margin: const EdgeInsets.all(8),
-      elevation: 6,
+      margin: const EdgeInsets.all(10),
+      elevation: 4,
       child: InkWell(
         onTap: () {
           Navigator.push(
@@ -110,36 +244,102 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
             ),
           );
         },
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(8),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                'url: ${reqOpt.url}',
-                style: TextStyle(
-                  color: textColor,
-                ),
+              Row(
+                children: [
+                  Tooltip(
+                    message: 'Method: ${reqOpt.method}',
+                    child: Icon(
+                      _getMethodIcon(reqOpt.method),
+                      color: methodColor,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      '${reqOpt.method} Request',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: methodColor,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'Status: ${resOpt?.statusCode}',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: statusCodeColor,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Tooltip(
+                    message: 'Status: ${resOpt?.statusCode}',
+                    child: Icon(
+                      statusCodeIcon,
+                      color: statusCodeColor,
+                    ),
+                  ),
+                ],
               ),
-              const Divider(height: 2),
+              const SizedBox(height: 10),
               Text(
-                'status: ${resOpt?.statusCode}',
-                style: TextStyle(
-                  color: textColor,
-                ),
+                'URL: ${reqOpt.url}',
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(color: Colors.grey[600]),
               ),
-              const Divider(height: 2),
               Text(
-                'requestTime: $requestTime    duration: ${resOpt?.duration ?? 0}ms',
-                style: TextStyle(
-                  color: textColor,
-                ),
+                'Time: $requestTime, Duration: ${resOpt?.duration ?? 0}ms',
+                style: TextStyle(color: Colors.grey[600]),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  // Добавляем функцию для определения цвета в зависимости от типа запроса
+  Color _getRequestMethodColor(String method) {
+    switch (method) {
+      case 'GET':
+        return Colors.green;
+      case 'POST':
+        return Colors.blue;
+      case 'PUT':
+        return Colors.orange;
+      case 'DELETE':
+        return Colors.red;
+      default:
+        return Colors.black;
+    }
+  }
+
+// Функция для определения цвета в зависимости от статуса HTTP-ответа
+  Color _getResponseStatusCodeColor(int? statusCode) {
+    if (statusCode == null) return Colors.grey;
+    if (statusCode >= 200 && statusCode < 300) return Colors.green; // Успех
+    if (statusCode >= 300 && statusCode < 400) return Colors.orange; // Редирект
+    if (statusCode >= 400 && statusCode < 500) {
+      return Colors.red; // Ошибка клиента
+    }
+    return Colors.purple; // Ошибки сервера и другие статусы
+  }
+
+  IconData _getResponseStatusCodeIcon(int? statusCode) {
+    if (statusCode == null) return Icons.help_outline;
+    if (statusCode >= 200 && statusCode < 300) {
+      return Icons.check_circle; // Success
+    }
+    if (statusCode >= 300 && statusCode < 400) return Icons.loop; // Redirect
+    if (statusCode >= 400 && statusCode < 500) {
+      return Icons.warning; // Client error
+    }
+    return Icons.error; // Server error
   }
 }

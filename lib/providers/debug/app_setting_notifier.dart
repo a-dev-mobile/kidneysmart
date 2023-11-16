@@ -3,29 +3,36 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:kidneysmart/enum/enum_project.dart';
 import 'package:kidneysmart/enum/enum_store.dart';
+import 'package:kidneysmart/models/api/app_update/res/api_app_update_check_res.dart';
 import 'package:kidneysmart/services/storage/app_storage.dart';
-
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'debug_notifier.g.dart';
-part 'debug_state.dart';
-part 'debug_notifier.freezed.dart';
+part 'app_setting_notifier.g.dart';
+part 'app_setting_state.dart';
+part 'app_setting_notifier.freezed.dart';
 
 @Riverpod(keepAlive: true)
-class DebugNotifier extends _$DebugNotifier {
-  late final  _storage = ref.read(appStorageProvider);
-
+class AppSettingNotifier extends _$AppSettingNotifier {
+  late final _storage = ref.read(appStorageProvider);
 
   @override
-  DebugState build() {
+  AppSettingState build() {
     // Future.microtask(load);
-    return const DebugState();
+    return _storage.getAppSettingState();
+  }
+
+  @override
+  set state(AppSettingState value) {
+    // Вызывается каждый раз, когда состояние изменяется
+    super.state = value;
+
+    // Тут можно вызвать метод для сохранения состояния
+    _saveState();
   }
 
   Future<void> load() async {
@@ -34,20 +41,12 @@ class DebugNotifier extends _$DebugNotifier {
     await loadStart();
   }
 
-  Future<void> loadStart() async {
-  //   state = state.copyWith(enumProject: EnumProject.prod_BLK);
-  //   await Future<void>.delayed(const Duration(seconds: 3));
-  //   state = state.copyWith(enumProject: EnumProject.prod_C7);
-  //   await Future<void>.delayed(const Duration(seconds: 3));
-  //    state = state.copyWith(enumProject: EnumProject.prod_ND);
-  //   await Future<void>.delayed(const Duration(seconds: 3));
-  // state = state.copyWith(enumProject: EnumProject.stage_1_ND);
-  }
+  Future<void> loadStart() async {}
 
   void setClickDebug() {
     _startTime();
   }
-  
+
   Timer? _timer;
 // сколько нужно раз нажать
   static const int _sumClick = 3;
@@ -81,23 +80,25 @@ class DebugNotifier extends _$DebugNotifier {
       }
     });
   }
-    void changeDebugMenu() {
+
+  void changeDebugMenu() {
     state = state.copyWith(isDebugMenuEnabled: !state.isDebugMenuEnabled);
 
     _saveState();
   }
-   Future<void> _saveState() async {
+
+  Future<void> _saveState() async {
     if (!state.isDebugMenuEnabled) {
       // обнуление состояния если выключаем debug menu
-       state =  const DebugState();
-
+      state = const AppSettingState();
 
       await _storage.clearAll();
       await Future<void>.delayed(const Duration(seconds: 1));
 
       exit(0);
     } else {
-      await _storage.setDebugState(state.copyWith(isShowBtnHttpLog: false));
+      await _storage
+          .setAppSettingState(state.copyWith(isShowBtnHttpLog: false));
     }
   }
 }
