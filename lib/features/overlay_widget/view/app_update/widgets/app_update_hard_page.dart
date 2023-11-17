@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/common/styles/app_text_styles.dart';
 import 'package:kidneysmart/common/widgets/basic_button.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
+import 'package:kidneysmart/providers/debug/app_setting_notifier.dart';
+import 'package:kidneysmart/services/url_launcher/url_launcher_service.dart';
 
-import 'package:url_launcher/url_launcher.dart';
-
-class UpdateHardAppPage extends StatelessWidget {
-  const UpdateHardAppPage({
+class AppUpdateHardPage extends ConsumerWidget {
+  const AppUpdateHardPage({
     super.key,
   });
-
-  static const path = '/UpdateHardAppPage';
-  static const name = 'UpdateHardAppPage';
-
+  static const path = '/AppUpdateHardPage';
+  static const name = 'AppUpdateHardPage';
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -47,7 +45,15 @@ class UpdateHardAppPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     BasicButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        UrlLauncherService.launchExternal(
+                          ref
+                              .read(appSettingNotifierProvider)
+                              .apiAppUpdateCheckResSuccess
+                              .latestVersion
+                              ?.url,
+                        );
+                      },
                       text: 'Обновить',
                     ),
                   ],
@@ -58,13 +64,5 @@ class UpdateHardAppPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _runUrl(String value) async {
-    final url = Uri.parse(value);
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      // ignore: only_throw_errors
-      throw 'Could not launch $url';
-    }
   }
 }

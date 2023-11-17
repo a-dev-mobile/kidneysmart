@@ -6,7 +6,6 @@ sealed class SplashState with _$SplashState {
 
   const factory SplashState({
     @Default(EnumPageStatus.init) EnumPageStatus enumPageStatus,
-
   }) = _SplashState;
 
   factory SplashState.fromJson(Map<String, Object?> json) =>

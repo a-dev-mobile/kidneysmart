@@ -18,7 +18,23 @@ enum EnumAppUpdateType implements Comparable<EnumAppUpdateType> {
   static EnumAppUpdateType fromValue(
     String? value, {
     EnumAppUpdateType? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumAppUpdateType.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            value,
+            'value',
+            'Value not found in EnumAppUpdateType',
+          ));
+    }
+
     switch (value) {
       case 'hard':
         return hard;
@@ -37,8 +53,19 @@ enum EnumAppUpdateType implements Comparable<EnumAppUpdateType> {
   }
 
   static EnumAppUpdateType? fromValueOrNull(
-    String? value,
-  ) {
+    String? value, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumAppUpdateType.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (value) {
       case 'hard':
         return hard;

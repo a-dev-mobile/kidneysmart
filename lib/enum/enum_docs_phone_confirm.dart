@@ -33,7 +33,23 @@ enum EnumDocsPhoneConfirm implements Comparable<EnumDocsPhoneConfirm> {
   static EnumDocsPhoneConfirm fromValue(
     String? value, {
     EnumDocsPhoneConfirm? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumDocsPhoneConfirm.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            value,
+            'value',
+            'Value not found in EnumDocsPhoneConfirm',
+          ));
+    }
+
     switch (value) {
       case 'pep':
         return pep;
@@ -58,8 +74,19 @@ enum EnumDocsPhoneConfirm implements Comparable<EnumDocsPhoneConfirm> {
   }
 
   static EnumDocsPhoneConfirm? fromValueOrNull(
-    String? value,
-  ) {
+    String? value, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumDocsPhoneConfirm.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (value) {
       case 'pep':
         return pep;

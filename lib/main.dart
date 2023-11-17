@@ -1,5 +1,3 @@
-
-
 import 'package:kidneysmart/app/app.dart';
 import 'package:kidneysmart/bootstrap.dart';
 

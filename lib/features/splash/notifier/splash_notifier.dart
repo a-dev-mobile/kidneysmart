@@ -1,15 +1,13 @@
 // ignore_for_file: noop_primitive_operations, avoid_print
 
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kidneysmart/common/utils/data_parser.dart';
 import 'package:kidneysmart/enum/enum_page_status.dart';
 import 'package:kidneysmart/models/api/app_update/req/api_app_update_check_req.dart';
-import 'package:kidneysmart/models/api/app_update/res/api_app_update_check_res.dart';
 import 'package:kidneysmart/providers/debug/app_setting_notifier.dart';
 import 'package:kidneysmart/services/api_client/api_client.dart';
-import 'package:meta/meta.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -26,29 +24,37 @@ class SplashNotifier extends _$SplashNotifier {
   }
 
   late final _client = ref.read(apiClientProvider);
+  late final _appSettingState =
+      ref.read(appSettingNotifierProvider);
+
   late final _appSettingNotifier =
       ref.read(appSettingNotifierProvider.notifier);
 
   Future<void> load() async {
     state = state.copyWith(enumPageStatus: EnumPageStatus.load);
     await Future<void>.delayed(const Duration(seconds: 3));
-    const req = ApiAppUpdateCheckReq(
-      currentVersionCode: 2,
-      packageName: 'com.wayofdt.kidneysmart',
-      installerPackageName: 'apk',
+    
+    
+    final req = ApiAppUpdateCheckReq(
+      build: _appSettingState.appInfoSettings.buildNumber,
+      packageName: _appSettingState.appInfoSettings.packageName,
+      installerPackageName:
+          _appSettingState.appInfoSettings.installerStore,
     );
 
     final resultApi = await _client.fetchAppVersion(req);
 
-    final currentSetting = _appSettingNotifier.state;
-    resultApi.when(
-      success: (v) {
-        _appSettingNotifier.state =
-            currentSetting.copyWith(apiAppUpdateCheckResSuccess: v);
-        log(v.toString());
 
-        log(v.enumAppUpdateType
-            .mapValue(hard: 'hard', none: 'none', soft: 'soft'));
+    resultApi.when(
+      success: (api) {
+        _appSettingNotifier.state =
+            _appSettingState.copyWith(apiAppUpdateCheckResSuccess: api);
+        log(api.toString());
+
+        log(
+          api.enumAppUpdateType
+              .mapValue(hard: 'hard', none: 'none', soft: 'soft'),
+        );
       },
       error: (v) {
         log(v.toString());
@@ -62,10 +68,6 @@ class SplashNotifier extends _$SplashNotifier {
     state = state.copyWith(enumPageStatus: EnumPageStatus.error);
   }
 }
-
-
-
-
 
 // class SplashCubit extends Cubit<SplashNotifier> {
 //   final AppRouter _router;

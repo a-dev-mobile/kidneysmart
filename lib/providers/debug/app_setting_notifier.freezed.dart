@@ -556,11 +556,10 @@ AppInfoSettings _$AppInfoSettingsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppInfoSettings {
-  String? get appPackage =>
-      throw _privateConstructorUsedError; // Пакет приложения
-  String? get currentVersion =>
-      throw _privateConstructorUsedError; // Текущая версия
-  String? get previousVersion => throw _privateConstructorUsedError;
+  String get packageName => throw _privateConstructorUsedError;
+  int get buildNumber => throw _privateConstructorUsedError;
+  String get appVersion => throw _privateConstructorUsedError;
+  String get installerStore => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -575,7 +574,10 @@ abstract class $AppInfoSettingsCopyWith<$Res> {
       _$AppInfoSettingsCopyWithImpl<$Res, AppInfoSettings>;
   @useResult
   $Res call(
-      {String? appPackage, String? currentVersion, String? previousVersion});
+      {String packageName,
+      int buildNumber,
+      String appVersion,
+      String installerStore});
 }
 
 /// @nodoc
@@ -591,23 +593,28 @@ class _$AppInfoSettingsCopyWithImpl<$Res, $Val extends AppInfoSettings>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? appPackage = freezed,
-    Object? currentVersion = freezed,
-    Object? previousVersion = freezed,
+    Object? packageName = null,
+    Object? buildNumber = null,
+    Object? appVersion = null,
+    Object? installerStore = null,
   }) {
     return _then(_value.copyWith(
-      appPackage: freezed == appPackage
-          ? _value.appPackage
-          : appPackage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      currentVersion: freezed == currentVersion
-          ? _value.currentVersion
-          : currentVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      previousVersion: freezed == previousVersion
-          ? _value.previousVersion
-          : previousVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
+      buildNumber: null == buildNumber
+          ? _value.buildNumber
+          : buildNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      appVersion: null == appVersion
+          ? _value.appVersion
+          : appVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      installerStore: null == installerStore
+          ? _value.installerStore
+          : installerStore // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -621,7 +628,10 @@ abstract class _$$AppInfoSettingsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? appPackage, String? currentVersion, String? previousVersion});
+      {String packageName,
+      int buildNumber,
+      String appVersion,
+      String installerStore});
 }
 
 /// @nodoc
@@ -635,23 +645,28 @@ class __$$AppInfoSettingsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? appPackage = freezed,
-    Object? currentVersion = freezed,
-    Object? previousVersion = freezed,
+    Object? packageName = null,
+    Object? buildNumber = null,
+    Object? appVersion = null,
+    Object? installerStore = null,
   }) {
     return _then(_$AppInfoSettingsImpl(
-      appPackage: freezed == appPackage
-          ? _value.appPackage
-          : appPackage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      currentVersion: freezed == currentVersion
-          ? _value.currentVersion
-          : currentVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      previousVersion: freezed == previousVersion
-          ? _value.previousVersion
-          : previousVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
+      packageName: null == packageName
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
+      buildNumber: null == buildNumber
+          ? _value.buildNumber
+          : buildNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      appVersion: null == appVersion
+          ? _value.appVersion
+          : appVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      installerStore: null == installerStore
+          ? _value.installerStore
+          : installerStore // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -660,23 +675,30 @@ class __$$AppInfoSettingsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AppInfoSettingsImpl implements _AppInfoSettings {
   const _$AppInfoSettingsImpl(
-      {this.appPackage, this.currentVersion, this.previousVersion});
+      {this.packageName = '',
+      this.buildNumber = 9999999,
+      this.appVersion = '1.0.0',
+      this.installerStore = ''});
 
   factory _$AppInfoSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppInfoSettingsImplFromJson(json);
 
   @override
-  final String? appPackage;
-// Пакет приложения
+  @JsonKey()
+  final String packageName;
   @override
-  final String? currentVersion;
-// Текущая версия
+  @JsonKey()
+  final int buildNumber;
   @override
-  final String? previousVersion;
+  @JsonKey()
+  final String appVersion;
+  @override
+  @JsonKey()
+  final String installerStore;
 
   @override
   String toString() {
-    return 'AppInfoSettings(appPackage: $appPackage, currentVersion: $currentVersion, previousVersion: $previousVersion)';
+    return 'AppInfoSettings(packageName: $packageName, buildNumber: $buildNumber, appVersion: $appVersion, installerStore: $installerStore)';
   }
 
   @override
@@ -684,18 +706,20 @@ class _$AppInfoSettingsImpl implements _AppInfoSettings {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppInfoSettingsImpl &&
-            (identical(other.appPackage, appPackage) ||
-                other.appPackage == appPackage) &&
-            (identical(other.currentVersion, currentVersion) ||
-                other.currentVersion == currentVersion) &&
-            (identical(other.previousVersion, previousVersion) ||
-                other.previousVersion == previousVersion));
+            (identical(other.packageName, packageName) ||
+                other.packageName == packageName) &&
+            (identical(other.buildNumber, buildNumber) ||
+                other.buildNumber == buildNumber) &&
+            (identical(other.appVersion, appVersion) ||
+                other.appVersion == appVersion) &&
+            (identical(other.installerStore, installerStore) ||
+                other.installerStore == installerStore));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, appPackage, currentVersion, previousVersion);
+  int get hashCode => Object.hash(
+      runtimeType, packageName, buildNumber, appVersion, installerStore);
 
   @JsonKey(ignore: true)
   @override
@@ -714,19 +738,22 @@ class _$AppInfoSettingsImpl implements _AppInfoSettings {
 
 abstract class _AppInfoSettings implements AppInfoSettings {
   const factory _AppInfoSettings(
-      {final String? appPackage,
-      final String? currentVersion,
-      final String? previousVersion}) = _$AppInfoSettingsImpl;
+      {final String packageName,
+      final int buildNumber,
+      final String appVersion,
+      final String installerStore}) = _$AppInfoSettingsImpl;
 
   factory _AppInfoSettings.fromJson(Map<String, dynamic> json) =
       _$AppInfoSettingsImpl.fromJson;
 
   @override
-  String? get appPackage;
-  @override // Пакет приложения
-  String? get currentVersion;
-  @override // Текущая версия
-  String? get previousVersion;
+  String get packageName;
+  @override
+  int get buildNumber;
+  @override
+  String get appVersion;
+  @override
+  String get installerStore;
   @override
   @JsonKey(ignore: true)
   _$$AppInfoSettingsImplCopyWith<_$AppInfoSettingsImpl> get copyWith =>

@@ -29,7 +29,23 @@ enum EnumProject implements Comparable<EnumProject> {
   static EnumProject fromApi(
     String? api, {
     EnumProject? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumProject.values) {
+        if (api != null && v.api.contains(api)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            api,
+            'api',
+            'Value not found in EnumProject',
+          ));
+    }
+
     switch (api) {
       case 'https://wayofdt.com':
         return prod;
@@ -48,7 +64,23 @@ enum EnumProject implements Comparable<EnumProject> {
   static EnumProject fromUrl(
     String? url, {
     EnumProject? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumProject.values) {
+        if (url != null && v.url.contains(url)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            url,
+            'url',
+            'Value not found in EnumProject',
+          ));
+    }
+
     switch (url) {
       case 'https://wayofdt.com':
         return prod;
@@ -67,7 +99,23 @@ enum EnumProject implements Comparable<EnumProject> {
   static EnumProject fromName(
     String? name, {
     EnumProject? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumProject.values) {
+        if (name != null && v.name.contains(name)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            name,
+            'name',
+            'Value not found in EnumProject',
+          ));
+    }
+
     switch (name) {
       case 'Prod':
         return prod;
@@ -84,8 +132,19 @@ enum EnumProject implements Comparable<EnumProject> {
   }
 
   static EnumProject? fromApiOrNull(
-    String? api,
-  ) {
+    String? api, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumProject.values) {
+        if (api != null && v.api.contains(api)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (api) {
       case 'https://wayofdt.com':
         return prod;
@@ -97,8 +156,19 @@ enum EnumProject implements Comparable<EnumProject> {
   }
 
   static EnumProject? fromUrlOrNull(
-    String? url,
-  ) {
+    String? url, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumProject.values) {
+        if (url != null && v.url.contains(url)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (url) {
       case 'https://wayofdt.com':
         return prod;
@@ -110,8 +180,19 @@ enum EnumProject implements Comparable<EnumProject> {
   }
 
   static EnumProject? fromNameOrNull(
-    String? name,
-  ) {
+    String? name, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumProject.values) {
+        if (name != null && v.name.contains(name)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (name) {
       case 'Prod':
         return prod;

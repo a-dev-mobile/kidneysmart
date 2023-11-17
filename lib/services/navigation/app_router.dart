@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/features/debug_menu/view/debug_menu_page.dart';
 import 'package:kidneysmart/features/failure_internet/failure_internet.dart';
+import 'package:kidneysmart/features/overlay_widget/view/app_update/widgets/app_update_hard_page.dart';
 import 'package:kidneysmart/features/overlay_widget/view/overlay_widget.dart';
-import 'package:kidneysmart/features/overlay_widget/view/widget/update_hard_app_page.dart';
-import 'package:kidneysmart/features/overlay_widget/view/widget/update_soft_app_page.dart';
+
+import 'package:kidneysmart/features/overlay_widget/view/app_update/app_update.dart';
 import 'package:kidneysmart/features/splash/view/splash_page.dart';
 import 'package:kidneysmart/services/network/dio_log/dio_log.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -31,7 +32,7 @@ class AppRouter {
       FirebaseAnalyticsObserver(analytics: analytics);
 
   final GoRouter router = GoRouter(
-    errorPageBuilder: (context, state) => NoTransitionPage<void>(
+    errorPageBuilder: (context, state) => MaterialPage<void>(
       key: state.pageKey,
       child: Center(child: Text(state.error.toString())),
     ),
@@ -52,7 +53,7 @@ class AppRouter {
           GoRoute(
             path: DebugMenuPage.path,
             name: DebugMenuPage.name,
-            pageBuilder: (context, state) => NoTransitionPage(
+            pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: const DebugMenuPage(),
             ),
@@ -60,7 +61,7 @@ class AppRouter {
           GoRoute(
             path: SplashPage.path,
             name: SplashPage.name,
-            pageBuilder: (context, state) => NoTransitionPage(
+            pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: const SplashPage(),
             ),
@@ -68,7 +69,7 @@ class AppRouter {
           GoRoute(
             name: FailureInternet.name,
             path: FailureInternet.path,
-            pageBuilder: (context, state) => NoTransitionPage(
+            pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: const FailureInternet(),
             ),
@@ -76,23 +77,23 @@ class AppRouter {
           GoRoute(
             name: UpdateSoftAppPage.name,
             path: UpdateSoftAppPage.path,
-            pageBuilder: (context, state) => NoTransitionPage(
+            pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: const UpdateSoftAppPage(),
             ),
           ),
           GoRoute(
-            name: UpdateHardAppPage.name,
-            path: UpdateHardAppPage.path,
-            pageBuilder: (context, state) => NoTransitionPage(
+            name: AppUpdateHardPage.name,
+            path: AppUpdateHardPage.path,
+            pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
-              child: const UpdateHardAppPage(),
+              child: const AppUpdateHardPage(),
             ),
           ),
           GoRoute(
             name: HttpLogListWidget.name,
             path: HttpLogListWidget.path,
-            pageBuilder: (context, state) => NoTransitionPage(
+            pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: const HttpLogListWidget(),
             ),

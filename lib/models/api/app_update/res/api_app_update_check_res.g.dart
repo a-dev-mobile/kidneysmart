@@ -34,6 +34,10 @@ Map<String, dynamic> _$$ErrorImplToJson(_$ErrorImpl instance) =>
 _$ApiAppUpdateCheckResSuccessImpl _$$ApiAppUpdateCheckResSuccessImplFromJson(
         Map<String, dynamic> json) =>
     _$ApiAppUpdateCheckResSuccessImpl(
+      latestVersion: json['latestVersion'] == null
+          ? null
+          : LatestVersion.fromJson(
+              json['latestVersion'] as Map<String, dynamic>),
       enumAppUpdateType: json['updateType'] == null
           ? EnumAppUpdateType.none
           : enumAppUpdateTypeFromJson(json['updateType'] as String?),
@@ -42,7 +46,22 @@ _$ApiAppUpdateCheckResSuccessImpl _$$ApiAppUpdateCheckResSuccessImplFromJson(
 Map<String, dynamic> _$$ApiAppUpdateCheckResSuccessImplToJson(
         _$ApiAppUpdateCheckResSuccessImpl instance) =>
     <String, dynamic>{
+      'latestVersion': instance.latestVersion,
       'updateType': enumAppUpdateTypeToJson(instance.enumAppUpdateType),
+    };
+
+_$LatestVersionImpl _$$LatestVersionImplFromJson(Map<String, dynamic> json) =>
+    _$LatestVersionImpl(
+      build: json['build'] as int?,
+      version: json['version'] as String?,
+      url: json['url'] as String?,
+    );
+
+Map<String, dynamic> _$$LatestVersionImplToJson(_$LatestVersionImpl instance) =>
+    <String, dynamic>{
+      'build': instance.build,
+      'version': instance.version,
+      'url': instance.url,
     };
 
 _$ApiAppUpdateCheckResErrorImpl _$$ApiAppUpdateCheckResErrorImplFromJson(

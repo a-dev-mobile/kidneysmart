@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:kidneysmart/enum/enum_http_method.dart';
 import 'package:kidneysmart/features/failure_internet/failure_internet.dart';
 import 'package:kidneysmart/services/app_logger/app_logger.dart';
+import 'package:kidneysmart/services/error_handler/error_handler.dart';
 import 'package:kidneysmart/services/navigation/app_router.dart';
 import 'package:kidneysmart/services/network/dio_log/interceptor/dio_log_interceptor.dart';
 import 'package:kidneysmart/services/network/interceptors.dart';
@@ -72,41 +74,68 @@ class NetworkClient {
           );
       }
     } on DioException catch (e) {
-      _handleDioException(e);
+      return _handleDioException(e, endPoint);
       // Return an empty Response<T> in case of an error
-      return Response<T>(
-        requestOptions: RequestOptions(path: endPoint),
-        statusCode: e.response?.statusCode,
-      );
     } catch (e, stackTrace) {
-      _handleGenericException(e, stackTrace);
+      return _handleGenericException(e, stackTrace, endPoint);
       // Re-throw or handle generic exceptions
-      return Response<T>(
-        requestOptions: RequestOptions(path: endPoint),
-      );
     }
   }
 
-  void _handleDioException(DioException e) {
-    // Log to Firebase Crashlytics
-    FirebaseCrashlytics.instance
-        .recordError(e, e.stackTrace, reason: 'Dio error');
-    // Log to app logger
+  Response<T> _handleDioException<T>(DioException e, String endPoint) {
+    // Report the error to Firebase Crashlytics
+    ErrorHandler()
+        .reportError(e, e.stackTrace, severity: ErrorSeverity.warning);
+
+    // Log the error for debugging purposes
     logger.d(
       e.message,
       time: DateTime.now(),
       error: e.error,
       stackTrace: e.stackTrace,
     );
-    // Handle specific error types like connection timeouts, HTTP status codes, etc.
+
+    // Handle specific DioException types
     if (e.type == DioExceptionType.connectionTimeout) {
+      // Handle connection timeout
+      _showError(); // Or any other appropriate action
+    } else if (e.type == DioExceptionType.receiveTimeout) {
+      // Handle receive timeout
+      _showError(); // Or any other appropriate action
+    } else {
       _showError();
     }
+    // Return a Response object indicating an error
+    return Response<T>(
+      requestOptions: RequestOptions(path: endPoint),
+      statusCode: e.response?.statusCode,
+    );
   }
 
-  void _handleGenericException(Object e, StackTrace stackTrace) {
-    // Handle non-Dio exceptions
+  Response<T> _handleGenericException<T>(
+    Object e,
+    StackTrace stackTrace,
+    String endPoint,
+  ) {
+    // Report the error to Firebase Crashlytics
+    ErrorHandler().reportError(e, stackTrace);
+
+    // Log the error for debugging purposes
     logger.e('Unhandled error: $e', error: e, stackTrace: stackTrace);
+
+    // Perform additional actions based on the type of exception
+    if (e is SocketException) {
+      // Handle socket exception (like no internet connection)
+      _showError(); // Or any other appropriate action
+    } else {
+      _showError(); // Or any other appropriate action
+      // ...
+    }
+
+    // Return a Response object indicating an error
+    return Response<T>(
+      requestOptions: RequestOptions(path: endPoint),
+    );
   }
 
   Future<void> _showError() async {

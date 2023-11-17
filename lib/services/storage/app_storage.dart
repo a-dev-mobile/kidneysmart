@@ -45,7 +45,7 @@ class AppStorage {
 
   AppSettingState getAppSettingState() {
     final map = getJson(key: _debugState);
-    if (map.isEmpty) return  const AppSettingState();
+    if (map.isEmpty) return const AppSettingState();
     return AppSettingState.fromJson(getJson(key: _debugState));
   }
 

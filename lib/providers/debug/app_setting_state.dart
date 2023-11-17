@@ -1,13 +1,12 @@
 part of 'app_setting_notifier.dart';
 
 @freezed
- class AppSettingState with _$AppSettingState {
+class AppSettingState with _$AppSettingState {
   // const DebugState._();
 
   const factory AppSettingState({
     @Default(EnumProject.prod) EnumProject enumProject,
     @Default(EnumStore.unknown) EnumStore enumStore,
-
     @Default(ApiAppUpdateCheckResSuccess())
     ApiAppUpdateCheckResSuccess apiAppUpdateCheckResSuccess,
     @Default(FeatureToggleSettings())
@@ -37,9 +36,10 @@ class FeatureToggleSettings with _$FeatureToggleSettings {
 @freezed
 class AppInfoSettings with _$AppInfoSettings {
   const factory AppInfoSettings({
-    String? appPackage, // Пакет приложения
-    String? currentVersion, // Текущая версия
-    String? previousVersion, // Предыдущая версия
+    @Default('') String packageName,
+    @Default(9999999) int buildNumber,
+    @Default('1.0.0') String appVersion,
+    @Default('') String installerStore,
   }) = _AppInfoSettings;
 
   factory AppInfoSettings.fromJson(Map<String, dynamic> json) =>

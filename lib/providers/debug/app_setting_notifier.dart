@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -44,18 +43,6 @@ class AppSettingNotifier extends _$AppSettingNotifier {
   Future<void> loadStart() async {}
 
   void setClickDebug() {
-    _startTime();
-  }
-
-  Timer? _timer;
-// сколько нужно раз нажать
-  static const int _sumClick = 3;
-  // в течении которого времени
-  static const int _sec = 5;
-
-  // текущее нажатие на скрытую кнопку
-  int _pressedHideBtn = 0;
-  void _startTime() {
     _pressedHideBtn = _pressedHideBtn + 1;
     log('time start');
 
@@ -81,24 +68,28 @@ class AppSettingNotifier extends _$AppSettingNotifier {
     });
   }
 
-  void changeDebugMenu() {
-    state = state.copyWith(isDebugMenuEnabled: !state.isDebugMenuEnabled);
+  Timer? _timer;
+// сколько нужно раз нажать
+  static const int _sumClick = 3;
+  // в течении которого времени
+  static const int _sec = 5;
 
-    _saveState();
+  // текущее нажатие на скрытую кнопку
+  int _pressedHideBtn = 0;
+
+  void changeDebugMenu() {
+    state = state.copyWith(
+      featureToggleSettings: state.featureToggleSettings.copyWith(
+        isDebugMenuEnabled: !state.featureToggleSettings.isDebugMenuEnabled,
+      ),
+    );
   }
 
   Future<void> _saveState() async {
-    if (!state.isDebugMenuEnabled) {
-      // обнуление состояния если выключаем debug menu
-      state = const AppSettingState();
-
-      await _storage.clearAll();
-      await Future<void>.delayed(const Duration(seconds: 1));
-
-      exit(0);
-    } else {
-      await _storage
-          .setAppSettingState(state.copyWith(isShowBtnHttpLog: false));
-    }
+    await _storage.setAppSettingState(
+      state.copyWith(
+        apiAppUpdateCheckResSuccess: const ApiAppUpdateCheckResSuccess(),
+      ),
+    );
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:kidneysmart/services/network/dio_log/bean/err_options.dart';
 import 'package:kidneysmart/services/network/dio_log/bean/net_options.dart';
 import 'package:kidneysmart/services/network/dio_log/bean/req_options.dart';
@@ -8,12 +6,17 @@ import 'package:kidneysmart/services/network/dio_log/bean/res_options.dart';
 ///управление журналом
 class LogPoolManager {
   LogPoolManager._singleton() {
-    logMap = LinkedHashMap<String, NetOptions>();
-    keys = <String>[];
+    if (!_isInitialized) {
+      logMap = <String, NetOptions>{};
+      keys = <String>[];
+      _isInitialized = true;
+    }
   }
+  static final LogPoolManager _instance = LogPoolManager._singleton();
+  static bool _isInitialized = false;
 
   ///Запросить хранение журнала
-  late LinkedHashMap<String, NetOptions> logMap;
+  late Map<String, NetOptions> logMap;
 
   late List<String> keys;
 
@@ -23,12 +26,7 @@ class LogPoolManager {
   ResError isError =
       (res) => res.errOptions != null || res.resOptions?.statusCode == null;
 
-  static LogPoolManager? _instance;
-
-  static LogPoolManager getInstance() {
-    _instance ??= LogPoolManager._singleton();
-    return _instance!;
-  }
+  static LogPoolManager get instance => _instance;
 
   void onError(ErrOptions err) {
     final key = err.id.toString();

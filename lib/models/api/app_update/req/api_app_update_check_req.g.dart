@@ -9,7 +9,7 @@ part of 'api_app_update_check_req.dart';
 _$ApiAppUpdateCheckReqImpl _$$ApiAppUpdateCheckReqImplFromJson(
         Map<String, dynamic> json) =>
     _$ApiAppUpdateCheckReqImpl(
-      currentVersionCode: json['currentVersionCode'] as int,
+      build: json['build'] as int,
       installerPackageName: json['installerPackageName'] as String,
       packageName: json['packageName'] as String,
     );
@@ -17,7 +17,7 @@ _$ApiAppUpdateCheckReqImpl _$$ApiAppUpdateCheckReqImplFromJson(
 Map<String, dynamic> _$$ApiAppUpdateCheckReqImplToJson(
         _$ApiAppUpdateCheckReqImpl instance) =>
     <String, dynamic>{
-      'currentVersionCode': instance.currentVersionCode,
+      'build': instance.build,
       'installerPackageName': instance.installerPackageName,
       'packageName': instance.packageName,
     };

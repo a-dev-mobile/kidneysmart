@@ -20,7 +20,23 @@ enum EnumStateCheckboxValue implements Comparable<EnumStateCheckboxValue> {
   static EnumStateCheckboxValue fromValue(
     String? value, {
     EnumStateCheckboxValue? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStateCheckboxValue.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            value,
+            'value',
+            'Value not found in EnumStateCheckboxValue',
+          ));
+    }
+
     switch (value) {
       case 'checked':
         return checked;
@@ -43,8 +59,19 @@ enum EnumStateCheckboxValue implements Comparable<EnumStateCheckboxValue> {
   }
 
   static EnumStateCheckboxValue? fromValueOrNull(
-    String? value,
-  ) {
+    String? value, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStateCheckboxValue.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (value) {
       case 'checked':
         return checked;

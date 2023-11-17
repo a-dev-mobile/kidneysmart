@@ -1,16 +1,14 @@
 // ignore_for_file: avoid_dynamic_calls, non_constant_identifier_names
 
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:collection/collection.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:kidneysmart/enum/enum_http_method.dart';
 import 'package:kidneysmart/models/api/app_update/req/api_app_update_check_req.dart';
 import 'package:kidneysmart/models/api/app_update/res/api_app_update_check_res.dart';
+import 'package:kidneysmart/services/error_handler/error_handler.dart';
 import 'package:kidneysmart/services/network/network_client.dart';
 import 'package:kidneysmart/services/storage/app_storage.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'api_client.g.dart';
@@ -55,12 +53,10 @@ class ApiClient {
         );
       }
     } on Object catch (e, stackTrace) {
-      await FirebaseAnalytics.instance.logEvent(
-        name: 'fetchAppVersion',
-        parameters: {
-          'exception': e.toString(),
-          'stackTrace': stackTrace.toString(),
-        },
+      await ErrorHandler().reportError(
+        e,
+        stackTrace,
+        customMessage: 'Error in fetchAppVersion',
       );
       return const ApiAppUpdateCheckRes.error(
         ApiAppUpdateCheckResError(),

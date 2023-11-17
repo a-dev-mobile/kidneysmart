@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 
 import 'package:kidneysmart/services/network/dio_log/bean/net_options.dart';
@@ -12,17 +10,17 @@ class HttpLogListWidget extends StatefulWidget {
   static const name = 'HttpLogListWidget';
 
   @override
-  _HttpLogListWidgetState createState() => _HttpLogListWidgetState();
+  HttpLogListWidgetState createState() => HttpLogListWidgetState();
 }
 
-class _HttpLogListWidgetState extends State<HttpLogListWidget> {
-  LinkedHashMap<String, NetOptions>? _cachedLogMap;
+class HttpLogListWidgetState extends State<HttpLogListWidget> {
+  Map<String, NetOptions>? _cachedLogMap;
   List<String>? _cachedKeys;
   String currentFilter = 'ALL';
   bool isFilterAscending = true;
 
   String currentSort = 'Time';
-  bool isSortAscending = true;
+  bool isSortAscending = false;
 
   @override
   void initState() {
@@ -31,18 +29,18 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
   }
 
   void _updateCache() {
-    _cachedLogMap = LogPoolManager.getInstance().logMap;
-    _cachedKeys = LogPoolManager.getInstance().keys;
+    _cachedLogMap = LogPoolManager.instance.logMap;
+    _cachedKeys = LogPoolManager.instance.keys;
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_cachedLogMap != LogPoolManager.getInstance().logMap ||
-        _cachedKeys != LogPoolManager.getInstance().keys) {
+    if (_cachedLogMap != LogPoolManager.instance.logMap ||
+        _cachedKeys != LogPoolManager.instance.keys) {
       _updateCache();
     }
-    _cachedLogMap = LogPoolManager.getInstance().logMap;
-    _cachedKeys = LogPoolManager.getInstance().keys;
+    _cachedLogMap = LogPoolManager.instance.logMap;
+    _cachedKeys = LogPoolManager.instance.keys;
     final theme = Theme.of(context);
     applyFiltersAndSorting();
 
@@ -77,7 +75,7 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
           IconButton(
             icon: const Icon(Icons.delete),
             onPressed: () {
-              LogPoolManager.getInstance().clear();
+              LogPoolManager.instance.clear();
               setState(() {});
             },
           ),
@@ -91,7 +89,10 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
               itemCount: _cachedKeys!.length,
               itemBuilder: (BuildContext context, int index) {
                 final item = _cachedLogMap![_cachedKeys![index]]!;
-                return LogEntryWidget(item: item);
+
+                return LogEntryWidget(
+                  item: item,
+                );
               },
             ),
     );
@@ -147,46 +148,37 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
 
   void applyFiltersAndSorting() {
     if (currentFilter != 'ALL') {
-      _cachedKeys = LogPoolManager.getInstance()
-          .logMap
-          .keys
+      _cachedKeys = LogPoolManager.instance.logMap.keys
           .where(
             (key) =>
-                LogPoolManager.getInstance().logMap[key]?.reqOptions?.method ==
+                LogPoolManager.instance.logMap[key]?.reqOptions?.method ==
                 currentFilter,
           )
           .toList();
     } else {
-      _cachedKeys = LogPoolManager.getInstance().keys;
+      _cachedKeys = LogPoolManager.instance.keys;
     }
     // Apply sorting with order
     int Function(String, String) comparator;
     switch (currentSort) {
       case 'Time':
-        comparator = (String a, String b) => LogPoolManager.getInstance()
-            .logMap[a]!
-            .reqOptions!
-            .requestTime!
-            .compareTo(
-              LogPoolManager.getInstance().logMap[b]!.reqOptions!.requestTime!,
+        comparator = (String a, String b) => LogPoolManager
+                .instance.logMap[a]!.reqOptions!.requestTime!
+                .compareTo(
+              LogPoolManager.instance.logMap[b]!.reqOptions!.requestTime!,
             );
 
       case 'Status':
-        comparator = (String a, String b) => LogPoolManager.getInstance()
-            .logMap[a]!
-            .resOptions!
-            .statusCode!
-            .compareTo(
-              LogPoolManager.getInstance().logMap[b]!.resOptions!.statusCode!,
+        comparator = (String a, String b) => LogPoolManager
+                .instance.logMap[a]!.resOptions!.statusCode!
+                .compareTo(
+              LogPoolManager.instance.logMap[b]!.resOptions!.statusCode!,
             );
 
       case 'Duration':
-        comparator = (String a, String b) => LogPoolManager.getInstance()
-            .logMap[a]!
-            .resOptions!
-            .duration!
-            .compareTo(
-              LogPoolManager.getInstance().logMap[b]!.resOptions!.duration!,
+        comparator = (String a, String b) =>
+            LogPoolManager.instance.logMap[a]!.resOptions!.duration!.compareTo(
+              LogPoolManager.instance.logMap[b]!.resOptions!.duration!,
             );
 
       default:
@@ -202,7 +194,10 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
 }
 
 class LogEntryWidget extends StatelessWidget {
-  const LogEntryWidget({required this.item, super.key});
+  const LogEntryWidget({
+    required this.item,
+    super.key,
+  });
   final NetOptions item;
 
   IconData _getMethodIcon(String? method) {
@@ -261,7 +256,7 @@ class LogEntryWidget extends StatelessWidget {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      '${reqOpt.method} Request',
+                      reqOpt.method ?? '',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -272,8 +267,7 @@ class LogEntryWidget extends StatelessWidget {
                   Text(
                     'Status: ${resOpt?.statusCode}',
                     style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
                       color: statusCodeColor,
                     ),
                   ),
@@ -290,7 +284,7 @@ class LogEntryWidget extends StatelessWidget {
               const SizedBox(height: 10),
               Text(
                 'URL: ${reqOpt.url}',
-                overflow: TextOverflow.ellipsis,
+                softWrap: true,
                 style: TextStyle(color: Colors.grey[600]),
               ),
               Text(

@@ -23,6 +23,7 @@ sealed class ApiAppUpdateCheckRes with _$ApiAppUpdateCheckRes {
 @freezed
 class ApiAppUpdateCheckResSuccess with _$ApiAppUpdateCheckResSuccess {
   const factory ApiAppUpdateCheckResSuccess({
+    LatestVersion? latestVersion,
     @JsonKey(
       name: 'updateType',
       toJson: enumAppUpdateTypeToJson,
@@ -34,6 +35,18 @@ class ApiAppUpdateCheckResSuccess with _$ApiAppUpdateCheckResSuccess {
 
   factory ApiAppUpdateCheckResSuccess.fromJson(Map<String, Object?> json) =>
       _$ApiAppUpdateCheckResSuccessFromJson(json);
+}
+
+@freezed
+class LatestVersion with _$LatestVersion {
+  const factory LatestVersion({
+    int? build,
+    String? version,
+    String? url,
+  }) = _LatestVersion;
+
+  factory LatestVersion.fromJson(Map<String, Object?> json) =>
+      _$LatestVersionFromJson(json);
 }
 
 @freezed

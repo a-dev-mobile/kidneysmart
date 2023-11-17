@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:kidneysmart/common/utils/data_parser.dart';
 import 'package:kidneysmart/enum/enum_store.dart';
 
 import 'package:package_info_plus/package_info_plus.dart';
@@ -40,9 +41,21 @@ abstract class AboutDevice {
     return packageInfo.packageName;
   }
 
+  static Future<String> getInstallerStore() async {
+    final packageInfo = await _getPackageInfo();
+    return packageInfo.installerStore??'apk';
+  }
+
   static Future<String> getAppVersion() async {
     final packageInfo = await _getPackageInfo();
     return packageInfo.version;
+  }
+
+  static Future<int> getAppBuildNumber() async {
+    final packageInfo = await _getPackageInfo();
+    return DataParser.parseStringToNum(packageInfo.buildNumber,
+            defaultValue: 1)!
+        .toInt();
   }
 
   static Future<String> _getAndroidAgent(

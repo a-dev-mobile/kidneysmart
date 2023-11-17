@@ -77,17 +77,19 @@ Map<String, dynamic> _$$FeatureToggleSettingsImplToJson(
 _$AppInfoSettingsImpl _$$AppInfoSettingsImplFromJson(
         Map<String, dynamic> json) =>
     _$AppInfoSettingsImpl(
-      appPackage: json['appPackage'] as String?,
-      currentVersion: json['currentVersion'] as String?,
-      previousVersion: json['previousVersion'] as String?,
+      packageName: json['packageName'] as String? ?? '',
+      buildNumber: json['buildNumber'] as int? ?? 9999999,
+      appVersion: json['appVersion'] as String? ?? '1.0.0',
+      installerStore: json['installerStore'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$AppInfoSettingsImplToJson(
         _$AppInfoSettingsImpl instance) =>
     <String, dynamic>{
-      'appPackage': instance.appPackage,
-      'currentVersion': instance.currentVersion,
-      'previousVersion': instance.previousVersion,
+      'packageName': instance.packageName,
+      'buildNumber': instance.buildNumber,
+      'appVersion': instance.appVersion,
+      'installerStore': instance.installerStore,
     };
 
 // **************************************************************************
@@ -95,7 +97,7 @@ Map<String, dynamic> _$$AppInfoSettingsImplToJson(
 // **************************************************************************
 
 String _$appSettingNotifierHash() =>
-    r'937b60a63b1bf7f9c3b3240f79341f4115d6f6d7';
+    r'0820045ffaa9f75170e0916ee01e448e902c809d';
 
 /// See also [AppSettingNotifier].
 @ProviderFor(AppSettingNotifier)

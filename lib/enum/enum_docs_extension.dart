@@ -27,7 +27,23 @@ enum EnumDocsExtension implements Comparable<EnumDocsExtension> {
   static EnumDocsExtension fromValue(
     String? value, {
     EnumDocsExtension? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumDocsExtension.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            value,
+            'value',
+            'Value not found in EnumDocsExtension',
+          ));
+    }
+
     switch (value) {
       case 'agreementRule':
         return agreementRule;
@@ -48,8 +64,19 @@ enum EnumDocsExtension implements Comparable<EnumDocsExtension> {
   }
 
   static EnumDocsExtension? fromValueOrNull(
-    String? value,
-  ) {
+    String? value, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumDocsExtension.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (value) {
       case 'agreementRule':
         return agreementRule;

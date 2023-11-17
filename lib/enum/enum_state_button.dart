@@ -18,7 +18,23 @@ enum EnumStateButton implements Comparable<EnumStateButton> {
   static EnumStateButton fromValue(
     String? value, {
     EnumStateButton? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStateButton.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            value,
+            'value',
+            'Value not found in EnumStateButton',
+          ));
+    }
+
     switch (value) {
       case 'init':
         return init;
@@ -37,8 +53,19 @@ enum EnumStateButton implements Comparable<EnumStateButton> {
   }
 
   static EnumStateButton? fromValueOrNull(
-    String? value,
-  ) {
+    String? value, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStateButton.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (value) {
       case 'init':
         return init;

@@ -1,18 +1,13 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kidneysmart/enum/enum_page_status.dart';
-import 'package:kidneysmart/enum/enum_project.dart';
-import 'package:kidneysmart/enum/enum_store.dart';
-import 'package:kidneysmart/providers/internet/enum_internet_status.dart';
-import 'package:meta/meta.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kidneysmart/providers/internet/enum_internet_status.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+part 'internet_notifier.freezed.dart';
 part 'internet_notifier.g.dart';
 part 'internet_state.dart';
-part 'internet_notifier.freezed.dart';
 
 @Riverpod(keepAlive: true)
 class InternerNotifier extends _$InternerNotifier {

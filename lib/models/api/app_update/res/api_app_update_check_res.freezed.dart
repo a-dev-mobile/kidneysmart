@@ -428,6 +428,7 @@ ApiAppUpdateCheckResSuccess _$ApiAppUpdateCheckResSuccessFromJson(
 
 /// @nodoc
 mixin _$ApiAppUpdateCheckResSuccess {
+  LatestVersion? get latestVersion => throw _privateConstructorUsedError;
   @JsonKey(
       name: 'updateType',
       toJson: enumAppUpdateTypeToJson,
@@ -449,11 +450,14 @@ abstract class $ApiAppUpdateCheckResSuccessCopyWith<$Res> {
           ApiAppUpdateCheckResSuccess>;
   @useResult
   $Res call(
-      {@JsonKey(
+      {LatestVersion? latestVersion,
+      @JsonKey(
           name: 'updateType',
           toJson: enumAppUpdateTypeToJson,
           fromJson: enumAppUpdateTypeFromJson)
       EnumAppUpdateType enumAppUpdateType});
+
+  $LatestVersionCopyWith<$Res>? get latestVersion;
 }
 
 /// @nodoc
@@ -470,14 +474,31 @@ class _$ApiAppUpdateCheckResSuccessCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? latestVersion = freezed,
     Object? enumAppUpdateType = null,
   }) {
     return _then(_value.copyWith(
+      latestVersion: freezed == latestVersion
+          ? _value.latestVersion
+          : latestVersion // ignore: cast_nullable_to_non_nullable
+              as LatestVersion?,
       enumAppUpdateType: null == enumAppUpdateType
           ? _value.enumAppUpdateType
           : enumAppUpdateType // ignore: cast_nullable_to_non_nullable
               as EnumAppUpdateType,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LatestVersionCopyWith<$Res>? get latestVersion {
+    if (_value.latestVersion == null) {
+      return null;
+    }
+
+    return $LatestVersionCopyWith<$Res>(_value.latestVersion!, (value) {
+      return _then(_value.copyWith(latestVersion: value) as $Val);
+    });
   }
 }
 
@@ -491,11 +512,15 @@ abstract class _$$ApiAppUpdateCheckResSuccessImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(
+      {LatestVersion? latestVersion,
+      @JsonKey(
           name: 'updateType',
           toJson: enumAppUpdateTypeToJson,
           fromJson: enumAppUpdateTypeFromJson)
       EnumAppUpdateType enumAppUpdateType});
+
+  @override
+  $LatestVersionCopyWith<$Res>? get latestVersion;
 }
 
 /// @nodoc
@@ -511,9 +536,14 @@ class __$$ApiAppUpdateCheckResSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? latestVersion = freezed,
     Object? enumAppUpdateType = null,
   }) {
     return _then(_$ApiAppUpdateCheckResSuccessImpl(
+      latestVersion: freezed == latestVersion
+          ? _value.latestVersion
+          : latestVersion // ignore: cast_nullable_to_non_nullable
+              as LatestVersion?,
       enumAppUpdateType: null == enumAppUpdateType
           ? _value.enumAppUpdateType
           : enumAppUpdateType // ignore: cast_nullable_to_non_nullable
@@ -527,7 +557,8 @@ class __$$ApiAppUpdateCheckResSuccessImplCopyWithImpl<$Res>
 class _$ApiAppUpdateCheckResSuccessImpl
     implements _ApiAppUpdateCheckResSuccess {
   const _$ApiAppUpdateCheckResSuccessImpl(
-      {@JsonKey(
+      {this.latestVersion,
+      @JsonKey(
           name: 'updateType',
           toJson: enumAppUpdateTypeToJson,
           fromJson: enumAppUpdateTypeFromJson)
@@ -538,6 +569,8 @@ class _$ApiAppUpdateCheckResSuccessImpl
       _$$ApiAppUpdateCheckResSuccessImplFromJson(json);
 
   @override
+  final LatestVersion? latestVersion;
+  @override
   @JsonKey(
       name: 'updateType',
       toJson: enumAppUpdateTypeToJson,
@@ -546,7 +579,7 @@ class _$ApiAppUpdateCheckResSuccessImpl
 
   @override
   String toString() {
-    return 'ApiAppUpdateCheckResSuccess(enumAppUpdateType: $enumAppUpdateType)';
+    return 'ApiAppUpdateCheckResSuccess(latestVersion: $latestVersion, enumAppUpdateType: $enumAppUpdateType)';
   }
 
   @override
@@ -554,13 +587,16 @@ class _$ApiAppUpdateCheckResSuccessImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiAppUpdateCheckResSuccessImpl &&
+            (identical(other.latestVersion, latestVersion) ||
+                other.latestVersion == latestVersion) &&
             (identical(other.enumAppUpdateType, enumAppUpdateType) ||
                 other.enumAppUpdateType == enumAppUpdateType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, enumAppUpdateType);
+  int get hashCode =>
+      Object.hash(runtimeType, latestVersion, enumAppUpdateType);
 
   @JsonKey(ignore: true)
   @override
@@ -580,7 +616,8 @@ class _$ApiAppUpdateCheckResSuccessImpl
 abstract class _ApiAppUpdateCheckResSuccess
     implements ApiAppUpdateCheckResSuccess {
   const factory _ApiAppUpdateCheckResSuccess(
-          {@JsonKey(
+          {final LatestVersion? latestVersion,
+          @JsonKey(
               name: 'updateType',
               toJson: enumAppUpdateTypeToJson,
               fromJson: enumAppUpdateTypeFromJson)
@@ -591,6 +628,8 @@ abstract class _ApiAppUpdateCheckResSuccess
       _$ApiAppUpdateCheckResSuccessImpl.fromJson;
 
   @override
+  LatestVersion? get latestVersion;
+  @override
   @JsonKey(
       name: 'updateType',
       toJson: enumAppUpdateTypeToJson,
@@ -600,6 +639,177 @@ abstract class _ApiAppUpdateCheckResSuccess
   @JsonKey(ignore: true)
   _$$ApiAppUpdateCheckResSuccessImplCopyWith<_$ApiAppUpdateCheckResSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+LatestVersion _$LatestVersionFromJson(Map<String, dynamic> json) {
+  return _LatestVersion.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LatestVersion {
+  int? get build => throw _privateConstructorUsedError;
+  String? get version => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LatestVersionCopyWith<LatestVersion> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LatestVersionCopyWith<$Res> {
+  factory $LatestVersionCopyWith(
+          LatestVersion value, $Res Function(LatestVersion) then) =
+      _$LatestVersionCopyWithImpl<$Res, LatestVersion>;
+  @useResult
+  $Res call({int? build, String? version, String? url});
+}
+
+/// @nodoc
+class _$LatestVersionCopyWithImpl<$Res, $Val extends LatestVersion>
+    implements $LatestVersionCopyWith<$Res> {
+  _$LatestVersionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? build = freezed,
+    Object? version = freezed,
+    Object? url = freezed,
+  }) {
+    return _then(_value.copyWith(
+      build: freezed == build
+          ? _value.build
+          : build // ignore: cast_nullable_to_non_nullable
+              as int?,
+      version: freezed == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LatestVersionImplCopyWith<$Res>
+    implements $LatestVersionCopyWith<$Res> {
+  factory _$$LatestVersionImplCopyWith(
+          _$LatestVersionImpl value, $Res Function(_$LatestVersionImpl) then) =
+      __$$LatestVersionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? build, String? version, String? url});
+}
+
+/// @nodoc
+class __$$LatestVersionImplCopyWithImpl<$Res>
+    extends _$LatestVersionCopyWithImpl<$Res, _$LatestVersionImpl>
+    implements _$$LatestVersionImplCopyWith<$Res> {
+  __$$LatestVersionImplCopyWithImpl(
+      _$LatestVersionImpl _value, $Res Function(_$LatestVersionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? build = freezed,
+    Object? version = freezed,
+    Object? url = freezed,
+  }) {
+    return _then(_$LatestVersionImpl(
+      build: freezed == build
+          ? _value.build
+          : build // ignore: cast_nullable_to_non_nullable
+              as int?,
+      version: freezed == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LatestVersionImpl implements _LatestVersion {
+  const _$LatestVersionImpl({this.build, this.version, this.url});
+
+  factory _$LatestVersionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LatestVersionImplFromJson(json);
+
+  @override
+  final int? build;
+  @override
+  final String? version;
+  @override
+  final String? url;
+
+  @override
+  String toString() {
+    return 'LatestVersion(build: $build, version: $version, url: $url)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LatestVersionImpl &&
+            (identical(other.build, build) || other.build == build) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.url, url) || other.url == url));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, build, version, url);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LatestVersionImplCopyWith<_$LatestVersionImpl> get copyWith =>
+      __$$LatestVersionImplCopyWithImpl<_$LatestVersionImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LatestVersionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LatestVersion implements LatestVersion {
+  const factory _LatestVersion(
+      {final int? build,
+      final String? version,
+      final String? url}) = _$LatestVersionImpl;
+
+  factory _LatestVersion.fromJson(Map<String, dynamic> json) =
+      _$LatestVersionImpl.fromJson;
+
+  @override
+  int? get build;
+  @override
+  String? get version;
+  @override
+  String? get url;
+  @override
+  @JsonKey(ignore: true)
+  _$$LatestVersionImplCopyWith<_$LatestVersionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 ApiAppUpdateCheckResError _$ApiAppUpdateCheckResErrorFromJson(

@@ -14,7 +14,7 @@ import 'package:kidneysmart/services/network/dio_log/dio_log.dart';
 ///log Класс обработки журнала
 class DioLogInterceptor implements Interceptor {
   DioLogInterceptor() {
-    logManage = LogPoolManager.getInstance();
+    logManage = LogPoolManager.instance;
   }
   LogPoolManager? logManage;
 
@@ -24,7 +24,9 @@ class DioLogInterceptor implements Interceptor {
   ///Сбор данных об ошибках
   @override
   Future<void> onError(
-      DioException err, ErrorInterceptorHandler handler) async {
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
     final errOptions = ErrOptions();
     errOptions.id = err.requestOptions.hashCode;
     errOptions.errorMsg = err.toString();
@@ -69,7 +71,7 @@ class DioLogInterceptor implements Interceptor {
     resOpt.headers = response.headers.map;
     logManage?.onResponse(resOpt);
     if (enablePrintLog) {
-      final logNp = LogPoolManager.getInstance().logMap[resOpt.id.toString()]!;
+      final logNp = LogPoolManager.instance.logMap[resOpt.id.toString()]!;
       log('request: url:${logNp.reqOptions?.url}');
       log('request: method:${logNp.reqOptions?.method}');
       log('request: params:${logNp.reqOptions?.params}');
