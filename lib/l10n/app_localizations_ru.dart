@@ -5,8 +5,7 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get sig_contract_sent_code_number =>
-      'Для подписания договора мы отправили SMS с кодом на номер';
+  String get sig_contract_sent_code_number => 'Для подписания договора мы отправили SMS с кодом на номер';
 
   @override
   String get password => 'Пароль';
@@ -15,8 +14,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get loginPasswordIncorrect => 'Логин или пароль неверны';
 
   @override
-  String get i_aware_agree_with_following =>
-      'Я ознакомлен и согласен со следующим';
+  String get i_aware_agree_with_following => 'Я ознакомлен и согласен со следующим';
 
   @override
   String get signing_contract => 'Подписание договора';
@@ -31,7 +29,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get clickAgainToExit => 'Нажмите ещё раз чтобы выйти';
 
   @override
-  String get app_name => 'Kidney Smart';
+  String get app_name => 'Умные почки';
 
   @override
   String get amount => 'Сумма';
@@ -106,8 +104,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get field_must_be_completed => 'Это поле необходимо заполнить';
 
   @override
-  String get start_entering_phone_with_9 =>
-      'Номер телефона начинайте вводить с 9';
+  String get start_entering_phone_with_9 => 'Номер телефона начинайте вводить с 9';
 
   @override
   String get you_entered_1_10_characters => 'Вы ввели 1/10 символов';
@@ -212,8 +209,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get required_field => 'Это обязательное поле';
 
   @override
-  String get enter_middle_patronymic =>
-      'Это обязательное поле. Введите отчество';
+  String get enter_middle_patronymic => 'Это обязательное поле. Введите отчество';
 
   @override
   String get sur_name => 'Фамилия';
@@ -249,12 +245,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get min_text_length => 'Минимальная длина текста';
 
   @override
-  String get recover_password_enter_phone_registration =>
-      'Для восстановления пароля, введите телефон указанный вами ранее при регистрации';
+  String get recover_password_enter_phone_registration => 'Для восстановления пароля, введите телефон указанный вами ранее при регистрации';
 
   @override
-  String get reset_password_msg =>
-      'Введите свой номер телефона и мы отправим вам новый пароль для входа в личный кабинет';
+  String get reset_password_msg => 'Введите свой номер телефона и мы отправим вам новый пароль для входа в личный кабинет';
 
   @override
   String get confirming_phone_number => 'Подтверждение номера телефона';
@@ -302,8 +296,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get code_sms => 'Код из SMS';
 
   @override
-  String get banner_loan_approved =>
-      'Заявка на кредит одобрена. Для получения денег - подтвердите условия';
+  String get banner_loan_approved => 'Заявка на кредит одобрена. Для получения денег - подтвердите условия';
 
   @override
   String get change => 'Изменить';
@@ -318,8 +311,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get loan_application => 'Заявка на заём';
 
   @override
-  String get description_under_phone =>
-      'Указанный вами номер телефона является верификационным, и на него будут отправляться подтверждающие СМС. Также он является логином в личном кабинете';
+  String get description_under_phone => 'Указанный вами номер телефона является верификационным, и на него будут отправляться подтверждающие СМС. Также он является логином в личном кабинете';
 
   @override
   String get probability_loan_approval => 'Вероятность одобрения займа:';
@@ -376,19 +368,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get no_data => 'Нет данных';
 
   @override
-  String get privacy_policy =>
-      'Политика конфиденциальности обработки персональных данных';
+  String get privacy_policy => 'Политика конфиденциальности обработки персональных данных';
 
   @override
   String get re_enter => 'Ввести заново';
 
   @override
-  String get document_already_used_text_1 =>
-      'Пользователь с такими паспортными данными уже существует';
+  String get document_already_used_text_1 => 'Пользователь с такими паспортными данными уже существует';
 
   @override
-  String get document_already_used_text_2 =>
-      'Чтобы уточнить паспортные данные, обратитесь, пожалуйста, в службу поддержки самостоятельно:';
+  String get document_already_used_text_2 => 'Чтобы уточнить паспортные данные, обратитесь, пожалуйста, в службу поддержки самостоятельно:';
 
   @override
   String get document_already_used_text_3 => 'Бесплатно по России';
@@ -403,6 +392,5 @@ class AppLocalizationsRu extends AppLocalizations {
   String get your_monthly_income => 'Ваш доход в месяц';
 
   @override
-  String get document_already_used_text_4 =>
-      'Если вы ошиблись при вводе паспортных данных, вы можете ввести их заново';
+  String get document_already_used_text_4 => 'Если вы ошиблись при вводе паспортных данных, вы можете ввести их заново';
 }
