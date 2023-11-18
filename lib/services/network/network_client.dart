@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:kidneysmart/enum/enum_http_method.dart';
 import 'package:kidneysmart/features/failure_internet/failure_internet.dart';
 import 'package:kidneysmart/services/app_logger/app_logger.dart';

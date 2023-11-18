@@ -5,8 +5,8 @@ import 'package:kidneysmart/features/overlay_widget/view/app_update/widgets/app_
 import 'package:kidneysmart/features/overlay_widget/view/app_update/widgets/app_update_soft_widget.dart';
 import 'package:kidneysmart/providers/debug/app_setting_notifier.dart';
 
-class UpdateSoftAppPage extends ConsumerWidget {
-  const UpdateSoftAppPage({
+class AppUpdatePage extends ConsumerWidget {
+  const AppUpdatePage({
     super.key,
   });
 

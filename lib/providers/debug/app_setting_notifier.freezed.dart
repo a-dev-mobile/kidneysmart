@@ -26,7 +26,6 @@ mixin _$AppSettingState {
       throw _privateConstructorUsedError;
   FeatureToggleSettings get featureToggleSettings =>
       throw _privateConstructorUsedError;
-  AppInfoSettings get appInfoSettings => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,12 +43,10 @@ abstract class $AppSettingStateCopyWith<$Res> {
       {EnumProject enumProject,
       EnumStore enumStore,
       ApiAppUpdateCheckResSuccess apiAppUpdateCheckResSuccess,
-      FeatureToggleSettings featureToggleSettings,
-      AppInfoSettings appInfoSettings});
+      FeatureToggleSettings featureToggleSettings});
 
   $ApiAppUpdateCheckResSuccessCopyWith<$Res> get apiAppUpdateCheckResSuccess;
   $FeatureToggleSettingsCopyWith<$Res> get featureToggleSettings;
-  $AppInfoSettingsCopyWith<$Res> get appInfoSettings;
 }
 
 /// @nodoc
@@ -69,7 +66,6 @@ class _$AppSettingStateCopyWithImpl<$Res, $Val extends AppSettingState>
     Object? enumStore = null,
     Object? apiAppUpdateCheckResSuccess = null,
     Object? featureToggleSettings = null,
-    Object? appInfoSettings = null,
   }) {
     return _then(_value.copyWith(
       enumProject: null == enumProject
@@ -88,10 +84,6 @@ class _$AppSettingStateCopyWithImpl<$Res, $Val extends AppSettingState>
           ? _value.featureToggleSettings
           : featureToggleSettings // ignore: cast_nullable_to_non_nullable
               as FeatureToggleSettings,
-      appInfoSettings: null == appInfoSettings
-          ? _value.appInfoSettings
-          : appInfoSettings // ignore: cast_nullable_to_non_nullable
-              as AppInfoSettings,
     ) as $Val);
   }
 
@@ -112,14 +104,6 @@ class _$AppSettingStateCopyWithImpl<$Res, $Val extends AppSettingState>
       return _then(_value.copyWith(featureToggleSettings: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppInfoSettingsCopyWith<$Res> get appInfoSettings {
-    return $AppInfoSettingsCopyWith<$Res>(_value.appInfoSettings, (value) {
-      return _then(_value.copyWith(appInfoSettings: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -134,15 +118,12 @@ abstract class _$$DebugStateImplCopyWith<$Res>
       {EnumProject enumProject,
       EnumStore enumStore,
       ApiAppUpdateCheckResSuccess apiAppUpdateCheckResSuccess,
-      FeatureToggleSettings featureToggleSettings,
-      AppInfoSettings appInfoSettings});
+      FeatureToggleSettings featureToggleSettings});
 
   @override
   $ApiAppUpdateCheckResSuccessCopyWith<$Res> get apiAppUpdateCheckResSuccess;
   @override
   $FeatureToggleSettingsCopyWith<$Res> get featureToggleSettings;
-  @override
-  $AppInfoSettingsCopyWith<$Res> get appInfoSettings;
 }
 
 /// @nodoc
@@ -160,7 +141,6 @@ class __$$DebugStateImplCopyWithImpl<$Res>
     Object? enumStore = null,
     Object? apiAppUpdateCheckResSuccess = null,
     Object? featureToggleSettings = null,
-    Object? appInfoSettings = null,
   }) {
     return _then(_$DebugStateImpl(
       enumProject: null == enumProject
@@ -179,10 +159,6 @@ class __$$DebugStateImplCopyWithImpl<$Res>
           ? _value.featureToggleSettings
           : featureToggleSettings // ignore: cast_nullable_to_non_nullable
               as FeatureToggleSettings,
-      appInfoSettings: null == appInfoSettings
-          ? _value.appInfoSettings
-          : appInfoSettings // ignore: cast_nullable_to_non_nullable
-              as AppInfoSettings,
     ));
   }
 }
@@ -194,8 +170,7 @@ class _$DebugStateImpl implements _DebugState {
       {this.enumProject = EnumProject.prod,
       this.enumStore = EnumStore.unknown,
       this.apiAppUpdateCheckResSuccess = const ApiAppUpdateCheckResSuccess(),
-      this.featureToggleSettings = const FeatureToggleSettings(),
-      this.appInfoSettings = const AppInfoSettings()});
+      this.featureToggleSettings = const FeatureToggleSettings()});
 
   factory _$DebugStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$DebugStateImplFromJson(json);
@@ -212,13 +187,10 @@ class _$DebugStateImpl implements _DebugState {
   @override
   @JsonKey()
   final FeatureToggleSettings featureToggleSettings;
-  @override
-  @JsonKey()
-  final AppInfoSettings appInfoSettings;
 
   @override
   String toString() {
-    return 'AppSettingState(enumProject: $enumProject, enumStore: $enumStore, apiAppUpdateCheckResSuccess: $apiAppUpdateCheckResSuccess, featureToggleSettings: $featureToggleSettings, appInfoSettings: $appInfoSettings)';
+    return 'AppSettingState(enumProject: $enumProject, enumStore: $enumStore, apiAppUpdateCheckResSuccess: $apiAppUpdateCheckResSuccess, featureToggleSettings: $featureToggleSettings)';
   }
 
   @override
@@ -235,15 +207,13 @@ class _$DebugStateImpl implements _DebugState {
                 other.apiAppUpdateCheckResSuccess ==
                     apiAppUpdateCheckResSuccess) &&
             (identical(other.featureToggleSettings, featureToggleSettings) ||
-                other.featureToggleSettings == featureToggleSettings) &&
-            (identical(other.appInfoSettings, appInfoSettings) ||
-                other.appInfoSettings == appInfoSettings));
+                other.featureToggleSettings == featureToggleSettings));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, enumProject, enumStore,
-      apiAppUpdateCheckResSuccess, featureToggleSettings, appInfoSettings);
+      apiAppUpdateCheckResSuccess, featureToggleSettings);
 
   @JsonKey(ignore: true)
   @override
@@ -264,8 +234,7 @@ abstract class _DebugState implements AppSettingState {
       {final EnumProject enumProject,
       final EnumStore enumStore,
       final ApiAppUpdateCheckResSuccess apiAppUpdateCheckResSuccess,
-      final FeatureToggleSettings featureToggleSettings,
-      final AppInfoSettings appInfoSettings}) = _$DebugStateImpl;
+      final FeatureToggleSettings featureToggleSettings}) = _$DebugStateImpl;
 
   factory _DebugState.fromJson(Map<String, dynamic> json) =
       _$DebugStateImpl.fromJson;
@@ -278,8 +247,6 @@ abstract class _DebugState implements AppSettingState {
   ApiAppUpdateCheckResSuccess get apiAppUpdateCheckResSuccess;
   @override
   FeatureToggleSettings get featureToggleSettings;
-  @override
-  AppInfoSettings get appInfoSettings;
   @override
   @JsonKey(ignore: true)
   _$$DebugStateImplCopyWith<_$DebugStateImpl> get copyWith =>
@@ -548,214 +515,4 @@ abstract class _FeatureToggleSettings implements FeatureToggleSettings {
   @JsonKey(ignore: true)
   _$$FeatureToggleSettingsImplCopyWith<_$FeatureToggleSettingsImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-AppInfoSettings _$AppInfoSettingsFromJson(Map<String, dynamic> json) {
-  return _AppInfoSettings.fromJson(json);
-}
-
-/// @nodoc
-mixin _$AppInfoSettings {
-  String get packageName => throw _privateConstructorUsedError;
-  int get buildNumber => throw _privateConstructorUsedError;
-  String get appVersion => throw _privateConstructorUsedError;
-  String get installerStore => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AppInfoSettingsCopyWith<AppInfoSettings> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AppInfoSettingsCopyWith<$Res> {
-  factory $AppInfoSettingsCopyWith(
-          AppInfoSettings value, $Res Function(AppInfoSettings) then) =
-      _$AppInfoSettingsCopyWithImpl<$Res, AppInfoSettings>;
-  @useResult
-  $Res call(
-      {String packageName,
-      int buildNumber,
-      String appVersion,
-      String installerStore});
-}
-
-/// @nodoc
-class _$AppInfoSettingsCopyWithImpl<$Res, $Val extends AppInfoSettings>
-    implements $AppInfoSettingsCopyWith<$Res> {
-  _$AppInfoSettingsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? packageName = null,
-    Object? buildNumber = null,
-    Object? appVersion = null,
-    Object? installerStore = null,
-  }) {
-    return _then(_value.copyWith(
-      packageName: null == packageName
-          ? _value.packageName
-          : packageName // ignore: cast_nullable_to_non_nullable
-              as String,
-      buildNumber: null == buildNumber
-          ? _value.buildNumber
-          : buildNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      appVersion: null == appVersion
-          ? _value.appVersion
-          : appVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      installerStore: null == installerStore
-          ? _value.installerStore
-          : installerStore // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$AppInfoSettingsImplCopyWith<$Res>
-    implements $AppInfoSettingsCopyWith<$Res> {
-  factory _$$AppInfoSettingsImplCopyWith(_$AppInfoSettingsImpl value,
-          $Res Function(_$AppInfoSettingsImpl) then) =
-      __$$AppInfoSettingsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String packageName,
-      int buildNumber,
-      String appVersion,
-      String installerStore});
-}
-
-/// @nodoc
-class __$$AppInfoSettingsImplCopyWithImpl<$Res>
-    extends _$AppInfoSettingsCopyWithImpl<$Res, _$AppInfoSettingsImpl>
-    implements _$$AppInfoSettingsImplCopyWith<$Res> {
-  __$$AppInfoSettingsImplCopyWithImpl(
-      _$AppInfoSettingsImpl _value, $Res Function(_$AppInfoSettingsImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? packageName = null,
-    Object? buildNumber = null,
-    Object? appVersion = null,
-    Object? installerStore = null,
-  }) {
-    return _then(_$AppInfoSettingsImpl(
-      packageName: null == packageName
-          ? _value.packageName
-          : packageName // ignore: cast_nullable_to_non_nullable
-              as String,
-      buildNumber: null == buildNumber
-          ? _value.buildNumber
-          : buildNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      appVersion: null == appVersion
-          ? _value.appVersion
-          : appVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      installerStore: null == installerStore
-          ? _value.installerStore
-          : installerStore // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$AppInfoSettingsImpl implements _AppInfoSettings {
-  const _$AppInfoSettingsImpl(
-      {this.packageName = '',
-      this.buildNumber = 9999999,
-      this.appVersion = '1.0.0',
-      this.installerStore = ''});
-
-  factory _$AppInfoSettingsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AppInfoSettingsImplFromJson(json);
-
-  @override
-  @JsonKey()
-  final String packageName;
-  @override
-  @JsonKey()
-  final int buildNumber;
-  @override
-  @JsonKey()
-  final String appVersion;
-  @override
-  @JsonKey()
-  final String installerStore;
-
-  @override
-  String toString() {
-    return 'AppInfoSettings(packageName: $packageName, buildNumber: $buildNumber, appVersion: $appVersion, installerStore: $installerStore)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AppInfoSettingsImpl &&
-            (identical(other.packageName, packageName) ||
-                other.packageName == packageName) &&
-            (identical(other.buildNumber, buildNumber) ||
-                other.buildNumber == buildNumber) &&
-            (identical(other.appVersion, appVersion) ||
-                other.appVersion == appVersion) &&
-            (identical(other.installerStore, installerStore) ||
-                other.installerStore == installerStore));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, packageName, buildNumber, appVersion, installerStore);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AppInfoSettingsImplCopyWith<_$AppInfoSettingsImpl> get copyWith =>
-      __$$AppInfoSettingsImplCopyWithImpl<_$AppInfoSettingsImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AppInfoSettingsImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _AppInfoSettings implements AppInfoSettings {
-  const factory _AppInfoSettings(
-      {final String packageName,
-      final int buildNumber,
-      final String appVersion,
-      final String installerStore}) = _$AppInfoSettingsImpl;
-
-  factory _AppInfoSettings.fromJson(Map<String, dynamic> json) =
-      _$AppInfoSettingsImpl.fromJson;
-
-  @override
-  String get packageName;
-  @override
-  int get buildNumber;
-  @override
-  String get appVersion;
-  @override
-  String get installerStore;
-  @override
-  @JsonKey(ignore: true)
-  _$$AppInfoSettingsImplCopyWith<_$AppInfoSettingsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }

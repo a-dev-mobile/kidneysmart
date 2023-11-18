@@ -11,9 +11,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/app/app.dart';
+import 'package:kidneysmart/enum/enum_project.dart';
 import 'package:kidneysmart/firebase_options.dart';
 import 'package:kidneysmart/providers/debug/app_setting_notifier.dart';
-import 'package:kidneysmart/services/about_device/about_device.dart';
 import 'package:kidneysmart/services/api_client/api_client.dart';
 import 'package:kidneysmart/services/app_logger/app_logger.dart';
 import 'package:kidneysmart/services/app_logger/log_state.dart';
@@ -71,19 +71,9 @@ Future<void> initializeApp() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   _appStorage = AppStorage(pref: sharedPreferences);
 
-  final packageName = await AboutDevice.getPackageName();
-  final appVersion = await AboutDevice.getAppVersion();
-  final buildNumber = await AboutDevice.getAppBuildNumber();
-  final installerStore = await AboutDevice.getInstallerStore();
+  _appSettingState =
+      _appStorage.getAppSettingState().copyWith(enumProject: EnumProject.prod);
 
-  _appSettingState = _appStorage.getAppSettingState().copyWith(
-        appInfoSettings: AppInfoSettings(
-          packageName: packageName,
-          buildNumber: buildNumber,
-          appVersion: appVersion,
-          installerStore: installerStore,
-        ),
-      );
   await _appStorage.setAppSettingState(_appSettingState);
 
   _appRouter = AppRouter();

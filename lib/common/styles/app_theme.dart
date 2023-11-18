@@ -25,7 +25,7 @@ abstract class AppThemeFlex {
       useMaterial3: true,
       swapLegacyOnMaterial3: true,
       // To use the Playground font, add GoogleFonts package and uncomment
-      fontFamily: GoogleFonts.notoSans().fontFamily,
+      fontFamily: GoogleFonts.montserrat().fontFamily,
     );
   }
 
@@ -46,7 +46,7 @@ abstract class AppThemeFlex {
       useMaterial3: true,
       swapLegacyOnMaterial3: true,
       // To use the Playground font, add GoogleFonts package and uncomment
-      fontFamily: GoogleFonts.notoSans().fontFamily,
+      fontFamily: GoogleFonts.montserrat().fontFamily,
     );
   }
 }

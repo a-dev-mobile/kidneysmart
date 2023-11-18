@@ -2,7 +2,7 @@ name: kidneysmart
 description: A new Flutter project.
 publish_to: none
 
-version: 1.0.0+1
+version: 1.0.0+15
 
 environment:
   sdk: ">=3.1.5 <4.0.0"
@@ -73,7 +73,10 @@ dependencies:
   # ******************************
   #  local packages
   # ******************************
-
+  app_updater:
+    git:
+      url: https://github.com/a-dev-mobile/app_updater.git
+      ref: release/1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -91,7 +94,7 @@ dev_dependencies:
     path: c:/DEV/MY/MY_GITHUB/turn_gen
 flutter:
   uses-material-design: true
-
+  generate: true
   assets:
     - assets/svg/
     - assets/image/

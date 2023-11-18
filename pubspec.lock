@@ -33,6 +33,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.3"
+  app_updater:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "release/1.0.0"
+      resolved-ref: "03f1d8c6423836a1c146c161a1c25c3203210c69"
+      url: "https://github.com/a-dev-mobile/app_updater.git"
+    source: git
+    version: "1.0.0"
   archive:
     dependency: transitive
     description:

@@ -14,7 +14,10 @@ class DataParser {
     try {
       return num.parse(value);
     } on FormatException catch (e) {
-      log('Failed to convert the string "$value" to a number: ${e.message}', name: 'DataParser.parseStringToNum');
+      log(
+        'Failed to convert the string "$value" to a number: ${e.message}',
+        name: 'DataParser.parseStringToNum',
+      );
       return defaultValue;
     }
   }

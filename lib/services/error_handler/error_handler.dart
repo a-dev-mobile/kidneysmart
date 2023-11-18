@@ -68,5 +68,4 @@ void _reportError(
   FirebaseCrashlytics.instance.recordError(error, stackTrace, fatal: fatal);
 }
 
-  // Additional methods for specific error handling scenarios can be added here
-
+// Additional methods for specific error handling scenarios can be added here

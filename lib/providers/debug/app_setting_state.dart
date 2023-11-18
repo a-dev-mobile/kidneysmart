@@ -11,7 +11,6 @@ class AppSettingState with _$AppSettingState {
     ApiAppUpdateCheckResSuccess apiAppUpdateCheckResSuccess,
     @Default(FeatureToggleSettings())
     FeatureToggleSettings featureToggleSettings,
-    @Default(AppInfoSettings()) AppInfoSettings appInfoSettings,
   }) = _DebugState;
 
   factory AppSettingState.fromJson(Map<String, Object?> json) =>
@@ -31,17 +30,4 @@ class FeatureToggleSettings with _$FeatureToggleSettings {
 
   factory FeatureToggleSettings.fromJson(Map<String, dynamic> json) =>
       _$FeatureToggleSettingsFromJson(json);
-}
-
-@freezed
-class AppInfoSettings with _$AppInfoSettings {
-  const factory AppInfoSettings({
-    @Default('') String packageName,
-    @Default(9999999) int buildNumber,
-    @Default('1.0.0') String appVersion,
-    @Default('') String installerStore,
-  }) = _AppInfoSettings;
-
-  factory AppInfoSettings.fromJson(Map<String, dynamic> json) =>
-      _$AppInfoSettingsFromJson(json);
 }

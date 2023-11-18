@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'dart:developer';
 
+import 'package:app_updater/app_updater.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:kidneysmart/enum/enum_project.dart';
 import 'package:kidneysmart/enum/enum_store.dart';
-import 'package:kidneysmart/models/api/app_update/res/api_app_update_check_res.dart';
+
 import 'package:kidneysmart/services/storage/app_storage.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';

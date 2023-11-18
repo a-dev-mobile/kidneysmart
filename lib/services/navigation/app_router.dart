@@ -9,7 +9,7 @@ import 'package:kidneysmart/features/failure_internet/failure_internet.dart';
 import 'package:kidneysmart/features/overlay_widget/view/app_update/widgets/app_update_hard_page.dart';
 import 'package:kidneysmart/features/overlay_widget/view/overlay_widget.dart';
 
-import 'package:kidneysmart/features/overlay_widget/view/app_update/app_update.dart';
+import 'package:kidneysmart/features/overlay_widget/view/app_update/app_update_page.dart';
 import 'package:kidneysmart/features/splash/view/splash_page.dart';
 import 'package:kidneysmart/services/network/dio_log/dio_log.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -75,11 +75,11 @@ class AppRouter {
             ),
           ),
           GoRoute(
-            name: UpdateSoftAppPage.name,
-            path: UpdateSoftAppPage.path,
+            name: AppUpdatePage.name,
+            path: AppUpdatePage.path,
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
-              child: const UpdateSoftAppPage(),
+              child: const AppUpdatePage(),
             ),
           ),
           GoRoute(

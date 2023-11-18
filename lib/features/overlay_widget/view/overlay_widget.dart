@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/common/styles/app_text_styles.dart';
 import 'package:kidneysmart/features/debug_menu/view/debug_menu_page.dart';
-import 'package:kidneysmart/features/overlay_widget/view/app_update/app_update.dart';
+import 'package:kidneysmart/features/overlay_widget/view/app_update/app_update_page.dart';
 import 'package:kidneysmart/features/overlay_widget/view/app_update/widgets/app_update_hard_page.dart';
 import 'package:kidneysmart/features/overlay_widget/view/widget/no_internet_widget.dart';
 import 'package:kidneysmart/features/splash/view/splash_page.dart';
@@ -74,7 +74,7 @@ class _OverlayWidgetState extends ConsumerState<OverlayWidget> {
                   ref.read(appSettingNotifierProvider.notifier).setClickDebug,
             ),
 
-          const UpdateSoftAppPage(),
+          const AppUpdatePage(),
           const DebugInfoRouteAndBtn(),
         ],
       ),

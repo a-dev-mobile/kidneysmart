@@ -43,7 +43,7 @@ abstract class AboutDevice {
 
   static Future<String> getInstallerStore() async {
     final packageInfo = await _getPackageInfo();
-    return packageInfo.installerStore??'apk';
+    return packageInfo.installerStore ?? 'apk';
   }
 
   static Future<String> getAppVersion() async {
@@ -53,8 +53,10 @@ abstract class AboutDevice {
 
   static Future<int> getAppBuildNumber() async {
     final packageInfo = await _getPackageInfo();
-    return DataParser.parseStringToNum(packageInfo.buildNumber,
-            defaultValue: 1)!
+    return DataParser.parseStringToNum(
+      packageInfo.buildNumber,
+      defaultValue: 1,
+    )!
         .toInt();
   }
 

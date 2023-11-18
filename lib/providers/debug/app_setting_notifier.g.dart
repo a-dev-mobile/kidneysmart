@@ -21,10 +21,6 @@ _$DebugStateImpl _$$DebugStateImplFromJson(Map<String, dynamic> json) =>
           ? const FeatureToggleSettings()
           : FeatureToggleSettings.fromJson(
               json['featureToggleSettings'] as Map<String, dynamic>),
-      appInfoSettings: json['appInfoSettings'] == null
-          ? const AppInfoSettings()
-          : AppInfoSettings.fromJson(
-              json['appInfoSettings'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$DebugStateImplToJson(_$DebugStateImpl instance) =>
@@ -33,7 +29,6 @@ Map<String, dynamic> _$$DebugStateImplToJson(_$DebugStateImpl instance) =>
       'enumStore': _$EnumStoreEnumMap[instance.enumStore]!,
       'apiAppUpdateCheckResSuccess': instance.apiAppUpdateCheckResSuccess,
       'featureToggleSettings': instance.featureToggleSettings,
-      'appInfoSettings': instance.appInfoSettings,
     };
 
 const _$EnumProjectEnumMap = {
@@ -72,24 +67,6 @@ Map<String, dynamic> _$$FeatureToggleSettingsImplToJson(
       'isShowRepaintRainbow': instance.isShowRepaintRainbow,
       'isShowPaintSizeEnabled': instance.isShowPaintSizeEnabled,
       'isShowUrlPdfPage': instance.isShowUrlPdfPage,
-    };
-
-_$AppInfoSettingsImpl _$$AppInfoSettingsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AppInfoSettingsImpl(
-      packageName: json['packageName'] as String? ?? '',
-      buildNumber: json['buildNumber'] as int? ?? 9999999,
-      appVersion: json['appVersion'] as String? ?? '1.0.0',
-      installerStore: json['installerStore'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$$AppInfoSettingsImplToJson(
-        _$AppInfoSettingsImpl instance) =>
-    <String, dynamic>{
-      'packageName': instance.packageName,
-      'buildNumber': instance.buildNumber,
-      'appVersion': instance.appVersion,
-      'installerStore': instance.installerStore,
     };
 
 // **************************************************************************
