@@ -29,7 +29,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clickAgainToExit => 'Нажмите ещё раз чтобы выйти';
 
   @override
-  String get app_name => 'Kidney Smart';
+  String get app_name => 'Nado deneg';
 
   @override
   String get amount => 'Sum';

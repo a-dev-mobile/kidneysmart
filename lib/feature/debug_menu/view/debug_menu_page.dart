@@ -1,0 +1,465 @@
+// ignore_for_file: unused_element, avoid-passing-async-when-sync-expected
+
+import 'dart:async';
+import 'dart:io';
+
+import 'package:feedback/feedback.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
+import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
+
+import 'package:kidneysmart/core/enum/enum_loan_status.dart';
+import 'package:kidneysmart/core/enum/enum_project.dart';
+import 'package:kidneysmart/core/enum/enum_store.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
+
+import 'package:kidneysmart/core/widgets/failure_internet.dart';
+
+import 'package:kidneysmart/feature/onboarding/vew/onboarding_page.dart';
+import 'package:kidneysmart/feature/overlay_widget/view/widget/update_hard_app_page.dart';
+import 'package:kidneysmart/feature/overlay_widget/view/widget/update_soft_app_page.dart';
+
+import 'package:kidneysmart/feature/splash/view/splash_page.dart';
+
+import 'package:kidneysmart/feature/test_page/device_info/view/device_page.dart';
+import 'package:kidneysmart/navigation/app_router.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
+
+class DebugMenuPage extends StatelessWidget {
+  const DebugMenuPage({super.key});
+  static const path = '/debug_page';
+  static const name = 'debug-page';
+  @override
+  Widget build(BuildContext context) {
+    final _ = context.read<AppStorage>().setLastScreen(DebugMenuPage.name);
+    final storage = context.read<AppStorage>();
+    final go = context.read<AppRouter>();
+    final cubitDebug = context.read<DebugCubit>();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Debug Menu '),
+      ),
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<DebugCubit, DebugState>(
+            listenWhen: (p, c) => p.enumProject != c.enumProject,
+            listener: (context, state) {
+              _showCustomDialog(
+                storage,
+                context,
+                'Для смены API закрыть приложение?',
+              );
+            },
+          ),
+          BlocListener<DebugCubit, DebugState>(
+            listenWhen: (p, c) => p.enumStore != c.enumStore,
+            listener: (context, state) {
+              _showCustomDialog(
+                storage,
+                context,
+                'Для смены STORE закрыть приложение?',
+              );
+            },
+          ),
+        ],
+        child: Stack(
+          children: [
+            BlocBuilder<DebugCubit, DebugState>(
+              builder: (context, state) {
+                return ListView(shrinkWrap: true, children: [
+                  const SizedBox(height: 30),
+                  const Center(child: Text('---Setting---')),
+                  SwitchListTile(
+                    value: state.isShowBtnHttpLog,
+                    onChanged: (v) => cubitDebug.setShowBtnHttpLog(isShow: v),
+                    title: const Text('Show button http log'),
+                    dense: true,
+                    visualDensity: const VisualDensity(vertical: -3),
+                  ),
+                  SwitchListTile(
+                    value: state.isShowUrlPdfPage,
+                    onChanged: (v) => cubitDebug.setShowUrlPdfPage(isShow: v),
+                    title: const Text('Show opening url of PDF document'),
+                    dense: true,
+                    visualDensity: const VisualDensity(vertical: -3),
+                  ),
+                  SwitchListTile(
+                    value: state.isShowDevicePreview,
+                    onChanged: (v) => cubitDebug.setDevicePreview(isShow: v),
+                    title: const Text('Show device preview'),
+                    dense: true,
+                    visualDensity: const VisualDensity(vertical: -3),
+                  ),
+                  if (kDebugMode)
+                    SwitchListTile(
+                      value: state.isShowRepaintRainbow,
+                      onChanged: (v) =>
+                          cubitDebug.setShowDebugRepaintRainbow(isShow: v),
+                      title: const Text('DebugRepaintRainbowEnabled'),
+                      dense: true,
+                      visualDensity: const VisualDensity(vertical: -3),
+                    ),
+                  if (kDebugMode)
+                    SwitchListTile(
+                      value: state.isShowPaintSizeEnabled,
+                      onChanged: (v) =>
+                          cubitDebug.setShowPaintSizeEnabled(isShow: v),
+                      title: const Text('DebugPaintSizeEnabled'),
+                      dense: true,
+                      visualDensity: const VisualDensity(vertical: -3),
+                    ),
+                  const SizedBox(height: 30),
+                  const Center(child: Text('---Начало---')),
+                  const Wrap(
+                    children: [
+                      _ItemPage(name: 'splash', nameRoute: SplashPage.name),
+                      _ItemPage(
+                        name: 'onboarding',
+                        nameRoute: OnBoardingPage.name,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+                  const Center(child: Text('---Вход---')),
+                  const SizedBox(height: 30),
+                  const Center(
+                    child: Text('---Регистрация---'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        final _ = ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'Successfully',
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Clear local storage',
+                      ),
+                    ),
+                  ),
+                  const Wrap(
+                    children: [
+                      _ItemPage(
+                        name: 'Калькулятор',
+                        nameRoute: AppRoute.stepCalculator,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+                  const Center(
+                    child: Text('---личный кабинет---'),
+                  ),
+                  const SizedBox(height: 30),
+                  const Center(child: Text('---Вспомогательные---')),
+                  Wrap(children: [
+                    _ItemPage(
+                      name: 'Общие документы',
+                      onPressed: () {},
+                    ),
+                    _ItemPage(
+                      name: 'Ошибка доступа',
+                      onPressed: () {
+                        GoRouter.of(context)
+                            .pushNamed<void>(FailureInternet.name);
+                      },
+                    ),
+                    const _ItemPage(
+                      name: 'Soft Обновление',
+                      nameRoute: UpdateSoftAppPage.name,
+                    ),
+                    const _ItemPage(
+                      name: 'Hard Обновление',
+                      nameRoute: UpdateHardAppPage.name,
+                    ),
+                    const SizedBox(height: 30),
+                    const Center(child: Text('---Тестирование функционала---')),
+                    const Wrap(
+                      children: [
+                        _ItemPage(
+                          name: 'Snack bar',
+                          nameRoute: AppRoute.testFlashLib,
+                        ),
+                        _ItemPage(
+                          name: 'Http log',
+                          nameRoute: AppRoute.httpLog,
+                        ),
+                        _ItemPage(
+                          name: 'Device info',
+                          nameRoute: DevicePage.name,
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    const SizedBox(height: 30),
+                    const Center(child: Text('---API---')),
+                    const Center(
+                      child: Text(
+                        'Для смены API нужно закрыть и открыть приложение',
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle.s12w600h17,
+                      ),
+                    ),
+                    _RadioApi(
+                      onChanged: (v) =>
+                          cubitDebug.setEnumProject(enumProject: v),
+                      activeEnumApi: state.enumProject,
+                      enumProject: EnumProject.prod_ND,
+                      title: EnumProject.prod_ND.name,
+                    ),
+                    const Divider(),
+                    const SizedBox(height: 30),
+                    const Center(child: Text('---STORE---')),
+                    const Center(
+                      child: Text(
+                        'Для смены Магазина нужно закрыть и открыть приложение',
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle.s12w600h17,
+                      ),
+                    ),
+                    _RadioStore(
+                      onChanged: cubitDebug.setEnumStore,
+                      activeEnumStore: state.enumStore,
+                      enumStore: EnumStore.appStore,
+                      title: _getNameStore(EnumStore.appStore),
+                    ),
+                    _RadioStore(
+                      onChanged: cubitDebug.setEnumStore,
+                      activeEnumStore: state.enumStore,
+                      enumStore: EnumStore.packageInstaller,
+                      title: _getNameStore(EnumStore.packageInstaller),
+                    ),
+                    _RadioStore(
+                      onChanged: cubitDebug.setEnumStore,
+                      activeEnumStore: state.enumStore,
+                      enumStore: EnumStore.unknown,
+                      title: _getNameStore(EnumStore.unknown),
+                    ),
+                    const Divider(),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          final _ = ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Данные отправлены',
+                              ),
+                            ),
+                          );
+                          throw Exception('Repeating test error');
+                        },
+                        child: const Text(
+                          'Отправить тестовый crash в Crashlytics',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 50),
+                  ])
+                ]);
+              },
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 50,
+                color: Theme.of(context).colorScheme.background,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    OutlinedButton(
+                      onPressed: () async {
+                        if (go.router.canPop()) {
+                          go.router.pop();
+                        }
+
+                        BetterFeedback.of(context).show(
+                          (feedback) async {
+                            final screenshotFilePath =
+                                await _writeImageToStorage(feedback.screenshot);
+
+                            final _ = await Share.shareXFiles(
+                              [XFile(screenshotFilePath)],
+                              text: feedback.text,
+                            );
+                          },
+                        );
+                      },
+                      child: const Text('FEEDBACK'),
+                    ),
+                    OutlinedButton(
+                      onPressed: () async {
+                        // await _cleanCash(storage);
+
+                        // await remoteCubit.load();
+                        // ignore: use_build_context_synchronously
+                        Navigator.of(context).pop();
+                        // ignore: use_build_context_synchronously
+                        await context.read<AppRouter>().toAutoRouter(
+                              storage: storage,
+                              // ignore: use_build_context_synchronously
+                              client: context.read(),
+                            );
+                      },
+                      child: const Text('RESTART'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  String _getNameStore(EnumStore enumStore) {
+    return '${enumStore.name} ${enumStore.vendor}';
+  }
+
+  void _showCustomDialog(
+    AppStorage storage,
+    BuildContext context,
+    String title,
+  ) {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Отмена'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Да'),
+              onPressed: () async {
+                // /    await _cleanCash(storage);
+                exit(0);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<String> _writeImageToStorage(Uint8List feedbackScreenshot) async {
+    final output = await getTemporaryDirectory();
+    final screenshotFilePath = '${output.path}/feedback.png';
+    final screenshotFile = File(screenshotFilePath);
+    final _ = await screenshotFile.writeAsBytes(feedbackScreenshot);
+
+    return screenshotFilePath;
+  }
+}
+
+class _RadioApi extends StatelessWidget {
+  const _RadioApi({
+    required this.title,
+    required this.enumProject,
+    required this.activeEnumApi,
+    super.key,
+    this.onChanged,
+  });
+
+  final String title;
+  final EnumProject enumProject;
+  final EnumProject activeEnumApi;
+  final void Function(EnumProject?)? onChanged;
+  @override
+  Widget build(BuildContext context) {
+    return ListTileTheme(
+      horizontalTitleGap: 0,
+      minVerticalPadding: 0,
+      minLeadingWidth: 0,
+      contentPadding: EdgeInsets.zero,
+      child: RadioListTile<EnumProject>(
+        title: Text(title),
+        dense: true,
+        visualDensity: const VisualDensity(vertical: -3),
+        subtitle: Text(enumProject.api),
+        groupValue: activeEnumApi,
+        value: enumProject,
+        onChanged: onChanged,
+      ),
+    );
+  }
+}
+
+class _RadioStore extends StatelessWidget {
+  const _RadioStore({
+    required this.title,
+    required this.enumStore,
+    required this.activeEnumStore,
+    super.key,
+    this.onChanged,
+  });
+
+  final String title;
+  final EnumStore enumStore;
+  final EnumStore activeEnumStore;
+  final void Function(EnumStore?)? onChanged;
+  @override
+  Widget build(BuildContext context) {
+    return ListTileTheme(
+      horizontalTitleGap: 0,
+      minVerticalPadding: 0,
+      minLeadingWidth: 0,
+      contentPadding: EdgeInsets.zero,
+      child: RadioListTile<EnumStore>(
+        title: Text(title),
+        dense: true,
+        visualDensity: const VisualDensity(vertical: -3),
+        subtitle: Text(enumStore.packageId.toString()),
+        groupValue: activeEnumStore,
+        value: enumStore,
+        onChanged: onChanged,
+      ),
+    );
+  }
+}
+
+class _ItemPage extends StatelessWidget {
+  const _ItemPage({
+    required this.name,
+    super.key,
+    this.nameRoute,
+    this.onPressed,
+    this.isPushPage = true,
+  });
+
+  final String name;
+  final bool isPushPage;
+  final String? nameRoute;
+  final void Function()? onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: nameRoute != null
+          ? () {
+              isPushPage
+                  ? GoRouter.of(context).pushNamed<void>(nameRoute!)
+                  : GoRouter.of(context).goNamed(nameRoute!);
+            }
+          : onPressed,
+      child: Text(
+        name,
+        style: AppTextStyle.s18w700h16,
+      ),
+    );
+  }
+}

@@ -1,0 +1,105 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:device_preview/device_preview.dart';
+import 'package:feedback/feedback.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:kidneysmart/api/api_client.dart';
+
+import 'package:kidneysmart/app/style/theme/app_theme.dart';
+import 'package:kidneysmart/app/view/app_lifecycle_manager.dart';
+import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
+import 'package:kidneysmart/core/cubits/internet_cubit/internet_cubit.dart';
+
+import 'package:kidneysmart/core/cubits/use_config_questionnaire/use_config_questionnaire_cubit.dart';
+
+import 'package:kidneysmart/core/storage/app_storage.dart';
+import 'package:kidneysmart/core/utils/status_bar_nav_helper.dart';
+import 'package:kidneysmart/feature/test_page/device_info/cubit/device_info_cubit.dart';
+import 'package:kidneysmart/l10n/app_localizations.dart';
+import 'package:kidneysmart/l10n/l10n.dart';
+import 'package:kidneysmart/navigation/app_router.dart';
+
+
+class App extends StatelessWidget {
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final storage = context.read<AppStorage>();
+    final apiClient = context.read<ApiClient>();
+    final go = context.read<AppRouter>();
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => DebugCubit(storage: storage)..load()),
+    
+      
+        BlocProvider(create: (context) => InternetCubit()),
+      
+     
+        BlocProvider(
+          lazy: false,
+          create: (context) => DeviceInfoCubit(
+            storage: storage,
+            client: apiClient,
+            router: go,
+          )..load(),
+        ),
+      ],
+      child: const _MobileApp(),
+    );
+  }
+}
+
+class _MobileApp extends StatelessWidget {
+  const _MobileApp();
+
+  @override
+  Widget build(BuildContext context) {
+    final appRouter = context.read<AppRouter>();
+    final debugCubit = context.watch<DebugCubit>();
+
+    debugRepaintRainbowEnabled = debugCubit.state.isShowRepaintRainbow;
+    debugPaintSizeEnabled = debugCubit.state.isShowPaintSizeEnabled;
+    StatusBarNavHelpers.setDefault();
+
+    return AppLifecycleManager(
+      child: BetterFeedback(
+        child: DevicePreview(
+          enabled: debugCubit.state.isShowDevicePreview,
+          builder: (context) => MaterialApp.router(
+              scrollBehavior: MyScrollBehavior(),
+              routeInformationProvider:
+                  appRouter.router.routeInformationProvider,
+              routeInformationParser: appRouter.router.routeInformationParser,
+              routerDelegate: appRouter.router.routerDelegate,
+              builder: DevicePreview.appBuilder,
+              onGenerateTitle: (context) =>
+                  AppLocalizations.of(context).app_name,
+              theme: AppThemeFlex.lightThemeData(context),
+              title: 'Надо Денег',
+              themeMode: ThemeMode.light,
+              locale: const Locale('ru', 'RU'),
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+              debugShowCheckedModeBanner: false,
+            ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyScrollBehavior extends ScrollBehavior {
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    return const ClampingScrollPhysics();
+  }
+}

@@ -29,7 +29,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get clickAgainToExit => 'Нажмите ещё раз чтобы выйти';
 
   @override
-  String get app_name => 'Умные почки';
+  String get app_name => 'Nado Deneg';
 
   @override
   String get amount => 'Сумма';

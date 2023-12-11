@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kidneysmart/app/style/color/app_color.dart';
+import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
+import 'package:kidneysmart/core/widgets/basic_button.dart';
+import 'package:kidneysmart/gen/assets.gen.dart';
+
+class FailureTryAgain extends StatelessWidget {
+  const FailureTryAgain({
+    required this.onUpdate,
+    super.key,
+  });
+
+  final VoidCallback onUpdate;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(AssetPaths.tryAgainSvg),
+              const SizedBox(height: 49),
+              Text(
+                'Ой! Похоже, что-то сломалось. Попробуйте еще раз',
+                style: AppTextStyle.s20w600h24
+                    .copyWith(color: AppColors.mainBlack),
+              ),
+              const SizedBox(height: 32),
+              BasicButton(
+                onPressed: onUpdate,
+                text: 'Обновить',
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

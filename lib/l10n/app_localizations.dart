@@ -144,7 +144,7 @@ abstract class AppLocalizations {
   /// No description provided for @app_name.
   ///
   /// In ru, this message translates to:
-  /// **'Умные почки'**
+  /// **'Nado Deneg'**
   String get app_name;
 
   /// No description provided for @amount.
