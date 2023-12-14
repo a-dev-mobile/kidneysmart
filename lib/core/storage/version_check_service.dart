@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:kidneysmart/core/log/logger.dart';
@@ -87,7 +87,7 @@ class VersionCheckService {
       // Например, кэш Firebase, если он используется и кэшируется локально
       final appDir = await getApplicationDocumentsDirectory();
       await appDir.delete(recursive: true);
-      await FirebaseFirestore.instance.clearPersistence();
+ 
     } catch (e, s) {
       await FirebaseCrashlytics.instance.recordError(
         e,

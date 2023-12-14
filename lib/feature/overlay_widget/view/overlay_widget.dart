@@ -5,23 +5,18 @@ import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
 import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
 import 'package:kidneysmart/core/cubits/internet_cubit/internet_cubit.dart';
-import 'package:kidneysmart/core/cubits/remote_config_cubit/remote_config_cubit.dart';
+
 import 'package:kidneysmart/core/network/dio_log/http_log_list_widget.dart';
 import 'package:kidneysmart/core/network/dio_log/overlay_draggable_button.dart';
 
 import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
-import 'package:kidneysmart/feature/first_step/confirm_phone_step/view/confirm_phone_page.dart';
 
-import 'package:kidneysmart/feature/first_step/login_second/login_second.dart';
-import 'package:kidneysmart/feature/first_step/set_pin/login_first/login_page.dart';
-import 'package:kidneysmart/feature/first_step/set_pin/view/set_pin_page.dart';
-import 'package:kidneysmart/feature/onboarding/vew/onboarding_page.dart';
 import 'package:kidneysmart/feature/overlay_widget/view/widget/no_internet_widget.dart';
 
 import 'package:kidneysmart/feature/overlay_widget/view/widget/update_hard_app_page.dart';
 import 'package:kidneysmart/feature/overlay_widget/view/widget/update_soft_app_page.dart';
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
-import 'package:kidneysmart/feature/technical_work/view/technical_work_page.dart';
+
 
 class OverlayWidget extends StatefulWidget {
   const OverlayWidget({
@@ -53,41 +48,11 @@ class _OverlayWidgetState extends State<OverlayWidget> {
     final debugCubit = context.read<DebugCubit>();
     // final debugState = debugCubit.state;
     final location = widget.goRouterState.location;
-    final isActiveClickDebug = location == LoginPage.path ||
-        location == OnBoardingPage.path ||
-        location == SplashPage.path ||
-        location == ConfirmPhoneStepPage.path ||
-        location == LoginSecondPage.path ||
-        location == SetPinPage.path ||
-        location == TechnicalWorkPage.path ||
-        location == UpdateHardAppPage.path;
-    FirebaseCrashlytics.instance
-        .setCustomKey('page', widget.goRouterState.location);
+    final isActiveClickDebug =
+        location == SplashPage.path || location == UpdateHardAppPage.path;
 
     return MultiBlocListener(
       listeners: [
-        BlocListener<RemoteConfigCubit, RemoteConfigState>(
-          listener: (context, state) {
-            if (state.isSoftUpdate && !state.isHardUpdate) {
-              final _ = showModalBottomSheet<void>(
-                context: context,
-                useRootNavigator: true,
-                isScrollControlled: true,
-                builder: (context) {
-                  return UpdateSoftAppPage(
-                    store: state.enumStore,
-                  );
-                },
-              );
-            }
-            if (state.isHardUpdate) {
-              _goHardUpdate(context, state);
-            }
-            if (state.isAllActiveTechnicalWorks) {
-              context.goNamed(TechnicalWorkPage.name);
-            }
-          },
-        ),
         BlocListener<DebugCubit, DebugState>(
           listenWhen: (p, c) => p.isShowBtnHttpLog != c.isShowBtnHttpLog,
           listener: (context, state) {
@@ -113,16 +78,6 @@ class _OverlayWidgetState extends State<OverlayWidget> {
         ),
       ),
     );
-  }
-
-  Future<void> _goHardUpdate(
-    BuildContext context,
-    RemoteConfigState state,
-  ) async {
-    // задержка тк онбординг может после инициализации позже загрузиться
-    await Future<void>.delayed(const Duration(seconds: 2));
-    // ignore: use_build_context_synchronously
-    context.goNamed(UpdateHardAppPage.name, extra: state.enumStore);
   }
 }
 

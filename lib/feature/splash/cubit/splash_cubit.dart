@@ -34,24 +34,20 @@ class SplashCubit extends Cubit<SplashState> {
         // await _client.fetchTokenRefresh(refreshToken: refToken);
       }
 
-      final deviceInfoState = await _storage.getDeviceInfoState();
-      final metadata = deviceInfoState.deviceInfo?.metadata;
+
+
       final packageInfo = await PackageInfo.fromPlatform();
 
       final appId = await _storage.getAppId();
 
       if (appId.isEmpty) {
         await Future<void>.delayed(const Duration(seconds: 1));
-        await _client.sendDataApp();
+        // await _client.sendDataApp();
       }
 
-      if (packageInfo.buildNumber != metadata?.build_number ||
-          packageInfo.version != metadata?.version) {
-        await Future<void>.delayed(const Duration(seconds: 1));
-        await _client.updateDataApp();
-      }
+     
 
-      await _client.sendStartApp();
+      // await _client.sendStartApp();
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(e, stackTrace);
     } finally {

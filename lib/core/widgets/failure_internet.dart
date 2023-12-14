@@ -84,7 +84,7 @@ class FailureInternet extends StatelessWidget {
                   final appId = await storage.getAppId();
                   await storage.clearAll();
                   await storage.setAppId(appId);
-                  unawaited(client.sendStartApp());
+        
                   context.goNamed(OnBoardingPage.name);
                 },
                 text: 'Перезагрузить приложение',

@@ -12,11 +12,10 @@ import 'package:kidneysmart/app/view/app_lifecycle_manager.dart';
 import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
 import 'package:kidneysmart/core/cubits/internet_cubit/internet_cubit.dart';
 
-import 'package:kidneysmart/core/cubits/use_config_questionnaire/use_config_questionnaire_cubit.dart';
 
 import 'package:kidneysmart/core/storage/app_storage.dart';
-import 'package:kidneysmart/core/utils/status_bar_nav_helper.dart';
-import 'package:kidneysmart/feature/test_page/device_info/cubit/device_info_cubit.dart';
+
+
 import 'package:kidneysmart/l10n/app_localizations.dart';
 import 'package:kidneysmart/l10n/l10n.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
@@ -39,14 +38,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (context) => InternetCubit()),
       
      
-        BlocProvider(
-          lazy: false,
-          create: (context) => DeviceInfoCubit(
-            storage: storage,
-            client: apiClient,
-            router: go,
-          )..load(),
-        ),
+
       ],
       child: const _MobileApp(),
     );
@@ -63,7 +55,7 @@ class _MobileApp extends StatelessWidget {
 
     debugRepaintRainbowEnabled = debugCubit.state.isShowRepaintRainbow;
     debugPaintSizeEnabled = debugCubit.state.isShowPaintSizeEnabled;
-    StatusBarNavHelpers.setDefault();
+
 
     return AppLifecycleManager(
       child: BetterFeedback(

@@ -24,7 +24,6 @@ import 'package:kidneysmart/feature/overlay_widget/view/widget/update_soft_app_p
 
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
 
-import 'package:kidneysmart/feature/test_page/device_info/view/device_page.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -193,10 +192,7 @@ class DebugMenuPage extends StatelessWidget {
                           name: 'Http log',
                           nameRoute: AppRoute.httpLog,
                         ),
-                        _ItemPage(
-                          name: 'Device info',
-                          nameRoute: DevicePage.name,
-                        ),
+                  
                       ],
                     ),
                     const Divider(),

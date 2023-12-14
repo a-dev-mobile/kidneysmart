@@ -15,7 +15,7 @@ import 'package:kidneysmart/feature/overlay_widget/view/overlay_widget.dart';
 import 'package:kidneysmart/feature/overlay_widget/view/widget/update_hard_app_page.dart';
 import 'package:kidneysmart/feature/overlay_widget/view/widget/update_soft_app_page.dart';
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
-import 'package:kidneysmart/feature/test_page/device_info/view/device_page.dart';
+
 
 
 // ignore_for_file: lines_longer_than_80_chars, no-magic-number,no-equal-arguments,  arguments-ordering
@@ -113,12 +113,7 @@ class AppRouter {
               child: const HttpLogListWidget(),
             ),
           ),
-          GoRoute(
-            name: DevicePage.name,
-            path: DevicePage.path,
-            pageBuilder: (context, state) =>
-                NoTransitionPage(key: state.pageKey, child: const DevicePage()),
-          ),
+        
        
         ],
         navigatorKey: _pageNavigatorKey,
@@ -191,6 +186,6 @@ class AppRouter {
     await storage.completeOnboarding();
     await storage.completeFirstStart();
 
-    router.goNamed(LoginPage.name);
+    // router.goNamed(LoginPage.name);
   }
 }

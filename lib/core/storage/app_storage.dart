@@ -17,7 +17,7 @@ import 'package:kidneysmart/core/enum/enum_available_product.dart';
 import 'package:kidneysmart/core/enum/enum_loan_status.dart';
 import 'package:kidneysmart/core/log/logger.dart';
 
-import 'package:kidneysmart/feature/test_page/device_info/cubit/device_info_cubit.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppStorage {
@@ -43,16 +43,7 @@ class AppStorage {
 
 // ******************************
 // ******************************
-// ******************************
-  static const _deviceInfoState = '_deviceInfoState';
 
-  Future<DeviceInfoState> getDeviceInfoState() async {
-    return DeviceInfoState.fromJson(await getJson(key: _deviceInfoState));
-  }
-
-  Future<void> setDeviceInfoState(DeviceInfoState value) {
-    return setJson(key: _deviceInfoState, value: value.toJson());
-  }
 
 // ******************************
 // ******************************
