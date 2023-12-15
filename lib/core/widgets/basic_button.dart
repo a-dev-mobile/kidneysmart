@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kidneysmart/core/widgets/spinning_svg.dart';
 
+/// Cupertino-styled rectangle button with rounded corners
+///  // ignore_for_file: avoid-nested-conditional-expressions
 class BasicButton extends StatelessWidget {
   const BasicButton({
     required this.onPressed,
@@ -30,8 +32,6 @@ class BasicButton extends StatelessWidget {
     final textStyle = isUnderlinedText
         ? TextStyle(decoration: TextDecoration.underline, color: colorText)
         : TextStyle(color: colorText);
-
-    // final lottie = Lottie.asset('assets/lottie/load_btn.json', repeat: true, animate: isLoad);
 
     return AbsorbPointer(
       absorbing: isLoad,

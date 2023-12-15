@@ -22,7 +22,7 @@ class FailureTryAgain extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(AssetPaths.tryAgainSvg),
+            
               const SizedBox(height: 49),
               Text(
                 'Ой! Похоже, что-то сломалось. Попробуйте еще раз',

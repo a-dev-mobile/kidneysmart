@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kidneysmart/api/api_client.dart';
+
 
 /// {@template app_lifecycle_manager}
 /// AppLifecycleManager widget
@@ -37,7 +37,7 @@ class _AppLifecycleManagerState extends State<AppLifecycleManager>
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     super.didChangeAppLifecycleState(state);
 
-    final client = context.read<ApiClient>();
+    // final client = context.read<ApiClient>();
 
     switch (state) {
       case AppLifecycleState.resumed:

@@ -9,7 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_project.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
 
-import 'package:kidneysmart/core/storage/app_storage.dart';
+import 'package:kidneysmart/core/storage/local_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 part 'debug_state.dart';
@@ -18,13 +18,13 @@ part 'debug_cubit.g.dart';
 
 class DebugCubit extends Cubit<DebugState> {
   DebugCubit({
-    required AppStorage storage,
+    required LocalStorage storage,
   })  : _storage = storage,
         super(
           const DebugState(),
         );
 
-  final AppStorage _storage;
+  final LocalStorage _storage;
 
   Future<void> load() async {
     var debugState = await _storage.getDebugState();
@@ -124,7 +124,7 @@ class DebugCubit extends Cubit<DebugState> {
       const intState = DebugState();
 
       emit(intState);
-      await _storage.clearAll();
+      // await _storage.clearAll();
       await Future<void>.delayed(const Duration(seconds: 1));
 
       exit(0);

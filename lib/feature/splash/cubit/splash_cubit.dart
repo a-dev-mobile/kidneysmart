@@ -2,56 +2,46 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kidneysmart/feature/splash/cubit/splash_state.dart';
-import 'package:kidneysmart/navigation/app_router.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/api/api_client.dart';
-import 'package:kidneysmart/core/storage/app_storage.dart';
-import 'package:kidneysmart/feature/splash/cubit/splash_state.dart';
+import 'package:kidneysmart/bootstrap.dart';
+import 'package:kidneysmart/core/enum/enum_page_status.dart';
+import 'package:kidneysmart/core/service/error_handler/error_handler.dart';
+import 'package:kidneysmart/core/storage/local_storage.dart';
+
 import 'package:kidneysmart/navigation/app_router.dart';
+
 import 'package:package_info_plus/package_info_plus.dart';
+
+part 'splash_state.dart';
+part 'splash_cubit.freezed.dart';
 
 class SplashCubit extends Cubit<SplashState> {
   final AppRouter _router;
-  final AppStorage _storage;
+  final LocalStorage _storage;
   final ApiClient _client;
 
   SplashCubit({
     required AppRouter router,
     required ApiClient client,
-    required AppStorage storage,
+    required LocalStorage storage,
   })  : _router = router,
         _storage = storage,
         _client = client,
         super(const SplashState());
 
   Future<void> load() async {
-    emit(state.copyWith(isLoad: true));
+    await Future<void>.delayed(const Duration(seconds: 2));
+    emit(state.copyWith(enumPageStatus: EnumPageStatus.load));
 
     try {
-      // Attempt to fetch refresh token if it exists
-      final refToken = await _storage.getTokenRef();
-      if (refToken.isNotEmpty) {
-        // await _client.fetchTokenRefresh(refreshToken: refToken);
-      }
-
-
-
-      final packageInfo = await PackageInfo.fromPlatform();
-
-      final appId = await _storage.getAppId();
-
-      if (appId.isEmpty) {
-        await Future<void>.delayed(const Duration(seconds: 1));
-        // await _client.sendDataApp();
-      }
-
-     
-
-      // await _client.sendStartApp();
+      await Future<void>.delayed(const Duration(seconds: 2));
+      emit(state.copyWith(enumPageStatus: EnumPageStatus.success));
+      await Future<void>.delayed(const Duration(seconds: 2));
+      // throw Exception('error loading state');
     } catch (e, stackTrace) {
-      Error.throwWithStackTrace(e, stackTrace);
-    } finally {
-      await _router.toAutoRouter(storage: _storage, client: _client);
+      await ErrorHandler.instance.recordError(e, stackTrace);
+      emit(state.copyWith(enumPageStatus: EnumPageStatus.error));
     }
   }
 }

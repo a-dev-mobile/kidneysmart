@@ -37,18 +37,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
         systemNavigationBarColor: Colors.white,
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
-      leading: showBackButton && Navigator.canPop(context)
-          ? IconButton(
-              onPressed: () {
-                if (onBackPress != null) {
-                  onBackPress!();
-                } else {
-                  Navigator.of(context).pop();
-                }
-              },
-              icon: SvgPicture.asset(AssetPaths.iconBackSvg),
-            )
-          : null,
+      
       title: Text(
         title,
         style: titleTextStyle,

@@ -21,7 +21,23 @@ enum EnumDocsRepayment implements Comparable<EnumDocsRepayment> {
   static EnumDocsRepayment fromValue(
     String? value, {
     EnumDocsRepayment? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumDocsRepayment.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            value,
+            'value',
+            'Value not found in EnumDocsRepayment',
+          ));
+    }
+
     switch (value) {
       case 'agreementRule':
         return agreementRule;
@@ -38,8 +54,19 @@ enum EnumDocsRepayment implements Comparable<EnumDocsRepayment> {
   }
 
   static EnumDocsRepayment? fromValueOrNull(
-    String? value,
-  ) {
+    String? value, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumDocsRepayment.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (value) {
       case 'agreementRule':
         return agreementRule;

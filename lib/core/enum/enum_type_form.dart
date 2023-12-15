@@ -20,7 +20,23 @@ enum EnumTypeForm implements Comparable<EnumTypeForm> {
   static EnumTypeForm fromValue(
     String? value, {
     EnumTypeForm? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumTypeForm.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            value,
+            'value',
+            'Value not found in EnumTypeForm',
+          ));
+    }
+
     switch (value) {
       case 'years':
         return years;
@@ -43,8 +59,19 @@ enum EnumTypeForm implements Comparable<EnumTypeForm> {
   }
 
   static EnumTypeForm? fromValueOrNull(
-    String? value,
-  ) {
+    String? value, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumTypeForm.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (value) {
       case 'years':
         return years;

@@ -31,7 +31,23 @@ enum EnumPageStatus implements Comparable<EnumPageStatus> {
   static EnumPageStatus fromDesc(
     String? desc, {
     EnumPageStatus? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumPageStatus.values) {
+        if (desc != null && v.desc.contains(desc)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            desc,
+            'desc',
+            'Value not found in EnumPageStatus',
+          ));
+    }
+
     switch (desc) {
       case 'Запуск...':
         return init;
@@ -52,8 +68,19 @@ enum EnumPageStatus implements Comparable<EnumPageStatus> {
   }
 
   static EnumPageStatus? fromDescOrNull(
-    String? desc,
-  ) {
+    String? desc, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumPageStatus.values) {
+        if (desc != null && v.desc.contains(desc)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (desc) {
       case 'Запуск...':
         return init;

@@ -191,7 +191,7 @@ class __$$DebugStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DebugStateImpl with DiagnosticableTreeMixin implements _DebugState {
   const _$DebugStateImpl(
-      {this.enumProject = EnumProject.prod_ND,
+      {this.enumProject = EnumProject.prod,
       this.enumStore = EnumStore.unknown,
       this.isDebugMenuEnabled = false,
       this.isShowDevicePreview = false,

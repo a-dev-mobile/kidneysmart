@@ -19,7 +19,23 @@ enum EnumFio implements Comparable<EnumFio> {
   static EnumFio fromValue(
     String? value, {
     EnumFio? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumFio.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            value,
+            'value',
+            'Value not found in EnumFio',
+          ));
+    }
+
     switch (value) {
       case 'all':
         return all;
@@ -40,8 +56,19 @@ enum EnumFio implements Comparable<EnumFio> {
   }
 
   static EnumFio? fromValueOrNull(
-    String? value,
-  ) {
+    String? value, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumFio.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (value) {
       case 'all':
         return all;

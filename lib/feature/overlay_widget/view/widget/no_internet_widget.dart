@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
 import 'package:kidneysmart/core/cubits/internet_cubit/internet_cubit.dart';
-import 'package:kidneysmart/core/storage/app_storage.dart';
+import 'package:kidneysmart/core/storage/local_storage.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 
 class NoInternetWidget extends StatelessWidget {
@@ -12,9 +12,7 @@ class NoInternetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.watch<InternetCubit>();
-    if (cubit.state ?? false) {
-      context.read<AppStorage>().setLastScreen('NoInternet');
-    }
+
     return Visibility(
       visible: cubit.state ?? false,
       child: Scaffold(

@@ -14,9 +14,10 @@ import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
 import 'package:kidneysmart/core/enum/enum_loan_status.dart';
 import 'package:kidneysmart/core/enum/enum_project.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
-import 'package:kidneysmart/core/storage/app_storage.dart';
+import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
+import 'package:kidneysmart/core/storage/local_storage.dart';
 
-import 'package:kidneysmart/core/widgets/failure_internet.dart';
+import 'package:kidneysmart/core/widgets/app_error_widget.dart';
 
 import 'package:kidneysmart/feature/onboarding/vew/onboarding_page.dart';
 import 'package:kidneysmart/feature/overlay_widget/view/widget/update_hard_app_page.dart';
@@ -34,8 +35,7 @@ class DebugMenuPage extends StatelessWidget {
   static const name = 'debug-page';
   @override
   Widget build(BuildContext context) {
-    final _ = context.read<AppStorage>().setLastScreen(DebugMenuPage.name);
-    final storage = context.read<AppStorage>();
+    final storage = context.read<LocalStorage>();
     final go = context.read<AppRouter>();
     final cubitDebug = context.read<DebugCubit>();
 
@@ -147,12 +147,7 @@ class DebugMenuPage extends StatelessWidget {
                     ),
                   ),
                   const Wrap(
-                    children: [
-                      _ItemPage(
-                        name: 'Калькулятор',
-                        nameRoute: AppRoute.stepCalculator,
-                      ),
-                    ],
+                    children: [],
                   ),
                   const SizedBox(height: 30),
                   const Center(
@@ -169,13 +164,13 @@ class DebugMenuPage extends StatelessWidget {
                       name: 'Ошибка доступа',
                       onPressed: () {
                         GoRouter.of(context)
-                            .pushNamed<void>(FailureInternet.name);
+                            .pushNamed<void>(AppErrorWidget.name);
                       },
                     ),
-                    const _ItemPage(
-                      name: 'Soft Обновление',
-                      nameRoute: UpdateSoftAppPage.name,
-                    ),
+                    // const _ItemPage(
+                    // name: 'Soft Обновление',
+                    // nameRoute: UpdateSoftAppPage.name,
+                    // ),
                     const _ItemPage(
                       name: 'Hard Обновление',
                       nameRoute: UpdateHardAppPage.name,
@@ -185,14 +180,9 @@ class DebugMenuPage extends StatelessWidget {
                     const Wrap(
                       children: [
                         _ItemPage(
-                          name: 'Snack bar',
-                          nameRoute: AppRoute.testFlashLib,
-                        ),
-                        _ItemPage(
                           name: 'Http log',
-                          nameRoute: AppRoute.httpLog,
+                          nameRoute: HttpLogListWidget.name,
                         ),
-                  
                       ],
                     ),
                     const Divider(),
@@ -208,9 +198,16 @@ class DebugMenuPage extends StatelessWidget {
                     _RadioApi(
                       onChanged: (v) =>
                           cubitDebug.setEnumProject(enumProject: v),
-                      activeEnumApi: state.enumProject,
-                      enumProject: EnumProject.prod_ND,
-                      title: EnumProject.prod_ND.name,
+                      activeEnumProject: state.enumProject,
+                      enumProject: EnumProject.prod,
+                      title: EnumProject.prod.name,
+                    ),
+                    _RadioApi(
+                      onChanged: (v) =>
+                          cubitDebug.setEnumProject(enumProject: v),
+                      activeEnumProject: state.enumProject,
+                      enumProject: EnumProject.dev,
+                      title: EnumProject.dev.name,
                     ),
                     const Divider(),
                     const SizedBox(height: 30),
@@ -324,7 +321,7 @@ class DebugMenuPage extends StatelessWidget {
   }
 
   void _showCustomDialog(
-    AppStorage storage,
+    LocalStorage storage,
     BuildContext context,
     String title,
   ) {
@@ -367,14 +364,14 @@ class _RadioApi extends StatelessWidget {
   const _RadioApi({
     required this.title,
     required this.enumProject,
-    required this.activeEnumApi,
+    required this.activeEnumProject,
     super.key,
     this.onChanged,
   });
 
   final String title;
   final EnumProject enumProject;
-  final EnumProject activeEnumApi;
+  final EnumProject activeEnumProject;
   final void Function(EnumProject?)? onChanged;
   @override
   Widget build(BuildContext context) {
@@ -388,7 +385,7 @@ class _RadioApi extends StatelessWidget {
         dense: true,
         visualDensity: const VisualDensity(vertical: -3),
         subtitle: Text(enumProject.api),
-        groupValue: activeEnumApi,
+        groupValue: activeEnumProject,
         value: enumProject,
         onChanged: onChanged,
       ),

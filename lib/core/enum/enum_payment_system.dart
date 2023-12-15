@@ -22,7 +22,23 @@ enum EnumPaymentSystem implements Comparable<EnumPaymentSystem> {
   static EnumPaymentSystem fromFirstNumber(
     String? firstNumber, {
     EnumPaymentSystem? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumPaymentSystem.values) {
+        if (firstNumber != null && v.firstNumber.contains(firstNumber)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            firstNumber,
+            'firstNumber',
+            'Value not found in EnumPaymentSystem',
+          ));
+    }
+
     switch (firstNumber) {
       case '2':
         return mir;
@@ -43,8 +59,19 @@ enum EnumPaymentSystem implements Comparable<EnumPaymentSystem> {
   }
 
   static EnumPaymentSystem? fromFirstNumberOrNull(
-    String? firstNumber,
-  ) {
+    String? firstNumber, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumPaymentSystem.values) {
+        if (firstNumber != null && v.firstNumber.contains(firstNumber)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (firstNumber) {
       case '2':
         return mir;

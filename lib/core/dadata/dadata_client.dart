@@ -5,8 +5,8 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:kidneysmart/core/dadata/dadata.dart';
-import 'package:kidneysmart/core/network/dio_log/interceptor/dio_log_interceptor.dart';
-import 'package:kidneysmart/core/network/network.dart';
+import 'package:kidneysmart/core/service/network/dio_log/interceptor/dio_log_interceptor.dart';
+import 'package:kidneysmart/core/service/network/network.dart';
 
 enum DaDataEnum { name, surname, patronymic, all }
 
@@ -26,8 +26,8 @@ class DaDataClient {
           ),
         )..interceptors.addAll([
             DioLogInterceptor(),
-            AcceptInterceptor(),
-            UserAgentInterceptor(userAgent),
+            // AcceptInterceptor(),
+            // UserAgentInterceptor(userAgent),
           ]);
 
   final Dio _dio;

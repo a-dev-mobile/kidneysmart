@@ -58,17 +58,17 @@ dependencies:
   # parser html
   html: ^0.15.4
   # Navigation
-  go_router: ^8.2.0
+  go_router: ^12.1.3
   # Native
   permission_handler: ^11.1.0
 
-  url_launcher: ^6.2.1
+  url_launcher: ^6.2.2
   share_plus: ^7.2.1
 
   webview_flutter: ^4.4.2
 
   # syncfusion_flutter_pdfviewer: ^23.1.44
-  flutter_native_splash: ^2.3.5
+  flutter_native_splash: ^2.3.8
 
   # Helper for UI
   flutter_svg: ^2.0.9
@@ -105,14 +105,14 @@ dev_dependencies:
   build_runner: ^2.4.7
   json_serializable: ^6.7.1
   # turn_gen: ^2.0.0
-  riverpod_generator: ^2.3.5
-  custom_lint: ^0.5.6
+
 
   turn_gen:
     path: c:/DEV/MY/MY_GITHUB/turn_gen
 flutter:
+  # generate: true
   uses-material-design: true
-  generate: true
+
   assets:
     - assets/svg/
     - assets/image/
@@ -120,18 +120,13 @@ flutter:
 # dart run turn_gen
 turn_gen:
   assets_output: "lib/gen/"
-# flutter pub run flutter_launcher_icons:main
-flutter_icons:
-  ios: true
-  android: false
-  remove_alpha_ios: true
-  image_path: "assets/image/icon.png"
+
 
 # flutter pub get && flutter pub run flutter_native_splash:create
 flutter_native_splash:
   android: true
   ios: true
   web: true
-  desktop: false
+
   color: "#ffffff"
   image: assets/image/logo.png

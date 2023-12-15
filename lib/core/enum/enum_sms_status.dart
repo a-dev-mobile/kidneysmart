@@ -27,7 +27,23 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
   static EnumSmsStatus fromValue(
     String? value, {
     EnumSmsStatus? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumSmsStatus.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            value,
+            'value',
+            'Value not found in EnumSmsStatus',
+          ));
+    }
+
     switch (value) {
       case 'init':
         return init;
@@ -48,8 +64,19 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
   }
 
   static EnumSmsStatus? fromValueOrNull(
-    String? value,
-  ) {
+    String? value, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumSmsStatus.values) {
+        if (value != null && v.value.contains(value)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (value) {
       case 'init':
         return init;

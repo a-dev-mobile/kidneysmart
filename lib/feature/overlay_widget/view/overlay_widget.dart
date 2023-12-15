@@ -6,8 +6,8 @@ import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
 import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
 import 'package:kidneysmart/core/cubits/internet_cubit/internet_cubit.dart';
 
-import 'package:kidneysmart/core/network/dio_log/http_log_list_widget.dart';
-import 'package:kidneysmart/core/network/dio_log/overlay_draggable_button.dart';
+import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
+import 'package:kidneysmart/core/service/network/dio_log/overlay_draggable_button.dart';
 
 import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
 
@@ -47,7 +47,7 @@ class _OverlayWidgetState extends State<OverlayWidget> {
 
     final debugCubit = context.read<DebugCubit>();
     // final debugState = debugCubit.state;
-    final location = widget.goRouterState.location;
+    final location = widget.goRouterState.uri.toString();
     final isActiveClickDebug =
         location == SplashPage.path || location == UpdateHardAppPage.path;
 
@@ -70,7 +70,7 @@ class _OverlayWidgetState extends State<OverlayWidget> {
             widget.child,
             const NoInternetWidget(),
             if (isDebugMenuEnabled)
-              _DebugInfoRouter(location: widget.goRouterState.location),
+              _DebugInfoRouter(location: widget.goRouterState.uri.toString()),
             if (isDebugMenuEnabled) const _DebugBtn(),
             if (isActiveClickDebug)
               _BtnActivateDebug(onTap: debugCubit.setClickDebug),

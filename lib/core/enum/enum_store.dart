@@ -120,7 +120,23 @@ enum EnumStore implements Comparable<EnumStore> {
   static EnumStore fromUrl(
     String? url, {
     EnumStore? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStore.values) {
+        if (url != null && v.url.contains(url)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            url,
+            'url',
+            'Value not found in EnumStore',
+          ));
+    }
+
     switch (url) {
       case 'https://apps.apple.com/us/app/надо-денег-деньги-онлайн/id1663823713':
         return appStore;
@@ -151,7 +167,23 @@ enum EnumStore implements Comparable<EnumStore> {
   static EnumStore fromName(
     String? name, {
     EnumStore? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStore.values) {
+        if (name != null && v.name.contains(name)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            name,
+            'name',
+            'Value not found in EnumStore',
+          ));
+    }
+
     switch (name) {
       case 'AppStore':
         return appStore;
@@ -182,7 +214,23 @@ enum EnumStore implements Comparable<EnumStore> {
   static EnumStore fromVendor(
     String? vendor, {
     EnumStore? fallback,
+    bool useSubstringMatch = false,
   }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStore.values) {
+        if (vendor != null && v.vendor.contains(vendor)) {
+          return v;
+        }
+      }
+
+      return fallback ??
+          (throw ArgumentError.value(
+            vendor,
+            'vendor',
+            'Value not found in EnumStore',
+          ));
+    }
+
     switch (vendor) {
       case '(apple)':
         return appStore;
@@ -223,8 +271,19 @@ enum EnumStore implements Comparable<EnumStore> {
   }
 
   static EnumStore? fromUrlOrNull(
-    String? url,
-  ) {
+    String? url, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStore.values) {
+        if (url != null && v.url.contains(url)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (url) {
       case 'https://apps.apple.com/us/app/надо-денег-деньги-онлайн/id1663823713':
         return appStore;
@@ -248,8 +307,19 @@ enum EnumStore implements Comparable<EnumStore> {
   }
 
   static EnumStore? fromNameOrNull(
-    String? name,
-  ) {
+    String? name, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStore.values) {
+        if (name != null && v.name.contains(name)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (name) {
       case 'AppStore':
         return appStore;
@@ -273,8 +343,19 @@ enum EnumStore implements Comparable<EnumStore> {
   }
 
   static EnumStore? fromVendorOrNull(
-    String? vendor,
-  ) {
+    String? vendor, {
+    bool useSubstringMatch = false,
+  }) {
+    if (useSubstringMatch) {
+      for (final v in EnumStore.values) {
+        if (vendor != null && v.vendor.contains(vendor)) {
+          return v;
+        }
+      }
+
+      return null;
+    }
+
     switch (vendor) {
       case '(apple)':
         return appStore;

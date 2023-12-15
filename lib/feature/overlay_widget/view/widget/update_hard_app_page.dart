@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kidneysmart/app/style/color/app_color.dart';
 import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
-import 'package:kidneysmart/core/storage/app_storage.dart';
+import 'package:kidneysmart/core/storage/local_storage.dart';
 import 'package:kidneysmart/core/widgets/basic_button.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,7 +19,7 @@ class UpdateHardAppPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _ = context.read<AppStorage>().setLastScreen(UpdateHardAppPage.name);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),

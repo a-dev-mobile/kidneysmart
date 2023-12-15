@@ -5,40 +5,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:kidneysmart/api/api_client.dart';
 
 import 'package:kidneysmart/app/style/theme/app_theme.dart';
 import 'package:kidneysmart/app/view/app_lifecycle_manager.dart';
 import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
 import 'package:kidneysmart/core/cubits/internet_cubit/internet_cubit.dart';
+import 'package:kidneysmart/core/service/overlay/overlay_manager_initializer.dart';
 
 
-import 'package:kidneysmart/core/storage/app_storage.dart';
-
+import 'package:kidneysmart/core/storage/local_storage.dart';
 
 import 'package:kidneysmart/l10n/app_localizations.dart';
 import 'package:kidneysmart/l10n/l10n.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
-
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final storage = context.read<AppStorage>();
-    final apiClient = context.read<ApiClient>();
+    final storage = context.read<LocalStorage>();
+
     final go = context.read<AppRouter>();
 
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => DebugCubit(storage: storage)..load()),
-    
-      
         BlocProvider(create: (context) => InternetCubit()),
-      
-     
-
       ],
       child: const _MobileApp(),
     );
@@ -56,13 +49,12 @@ class _MobileApp extends StatelessWidget {
     debugRepaintRainbowEnabled = debugCubit.state.isShowRepaintRainbow;
     debugPaintSizeEnabled = debugCubit.state.isShowPaintSizeEnabled;
 
-
     return AppLifecycleManager(
       child: BetterFeedback(
         child: DevicePreview(
           enabled: debugCubit.state.isShowDevicePreview,
-          builder: (context) => MaterialApp.router(
-              scrollBehavior: MyScrollBehavior(),
+          builder: (context) => OverlayManagerInitializer(
+            child: MaterialApp.router(
               routeInformationProvider:
                   appRouter.router.routeInformationProvider,
               routeInformationParser: appRouter.router.routeInformationParser,
@@ -71,7 +63,7 @@ class _MobileApp extends StatelessWidget {
               onGenerateTitle: (context) =>
                   AppLocalizations.of(context).app_name,
               theme: AppThemeFlex.lightThemeData(context),
-              title: 'Надо Денег',
+              title: 'Kidneysmart',
               themeMode: ThemeMode.light,
               locale: const Locale('ru', 'RU'),
               localizationsDelegates: const [
@@ -83,15 +75,9 @@ class _MobileApp extends StatelessWidget {
               supportedLocales: AppLocalizations.supportedLocales,
               debugShowCheckedModeBanner: false,
             ),
+          ),
         ),
       ),
     );
-  }
-}
-
-class MyScrollBehavior extends ScrollBehavior {
-  @override
-  ScrollPhysics getScrollPhysics(BuildContext context) {
-    return const ClampingScrollPhysics();
   }
 }

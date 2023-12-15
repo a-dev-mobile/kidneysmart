@@ -4,8 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:kidneysmart/app/style/color/app_color.dart';
 import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
-import 'package:kidneysmart/core/storage/app_storage.dart';
-
+import 'package:kidneysmart/core/storage/local_storage.dart';
 
 import 'package:kidneysmart/core/widgets/basic_button.dart';
 
@@ -22,10 +21,9 @@ class OnBoardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _ = context.read<AppStorage>().setLastScreen(OnBoardingPage.name);
     return BlocProvider(
       create: (context) => OnboardingCubit(
-        storage: context.read<AppStorage>(),
+        storage: context.read<LocalStorage>(),
       ),
       child: const _OnBoardingView(),
     );
@@ -40,19 +38,15 @@ class _OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<_OnBoardingView> {
- 
-
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
   Widget build(BuildContext context) {
-
-  
-
-    return Scaffold(body: Center(child: Text('onboarding')),);
+    return Scaffold(
+      body: Center(child: Text('onboarding')),
+    );
   }
 }
