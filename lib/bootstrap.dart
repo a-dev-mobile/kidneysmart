@@ -19,8 +19,11 @@ import 'package:kidneysmart/app_bloc_observer.dart';
 import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
 import 'package:kidneysmart/core/dadata/dadata.dart';
 import 'package:kidneysmart/core/device/about_device.dart';
+import 'package:kidneysmart/core/enum/enum_log_level.dart';
 import 'package:kidneysmart/core/log/logger.dart';
+
 import 'package:kidneysmart/core/service/error_handler/error_handler.dart';
+import 'package:kidneysmart/core/service/error_handler/model/app_error.dart';
 import 'package:kidneysmart/core/service/network/network.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
 import 'package:kidneysmart/core/storage/version_check_service.dart';
@@ -43,15 +46,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
       final appStorage = LocalStorage();
       ErrorHandler.initialize(appStorage, FirebaseCrashlytics.instance);
 
-      // Настройка перехвата ошибок Flutter
-      FlutterError.onError = (FlutterErrorDetails details) {
-        FlutterError.dumpErrorToConsole(details);
-        ErrorHandler.instance.recordError(
-          details.exception,
-          details.stack ?? StackTrace.empty,
-        );
-      };
-
+      _configureFlutterErrorHandling();
       globalDebugState = await appStorage.getDebugState();
 
       final userAgent = await AboutDevice.getAgent(
@@ -112,15 +107,50 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
       );
     },
     (error, stackTrace) {
-      ErrorHandler.instance.recordError(error, stackTrace, isFatal: true);
+      ErrorHandler.instance.recordError(
+        AppError.uncaughtError(
+          message: error.toString(),
+          stackTrace: stackTrace,
+        ),
+      );
     },
   );
   FlutterNativeSplash.remove();
   log.t('** close NATIVE splash**');
 
-  // Обработка ошибок на уровне платформы
+  // Platform-level error handling
+  _configurePlatformErrorHandling();
+}
+
+void _configureFlutterErrorHandling() {
+  FlutterError.onError = (FlutterErrorDetails details) {
+    ErrorHandler.instance.recordError(
+      AppError.frameworkError(
+        message: details.exceptionAsString(),
+        details: details.toDiagnosticsNode().toJsonMap(
+              const DiagnosticsSerializationDelegate(
+                // Adjust the properties as needed
+                includeProperties:
+                    true, // Whether to include properties of the node
+                subtreeDepth:
+                    1, // Depth to which the subtree should be serialized
+              ),
+            ),
+        stackTrace: details.stack,
+        isFatal: true,
+      ),
+    );
+  };
+}
+
+void _configurePlatformErrorHandling() {
   PlatformDispatcher.instance.onError = (error, stackTrace) {
-    ErrorHandler.instance.recordError(error, stackTrace, isFatal: true);
+    ErrorHandler.instance.recordError(
+      AppError.platformError(
+        message: error.toString(),
+        stackTrace: stackTrace,
+      ),
+    );
     return true;
   };
 }
@@ -157,11 +187,12 @@ void _handlerMessage(RemoteMessage message) {
       // final _ = AppNotification.showDefaultNotification(title, text, imageUrl);
     }
   } on Object catch (e, s) {
-    FirebaseCrashlytics.instance.recordError(
-      e,
-      s,
-      reason: 'a non-fatal error',
-      information: ['Error with push notifications'],
+   ErrorHandler.instance.recordError(
+        AppError.apiError(
+            message: 'Error with push notifications',
+            details: {'reason': 'a non-fatal error', 'additionalInfo': 'Error details'},
+            stackTrace: s,
+      ),
     );
   }
 }
@@ -177,12 +208,13 @@ Future<void> handlerBackgroundMessage(RemoteMessage message) async {}
 Future<String?> _getFirebaseToken() async {
   try {
     return await FirebaseMessaging.instance.getToken();
-  } catch (e, s) {
-    await FirebaseCrashlytics.instance.recordError(
-      e,
-      s,
-      reason: 'a non-fatal error',
-      information: ['Error _getFirebaseToken', '[info=$e]'],
+  } on Object catch (e, s) {
+    await ErrorHandler.instance.recordError(
+      AppError.apiError(
+        message: 'Error retrieving Firebase token',
+        details: {'reason': 'Error _getFirebaseToken', 'info': e.toString()},
+        stackTrace: s,
+      ),
     );
     return null;
   }

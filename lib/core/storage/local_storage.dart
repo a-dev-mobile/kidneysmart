@@ -4,7 +4,9 @@ import 'dart:convert';
 import 'package:kidneysmart/bootstrap.dart';
 import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
 import 'package:kidneysmart/core/log/logger.dart';
+
 import 'package:kidneysmart/core/service/error_handler/error_handler.dart';
+import 'package:kidneysmart/core/service/error_handler/model/app_error.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorage {
@@ -90,20 +92,41 @@ class LocalStorage {
     }
   }
 
+  Future<void> _recordError(
+    Object exception,
+    StackTrace stackTrace,
+    String action,
+    String key,
+    dynamic value,
+  ) async {
+    final details = {
+      'action': action,
+      'key': key,
+      'value': value.toString(),
+    };
+
+    await ErrorHandler.instance.recordError(
+      AppError.localStorageError(
+        message: exception.toString(),
+        details: details,
+        stackTrace: stackTrace,
+      ),
+    );
+  }
+
   Future<void> setString({required String key, required String value}) async {
     final pref = await _preferences;
     try {
       await pref.setString(key, value);
       await _log('SET', key, value);
     } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('SET', key, value, e);
+      await _recordError(e, stackTrace, 'SET', key, value);
+
       await pref.remove(key);
       try {
         await pref.setString(key, value);
       } on Object catch (e, stackTrace) {
-        await ErrorHandler.instance.recordError(e, stackTrace);
-        await _log('SET RETRY', key, value, e);
+        await _recordError(e, stackTrace, 'SET RETRY', key, value);
       }
     }
   }
@@ -118,91 +141,46 @@ class LocalStorage {
       await _log('GET', key, result);
       return result;
     } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('GET', key, defaultValue, e);
+      await _recordError(e, stackTrace, 'GET', key, defaultValue);
       return defaultValue;
     }
   }
 
-  Future<void> setBool({required String key, required bool value}) async {
-    final pref = await _preferences;
-    try {
-      await pref.setBool(key, value);
-      await _log('SET', key, value);
-    } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('SET', key, value, e);
-      await pref.remove(key);
-      try {
-        await pref.setBool(key, value);
-      } on Object catch (e, stackTrace) {
-        await ErrorHandler.instance.recordError(e, stackTrace);
-        await _log('SET RETRY', key, value, e);
-      }
-    }
-  }
 
-  Future<bool> getBool({required String key, bool defaultValue = false}) async {
+
+  Future<bool> getBool({
+    required String key,
+    bool defaultValue = false,
+  }) async {
     final pref = await _preferences;
     try {
       final result = pref.getBool(key) ?? defaultValue;
       await _log('GET', key, result);
       return result;
     } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('GET', key, defaultValue, e);
+      await _recordError(e, stackTrace, 'GET', key, defaultValue);
       return defaultValue;
     }
   }
 
-  Future<void> setInt({required String key, required int value}) async {
-    final pref = await _preferences;
-    try {
-      await pref.setInt(key, value);
-      await _log('SET', key, value);
-    } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('SET', key, value, e);
-      await pref.remove(key);
-      try {
-        await pref.setInt(key, value);
-      } on Object catch (e, stackTrace) {
-        await ErrorHandler.instance.recordError(e, stackTrace);
-        await _log('SET RETRY', key, value, e);
-      }
-    }
-  }
 
-  Future<int> getInt({required String key, int defaultValue = 0}) async {
+
+  Future<int> getInt({
+    required String key,
+    int defaultValue = 0,
+  }) async {
     final pref = await _preferences;
     try {
       final result = pref.getInt(key) ?? defaultValue;
       await _log('GET', key, result);
       return result;
     } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('GET', key, defaultValue, e);
+      await _recordError(e, stackTrace, 'GET', key, defaultValue);
       return defaultValue;
     }
   }
 
-  Future<void> setDouble({required String key, required double value}) async {
-    final pref = await _preferences;
-    try {
-      await pref.setDouble(key, value);
-      await _log('SET', key, value);
-    } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('SET', key, value, e);
-      await pref.remove(key);
-      try {
-        await pref.setDouble(key, value);
-      } on Object catch (e, stackTrace) {
-        await ErrorHandler.instance.recordError(e, stackTrace);
-        await _log('SET RETRY', key, value, e);
-      }
-    }
-  }
+
 
   Future<double> getDouble({
     required String key,
@@ -214,42 +192,23 @@ class LocalStorage {
       await _log('GET', key, result);
       return result;
     } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('GET', key, defaultValue, e);
+      await _recordError(e, stackTrace, 'GET', key, defaultValue);
       return defaultValue;
     }
   }
 
-  Future<void> setStringList({
-    required String key,
-    required List<String> value,
-  }) async {
-    final pref = await _preferences;
-    try {
-      await pref.setStringList(key, value);
-      await _log('SET', key, value);
-    } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('SET', key, value, e);
-      await pref.remove(key);
-      try {
-        await pref.setStringList(key, value);
-      } on Object catch (e, stackTrace) {
-        await ErrorHandler.instance.recordError(e, stackTrace);
-        await _log('SET RETRY', key, value, e);
-      }
-    }
-  }
 
-  Future<List<String>> getStringList({required String key}) async {
+
+  Future<List<String>> getStringList({
+    required String key,
+  }) async {
     final pref = await _preferences;
     try {
       final result = pref.getStringList(key) ?? [];
       await _log('GET', key, result);
       return result;
     } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      await _log('GET', key, '[]', e);
+      await _recordError(e, stackTrace, 'GET', key, '[]');
       return [];
     }
   }
@@ -271,14 +230,9 @@ class LocalStorage {
     final pref = await _preferences;
     try {
       await pref.clear();
-      if (_isShowLog) {
-        log.i('CLEAR ALL');
-      }
+      await _log('CLEAR', 'All Data', 'All data cleared');
     } on Object catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      if (_isShowLog) {
-        log.e('Failed to clear all data:', error: e, stackTrace: stackTrace);
-      }
+      await _recordError(e, stackTrace, 'CLEAR', 'All Data', 'Failed to clear all data');
     }
   }
 }

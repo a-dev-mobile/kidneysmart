@@ -6,7 +6,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/api/api_client.dart';
 import 'package:kidneysmart/bootstrap.dart';
 import 'package:kidneysmart/core/enum/enum_page_status.dart';
+
 import 'package:kidneysmart/core/service/error_handler/error_handler.dart';
+import 'package:kidneysmart/core/service/error_handler/extension.dart';
+import 'package:kidneysmart/core/service/error_handler/model/app_error.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
 
 import 'package:kidneysmart/navigation/app_router.dart';
@@ -37,11 +40,16 @@ class SplashCubit extends Cubit<SplashState> {
     try {
       await Future<void>.delayed(const Duration(seconds: 2));
       emit(state.copyWith(enumPageStatus: EnumPageStatus.success));
-      await Future<void>.delayed(const Duration(seconds: 2));
-      // throw Exception('error loading state');
-    } catch (e, stackTrace) {
-      await ErrorHandler.instance.recordError(e, stackTrace);
-      emit(state.copyWith(enumPageStatus: EnumPageStatus.error));
+      await Future<void>.delayed(const Duration(seconds: 5));
+      throw Exception('from cubit');
+    } on Object catch (e, stackTrace) {
+      await e.recordError(
+        message: 'SplashCubit load error',
+        stackTrace: stackTrace,
+      );
+      await e.recordApiError(
+          message: 'Failed to fetch data', stackTrace: stackTrace);
     }
+    emit(state.copyWith(enumPageStatus: EnumPageStatus.error));
   }
 }

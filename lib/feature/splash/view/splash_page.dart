@@ -42,7 +42,11 @@ class _SplashView extends StatelessWidget {
           return enumPageStatus.mapValue(
             init: const AppLoadWidget(loadingMessage: 'init'),
             load: const AppLoadWidget(loadingMessage: 'load'),
-            success: Center(child: ElevatedButton(child: const Text("Throw Test Exception"), onPressed: () => throw Exception(),)),
+            success: Center(
+                child: ElevatedButton(
+              child: const Text("Throw Test Exception"),
+              onPressed: () => throw Exception(['text error', 'from widget']),
+            )),
             error: const AppErrorWidget(),
           );
         },
