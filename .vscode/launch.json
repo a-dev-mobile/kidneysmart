@@ -7,10 +7,10 @@
       "type": "dart",
       "program": "lib/main.dart",
       "args": [
-        "--dart-define=LOGGING_PACKAGE_PREFIX=package:test_rir/",
-        "--dart-define=LOGGING_BASE_PATH=c:\\DEV\\MY\\_TEST_APP\\test_rir\\"
+        "--dart-define=LOGGING_PACKAGE_PREFIX=package:kidneysmart/",
+        "--dart-define=LOGGING_BASE_PATH=c:\\DEV\\MY\\MY_GITHUB\\kidneysmart\\"
       ]
     }
-    // Другие конфигурации
+
   ]
 }

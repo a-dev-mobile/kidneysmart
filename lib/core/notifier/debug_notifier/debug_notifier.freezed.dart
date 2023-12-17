@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'debug_cubit.dart';
+part of 'debug_notifier.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -189,7 +189,7 @@ class __$$DebugStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DebugStateImpl with DiagnosticableTreeMixin implements _DebugState {
+class _$DebugStateImpl implements _DebugState {
   const _$DebugStateImpl(
       {this.enumProject = EnumProject.prod,
       this.enumStore = EnumStore.unknown,
@@ -229,24 +229,8 @@ class _$DebugStateImpl with DiagnosticableTreeMixin implements _DebugState {
   final bool isShowUrlPdfPage;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'DebugState(enumProject: $enumProject, enumStore: $enumStore, isDebugMenuEnabled: $isDebugMenuEnabled, isShowDevicePreview: $isShowDevicePreview, isShowBtnHttpLog: $isShowBtnHttpLog, isShowRepaintRainbow: $isShowRepaintRainbow, isShowPaintSizeEnabled: $isShowPaintSizeEnabled, isShowUrlPdfPage: $isShowUrlPdfPage)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'DebugState'))
-      ..add(DiagnosticsProperty('enumProject', enumProject))
-      ..add(DiagnosticsProperty('enumStore', enumStore))
-      ..add(DiagnosticsProperty('isDebugMenuEnabled', isDebugMenuEnabled))
-      ..add(DiagnosticsProperty('isShowDevicePreview', isShowDevicePreview))
-      ..add(DiagnosticsProperty('isShowBtnHttpLog', isShowBtnHttpLog))
-      ..add(DiagnosticsProperty('isShowRepaintRainbow', isShowRepaintRainbow))
-      ..add(
-          DiagnosticsProperty('isShowPaintSizeEnabled', isShowPaintSizeEnabled))
-      ..add(DiagnosticsProperty('isShowUrlPdfPage', isShowUrlPdfPage));
   }
 
   @override

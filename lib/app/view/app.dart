@@ -9,7 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:kidneysmart/app/style/theme/app_theme.dart';
 import 'package:kidneysmart/app/view/app_lifecycle_manager.dart';
-import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
+import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
+
 import 'package:kidneysmart/core/notifier/internet_notifier/internet_notifier.dart';
 import 'package:kidneysmart/core/cubits/page_tracker_cubit/page_tracker_cubit.dart';
 
@@ -23,7 +24,6 @@ import 'package:kidneysmart/feature/overlay_widget/view/widget/no_internet_widge
 import 'package:kidneysmart/l10n/app_localizations.dart';
 import 'package:kidneysmart/l10n/l10n.dart';
 
-import 'package:kidneysmart/navigation/custom_router_observer.dart';
 import 'package:kidneysmart/navigation/navigation.dart';
 
 class App extends ConsumerWidget {
@@ -78,15 +78,15 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
 
   @override
   Widget build(BuildContext context) {
-    final debugCubit = context.watch<DebugCubit>();
-
-    debugRepaintRainbowEnabled = debugCubit.state.isShowRepaintRainbow;
-    debugPaintSizeEnabled = debugCubit.state.isShowPaintSizeEnabled;
+    final debugNotifier = ref.watch(debugNotifierProvider);
     final appRouter = ref.read(navigationProvider);
+
+    debugRepaintRainbowEnabled = debugNotifier.isShowRepaintRainbow;
+    debugPaintSizeEnabled = debugNotifier.isShowPaintSizeEnabled;
     return AppLifecycleManager(
       child: BetterFeedback(
         child: DevicePreview(
-          enabled: debugCubit.state.isShowDevicePreview,
+          enabled: debugNotifier.isShowDevicePreview,
           builder: (context) => MaterialApp.router(
             routeInformationProvider: appRouter.router.routeInformationProvider,
             routeInformationParser: appRouter.router.routeInformationParser,

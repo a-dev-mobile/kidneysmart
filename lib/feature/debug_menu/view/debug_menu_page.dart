@@ -7,13 +7,15 @@ import 'package:feedback/feedback.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
-import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
+
 
 import 'package:kidneysmart/core/enum/enum_loan_status.dart';
 import 'package:kidneysmart/core/enum/enum_project.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
+import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
 
@@ -29,67 +31,43 @@ import 'package:kidneysmart/feature/splash/view/splash_page.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-class DebugMenuPage extends StatelessWidget {
+class DebugMenuPage extends ConsumerWidget {
   const DebugMenuPage({super.key});
   static const path = '/debug_page';
   static const name = 'debug-page';
   @override
-  Widget build(BuildContext context) {
-    final storage = context.read<LocalStorage>();
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final storage = context.read<LocalStorage>();
     // final go = context.read<AppRouter>();
-    final cubitDebug = context.read<DebugCubit>();
+    final state = ref.watch(debugNotifierProvider);
+    final debugNotifier =ref.read(debugNotifierProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Debug Menu '),
       ),
-      body: MultiBlocListener(
-        listeners: [
-          BlocListener<DebugCubit, DebugState>(
-            listenWhen: (p, c) => p.enumProject != c.enumProject,
-            listener: (context, state) {
-              _showCustomDialog(
-                storage,
-                context,
-                'Для смены API закрыть приложение?',
-              );
-            },
-          ),
-          BlocListener<DebugCubit, DebugState>(
-            listenWhen: (p, c) => p.enumStore != c.enumStore,
-            listener: (context, state) {
-              _showCustomDialog(
-                storage,
-                context,
-                'Для смены STORE закрыть приложение?',
-              );
-            },
-          ),
-        ],
-        child: Stack(
+      body: Stack(
           children: [
-            BlocBuilder<DebugCubit, DebugState>(
-              builder: (context, state) {
-                return ListView(shrinkWrap: true, children: [
+            ListView(shrinkWrap: true, children: [
                   const SizedBox(height: 30),
                   const Center(child: Text('---Setting---')),
                   SwitchListTile(
                     value: state.isShowBtnHttpLog,
-                    onChanged: (v) => cubitDebug.setShowBtnHttpLog(isShow: v),
+                    onChanged: (v) => debugNotifier.setShowBtnHttpLog(isShow: v),
                     title: const Text('Show button http log'),
                     dense: true,
                     visualDensity: const VisualDensity(vertical: -3),
                   ),
                   SwitchListTile(
                     value: state.isShowUrlPdfPage,
-                    onChanged: (v) => cubitDebug.setShowUrlPdfPage(isShow: v),
+                    onChanged: (v) => debugNotifier.setShowUrlPdfPage(isShow: v),
                     title: const Text('Show opening url of PDF document'),
                     dense: true,
                     visualDensity: const VisualDensity(vertical: -3),
                   ),
                   SwitchListTile(
                     value: state.isShowDevicePreview,
-                    onChanged: (v) => cubitDebug.setDevicePreview(isShow: v),
+                    onChanged: (v) => debugNotifier.setDevicePreview(isShow: v),
                     title: const Text('Show device preview'),
                     dense: true,
                     visualDensity: const VisualDensity(vertical: -3),
@@ -98,7 +76,7 @@ class DebugMenuPage extends StatelessWidget {
                     SwitchListTile(
                       value: state.isShowRepaintRainbow,
                       onChanged: (v) =>
-                          cubitDebug.setShowDebugRepaintRainbow(isShow: v),
+                          debugNotifier.setShowDebugRepaintRainbow(isShow: v),
                       title: const Text('DebugRepaintRainbowEnabled'),
                       dense: true,
                       visualDensity: const VisualDensity(vertical: -3),
@@ -107,7 +85,7 @@ class DebugMenuPage extends StatelessWidget {
                     SwitchListTile(
                       value: state.isShowPaintSizeEnabled,
                       onChanged: (v) =>
-                          cubitDebug.setShowPaintSizeEnabled(isShow: v),
+                          debugNotifier.setShowPaintSizeEnabled(isShow: v),
                       title: const Text('DebugPaintSizeEnabled'),
                       dense: true,
                       visualDensity: const VisualDensity(vertical: -3),
@@ -197,14 +175,14 @@ class DebugMenuPage extends StatelessWidget {
                     ),
                     _RadioApi(
                       onChanged: (v) =>
-                          cubitDebug.setEnumProject(enumProject: v),
+                          debugNotifier.setEnumProject(enumProject: v),
                       activeEnumProject: state.enumProject,
                       enumProject: EnumProject.prod,
                       title: EnumProject.prod.name,
                     ),
                     _RadioApi(
                       onChanged: (v) =>
-                          cubitDebug.setEnumProject(enumProject: v),
+                          debugNotifier.setEnumProject(enumProject: v),
                       activeEnumProject: state.enumProject,
                       enumProject: EnumProject.dev,
                       title: EnumProject.dev.name,
@@ -220,19 +198,19 @@ class DebugMenuPage extends StatelessWidget {
                       ),
                     ),
                     _RadioStore(
-                      onChanged: cubitDebug.setEnumStore,
+                      onChanged: debugNotifier.setEnumStore,
                       activeEnumStore: state.enumStore,
                       enumStore: EnumStore.appStore,
                       title: _getNameStore(EnumStore.appStore),
                     ),
                     _RadioStore(
-                      onChanged: cubitDebug.setEnumStore,
+                      onChanged: debugNotifier.setEnumStore,
                       activeEnumStore: state.enumStore,
                       enumStore: EnumStore.packageInstaller,
                       title: _getNameStore(EnumStore.packageInstaller),
                     ),
                     _RadioStore(
-                      onChanged: cubitDebug.setEnumStore,
+                      onChanged: debugNotifier.setEnumStore,
                       activeEnumStore: state.enumStore,
                       enumStore: EnumStore.unknown,
                       title: _getNameStore(EnumStore.unknown),
@@ -259,9 +237,7 @@ class DebugMenuPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 50),
                   ])
-                ]);
-              },
-            ),
+                ]),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -312,7 +288,6 @@ class DebugMenuPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
     );
   }
 

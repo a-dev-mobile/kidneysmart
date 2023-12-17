@@ -1,7 +1,8 @@
 // ignore_for_file: constant_identifier_names
 
 import 'dart:convert';
-import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
+
+import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kidneysmart/core/log/logger.dart';

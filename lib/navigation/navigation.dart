@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/notifier/page_tracker_notifier.dart';
+import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
+import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:kidneysmart/feature/splash/view/splash_page%20copy.dart';
@@ -50,6 +52,24 @@ class Navigation {
             key: state.pageKey,
             name: state.name,
             child: const SplashPage2(),
+          ),
+        ),
+         GoRoute(
+          path: DebugMenuPage.path,
+          name: DebugMenuPage.name,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.name,
+            child: const DebugMenuPage(),
+          ),
+        ),
+         GoRoute(
+          path: HttpLogListWidget.path,
+          name: HttpLogListWidget.name,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.name,
+            child: const HttpLogListWidget(),
           ),
         ),
         // GoRoute(

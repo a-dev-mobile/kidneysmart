@@ -1,4 +1,4 @@
-part of 'debug_cubit.dart';
+part of 'debug_notifier.dart';
 
 @freezed
 sealed class DebugState with _$DebugState {

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'debug_cubit.dart';
+part of 'debug_notifier.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -48,3 +48,26 @@ const _$EnumStoreEnumMap = {
   EnumStore.other: 'other',
   EnumStore.unknown: 'unknown',
 };
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$debugNotifierHash() => r'ab193c8bd1c139625deb2c987d1374569448948f';
+
+/// See also [DebugNotifier].
+@ProviderFor(DebugNotifier)
+final debugNotifierProvider =
+    NotifierProvider<DebugNotifier, DebugState>.internal(
+  DebugNotifier.new,
+  name: r'debugNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$debugNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$DebugNotifier = Notifier<DebugState>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

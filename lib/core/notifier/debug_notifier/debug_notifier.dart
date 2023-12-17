@@ -1,30 +1,35 @@
 import 'dart:async';
+
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_project.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
-
+import 'package:kidneysmart/core/log/logger.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
+
+
 import 'package:package_info_plus/package_info_plus.dart';
 
+
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'debug_notifier.g.dart';
 part 'debug_state.dart';
-part 'debug_cubit.freezed.dart';
-part 'debug_cubit.g.dart';
+part 'debug_notifier.freezed.dart';
 
-class DebugCubit extends Cubit<DebugState> {
-  DebugCubit({
-    required LocalStorage storage,
-  })  : _storage = storage,
-        super(
-          const DebugState(),
-        );
+@Riverpod(keepAlive: true)
+class DebugNotifier extends _$DebugNotifier {
+  late final  _storage = ref.read(localStorageProvider);
 
-  final LocalStorage _storage;
+
+  @override
+  DebugState build() {
+    // Future.microtask(load);
+    return const DebugState();
+  }
 
   Future<void> load() async {
     var debugState = await _storage.getDebugState();
@@ -41,41 +46,41 @@ class DebugCubit extends Cubit<DebugState> {
        _storage.setDebugState(debugState);
     }
 
-    emit(debugState);
+    state = debugState;
   }
 
   void setDevicePreview({required bool isShow}) {
-    emit(state.copyWith(isShowDevicePreview: isShow));
+   state = state.copyWith(isShowDevicePreview: isShow);
   }
 
   void setEnumProject({required EnumProject? enumProject}) {
-    emit(state.copyWith(enumProject: enumProject ?? state.enumProject));
+  state = state.copyWith(enumProject: enumProject ?? state.enumProject);
     _saveState();
   }
 
   void setEnumStore(EnumStore? value) {
-    emit(state.copyWith(enumStore: value ?? state.enumStore));
+   state = state.copyWith(enumStore: value ?? state.enumStore);
     _saveState();
   }
 
   void setShowBtnHttpLog({required bool isShow}) {
-    emit(state.copyWith(isShowBtnHttpLog: isShow));
+  state =   state.copyWith(isShowBtnHttpLog: isShow);
   }
 
   void setShowUrlPdfPage({required bool isShow}) {
-    emit(state.copyWith(isShowUrlPdfPage: isShow));
+   state = state.copyWith(isShowUrlPdfPage: isShow);
   }
 
   void setShowDebugRepaintRainbow({required bool isShow}) {
-    emit(state.copyWith(isShowRepaintRainbow: isShow));
+    state = state.copyWith(isShowRepaintRainbow: isShow);
   }
 
   void setShowPaintSizeEnabled({required bool isShow}) {
-    emit(state.copyWith(isShowPaintSizeEnabled: isShow));
+    state = state.copyWith(isShowPaintSizeEnabled: isShow);
   }
 
   void changeDebugMenu() {
-    emit(state.copyWith(isDebugMenuEnabled: !state.isDebugMenuEnabled));
+    state = state.copyWith(isDebugMenuEnabled: !state.isDebugMenuEnabled);
 
     _saveState();
   }
@@ -104,16 +109,16 @@ class DebugCubit extends Cubit<DebugState> {
 
     var seconds = _sec;
 
-    log('time run');
+   Logger.debug('time run');
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       seconds = seconds - 1;
       if (seconds >= 0) {
-        log('time $seconds');
+        Logger.debug('time $seconds');
       } else {
         timer.cancel();
         if (_pressedHideBtn == _sumClick) changeDebugMenu();
         _pressedHideBtn = 0;
-        log(' timer.cancel();');
+        Logger.debug(' timer.cancel();');
       }
     });
   }
@@ -123,13 +128,13 @@ class DebugCubit extends Cubit<DebugState> {
       // обнуление состояния если выключаем debug menu
       const intState = DebugState();
 
-      emit(intState);
+      state = intState;
       // await _storage.clearAll();
       await Future<void>.delayed(const Duration(seconds: 1));
 
       exit(0);
     } else {
-      // await _storage.setDebugState(state.copyWith(isShowBtnHttpLog: false));
+       _storage.setDebugState(state.copyWith(isShowBtnHttpLog: false));
     }
   }
 }
