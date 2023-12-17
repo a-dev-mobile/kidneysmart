@@ -134,7 +134,7 @@ class _$ApiAvailableProductImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiAvailableProductImpl &&
@@ -333,7 +333,7 @@ class _$ApiAvailableProductItemImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiAvailableProductItemImpl &&

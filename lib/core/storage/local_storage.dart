@@ -1,238 +1,189 @@
 // ignore_for_file: constant_identifier_names
 
 import 'dart:convert';
-import 'package:kidneysmart/bootstrap.dart';
 import 'package:kidneysmart/core/cubits/debug_cubit/debug_cubit.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kidneysmart/core/log/logger.dart';
 
-import 'package:kidneysmart/core/service/error_handler/error_handler.dart';
-import 'package:kidneysmart/core/service/error_handler/model/app_error.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+part 'local_storage.g.dart';
+
+@Riverpod(keepAlive: true)
+LocalStorage localStorage(LocalStorageRef ref) {
+  return throw UnimplementedError('init with override');
+}
 
 class LocalStorage {
-  LocalStorage({bool isShowLog = false}) : _isShowLog = isShowLog;
-  final bool _isShowLog;
-  SharedPreferences? _prefs;
-  Future<SharedPreferences> get _preferences async =>
-      _prefs ??= await SharedPreferences.getInstance();
+  LocalStorage({
+    required SharedPreferences sharedPreferences,
+    bool isShowLog = false,
+  })  : _prefs = sharedPreferences,
+        _isShowLog = isShowLog;
 
-//
-//
-//
-//
-// ******************************
-// ******************************
+  final bool _isShowLog;
+  final SharedPreferences _prefs;
+
+  // ******************************
   static const _appId = '_appId';
 
-  Future<String> getAppId() async {
+  String getAppId() {
     return getString(key: _appId);
   }
 
-  Future<void> setAppId(String? value) {
-    return setString(key: _appId, value: value ?? '');
+  void setAppId(String? value) {
+    setString(key: _appId, value: value ?? '');
   }
 
-// ******************************
-// ******************************
 
-  static const _userAgent = 'userAgent';
 
-  Future<String> getUserAgent() async {
-    final result = await getString(key: _userAgent);
-    return result;
-  }
 
-  Future<void> setUserAgent(String? value) {
-    return setString(key: _userAgent, value: value ?? '');
-  }
-
-// ******************************
-// ******************************
-
-  static const _TargetUrl = '_TargetUrl';
-
-  Future<String> getTargetUrl() async {
-    final result = await getString(key: _TargetUrl);
-    if (result.trim().isEmpty) {
-      return 'https://unknow.com?utm_source=organic_mob';
-    }
-    return result;
-  }
-
-  Future<void> setTargetUrl(String? value) {
-    return setString(key: _TargetUrl, value: value ?? '');
-  }
-
-// ******************************
 // ******************************
   static const _debugState = '_debugState';
 
-  Future<DebugState> getDebugState() async {
-    return DebugState.fromJson(await getJson(key: _debugState));
+  DebugState getDebugState()  {
+    return DebugState.fromJson( getJson(key: _debugState));
   }
 
-  Future<void> setDebugState(DebugState value) {
+  void setDebugState(DebugState value) {
     return setJson(key: _debugState, value: value.toJson());
   }
 
 // ******************************
 // ******************************
-//
-//
-//
-  Future<void> _log(
-    String action,
-    String key,
-    dynamic value, [
-    dynamic error,
-  ]) async {
+
+
+
+
+
+
+
+
+
+  // ******************************
+  static const _userAgent = 'userAgent';
+
+  String getUserAgent() {
+    return getString(key: _userAgent);
+  }
+
+  void setUserAgent(String? value) {
+    setString(key: _userAgent, value: value ?? '');
+  }
+
+  // ******************************
+  static const _TargetUrl = '_TargetUrl';
+
+  String getTargetUrl() {
+    return getString(
+      key: _TargetUrl,
+      defaultValue: 'https://unknow.com?utm_source=organic_mob',
+    );
+  }
+
+  void setTargetUrl(String? value) {
+    setString(key: _TargetUrl, value: value ?? '');
+  }
+
+  // ******************************
+  void _log(String action, String key, dynamic value) {
     if (_isShowLog) {
-      final errorMsg = error != null ? ', Error: $error' : '';
-      log.i('$action > $key, Value: $value$errorMsg');
+      Logger.info('$action > $key, Value: $value');
     }
   }
 
-  Future<void> _recordError(
+  void _recordError(
     Object exception,
     StackTrace stackTrace,
     String action,
     String key,
     dynamic value,
-  ) async {
-    final details = {
-      'action': action,
-      'key': key,
-      'value': value.toString(),
-    };
-
-    await ErrorHandler.instance.recordError(
-      AppError.localStorageError(
-        message: exception.toString(),
-        details: details,
-        stackTrace: stackTrace,
-      ),
+  ) {
+    Logger.error(
+      '$action > $key, Value: $value',
+      error: exception,
+      stackTrace: stackTrace,
     );
   }
 
-  Future<void> setString({required String key, required String value}) async {
-    final pref = await _preferences;
+  void setString({required String key, required String value}) {
     try {
-      await pref.setString(key, value);
-      await _log('SET', key, value);
-    } on Object catch (e, stackTrace) {
-      await _recordError(e, stackTrace, 'SET', key, value);
+      _prefs.setString(key, value);
 
-      await pref.remove(key);
-      try {
-        await pref.setString(key, value);
-      } on Object catch (e, stackTrace) {
-        await _recordError(e, stackTrace, 'SET RETRY', key, value);
-      }
+      _log('SET', key, value);
+    } catch (e, s) {
+      _recordError(e, s, 'SET', key, value);
     }
   }
 
-  Future<String> getString({
-    required String key,
-    String defaultValue = '',
-  }) async {
-    final pref = await _preferences;
+  String getString({required String key, String defaultValue = ''}) {
     try {
-      final result = pref.getString(key) ?? defaultValue;
-      await _log('GET', key, result);
-      return result;
-    } on Object catch (e, stackTrace) {
-      await _recordError(e, stackTrace, 'GET', key, defaultValue);
+      return _prefs.getString(key) ?? defaultValue;
+    } catch (e, s) {
+      _recordError(e, s, 'GET', key, defaultValue);
       return defaultValue;
     }
   }
 
+  // Continuation of the LocalStorage class
 
-
-  Future<bool> getBool({
-    required String key,
-    bool defaultValue = false,
-  }) async {
-    final pref = await _preferences;
+  bool getBool({required String key, bool defaultValue = false}) {
     try {
-      final result = pref.getBool(key) ?? defaultValue;
-      await _log('GET', key, result);
-      return result;
-    } on Object catch (e, stackTrace) {
-      await _recordError(e, stackTrace, 'GET', key, defaultValue);
+      return _prefs.getBool(key) ?? defaultValue;
+    } catch (e, s) {
+      _recordError(
+        e,
+        s,
+        'GET',
+        key,
+        defaultValue,
+      );
       return defaultValue;
     }
   }
 
-
-
-  Future<int> getInt({
-    required String key,
-    int defaultValue = 0,
-  }) async {
-    final pref = await _preferences;
+  int getInt({required String key, int defaultValue = 0}) {
     try {
-      final result = pref.getInt(key) ?? defaultValue;
-      await _log('GET', key, result);
-      return result;
-    } on Object catch (e, stackTrace) {
-      await _recordError(e, stackTrace, 'GET', key, defaultValue);
+      return _prefs.getInt(key) ?? defaultValue;
+    } catch (e, s) {
+      _recordError(e, s, 'GET', key, defaultValue);
       return defaultValue;
     }
   }
 
-
-
-  Future<double> getDouble({
-    required String key,
-    double defaultValue = 0.0,
-  }) async {
-    final pref = await _preferences;
+  double getDouble({required String key, double defaultValue = 0.0}) {
     try {
-      final result = pref.getDouble(key) ?? defaultValue;
-      await _log('GET', key, result);
-      return result;
-    } on Object catch (e, stackTrace) {
-      await _recordError(e, stackTrace, 'GET', key, defaultValue);
+      return _prefs.getDouble(key) ?? defaultValue;
+    } catch (e, s) {
+      _recordError(e, s, 'GET', key, defaultValue);
       return defaultValue;
     }
   }
 
-
-
-  Future<List<String>> getStringList({
-    required String key,
-  }) async {
-    final pref = await _preferences;
+  List<String> getStringList({required String key}) {
     try {
-      final result = pref.getStringList(key) ?? [];
-      await _log('GET', key, result);
-      return result;
-    } on Object catch (e, stackTrace) {
-      await _recordError(e, stackTrace, 'GET', key, '[]');
+      return _prefs.getStringList(key) ?? [];
+    } catch (e, s) {
+      _recordError(e, s, 'GET', key, []);
       return [];
     }
   }
 
-  Future<void> setJson({
-    required String key,
-    required Map<String, dynamic> value,
-  }) async {
+  void setJson({required String key, required Map<String, dynamic> value}) {
     final jsonString = json.encode(value);
-    await setString(key: key, value: jsonString);
+    setString(key: key, value: jsonString);
   }
 
-  Future<Map<String, dynamic>> getJson({required String key}) async {
-    final jsonString = await getString(key: key, defaultValue: '{}');
+  Map<String, dynamic> getJson({required String key}) {
+    final jsonString = getString(key: key, defaultValue: '{}');
     return json.decode(jsonString) as Map<String, dynamic>;
   }
 
-  Future<void> clearAll() async {
-    final pref = await _preferences;
+  void clearAll() {
     try {
-      await pref.clear();
-      await _log('CLEAR', 'All Data', 'All data cleared');
-    } on Object catch (e, stackTrace) {
-      await _recordError(e, stackTrace, 'CLEAR', 'All Data', 'Failed to clear all data');
+      _prefs.clear();
+      _log('CLEAR', 'All Data', 'All data cleared');
+    } catch (e, s) {
+      _recordError(e, s, 'CLEAR', 'All Data', 'Failed to clear all data');
     }
   }
 }

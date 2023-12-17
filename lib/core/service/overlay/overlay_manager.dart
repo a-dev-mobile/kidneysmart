@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 class OverlayManager {
   OverlayManager(this.overlayState);
   final OverlayState overlayState;
+  OverlayEntry? _currentOverlayEntry;
 
   void showOverlay(Widget widget) {
-    final overlayEntry = OverlayEntry(builder: (context) => widget);
-    overlayState.insert(overlayEntry);
+    _currentOverlayEntry = OverlayEntry(builder: (context) => widget);
+    overlayState.insert(_currentOverlayEntry!);
+  }
 
-    // Метод для удаления оверлея
-    Future.delayed(const Duration(seconds: 5), overlayEntry.remove);
+  void removeOverlay() {
+    _currentOverlayEntry?.remove();
+    _currentOverlayEntry = null;
   }
 }

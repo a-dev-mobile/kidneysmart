@@ -128,7 +128,7 @@ class _$UserNewImpl implements _UserNew {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserNewImpl &&
@@ -243,7 +243,7 @@ class _$UserExistImpl implements _UserExist {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UserExistImpl);
   }
@@ -3047,7 +3047,7 @@ class _$ApiUserInfoImpl extends _ApiUserInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiUserInfoImpl &&
@@ -4007,7 +4007,7 @@ class _$IdLabelValueImpl implements _IdLabelValue {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdLabelValueImpl &&

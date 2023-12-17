@@ -454,7 +454,7 @@ class _$ApiHistoryNotificationImpl implements _ApiHistoryNotification {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiHistoryNotificationImpl &&
@@ -720,7 +720,7 @@ class _$CreatedAtImpl implements _CreatedAt {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreatedAtImpl &&
@@ -931,7 +931,7 @@ class _$DetailImpl implements _Detail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DetailImpl &&
@@ -1113,7 +1113,7 @@ class _$SendDateImpl implements _SendDate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SendDateImpl &&

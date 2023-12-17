@@ -38,7 +38,7 @@ class DebugCubit extends Cubit<DebugState> {
           EnumStore.fromPackageId(installerStore, fallback: EnumStore.unknown);
 
       debugState = debugState.copyWith(enumStore: enumStore);
-      await _storage.setDebugState(debugState);
+       _storage.setDebugState(debugState);
     }
 
     emit(debugState);
@@ -129,7 +129,7 @@ class DebugCubit extends Cubit<DebugState> {
 
       exit(0);
     } else {
-      await _storage.setDebugState(state.copyWith(isShowBtnHttpLog: false));
+      // await _storage.setDebugState(state.copyWith(isShowBtnHttpLog: false));
     }
   }
 }

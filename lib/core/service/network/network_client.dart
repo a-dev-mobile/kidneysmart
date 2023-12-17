@@ -1,147 +1,146 @@
 import 'dart:async';
-
+import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:kidneysmart/core/enum/enum_http_method.dart';
 import 'package:kidneysmart/core/log/logger.dart';
 import 'package:kidneysmart/core/service/network/dio_log/interceptor/dio_log_interceptor.dart';
-import 'package:kidneysmart/core/service/network/interceptor/fcm_token_interceptor.dart';
-import 'package:kidneysmart/core/service/network/network.dart';
-import 'package:kidneysmart/core/storage/local_storage.dart';
-import 'package:kidneysmart/core/utils/utils.dart';
-import 'package:kidneysmart/core/widgets/app_error_widget.dart';
-import 'package:kidneysmart/navigation/app_router.dart';
+import 'package:kidneysmart/core/service/network/interceptor/accept_interceptor.dart';
+import 'package:kidneysmart/core/service/network/interceptor/content_type_interceptor.dart';
+import 'package:kidneysmart/core/service/network/interceptor/user_agent_interceptor.dart';
+import 'package:kidneysmart/navigation/navigation.dart';
+
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+part 'network_client.g.dart';
+
+@Riverpod(keepAlive: true)
+NetworkClient networkClient(NetworkClientRef ref) =>
+    throw UnimplementedError('init with override');
 
 class NetworkClient {
   NetworkClient({
     required String baseUrl,
-    required LocalStorage storage,
-    required AppRouter router,
+    required Navigation router,
     required String userAgent,
-    required String? fcmToken,
+    Duration connectTimeout = const Duration(seconds: 5),
+    Duration receiveTimeout = const Duration(seconds: 15),
   })  : _go = router,
-        _storage = storage,
-        _userAgent = userAgent,
         _dio = Dio(
           BaseOptions(
             baseUrl: baseUrl,
-            connectTimeout: const Duration(seconds: 20),
-            receiveTimeout: const Duration(seconds: 25),
+            connectTimeout: connectTimeout,
+            receiveTimeout: receiveTimeout,
           ),
         )..interceptors.addAll([
             DioLogInterceptor(),
-            // ContentTypeInterceptor(),
-            // AcceptInterceptor(),
-            // UserAgentInterceptor(userAgent),
-            // AuthenticationInterceptor(
-            // baseUrl: baseUrl,
-            // storage: storage,
-            // router: router,
-            // userAgent: userAgent,
-            // ),
-            FCMTokenInterceptor(fcmToken: fcmToken),
+            ContentTypeInterceptor(),
+            AcceptInterceptor(),
+            UserAgentInterceptor(userAgent),
           ]);
 
   final Dio _dio;
+  final Navigation _go;
 
-  final LocalStorage _storage;
-  final String _userAgent;
-
-  Dio get dio => _dio;
-  final AppRouter _go;
   // ignore: avoid_setters_without_getters
   set isShowHttpInLog(bool value) => DioLogInterceptor.enablePrintLog = value;
 
-  Future<Response<dynamic>> request({
-    required Method method,
+  Future<Response<T>> request<T>({
+    required EnumHttpMethod method,
     required String endPoint,
     Map<String, dynamic>? params,
     Options? options,
     dynamic body,
   }) async {
-    Response<dynamic> response;
     try {
-      _saveRequestDataToCrashlytic(endPoint, method, options, body);
       switch (method) {
-        case Method.post:
-          response = await dio.post<dynamic>(
+        case EnumHttpMethod.post:
+          return await _dio.post<T>(
             endPoint,
             queryParameters: params,
             options: options,
             data: body,
           );
-
-        case Method.get:
-          response = await dio.get<dynamic>(
+        case EnumHttpMethod.get:
+          return await _dio.get<T>(
             endPoint,
             queryParameters: params,
             options: options,
           );
-
-        case Method.patch:
-          response = await dio.patch<dynamic>(
+        case EnumHttpMethod.patch:
+          return await _dio.patch<T>(
             endPoint,
             queryParameters: params,
             options: options,
             data: body,
           );
       }
-
-      unawaited(_saveResponseDataToCrashlytic(response.toString()));
-
-      return response;
     } on DioException catch (e) {
-      logger.d(e.message, error: e.error, stackTrace: e.stackTrace);
-      if (e.type == DioExceptionType.connectionTimeout) {
-        unawaited(_showError());
-      }
-      await FirebaseCrashlytics.instance.recordError(
-        e,
-        e.stackTrace,
-        reason: 'a non-fatal error',
-        information: [e.message.toString(), e.response ?? 'empty'],
-      );
-
-      return e.response ??
-          Response<dynamic>(
-            requestOptions: RequestOptions(),
-          );
-    } on Object catch (e, stackTrace) {
-      Error.throwWithStackTrace(e, stackTrace);
+      return _handleDioException(e, endPoint);
+      // Return an empty Response<T> in case of an error
+    } catch (e, stackTrace) {
+      return _handleGenericException(e, stackTrace, endPoint);
+      // Re-throw or handle generic exceptions
     }
+  }
+
+  Response<T> _handleDioException<T>(DioException e, String endPoint) {
+    // Report the error to Firebase Crashlytics
+    // ErrorHandler()
+        // .reportError(e, e.stackTrace, severity: ErrorSeverity.warning);
+
+    // Log the error for debugging purposes
+    Logger.debug(
+      endPoint,
+    
+      error: e.error,
+      stackTrace: e.stackTrace,
+    );
+
+    // Handle specific DioException types
+    if (e.type == DioExceptionType.connectionTimeout) {
+      // Handle connection timeout
+      _showError(); // Or any other appropriate action
+    } else if (e.type == DioExceptionType.receiveTimeout) {
+      // Handle receive timeout
+      _showError(); // Or any other appropriate action
+    } else {
+      _showError();
+    }
+    // Return a Response object indicating an error
+    return Response<T>(
+      requestOptions: RequestOptions(path: endPoint),
+      statusCode: e.response?.statusCode,
+    );
+  }
+
+  Response<T> _handleGenericException<T>(
+    Object e,
+    StackTrace stackTrace,
+    String endPoint,
+  ) {
+    // Report the error to Firebase Crashlytics
+    // ErrorHandler().reportError(e, stackTrace);
+
+    // Log the error for debugging purposes
+    Logger.error('Unhandled error: $e', error: e, stackTrace: stackTrace);
+
+    // Perform additional actions based on the type of exception
+    if (e is SocketException) {
+      // Handle socket exception (like no internet connection)
+      _showError(); // Or any other appropriate action
+    } else {
+      _showError(); // Or any other appropriate action
+      // ...
+    }
+
+    // Return a Response object indicating an error
+    return Response<T>(
+      requestOptions: RequestOptions(path: endPoint),
+    );
   }
 
   Future<void> _showError() async {
+    // Show error message or navigate to error page
     await Future<void>.delayed(const Duration(seconds: 3));
-    _go.router.goNamed(AppErrorWidget.name);
+    // _go.router.goNamed(FailureInternet.name);
   }
-
-  void _saveRequestDataToCrashlytic(
-    String endpoint,
-    Method method,
-    Options? options,
-    dynamic body,
-  ) {
-    final crashModel = CrashlyticNetworkModel(
-      method: method.name,
-      options: options.toString(),
-      body: body.toString(),
-      endpoint: endpoint,
-    );
-
-    FirebaseCrashlytics.instance.setCustomKey('request', crashModel.toJson());
-  }
-
-  Future<void> _saveResponseDataToCrashlytic(String response) async {
-    final split = StringUtils.splitString(response);
-
-    for (var i = 0; split.length > i; i++) {
-      await FirebaseCrashlytics.instance.setCustomKey('response_$i', split[i]);
-    }
-  }
-}
-
-enum Method {
-  post,
-  get,
-  patch,
 }

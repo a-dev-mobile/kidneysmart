@@ -54,11 +54,11 @@ class ApiClient {
         'files': await MultipartFile.fromFile(path, filename: fileName),
       });
 
-      final _ = await _client.request(
-        method: Method.post,
-        endPoint: '/user/file-upload',
-        body: formData,
-      );
+      // final _ = await _client.request(
+        // method: Method.post,
+        // endPoint: '/user/file-upload',
+        // body: formData,
+      // );
     } on Object catch (e, stackTrace) {
       Error.throwWithStackTrace(e, stackTrace);
     }

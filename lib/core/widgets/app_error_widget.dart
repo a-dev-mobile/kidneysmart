@@ -15,7 +15,7 @@ import 'package:kidneysmart/core/widgets/basic_button.dart';
 import 'package:kidneysmart/core/widgets/default_app_bar.dart';
 import 'package:kidneysmart/feature/onboarding/vew/onboarding_page.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
-import 'package:kidneysmart/navigation/app_router.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class AppErrorWidget extends StatelessWidget {
@@ -55,10 +55,10 @@ class AppErrorWidget extends StatelessWidget {
               const SizedBox(height: 32),
               BasicButton(
                 onPressed: () {
-                  context.read<AppRouter>().toAutoRouter(
-                        storage: context.read(),
-                        client: context.read(),
-                      );
+                  // context.read<AppRouter>().toAutoRouter(
+                        // storage: context.read(),
+                        // client: context.read(),
+                      // );
                 },
                 text: 'Обновить',
               ),
@@ -70,7 +70,7 @@ class AppErrorWidget extends StatelessWidget {
                   final storage = context.read<LocalStorage>();
                   final client = context.read<ApiClient>();
                   // final appId = await storage.getAppId();
-                  await storage.clearAll();
+                   storage.clearAll();
                   // await storage.setAppId(appId);
 
                   context.goNamed(OnBoardingPage.name);

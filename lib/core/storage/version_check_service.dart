@@ -66,7 +66,7 @@ Future<void> _clearCertainData() async {
       information: ['An error occurred while clearing data'],
     );
 
-    logger.e('An error occurred while clearing data: $e');
+    Logger.error('An error occurred while clearing data: $e');
   }
 }
 
@@ -92,6 +92,6 @@ Future<void> _clearCacheData() async {
       s,
       information: ['An error occurred while clearing cache data'],
     );
-    logger.e('An error occurred while clearing cache data: $e');
+    Logger.error('An error occurred while clearing cache data: $e');
   }
 }

@@ -325,7 +325,7 @@ class _$ApiDocumentsAllImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiDocumentsAllImpl &&
@@ -527,7 +527,7 @@ class _$ApiHistoryItemImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiHistoryItemImpl &&
@@ -1264,7 +1264,7 @@ class _$ApiAgreementsImpl extends _ApiAgreements with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiAgreementsImpl &&
@@ -1699,7 +1699,7 @@ class _$ApiDocUserImpl with DiagnosticableTreeMixin implements _ApiDocUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiDocUserImpl &&
@@ -1904,7 +1904,7 @@ class _$DocUserNameDetailsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DocUserNameDetailsImpl &&
@@ -2074,7 +2074,7 @@ class _$ApiDocLoanImpl with DiagnosticableTreeMixin implements _ApiDocLoan {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiDocLoanImpl &&
@@ -2286,7 +2286,7 @@ class _$ApiReferenceImpl with DiagnosticableTreeMixin implements _ApiReference {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiReferenceImpl &&
@@ -2490,7 +2490,7 @@ class _$ApiAgreementItemImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiAgreementItemImpl &&
@@ -2839,7 +2839,7 @@ class _$ApiInsuranceContractsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiInsuranceContractsImpl &&

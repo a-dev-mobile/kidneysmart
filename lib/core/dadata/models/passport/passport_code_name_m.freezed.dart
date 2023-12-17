@@ -119,7 +119,7 @@ class _$PassportCodeNameImpl implements _PassportCodeName {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PassportCodeNameImpl &&
@@ -316,7 +316,7 @@ class _$PassportCodeNameSuggestionsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PassportCodeNameSuggestionsImpl &&
@@ -509,7 +509,7 @@ class _$PassportCodeNameDataImpl implements _PassportCodeNameData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PassportCodeNameDataImpl &&

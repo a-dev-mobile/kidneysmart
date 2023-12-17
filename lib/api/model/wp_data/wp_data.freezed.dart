@@ -365,7 +365,7 @@ class _$WpDataImpl with DiagnosticableTreeMixin implements _WpData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WpDataImpl &&
@@ -613,7 +613,7 @@ class _$CalcPdlParamsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CalcPdlParamsImpl &&
@@ -915,7 +915,7 @@ class _$DocsImpl with DiagnosticableTreeMixin implements _Docs {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DocsImpl &&
@@ -1122,7 +1122,7 @@ class _$RegFirstImpl with DiagnosticableTreeMixin implements _RegFirst {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegFirstImpl &&
@@ -1305,7 +1305,7 @@ class _$RegSecondImpl with DiagnosticableTreeMixin implements _RegSecond {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegSecondImpl &&
@@ -2193,7 +2193,7 @@ class _$TemplatesImpl with DiagnosticableTreeMixin implements _Templates {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TemplatesImpl &&
@@ -2518,7 +2518,7 @@ class _$AgreementCollectiveInsuranceImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementCollectiveInsuranceImpl &&
@@ -2704,7 +2704,7 @@ class _$AgreementCardProtectionImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementCardProtectionImpl &&
@@ -2890,7 +2890,7 @@ class _$AgreementCardProtectionOfferImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementCardProtectionOfferImpl &&
@@ -3081,7 +3081,7 @@ class _$AgreementCollectiveInsuranceStatementImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementCollectiveInsuranceStatementImpl &&
@@ -3271,7 +3271,7 @@ class _$AgreementStayInTouchStatementImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementStayInTouchStatementImpl &&
@@ -3460,7 +3460,7 @@ class _$AgreementCardProtectionStatementImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementCardProtectionStatementImpl &&
@@ -3650,7 +3650,7 @@ class _$AgreementCollectiveInsuranceKidImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementCollectiveInsuranceKidImpl &&
@@ -3838,7 +3838,7 @@ class _$AgreementCardProtectionKidImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementCardProtectionKidImpl &&
@@ -4014,7 +4014,7 @@ class _$LoanRulesImpl with DiagnosticableTreeMixin implements _LoanRules {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoanRulesImpl &&
@@ -4190,7 +4190,7 @@ class _$ProgramStayInTouchImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProgramStayInTouchImpl &&
@@ -4374,7 +4374,7 @@ class _$ProgramCollectiveInsuranceImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProgramCollectiveInsuranceImpl &&
@@ -4557,7 +4557,7 @@ class _$ProgramCardProtectionImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProgramCardProtectionImpl &&
@@ -4733,7 +4733,7 @@ class _$AgreementAdImpl with DiagnosticableTreeMixin implements _AgreementAd {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementAdImpl &&
@@ -4917,7 +4917,7 @@ class _$AgreementCollectiveInsuranceOfferImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementCollectiveInsuranceOfferImpl &&
@@ -5106,7 +5106,7 @@ class _$AgreementConsentAutoChargeImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementConsentAutoChargeImpl &&
@@ -5285,7 +5285,7 @@ class _$ServicesTariffsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ServicesTariffsImpl &&
@@ -5470,7 +5470,7 @@ class _$AgreementProcessingPersonalDataImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AgreementProcessingPersonalDataImpl &&
@@ -5661,7 +5661,7 @@ class _$InformationAboutRegistrationProcedureImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InformationAboutRegistrationProcedureImpl &&
@@ -5860,7 +5860,7 @@ class _$InfoPageImpl with DiagnosticableTreeMixin implements _InfoPage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InfoPageImpl &&
@@ -6062,7 +6062,7 @@ class _$TemplatesPageImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TemplatesPageImpl &&
@@ -6239,7 +6239,7 @@ class _$CalcImpl with DiagnosticableTreeMixin implements _Calc {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CalcImpl &&
@@ -7018,7 +7018,7 @@ class _$AcfImpl with DiagnosticableTreeMixin implements _Acf {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AcfImpl &&
@@ -7393,7 +7393,7 @@ class _$SiteHardRedirectImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SiteHardRedirectImpl &&
@@ -7572,7 +7572,7 @@ class _$SiteSoftRedirectImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SiteSoftRedirectImpl &&
@@ -7765,7 +7765,7 @@ class _$SocialImpl with DiagnosticableTreeMixin implements _Social {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocialImpl &&
@@ -8045,7 +8045,7 @@ class _$OtherPartnersHardImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OtherPartnersHardImpl &&
@@ -8344,7 +8344,7 @@ class _$OtherPartnersSoftImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OtherPartnersSoftImpl &&
@@ -8662,7 +8662,7 @@ class _$RejectedByRegionImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RejectedByRegionImpl &&
@@ -9229,7 +9229,7 @@ class _$AdversiteImpl with DiagnosticableTreeMixin implements _Adversite {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AdversiteImpl &&
@@ -9575,7 +9575,7 @@ class _$HeaderMenuImpl with DiagnosticableTreeMixin implements _HeaderMenu {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HeaderMenuImpl &&
@@ -9777,7 +9777,7 @@ class _$ItemsImpl with DiagnosticableTreeMixin implements _Items {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ItemsImpl &&
@@ -9975,7 +9975,7 @@ class _$MobileMenuImpl with DiagnosticableTreeMixin implements _MobileMenu {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MobileMenuImpl &&
@@ -10174,7 +10174,7 @@ class _$FooterMenuImpl with DiagnosticableTreeMixin implements _FooterMenu {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FooterMenuImpl &&
@@ -10373,7 +10373,7 @@ class _$FooterMenu2Impl with DiagnosticableTreeMixin implements _FooterMenu2 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FooterMenu2Impl &&

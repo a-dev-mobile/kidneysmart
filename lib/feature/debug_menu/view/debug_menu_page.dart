@@ -25,7 +25,7 @@ import 'package:kidneysmart/feature/overlay_widget/view/widget/update_soft_app_p
 
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
 
-import 'package:kidneysmart/navigation/app_router.dart';
+
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -36,7 +36,7 @@ class DebugMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final storage = context.read<LocalStorage>();
-    final go = context.read<AppRouter>();
+    // final go = context.read<AppRouter>();
     final cubitDebug = context.read<DebugCubit>();
 
     return Scaffold(
@@ -272,9 +272,9 @@ class DebugMenuPage extends StatelessWidget {
                   children: [
                     OutlinedButton(
                       onPressed: () async {
-                        if (go.router.canPop()) {
-                          go.router.pop();
-                        }
+                        // if (go.router.canPop()) {
+                          // go.router.pop();
+                        // }
 
                         BetterFeedback.of(context).show(
                           (feedback) async {
@@ -298,11 +298,11 @@ class DebugMenuPage extends StatelessWidget {
                         // ignore: use_build_context_synchronously
                         Navigator.of(context).pop();
                         // ignore: use_build_context_synchronously
-                        await context.read<AppRouter>().toAutoRouter(
-                              storage: storage,
+                        // await context.read<AppRouter>().toAutoRouter(
+                              // storage: storage,
                               // ignore: use_build_context_synchronously
-                              client: context.read(),
-                            );
+                              // client: context.read(),
+                            // );
                       },
                       child: const Text('RESTART'),
                     ),

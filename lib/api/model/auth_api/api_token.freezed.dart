@@ -149,7 +149,7 @@ class _$ApiTokenErrorImpl implements ApiTokenError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiTokenErrorImpl &&
@@ -311,7 +311,7 @@ class _$ApiTokenSuccessImpl implements ApiTokenSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiTokenSuccessImpl &&
@@ -641,7 +641,7 @@ class _$TokenSuccessImpl implements _TokenSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TokenSuccessImpl &&
@@ -849,7 +849,7 @@ class _$TokenErrorImpl implements _TokenError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TokenErrorImpl &&
