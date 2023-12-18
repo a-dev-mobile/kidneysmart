@@ -20,19 +20,29 @@ class Logger {
     _log(message, 'ERROR', 1000, error: error, stackTrace: stackTrace);
   }
 
-  static void _log(String message, String name, int level,
-      {Object? error, StackTrace? stackTrace}) {
+  static void _log(
+    String message,
+    String name,
+    int level, {
+    Object? error,
+    StackTrace? stackTrace,
+  }) {
     stackTrace ??= StackTrace.current;
-    var fileName = _extractFileName(stackTrace);
-    developer.log('[$fileName] $message',
-        name: name, level: level, error: error, stackTrace: stackTrace);
+    final fileName = _extractFileName(stackTrace);
+    developer.log(
+      '[$fileName] $message',
+      name: name,
+      level: level,
+      error: error,
+      stackTrace: stackTrace,
+    );
   }
 
   static String _extractFileName(StackTrace stackTrace) {
-    var lines = stackTrace.toString().split('\n');
+    final lines = stackTrace.toString().split('\n');
     if (lines.isNotEmpty) {
       // Match file name from the stack trace
-      var match = RegExp(r'([^/\\]+)\.dart').firstMatch(lines[0]);
+      final match = RegExp(r'([^/\\]+)\.dart').firstMatch(lines[0]);
       if (match != null && match.groupCount >= 1) {
         return match.group(1) ?? 'Unknown';
       }

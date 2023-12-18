@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kidneysmart/core/widgets/spinning_svg.dart';
 
 class AppInitWidget extends StatelessWidget {
   const AppInitWidget({super.key});
@@ -10,7 +9,7 @@ class AppInitWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-         CircularProgressIndicator(),
+          CircularProgressIndicator(),
           SizedBox(height: 20),
           Text('Initializing...'),
         ],

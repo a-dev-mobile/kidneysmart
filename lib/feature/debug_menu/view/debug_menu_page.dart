@@ -6,13 +6,11 @@ import 'dart:io';
 import 'package:feedback/feedback.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
+import 'package:kidneysmart/core/constants/app_text_styles.dart';
 
-
-import 'package:kidneysmart/core/enum/enum_loan_status.dart';
 import 'package:kidneysmart/core/enum/enum_project.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
@@ -21,12 +19,9 @@ import 'package:kidneysmart/core/storage/local_storage.dart';
 
 import 'package:kidneysmart/core/widgets/app_error_widget.dart';
 
-import 'package:kidneysmart/feature/onboarding/vew/onboarding_page.dart';
-import 'package:kidneysmart/feature/overlay_widget/view/widget/update_hard_app_page.dart';
-import 'package:kidneysmart/feature/overlay_widget/view/widget/update_soft_app_page.dart';
+import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
 
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
-
 
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -40,73 +35,179 @@ class DebugMenuPage extends ConsumerWidget {
     // final storage = context.read<LocalStorage>();
     // final go = context.read<AppRouter>();
     final state = ref.watch(debugNotifierProvider);
-    final debugNotifier =ref.read(debugNotifierProvider.notifier);
+    final debugNotifier = ref.read(debugNotifierProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Debug Menu '),
       ),
       body: Stack(
-          children: [
-            ListView(shrinkWrap: true, children: [
+        children: [
+          ListView(
+            shrinkWrap: true,
+            children: [
+              const SizedBox(height: 30),
+              const Center(child: Text('---Setting---')),
+              SwitchListTile(
+                value: state.isShowBtnHttpLog,
+                onChanged: (v) => debugNotifier.setShowBtnHttpLog(isShow: v),
+                title: const Text('Show button http log'),
+                dense: true,
+                visualDensity: const VisualDensity(vertical: -3),
+              ),
+              SwitchListTile(
+                value: state.isShowUrlPdfPage,
+                onChanged: (v) => debugNotifier.setShowUrlPdfPage(isShow: v),
+                title: const Text('Show opening url of PDF document'),
+                dense: true,
+                visualDensity: const VisualDensity(vertical: -3),
+              ),
+              SwitchListTile(
+                value: state.isShowDevicePreview,
+                onChanged: (v) => debugNotifier.setDevicePreview(isShow: v),
+                title: const Text('Show device preview'),
+                dense: true,
+                visualDensity: const VisualDensity(vertical: -3),
+              ),
+              if (kDebugMode)
+                SwitchListTile(
+                  value: state.isShowRepaintRainbow,
+                  onChanged: (v) =>
+                      debugNotifier.setShowDebugRepaintRainbow(isShow: v),
+                  title: const Text('DebugRepaintRainbowEnabled'),
+                  dense: true,
+                  visualDensity: const VisualDensity(vertical: -3),
+                ),
+              if (kDebugMode)
+                SwitchListTile(
+                  value: state.isShowPaintSizeEnabled,
+                  onChanged: (v) =>
+                      debugNotifier.setShowPaintSizeEnabled(isShow: v),
+                  title: const Text('DebugPaintSizeEnabled'),
+                  dense: true,
+                  visualDensity: const VisualDensity(vertical: -3),
+                ),
+              const SizedBox(height: 30),
+              const Center(child: Text('---Начало---')),
+              const Wrap(
+                children: [
+                  _ItemPage(name: 'splash', nameRoute: SplashPage.name),
+                ],
+              ),
+              const SizedBox(height: 30),
+              const Center(child: Text('---Вход---')),
+              const SizedBox(height: 30),
+              const Center(
+                child: Text('---Регистрация---'),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: ElevatedButton(
+                  onPressed: () {
+                    final _ = ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Successfully',
+                        ),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Clear local storage',
+                  ),
+                ),
+              ),
+              const Wrap(),
+              const SizedBox(height: 30),
+              const Center(
+                child: Text('---личный кабинет---'),
+              ),
+              const SizedBox(height: 30),
+              const Center(child: Text('---Вспомогательные---')),
+              Wrap(
+                children: [
+                  _ItemPage(
+                    name: 'Общие документы',
+                    onPressed: () {},
+                  ),
+                  _ItemPage(
+                    name: 'Ошибка доступа',
+                    onPressed: () {
+                      GoRouter.of(context).pushNamed<void>(AppErrorWidget.name);
+                    },
+                  ),
+                  // const _ItemPage(
+                  // name: 'Soft Обновление',
+                  // nameRoute: UpdateSoftAppPage.name,
+                  // ),
+                  const _ItemPage(
+                    name: 'Hard Обновление',
+                    nameRoute: AppUpdateHardPage.name,
+                  ),
                   const SizedBox(height: 30),
-                  const Center(child: Text('---Setting---')),
-                  SwitchListTile(
-                    value: state.isShowBtnHttpLog,
-                    onChanged: (v) => debugNotifier.setShowBtnHttpLog(isShow: v),
-                    title: const Text('Show button http log'),
-                    dense: true,
-                    visualDensity: const VisualDensity(vertical: -3),
-                  ),
-                  SwitchListTile(
-                    value: state.isShowUrlPdfPage,
-                    onChanged: (v) => debugNotifier.setShowUrlPdfPage(isShow: v),
-                    title: const Text('Show opening url of PDF document'),
-                    dense: true,
-                    visualDensity: const VisualDensity(vertical: -3),
-                  ),
-                  SwitchListTile(
-                    value: state.isShowDevicePreview,
-                    onChanged: (v) => debugNotifier.setDevicePreview(isShow: v),
-                    title: const Text('Show device preview'),
-                    dense: true,
-                    visualDensity: const VisualDensity(vertical: -3),
-                  ),
-                  if (kDebugMode)
-                    SwitchListTile(
-                      value: state.isShowRepaintRainbow,
-                      onChanged: (v) =>
-                          debugNotifier.setShowDebugRepaintRainbow(isShow: v),
-                      title: const Text('DebugRepaintRainbowEnabled'),
-                      dense: true,
-                      visualDensity: const VisualDensity(vertical: -3),
-                    ),
-                  if (kDebugMode)
-                    SwitchListTile(
-                      value: state.isShowPaintSizeEnabled,
-                      onChanged: (v) =>
-                          debugNotifier.setShowPaintSizeEnabled(isShow: v),
-                      title: const Text('DebugPaintSizeEnabled'),
-                      dense: true,
-                      visualDensity: const VisualDensity(vertical: -3),
-                    ),
-                  const SizedBox(height: 30),
-                  const Center(child: Text('---Начало---')),
+                  const Center(child: Text('---Тестирование функционала---')),
                   const Wrap(
                     children: [
-                      _ItemPage(name: 'splash', nameRoute: SplashPage.name),
                       _ItemPage(
-                        name: 'onboarding',
-                        nameRoute: OnBoardingPage.name,
+                        name: 'Http log',
+                        nameRoute: HttpLogListWidget.name,
                       ),
                     ],
                   ),
+                  const Divider(),
                   const SizedBox(height: 30),
-                  const Center(child: Text('---Вход---')),
-                  const SizedBox(height: 30),
+                  const Center(child: Text('---API---')),
                   const Center(
-                    child: Text('---Регистрация---'),
+                    child: Text(
+                      'Для смены API нужно закрыть и открыть приложение',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyle.s12w600h17,
+                    ),
                   ),
+                  _RadioApi(
+                    onChanged: (v) =>
+                        debugNotifier.setEnumProject(enumProject: v),
+                    activeEnumProject: state.enumProject,
+                    enumProject: EnumProject.prod,
+                    title: EnumProject.prod.name,
+                  ),
+                  _RadioApi(
+                    onChanged: (v) =>
+                        debugNotifier.setEnumProject(enumProject: v),
+                    activeEnumProject: state.enumProject,
+                    enumProject: EnumProject.dev,
+                    title: EnumProject.dev.name,
+                  ),
+                  const Divider(),
+                  const SizedBox(height: 30),
+                  const Center(child: Text('---STORE---')),
+                  const Center(
+                    child: Text(
+                      'Для смены Магазина нужно закрыть и открыть приложение',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyle.s12w600h17,
+                    ),
+                  ),
+                  _RadioStore(
+                    onChanged: debugNotifier.setEnumStore,
+                    activeEnumStore: state.enumStore,
+                    enumStore: EnumStore.appStore,
+                    title: _getNameStore(EnumStore.appStore),
+                  ),
+                  _RadioStore(
+                    onChanged: debugNotifier.setEnumStore,
+                    activeEnumStore: state.enumStore,
+                    enumStore: EnumStore.packageInstaller,
+                    title: _getNameStore(EnumStore.packageInstaller),
+                  ),
+                  _RadioStore(
+                    onChanged: debugNotifier.setEnumStore,
+                    activeEnumStore: state.enumStore,
+                    enumStore: EnumStore.unknown,
+                    title: _getNameStore(EnumStore.unknown),
+                  ),
+                  const Divider(),
+                  const SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: ElevatedButton(
@@ -114,180 +215,72 @@ class DebugMenuPage extends ConsumerWidget {
                         final _ = ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(
-                              'Successfully',
+                              'Данные отправлены',
                             ),
                           ),
                         );
+                        throw Exception('Repeating test error');
                       },
                       child: const Text(
-                        'Clear local storage',
+                        'Отправить тестовый crash в Crashlytics',
                       ),
                     ),
                   ),
-                  const Wrap(
-                    children: [],
-                  ),
-                  const SizedBox(height: 30),
-                  const Center(
-                    child: Text('---личный кабинет---'),
-                  ),
-                  const SizedBox(height: 30),
-                  const Center(child: Text('---Вспомогательные---')),
-                  Wrap(children: [
-                    _ItemPage(
-                      name: 'Общие документы',
-                      onPressed: () {},
-                    ),
-                    _ItemPage(
-                      name: 'Ошибка доступа',
-                      onPressed: () {
-                        GoRouter.of(context)
-                            .pushNamed<void>(AppErrorWidget.name);
-                      },
-                    ),
-                    // const _ItemPage(
-                    // name: 'Soft Обновление',
-                    // nameRoute: UpdateSoftAppPage.name,
-                    // ),
-                    const _ItemPage(
-                      name: 'Hard Обновление',
-                      nameRoute: UpdateHardAppPage.name,
-                    ),
-                    const SizedBox(height: 30),
-                    const Center(child: Text('---Тестирование функционала---')),
-                    const Wrap(
-                      children: [
-                        _ItemPage(
-                          name: 'Http log',
-                          nameRoute: HttpLogListWidget.name,
-                        ),
-                      ],
-                    ),
-                    const Divider(),
-                    const SizedBox(height: 30),
-                    const Center(child: Text('---API---')),
-                    const Center(
-                      child: Text(
-                        'Для смены API нужно закрыть и открыть приложение',
-                        textAlign: TextAlign.center,
-                        style: AppTextStyle.s12w600h17,
-                      ),
-                    ),
-                    _RadioApi(
-                      onChanged: (v) =>
-                          debugNotifier.setEnumProject(enumProject: v),
-                      activeEnumProject: state.enumProject,
-                      enumProject: EnumProject.prod,
-                      title: EnumProject.prod.name,
-                    ),
-                    _RadioApi(
-                      onChanged: (v) =>
-                          debugNotifier.setEnumProject(enumProject: v),
-                      activeEnumProject: state.enumProject,
-                      enumProject: EnumProject.dev,
-                      title: EnumProject.dev.name,
-                    ),
-                    const Divider(),
-                    const SizedBox(height: 30),
-                    const Center(child: Text('---STORE---')),
-                    const Center(
-                      child: Text(
-                        'Для смены Магазина нужно закрыть и открыть приложение',
-                        textAlign: TextAlign.center,
-                        style: AppTextStyle.s12w600h17,
-                      ),
-                    ),
-                    _RadioStore(
-                      onChanged: debugNotifier.setEnumStore,
-                      activeEnumStore: state.enumStore,
-                      enumStore: EnumStore.appStore,
-                      title: _getNameStore(EnumStore.appStore),
-                    ),
-                    _RadioStore(
-                      onChanged: debugNotifier.setEnumStore,
-                      activeEnumStore: state.enumStore,
-                      enumStore: EnumStore.packageInstaller,
-                      title: _getNameStore(EnumStore.packageInstaller),
-                    ),
-                    _RadioStore(
-                      onChanged: debugNotifier.setEnumStore,
-                      activeEnumStore: state.enumStore,
-                      enumStore: EnumStore.unknown,
-                      title: _getNameStore(EnumStore.unknown),
-                    ),
-                    const Divider(),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          final _ = ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Данные отправлены',
-                              ),
-                            ),
+                  const SizedBox(height: 50),
+                ],
+              ),
+            ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 50,
+              color: Theme.of(context).colorScheme.background,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  OutlinedButton(
+                    onPressed: () async {
+                      // if (go.router.canPop()) {
+                      // go.router.pop();
+                      // }
+
+                      BetterFeedback.of(context).show(
+                        (feedback) async {
+                          final screenshotFilePath =
+                              await _writeImageToStorage(feedback.screenshot);
+
+                          final _ = await Share.shareXFiles(
+                            [XFile(screenshotFilePath)],
+                            text: feedback.text,
                           );
-                          throw Exception('Repeating test error');
                         },
-                        child: const Text(
-                          'Отправить тестовый crash в Crashlytics',
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 50),
-                  ])
-                ]),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: 50,
-                color: Theme.of(context).colorScheme.background,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    OutlinedButton(
-                      onPressed: () async {
-                        // if (go.router.canPop()) {
-                          // go.router.pop();
-                        // }
+                      );
+                    },
+                    child: const Text('FEEDBACK'),
+                  ),
+                  OutlinedButton(
+                    onPressed: () async {
+                      // await _cleanCash(storage);
 
-                        BetterFeedback.of(context).show(
-                          (feedback) async {
-                            final screenshotFilePath =
-                                await _writeImageToStorage(feedback.screenshot);
-
-                            final _ = await Share.shareXFiles(
-                              [XFile(screenshotFilePath)],
-                              text: feedback.text,
-                            );
-                          },
-                        );
-                      },
-                      child: const Text('FEEDBACK'),
-                    ),
-                    OutlinedButton(
-                      onPressed: () async {
-                        // await _cleanCash(storage);
-
-                        // await remoteCubit.load();
-                        // ignore: use_build_context_synchronously
-                        Navigator.of(context).pop();
-                        // ignore: use_build_context_synchronously
-                        // await context.read<AppRouter>().toAutoRouter(
-                              // storage: storage,
-                              // ignore: use_build_context_synchronously
-                              // client: context.read(),
-                            // );
-                      },
-                      child: const Text('RESTART'),
-                    ),
-                  ],
-                ),
+                      // await remoteCubit.load();
+                      // ignore: use_build_context_synchronously
+                      Navigator.of(context).pop();
+                      // ignore: use_build_context_synchronously
+                      // await context.read<AppRouter>().toAutoRouter(
+                      // storage: storage,
+                      // ignore: use_build_context_synchronously
+                      // client: context.read(),
+                      // );
+                    },
+                    child: const Text('RESTART'),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:kidneysmart/app/style/color/app_color.dart';
-import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
+import 'package:kidneysmart/core/constants/app_color.dart';
+import 'package:kidneysmart/core/constants/app_text_styles.dart';
 import 'package:kidneysmart/core/widgets/basic_button.dart';
-import 'package:kidneysmart/gen/assets.gen.dart';
 
 class FailureTryAgain extends StatelessWidget {
   const FailureTryAgain({
@@ -22,7 +20,6 @@ class FailureTryAgain extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            
               const SizedBox(height: 49),
               Text(
                 'Ой! Похоже, что-то сломалось. Попробуйте еще раз',

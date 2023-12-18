@@ -19,7 +19,7 @@ NetworkClient networkClient(NetworkClientRef ref) =>
 class NetworkClient {
   NetworkClient({
     required String baseUrl,
-    required Navigation router,
+    required AppRouter router,
     required String userAgent,
     Duration connectTimeout = const Duration(seconds: 5),
     Duration receiveTimeout = const Duration(seconds: 15),
@@ -38,8 +38,8 @@ class NetworkClient {
           ]);
 
   final Dio _dio;
-  final Navigation _go;
-
+  final AppRouter _go;
+  Dio get dio => _dio;
   // ignore: avoid_setters_without_getters
   set isShowHttpInLog(bool value) => DioLogInterceptor.enablePrintLog = value;
 
@@ -85,12 +85,11 @@ class NetworkClient {
   Response<T> _handleDioException<T>(DioException e, String endPoint) {
     // Report the error to Firebase Crashlytics
     // ErrorHandler()
-        // .reportError(e, e.stackTrace, severity: ErrorSeverity.warning);
+    // .reportError(e, e.stackTrace, severity: ErrorSeverity.warning);
 
     // Log the error for debugging purposes
     Logger.debug(
       endPoint,
-    
       error: e.error,
       stackTrace: e.stackTrace,
     );

@@ -1,7 +1,6 @@
 // ignore_for_file: invalid_annotation_target, sort_unnamed_constructors_first
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'api_cards.freezed.dart';

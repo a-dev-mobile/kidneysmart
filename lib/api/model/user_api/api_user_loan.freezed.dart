@@ -696,7 +696,7 @@ class __$$ApiUserLoanImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiUserLoanImpl extends _ApiUserLoan with DiagnosticableTreeMixin {
+class _$ApiUserLoanImpl extends _ApiUserLoan {
   const _$ApiUserLoanImpl(
       {@JsonKey(name: 'nextPaymentAmount') this.nextPaymentAmount = 0,
       @JsonKey(name: 'amountToReturnToSchedule')
@@ -888,51 +888,8 @@ class _$ApiUserLoanImpl extends _ApiUserLoan with DiagnosticableTreeMixin {
   final SoldInformation soldInformation;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiUserLoan(nextPaymentAmount: $nextPaymentAmount, amountToReturnToSchedule: $amountToReturnToSchedule, nextPaymentDate: $nextPaymentDate, daysLate: $daysLate, returnedDate: $returnedDate, calculation: $calculation, reason: $reason, id: $id, publicId: $publicId, requestAmount: $requestAmount, requestDate: $requestDate, approveDate: $approveDate, giveDate: $giveDate, enumAvailableProduct: $enumAvailableProduct, mustPayDate: $mustPayDate, days: $days, daysLeft: $daysLeft, enumLoanStatus: $enumLoanStatus, smsConfirmed: $smsConfirmed, currency: $currency, total: $total, mustPayTotal: $mustPayTotal, counterOfferAmount: $counterOfferAmount, counterOfferAvgAmount: $counterOfferAvgAmount, discountCode: $discountCode, collectionAgencyInProgress: $collectionAgencyInProgress, vacation: $vacation, personalNotificationMessage: $personalNotificationMessage, agreements: $agreements, reasonCode: $reasonCode, extendable: $extendable, autochargeApproval: $autochargeApproval, soldInformation: $soldInformation)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiUserLoan'))
-      ..add(DiagnosticsProperty('nextPaymentAmount', nextPaymentAmount))
-      ..add(DiagnosticsProperty(
-          'amountToReturnToSchedule', amountToReturnToSchedule))
-      ..add(DiagnosticsProperty('nextPaymentDate', nextPaymentDate))
-      ..add(DiagnosticsProperty('daysLate', daysLate))
-      ..add(DiagnosticsProperty('returnedDate', returnedDate))
-      ..add(DiagnosticsProperty('calculation', calculation))
-      ..add(DiagnosticsProperty('reason', reason))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('publicId', publicId))
-      ..add(DiagnosticsProperty('requestAmount', requestAmount))
-      ..add(DiagnosticsProperty('requestDate', requestDate))
-      ..add(DiagnosticsProperty('approveDate', approveDate))
-      ..add(DiagnosticsProperty('giveDate', giveDate))
-      ..add(DiagnosticsProperty('enumAvailableProduct', enumAvailableProduct))
-      ..add(DiagnosticsProperty('mustPayDate', mustPayDate))
-      ..add(DiagnosticsProperty('days', days))
-      ..add(DiagnosticsProperty('daysLeft', daysLeft))
-      ..add(DiagnosticsProperty('enumLoanStatus', enumLoanStatus))
-      ..add(DiagnosticsProperty('smsConfirmed', smsConfirmed))
-      ..add(DiagnosticsProperty('currency', currency))
-      ..add(DiagnosticsProperty('total', total))
-      ..add(DiagnosticsProperty('mustPayTotal', mustPayTotal))
-      ..add(DiagnosticsProperty('counterOfferAmount', counterOfferAmount))
-      ..add(DiagnosticsProperty('counterOfferAvgAmount', counterOfferAvgAmount))
-      ..add(DiagnosticsProperty('discountCode', discountCode))
-      ..add(DiagnosticsProperty(
-          'collectionAgencyInProgress', collectionAgencyInProgress))
-      ..add(DiagnosticsProperty('vacation', vacation))
-      ..add(DiagnosticsProperty(
-          'personalNotificationMessage', personalNotificationMessage))
-      ..add(DiagnosticsProperty('agreements', agreements))
-      ..add(DiagnosticsProperty('reasonCode', reasonCode))
-      ..add(DiagnosticsProperty('extendable', extendable))
-      ..add(DiagnosticsProperty('autochargeApproval', autochargeApproval))
-      ..add(DiagnosticsProperty('soldInformation', soldInformation));
   }
 
   @override
@@ -1362,7 +1319,6 @@ class __$$PersonalNotificationMessageImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PersonalNotificationMessageImpl
-    with DiagnosticableTreeMixin
     implements _PersonalNotificationMessage {
   const _$PersonalNotificationMessageImpl(
       {@JsonKey(name: 'title') this.title,
@@ -1380,17 +1336,8 @@ class _$PersonalNotificationMessageImpl
   final String? message;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PersonalNotificationMessage(title: $title, message: $message)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PersonalNotificationMessage'))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -1746,7 +1693,7 @@ class __$$VacationImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$VacationImpl with DiagnosticableTreeMixin implements _Vacation {
+class _$VacationImpl implements _Vacation {
   const _$VacationImpl(
       {@JsonKey(
           name: 'status',
@@ -1828,33 +1775,8 @@ class _$VacationImpl with DiagnosticableTreeMixin implements _Vacation {
   final num? commissionWithoutDocs;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Vacation(enumVacationStatus: $enumVacationStatus, hasDocuments: $hasDocuments, dateFrom: $dateFrom, dateTo: $dateTo, commissionBefore: $commissionBefore, fineBefore: $fineBefore, currentDays: $currentDays, days: $days, startOnOverduePeriod: $startOnOverduePeriod, mustPayWithDocs: $mustPayWithDocs, commissionWithDocs: $commissionWithDocs, currentCommissioWithDocs: $currentCommissioWithDocs, currentMustPayWithDocs: $currentMustPayWithDocs, mustPayWithoutDocs: $mustPayWithoutDocs, commissionWithoutDocs: $commissionWithoutDocs)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Vacation'))
-      ..add(DiagnosticsProperty('enumVacationStatus', enumVacationStatus))
-      ..add(DiagnosticsProperty('hasDocuments', hasDocuments))
-      ..add(DiagnosticsProperty('dateFrom', dateFrom))
-      ..add(DiagnosticsProperty('dateTo', dateTo))
-      ..add(DiagnosticsProperty('commissionBefore', commissionBefore))
-      ..add(DiagnosticsProperty('fineBefore', fineBefore))
-      ..add(DiagnosticsProperty('currentDays', currentDays))
-      ..add(DiagnosticsProperty('days', days))
-      ..add(DiagnosticsProperty('startOnOverduePeriod', startOnOverduePeriod))
-      ..add(DiagnosticsProperty('mustPayWithDocs', mustPayWithDocs))
-      ..add(DiagnosticsProperty('commissionWithDocs', commissionWithDocs))
-      ..add(DiagnosticsProperty(
-          'currentCommissioWithDocs', currentCommissioWithDocs))
-      ..add(
-          DiagnosticsProperty('currentMustPayWithDocs', currentMustPayWithDocs))
-      ..add(DiagnosticsProperty('mustPayWithoutDocs', mustPayWithoutDocs))
-      ..add(
-          DiagnosticsProperty('commissionWithoutDocs', commissionWithoutDocs));
   }
 
   @override
@@ -2270,7 +2192,7 @@ class __$$CalculationImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CalculationImpl with DiagnosticableTreeMixin implements _Calculation {
+class _$CalculationImpl implements _Calculation {
   const _$CalculationImpl(
       {@JsonKey(name: 'body') this.body,
       @JsonKey(name: 'commission') this.commission,
@@ -2326,27 +2248,8 @@ class _$CalculationImpl with DiagnosticableTreeMixin implements _Calculation {
   final Total? total;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Calculation(body: $body, commission: $commission, extraCommission: $extraCommission, vacationCommission: $vacationCommission, giveoutCommission: $giveoutCommission, annualCommission: $annualCommission, monthlyCommission: $monthlyCommission, fine: $fine, extraFine: $extraFine, fixed: $fixed, deposit: $deposit, total: $total)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Calculation'))
-      ..add(DiagnosticsProperty('body', body))
-      ..add(DiagnosticsProperty('commission', commission))
-      ..add(DiagnosticsProperty('extraCommission', extraCommission))
-      ..add(DiagnosticsProperty('vacationCommission', vacationCommission))
-      ..add(DiagnosticsProperty('giveoutCommission', giveoutCommission))
-      ..add(DiagnosticsProperty('annualCommission', annualCommission))
-      ..add(DiagnosticsProperty('monthlyCommission', monthlyCommission))
-      ..add(DiagnosticsProperty('fine', fine))
-      ..add(DiagnosticsProperty('extraFine', extraFine))
-      ..add(DiagnosticsProperty('fixed', fixed))
-      ..add(DiagnosticsProperty('deposit', deposit))
-      ..add(DiagnosticsProperty('total', total));
   }
 
   @override
@@ -2562,7 +2465,7 @@ class __$$TotalImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TotalImpl with DiagnosticableTreeMixin implements _Total {
+class _$TotalImpl implements _Total {
   const _$TotalImpl(
       {@JsonKey(name: 'commission') this.commission,
       @JsonKey(name: 'fine') this.fine});
@@ -2578,17 +2481,8 @@ class _$TotalImpl with DiagnosticableTreeMixin implements _Total {
   final num? fine;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Total(commission: $commission, fine: $fine)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Total'))
-      ..add(DiagnosticsProperty('commission', commission))
-      ..add(DiagnosticsProperty('fine', fine));
   }
 
   @override
@@ -2919,9 +2813,7 @@ class __$$SoldInformationImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SoldInformationImpl
-    with DiagnosticableTreeMixin
-    implements _SoldInformation {
+class _$SoldInformationImpl implements _SoldInformation {
   const _$SoldInformationImpl(
       {@JsonKey(name: 'assignmentClaimDate') this.assignmentClaimDate = '',
       @JsonKey(name: 'amount') this.amount,
@@ -2989,30 +2881,8 @@ class _$SoldInformationImpl
   final num? mustPayBody;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'SoldInformation(assignmentClaimDate: $assignmentClaimDate, amount: $amount, inn: $inn, ogrn: $ogrn, okpo: $okpo, address: $address, legalAddress: $legalAddress, bankDetails: $bankDetails, thirdPersonFullName: $thirdPersonFullName, thirdPersonPhone: $thirdPersonPhone, thirdPersonDirector: $thirdPersonDirector, mustPayTotal: $mustPayTotal, mustPayCommission: $mustPayCommission, mustPayFine: $mustPayFine, mustPayBody: $mustPayBody)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SoldInformation'))
-      ..add(DiagnosticsProperty('assignmentClaimDate', assignmentClaimDate))
-      ..add(DiagnosticsProperty('amount', amount))
-      ..add(DiagnosticsProperty('inn', inn))
-      ..add(DiagnosticsProperty('ogrn', ogrn))
-      ..add(DiagnosticsProperty('okpo', okpo))
-      ..add(DiagnosticsProperty('address', address))
-      ..add(DiagnosticsProperty('legalAddress', legalAddress))
-      ..add(DiagnosticsProperty('bankDetails', bankDetails))
-      ..add(DiagnosticsProperty('thirdPersonFullName', thirdPersonFullName))
-      ..add(DiagnosticsProperty('thirdPersonPhone', thirdPersonPhone))
-      ..add(DiagnosticsProperty('thirdPersonDirector', thirdPersonDirector))
-      ..add(DiagnosticsProperty('mustPayTotal', mustPayTotal))
-      ..add(DiagnosticsProperty('mustPayCommission', mustPayCommission))
-      ..add(DiagnosticsProperty('mustPayFine', mustPayFine))
-      ..add(DiagnosticsProperty('mustPayBody', mustPayBody));
   }
 
   @override

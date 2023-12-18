@@ -242,7 +242,7 @@ class __$$ApiCardItemImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiCardItemImpl extends _ApiCardItem with DiagnosticableTreeMixin {
+class _$ApiCardItemImpl extends _ApiCardItem {
   const _$ApiCardItemImpl(
       {this.id = 0,
       this.cardNumber = '',
@@ -314,27 +314,8 @@ class _$ApiCardItemImpl extends _ApiCardItem with DiagnosticableTreeMixin {
   final String patchImage;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiCardItem(id: $id, cardNumber: $cardNumber, cardHolderName: $cardHolderName, expiry: $expiry, isVerified: $isVerified, bankName: $bankName, current: $current, verifiedBy: $verifiedBy, defaultFor: $defaultFor, isAutoCharge: $isAutoCharge, isPhotoExists: $isPhotoExists, patchImage: $patchImage)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiCardItem'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('cardNumber', cardNumber))
-      ..add(DiagnosticsProperty('cardHolderName', cardHolderName))
-      ..add(DiagnosticsProperty('expiry', expiry))
-      ..add(DiagnosticsProperty('isVerified', isVerified))
-      ..add(DiagnosticsProperty('bankName', bankName))
-      ..add(DiagnosticsProperty('current', current))
-      ..add(DiagnosticsProperty('verifiedBy', verifiedBy))
-      ..add(DiagnosticsProperty('defaultFor', defaultFor))
-      ..add(DiagnosticsProperty('isAutoCharge', isAutoCharge))
-      ..add(DiagnosticsProperty('isPhotoExists', isPhotoExists))
-      ..add(DiagnosticsProperty('patchImage', patchImage));
   }
 
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kidneysmart/app/style/color/app_color.dart';
+import 'package:kidneysmart/core/constants/app_color.dart';
 
 void showCustomModalBottomSheet({
   required BuildContext context,

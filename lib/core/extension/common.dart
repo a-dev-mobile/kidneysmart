@@ -1,7 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/log/logger.dart';
 
-
 extension SafeListAccess<T> on List<T> {
   T safeElementAt(int index, T defaultValue) {
     return index < length ? this[index] : defaultValue;
@@ -18,8 +17,7 @@ extension GoRouterExtension on GoRouter {
       final location = matchList.uri.toString();
       return location;
     } catch (e, s) {
-      
-      Logger.error( 'GoRouterExtension', error: e, stackTrace: s);
+      Logger.error('GoRouterExtension', error: e, stackTrace: s);
       return null;
     }
   }

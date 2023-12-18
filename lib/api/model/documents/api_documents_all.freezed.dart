@@ -236,9 +236,7 @@ class __$$ApiDocumentsAllImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiDocumentsAllImpl
-    with DiagnosticableTreeMixin
-    implements _ApiDocumentsAll {
+class _$ApiDocumentsAllImpl implements _ApiDocumentsAll {
   const _$ApiDocumentsAllImpl(
       {@JsonKey(name: 'user') final List<ApiDocUser> user = const [],
       @JsonKey(name: 'loan', fromJson: _converToApiDocLoanFromJson) this.loan,
@@ -307,21 +305,8 @@ class _$ApiDocumentsAllImpl
   final ApiReference? reference;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiDocumentsAll(user: $user, loan: $loan, history: $history, agreements: $agreements, insuranceContracts: $insuranceContracts, reference: $reference)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiDocumentsAll'))
-      ..add(DiagnosticsProperty('user', user))
-      ..add(DiagnosticsProperty('loan', loan))
-      ..add(DiagnosticsProperty('history', history))
-      ..add(DiagnosticsProperty('agreements', agreements))
-      ..add(DiagnosticsProperty('insuranceContracts', insuranceContracts))
-      ..add(DiagnosticsProperty('reference', reference));
   }
 
   @override
@@ -495,9 +480,7 @@ class __$$ApiHistoryItemImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiHistoryItemImpl
-    with DiagnosticableTreeMixin
-    implements _ApiHistoryItem {
+class _$ApiHistoryItemImpl implements _ApiHistoryItem {
   const _$ApiHistoryItemImpl(
       {required final Map<String, ApiAgreementItem> agreements})
       : _agreements = agreements;
@@ -514,16 +497,8 @@ class _$ApiHistoryItemImpl
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiHistoryItem(agreements: $agreements)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiHistoryItem'))
-      ..add(DiagnosticsProperty('agreements', agreements));
   }
 
   @override
@@ -1150,7 +1125,7 @@ class __$$ApiAgreementsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiAgreementsImpl extends _ApiAgreements with DiagnosticableTreeMixin {
+class _$ApiAgreementsImpl extends _ApiAgreements {
   const _$ApiAgreementsImpl(
       {@JsonKey(name: 'agreementProcessingPersonalData')
       this.agreementProcessingPersonalData,
@@ -1227,40 +1202,8 @@ class _$ApiAgreementsImpl extends _ApiAgreements with DiagnosticableTreeMixin {
   final ApiAgreementItem? agreementAd;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiAgreements(agreementProcessingPersonalData: $agreementProcessingPersonalData, agreementCreditReport: $agreementCreditReport, agreementUseSimpleElectronicSign: $agreementUseSimpleElectronicSign, agreementService: $agreementService, agreementServiceIL: $agreementServiceIL, agreementContractIL: $agreementContractIL, paymentScheduleILForPER: $paymentScheduleILForPER, agreementCollectiveInsuranceKid0: $agreementCollectiveInsuranceKid0, agreementCollectiveInsuranceCertificate0: $agreementCollectiveInsuranceCertificate0, agreementCollectiveInsurance0: $agreementCollectiveInsurance0, agreementCollectiveInsuranceStatement0: $agreementCollectiveInsuranceStatement0, agreementConsentAutocharge: $agreementConsentAutocharge, agreementContractLongPeriod: $agreementContractLongPeriod, agreementNotificationOfOverdueDebt: $agreementNotificationOfOverdueDebt, agreementAd: $agreementAd)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiAgreements'))
-      ..add(DiagnosticsProperty(
-          'agreementProcessingPersonalData', agreementProcessingPersonalData))
-      ..add(DiagnosticsProperty('agreementCreditReport', agreementCreditReport))
-      ..add(DiagnosticsProperty(
-          'agreementUseSimpleElectronicSign', agreementUseSimpleElectronicSign))
-      ..add(DiagnosticsProperty('agreementService', agreementService))
-      ..add(DiagnosticsProperty('agreementServiceIL', agreementServiceIL))
-      ..add(DiagnosticsProperty('agreementContractIL', agreementContractIL))
-      ..add(DiagnosticsProperty(
-          'paymentScheduleILForPER', paymentScheduleILForPER))
-      ..add(DiagnosticsProperty(
-          'agreementCollectiveInsuranceKid0', agreementCollectiveInsuranceKid0))
-      ..add(DiagnosticsProperty('agreementCollectiveInsuranceCertificate0',
-          agreementCollectiveInsuranceCertificate0))
-      ..add(DiagnosticsProperty(
-          'agreementCollectiveInsurance0', agreementCollectiveInsurance0))
-      ..add(DiagnosticsProperty('agreementCollectiveInsuranceStatement0',
-          agreementCollectiveInsuranceStatement0))
-      ..add(DiagnosticsProperty(
-          'agreementConsentAutocharge', agreementConsentAutocharge))
-      ..add(DiagnosticsProperty(
-          'agreementContractLongPeriod', agreementContractLongPeriod))
-      ..add(DiagnosticsProperty('agreementNotificationOfOverdueDebt',
-          agreementNotificationOfOverdueDebt))
-      ..add(DiagnosticsProperty('agreementAd', agreementAd));
   }
 
   @override
@@ -1634,7 +1577,7 @@ class __$$ApiDocUserImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiDocUserImpl with DiagnosticableTreeMixin implements _ApiDocUser {
+class _$ApiDocUserImpl implements _ApiDocUser {
   const _$ApiDocUserImpl(
       {@JsonKey(name: 'type') this.type = '',
       @JsonKey(name: 'comment') this.comment = '',
@@ -1680,22 +1623,8 @@ class _$ApiDocUserImpl with DiagnosticableTreeMixin implements _ApiDocUser {
   final bool isValid;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiDocUser(type: $type, comment: $comment, createdAt: $createdAt, size: $size, url: $url, docUserNameDetails: $docUserNameDetails, isValid: $isValid)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiDocUser'))
-      ..add(DiagnosticsProperty('type', type))
-      ..add(DiagnosticsProperty('comment', comment))
-      ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('size', size))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('docUserNameDetails', docUserNameDetails))
-      ..add(DiagnosticsProperty('isValid', isValid));
   }
 
   @override
@@ -1876,9 +1805,7 @@ class __$$DocUserNameDetailsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DocUserNameDetailsImpl
-    with DiagnosticableTreeMixin
-    implements _DocUserNameDetails {
+class _$DocUserNameDetailsImpl implements _DocUserNameDetails {
   const _$DocUserNameDetailsImpl({required this.name, this.enumDocUserType});
 
   factory _$DocUserNameDetailsImpl.fromJson(Map<String, dynamic> json) =>
@@ -1890,17 +1817,8 @@ class _$DocUserNameDetailsImpl
   final EnumDocUserType? enumDocUserType;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'DocUserNameDetails(name: $name, enumDocUserType: $enumDocUserType)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'DocUserNameDetails'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('enumDocUserType', enumDocUserType));
   }
 
   @override
@@ -2050,7 +1968,7 @@ class __$$ApiDocLoanImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiDocLoanImpl with DiagnosticableTreeMixin implements _ApiDocLoan {
+class _$ApiDocLoanImpl implements _ApiDocLoan {
   const _$ApiDocLoanImpl({@JsonKey(name: 'agreements') this.agreements});
 
   factory _$ApiDocLoanImpl.fromJson(Map<String, dynamic> json) =>
@@ -2061,16 +1979,8 @@ class _$ApiDocLoanImpl with DiagnosticableTreeMixin implements _ApiDocLoan {
   final ApiAgreements? agreements;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiDocLoan(agreements: $agreements)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiDocLoan'))
-      ..add(DiagnosticsProperty('agreements', agreements));
   }
 
   @override
@@ -2256,7 +2166,7 @@ class __$$ApiReferenceImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiReferenceImpl with DiagnosticableTreeMixin implements _ApiReference {
+class _$ApiReferenceImpl implements _ApiReference {
   const _$ApiReferenceImpl(
       {@JsonKey(name: 'referenceLoanClosed') this.referenceLoanClosed,
       @JsonKey(name: 'referenceLackOfDebt') this.referenceLackOfDebt});
@@ -2272,17 +2182,8 @@ class _$ApiReferenceImpl with DiagnosticableTreeMixin implements _ApiReference {
   final ApiAgreementItem? referenceLackOfDebt;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiReference(referenceLoanClosed: $referenceLoanClosed, referenceLackOfDebt: $referenceLackOfDebt)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiReference'))
-      ..add(DiagnosticsProperty('referenceLoanClosed', referenceLoanClosed))
-      ..add(DiagnosticsProperty('referenceLackOfDebt', referenceLackOfDebt));
   }
 
   @override
@@ -2452,9 +2353,7 @@ class __$$ApiAgreementItemImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiAgreementItemImpl
-    with DiagnosticableTreeMixin
-    implements _ApiAgreementItem {
+class _$ApiAgreementItemImpl implements _ApiAgreementItem {
   const _$ApiAgreementItemImpl(
       {@JsonKey(name: 'topic') this.topic = '',
       @JsonKey(name: 'url') this.url = '',
@@ -2475,18 +2374,8 @@ class _$ApiAgreementItemImpl
   final DateTime? date;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiAgreementItem(topic: $topic, url: $url, date: $date)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiAgreementItem'))
-      ..add(DiagnosticsProperty('topic', topic))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('date', date));
   }
 
   @override
@@ -2754,9 +2643,7 @@ class __$$ApiInsuranceContractsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiInsuranceContractsImpl
-    with DiagnosticableTreeMixin
-    implements _ApiInsuranceContracts {
+class _$ApiInsuranceContractsImpl implements _ApiInsuranceContracts {
   const _$ApiInsuranceContractsImpl(
       {@JsonKey(name: 'loan') this.loan,
       @JsonKey(name: 'insurance_product_id') this.insuranceProductId = '',
@@ -2818,24 +2705,8 @@ class _$ApiInsuranceContractsImpl
   final String url;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiInsuranceContracts(loan: $loan, insuranceProductId: $insuranceProductId, insuranceContractId: $insuranceContractId, insuranceContractNumber: $insuranceContractNumber, insuranceEndDate: $insuranceEndDate, insuranceStartDate: $insuranceStartDate, insurancePremium: $insurancePremium, url: $url)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiInsuranceContracts'))
-      ..add(DiagnosticsProperty('loan', loan))
-      ..add(DiagnosticsProperty('insuranceProductId', insuranceProductId))
-      ..add(DiagnosticsProperty('insuranceContractId', insuranceContractId))
-      ..add(DiagnosticsProperty(
-          'insuranceContractNumber', insuranceContractNumber))
-      ..add(DiagnosticsProperty('insuranceEndDate', insuranceEndDate))
-      ..add(DiagnosticsProperty('insuranceStartDate', insuranceStartDate))
-      ..add(DiagnosticsProperty('insurancePremium', insurancePremium))
-      ..add(DiagnosticsProperty('url', url));
   }
 
   @override

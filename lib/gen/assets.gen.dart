@@ -6,7 +6,7 @@
 class AssetPaths {
   const AssetPaths._();
 
-  /// * Size:	59.1 KB
+  /// * Size:	557.6 KB
   /// * File path: _assets/image/logo.png
   static const String logoImage = 'assets/image/logo.png';
 

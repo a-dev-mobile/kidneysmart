@@ -1,27 +1,27 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
-import 'package:kidneysmart/core/notifier/page_tracker_notifier.dart';
+import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
+
 import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
 import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
+import 'package:kidneysmart/feature/overlay/view/app_update_page.dart';
+import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
 import 'package:kidneysmart/feature/splash/view/splash_page%20copy.dart';
-
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
 import 'package:kidneysmart/navigation/custom_router_observer.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'navigation.g.dart';
 
 @Riverpod(keepAlive: true)
-Navigation navigation(NavigationRef ref) {
+AppRouter appRouter(AppRouterRef ref) {
   return throw UnimplementedError('init with override');
 }
 
-class Navigation {
-  Navigation(this.pageTrackerNotifier) {
+class AppRouter {
+  AppRouter(this.pageTrackerNotifier) {
     router = _createRouter();
   }
   late final GoRouter router;
@@ -54,7 +54,7 @@ class Navigation {
             child: const SplashPage2(),
           ),
         ),
-         GoRoute(
+        GoRoute(
           path: DebugMenuPage.path,
           name: DebugMenuPage.name,
           pageBuilder: (context, state) => MaterialPage(
@@ -63,13 +63,31 @@ class Navigation {
             child: const DebugMenuPage(),
           ),
         ),
-         GoRoute(
+        GoRoute(
           path: HttpLogListWidget.path,
           name: HttpLogListWidget.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             name: state.name,
             child: const HttpLogListWidget(),
+          ),
+        ),
+        GoRoute(
+          path: AppUpdateHardPage.path,
+          name: AppUpdateHardPage.name,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.name,
+            child: const AppUpdateHardPage(url: ''),
+          ),
+        ),
+        GoRoute(
+          path: AppUpdatePage.path,
+          name: AppUpdatePage.name,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.name,
+            child: const AppUpdatePage(),
           ),
         ),
         // GoRoute(

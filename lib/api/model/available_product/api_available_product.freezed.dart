@@ -100,9 +100,7 @@ class __$$ApiAvailableProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiAvailableProductImpl
-    with DiagnosticableTreeMixin
-    implements _ApiAvailableProduct {
+class _$ApiAvailableProductImpl implements _ApiAvailableProduct {
   const _$ApiAvailableProductImpl(
       {required final List<ApiAvailableProductItem> apiAvailableProductList})
       : _apiAvailableProductList = apiAvailableProductList;
@@ -120,17 +118,8 @@ class _$ApiAvailableProductImpl
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiAvailableProductList(apiAvailableProductList: $apiAvailableProductList)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiAvailableProductList'))
-      ..add(DiagnosticsProperty(
-          'apiAvailableProductList', apiAvailableProductList));
   }
 
   @override
@@ -294,9 +283,7 @@ class __$$ApiAvailableProductItemImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiAvailableProductItemImpl
-    with DiagnosticableTreeMixin
-    implements _ApiAvailableProductItem {
+class _$ApiAvailableProductItemImpl implements _ApiAvailableProductItem {
   const _$ApiAvailableProductItemImpl(
       {@JsonKey(
           name: 'id',
@@ -319,17 +306,8 @@ class _$ApiAvailableProductItemImpl
   final String? type;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiAvailableProductItem(enumAvailableProduct: $enumAvailableProduct, type: $type)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiAvailableProductItem'))
-      ..add(DiagnosticsProperty('enumAvailableProduct', enumAvailableProduct))
-      ..add(DiagnosticsProperty('type', type));
   }
 
   @override

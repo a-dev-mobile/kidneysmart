@@ -126,7 +126,7 @@ class __$$ApiUpSaleImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiUpSaleImpl extends _ApiUpSale with DiagnosticableTreeMixin {
+class _$ApiUpSaleImpl extends _ApiUpSale {
   const _$ApiUpSaleImpl(
       {@JsonKey(name: 'amount') this.amount,
       @JsonKey(name: 'refund_amount') this.refundAmount,
@@ -147,18 +147,8 @@ class _$ApiUpSaleImpl extends _ApiUpSale with DiagnosticableTreeMixin {
   final num? upSaleAmount;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiUpSale(amount: $amount, refundAmount: $refundAmount, upSaleAmount: $upSaleAmount)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiUpSale'))
-      ..add(DiagnosticsProperty('amount', amount))
-      ..add(DiagnosticsProperty('refundAmount', refundAmount))
-      ..add(DiagnosticsProperty('upSaleAmount', upSaleAmount));
   }
 
   @override

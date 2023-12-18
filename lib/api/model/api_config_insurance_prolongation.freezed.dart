@@ -110,7 +110,6 @@ class __$$ApiConfigInsuranceProlongationImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ApiConfigInsuranceProlongationImpl
-    with DiagnosticableTreeMixin
     implements _ApiConfigInsuranceProlongation {
   const _$ApiConfigInsuranceProlongationImpl(
       {@JsonKey(name: 'is_three_month_insurance_enabled')
@@ -126,17 +125,8 @@ class _$ApiConfigInsuranceProlongationImpl
   final bool? isThreeMonthInsuranceEnabled;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiConfigInsuranceProlongation(isThreeMonthInsuranceEnabled: $isThreeMonthInsuranceEnabled)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiConfigInsuranceProlongation'))
-      ..add(DiagnosticsProperty(
-          'isThreeMonthInsuranceEnabled', isThreeMonthInsuranceEnabled));
   }
 
   @override

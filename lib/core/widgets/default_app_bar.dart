@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
-import 'package:kidneysmart/gen/assets.gen.dart';
+import 'package:kidneysmart/core/constants/app_text_styles.dart';
 
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   const DefaultAppBar({
@@ -37,7 +35,6 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
         systemNavigationBarColor: Colors.white,
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
-      
       title: Text(
         title,
         style: titleTextStyle,

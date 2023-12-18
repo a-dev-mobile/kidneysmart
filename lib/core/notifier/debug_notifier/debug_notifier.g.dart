@@ -53,7 +53,7 @@ const _$EnumStoreEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$debugNotifierHash() => r'ab193c8bd1c139625deb2c987d1374569448948f';
+String _$debugNotifierHash() => r'afa140106ad6938b33155749ff25fc537aef5a97';
 
 /// See also [DebugNotifier].
 @ProviderFor(DebugNotifier)

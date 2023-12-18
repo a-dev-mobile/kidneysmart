@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_static_class, constant_identifier_names
 
 import 'dart:async';
-import 'dart:isolate';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -9,10 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kidneysmart/app/view/app.dart';
+import 'package:kidneysmart/app/app.dart';
 import 'package:kidneysmart/core/log/logger.dart';
-import 'package:kidneysmart/core/notifier/page_tracker_notifier.dart';
+
+import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
 import 'package:kidneysmart/core/observer/provider_observer.dart';
+import 'package:kidneysmart/core/service/network/network.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
 import 'package:kidneysmart/firebase_options.dart';
 import 'package:kidneysmart/navigation/navigation.dart';
@@ -20,7 +21,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 late final LocalStorage _localStorage;
 late final PageTrackerNotifier _pageTrackerNotifier;
-late final Navigation _navigation;
+late final AppRouter _appRouter;
+late final NetworkClient _networkClient;
 
 Future<void> bootstrap(FutureOr<Widget> Function() app) async {
   try {
@@ -37,7 +39,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
               pageTrackerNotifierProvider
                   .overrideWith(() => _pageTrackerNotifier),
               localStorageProvider.overrideWithValue(_localStorage),
-              navigationProvider.overrideWithValue(_navigation),
+              appRouterProvider.overrideWithValue(_appRouter),
+              networkClientProvider.overrideWithValue(_networkClient),
             ],
             observers: [if (kDebugMode) AppProviderObserver()],
             child: const App(),
@@ -60,10 +63,17 @@ Future<void> initializeApp() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     final sharedPreferences = await SharedPreferences.getInstance();
+
     _localStorage =
         LocalStorage(sharedPreferences: sharedPreferences, isShowLog: true);
     _pageTrackerNotifier = PageTrackerNotifier();
-    _navigation = Navigation(_pageTrackerNotifier);
+    _appRouter = AppRouter(_pageTrackerNotifier);
+
+    _networkClient = NetworkClient(
+      userAgent: '',
+      baseUrl: '',
+      router: _appRouter,
+    );
   } catch (e, s) {
     handleError('initializeApp', e, s);
     rethrow;

@@ -53,7 +53,7 @@ class Logger {
     Object? error,
     StackTrace? stackTrace,
   }) {
-    var fileLocation = detailedLogging && stackTrace != null
+    final fileLocation = detailedLogging && stackTrace != null
         ? _extractFileLocation(stackTrace)
         : _extractFileLocation(StackTrace.current);
 
@@ -76,11 +76,9 @@ class Logger {
 
   static String _extractFileLocation(StackTrace? stackTrace) {
     // Получение значений из Dart Defines
-    const packagePrefix =
-        String.fromEnvironment('LOGGING_PACKAGE_PREFIX', defaultValue: '');
-    const basePath =
-        String.fromEnvironment('LOGGING_BASE_PATH', defaultValue: '');
-    const String filePathColorCode = '\u001b[38;2;145;231;255m';
+    const packagePrefix = String.fromEnvironment('LOGGING_PACKAGE_PREFIX');
+    const basePath = String.fromEnvironment('LOGGING_BASE_PATH');
+    const filePathColorCode = '\u001b[38;2;145;231;255m';
     // Проверка на наличие значений
     if (packagePrefix.isEmpty || basePath.isEmpty) {
       developer.log(
@@ -90,18 +88,18 @@ class Logger {
     }
 
     if (stackTrace != null) {
-      var lines = stackTrace.toString().split('\n').reversed;
-      for (var line in lines) {
+      final lines = stackTrace.toString().split('\n').reversed;
+      for (final line in lines) {
         if (line.contains(packagePrefix)) {
-          var regexPattern = RegExp(
+          final regexPattern = RegExp(
             '${RegExp.escape(packagePrefix)}(.+\\.dart):(\\d+):(\\d+)',
           );
-          var match = regexPattern.firstMatch(line);
+          final match = regexPattern.firstMatch(line);
           if (match != null) {
-            var relativePath =
-                'lib\\${match.group(1)?.replaceAll('/', '\\') ?? 'Unknown'}';
-            var lineNumber = match.group(2) ?? '0';
-            var columnNumber = match.group(3) ?? '0';
+            final relativePath =
+                'lib\\${match.group(1)?.replaceAll('/', r'\') ?? 'Unknown'}';
+            final lineNumber = match.group(2) ?? '0';
+            final columnNumber = match.group(3) ?? '0';
             return '$filePathColorCode$basePath$relativePath:$lineNumber:$columnNumber${_AnsiColor.reset.code}';
           }
         }
@@ -112,10 +110,8 @@ class Logger {
 
   static StackTrace? _transformStackTrace(StackTrace? stackTrace) {
     if (stackTrace != null) {
-      var lines = stackTrace.toString().split('\n');
-      var transformedLines = lines.map((line) {
-        return _transformStackTraceLine(line);
-      }).join('\n');
+      final lines = stackTrace.toString().split('\n');
+      final transformedLines = lines.map(_transformStackTraceLine).join('\n');
       return StackTrace.fromString(transformedLines);
     }
     return stackTrace;
@@ -123,8 +119,7 @@ class Logger {
 
   static String _transformStackTraceLine(String line) {
     // Получение значений из Dart Defines
-    const packagePrefix =
-        String.fromEnvironment('LOGGING_PACKAGE_PREFIX', defaultValue: '');
+    const packagePrefix = String.fromEnvironment('LOGGING_PACKAGE_PREFIX');
 
     if (line.contains(packagePrefix)) {
       // Применяем ту же логику, что и в _extractFileLocation
@@ -137,8 +132,8 @@ class Logger {
 }
 
 class _AnsiColor {
-  final String code;
   _AnsiColor._(this.code);
+  final String code;
 
   static final reset = _AnsiColor._('\x1B[0m');
   static final red = _AnsiColor._('\x1B[31m');

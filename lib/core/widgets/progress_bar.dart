@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
+import 'package:kidneysmart/core/constants/app_text_styles.dart';
 import 'package:kidneysmart/core/utils/screen_scaller.dart';
 
 enum IconProgress { done, progress, inactive }

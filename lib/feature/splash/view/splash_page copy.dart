@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/extension/common.dart';
-
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
+
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
 import 'package:kidneysmart/navigation/navigation.dart';
 
@@ -37,7 +37,7 @@ class _SplashView extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Text('failure'),
-              Text(ref.read(navigationProvider).router.location() ?? ''),
+              Text(ref.read(appRouterProvider).router.location() ?? ''),
             ],
           ),
           onPressed: () {

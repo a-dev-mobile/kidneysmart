@@ -1,6 +1,5 @@
 // ignore_for_file: invalid_annotation_target, non_constant_identifier_names
 
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'wp_data.freezed.dart';

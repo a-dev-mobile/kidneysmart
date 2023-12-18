@@ -2,10 +2,10 @@
 
 import 'dart:convert';
 
+import 'package:kidneysmart/core/log/logger.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:kidneysmart/core/log/logger.dart';
 
 part 'local_storage.g.dart';
 
@@ -35,14 +35,11 @@ class LocalStorage {
     setString(key: _appId, value: value ?? '');
   }
 
-
-
-
 // ******************************
   static const _debugState = '_debugState';
 
-  DebugState getDebugState()  {
-    return DebugState.fromJson( getJson(key: _debugState));
+  DebugState getDebugState() {
+    return DebugState.fromJson(getJson(key: _debugState));
   }
 
   void setDebugState(DebugState value) {
@@ -51,14 +48,6 @@ class LocalStorage {
 
 // ******************************
 // ******************************
-
-
-
-
-
-
-
-
 
   // ******************************
   static const _userAgent = 'userAgent';

@@ -4,9 +4,8 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-
-import 'package:meta/meta.dart';
 import 'package:kidneysmart/api/model/dictonary/dictonary_item.dart';
+import 'package:meta/meta.dart';
 
 /* no: tomap  */
 @immutable

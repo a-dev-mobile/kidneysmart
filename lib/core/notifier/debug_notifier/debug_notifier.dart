@@ -3,16 +3,13 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_project.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
 import 'package:kidneysmart/core/log/logger.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
 
-
 import 'package:package_info_plus/package_info_plus.dart';
-
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -22,8 +19,7 @@ part 'debug_notifier.freezed.dart';
 
 @Riverpod(keepAlive: true)
 class DebugNotifier extends _$DebugNotifier {
-  late final  _storage = ref.read(localStorageProvider);
-
+  late final _storage = ref.read(localStorageProvider);
 
   @override
   DebugState build() {
@@ -32,7 +28,7 @@ class DebugNotifier extends _$DebugNotifier {
   }
 
   Future<void> load() async {
-    var debugState = await _storage.getDebugState();
+    var debugState = _storage.getDebugState();
 
     // если магазин не определен - определяем
     if (debugState.enumStore.isUnknown) {
@@ -43,32 +39,32 @@ class DebugNotifier extends _$DebugNotifier {
           EnumStore.fromPackageId(installerStore, fallback: EnumStore.unknown);
 
       debugState = debugState.copyWith(enumStore: enumStore);
-       _storage.setDebugState(debugState);
+      _storage.setDebugState(debugState);
     }
 
     state = debugState;
   }
 
   void setDevicePreview({required bool isShow}) {
-   state = state.copyWith(isShowDevicePreview: isShow);
+    state = state.copyWith(isShowDevicePreview: isShow);
   }
 
   void setEnumProject({required EnumProject? enumProject}) {
-  state = state.copyWith(enumProject: enumProject ?? state.enumProject);
+    state = state.copyWith(enumProject: enumProject ?? state.enumProject);
     _saveState();
   }
 
   void setEnumStore(EnumStore? value) {
-   state = state.copyWith(enumStore: value ?? state.enumStore);
+    state = state.copyWith(enumStore: value ?? state.enumStore);
     _saveState();
   }
 
   void setShowBtnHttpLog({required bool isShow}) {
-  state =   state.copyWith(isShowBtnHttpLog: isShow);
+    state = state.copyWith(isShowBtnHttpLog: isShow);
   }
 
   void setShowUrlPdfPage({required bool isShow}) {
-   state = state.copyWith(isShowUrlPdfPage: isShow);
+    state = state.copyWith(isShowUrlPdfPage: isShow);
   }
 
   void setShowDebugRepaintRainbow({required bool isShow}) {
@@ -109,7 +105,7 @@ class DebugNotifier extends _$DebugNotifier {
 
     var seconds = _sec;
 
-   Logger.debug('time run');
+    Logger.debug('time run');
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       seconds = seconds - 1;
       if (seconds >= 0) {
@@ -134,7 +130,7 @@ class DebugNotifier extends _$DebugNotifier {
 
       exit(0);
     } else {
-       _storage.setDebugState(state.copyWith(isShowBtnHttpLog: false));
+      _storage.setDebugState(state.copyWith(isShowBtnHttpLog: false));
     }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kidneysmart/app/style/color/app_color.dart';
-import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
+import 'package:kidneysmart/core/constants/app_color.dart';
+import 'package:kidneysmart/core/constants/app_text_styles.dart';
 
 class PartnerCard extends StatelessWidget {
   const PartnerCard({

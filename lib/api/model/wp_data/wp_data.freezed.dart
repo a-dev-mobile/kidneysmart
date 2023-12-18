@@ -255,7 +255,7 @@ class __$$WpDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$WpDataImpl with DiagnosticableTreeMixin implements _WpData {
+class _$WpDataImpl implements _WpData {
   const _$WpDataImpl(
       {@JsonKey(name: 'calc_pdl_params')
       final List<CalcPdlParams>? calcPdlParams,
@@ -344,24 +344,8 @@ class _$WpDataImpl with DiagnosticableTreeMixin implements _WpData {
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'WpData(calcPdlParams: $calcPdlParams, docs: $docs, calc: $calc, acf: $acf, footerMenuTitle: $footerMenuTitle, headerMenu: $headerMenu, mobileMenu: $mobileMenu, footerMenu: $footerMenu, footerMenu2: $footerMenu2)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'WpData'))
-      ..add(DiagnosticsProperty('calcPdlParams', calcPdlParams))
-      ..add(DiagnosticsProperty('docs', docs))
-      ..add(DiagnosticsProperty('calc', calc))
-      ..add(DiagnosticsProperty('acf', acf))
-      ..add(DiagnosticsProperty('footerMenuTitle', footerMenuTitle))
-      ..add(DiagnosticsProperty('headerMenu', headerMenu))
-      ..add(DiagnosticsProperty('mobileMenu', mobileMenu))
-      ..add(DiagnosticsProperty('footerMenu', footerMenu))
-      ..add(DiagnosticsProperty('footerMenu2', footerMenu2));
   }
 
   @override
@@ -576,9 +560,7 @@ class __$$CalcPdlParamsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CalcPdlParamsImpl
-    with DiagnosticableTreeMixin
-    implements _CalcPdlParams {
+class _$CalcPdlParamsImpl implements _CalcPdlParams {
   const _$CalcPdlParamsImpl(
       {@JsonKey(name: 'total_loan') this.totalLoan,
       @JsonKey(name: 'calc_amount') this.calcAmount,
@@ -598,18 +580,8 @@ class _$CalcPdlParamsImpl
   final String? calcTerm;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'CalcPdlParams(totalLoan: $totalLoan, calcAmount: $calcAmount, calcTerm: $calcTerm)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'CalcPdlParams'))
-      ..add(DiagnosticsProperty('totalLoan', totalLoan))
-      ..add(DiagnosticsProperty('calcAmount', calcAmount))
-      ..add(DiagnosticsProperty('calcTerm', calcTerm));
   }
 
   @override
@@ -852,7 +824,7 @@ class __$$DocsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DocsImpl with DiagnosticableTreeMixin implements _Docs {
+class _$DocsImpl implements _Docs {
   const _$DocsImpl(
       {@JsonKey(name: 'reg_first') this.regFirst,
       @JsonKey(name: 'reg_second') this.regSecond,
@@ -898,20 +870,8 @@ class _$DocsImpl with DiagnosticableTreeMixin implements _Docs {
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Docs(regFirst: $regFirst, regSecond: $regSecond, templates: $templates, infoPage: $infoPage, templatesPage: $templatesPage)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Docs'))
-      ..add(DiagnosticsProperty('regFirst', regFirst))
-      ..add(DiagnosticsProperty('regSecond', regSecond))
-      ..add(DiagnosticsProperty('templates', templates))
-      ..add(DiagnosticsProperty('infoPage', infoPage))
-      ..add(DiagnosticsProperty('templatesPage', templatesPage));
   }
 
   @override
@@ -1084,7 +1044,7 @@ class __$$RegFirstImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RegFirstImpl with DiagnosticableTreeMixin implements _RegFirst {
+class _$RegFirstImpl implements _RegFirst {
   const _$RegFirstImpl(
       {@JsonKey(name: 'text') this.text,
       @JsonKey(name: 'lines') final List<String>? lines})
@@ -1108,17 +1068,8 @@ class _$RegFirstImpl with DiagnosticableTreeMixin implements _RegFirst {
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'RegFirst(text: $text, lines: $lines)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RegFirst'))
-      ..add(DiagnosticsProperty('text', text))
-      ..add(DiagnosticsProperty('lines', lines));
   }
 
   @override
@@ -1267,7 +1218,7 @@ class __$$RegSecondImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RegSecondImpl with DiagnosticableTreeMixin implements _RegSecond {
+class _$RegSecondImpl implements _RegSecond {
   const _$RegSecondImpl(
       {@JsonKey(name: 'text') this.text,
       @JsonKey(name: 'lines') final List<String>? lines})
@@ -1291,17 +1242,8 @@ class _$RegSecondImpl with DiagnosticableTreeMixin implements _RegSecond {
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'RegSecond(text: $text, lines: $lines)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RegSecond'))
-      ..add(DiagnosticsProperty('text', text))
-      ..add(DiagnosticsProperty('lines', lines));
   }
 
   @override
@@ -2056,7 +1998,7 @@ class __$$TemplatesImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TemplatesImpl with DiagnosticableTreeMixin implements _Templates {
+class _$TemplatesImpl implements _Templates {
   const _$TemplatesImpl(
       {@JsonKey(name: 'agreementCollectiveInsurance')
       this.agreementCollectiveInsurance,
@@ -2150,46 +2092,8 @@ class _$TemplatesImpl with DiagnosticableTreeMixin implements _Templates {
       informationAboutRegistrationProcedure;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Templates(agreementCollectiveInsurance: $agreementCollectiveInsurance, agreementCardProtection: $agreementCardProtection, agreementCardProtectionOffer: $agreementCardProtectionOffer, agreementCollectiveInsuranceStatement: $agreementCollectiveInsuranceStatement, agreementStayInTouchStatement: $agreementStayInTouchStatement, agreementCardProtectionStatement: $agreementCardProtectionStatement, agreementCollectiveInsuranceKid: $agreementCollectiveInsuranceKid, agreementCardProtectionKid: $agreementCardProtectionKid, loanRules: $loanRules, programStayInTouch: $programStayInTouch, programCollectiveInsurance: $programCollectiveInsurance, programCardProtection: $programCardProtection, agreementAd: $agreementAd, agreementCollectiveInsuranceOffer: $agreementCollectiveInsuranceOffer, agreementConsentAutoCharge: $agreementConsentAutoCharge, servicesTariffs: $servicesTariffs, agreementProcessingPersonalData: $agreementProcessingPersonalData, informationAboutRegistrationProcedure: $informationAboutRegistrationProcedure)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Templates'))
-      ..add(DiagnosticsProperty(
-          'agreementCollectiveInsurance', agreementCollectiveInsurance))
-      ..add(DiagnosticsProperty(
-          'agreementCardProtection', agreementCardProtection))
-      ..add(DiagnosticsProperty(
-          'agreementCardProtectionOffer', agreementCardProtectionOffer))
-      ..add(DiagnosticsProperty('agreementCollectiveInsuranceStatement',
-          agreementCollectiveInsuranceStatement))
-      ..add(DiagnosticsProperty(
-          'agreementStayInTouchStatement', agreementStayInTouchStatement))
-      ..add(DiagnosticsProperty(
-          'agreementCardProtectionStatement', agreementCardProtectionStatement))
-      ..add(DiagnosticsProperty(
-          'agreementCollectiveInsuranceKid', agreementCollectiveInsuranceKid))
-      ..add(DiagnosticsProperty(
-          'agreementCardProtectionKid', agreementCardProtectionKid))
-      ..add(DiagnosticsProperty('loanRules', loanRules))
-      ..add(DiagnosticsProperty('programStayInTouch', programStayInTouch))
-      ..add(DiagnosticsProperty(
-          'programCollectiveInsurance', programCollectiveInsurance))
-      ..add(DiagnosticsProperty('programCardProtection', programCardProtection))
-      ..add(DiagnosticsProperty('agreementAd', agreementAd))
-      ..add(DiagnosticsProperty('agreementCollectiveInsuranceOffer',
-          agreementCollectiveInsuranceOffer))
-      ..add(DiagnosticsProperty(
-          'agreementConsentAutoCharge', agreementConsentAutoCharge))
-      ..add(DiagnosticsProperty('servicesTariffs', servicesTariffs))
-      ..add(DiagnosticsProperty(
-          'agreementProcessingPersonalData', agreementProcessingPersonalData))
-      ..add(DiagnosticsProperty('informationAboutRegistrationProcedure',
-          informationAboutRegistrationProcedure));
   }
 
   @override
@@ -2487,7 +2391,6 @@ class __$$AgreementCollectiveInsuranceImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AgreementCollectiveInsuranceImpl
-    with DiagnosticableTreeMixin
     implements _AgreementCollectiveInsurance {
   const _$AgreementCollectiveInsuranceImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
@@ -2504,17 +2407,8 @@ class _$AgreementCollectiveInsuranceImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementCollectiveInsurance(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementCollectiveInsurance'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -2673,9 +2567,7 @@ class __$$AgreementCardProtectionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AgreementCardProtectionImpl
-    with DiagnosticableTreeMixin
-    implements _AgreementCardProtection {
+class _$AgreementCardProtectionImpl implements _AgreementCardProtection {
   const _$AgreementCardProtectionImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
 
@@ -2690,17 +2582,8 @@ class _$AgreementCardProtectionImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementCardProtection(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementCardProtection'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -2859,7 +2742,6 @@ class __$$AgreementCardProtectionOfferImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AgreementCardProtectionOfferImpl
-    with DiagnosticableTreeMixin
     implements _AgreementCardProtectionOffer {
   const _$AgreementCardProtectionOfferImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
@@ -2876,17 +2758,8 @@ class _$AgreementCardProtectionOfferImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementCardProtectionOffer(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementCardProtectionOffer'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -3049,7 +2922,6 @@ class __$$AgreementCollectiveInsuranceStatementImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AgreementCollectiveInsuranceStatementImpl
-    with DiagnosticableTreeMixin
     implements _AgreementCollectiveInsuranceStatement {
   const _$AgreementCollectiveInsuranceStatementImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
@@ -3066,18 +2938,8 @@ class _$AgreementCollectiveInsuranceStatementImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementCollectiveInsuranceStatement(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'AgreementCollectiveInsuranceStatement'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -3240,7 +3102,6 @@ class __$$AgreementStayInTouchStatementImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AgreementStayInTouchStatementImpl
-    with DiagnosticableTreeMixin
     implements _AgreementStayInTouchStatement {
   const _$AgreementStayInTouchStatementImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
@@ -3257,17 +3118,8 @@ class _$AgreementStayInTouchStatementImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementStayInTouchStatement(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementStayInTouchStatement'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -3429,7 +3281,6 @@ class __$$AgreementCardProtectionStatementImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AgreementCardProtectionStatementImpl
-    with DiagnosticableTreeMixin
     implements _AgreementCardProtectionStatement {
   const _$AgreementCardProtectionStatementImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
@@ -3446,17 +3297,8 @@ class _$AgreementCardProtectionStatementImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementCardProtectionStatement(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementCardProtectionStatement'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -3619,7 +3461,6 @@ class __$$AgreementCollectiveInsuranceKidImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AgreementCollectiveInsuranceKidImpl
-    with DiagnosticableTreeMixin
     implements _AgreementCollectiveInsuranceKid {
   const _$AgreementCollectiveInsuranceKidImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
@@ -3636,17 +3477,8 @@ class _$AgreementCollectiveInsuranceKidImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementCollectiveInsuranceKid(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementCollectiveInsuranceKid'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -3806,9 +3638,7 @@ class __$$AgreementCardProtectionKidImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AgreementCardProtectionKidImpl
-    with DiagnosticableTreeMixin
-    implements _AgreementCardProtectionKid {
+class _$AgreementCardProtectionKidImpl implements _AgreementCardProtectionKid {
   const _$AgreementCardProtectionKidImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
 
@@ -3824,17 +3654,8 @@ class _$AgreementCardProtectionKidImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementCardProtectionKid(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementCardProtectionKid'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -3985,7 +3806,7 @@ class __$$LoanRulesImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LoanRulesImpl with DiagnosticableTreeMixin implements _LoanRules {
+class _$LoanRulesImpl implements _LoanRules {
   const _$LoanRulesImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
 
@@ -4000,17 +3821,8 @@ class _$LoanRulesImpl with DiagnosticableTreeMixin implements _LoanRules {
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'LoanRules(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'LoanRules'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -4159,9 +3971,7 @@ class __$$ProgramStayInTouchImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProgramStayInTouchImpl
-    with DiagnosticableTreeMixin
-    implements _ProgramStayInTouch {
+class _$ProgramStayInTouchImpl implements _ProgramStayInTouch {
   const _$ProgramStayInTouchImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
 
@@ -4176,17 +3986,8 @@ class _$ProgramStayInTouchImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ProgramStayInTouch(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ProgramStayInTouch'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -4342,9 +4143,7 @@ class __$$ProgramCollectiveInsuranceImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProgramCollectiveInsuranceImpl
-    with DiagnosticableTreeMixin
-    implements _ProgramCollectiveInsurance {
+class _$ProgramCollectiveInsuranceImpl implements _ProgramCollectiveInsurance {
   const _$ProgramCollectiveInsuranceImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
 
@@ -4360,17 +4159,8 @@ class _$ProgramCollectiveInsuranceImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ProgramCollectiveInsurance(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ProgramCollectiveInsurance'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -4526,9 +4316,7 @@ class __$$ProgramCardProtectionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProgramCardProtectionImpl
-    with DiagnosticableTreeMixin
-    implements _ProgramCardProtection {
+class _$ProgramCardProtectionImpl implements _ProgramCardProtection {
   const _$ProgramCardProtectionImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
 
@@ -4543,17 +4331,8 @@ class _$ProgramCardProtectionImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ProgramCardProtection(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ProgramCardProtection'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -4704,7 +4483,7 @@ class __$$AgreementAdImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AgreementAdImpl with DiagnosticableTreeMixin implements _AgreementAd {
+class _$AgreementAdImpl implements _AgreementAd {
   const _$AgreementAdImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
 
@@ -4719,17 +4498,8 @@ class _$AgreementAdImpl with DiagnosticableTreeMixin implements _AgreementAd {
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementAd(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementAd'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -4886,7 +4656,6 @@ class __$$AgreementCollectiveInsuranceOfferImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AgreementCollectiveInsuranceOfferImpl
-    with DiagnosticableTreeMixin
     implements _AgreementCollectiveInsuranceOffer {
   const _$AgreementCollectiveInsuranceOfferImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
@@ -4903,17 +4672,8 @@ class _$AgreementCollectiveInsuranceOfferImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementCollectiveInsuranceOffer(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementCollectiveInsuranceOffer'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -5074,9 +4834,7 @@ class __$$AgreementConsentAutoChargeImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AgreementConsentAutoChargeImpl
-    with DiagnosticableTreeMixin
-    implements _AgreementConsentAutoCharge {
+class _$AgreementConsentAutoChargeImpl implements _AgreementConsentAutoCharge {
   const _$AgreementConsentAutoChargeImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
 
@@ -5092,17 +4850,8 @@ class _$AgreementConsentAutoChargeImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementConsentAutoCharge(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementConsentAutoCharge'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -5254,9 +5003,7 @@ class __$$ServicesTariffsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ServicesTariffsImpl
-    with DiagnosticableTreeMixin
-    implements _ServicesTariffs {
+class _$ServicesTariffsImpl implements _ServicesTariffs {
   const _$ServicesTariffsImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
 
@@ -5271,17 +5018,8 @@ class _$ServicesTariffsImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ServicesTariffs(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ServicesTariffs'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -5439,7 +5177,6 @@ class __$$AgreementProcessingPersonalDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AgreementProcessingPersonalDataImpl
-    with DiagnosticableTreeMixin
     implements _AgreementProcessingPersonalData {
   const _$AgreementProcessingPersonalDataImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
@@ -5456,17 +5193,8 @@ class _$AgreementProcessingPersonalDataImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AgreementProcessingPersonalData(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AgreementProcessingPersonalData'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -5629,7 +5357,6 @@ class __$$InformationAboutRegistrationProcedureImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$InformationAboutRegistrationProcedureImpl
-    with DiagnosticableTreeMixin
     implements _InformationAboutRegistrationProcedure {
   const _$InformationAboutRegistrationProcedureImpl(
       {@JsonKey(name: 'url') this.url, @JsonKey(name: 'title') this.title});
@@ -5646,18 +5373,8 @@ class _$InformationAboutRegistrationProcedureImpl
   final String? title;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'InformationAboutRegistrationProcedure(url: $url, title: $title)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'InformationAboutRegistrationProcedure'))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('title', title));
   }
 
   @override
@@ -5825,7 +5542,7 @@ class __$$InfoPageImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InfoPageImpl with DiagnosticableTreeMixin implements _InfoPage {
+class _$InfoPageImpl implements _InfoPage {
   const _$InfoPageImpl(
       {@JsonKey(name: 'redaction') this.redaction,
       @JsonKey(name: 'title') this.title,
@@ -5845,18 +5562,8 @@ class _$InfoPageImpl with DiagnosticableTreeMixin implements _InfoPage {
   final String? url;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'InfoPage(redaction: $redaction, title: $title, url: $url)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'InfoPage'))
-      ..add(DiagnosticsProperty('redaction', redaction))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('url', url));
   }
 
   @override
@@ -6025,9 +5732,7 @@ class __$$TemplatesPageImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TemplatesPageImpl
-    with DiagnosticableTreeMixin
-    implements _TemplatesPage {
+class _$TemplatesPageImpl implements _TemplatesPage {
   const _$TemplatesPageImpl(
       {@JsonKey(name: 'redaction') this.redaction,
       @JsonKey(name: 'title') this.title,
@@ -6047,18 +5752,8 @@ class _$TemplatesPageImpl
   final String? url;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'TemplatesPage(redaction: $redaction, title: $title, url: $url)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'TemplatesPage'))
-      ..add(DiagnosticsProperty('redaction', redaction))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('url', url));
   }
 
   @override
@@ -6209,7 +5904,7 @@ class __$$CalcImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CalcImpl with DiagnosticableTreeMixin implements _Calc {
+class _$CalcImpl implements _Calc {
   const _$CalcImpl(
       {@JsonKey(name: 'tinkoff_enable') this.tinkoffEnable,
       @JsonKey(name: 'gosuslugi_enable') this.gosuslugiEnable});
@@ -6225,17 +5920,8 @@ class _$CalcImpl with DiagnosticableTreeMixin implements _Calc {
   final bool? gosuslugiEnable;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Calc(tinkoffEnable: $tinkoffEnable, gosuslugiEnable: $gosuslugiEnable)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Calc'))
-      ..add(DiagnosticsProperty('tinkoffEnable', tinkoffEnable))
-      ..add(DiagnosticsProperty('gosuslugiEnable', gosuslugiEnable));
   }
 
   @override
@@ -6789,7 +6475,7 @@ class __$$AcfImplCopyWithImpl<$Res> extends _$AcfCopyWithImpl<$Res, _$AcfImpl>
 
 /// @nodoc
 @JsonSerializable()
-class _$AcfImpl with DiagnosticableTreeMixin implements _Acf {
+class _$AcfImpl implements _Acf {
   const _$AcfImpl(
       {@JsonKey(name: 'site_hard_banner_text') this.siteHardBannerText,
       @JsonKey(name: 'site_hard_link') this.siteHardLink,
@@ -6977,44 +6663,8 @@ class _$AcfImpl with DiagnosticableTreeMixin implements _Acf {
   final Adversite? adversite;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Acf(siteHardBannerText: $siteHardBannerText, siteHardLink: $siteHardLink, siteSoftLink: $siteSoftLink, siteHardTimeout: $siteHardTimeout, siteSoftTimeout: $siteSoftTimeout, siteHardRedirect: $siteHardRedirect, siteSoftRedirect: $siteSoftRedirect, partnersLink: $partnersLink, bannerPartnerLink: $bannerPartnerLink, tdDiscount: $tdDiscount, tdPromocode: $tdPromocode, phoneSupport: $phoneSupport, footerTitleWork: $footerTitleWork, footerTitleSupport: $footerTitleSupport, workTime: $workTime, restDays: $restDays, workTimeSupport: $workTimeSupport, footerTitleEmail: $footerTitleEmail, footerTitleSocial: $footerTitleSocial, textUnderFooter: $textUnderFooter, social: $social, creditHeading: $creditHeading, creditNoActive: $creditNoActive, paymentBannerDesk: $paymentBannerDesk, paymentBannerMob: $paymentBannerMob, otherPartnersHard: $otherPartnersHard, otherPartnersSoft: $otherPartnersSoft, rejectedByRegion: $rejectedByRegion, adversite: $adversite)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Acf'))
-      ..add(DiagnosticsProperty('siteHardBannerText', siteHardBannerText))
-      ..add(DiagnosticsProperty('siteHardLink', siteHardLink))
-      ..add(DiagnosticsProperty('siteSoftLink', siteSoftLink))
-      ..add(DiagnosticsProperty('siteHardTimeout', siteHardTimeout))
-      ..add(DiagnosticsProperty('siteSoftTimeout', siteSoftTimeout))
-      ..add(DiagnosticsProperty('siteHardRedirect', siteHardRedirect))
-      ..add(DiagnosticsProperty('siteSoftRedirect', siteSoftRedirect))
-      ..add(DiagnosticsProperty('partnersLink', partnersLink))
-      ..add(DiagnosticsProperty('bannerPartnerLink', bannerPartnerLink))
-      ..add(DiagnosticsProperty('tdDiscount', tdDiscount))
-      ..add(DiagnosticsProperty('tdPromocode', tdPromocode))
-      ..add(DiagnosticsProperty('phoneSupport', phoneSupport))
-      ..add(DiagnosticsProperty('footerTitleWork', footerTitleWork))
-      ..add(DiagnosticsProperty('footerTitleSupport', footerTitleSupport))
-      ..add(DiagnosticsProperty('workTime', workTime))
-      ..add(DiagnosticsProperty('restDays', restDays))
-      ..add(DiagnosticsProperty('workTimeSupport', workTimeSupport))
-      ..add(DiagnosticsProperty('footerTitleEmail', footerTitleEmail))
-      ..add(DiagnosticsProperty('footerTitleSocial', footerTitleSocial))
-      ..add(DiagnosticsProperty('textUnderFooter', textUnderFooter))
-      ..add(DiagnosticsProperty('social', social))
-      ..add(DiagnosticsProperty('creditHeading', creditHeading))
-      ..add(DiagnosticsProperty('creditNoActive', creditNoActive))
-      ..add(DiagnosticsProperty('paymentBannerDesk', paymentBannerDesk))
-      ..add(DiagnosticsProperty('paymentBannerMob', paymentBannerMob))
-      ..add(DiagnosticsProperty('otherPartnersHard', otherPartnersHard))
-      ..add(DiagnosticsProperty('otherPartnersSoft', otherPartnersSoft))
-      ..add(DiagnosticsProperty('rejectedByRegion', rejectedByRegion))
-      ..add(DiagnosticsProperty('adversite', adversite));
   }
 
   @override
@@ -7361,9 +7011,7 @@ class __$$SiteHardRedirectImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SiteHardRedirectImpl
-    with DiagnosticableTreeMixin
-    implements _SiteHardRedirect {
+class _$SiteHardRedirectImpl implements _SiteHardRedirect {
   const _$SiteHardRedirectImpl(
       {@JsonKey(name: 'link') this.link,
       @JsonKey(name: 'percent') this.percent});
@@ -7379,17 +7027,8 @@ class _$SiteHardRedirectImpl
   final String? percent;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'SiteHardRedirect(link: $link, percent: $percent)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SiteHardRedirect'))
-      ..add(DiagnosticsProperty('link', link))
-      ..add(DiagnosticsProperty('percent', percent));
   }
 
   @override
@@ -7540,9 +7179,7 @@ class __$$SiteSoftRedirectImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SiteSoftRedirectImpl
-    with DiagnosticableTreeMixin
-    implements _SiteSoftRedirect {
+class _$SiteSoftRedirectImpl implements _SiteSoftRedirect {
   const _$SiteSoftRedirectImpl(
       {@JsonKey(name: 'link') this.link,
       @JsonKey(name: 'percent') this.percent});
@@ -7558,17 +7195,8 @@ class _$SiteSoftRedirectImpl
   final String? percent;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'SiteSoftRedirect(link: $link, percent: $percent)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SiteSoftRedirect'))
-      ..add(DiagnosticsProperty('link', link))
-      ..add(DiagnosticsProperty('percent', percent));
   }
 
   @override
@@ -7730,7 +7358,7 @@ class __$$SocialImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SocialImpl with DiagnosticableTreeMixin implements _Social {
+class _$SocialImpl implements _Social {
   const _$SocialImpl(
       {@JsonKey(name: 'social_title') this.socialTitle,
       @JsonKey(name: 'social_address') this.socialAddress,
@@ -7750,18 +7378,8 @@ class _$SocialImpl with DiagnosticableTreeMixin implements _Social {
   final String? socialIcon;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Social(socialTitle: $socialTitle, socialAddress: $socialAddress, socialIcon: $socialIcon)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Social'))
-      ..add(DiagnosticsProperty('socialTitle', socialTitle))
-      ..add(DiagnosticsProperty('socialAddress', socialAddress))
-      ..add(DiagnosticsProperty('socialIcon', socialIcon));
   }
 
   @override
@@ -7988,9 +7606,7 @@ class __$$OtherPartnersHardImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OtherPartnersHardImpl
-    with DiagnosticableTreeMixin
-    implements _OtherPartnersHard {
+class _$OtherPartnersHardImpl implements _OtherPartnersHard {
   const _$OtherPartnersHardImpl(
       {@JsonKey(name: 'title') this.title,
       @JsonKey(name: 'link') this.link,
@@ -8026,22 +7642,8 @@ class _$OtherPartnersHardImpl
   final String? rating;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'OtherPartnersHard(title: $title, link: $link, icon: $icon, rate: $rate, sum: $sum, term: $term, rating: $rating)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OtherPartnersHard'))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('link', link))
-      ..add(DiagnosticsProperty('icon', icon))
-      ..add(DiagnosticsProperty('rate', rate))
-      ..add(DiagnosticsProperty('sum', sum))
-      ..add(DiagnosticsProperty('term', term))
-      ..add(DiagnosticsProperty('rating', rating));
   }
 
   @override
@@ -8287,9 +7889,7 @@ class __$$OtherPartnersSoftImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OtherPartnersSoftImpl
-    with DiagnosticableTreeMixin
-    implements _OtherPartnersSoft {
+class _$OtherPartnersSoftImpl implements _OtherPartnersSoft {
   const _$OtherPartnersSoftImpl(
       {@JsonKey(name: 'title') this.title,
       @JsonKey(name: 'link') this.link,
@@ -8325,22 +7925,8 @@ class _$OtherPartnersSoftImpl
   final String? rating;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'OtherPartnersSoft(title: $title, link: $link, icon: $icon, rate: $rate, sum: $sum, term: $term, rating: $rating)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OtherPartnersSoft'))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('link', link))
-      ..add(DiagnosticsProperty('icon', icon))
-      ..add(DiagnosticsProperty('rate', rate))
-      ..add(DiagnosticsProperty('sum', sum))
-      ..add(DiagnosticsProperty('term', term))
-      ..add(DiagnosticsProperty('rating', rating));
   }
 
   @override
@@ -8600,9 +8186,7 @@ class __$$RejectedByRegionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RejectedByRegionImpl
-    with DiagnosticableTreeMixin
-    implements _RejectedByRegion {
+class _$RejectedByRegionImpl implements _RejectedByRegion {
   const _$RejectedByRegionImpl(
       {@JsonKey(name: 'title') this.title,
       @JsonKey(name: 'link') this.link,
@@ -8642,23 +8226,8 @@ class _$RejectedByRegionImpl
   final String? rating;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'RejectedByRegion(title: $title, link: $link, text: $text, icon: $icon, rate: $rate, sum: $sum, term: $term, rating: $rating)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RejectedByRegion'))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('link', link))
-      ..add(DiagnosticsProperty('text', text))
-      ..add(DiagnosticsProperty('icon', icon))
-      ..add(DiagnosticsProperty('rate', rate))
-      ..add(DiagnosticsProperty('sum', sum))
-      ..add(DiagnosticsProperty('term', term))
-      ..add(DiagnosticsProperty('rating', rating));
   }
 
   @override
@@ -9104,7 +8673,7 @@ class __$$AdversiteImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AdversiteImpl with DiagnosticableTreeMixin implements _Adversite {
+class _$AdversiteImpl implements _Adversite {
   const _$AdversiteImpl(
       {@JsonKey(name: 'ID') this.ID,
       @JsonKey(name: 'id') this.id,
@@ -9196,36 +8765,8 @@ class _$AdversiteImpl with DiagnosticableTreeMixin implements _Adversite {
   final String? icon;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Adversite(ID: $ID, id: $id, title: $title, filename: $filename, filesize: $filesize, url: $url, link: $link, alt: $alt, author: $author, description: $description, caption: $caption, name: $name, status: $status, uploadedTo: $uploadedTo, date: $date, modified: $modified, menuOrder: $menuOrder, mimeType: $mimeType, type: $type, subtype: $subtype, icon: $icon)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Adversite'))
-      ..add(DiagnosticsProperty('ID', ID))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('filename', filename))
-      ..add(DiagnosticsProperty('filesize', filesize))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('link', link))
-      ..add(DiagnosticsProperty('alt', alt))
-      ..add(DiagnosticsProperty('author', author))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('caption', caption))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('uploadedTo', uploadedTo))
-      ..add(DiagnosticsProperty('date', date))
-      ..add(DiagnosticsProperty('modified', modified))
-      ..add(DiagnosticsProperty('menuOrder', menuOrder))
-      ..add(DiagnosticsProperty('mimeType', mimeType))
-      ..add(DiagnosticsProperty('type', type))
-      ..add(DiagnosticsProperty('subtype', subtype))
-      ..add(DiagnosticsProperty('icon', icon));
   }
 
   @override
@@ -9527,7 +9068,7 @@ class __$$HeaderMenuImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$HeaderMenuImpl with DiagnosticableTreeMixin implements _HeaderMenu {
+class _$HeaderMenuImpl implements _HeaderMenu {
   const _$HeaderMenuImpl(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'title') this.title,
@@ -9559,19 +9100,8 @@ class _$HeaderMenuImpl with DiagnosticableTreeMixin implements _HeaderMenu {
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'HeaderMenu(id: $id, title: $title, url: $url, items: $items)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'HeaderMenu'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('items', items));
   }
 
   @override
@@ -9742,7 +9272,7 @@ class __$$ItemsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ItemsImpl with DiagnosticableTreeMixin implements _Items {
+class _$ItemsImpl implements _Items {
   const _$ItemsImpl(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'title') this.title,
@@ -9762,18 +9292,8 @@ class _$ItemsImpl with DiagnosticableTreeMixin implements _Items {
   final String? url;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Items(id: $id, title: $title, url: $url)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Items'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('url', url));
   }
 
   @override
@@ -9940,7 +9460,7 @@ class __$$MobileMenuImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MobileMenuImpl with DiagnosticableTreeMixin implements _MobileMenu {
+class _$MobileMenuImpl implements _MobileMenu {
   const _$MobileMenuImpl(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'title') this.title,
@@ -9960,18 +9480,8 @@ class _$MobileMenuImpl with DiagnosticableTreeMixin implements _MobileMenu {
   final String? url;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'MobileMenu(id: $id, title: $title, url: $url)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'MobileMenu'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('url', url));
   }
 
   @override
@@ -10139,7 +9649,7 @@ class __$$FooterMenuImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FooterMenuImpl with DiagnosticableTreeMixin implements _FooterMenu {
+class _$FooterMenuImpl implements _FooterMenu {
   const _$FooterMenuImpl(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'title') this.title,
@@ -10159,18 +9669,8 @@ class _$FooterMenuImpl with DiagnosticableTreeMixin implements _FooterMenu {
   final String? url;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'FooterMenu(id: $id, title: $title, url: $url)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'FooterMenu'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('url', url));
   }
 
   @override
@@ -10338,7 +9838,7 @@ class __$$FooterMenu2ImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FooterMenu2Impl with DiagnosticableTreeMixin implements _FooterMenu2 {
+class _$FooterMenu2Impl implements _FooterMenu2 {
   const _$FooterMenu2Impl(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'title') this.title,
@@ -10358,18 +9858,8 @@ class _$FooterMenu2Impl with DiagnosticableTreeMixin implements _FooterMenu2 {
   final String? url;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'FooterMenu2(id: $id, title: $title, url: $url)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'FooterMenu2'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('url', url));
   }
 
   @override

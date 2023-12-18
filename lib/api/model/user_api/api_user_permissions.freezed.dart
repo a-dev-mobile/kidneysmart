@@ -224,9 +224,7 @@ class __$$ApiUserPermissionsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ApiUserPermissionsImpl
-    with DiagnosticableTreeMixin
-    implements _ApiUserPermissions {
+class _$ApiUserPermissionsImpl implements _ApiUserPermissions {
   const _$ApiUserPermissionsImpl(
       {@JsonKey(
           name: 'authorization_status',
@@ -280,24 +278,8 @@ class _$ApiUserPermissionsImpl
   final bool? activeRegion;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApiUserPermissions(enumAuthStatus: $enumAuthStatus, id: $id, canViewCards: $canViewCards, canAddCard: $canAddCard, canIssueCard: $canIssueCard, canChangeIban: $canChangeIban, canIssueIban: $canIssueIban, enumstep: $enumstep, activeRegion: $activeRegion)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApiUserPermissions'))
-      ..add(DiagnosticsProperty('enumAuthStatus', enumAuthStatus))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('canViewCards', canViewCards))
-      ..add(DiagnosticsProperty('canAddCard', canAddCard))
-      ..add(DiagnosticsProperty('canIssueCard', canIssueCard))
-      ..add(DiagnosticsProperty('canChangeIban', canChangeIban))
-      ..add(DiagnosticsProperty('canIssueIban', canIssueIban))
-      ..add(DiagnosticsProperty('enumstep', enumstep))
-      ..add(DiagnosticsProperty('activeRegion', activeRegion));
   }
 
   @override

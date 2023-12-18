@@ -2,12 +2,10 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_page_status.dart';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:kidneysmart/core/enum/enum_page_status.dart';
 
-part 'splash_notifier.g.dart';
 part 'splash_notifier.freezed.dart';
+part 'splash_notifier.g.dart';
 part 'splash_state.dart';
 
 @riverpod

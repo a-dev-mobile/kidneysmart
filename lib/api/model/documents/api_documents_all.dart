@@ -1,6 +1,5 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/api/utils/helper_for_json.dart';
 import 'package:kidneysmart/core/enum/enum_doc_user_type.dart';

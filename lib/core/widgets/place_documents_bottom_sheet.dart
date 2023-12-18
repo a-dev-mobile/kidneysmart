@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kidneysmart/app/style/typography/app_text_styles.dart';
+import 'package:kidneysmart/core/constants/app_text_styles.dart';
 
 class PlaceDocumentsBottomSheet extends StatelessWidget {
   const PlaceDocumentsBottomSheet({
