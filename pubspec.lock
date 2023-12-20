@@ -44,9 +44,11 @@ packages:
   app_updater:
     dependency: "direct main"
     description:
-      path: "c:/DEV/MY/MY_GITHUB/app_updater"
-      relative: false
-    source: path
+      path: "."
+      ref: "release/1.0.0"
+      resolved-ref: "25c5877f32f2cdb3131bec2110ae3fe8b9a4685b"
+      url: "https://github.com/a-dev-mobile/app_updater.git"
+    source: git
     version: "1.0.0"
   archive:
     dependency: transitive
@@ -364,26 +366,26 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_analytics
-      sha256: "828401ca7a9ca47949106b9791b6f669942eed3fa991fb39323ba27da6b35dc7"
+      sha256: "5e92d510eacd66c354718fd9cc8f66ffdfa025640b645c4742297fb973770508"
       url: "https://pub.dev"
     source: hosted
-    version: "10.6.4"
+    version: "10.7.4"
   firebase_analytics_platform_interface:
     dependency: transitive
     description:
       name: firebase_analytics_platform_interface
-      sha256: "4449defa57b63275b122e55e48d2dfebd6682718dac5eeb1c88adc4ef221a9f8"
+      sha256: "72977325a72af5ebb8e53b5c5533cb2e33eec481cd46210cfe5427f5efba55d8"
       url: "https://pub.dev"
     source: hosted
-    version: "3.7.6"
+    version: "3.8.4"
   firebase_analytics_web:
     dependency: transitive
     description:
       name: firebase_analytics_web
-      sha256: "2e5fc93356992fb2236040b301527427b57950235e57ce21e13c07cc86279686"
+      sha256: "8b9710be7e292e2a5ad34fff449d4b668c5808fb339649e69181727a4534f579"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.5+6"
+    version: "0.5.5+11"
   firebase_core:
     dependency: "direct main"
     description:
@@ -412,18 +414,18 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_crashlytics
-      sha256: "0d09f0e17b4174d850fd26a5036d51bb1b3e09c36a35ffcdc9dfa99fdbd6e9bb"
+      sha256: "5ccdf05de039f9544d0ba41c5ae2052ca2425985d32229911b09f69981164518"
       url: "https://pub.dev"
     source: hosted
-    version: "3.4.4"
+    version: "3.4.8"
   firebase_crashlytics_platform_interface:
     dependency: transitive
     description:
       name: firebase_crashlytics_platform_interface
-      sha256: "7ebb08dc5d53da3ca4122f2e84837dbfb1c3e6cc15731d5998893a5d41037a97"
+      sha256: "359197344def001589c84f8d1d57c05f6e2e773f559205610ce58c25e2045a57"
       url: "https://pub.dev"
     source: hosted
-    version: "3.6.12"
+    version: "3.6.16"
   firebase_messaging:
     dependency: "direct main"
     description:
@@ -1172,9 +1174,10 @@ packages:
   turn_gen:
     dependency: "direct dev"
     description:
-      path: "c:/DEV/MY/MY_GITHUB/turn_gen"
-      relative: false
-    source: path
+      name: turn_gen
+      sha256: da642cb7dedb95fe4d9caf28932d4c4014c0ae420bd2fff69977ff491817defd
+      url: "https://pub.dev"
+    source: hosted
     version: "2.1.1"
   typed_data:
     dependency: transitive
