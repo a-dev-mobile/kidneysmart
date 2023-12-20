@@ -58,4 +58,8 @@ jobs:
 
     - name: Send APK
       if: github.ref == 'refs/heads/main'
-      run: curl --request POST --url ${{ secrets.API_ENDPOINT }} --header 'Content-Type: multipart/form-data' --form "file=@${{ env.APK_PATH }}"
+      run: |
+        curl --request POST \
+             --url ${{ secrets.API_ENDPOINT }} \
+             --header 'Content-Type: multipart/form-data' \
+             --form "file=@${{ env.APK_PATH }}"
