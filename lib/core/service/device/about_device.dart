@@ -13,8 +13,8 @@ AboutDevice aboutDevice(AboutDeviceRef ref) {
 }
 
 class AboutDevice {
-  static const defaultAgentName = 'KidneySmart/1.0.0/test (test; test)';
-  static const appName = 'KidneySmart';
+  static const _defaultAgentName = 'KidneySmart/1.0.0/test (test; test)';
+  static const _appName = 'KidneySmart';
   static PackageInfo? _packageInfo;
 
   Future<PackageInfo> _getPackageInfo() async {
@@ -35,7 +35,7 @@ class AboutDevice {
           fallback: EnumStore.unknown,
         ).name;
     final appVersion = packageInfo.version;
-    final appAndVersion = '$appName/$appVersion/$storeName';
+    final appAndVersion = '$_appName/$appVersion/$storeName';
     final deviceInfo = DeviceInfoPlugin();
 
     if (Platform.isAndroid) {
@@ -80,6 +80,6 @@ class AboutDevice {
 
   String _getFallbackAgent() {
     // Handle other platforms or provide a fallback agent
-    return defaultAgentName;
+    return _defaultAgentName;
   }
 }

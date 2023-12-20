@@ -55,14 +55,18 @@ android {
         multiDexEnabled true
     }
 
-    applicationVariants.all { variant ->
-        variant.outputs.all {
-            def variantName = variant.name
-            def versionName = variant.versionName
-            def versionCode = variant.versionCode
-            outputFileName = "KS_v${versionName}(${versionCode})_${variantName}.apk"
-        }
+applicationVariants.all { variant ->
+    variant.outputs.all {
+        def variantName = variant.name.capitalize() // Улучшение читаемости
+        def versionName = variant.versionName
+        def versionCode = variant.versionCode
+        def appId = variant.applicationId
+
+        // Структурированный формат с использованием разделителей
+        outputFileName = "KidneySmart-ID_${appId}-Ver_${versionName}-Code_${versionCode}-Installer_apk-Var_${variantName}.apk"
     }
+}
+
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
