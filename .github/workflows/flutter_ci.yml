@@ -2,47 +2,60 @@ name: Flutter CI/CD
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Set up Java
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'zulu'
-        java-version: '17'
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: "zulu"
+          java-version: "17"
 
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
 
-    - run: flutter --version
+      - run: flutter --version
 
-    - name: Get dependencies
-      run: flutter pub get
+      - name: Get dependencies
+        run: flutter pub get
 
-    - name: Build APK
-      run: flutter build apk
+      - name: Build APK
+        run: flutter build apk
 
-    - name: Find APK File
-      id: find-apk
-      run: |
-        apk_path=$(find ./build/app/outputs/apk/release -name '*.apk' | head -n 1)
-        echo "APK_PATH=$apk_path" >> $GITHUB_ENV
-        echo "::set-output name=apk_path::$apk_path"
+      - name: Decode Keystore File
+      # base64 upload-keystore.jks > upload-keystore.jks.base64
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
 
-    - name: Send APK
+      - name: Build APK
+        run: flutter build apk --release
+        env:
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEYSTORE_PATH: $PWD/upload-keystore.jks
 
-      run: |
-        curl --request POST \
-             --url ${{ secrets.API_ENDPOINT }} \
-             --header 'Content-Type: multipart/form-data' \
-             --form "file=@${{ env.APK_PATH }}"
+
+      - name: Find APK File
+        id: find-apk
+        run: |
+          apk_path=$(find ./build/app/outputs/apk/release -name '*.apk' | head -n 1)
+          echo "APK_PATH=$apk_path" >> $GITHUB_ENV
+          echo "::set-output name=apk_path::$apk_path"
+
+      - name: Send APK
+
+        run: |
+          curl --request POST \
+               --url ${{ secrets.API_ENDPOINT }} \
+               --header 'Content-Type: multipart/form-data' \
+               --form "file=@${{ env.APK_PATH }}"
