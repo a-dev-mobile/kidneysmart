@@ -34,7 +34,7 @@ jobs:
 
       - name: Decode Keystore File
       # base64 upload-keystore.jks > upload-keystore.jks.base64
-        run: echo "${{secrets.KEYSTORE_BASE64}}" | base64 -d > upload-keystore.jks
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
 
       - name: Build APK
         run: flutter build apk --release
@@ -58,10 +58,13 @@ jobs:
               echo "APK_CHECKSUM=$apk_checksum" >> $GITHUB_ENV
     
 
-      - name: Send APK
-
+      - name: Send APK and Checksum
         run: |
-                curl --request POST \
-                     --url ${{ secrets.API_ENDPOINT }} \
-                     --header 'Content-Type: multipart/form-data' \
-                     --form "file=@${{ env.APK_PATH }}"
+                      echo "APK Path: ${{ env.APK_PATH }}"
+                      ls -l ${{ env.APK_PATH }}
+                      response=$(curl --request POST \
+                                       --url ${{ secrets.API_ENDPOINT }} \
+                                       --header 'Content-Type: multipart/form-data' \
+                                       --form "file=@${{ env.APK_PATH }}" \
+                                       --form "checksum=${{ env.APK_CHECKSUM }}")
+                      echo "Server response: $response"
