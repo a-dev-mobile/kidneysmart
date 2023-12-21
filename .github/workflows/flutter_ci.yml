@@ -32,7 +32,7 @@ jobs:
 
       - name: Decode Keystore File
       # base64 upload-keystore.jks > upload-keystore.jks.base64
-        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
+        run: echo "${{secrets.KEYSTORE_BASE64}}" | base64 -d > upload-keystore.jks
 
       - name: Build APK
         run: flutter build apk --release
