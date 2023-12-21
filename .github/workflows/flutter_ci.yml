@@ -33,17 +33,15 @@ jobs:
 
 
       - name: Decode Keystore File
-      # base64 upload-keystore.jks > upload-keystore.jks.base64
         run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
-
+        
       - name: Build APK
         run: flutter build apk --release
         env:
-          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEYSTORE_PATH: $PWD/upload-keystore.jks
-             echo "APK built successfully"
+            STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+            KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+            KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+            KEYSTORE_PATH: upload-keystore.jks
 
 
 
