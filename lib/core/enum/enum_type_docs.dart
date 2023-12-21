@@ -17,23 +17,7 @@ enum EnumTypeDocs implements Comparable<EnumTypeDocs> {
   static EnumTypeDocs fromValue(
     String? value, {
     EnumTypeDocs? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumTypeDocs.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            value,
-            'value',
-            'Value not found in EnumTypeDocs',
-          ));
-    }
-
     switch (value) {
       case 'signing':
         return signing;
@@ -50,19 +34,8 @@ enum EnumTypeDocs implements Comparable<EnumTypeDocs> {
   }
 
   static EnumTypeDocs? fromValueOrNull(
-    String? value, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumTypeDocs.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? value,
+  ) {
     switch (value) {
       case 'signing':
         return signing;

@@ -20,23 +20,7 @@ enum EnumDocUserType implements Comparable<EnumDocUserType> {
   static EnumDocUserType fromName(
     String? name, {
     EnumDocUserType? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumDocUserType.values) {
-        if (name != null && v.name.contains(name)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            name,
-            'name',
-            'Value not found in EnumDocUserType',
-          ));
-    }
-
     switch (name) {
       case 'registration':
         return registration;
@@ -57,19 +41,8 @@ enum EnumDocUserType implements Comparable<EnumDocUserType> {
   }
 
   static EnumDocUserType? fromNameOrNull(
-    String? name, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumDocUserType.values) {
-        if (name != null && v.name.contains(name)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? name,
+  ) {
     switch (name) {
       case 'registration':
         return registration;

@@ -36,23 +36,7 @@ enum EnumAvailableProduct implements Comparable<EnumAvailableProduct> {
   static EnumAvailableProduct fromType(
     String? type, {
     EnumAvailableProduct? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumAvailableProduct.values) {
-        if (type != null && v.type.contains(type)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            type,
-            'type',
-            'Value not found in EnumAvailableProduct',
-          ));
-    }
-
     switch (type) {
       case 'payday':
         return payday;
@@ -82,19 +66,8 @@ enum EnumAvailableProduct implements Comparable<EnumAvailableProduct> {
   }
 
   static EnumAvailableProduct? fromTypeOrNull(
-    String? type, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumAvailableProduct.values) {
-        if (type != null && v.type.contains(type)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? type,
+  ) {
     switch (type) {
       case 'payday':
         return payday;

@@ -23,12 +23,12 @@ class DebugNotifier extends _$DebugNotifier {
 
   @override
   DebugState build() {
-    // Future.microtask(load);
-    return const DebugState();
+    Future.microtask(load);
+    return _storage.getDebugState();
   }
 
   Future<void> load() async {
-    var debugState = _storage.getDebugState();
+    var debugState = state;
 
     // если магазин не определен - определяем
     if (debugState.enumStore.isUnknown) {
@@ -43,10 +43,6 @@ class DebugNotifier extends _$DebugNotifier {
     }
 
     state = debugState;
-  }
-
-  void setDevicePreview({required bool isShow}) {
-    state = state.copyWith(isShowDevicePreview: isShow);
   }
 
   void setEnumProject({required EnumProject? enumProject}) {

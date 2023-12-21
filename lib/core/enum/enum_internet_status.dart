@@ -19,23 +19,7 @@ enum EnumInternetStatus implements Comparable<EnumInternetStatus> {
   static EnumInternetStatus fromValue(
     String? value, {
     EnumInternetStatus? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumInternetStatus.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            value,
-            'value',
-            'Value not found in EnumInternetStatus',
-          ));
-    }
-
     switch (value) {
       case 'mobile':
         return mobile;
@@ -56,19 +40,8 @@ enum EnumInternetStatus implements Comparable<EnumInternetStatus> {
   }
 
   static EnumInternetStatus? fromValueOrNull(
-    String? value, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumInternetStatus.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? value,
+  ) {
     switch (value) {
       case 'mobile':
         return mobile;

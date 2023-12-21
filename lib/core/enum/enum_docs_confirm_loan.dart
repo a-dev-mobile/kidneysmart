@@ -47,23 +47,7 @@ enum EnumDocsConfirmLoan implements Comparable<EnumDocsConfirmLoan> {
   static EnumDocsConfirmLoan fromKey(
     String? key, {
     EnumDocsConfirmLoan? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumDocsConfirmLoan.values) {
-        if (key != null && v.key.contains(key)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            key,
-            'key',
-            'Value not found in EnumDocsConfirmLoan',
-          ));
-    }
-
     switch (key) {
       case 'loanRepaymentCondition':
         return loanRepaymentCondition;
@@ -88,19 +72,8 @@ enum EnumDocsConfirmLoan implements Comparable<EnumDocsConfirmLoan> {
   }
 
   static EnumDocsConfirmLoan? fromKeyOrNull(
-    String? key, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumDocsConfirmLoan.values) {
-        if (key != null && v.key.contains(key)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? key,
+  ) {
     switch (key) {
       case 'loanRepaymentCondition':
         return loanRepaymentCondition;

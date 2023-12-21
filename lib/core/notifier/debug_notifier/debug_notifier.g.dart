@@ -14,7 +14,6 @@ _$DebugStateImpl _$$DebugStateImplFromJson(Map<String, dynamic> json) =>
       enumStore: $enumDecodeNullable(_$EnumStoreEnumMap, json['enumStore']) ??
           EnumStore.unknown,
       isDebugMenuEnabled: json['isDebugMenuEnabled'] as bool? ?? false,
-      isShowDevicePreview: json['isShowDevicePreview'] as bool? ?? false,
       isShowBtnHttpLog: json['isShowBtnHttpLog'] as bool? ?? false,
       isShowRepaintRainbow: json['isShowRepaintRainbow'] as bool? ?? false,
       isShowPaintSizeEnabled: json['isShowPaintSizeEnabled'] as bool? ?? false,
@@ -26,7 +25,6 @@ Map<String, dynamic> _$$DebugStateImplToJson(_$DebugStateImpl instance) =>
       'enumProject': _$EnumProjectEnumMap[instance.enumProject]!,
       'enumStore': _$EnumStoreEnumMap[instance.enumStore]!,
       'isDebugMenuEnabled': instance.isDebugMenuEnabled,
-      'isShowDevicePreview': instance.isShowDevicePreview,
       'isShowBtnHttpLog': instance.isShowBtnHttpLog,
       'isShowRepaintRainbow': instance.isShowRepaintRainbow,
       'isShowPaintSizeEnabled': instance.isShowPaintSizeEnabled,
@@ -53,7 +51,7 @@ const _$EnumStoreEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$debugNotifierHash() => r'afa140106ad6938b33155749ff25fc537aef5a97';
+String _$debugNotifierHash() => r'3d96c60eec0867ac30fffdf4ab75ace0f1cd1a08';
 
 /// See also [DebugNotifier].
 @ProviderFor(DebugNotifier)

@@ -18,23 +18,7 @@ enum EnumHttpMethod implements Comparable<EnumHttpMethod> {
   static EnumHttpMethod fromValue(
     String? value, {
     EnumHttpMethod? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumHttpMethod.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            value,
-            'value',
-            'Value not found in EnumHttpMethod',
-          ));
-    }
-
     switch (value) {
       case 'post':
         return post;
@@ -53,19 +37,8 @@ enum EnumHttpMethod implements Comparable<EnumHttpMethod> {
   }
 
   static EnumHttpMethod? fromValueOrNull(
-    String? value, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumHttpMethod.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? value,
+  ) {
     switch (value) {
       case 'post':
         return post;

@@ -25,23 +25,7 @@ enum EnumScheduleStatus implements Comparable<EnumScheduleStatus> {
   static EnumScheduleStatus fromValue(
     String? value, {
     EnumScheduleStatus? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumScheduleStatus.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            value,
-            'value',
-            'Value not found in EnumScheduleStatus',
-          ));
-    }
-
     switch (value) {
       case 'status.schedule.active':
         return active;
@@ -64,19 +48,8 @@ enum EnumScheduleStatus implements Comparable<EnumScheduleStatus> {
   }
 
   static EnumScheduleStatus? fromValueOrNull(
-    String? value, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumScheduleStatus.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? value,
+  ) {
     switch (value) {
       case 'status.schedule.active':
         return active;

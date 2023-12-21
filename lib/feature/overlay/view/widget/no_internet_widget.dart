@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
+import 'package:kidneysmart/core/enum/enum_internet_status.dart';
+import 'package:kidneysmart/core/notifier/internet_notifier/internet_notifier.dart';
 
 import 'package:kidneysmart/gen/assets.gen.dart';
 
-class NoInternetWidget extends StatelessWidget {
+class NoInternetWidget extends ConsumerWidget {
   const NoInternetWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isNotConnected =
+        ref.watch(internerNotifierProvider).enumInternetStatus.isNotConnected;
+
+    if (!isNotConnected) return const SizedBox.shrink();
+
     return Scaffold(
       body: SafeArea(
         child: Padding(

@@ -19,23 +19,7 @@ enum EnumLogLevel implements Comparable<EnumLogLevel> {
   static EnumLogLevel fromValue(
     String? value, {
     EnumLogLevel? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumLogLevel.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            value,
-            'value',
-            'Value not found in EnumLogLevel',
-          ));
-    }
-
     switch (value) {
       case 'info':
         return info;
@@ -56,19 +40,8 @@ enum EnumLogLevel implements Comparable<EnumLogLevel> {
   }
 
   static EnumLogLevel? fromValueOrNull(
-    String? value, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumLogLevel.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? value,
+  ) {
     switch (value) {
       case 'info':
         return info;

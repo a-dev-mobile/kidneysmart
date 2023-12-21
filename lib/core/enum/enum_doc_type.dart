@@ -30,23 +30,7 @@ enum EnumDocType implements Comparable<EnumDocType> {
   static EnumDocType fromValue(
     String? value, {
     EnumDocType? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumDocType.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            value,
-            'value',
-            'Value not found in EnumDocType',
-          ));
-    }
-
     switch (value) {
       case 'all':
         return all;
@@ -69,19 +53,8 @@ enum EnumDocType implements Comparable<EnumDocType> {
   }
 
   static EnumDocType? fromValueOrNull(
-    String? value, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumDocType.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? value,
+  ) {
     switch (value) {
       case 'all':
         return all;

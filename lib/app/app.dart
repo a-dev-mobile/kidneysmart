@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:device_preview/device_preview.dart';
 import 'package:feedback/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -65,39 +64,37 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
 
   @override
   Widget build(BuildContext context) {
-    final debugNotifier = ref.watch(debugNotifierProvider);
     final appRouter = ref.read(appRouterProvider);
 
-    debugRepaintRainbowEnabled = debugNotifier.isShowRepaintRainbow;
-    debugPaintSizeEnabled = debugNotifier.isShowPaintSizeEnabled;
+    debugRepaintRainbowEnabled = ref.watch(
+      debugNotifierProvider.select((it) => it.isShowRepaintRainbow),
+    );
+    debugPaintSizeEnabled = ref.watch(
+      debugNotifierProvider.select((it) => it.isShowPaintSizeEnabled),
+    );
+
     return AppLifecycleManager(
       child: BetterFeedback(
-        child: DevicePreview(
-          enabled: debugNotifier.isShowDevicePreview,
-          builder: (context) => MaterialApp.router(
-            routeInformationProvider: appRouter.router.routeInformationProvider,
-            routeInformationParser: appRouter.router.routeInformationParser,
-            routerDelegate: appRouter.router.routerDelegate,
-            builder: (context, child) {
-              return DevicePreview.appBuilder(
-                context,
-                OverlayWidget(child: child!),
-              );
-            },
-            onGenerateTitle: (context) => AppLocalizations.of(context).app_name,
-            theme: AppThemeFlex.lightThemeData(context),
-            title: 'Kidneysmart',
-            themeMode: ThemeMode.light,
-            locale: const Locale('ru', 'RU'),
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: AppLocalizations.supportedLocales,
-            debugShowCheckedModeBanner: false,
-          ),
+        child: MaterialApp.router(
+          routeInformationProvider: appRouter.router.routeInformationProvider,
+          routeInformationParser: appRouter.router.routeInformationParser,
+          routerDelegate: appRouter.router.routerDelegate,
+          builder: (context, child) {
+            return OverlayWidget(child: child!);
+          },
+          onGenerateTitle: (context) => AppLocalizations.of(context).app_name,
+          theme: AppThemeFlex.lightThemeData(context),
+          title: 'Kidneysmart',
+          themeMode: ThemeMode.light,
+          locale: const Locale('ru', 'RU'),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          debugShowCheckedModeBanner: false,
         ),
       ),
     );

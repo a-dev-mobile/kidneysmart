@@ -48,6 +48,13 @@
       "problemMatcher": []
     },
     {
+      "label": "fast build APK",
+      "type": "shell",
+      "command": "flutter build apk --release",
+
+      "problemMatcher": []
+    },
+    {
       "label": "build APK",
       "type": "shell",
       "command": "flutter build apk --release",

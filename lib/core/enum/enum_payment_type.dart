@@ -17,23 +17,7 @@ enum EnumPaymentType implements Comparable<EnumPaymentType> {
   static EnumPaymentType fromValue(
     String? value, {
     EnumPaymentType? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumPaymentType.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            value,
-            'value',
-            'Value not found in EnumPaymentType',
-          ));
-    }
-
     switch (value) {
       case 'overduePayment':
         return overduePayment;
@@ -52,19 +36,8 @@ enum EnumPaymentType implements Comparable<EnumPaymentType> {
   }
 
   static EnumPaymentType? fromValueOrNull(
-    String? value, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumPaymentType.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? value,
+  ) {
     switch (value) {
       case 'overduePayment':
         return overduePayment;

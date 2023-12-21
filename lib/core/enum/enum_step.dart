@@ -54,23 +54,7 @@ enum EnumStep implements Comparable<EnumStep> {
   static EnumStep fromName(
     String? name, {
     EnumStep? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumStep.values) {
-        if (name != null && v.name.contains(name)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            name,
-            'name',
-            'Value not found in EnumStep',
-          ));
-    }
-
     switch (name) {
       case 'mob_step_phone':
         return mob_step_phone;
@@ -153,19 +137,8 @@ enum EnumStep implements Comparable<EnumStep> {
   }
 
   static EnumStep? fromNameOrNull(
-    String? name, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumStep.values) {
-        if (name != null && v.name.contains(name)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? name,
+  ) {
     switch (name) {
       case 'mob_step_phone':
         return mob_step_phone;

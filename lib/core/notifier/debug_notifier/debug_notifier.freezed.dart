@@ -23,7 +23,6 @@ mixin _$DebugState {
   EnumProject get enumProject => throw _privateConstructorUsedError;
   EnumStore get enumStore => throw _privateConstructorUsedError;
   bool get isDebugMenuEnabled => throw _privateConstructorUsedError;
-  bool get isShowDevicePreview => throw _privateConstructorUsedError;
   bool get isShowBtnHttpLog => throw _privateConstructorUsedError;
   bool get isShowRepaintRainbow => throw _privateConstructorUsedError;
   bool get isShowPaintSizeEnabled => throw _privateConstructorUsedError;
@@ -45,7 +44,6 @@ abstract class $DebugStateCopyWith<$Res> {
       {EnumProject enumProject,
       EnumStore enumStore,
       bool isDebugMenuEnabled,
-      bool isShowDevicePreview,
       bool isShowBtnHttpLog,
       bool isShowRepaintRainbow,
       bool isShowPaintSizeEnabled,
@@ -68,7 +66,6 @@ class _$DebugStateCopyWithImpl<$Res, $Val extends DebugState>
     Object? enumProject = null,
     Object? enumStore = null,
     Object? isDebugMenuEnabled = null,
-    Object? isShowDevicePreview = null,
     Object? isShowBtnHttpLog = null,
     Object? isShowRepaintRainbow = null,
     Object? isShowPaintSizeEnabled = null,
@@ -86,10 +83,6 @@ class _$DebugStateCopyWithImpl<$Res, $Val extends DebugState>
       isDebugMenuEnabled: null == isDebugMenuEnabled
           ? _value.isDebugMenuEnabled
           : isDebugMenuEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isShowDevicePreview: null == isShowDevicePreview
-          ? _value.isShowDevicePreview
-          : isShowDevicePreview // ignore: cast_nullable_to_non_nullable
               as bool,
       isShowBtnHttpLog: null == isShowBtnHttpLog
           ? _value.isShowBtnHttpLog
@@ -123,7 +116,6 @@ abstract class _$$DebugStateImplCopyWith<$Res>
       {EnumProject enumProject,
       EnumStore enumStore,
       bool isDebugMenuEnabled,
-      bool isShowDevicePreview,
       bool isShowBtnHttpLog,
       bool isShowRepaintRainbow,
       bool isShowPaintSizeEnabled,
@@ -144,7 +136,6 @@ class __$$DebugStateImplCopyWithImpl<$Res>
     Object? enumProject = null,
     Object? enumStore = null,
     Object? isDebugMenuEnabled = null,
-    Object? isShowDevicePreview = null,
     Object? isShowBtnHttpLog = null,
     Object? isShowRepaintRainbow = null,
     Object? isShowPaintSizeEnabled = null,
@@ -162,10 +153,6 @@ class __$$DebugStateImplCopyWithImpl<$Res>
       isDebugMenuEnabled: null == isDebugMenuEnabled
           ? _value.isDebugMenuEnabled
           : isDebugMenuEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isShowDevicePreview: null == isShowDevicePreview
-          ? _value.isShowDevicePreview
-          : isShowDevicePreview // ignore: cast_nullable_to_non_nullable
               as bool,
       isShowBtnHttpLog: null == isShowBtnHttpLog
           ? _value.isShowBtnHttpLog
@@ -194,7 +181,6 @@ class _$DebugStateImpl implements _DebugState {
       {this.enumProject = EnumProject.prod,
       this.enumStore = EnumStore.unknown,
       this.isDebugMenuEnabled = false,
-      this.isShowDevicePreview = false,
       this.isShowBtnHttpLog = false,
       this.isShowRepaintRainbow = false,
       this.isShowPaintSizeEnabled = false,
@@ -214,9 +200,6 @@ class _$DebugStateImpl implements _DebugState {
   final bool isDebugMenuEnabled;
   @override
   @JsonKey()
-  final bool isShowDevicePreview;
-  @override
-  @JsonKey()
   final bool isShowBtnHttpLog;
   @override
   @JsonKey()
@@ -230,7 +213,7 @@ class _$DebugStateImpl implements _DebugState {
 
   @override
   String toString() {
-    return 'DebugState(enumProject: $enumProject, enumStore: $enumStore, isDebugMenuEnabled: $isDebugMenuEnabled, isShowDevicePreview: $isShowDevicePreview, isShowBtnHttpLog: $isShowBtnHttpLog, isShowRepaintRainbow: $isShowRepaintRainbow, isShowPaintSizeEnabled: $isShowPaintSizeEnabled, isShowUrlPdfPage: $isShowUrlPdfPage)';
+    return 'DebugState(enumProject: $enumProject, enumStore: $enumStore, isDebugMenuEnabled: $isDebugMenuEnabled, isShowBtnHttpLog: $isShowBtnHttpLog, isShowRepaintRainbow: $isShowRepaintRainbow, isShowPaintSizeEnabled: $isShowPaintSizeEnabled, isShowUrlPdfPage: $isShowUrlPdfPage)';
   }
 
   @override
@@ -244,8 +227,6 @@ class _$DebugStateImpl implements _DebugState {
                 other.enumStore == enumStore) &&
             (identical(other.isDebugMenuEnabled, isDebugMenuEnabled) ||
                 other.isDebugMenuEnabled == isDebugMenuEnabled) &&
-            (identical(other.isShowDevicePreview, isShowDevicePreview) ||
-                other.isShowDevicePreview == isShowDevicePreview) &&
             (identical(other.isShowBtnHttpLog, isShowBtnHttpLog) ||
                 other.isShowBtnHttpLog == isShowBtnHttpLog) &&
             (identical(other.isShowRepaintRainbow, isShowRepaintRainbow) ||
@@ -263,7 +244,6 @@ class _$DebugStateImpl implements _DebugState {
       enumProject,
       enumStore,
       isDebugMenuEnabled,
-      isShowDevicePreview,
       isShowBtnHttpLog,
       isShowRepaintRainbow,
       isShowPaintSizeEnabled,
@@ -288,7 +268,6 @@ abstract class _DebugState implements DebugState {
       {final EnumProject enumProject,
       final EnumStore enumStore,
       final bool isDebugMenuEnabled,
-      final bool isShowDevicePreview,
       final bool isShowBtnHttpLog,
       final bool isShowRepaintRainbow,
       final bool isShowPaintSizeEnabled,
@@ -303,8 +282,6 @@ abstract class _DebugState implements DebugState {
   EnumStore get enumStore;
   @override
   bool get isDebugMenuEnabled;
-  @override
-  bool get isShowDevicePreview;
   @override
   bool get isShowBtnHttpLog;
   @override

@@ -27,23 +27,7 @@ enum EnumProject implements Comparable<EnumProject> {
   static EnumProject fromApi(
     String? api, {
     EnumProject? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumProject.values) {
-        if (api != null && v.api.contains(api)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            api,
-            'api',
-            'Value not found in EnumProject',
-          ));
-    }
-
     switch (api) {
       case 'https://wayofdt.com/':
         return prod;
@@ -62,23 +46,7 @@ enum EnumProject implements Comparable<EnumProject> {
   static EnumProject fromName(
     String? name, {
     EnumProject? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumProject.values) {
-        if (name != null && v.name.contains(name)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            name,
-            'name',
-            'Value not found in EnumProject',
-          ));
-    }
-
     switch (name) {
       case 'Prod':
         return prod;
@@ -95,19 +63,8 @@ enum EnumProject implements Comparable<EnumProject> {
   }
 
   static EnumProject? fromApiOrNull(
-    String? api, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumProject.values) {
-        if (api != null && v.api.contains(api)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? api,
+  ) {
     switch (api) {
       case 'https://wayofdt.com/':
         return prod;
@@ -119,19 +76,8 @@ enum EnumProject implements Comparable<EnumProject> {
   }
 
   static EnumProject? fromNameOrNull(
-    String? name, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumProject.values) {
-        if (name != null && v.name.contains(name)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? name,
+  ) {
     switch (name) {
       case 'Prod':
         return prod;

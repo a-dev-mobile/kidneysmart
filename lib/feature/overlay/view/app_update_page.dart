@@ -5,17 +5,24 @@ import 'package:kidneysmart/core/notifier/app_update_check/app_update_notifier.d
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_soft_widget.dart';
 
-class AppUpdatePage extends ConsumerWidget {
+class AppUpdatePage extends ConsumerStatefulWidget {
   const AppUpdatePage({
     super.key,
   });
 
   static const path = '/AppUpdatePage';
   static const name = 'AppUpdatePage';
-
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AppUpdatePage> createState() => _AppUpdatePageState();
+}
+
+class _AppUpdatePageState extends ConsumerState<AppUpdatePage> {
+  bool _isSuccessState = false;
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(appUpdateNotifierProvider);
+
+    if (_isSuccessState) return const SizedBox.shrink();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       state.apiAppUpdateCheckRes.map(
@@ -23,6 +30,7 @@ class AppUpdatePage extends ConsumerWidget {
           const SizedBox.shrink();
         },
         success: (v) {
+          _isSuccessState = true;
           final url = v.successResponse.latestVersion?.url;
           v.successResponse.enumAppUpdateType.map(
             hard: () {

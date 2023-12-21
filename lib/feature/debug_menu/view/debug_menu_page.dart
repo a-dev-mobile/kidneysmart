@@ -62,13 +62,6 @@ class DebugMenuPage extends ConsumerWidget {
                 dense: true,
                 visualDensity: const VisualDensity(vertical: -3),
               ),
-              SwitchListTile(
-                value: state.isShowDevicePreview,
-                onChanged: (v) => debugNotifier.setDevicePreview(isShow: v),
-                title: const Text('Show device preview'),
-                dense: true,
-                visualDensity: const VisualDensity(vertical: -3),
-              ),
               if (kDebugMode)
                 SwitchListTile(
                   value: state.isShowRepaintRainbow,

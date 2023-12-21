@@ -8,7 +8,6 @@ sealed class DebugState with _$DebugState {
     @Default(EnumProject.prod) EnumProject enumProject,
     @Default(EnumStore.unknown) EnumStore enumStore,
     @Default(false) bool isDebugMenuEnabled,
-    @Default(false) bool isShowDevicePreview,
     @Default(false) bool isShowBtnHttpLog,
     @Default(false) bool isShowRepaintRainbow,
     @Default(false) bool isShowPaintSizeEnabled,

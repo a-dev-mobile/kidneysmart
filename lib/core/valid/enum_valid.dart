@@ -18,23 +18,7 @@ enum EnumValid implements Comparable<EnumValid> {
   static EnumValid fromValue(
     String? value, {
     EnumValid? fallback,
-    bool useSubstringMatch = false,
   }) {
-    if (useSubstringMatch) {
-      for (final v in EnumValid.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return fallback ??
-          (throw ArgumentError.value(
-            value,
-            'value',
-            'Value not found in EnumValid',
-          ));
-    }
-
     switch (value) {
       case 'init':
         return init;
@@ -53,19 +37,8 @@ enum EnumValid implements Comparable<EnumValid> {
   }
 
   static EnumValid? fromValueOrNull(
-    String? value, {
-    bool useSubstringMatch = false,
-  }) {
-    if (useSubstringMatch) {
-      for (final v in EnumValid.values) {
-        if (value != null && v.value.contains(value)) {
-          return v;
-        }
-      }
-
-      return null;
-    }
-
+    String? value,
+  ) {
     switch (value) {
       case 'init':
         return init;
