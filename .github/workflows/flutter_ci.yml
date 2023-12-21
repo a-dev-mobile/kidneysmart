@@ -27,7 +27,9 @@ jobs:
       - run: flutter --version
 
       - name: Get dependencies
-        run: flutter pub get
+        run: |
+          flutter pub get
+          echo "Dependencies installed"
 
 
       - name: Decode Keystore File
@@ -41,26 +43,28 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEYSTORE_PATH: $PWD/upload-keystore.jks
+             echo "APK built successfully"
 
 
       - name: Find APK File
         id: find-apk
         run: |
-          apk_path=$(find ./build/app/outputs/apk/release -name '*.apk' | head -n 1)
-          echo "APK_PATH=$apk_path" >> $GITHUB_ENV
-          echo "::set-output name=apk_path::$apk_path"
+            apk_path=$(find ./build/app/outputs/apk/release -name '*.apk' | head -n 1)
+            echo "APK_PATH=$apk_path"
+            echo "::set-output name=apk_path::$apk_path"
 
       - name: Calculate APK Checksum
         id: calculate-checksum
         run: |
             apk_checksum=$(sha256sum ${{ env.APK_PATH }} | awk '{ print $1 }')
-            echo "APK_CHECKSUM=$apk_checksum" >> $GITHUB_ENV
+            echo "APK_CHECKSUM=$apk_checksum"
             echo "::set-output name=apk_checksum::$apk_checksum"
   
       - name: Send APK and Checksum
         run: |
-            curl --request POST \
-                 --url ${{ secrets.API_ENDPOINT }} \
-                 --header 'Content-Type: multipart/form-data' \
-                 --form "file=@${{ env.APK_PATH }}" \
-                 --form "checksum=${{ env.APK_CHECKSUM }}"
+             response=$(curl --request POST \
+                       --url ${{ secrets.API_ENDPOINT }} \
+                       --header 'Content-Type: multipart/form-data' \
+                       --form "file=@${{ env.APK_PATH }}" \
+                       --form "checksum=${{ env.APK_CHECKSUM }}")
+             echo "Server response: $response"
