@@ -86,9 +86,9 @@ applicationVariants.all { variant ->
     buildTypes {
         release {
             // Применяем подпись, только если есть настройки
-            if (keystorePropertiesFile.exists()) {
+        
                 signingConfig signingConfigs.release
-            }
+            
 
             minifyEnabled false
             shrinkResources false
