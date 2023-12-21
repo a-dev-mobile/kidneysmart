@@ -29,8 +29,6 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Build APK
-        run: flutter build apk
 
       - name: Decode Keystore File
       # base64 upload-keystore.jks > upload-keystore.jks.base64
