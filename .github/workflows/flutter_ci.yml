@@ -41,7 +41,6 @@ jobs:
         echo "Found APK at $apk_path"
 
     - name: Send APK
-      if: github.ref == 'refs/heads/main'
       run: |
         echo "Sending APK..."
         response=$(curl --write-out "%{http_code}" --silent --output /dev/null --request POST \
