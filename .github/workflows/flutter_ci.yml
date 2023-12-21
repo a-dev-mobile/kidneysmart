@@ -22,24 +22,12 @@ jobs:
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        channel: 'stable' # or: 'beta', 'dev', 'master' (or 'main')
+        channel: 'stable'
+
     - run: flutter --version
-    # 
-    # - name: Cache Dependencies
-      # uses: actions/cache@v2
-      # with:
-        # path: ~/.pub-cache
-        # key: ${{ runner.os }}-pub-cache-${{ hashFiles('**/pubspec.yaml') }}
-        # restore-keys: ${{ runner.os }}-pub-cache
 
     - name: Get dependencies
       run: flutter pub get
-
-    # - name: Run Linting
-    #   run: flutter analyze
-
-    # - name: Run Tests
-    #   run: flutter test
 
     - name: Build APK
       run: flutter build apk
@@ -50,13 +38,6 @@ jobs:
         apk_path=$(find ./build/app/outputs/apk/release -name '*.apk' | head -n 1)
         echo "APK_PATH=$apk_path" >> $GITHUB_ENV
         echo "::set-output name=apk_path::$apk_path"
-
-    - name: Upload APK as Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: Found-APK
-        path: ${{ steps.find-apk.outputs.apk_path }}
-
 
     - name: Send APK
       if: github.ref == 'refs/heads/main'
