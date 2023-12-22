@@ -29,17 +29,7 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Decode Keystore File
-        run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > kidneysmart.jks
 
-      - name: Set Environment Variables
-        run: |
-          echo "KEYSTORE_PATH=$(realpath kidneysmart.jks)" >> $GITHUB_ENV
-
-      - name: Log Environment Variables
-        run: |
-          echo "Keystore file path: $KEYSTORE_PATH"
 
       - name: Build APK
         run: flutter build apk --release
@@ -47,7 +37,7 @@ jobs:
           STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEYSTORE_PATH: ${{ env.KEYSTORE_PATH }}
+          KEYSTORE_PATH: ${{ secrets.KEYSTORE_PATH }}
 
       - name: Find APK File
         run: |
