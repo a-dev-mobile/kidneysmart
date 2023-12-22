@@ -37,6 +37,7 @@ jobs:
               echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
               mv upload-keystore.jks android/
         
+        
       - name: Build APK
         run: flutter build apk --release
         env:
