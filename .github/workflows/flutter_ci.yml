@@ -31,8 +31,8 @@ jobs:
           flutter pub get
           echo "Dependencies installed"
 
-          - name: Decode Keystore File
-          run: |
+      - name: Decode Keystore File
+        run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
           mv upload-keystore.jks android/app/
         
