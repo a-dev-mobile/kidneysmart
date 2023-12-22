@@ -31,18 +31,18 @@ jobs:
           flutter pub get
           echo "Dependencies installed"
 
-      - name: Decode Keystore File
-        run: |
+          - name: Decode Keystore File
+          run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
           mv upload-keystore.jks android/app/
-
+        
       - name: Build APK
         run: flutter build apk --release
         env:
-          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEYSTORE_PATH: android/app/upload-keystore.jks
+            STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+            KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+            KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+            KEYSTORE_PATH: upload-keystore.jks
 
       - name: Find APK File
         run: |

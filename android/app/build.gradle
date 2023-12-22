@@ -67,14 +67,22 @@ applicationVariants.all { variant ->
     }
 }
 
-signingConfigs {
-    release {
-        storeFile file(System.getenv("KEYSTORE_PATH") ?: keystoreProperties['storeFile'])
-        storePassword System.getenv("STORE_PASSWORD") ?: keystoreProperties['storePassword']
-        keyAlias System.getenv("KEY_ALIAS") ?: keystoreProperties['keyAlias']
-        keyPassword System.getenv("KEY_PASSWORD") ?: keystoreProperties['keyPassword']
+    signingConfigs {
+        release {
+            if (System.getenv("KEYSTORE_PATH") != null) {
+                storeFile file(System.getenv("KEYSTORE_PATH"))
+                storePassword System.getenv("STORE_PASSWORD")
+                keyAlias System.getenv("KEY_ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+            } else {
+                // Fallback to local keystore configuration
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
     }
-}
     buildTypes {
         release {
             // Применяем подпись, только если есть настройки
