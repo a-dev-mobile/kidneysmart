@@ -27,36 +27,32 @@ jobs:
       - run: flutter --version
 
       - name: Get dependencies
-        run: |
-          flutter pub get
-          echo "Dependencies installed"
+        run: flutter pub get
 
       - name: Decode Keystore File
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
-   
-        
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > kidneysmart.jks
+
+      - name: Set Environment Variables
+        run: |
+          echo "KEYSTORE_PATH=$(realpath kidneysmart.jks)" >> $GITHUB_ENV
+
+      - name: Log Environment Variables
+        run: |
+          echo "Keystore file path: $KEYSTORE_PATH"
+
       - name: Build APK
         run: flutter build apk --release
         env:
-            STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-            KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-            KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-            KEYSTORE_PATH: upload-keystore.jks
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEYSTORE_PATH: ${{ env.KEYSTORE_PATH }}
 
-
-      - name: Log Keystore File Path
-        run: |
-              echo "Keystore file path:"
-              realpath upload-keystore.jks
-              echo "Keystore path from environment variable:"
-              echo $KEYSTORE_PATH
-              
       - name: Find APK File
         run: |
           apk_path=$(find ./build/app/outputs/apk/release -name '*.apk' | head -n 1)
           echo "APK_PATH=$apk_path" >> $GITHUB_ENV
-          echo "::set-output name=apk_path::$apk_path"
 
       - name: Calculate APK Checksum
         run: |
@@ -68,8 +64,8 @@ jobs:
           echo "APK Path: ${{ env.APK_PATH }}"
           ls -l ${{ env.APK_PATH }}
           response=$(curl --request POST \
-                           --url ${{ secrets.API_ENDPOINT }} \
-                           --header 'Content-Type: multipart/form-data' \
-                           --form "file=@${{ env.APK_PATH }}" \
-                           --form "checksum=${{ env.APK_CHECKSUM }}")
+                          --url ${{ secrets.API_ENDPOINT }} \
+                          --header 'Content-Type: multipart/form-data' \
+                          --form "file=@${{ env.APK_PATH }}" \
+                          --form "checksum=${{ env.APK_CHECKSUM }}")
           echo "Server response: $response"
