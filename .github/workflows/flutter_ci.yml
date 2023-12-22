@@ -34,7 +34,7 @@ jobs:
       - name: Decode Keystore File
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
-
+   
         
       - name: Build APK
         run: flutter build apk --release
@@ -44,6 +44,14 @@ jobs:
             KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
             KEYSTORE_PATH: upload-keystore.jks
 
+
+      - name: Log Keystore File Path
+        run: |
+              echo "Keystore file path:"
+              realpath upload-keystore.jks
+              echo "Keystore path from environment variable:"
+              echo $KEYSTORE_PATH
+              
       - name: Find APK File
         run: |
           apk_path=$(find ./build/app/outputs/apk/release -name '*.apk' | head -n 1)
