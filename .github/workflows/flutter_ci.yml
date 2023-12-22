@@ -51,11 +51,8 @@ jobs:
 
       - name: Send APK and Checksum
         run: |
-          echo "APK Path: ${{ env.APK_PATH }}"
-          ls -l ${{ env.APK_PATH }}
-          response=$(curl --request POST \
-                          --url ${{ secrets.API_ENDPOINT }} \
-                          --header 'Content-Type: multipart/form-data' \
-                          --form "file=@${{ env.APK_PATH }}" \
-                          --form "checksum=${{ env.APK_CHECKSUM }}")
-          echo "Server response: $response"
+              curl --request POST \
+                   --url ${{ secrets.API_ENDPOINT }} \
+                   --header 'Content-Type: multipart/form-data' \
+                   --form "file=@${{ env.APK_PATH }}" \
+                   --form "checksum=${{ env.APK_CHECKSUM }}"
