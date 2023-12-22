@@ -31,44 +31,37 @@ jobs:
           flutter pub get
           echo "Dependencies installed"
 
-
       - name: Decode Keystore File
         run: |
-              echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
-              mv upload-keystore.jks android/
-        
-        
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
+          mv upload-keystore.jks android/app/
+
       - name: Build APK
         run: flutter build apk --release
         env:
-              STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-              KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-              KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-              KEYSTORE_PATH: android/upload-keystore.jks
-
-
-
-             
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEYSTORE_PATH: android/app/upload-keystore.jks
 
       - name: Find APK File
         run: |
-               apk_path=$(find ./build/app/outputs/apk/release -name '*.apk' | head -n 1)
-               echo "APK_PATH=$apk_path" >> $GITHUB_ENV
-               echo "::set-output name=apk_path::$apk_path"
+          apk_path=$(find ./build/app/outputs/apk/release -name '*.apk' | head -n 1)
+          echo "APK_PATH=$apk_path" >> $GITHUB_ENV
+          echo "::set-output name=apk_path::$apk_path"
 
       - name: Calculate APK Checksum
         run: |
-              apk_checksum=$(sha256sum ${{ env.APK_PATH }} | awk '{ print $1 }')
-              echo "APK_CHECKSUM=$apk_checksum" >> $GITHUB_ENV
-    
+          apk_checksum=$(sha256sum ${{ env.APK_PATH }} | awk '{ print $1 }')
+          echo "APK_CHECKSUM=$apk_checksum" >> $GITHUB_ENV
 
       - name: Send APK and Checksum
         run: |
-                      echo "APK Path: ${{ env.APK_PATH }}"
-                      ls -l ${{ env.APK_PATH }}
-                      response=$(curl --request POST \
-                                       --url ${{ secrets.API_ENDPOINT }} \
-                                       --header 'Content-Type: multipart/form-data' \
-                                       --form "file=@${{ env.APK_PATH }}" \
-                                       --form "checksum=${{ env.APK_CHECKSUM }}")
-                      echo "Server response: $response"
+          echo "APK Path: ${{ env.APK_PATH }}"
+          ls -l ${{ env.APK_PATH }}
+          response=$(curl --request POST \
+                           --url ${{ secrets.API_ENDPOINT }} \
+                           --header 'Content-Type: multipart/form-data' \
+                           --form "file=@${{ env.APK_PATH }}" \
+                           --form "checksum=${{ env.APK_CHECKSUM }}")
+          echo "Server response: $response"
