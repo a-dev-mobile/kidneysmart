@@ -34,8 +34,8 @@ jobs:
 
       - name: Decode Keystore File
         run: |
-              echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > kidneysmart-keystore.jks
-              mv kidneysmart-keystore.jks android/app/
+              echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > upload-keystore.jks
+              mv upload-keystore.jks android/
         
       - name: Build APK
         run: flutter build apk --release
@@ -43,7 +43,7 @@ jobs:
               STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
               KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
               KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-              KEYSTORE_PATH: android/app/kidneysmart-keystore.jks
+              KEYSTORE_PATH: android/upload-keystore.jks
 
 
 
