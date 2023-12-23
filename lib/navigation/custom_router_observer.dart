@@ -45,7 +45,7 @@ class CustomRouterObserver extends NavigatorObserver {
           Logger.warning('CustomRouterObserver: Route name is null.');
         }
       } on Exception catch (e, s) {
-        Logger.error('Error in CustomRouterObserver', error: e, stackTrace: s);
+        Logger.error('Error in CustomRouterObserver', e, s);
       }
     });
   }

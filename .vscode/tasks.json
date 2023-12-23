@@ -55,6 +55,16 @@
       "problemMatcher": []
     },
     {
+      "label": "build and send APK with Go Script",
+      "type": "shell",
+      "command": "C:\\Program Files\\Go\\bin\\go.exe",
+      "args": ["run", "./scripts/sendApk.go"],
+      "problemMatcher": [],
+
+    
+      "dependsOn": ["fast build APK"]
+    },
+    {
       "label": "build APK",
       "type": "shell",
       "command": "flutter build apk --release",

@@ -18,6 +18,7 @@ analyzer:
     - "plugin/**"
     # Generated code
     - "**/*.g.dart"
+    - "**/*.go"
     - "**/*.freezed.dart"
     - "lib/l10n/**"
     - "lib/**.gen.dart"

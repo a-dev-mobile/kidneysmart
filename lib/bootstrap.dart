@@ -11,8 +11,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/app/app.dart';
 import 'package:kidneysmart/core/log/logger.dart';
 
+
 import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
 import 'package:kidneysmart/core/observer/provider_observer.dart';
+import 'package:kidneysmart/core/service/app_device/app_device.dart';
 import 'package:kidneysmart/core/service/network/network.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
 import 'package:kidneysmart/firebase_options.dart';
@@ -22,6 +24,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 late final LocalStorage _localStorage;
 late final PageTrackerNotifier _pageTrackerNotifier;
 late final AppRouter _appRouter;
+late final AppDevice _appDevice;
 late final NetworkClient _networkClient;
 
 Future<void> bootstrap(FutureOr<Widget> Function() app) async {
@@ -41,6 +44,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
               localStorageProvider.overrideWithValue(_localStorage),
               appRouterProvider.overrideWithValue(_appRouter),
               networkClientProvider.overrideWithValue(_networkClient),
+              appDeviceProvider.overrideWithValue(_appDevice),
             ],
             observers: [if (kDebugMode) AppProviderObserver()],
             child: const App(),
@@ -68,9 +72,12 @@ Future<void> initializeApp() async {
         LocalStorage(sharedPreferences: sharedPreferences, isShowLog: true);
     _pageTrackerNotifier = PageTrackerNotifier();
     _appRouter = AppRouter(_pageTrackerNotifier);
+    // Создание и инициализация AboutDeviceNotifier
+    _appDevice = AppDevice();
+    await _appDevice.load();
 
     _networkClient = NetworkClient(
-      userAgent: '',
+      userAgent: _appDevice.userAgent,
       baseUrl: '',
       router: _appRouter,
     );
@@ -101,8 +108,8 @@ void _configurePlatformErrorHandling() {
 void handleError(String context, dynamic error, StackTrace stackTrace) {
   Logger.error(
     'Error in $context',
-    error: error,
-    stackTrace: stackTrace,
+    error,
+    stackTrace,
   );
 }
 

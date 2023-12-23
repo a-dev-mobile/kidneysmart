@@ -17,7 +17,7 @@ extension GoRouterExtension on GoRouter {
       final location = matchList.uri.toString();
       return location;
     } catch (e, s) {
-      Logger.error('GoRouterExtension', error: e, stackTrace: s);
+      Logger.error('GoRouterExtension', e, s);
       return null;
     }
   }

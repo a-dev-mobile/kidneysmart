@@ -2,7 +2,7 @@ name: kidneysmart
 description: A new Flutter project.
 publish_to: none
 
-version: 1.0.0+11
+version: 1.0.0+14
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  cupertino_icons: ^1.0.6
   # state manager
-
 
 
   # SDK extensions
@@ -83,10 +83,10 @@ dependencies:
   #  local packages
   # ******************************
   app_updater:
-    # path: c:/DEV/MY/MY_GITHUB/app_updater
-    git:
-      url: https://github.com/a-dev-mobile/app_updater.git
-      ref: release/1.0.0
+    path: c:/DEV/MY/MY_GITHUB/app_updater
+    # git:
+      # url: https://github.com/a-dev-mobile/app_updater.git
+      # ref: release/1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

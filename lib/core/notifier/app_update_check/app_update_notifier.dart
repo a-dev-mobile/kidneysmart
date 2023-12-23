@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:app_updater/app_updater.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kidneysmart/core/service/device/about_device.dart';
+import 'package:kidneysmart/core/service/app_device/app_device.dart';
+
 import 'package:kidneysmart/core/service/network/network_client.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -20,7 +21,7 @@ class AppUpdateNotifier extends _$AppUpdateNotifier {
   }
 
   late final _client = ref.read(networkClientProvider);
-  late final aboutApp = ref.read(aboutDeviceProvider);
+  late final appDevice = ref.read(appDeviceProvider);
   Future<void> load() async {
     final appUpdateClient = AppUpdateClient(
       dio: _client.dio,
@@ -28,11 +29,11 @@ class AppUpdateNotifier extends _$AppUpdateNotifier {
     );
 
     final updateCheckReq = ApiAppUpdateCheckReq(
-      // installerPackageName: await aboutApp.getInstallerStore(),
-      installerPackageName: 'apk',
-      versionCode: await aboutApp.getbuildNumber(),
-      packageName: await aboutApp.getPackageName(),
-      versionName: await aboutApp.getVersion(),
+
+      installerPackageName: appDevice.packageName,
+      versionCode: appDevice.buildNumber,
+      packageName:  appDevice.packageName,
+      versionName:  appDevice.version,
     );
     final response = await appUpdateClient.checkForUpdates(updateCheckReq);
 

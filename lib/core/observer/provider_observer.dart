@@ -39,8 +39,8 @@ class AppProviderObserver extends ProviderObserver {
   ) {
     Logger.error(
       'Provider Error: ${_providerIdentity(provider)} - Error: $error',
-      error: error,
-      stackTrace: stackTrace,
+      error,
+       stackTrace,
     );
   }
 

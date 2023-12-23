@@ -90,8 +90,8 @@ class NetworkClient {
     // Log the error for debugging purposes
     Logger.debug(
       endPoint,
-      error: e.error,
-      stackTrace: e.stackTrace,
+       e.error,
+       e.stackTrace,
     );
 
     // Handle specific DioException types
@@ -120,7 +120,7 @@ class NetworkClient {
     // ErrorHandler().reportError(e, stackTrace);
 
     // Log the error for debugging purposes
-    Logger.error('Unhandled error: $e', error: e, stackTrace: stackTrace);
+    Logger.error('Unhandled error: $e', e, stackTrace);
 
     // Perform additional actions based on the type of exception
     if (e is SocketException) {

@@ -6,43 +6,43 @@ class Logger {
 
   static bool detailedLogging = kDebugMode;
 
-  static void info(String message, {Object? error, StackTrace? stackTrace}) {
+  static void info(String message, [Object? e, StackTrace? s]) {
     _log(
       _colorize(message, _AnsiColor.blue),
       'INFO',
       800,
       error: error,
-      stackTrace: stackTrace,
-    );
+      stackTrace: s,
+    ); 
   }
 
-  static void debug(String message, {Object? error, StackTrace? stackTrace}) {
+  static void debug(String message, [Object? e, StackTrace? s]) {
     _log(
       _colorize(message, _AnsiColor.green),
       'DEBUG',
       500,
       error: error,
-      stackTrace: stackTrace,
+      stackTrace: s,
     );
   }
 
-  static void warning(String message, {Object? error, StackTrace? stackTrace}) {
+  static void warning(String message, [Object? e, StackTrace? s]) {
     _log(
       _colorize(message, _AnsiColor.yellow),
       'WARNING',
       900,
       error: error,
-      stackTrace: stackTrace,
+      stackTrace: s,
     );
   }
 
-  static void error(String message, {Object? error, StackTrace? stackTrace}) {
+  static void error(String message, [Object? e, StackTrace? s]) {
     _log(
       _colorize(message, _AnsiColor.red),
       'ERROR',
       1000,
       error: error,
-      stackTrace: stackTrace,
+      stackTrace: s,
     );
   }
 

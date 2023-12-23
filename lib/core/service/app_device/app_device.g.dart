@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'about_device.dart';
+part of 'app_device.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$aboutDeviceHash() => r'400a9abe69732741b8db2b198e66167d6175a1dd';
+String _$appDeviceHash() => r'fb2872c2fcd3f0697a2b5086c2485a0056bd37fe';
 
-/// See also [aboutDevice].
-@ProviderFor(aboutDevice)
-final aboutDeviceProvider = Provider<AboutDevice>.internal(
-  aboutDevice,
-  name: r'aboutDeviceProvider',
+/// See also [appDevice].
+@ProviderFor(appDevice)
+final appDeviceProvider = Provider<AppDevice>.internal(
+  appDevice,
+  name: r'appDeviceProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$aboutDeviceHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$appDeviceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef AboutDeviceRef = ProviderRef<AboutDevice>;
+typedef AppDeviceRef = ProviderRef<AppDevice>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
