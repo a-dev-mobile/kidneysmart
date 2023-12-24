@@ -11,7 +11,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/app/app.dart';
 import 'package:kidneysmart/core/log/logger.dart';
 
-
 import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
 import 'package:kidneysmart/core/observer/provider_observer.dart';
 import 'package:kidneysmart/core/service/app_device/app_device.dart';

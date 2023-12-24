@@ -24,7 +24,7 @@ Map<String, dynamic> _$$AppUpdateStateImplToJson(
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appUpdateNotifierHash() => r'33eabd59763867fe18c701eede659fdd97e6574c';
+String _$appUpdateNotifierHash() => r'4980f3fc03e41a4fb524da52af8a967ac5cf04b9';
 
 /// See also [AppUpdateNotifier].
 @ProviderFor(AppUpdateNotifier)

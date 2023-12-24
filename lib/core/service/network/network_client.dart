@@ -90,8 +90,8 @@ class NetworkClient {
     // Log the error for debugging purposes
     Logger.debug(
       endPoint,
-       e.error,
-       e.stackTrace,
+      e.error,
+      e.stackTrace,
     );
 
     // Handle specific DioException types

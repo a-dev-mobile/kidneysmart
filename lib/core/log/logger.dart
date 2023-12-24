@@ -13,7 +13,7 @@ class Logger {
       800,
       error: error,
       stackTrace: s,
-    ); 
+    );
   }
 
   static void debug(String message, [Object? e, StackTrace? s]) {

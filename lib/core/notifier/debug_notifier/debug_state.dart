@@ -12,6 +12,7 @@ sealed class DebugState with _$DebugState {
     @Default(false) bool isShowRepaintRainbow,
     @Default(false) bool isShowPaintSizeEnabled,
     @Default(false) bool isShowUrlPdfPage,
+    @Default(false) bool forceUpdate,
   }) = _DebugState;
 
   factory DebugState.fromJson(Map<String, Object?> json) =>

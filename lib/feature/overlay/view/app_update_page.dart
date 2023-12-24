@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/notifier/app_update_check/app_update_notifier.dart';
+import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_soft_widget.dart';
 
@@ -17,12 +18,11 @@ class AppUpdatePage extends ConsumerStatefulWidget {
 }
 
 class _AppUpdatePageState extends ConsumerState<AppUpdatePage> {
-  bool _isSuccessState = false;
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(appUpdateNotifierProvider);
+  
 
-    if (_isSuccessState) return const SizedBox.shrink();
+    final state = ref.watch(appUpdateNotifierProvider);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       state.apiAppUpdateCheckRes.map(
@@ -30,7 +30,6 @@ class _AppUpdatePageState extends ConsumerState<AppUpdatePage> {
           const SizedBox.shrink();
         },
         success: (v) {
-          _isSuccessState = true;
           final url = v.successResponse.latestVersion?.url;
           v.successResponse.enumAppUpdateType.map(
             hard: () {

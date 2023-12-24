@@ -27,6 +27,7 @@ mixin _$DebugState {
   bool get isShowRepaintRainbow => throw _privateConstructorUsedError;
   bool get isShowPaintSizeEnabled => throw _privateConstructorUsedError;
   bool get isShowUrlPdfPage => throw _privateConstructorUsedError;
+  bool get forceUpdate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +48,8 @@ abstract class $DebugStateCopyWith<$Res> {
       bool isShowBtnHttpLog,
       bool isShowRepaintRainbow,
       bool isShowPaintSizeEnabled,
-      bool isShowUrlPdfPage});
+      bool isShowUrlPdfPage,
+      bool forceUpdate});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$DebugStateCopyWithImpl<$Res, $Val extends DebugState>
     Object? isShowRepaintRainbow = null,
     Object? isShowPaintSizeEnabled = null,
     Object? isShowUrlPdfPage = null,
+    Object? forceUpdate = null,
   }) {
     return _then(_value.copyWith(
       enumProject: null == enumProject
@@ -100,6 +103,10 @@ class _$DebugStateCopyWithImpl<$Res, $Val extends DebugState>
           ? _value.isShowUrlPdfPage
           : isShowUrlPdfPage // ignore: cast_nullable_to_non_nullable
               as bool,
+      forceUpdate: null == forceUpdate
+          ? _value.forceUpdate
+          : forceUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -119,7 +126,8 @@ abstract class _$$DebugStateImplCopyWith<$Res>
       bool isShowBtnHttpLog,
       bool isShowRepaintRainbow,
       bool isShowPaintSizeEnabled,
-      bool isShowUrlPdfPage});
+      bool isShowUrlPdfPage,
+      bool forceUpdate});
 }
 
 /// @nodoc
@@ -140,6 +148,7 @@ class __$$DebugStateImplCopyWithImpl<$Res>
     Object? isShowRepaintRainbow = null,
     Object? isShowPaintSizeEnabled = null,
     Object? isShowUrlPdfPage = null,
+    Object? forceUpdate = null,
   }) {
     return _then(_$DebugStateImpl(
       enumProject: null == enumProject
@@ -170,6 +179,10 @@ class __$$DebugStateImplCopyWithImpl<$Res>
           ? _value.isShowUrlPdfPage
           : isShowUrlPdfPage // ignore: cast_nullable_to_non_nullable
               as bool,
+      forceUpdate: null == forceUpdate
+          ? _value.forceUpdate
+          : forceUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -184,7 +197,8 @@ class _$DebugStateImpl implements _DebugState {
       this.isShowBtnHttpLog = false,
       this.isShowRepaintRainbow = false,
       this.isShowPaintSizeEnabled = false,
-      this.isShowUrlPdfPage = false});
+      this.isShowUrlPdfPage = false,
+      this.forceUpdate = false});
 
   factory _$DebugStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$DebugStateImplFromJson(json);
@@ -210,10 +224,13 @@ class _$DebugStateImpl implements _DebugState {
   @override
   @JsonKey()
   final bool isShowUrlPdfPage;
+  @override
+  @JsonKey()
+  final bool forceUpdate;
 
   @override
   String toString() {
-    return 'DebugState(enumProject: $enumProject, enumStore: $enumStore, isDebugMenuEnabled: $isDebugMenuEnabled, isShowBtnHttpLog: $isShowBtnHttpLog, isShowRepaintRainbow: $isShowRepaintRainbow, isShowPaintSizeEnabled: $isShowPaintSizeEnabled, isShowUrlPdfPage: $isShowUrlPdfPage)';
+    return 'DebugState(enumProject: $enumProject, enumStore: $enumStore, isDebugMenuEnabled: $isDebugMenuEnabled, isShowBtnHttpLog: $isShowBtnHttpLog, isShowRepaintRainbow: $isShowRepaintRainbow, isShowPaintSizeEnabled: $isShowPaintSizeEnabled, isShowUrlPdfPage: $isShowUrlPdfPage, forceUpdate: $forceUpdate)';
   }
 
   @override
@@ -234,7 +251,9 @@ class _$DebugStateImpl implements _DebugState {
             (identical(other.isShowPaintSizeEnabled, isShowPaintSizeEnabled) ||
                 other.isShowPaintSizeEnabled == isShowPaintSizeEnabled) &&
             (identical(other.isShowUrlPdfPage, isShowUrlPdfPage) ||
-                other.isShowUrlPdfPage == isShowUrlPdfPage));
+                other.isShowUrlPdfPage == isShowUrlPdfPage) &&
+            (identical(other.forceUpdate, forceUpdate) ||
+                other.forceUpdate == forceUpdate));
   }
 
   @JsonKey(ignore: true)
@@ -247,7 +266,8 @@ class _$DebugStateImpl implements _DebugState {
       isShowBtnHttpLog,
       isShowRepaintRainbow,
       isShowPaintSizeEnabled,
-      isShowUrlPdfPage);
+      isShowUrlPdfPage,
+      forceUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -271,7 +291,8 @@ abstract class _DebugState implements DebugState {
       final bool isShowBtnHttpLog,
       final bool isShowRepaintRainbow,
       final bool isShowPaintSizeEnabled,
-      final bool isShowUrlPdfPage}) = _$DebugStateImpl;
+      final bool isShowUrlPdfPage,
+      final bool forceUpdate}) = _$DebugStateImpl;
 
   factory _DebugState.fromJson(Map<String, dynamic> json) =
       _$DebugStateImpl.fromJson;
@@ -290,6 +311,8 @@ abstract class _DebugState implements DebugState {
   bool get isShowPaintSizeEnabled;
   @override
   bool get isShowUrlPdfPage;
+  @override
+  bool get forceUpdate;
   @override
   @JsonKey(ignore: true)
   _$$DebugStateImplCopyWith<_$DebugStateImpl> get copyWith =>

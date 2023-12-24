@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:app_updater/app_updater.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/app_device/app_device.dart';
 
 import 'package:kidneysmart/core/service/network/network_client.dart';
@@ -16,24 +17,27 @@ part 'app_update_notifier.freezed.dart';
 class AppUpdateNotifier extends _$AppUpdateNotifier {
   @override
   AppUpdateState build() {
-    Future.microtask(load);
+    // ref.watch(debugNotifierProvider.select((it) => it.forceUpdate));
+
+    // Future.microtask(load);
     return const AppUpdateState();
   }
 
-  late final _client = ref.read(networkClientProvider);
-  late final appDevice = ref.read(appDeviceProvider);
-  Future<void> load() async {
+  Future<void> check({bool isDebug = false}) async {
+    final client = ref.read(networkClientProvider);
+    final appDevice = ref.read(appDeviceProvider);
+
     final appUpdateClient = AppUpdateClient(
-      dio: _client.dio,
+      dio: client.dio,
       url: 'https://wayofdt.com/app-update-api/v1/check',
     );
 
     final updateCheckReq = ApiAppUpdateCheckReq(
-
-      installerPackageName: appDevice.packageName,
+      installerPackageName: appDevice.installerStore,
       versionCode: appDevice.buildNumber,
-      packageName:  appDevice.packageName,
-      versionName:  appDevice.version,
+      packageName: appDevice.packageName,
+      versionName: appDevice.version,
+      debugMode: isDebug,
     );
     final response = await appUpdateClient.checkForUpdates(updateCheckReq);
 

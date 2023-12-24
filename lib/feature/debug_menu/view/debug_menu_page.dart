@@ -13,6 +13,7 @@ import 'package:kidneysmart/core/constants/app_text_styles.dart';
 
 import 'package:kidneysmart/core/enum/enum_project.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
+import 'package:kidneysmart/core/notifier/app_update_check/app_update_notifier.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
@@ -47,6 +48,12 @@ class DebugMenuPage extends ConsumerWidget {
             shrinkWrap: true,
             children: [
               const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () => ref
+                    .read(appUpdateNotifierProvider.notifier)
+                    .check(isDebug: true),
+                child: const Text('Force Update'),
+              ),
               const Center(child: Text('---Setting---')),
               SwitchListTile(
                 value: state.isShowBtnHttpLog,

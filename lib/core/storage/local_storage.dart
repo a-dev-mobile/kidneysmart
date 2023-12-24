@@ -90,8 +90,8 @@ class LocalStorage {
   ) {
     Logger.error(
       '$action > $key, Value: $value',
-     exception,
-     stackTrace,
+      exception,
+      stackTrace,
     );
   }
 

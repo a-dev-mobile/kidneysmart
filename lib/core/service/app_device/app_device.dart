@@ -1,16 +1,12 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kidneysmart/bootstrap.dart';
-import 'package:kidneysmart/core/enum/enum_page_status.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
 import 'package:kidneysmart/core/log/logger.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_device.g.dart';
-
 
 @Riverpod(keepAlive: true)
 AppDevice appDevice(AppDeviceRef ref) =>
@@ -35,6 +31,7 @@ class AppDevice {
       _packageInfo = await PackageInfo.fromPlatform();
 
       installerStore = _packageInfo.installerStore ?? _defInstallerStore;
+      // installerStore =  _defInstallerStore;
       packageName = _packageInfo.packageName;
       version = _packageInfo.version;
       buildNumber = int.tryParse(_packageInfo.buildNumber) ?? _defBuildNumber;

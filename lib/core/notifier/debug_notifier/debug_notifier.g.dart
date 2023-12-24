@@ -18,6 +18,7 @@ _$DebugStateImpl _$$DebugStateImplFromJson(Map<String, dynamic> json) =>
       isShowRepaintRainbow: json['isShowRepaintRainbow'] as bool? ?? false,
       isShowPaintSizeEnabled: json['isShowPaintSizeEnabled'] as bool? ?? false,
       isShowUrlPdfPage: json['isShowUrlPdfPage'] as bool? ?? false,
+      forceUpdate: json['forceUpdate'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$DebugStateImplToJson(_$DebugStateImpl instance) =>
@@ -29,6 +30,7 @@ Map<String, dynamic> _$$DebugStateImplToJson(_$DebugStateImpl instance) =>
       'isShowRepaintRainbow': instance.isShowRepaintRainbow,
       'isShowPaintSizeEnabled': instance.isShowPaintSizeEnabled,
       'isShowUrlPdfPage': instance.isShowUrlPdfPage,
+      'forceUpdate': instance.forceUpdate,
     };
 
 const _$EnumProjectEnumMap = {
@@ -51,7 +53,7 @@ const _$EnumStoreEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$debugNotifierHash() => r'3d96c60eec0867ac30fffdf4ab75ace0f1cd1a08';
+String _$debugNotifierHash() => r'0625a82d0a3cd2fa5754e7c78f24969776a45dd6';
 
 /// See also [DebugNotifier].
 @ProviderFor(DebugNotifier)
