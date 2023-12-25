@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:kidneysmart/core/enum/enum_http_method.dart';
-import 'package:kidneysmart/core/log/logger.dart';
+import 'package:dartlog/dartlog.dart';
 import 'package:kidneysmart/core/service/network/dio_log/interceptor/dio_log_interceptor.dart';
 import 'package:kidneysmart/core/service/network/interceptor/accept_interceptor.dart';
 import 'package:kidneysmart/core/service/network/interceptor/content_type_interceptor.dart';

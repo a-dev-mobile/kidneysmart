@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kidneysmart/core/log/logger.dart';
+import 'package:dartlog/dartlog.dart';
 
 import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
 

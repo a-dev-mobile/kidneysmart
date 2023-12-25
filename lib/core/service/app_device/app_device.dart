@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
-import 'package:kidneysmart/core/log/logger.dart';
+import 'package:dartlog/dartlog.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

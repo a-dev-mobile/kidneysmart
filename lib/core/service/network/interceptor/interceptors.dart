@@ -5,7 +5,7 @@
 // import 'package:dio/dio.dart';
 // import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 // import 'package:kidneysmart/core/extension/common.dart';
-// import 'package:kidneysmart/core/log/logger.dart';
+// import 'package:dartlog/dartlog.dart';
 // import 'package:kidneysmart/core/service/network/dio_log/interceptor/dio_log_interceptor.dart';
 // import 'package:kidneysmart/core/storage/app_storage.dart';
 // import 'package:kidneysmart/core/widgets/failure_internet.dart';

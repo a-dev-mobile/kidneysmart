@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart'
     show ProviderBase, ProviderContainer, ProviderObserver;
-import 'package:kidneysmart/core/log/logger.dart';
+import 'package:dartlog/dartlog.dart';
 
 class AppProviderObserver extends ProviderObserver {
   String _providerIdentity(ProviderBase<dynamic> provider) {

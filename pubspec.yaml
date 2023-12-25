@@ -2,7 +2,7 @@ name: kidneysmart
 description: A new Flutter project.
 publish_to: none
 
-version: 1.0.0+18
+version: 1.0.0+19
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
@@ -86,6 +86,11 @@ dependencies:
     path: c:/DEV/MY/MY_GITHUB/app_updater
     # git:
       # url: https://github.com/a-dev-mobile/app_updater.git
+      # ref: release/1.0.0
+  dartlog:
+    path: c:/DEV/MY/MY_GITHUB/dartlog
+    # git:
+      # url: https://github.com/a-dev-mobile/dartlog.git
       # ref: release/1.0.0
 dev_dependencies:
   flutter_test:

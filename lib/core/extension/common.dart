@@ -1,5 +1,6 @@
+import 'package:dartlog/dartlog.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kidneysmart/core/log/logger.dart';
+import 'package:dartlog/dartlog.dart';
 
 extension SafeListAccess<T> on List<T> {
   T safeElementAt(int index, T defaultValue) {

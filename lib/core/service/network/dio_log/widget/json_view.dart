@@ -52,14 +52,33 @@ class JsonViewState extends State<JsonView> {
       final list = widget.json as List?;
       w = _buildArray(list, '');
     } else {
-      const je = JsonEncoder.withIndent('  ');
-      final json = je.convert(widget.json);
-      return _getDefText(json);
+      w = _getDefText(_safeConvertToJson(widget.json));
     }
     return w;
   }
 
-  ///Создание отображения узлов объектов
+  /// Converts any object safely to a JSON string. If the object is not directly
+  /// encodable, it uses a default string representation.
+  String _safeConvertToJson(dynamic data) {
+    try {
+      const je = JsonEncoder.withIndent('  ');
+      return je.convert(data);
+    } catch (e) {
+      return data.toString(); // Default to toString if JSON conversion fails
+    }
+  }
+
+  /// Builds a key-value display for different types of values.
+  Widget _buildKeyValue(dynamic v, {dynamic k}) {
+    final valueStr = v is String ? '"$v"' : _safeConvertToJson(v);
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onLongPress: () {
+        _copy(v);
+      },
+      child: _getDefText('${k ?? ''}:$valueStr,'),
+    );
+  }
   ///Создание отображения узлов объектов
   Widget _buildObject(dynamic json, {String? key}) {
     if (json is! Map<String, dynamic>) {
@@ -202,26 +221,10 @@ class JsonViewState extends State<JsonView> {
     );
   }
 
-  ///Построим отображение дочерних узлов
-  Widget _buildKeyValue(dynamic v, {dynamic k}) {
-    Widget w = _getDefText(
-      '${k ?? ''}:${v is String ? '"$v"' : v?.toString()},',
-    );
-    if (k != null) {
-      w = GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onLongPress: () {
-          _copy(v);
-        },
-        child: w,
-      );
-    }
-    return w;
-  }
 
-  ///json节点是否展示
+  ///json Отображается ли узел
   bool _isShow(int key) {
-    ///说明是根节点
+    ///Описание является корневым узлом
     if (key == 1) return true;
     if (widget.isShowAll!) {
       return showMap[key.toString()] ?? true;

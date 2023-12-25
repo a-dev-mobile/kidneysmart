@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_project.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
-import 'package:kidneysmart/core/log/logger.dart';
+import 'package:dartlog/dartlog.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
 
 import 'package:package_info_plus/package_info_plus.dart';
@@ -23,7 +23,6 @@ class DebugNotifier extends _$DebugNotifier {
 
   @override
   DebugState build() {
-
     Future.microtask(load);
     return _storage.getDebugState();
   }
@@ -115,10 +114,12 @@ class DebugNotifier extends _$DebugNotifier {
       }
     });
   }
+
   void toggleForceUpdate() {
     // Переключаем значение forceUpdate
     state = state.copyWith(forceUpdate: !state.forceUpdate);
   }
+
   Future<void> _saveState() async {
     if (!state.isDebugMenuEnabled) {
       // обнуление состояния если выключаем debug menu

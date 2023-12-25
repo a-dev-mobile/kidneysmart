@@ -1,21 +1,26 @@
 import 'dart:convert';
 
-///Вернуть строку в формате json
+/// Converts a dynamic data to a JSON string.
+/// This method ensures that the data is directly encodable.
 String toJson(dynamic data) {
   const je = JsonEncoder.withIndent('  ');
-  final json = je.convert(data);
-  return json;
+  if (data == null) {
+    return 'null';
+  } else if (data is String || data is num || data is bool || data is List || data is Map) {
+    // Data types that are directly encodable to JSON
+    return je.convert(data);
+  } else {
+    // For types that are not directly encodable, return a default message
+    return '{"error": "Data type not directly encodable to JSON"}';
+  }
 }
 
-///Возвращает строку в формате json
+/// Converts a Map to a JSON string.
 String map2Json(Map<dynamic, dynamic>? map) {
   if (map == null) {
-    return '';
+    return 'null';
   }
-  final sb = StringBuffer();
-  // ignore: cascade_invocations
-  sb.writeln('{');
-  map.forEach((key, value) => sb.writeln('$key:$value'));
-  sb.write('}');
-  return sb.toString();
+
+  const je = JsonEncoder.withIndent('  ');
+  return je.convert(map);
 }

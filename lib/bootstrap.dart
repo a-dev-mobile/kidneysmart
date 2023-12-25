@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:dartlog/dartlog.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/app/app.dart';
-import 'package:kidneysmart/core/log/logger.dart';
+import 'package:dartlog/dartlog.dart';
 
 import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
 import 'package:kidneysmart/core/observer/provider_observer.dart';
@@ -31,6 +32,10 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
     await runZonedGuarded(
       () async {
         await initializeApp();
+        Logger.initialize(
+          packagePrefix: 'package:kidneysmart/',
+          basePath: r'c:\DEV\MY\MY_GITHUB\kidneysmart\',
+        );
 
         _configureFlutterErrorHandling();
         _configurePlatformErrorHandling();

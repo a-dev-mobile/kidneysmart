@@ -1,6 +1,6 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
-import 'package:kidneysmart/core/log/logger.dart';
+import 'package:dartlog/dartlog.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
 import 'package:path_provider/path_provider.dart';
 
