@@ -1,3 +1,8 @@
+import 'package:apk_opener_plugin/apk_opener_plugin.dart';
+import 'package:app_updater/src/models/api_app_update_check_res.dart';
+import 'package:dartlog/dartlog.dart';
+import 'package:flash/flash.dart';
+import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -18,19 +23,80 @@ class AppUpdatePage extends ConsumerStatefulWidget {
 }
 
 class _AppUpdatePageState extends ConsumerState<AppUpdatePage> {
+  bool isBottomSheetShown = false;
+
   @override
   Widget build(BuildContext context) {
-  
+    final apiAppUpdateCheckRes = ref.watch(
+      appUpdateNotifierProvider.select((it) => it.apiAppUpdateCheckRes),
+    );
 
-    final state = ref.watch(appUpdateNotifierProvider);
+    ref.listen<UpdateProgress>(
+        appUpdateNotifierProvider.select((state) => state.updateProgress),
+        (UpdateProgress? p, UpdateProgress c) {
+      if (p is UpdateProgressInit && c is UpdateProgressLoad) {
+        context.showFlash<bool>(
+          barrierDismissible: true,
+          duration: const Duration(seconds: 3),
+          builder: (context, controller) => FlashBar(
+            controller: controller,
+            position: FlashPosition.top,
+            indicatorColor: Colors.green,
+            icon: const Icon(Icons.download),
+            content: const Text('Загрузка началась'),
+          ),
+        );
+      }
+      if (c is UpdateProgressError) {
+        context.showFlash<bool>(
+          barrierDismissible: true,
+          duration: const Duration(seconds: 5),
+          builder: (context, controller) => FlashBar(
+            controller: controller,
+            position: FlashPosition.top,
+            indicatorColor: Colors.red,
+            icon: const Icon(Icons.error),
+            title: const Text('Ошибка загрузки'),
+            content: Text(c.msg),
+          ),
+        );
+      }
+
+      if (c is UpdateProgressSuccess) {
+        showDialog<void>(
+            context: context,
+            builder: (_) {
+              return AlertDialog(
+                title: const Text('⚡️ Установить приложение?'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () async {
+                      Logger.debug(c.filePath);
+
+                      try {
+                        await ApkOpenerPlugin.openApk(c.filePath);
+                      } catch (e) {
+                        Logger.error(e.toString());
+                      }
+                    },
+                    child: const Text('YES'),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('NO'),
+                  ),
+                ],
+              );
+            });
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      state.apiAppUpdateCheckRes.map(
+      apiAppUpdateCheckRes.map(
         init: (_) {
           const SizedBox.shrink();
         },
         success: (v) {
-          final url = v.successResponse.latestVersion?.url;
           v.successResponse.enumAppUpdateType.map(
             hard: () {
               context.goNamed(
@@ -39,7 +105,7 @@ class _AppUpdatePageState extends ConsumerState<AppUpdatePage> {
             },
             none: () {},
             soft: () {
-              _showSoftUpdateBottomSheet(context, url);
+              _showSoftUpdateBottomSheet(context, v.successResponse);
             },
           );
         },
@@ -53,13 +119,26 @@ class _AppUpdatePageState extends ConsumerState<AppUpdatePage> {
   }
 
   // Method to show the bottom sheet
-  void _showSoftUpdateBottomSheet(BuildContext context, String? url) {
-    if (url == null) return;
+  void _showSoftUpdateBottomSheet(
+    BuildContext context,
+    ApiAppUpdateCheckResSuccess successResponse,
+  ) {
+    if (isBottomSheetShown) return;
+    isBottomSheetShown = true;
+    final url = successResponse.latestVersion?.url;
+    if (url == null || url.trim().isEmpty) {
+      isBottomSheetShown = false;
+      return;
+    }
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
-        return AppUpdateSoftWidget(url);
+        return AppUpdateSoftWidget(successResponse);
       },
-    );
+    ).then((_) {
+      // Сбросите флаг, когда лист закрыт
+      isBottomSheetShown = false;
+      ref.read(appUpdateNotifierProvider.notifier).resetUpdateState();
+    });
   }
 }

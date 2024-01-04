@@ -20,7 +20,7 @@ SplashState _$SplashStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SplashState {
-  EnumPageStatus get enumPageStatus => throw _privateConstructorUsedError;
+  EnumStatus get enumStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $SplashStateCopyWith<$Res> {
           SplashState value, $Res Function(SplashState) then) =
       _$SplashStateCopyWithImpl<$Res, SplashState>;
   @useResult
-  $Res call({EnumPageStatus enumPageStatus});
+  $Res call({EnumStatus enumStatus});
 }
 
 /// @nodoc
@@ -50,13 +50,13 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enumPageStatus = null,
+    Object? enumStatus = null,
   }) {
     return _then(_value.copyWith(
-      enumPageStatus: null == enumPageStatus
-          ? _value.enumPageStatus
-          : enumPageStatus // ignore: cast_nullable_to_non_nullable
-              as EnumPageStatus,
+      enumStatus: null == enumStatus
+          ? _value.enumStatus
+          : enumStatus // ignore: cast_nullable_to_non_nullable
+              as EnumStatus,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$SplashStateImplCopyWith<$Res>
       __$$SplashStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EnumPageStatus enumPageStatus});
+  $Res call({EnumStatus enumStatus});
 }
 
 /// @nodoc
@@ -83,13 +83,13 @@ class __$$SplashStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enumPageStatus = null,
+    Object? enumStatus = null,
   }) {
     return _then(_$SplashStateImpl(
-      enumPageStatus: null == enumPageStatus
-          ? _value.enumPageStatus
-          : enumPageStatus // ignore: cast_nullable_to_non_nullable
-              as EnumPageStatus,
+      enumStatus: null == enumStatus
+          ? _value.enumStatus
+          : enumStatus // ignore: cast_nullable_to_non_nullable
+              as EnumStatus,
     ));
   }
 }
@@ -97,18 +97,18 @@ class __$$SplashStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SplashStateImpl implements _SplashState {
-  const _$SplashStateImpl({this.enumPageStatus = EnumPageStatus.init});
+  const _$SplashStateImpl({this.enumStatus = EnumStatus.init});
 
   factory _$SplashStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$SplashStateImplFromJson(json);
 
   @override
   @JsonKey()
-  final EnumPageStatus enumPageStatus;
+  final EnumStatus enumStatus;
 
   @override
   String toString() {
-    return 'SplashState(enumPageStatus: $enumPageStatus)';
+    return 'SplashState(enumStatus: $enumStatus)';
   }
 
   @override
@@ -116,13 +116,13 @@ class _$SplashStateImpl implements _SplashState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SplashStateImpl &&
-            (identical(other.enumPageStatus, enumPageStatus) ||
-                other.enumPageStatus == enumPageStatus));
+            (identical(other.enumStatus, enumStatus) ||
+                other.enumStatus == enumStatus));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, enumPageStatus);
+  int get hashCode => Object.hash(runtimeType, enumStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -139,14 +139,13 @@ class _$SplashStateImpl implements _SplashState {
 }
 
 abstract class _SplashState implements SplashState {
-  const factory _SplashState({final EnumPageStatus enumPageStatus}) =
-      _$SplashStateImpl;
+  const factory _SplashState({final EnumStatus enumStatus}) = _$SplashStateImpl;
 
   factory _SplashState.fromJson(Map<String, dynamic> json) =
       _$SplashStateImpl.fromJson;
 
   @override
-  EnumPageStatus get enumPageStatus;
+  EnumStatus get enumStatus;
   @override
   @JsonKey(ignore: true)
   _$$SplashStateImplCopyWith<_$SplashStateImpl> get copyWith =>

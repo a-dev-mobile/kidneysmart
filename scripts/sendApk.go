@@ -13,6 +13,11 @@ import (
     "path/filepath"
 )
 
+const updateDescription = `
+🎉 1111 С Новым Годом от Белка Кредит! 🎄
+🚀 В последнем обновлении добавили новшества и чуть-чуть багов для интереса! Стремимся превзойти веб-версию - желайте нам удачи!
+💫 Спасибо, что выбираете Белка Кредит!. В новом году ждем еще больше успехов и улучшений!
+С теплыми пожеланиями, ваша команда Белка Кредит!. 🌟`
 func main() {
     fmt.Println("Starting APK upload process...")
 
@@ -31,7 +36,7 @@ func main() {
     fmt.Println("Calculated checksum:", checksum)
 
     fmt.Println("Uploading file...")
-    err = uploadFile(apkPath, checksum)
+	err = uploadFile(apkPath, checksum, updateDescription)
     if err != nil {
         fmt.Println("Error uploading file:", err)
         os.Exit(1)
@@ -70,7 +75,7 @@ func calculateChecksum(filePath string) (string, error) {
     return hex.EncodeToString(hasher.Sum(nil)), nil
 }
 
-func uploadFile(filePath, checksum string) error {
+func uploadFile(filePath, checksum, description string) error {
     fmt.Println("Preparing to upload file:", filePath)
     file, err := os.Open(filePath)
     if err != nil {
@@ -90,6 +95,10 @@ func uploadFile(filePath, checksum string) error {
     }
 
     err = writer.WriteField("checksum", checksum)
+	if err != nil {
+		return err
+	}
+	err = writer.WriteField("updateDescription", description)
     if err != nil {
         return err
     }

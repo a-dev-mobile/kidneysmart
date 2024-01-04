@@ -27,7 +27,7 @@ class _SplashView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(splashNotifierProvider);
-    return state.enumPageStatus.mapValue(
+    return state.enumStatus.mapValue(
       init: const Center(child: Text('initial')),
       load: const Center(child: Text('loading')),
       success: const Center(child: Text('success')),

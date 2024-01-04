@@ -8,28 +8,28 @@ part of 'splash_notifier.dart';
 
 _$SplashStateImpl _$$SplashStateImplFromJson(Map<String, dynamic> json) =>
     _$SplashStateImpl(
-      enumPageStatus: $enumDecodeNullable(
-              _$EnumPageStatusEnumMap, json['enumPageStatus']) ??
-          EnumPageStatus.init,
+      enumStatus:
+          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumStatus']) ??
+              EnumStatus.init,
     );
 
 Map<String, dynamic> _$$SplashStateImplToJson(_$SplashStateImpl instance) =>
     <String, dynamic>{
-      'enumPageStatus': _$EnumPageStatusEnumMap[instance.enumPageStatus]!,
+      'enumStatus': _$EnumStatusEnumMap[instance.enumStatus]!,
     };
 
-const _$EnumPageStatusEnumMap = {
-  EnumPageStatus.init: 'init',
-  EnumPageStatus.load: 'load',
-  EnumPageStatus.success: 'success',
-  EnumPageStatus.error: 'error',
+const _$EnumStatusEnumMap = {
+  EnumStatus.init: 'init',
+  EnumStatus.load: 'load',
+  EnumStatus.success: 'success',
+  EnumStatus.error: 'error',
 };
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$splashNotifierHash() => r'b5caf186ab5ac50971e3f14be72a1259238e9470';
+String _$splashNotifierHash() => r'f0035e74941bb4fbccd63e1749337a47885c7e44';
 
 /// See also [SplashNotifier].
 @ProviderFor(SplashNotifier)

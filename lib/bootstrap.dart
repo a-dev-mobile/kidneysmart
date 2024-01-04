@@ -50,7 +50,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
               networkClientProvider.overrideWithValue(_networkClient),
               appDeviceProvider.overrideWithValue(_appDevice),
             ],
-            observers: [if (kDebugMode) AppProviderObserver()],
+            // observers: [if (kDebugMode) AppProviderObserver()],
             child: const App(),
           ),
         );

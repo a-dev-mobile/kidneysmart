@@ -18,7 +18,9 @@
       "type": "shell",
       "command": " flutter packages pub get && flutter pub run build_runner build --delete-conflicting-outputs",
       "problemMatcher": [],
-      "dependsOn": ["clean get fix"]
+      "dependsOn": [
+        "clean get fix"
+      ]
     },
     {
       "label": "flutter gen-l10n",
@@ -44,31 +46,37 @@
       "label": "build AAB for google play",
       "type": "shell",
       "command": "flutter build appbundle --release",
-      "dependsOn": ["clean get fix"],
+      "dependsOn": [
+        "clean get fix"
+      ],
       "problemMatcher": []
     },
     {
       "label": "fast build APK",
       "type": "shell",
       "command": "flutter build apk --release",
-
       "problemMatcher": []
     },
     {
       "label": "build and send APK with Go Script",
       "type": "shell",
       "command": "C:\\Program Files\\Go\\bin\\go.exe",
-      "args": ["run", "./scripts/sendApk.go"],
+      "args": [
+        "run",
+        "./scripts/sendApk.go"
+      ],
       "problemMatcher": [],
-
-    
-      "dependsOn": ["fast build APK"]
+      "dependsOn": [
+        "fast build APK"
+      ]
     },
     {
       "label": "build APK",
       "type": "shell",
       "command": "flutter build apk --release",
-      "dependsOn": ["clean get fix"],
+      "dependsOn": [
+        "clean get fix"
+      ],
       "problemMatcher": []
     },
     {
@@ -99,7 +107,14 @@
       "label": "turn_gen enum",
       "type": "dart",
       "command": "dart",
-      "args": ["run", "turn_gen", "-t", "enum", "-f", "${file}"]
+      "args": [
+        "run",
+        "turn_gen",
+        "-t",
+        "enum",
+        "-f",
+        "${file}"
+      ]
     },
     {
       "label": "turn_gen assets",
@@ -111,26 +126,51 @@
       "label": "turn_gen data",
       "type": "dart",
       "command": "dart",
-      "args": ["run", "turn_gen", "-t", "data", "-f", "${file}"]
+      "args": [
+        "run",
+        "turn_gen",
+        "-t",
+        "data",
+        "-f",
+        "${file}"
+      ]
     },
     {
       "label": "turn_gen union",
       "type": "dart",
       "command": "dart",
-      "args": ["run", "turn_gen", "-t", "union", "-f", "${file}"]
+      "args": [
+        "run",
+        "turn_gen",
+        "-t",
+        "union",
+        "-f",
+        "${file}"
+      ]
     },
     {
       "label": "turn_gen enum",
       "type": "dart",
       "command": "dart",
-      "args": ["run", "turn_gen", "-t", "enum", "-f", "${file}"],
+      "args": [
+        "run",
+        "turn_gen",
+        "-t",
+        "enum",
+        "-f",
+        "${file}"
+      ],
       "problemMatcher": []
     },
     {
       "label": "turn_gen build",
       "type": "dart",
       "command": "dart",
-      "args": ["run", "turn_gen", "build"],
+      "args": [
+        "run",
+        "turn_gen",
+        "build"
+      ],
       "problemMatcher": []
     }
   ]

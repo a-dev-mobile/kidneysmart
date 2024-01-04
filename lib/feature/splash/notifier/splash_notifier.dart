@@ -24,11 +24,11 @@ class SplashNotifier extends _$SplashNotifier {
 
   Future<void> load() async {
     await Future<void>.delayed(const Duration(seconds: 3));
-    state = state.copyWith(enumPageStatus: EnumPageStatus.load);
+    state = state.copyWith(enumStatus: EnumStatus.load);
     await Future<void>.delayed(const Duration(seconds: 3));
-    state = state.copyWith(enumPageStatus: EnumPageStatus.success);
+    state = state.copyWith(enumStatus: EnumStatus.success);
     await Future<void>.delayed(const Duration(seconds: 3));
-    state = state.copyWith(enumPageStatus: EnumPageStatus.error);
+    state = state.copyWith(enumStatus: EnumStatus.error);
     await Future<void>.delayed(const Duration(seconds: 3));
     throw Exception('Unable to load');
 
@@ -51,6 +51,6 @@ class SplashNotifier extends _$SplashNotifier {
     // error: (v) {},
     // );
 //
-    // state = state.copyWith(enumPageStatus: EnumPageStatus.success);
+    // state = state.copyWith(enumStatus: EnumPageStatus.success);
   }
 }

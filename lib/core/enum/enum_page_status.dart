@@ -2,7 +2,7 @@
 /// An type representing the different states of a page.
 ///
 /// These states can be used to track the loading and display state of data in a UI.
-enum EnumPageStatus implements Comparable<EnumPageStatus> {
+enum EnumStatus implements Comparable<EnumStatus> {
   // Initial state, before any data loading has begun
   init(desc: 'Запуск...'),
   // When data is currently being loaded
@@ -13,7 +13,7 @@ enum EnumPageStatus implements Comparable<EnumPageStatus> {
   error(desc: 'Упс! Что-то пошло не так.');
 
   /// A constructor that initializes the enum with a given value.
-  const EnumPageStatus({required this.desc});
+  const EnumStatus({required this.desc});
 
   /// The textual representation of the enum value.
   ///
@@ -28,9 +28,9 @@ enum EnumPageStatus implements Comparable<EnumPageStatus> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumPageStatus fromDesc(
+  static EnumStatus fromDesc(
     String? desc, {
-    EnumPageStatus? fallback,
+    EnumStatus? fallback,
   }) {
     switch (desc) {
       case 'Запуск...':
@@ -46,12 +46,12 @@ enum EnumPageStatus implements Comparable<EnumPageStatus> {
             (throw ArgumentError.value(
               desc,
               'desc',
-              'Value not found in EnumPageStatus',
+              'Value not found in EnumStatus',
             ));
     }
   }
 
-  static EnumPageStatus? fromDescOrNull(
+  static EnumStatus? fromDescOrNull(
     String? desc,
   ) {
     switch (desc) {
@@ -75,13 +75,13 @@ enum EnumPageStatus implements Comparable<EnumPageStatus> {
     required T Function() error,
   }) {
     switch (this) {
-      case EnumPageStatus.init:
+      case EnumStatus.init:
         return init();
-      case EnumPageStatus.load:
+      case EnumStatus.load:
         return load();
-      case EnumPageStatus.success:
+      case EnumStatus.success:
         return success();
-      case EnumPageStatus.error:
+      case EnumStatus.error:
         return error();
     }
   }
@@ -93,13 +93,13 @@ enum EnumPageStatus implements Comparable<EnumPageStatus> {
     required T error,
   }) {
     switch (this) {
-      case EnumPageStatus.init:
+      case EnumStatus.init:
         return init;
-      case EnumPageStatus.load:
+      case EnumStatus.load:
         return load;
-      case EnumPageStatus.success:
+      case EnumStatus.success:
         return success;
-      case EnumPageStatus.error:
+      case EnumStatus.error:
         return error;
     }
   }
@@ -161,15 +161,15 @@ enum EnumPageStatus implements Comparable<EnumPageStatus> {
       );
 
   static List<String> getListDesc() =>
-      EnumPageStatus.values.map((e) => e.desc).toList();
+      EnumStatus.values.map((e) => e.desc).toList();
 
   @override
-  int compareTo(EnumPageStatus other) => index.compareTo(other.index);
+  int compareTo(EnumStatus other) => index.compareTo(other.index);
 }
 
-extension $EnumPageStatus on EnumPageStatus {
-  bool get isInit => this == EnumPageStatus.init;
-  bool get isLoad => this == EnumPageStatus.load;
-  bool get isSuccess => this == EnumPageStatus.success;
-  bool get isError => this == EnumPageStatus.error;
+extension $EnumStatus on EnumStatus {
+  bool get isInit => this == EnumStatus.init;
+  bool get isLoad => this == EnumStatus.load;
+  bool get isSuccess => this == EnumStatus.success;
+  bool get isError => this == EnumStatus.error;
 }

@@ -11,6 +11,8 @@ import 'package:kidneysmart/feature/overlay/view/overlay_widget.dart';
 import 'package:kidneysmart/l10n/app_localizations.dart';
 import 'package:kidneysmart/l10n/l10n.dart';
 import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:flash/flash.dart';
+import 'package:flash/flash_helper.dart';
 
 class App extends ConsumerWidget {
   const App({
@@ -83,7 +85,8 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
             return OverlayWidget(child: child!);
           },
           onGenerateTitle: (context) => AppLocalizations.of(context).app_name,
-          theme: AppThemeFlex.lightThemeData(context),
+          theme: AppThemeFlex.lightThemeData(context)
+              .copyWith(extensions: [const FlashToastTheme(), const FlashBarTheme()]),
           title: 'Kidneysmart',
           themeMode: ThemeMode.light,
           locale: const Locale('ru', 'RU'),

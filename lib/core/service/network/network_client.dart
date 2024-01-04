@@ -21,8 +21,8 @@ class NetworkClient {
     required String baseUrl,
     required AppRouter router,
     required String userAgent,
-    Duration connectTimeout = const Duration(seconds: 5),
-    Duration receiveTimeout = const Duration(seconds: 15),
+    Duration connectTimeout = const Duration(seconds: 30),
+    Duration receiveTimeout = const Duration(seconds: 55),
   })  : _go = router,
         _dio = Dio(
           BaseOptions(

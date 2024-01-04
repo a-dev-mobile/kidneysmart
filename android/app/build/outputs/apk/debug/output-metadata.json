@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.wayofdt.kidneysmart",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 21,
+      "versionName": "1.0.0",
+      "outputFile": "KidneySmart-ID_com.wayofdt.kidneysmart-Ver_1.0.0-Code_21-Installer_apk-Var_Debug.apk"
+    }
+  ],
+  "elementType": "File"
+}
