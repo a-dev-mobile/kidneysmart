@@ -45,9 +45,9 @@ class AppUpdateSoftWidget extends ConsumerWidget {
           const SizedBox(height: 20),
           BasicButton(
             onPressed: () {
-              // UrlLauncherService.launchExternal(url);
+              UrlLauncherService.launchExternal(update.url);
               Navigator.of(context).pop();
-              ref.read(appUpdateNotifierProvider.notifier).downloadApk();
+              // ref.read(appUpdateNotifierProvider.notifier).downloadApk();
             },
             text: 'Загрузить • ${convertBytesToMegabytes(update.fileSize)} МБ',
           ),

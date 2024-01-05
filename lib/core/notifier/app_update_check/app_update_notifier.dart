@@ -39,7 +39,7 @@ class AppUpdateNotifier extends _$AppUpdateNotifier {
 
     state = state.copyWith(
       apiAppUpdateCheckRes: const ApiAppUpdateCheckRes.init(),
-      updateProgress: const UpdateProgress.init(),
+
     );
     _appUpdateClient = AppUpdateClient(
       dio: _client.dio,
@@ -59,57 +59,10 @@ class AppUpdateNotifier extends _$AppUpdateNotifier {
     state = state.copyWith(apiAppUpdateCheckRes: response);
   }
 
-  Future<void> downloadApk() async {
-    state.apiAppUpdateCheckRes.when(
-      success: (v) {
-        _appUpdateClient.downloadApk(v, (received, total) {
-          // Logger.info('$percentage $downloadedMB $totalMB');
-          state = state.copyWith(
-            updateProgress: UpdateProgress.load(
-              received: received,
-              total: total,
-            ),
-          );
-        }).then((filePath) async {
-          Logger.info('Проверка checksum sha256');
-
-          final verifyChecksum = await _appUpdateClient.verifyChecksum(
-            filePath,
-            v.latestVersion?.checksum ?? '',
-          );
-
-          if (verifyChecksum) {
-            state = state.copyWith(
-              updateProgress: UpdateProgress.success(filePath: filePath),
-            );
-          } else {
-            state = state.copyWith(
-              updateProgress:
-                  const UpdateProgress.error(msg: 'error verifyChecksum'),
-            );
-          }
-
-          Logger.info('verifyChecksum = $verifyChecksum');
-        }).catchError((Object e) {
-          Logger.error('downloadApk', e);
-                state = state.copyWith(
-          updateProgress: UpdateProgress.error(msg: e.toString()),
-        );
-        });
-      },
-      error: (v) {
-        Logger.error('apiAppUpdateCheckRes');
-  
-      },
-      init: () {
-        Logger.info('No updates available or an error occurred');
-      },
-    );
-  }
-    Future<void> resetUpdateState() async {
+    Future<void> resetState() async {
     state = state.copyWith(
       apiAppUpdateCheckRes: const ApiAppUpdateCheckRes.init(),
-      updateProgress: const UpdateProgress.init(),
+    
     );
   }
 
