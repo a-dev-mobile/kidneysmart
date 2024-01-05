@@ -28,4 +28,11 @@ class SettingNotifier extends _$SettingNotifier {
   Future<void> _saveState() async {
     _storage.setSettingState(state);
   }
+
+  void setTheme(EnumTheme theme) {
+    state = state.copyWith(
+      enumTheme: theme,
+    );
+    _saveState();
+  }
 }

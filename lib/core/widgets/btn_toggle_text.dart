@@ -8,7 +8,7 @@ class BtnToggleText extends StatelessWidget {
     super.key,
     this.errorText,
   });
-  final List<Widget> widgetList; 
+  final List<Widget> widgetList;
 
   final String? errorText;
 
@@ -22,15 +22,16 @@ class BtnToggleText extends StatelessWidget {
         return Column(
           children: [
             ToggleButtons(
+              // direction: Axis.vertical,
               constraints: BoxConstraints.expand(
                 height: 40,
                 width: (constraint.maxWidth / widgetList.length) - 3,
               ),
               isSelected: isSelected,
               onPressed: onPressed,
-              children: widgetList, 
+              children: widgetList,
             ),
-            if (errorText?.isNotEmpty ?? false) ...[
+            if (errorText?.trim().isNotEmpty ?? false) ...[
               const SizedBox(height: 6),
               Align(
                 child: Text(

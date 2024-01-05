@@ -96,7 +96,7 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
             extensions: [const FlashToastTheme(), const FlashBarTheme()],
           ),
           title: 'Kidneysmart',
-          themeMode: enumTheme.isDark ? ThemeMode.light : ThemeMode.dark,
+          themeMode: enumTheme.isDark ? ThemeMode.dark : ThemeMode.light,
           locale: const Locale('ru', 'RU'),
           localizationsDelegates: const [
             AppLocalizations.delegate,

@@ -26,7 +26,7 @@ const _$EnumThemeEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$settingNotifierHash() => r'b4400caafd6ff503dcaccdf9d6f159d453cbc294';
+String _$settingNotifierHash() => r'54728d9b95982fce531efa3b3e4afc9e70485df6';
 
 /// See also [SettingNotifier].
 @ProviderFor(SettingNotifier)

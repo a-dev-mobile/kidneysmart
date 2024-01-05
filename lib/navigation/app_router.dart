@@ -6,6 +6,7 @@ import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_not
 
 import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
 import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
+import 'package:kidneysmart/feature/login/view/login_page.dart';
 import 'package:kidneysmart/feature/overlay/view/app_update_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/no_internet_widget.dart';
@@ -56,6 +57,15 @@ class AppRouter {
             key: state.pageKey,
             name: state.name,
             child: const SettingPage(),
+          ),
+        ),
+        GoRoute(
+          path: LoginPage.path,
+          name: LoginPage.name,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.name,
+            child: const LoginPage(),
           ),
         ),
 

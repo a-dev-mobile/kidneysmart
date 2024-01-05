@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
 import 'package:kidneysmart/core/extension/common.dart';
+import 'package:kidneysmart/feature/login/view/login_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
 
@@ -20,16 +21,20 @@ class WelcomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Добро пожаловать'), actions: [
-        IconButton(
+      appBar: AppBar(
+        title: const Text('Добро пожаловать'),
+        actions: [
+          IconButton(
             onPressed: () {
               ref
                   .read(appRouterProvider)
                   .router
                   .pushNamed<void>(SettingPage.name);
             },
-            icon: const Icon(Icons.settings))
-      ]),
+            icon: const Icon(Icons.settings),
+          ),
+        ],
+      ),
       body: const _View(),
     );
   }
@@ -61,7 +66,8 @@ class _View extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             const Text(
-                'Поздравляем! Вы сделали новый шаг на пути к более здоровому образу жизни'),
+              'Поздравляем! Вы сделали новый шаг на пути к более здоровому образу жизни',
+            ),
             SvgPicture.asset(
               AssetPaths.remindYouSvg,
               width: 200,
@@ -70,23 +76,33 @@ class _View extends ConsumerWidget {
           ],
         ),
         Positioned(
-            bottom: 0,
-            child: Container(
-              width: widthScreen,
-              padding: const EdgeInsets.all(8),
-              color:Theme.of(context).colorScheme.background,
-              child: Column(
-                children: [
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text('Политика конфиденциальности')),
-                  SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: () {}, child: const Text('Начать')))
-                ],
-              ),
-            ))
+          bottom: 0,
+          child: Container(
+            width: widthScreen,
+            padding: const EdgeInsets.all(8),
+            color: Theme.of(context).colorScheme.background,
+            child: Column(
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: const Text('Политика конфиденциальности'),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      ref
+                          .read(appRouterProvider)
+                          .router
+                          .pushNamed<void>(LoginPage.name);
+                    },
+                    child: const Text('Начать'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }

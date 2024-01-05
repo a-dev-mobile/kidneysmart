@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
 import 'package:kidneysmart/core/extension/common.dart';
+import 'package:kidneysmart/core/utils/enum_utils.dart';
 import 'package:kidneysmart/core/widgets/btn_toggle_text.dart';
 import 'package:kidneysmart/feature/setting/enum/enum_theme.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
@@ -31,25 +32,68 @@ class SettingPage extends StatelessWidget {
 
 class _View extends ConsumerWidget {
   const _View();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(settingNotifierProvider);
-    final widthScreen = MediaQuery.of(context).size.width;
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: ThemeSelectionSection(),
+          ),
+          // Add more settings sections here
+        ],
+      ),
+    );
+  }
+}
+
+class ThemeSelectionSection extends ConsumerWidget {
+  const ThemeSelectionSection({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final enumTheme = ref.watch(
+      settingNotifierProvider.select((it) => it.enumTheme),
+    );
     return Column(
       children: [
-        const Text('Тема приложения'),
-        SwitchListTile(
-          title: const Text('Темная тема'),
-          value: state
-              .enumTheme.isDark, // Assuming you have a bool for theme state
-          onChanged: (bool value) {
+        const Text(
+          'Тема приложения',
+          style: AppTextStyle.s22w400h30,
+        ),
+        const SizedBox(height: 16),
+        BtnToggleText(
+          widgetList: const [
+            _ThemeOption(Icons.light_mode, 'Светлая'),
+            _ThemeOption(Icons.dark_mode, 'Темная'),
+          ],
+          isSelected: EnumUtils.enumToBooleanList(EnumTheme.values, enumTheme),
+          onPressed: (index) {
             ref
                 .read(settingNotifierProvider.notifier)
-                .toggleTheme(); // Toggle theme function in your notifier
+                .setTheme(EnumTheme.values[index]);
           },
-          secondary:
-              Icon(state.enumTheme.isDark ? Icons.dark_mode : Icons.light_mode),
         ),
+      ],
+    );
+  }
+}
+
+class _ThemeOption extends StatelessWidget {
+  const _ThemeOption(this.icon, this.text);
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon),
+        const SizedBox(width: 5),
+        Text(text),
       ],
     );
   }
