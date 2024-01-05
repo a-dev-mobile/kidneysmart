@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kidneysmart/core/widgets/spinning_svg.dart';
 
 /// Cupertino-styled rectangle button with rounded corners
-///  // ignore_for_file: avoid-nested-conditional-expressions
+
 class BasicButton extends StatelessWidget {
   const BasicButton({
     required this.onPressed,

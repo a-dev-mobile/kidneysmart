@@ -18,7 +18,7 @@ import 'package:kidneysmart/core/service/app_device/app_device.dart';
 import 'package:kidneysmart/core/service/network/network.dart';
 import 'package:kidneysmart/core/storage/local_storage.dart';
 import 'package:kidneysmart/firebase_options.dart';
-import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/navigation/app_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late final LocalStorage _localStorage;
@@ -50,7 +50,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
               networkClientProvider.overrideWithValue(_networkClient),
               appDeviceProvider.overrideWithValue(_appDevice),
             ],
-            // observers: [if (kDebugMode) AppProviderObserver()],
+            observers: [if (kDebugMode) AppProviderObserver()],
             child: const App(),
           ),
         );

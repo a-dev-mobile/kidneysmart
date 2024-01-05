@@ -1,3 +1,4 @@
+
 // turnGen
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
@@ -22,49 +23,41 @@ enum EnumScheduleStatus implements Comparable<EnumScheduleStatus> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumScheduleStatus fromValue(
-    String? value, {
-    EnumScheduleStatus? fallback,
-  }) {
+  static EnumScheduleStatus fromValue(String? value, {EnumScheduleStatus? fallback,}) {
     switch (value) {
-      case 'status.schedule.active':
-        return active;
-      case 'status.schedule.done':
-        return done;
-      case 'status.schedule.overdue':
-        return overdue;
-      case 'status.schedule.payed':
-        return payed;
-      case 'error':
-        return error;
+case 'status.schedule.active':
+return active;
+case 'status.schedule.done':
+return done;
+case 'status.schedule.overdue':
+return overdue;
+case 'status.schedule.payed':
+return payed;
+case 'error':
+return error;
       default:
-        return fallback ??
-            (throw ArgumentError.value(
-              value,
-              'value',
-              'Value not found in EnumScheduleStatus',
-            ));
+        return fallback ?? (throw ArgumentError.value(
+          value, 'value', 'Value not found in EnumScheduleStatus',));
     }
   }
 
-  static EnumScheduleStatus? fromValueOrNull(
-    String? value,
-  ) {
+  static EnumScheduleStatus? fromValueOrNull(String? value,) {
     switch (value) {
-      case 'status.schedule.active':
-        return active;
-      case 'status.schedule.done':
-        return done;
-      case 'status.schedule.overdue':
-        return overdue;
-      case 'status.schedule.payed':
-        return payed;
-      case 'error':
-        return error;
+case 'status.schedule.active':
+return active;
+case 'status.schedule.done':
+return done;
+case 'status.schedule.overdue':
+return overdue;
+case 'status.schedule.payed':
+return payed;
+case 'error':
+return error;
       default:
         return null;
     }
   }
+
 
   T map<T>({
     required T Function() active,
@@ -87,6 +80,7 @@ enum EnumScheduleStatus implements Comparable<EnumScheduleStatus> {
     }
   }
 
+
   T mapValue<T>({
     required T active,
     required T done,
@@ -108,6 +102,7 @@ enum EnumScheduleStatus implements Comparable<EnumScheduleStatus> {
     }
   }
 
+
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? active,
@@ -117,12 +112,13 @@ enum EnumScheduleStatus implements Comparable<EnumScheduleStatus> {
     T Function()? error,
   }) =>
       map<T>(
-        active: active ?? orElse,
-        done: done ?? orElse,
-        overdue: overdue ?? orElse,
-        payed: payed ?? orElse,
-        error: error ?? orElse,
+      active: active ?? orElse,
+      done: done ?? orElse,
+      overdue: overdue ?? orElse,
+      payed: payed ?? orElse,
+      error: error ?? orElse,
       );
+
 
   T maybeMapValue<T>({
     required T orElse,
@@ -133,12 +129,13 @@ enum EnumScheduleStatus implements Comparable<EnumScheduleStatus> {
     T? error,
   }) =>
       mapValue<T>(
-        active: active ?? orElse,
-        done: done ?? orElse,
-        overdue: overdue ?? orElse,
-        payed: payed ?? orElse,
-        error: error ?? orElse,
+      active: active ?? orElse,
+      done: done ?? orElse,
+      overdue: overdue ?? orElse,
+      payed: payed ?? orElse,
+      error: error ?? orElse,
       );
+
 
   T? maybeMapOrNull<T>({
     T Function()? active,
@@ -156,6 +153,7 @@ enum EnumScheduleStatus implements Comparable<EnumScheduleStatus> {
         error: error,
       );
 
+
   T? maybeMapOrNullValue<T>({
     T? active,
     T? done,
@@ -172,17 +170,22 @@ enum EnumScheduleStatus implements Comparable<EnumScheduleStatus> {
         error: error,
       );
 
-  static List<String> getListValue() =>
-      EnumScheduleStatus.values.map((e) => e.value).toList();
+
+  static List<String> getListValue() => EnumScheduleStatus.values.map((e) => e.value).toList();
+
 
   @override
   int compareTo(EnumScheduleStatus other) => index.compareTo(other.index);
+
+ 
+
+
+}
+extension $EnumScheduleStatus on EnumScheduleStatus {
+bool get isActive => this == EnumScheduleStatus.active;
+bool get isDone => this == EnumScheduleStatus.done;
+bool get isOverdue => this == EnumScheduleStatus.overdue;
+bool get isPayed => this == EnumScheduleStatus.payed;
+bool get isError => this == EnumScheduleStatus.error;
 }
 
-extension $EnumScheduleStatus on EnumScheduleStatus {
-  bool get isActive => this == EnumScheduleStatus.active;
-  bool get isDone => this == EnumScheduleStatus.done;
-  bool get isOverdue => this == EnumScheduleStatus.overdue;
-  bool get isPayed => this == EnumScheduleStatus.payed;
-  bool get isError => this == EnumScheduleStatus.error;
-}

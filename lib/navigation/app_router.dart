@@ -8,12 +8,15 @@ import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.da
 import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
 import 'package:kidneysmart/feature/overlay/view/app_update_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
-import 'package:kidneysmart/feature/splash/view/splash_page%20copy.dart';
+import 'package:kidneysmart/feature/overlay/view/widget/no_internet_widget.dart';
+import 'package:kidneysmart/feature/setting/view/setting_page.dart';
+
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
+import 'package:kidneysmart/feature/welcome/view/welcome_page.dart';
 import 'package:kidneysmart/navigation/custom_router_observer.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'navigation.g.dart';
+part 'app_router.g.dart';
 
 @Riverpod(keepAlive: true)
 AppRouter appRouter(AppRouterRef ref) {
@@ -45,15 +48,17 @@ class AppRouter {
             child: const SplashPage(),
           ),
         ),
+
         GoRoute(
-          path: SplashPage2.path,
-          name: SplashPage2.name,
+          path: SettingPage.path,
+          name: SettingPage.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             name: state.name,
-            child: const SplashPage2(),
+            child: const SettingPage(),
           ),
         ),
+
         GoRoute(
           path: DebugMenuPage.path,
           name: DebugMenuPage.name,
@@ -61,6 +66,15 @@ class AppRouter {
             key: state.pageKey,
             name: state.name,
             child: const DebugMenuPage(),
+          ),
+        ),
+        GoRoute(
+          path: WelcomePage.path,
+          name: WelcomePage.name,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.name,
+            child: const WelcomePage(),
           ),
         ),
         GoRoute(

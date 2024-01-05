@@ -1,3 +1,4 @@
+
 // turnGen
 
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
@@ -24,69 +25,50 @@ enum EnumProject implements Comparable<EnumProject> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumProject fromApi(
-    String? api, {
-    EnumProject? fallback,
-  }) {
+  static EnumProject fromApi(String? api, {EnumProject? fallback,}) {
     switch (api) {
-      case 'https://wayofdt.com/':
-        return prod;
-      case 'https:/localhost/':
-        return dev;
+case 'https://wayofdt.com/':
+return prod;
+case 'https:/localhost/':
+return dev;
       default:
-        return fallback ??
-            (throw ArgumentError.value(
-              api,
-              'api',
-              'Value not found in EnumProject',
-            ));
+        return fallback ?? (throw ArgumentError.value(
+          api, 'api', 'Value not found in EnumProject',));
     }
   }
-
-  static EnumProject fromName(
-    String? name, {
-    EnumProject? fallback,
-  }) {
+  static EnumProject fromName(String? name, {EnumProject? fallback,}) {
     switch (name) {
-      case 'Prod':
-        return prod;
-      case 'Dev':
-        return dev;
+case 'Prod':
+return prod;
+case 'Dev':
+return dev;
       default:
-        return fallback ??
-            (throw ArgumentError.value(
-              name,
-              'name',
-              'Value not found in EnumProject',
-            ));
+        return fallback ?? (throw ArgumentError.value(
+          name, 'name', 'Value not found in EnumProject',));
     }
   }
 
-  static EnumProject? fromApiOrNull(
-    String? api,
-  ) {
+  static EnumProject? fromApiOrNull(String? api,) {
     switch (api) {
-      case 'https://wayofdt.com/':
-        return prod;
-      case 'https:/localhost/':
-        return dev;
+case 'https://wayofdt.com/':
+return prod;
+case 'https:/localhost/':
+return dev;
+      default:
+        return null;
+    }
+  }
+  static EnumProject? fromNameOrNull(String? name,) {
+    switch (name) {
+case 'Prod':
+return prod;
+case 'Dev':
+return dev;
       default:
         return null;
     }
   }
 
-  static EnumProject? fromNameOrNull(
-    String? name,
-  ) {
-    switch (name) {
-      case 'Prod':
-        return prod;
-      case 'Dev':
-        return dev;
-      default:
-        return null;
-    }
-  }
 
   T map<T>({
     required T Function() prod,
@@ -100,6 +82,7 @@ enum EnumProject implements Comparable<EnumProject> {
     }
   }
 
+
   T mapValue<T>({
     required T prod,
     required T dev,
@@ -112,15 +95,17 @@ enum EnumProject implements Comparable<EnumProject> {
     }
   }
 
+
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? prod,
     T Function()? dev,
   }) =>
       map<T>(
-        prod: prod ?? orElse,
-        dev: dev ?? orElse,
+      prod: prod ?? orElse,
+      dev: dev ?? orElse,
       );
+
 
   T maybeMapValue<T>({
     required T orElse,
@@ -128,9 +113,10 @@ enum EnumProject implements Comparable<EnumProject> {
     T? dev,
   }) =>
       mapValue<T>(
-        prod: prod ?? orElse,
-        dev: dev ?? orElse,
+      prod: prod ?? orElse,
+      dev: dev ?? orElse,
       );
+
 
   T? maybeMapOrNull<T>({
     T Function()? prod,
@@ -142,6 +128,7 @@ enum EnumProject implements Comparable<EnumProject> {
         dev: dev,
       );
 
+
   T? maybeMapOrNullValue<T>({
     T? prod,
     T? dev,
@@ -152,17 +139,21 @@ enum EnumProject implements Comparable<EnumProject> {
         dev: dev,
       );
 
-  static List<String> getListApi() =>
-      EnumProject.values.map((e) => e.api).toList();
 
-  static List<String> getListName() =>
-      EnumProject.values.map((e) => e.name).toList();
+  static List<String> getListApi() => EnumProject.values.map((e) => e.api).toList();
+
+  static List<String> getListName() => EnumProject.values.map((e) => e.name).toList();
+
 
   @override
   int compareTo(EnumProject other) => index.compareTo(other.index);
+
+ 
+
+
+}
+extension $EnumProject on EnumProject {
+bool get isProd => this == EnumProject.prod;
+bool get isDev => this == EnumProject.dev;
 }
 
-extension $EnumProject on EnumProject {
-  bool get isProd => this == EnumProject.prod;
-  bool get isDev => this == EnumProject.dev;
-}

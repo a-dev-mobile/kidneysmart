@@ -24,7 +24,7 @@ class CustomRouterObserver extends NavigatorObserver {
   @override
   void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {
     super.didRemove(route, previousRoute);
-    _updatePageTracker(route);
+    // _updatePageTracker(route);
   }
 
   @override

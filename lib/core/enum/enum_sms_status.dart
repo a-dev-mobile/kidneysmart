@@ -1,3 +1,4 @@
+
 // turnGen
 
 enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
@@ -24,45 +25,37 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumSmsStatus fromValue(
-    String? value, {
-    EnumSmsStatus? fallback,
-  }) {
+  static EnumSmsStatus fromValue(String? value, {EnumSmsStatus? fallback,}) {
     switch (value) {
-      case 'init':
-        return init;
-      case 'waitingForCode':
-        return waitingForCode;
-      case 'success':
-        return success;
-      case 'error':
-        return error;
+case 'init':
+return init;
+case 'waitingForCode':
+return waitingForCode;
+case 'success':
+return success;
+case 'error':
+return error;
       default:
-        return fallback ??
-            (throw ArgumentError.value(
-              value,
-              'value',
-              'Value not found in EnumSmsStatus',
-            ));
+        return fallback ?? (throw ArgumentError.value(
+          value, 'value', 'Value not found in EnumSmsStatus',));
     }
   }
 
-  static EnumSmsStatus? fromValueOrNull(
-    String? value,
-  ) {
+  static EnumSmsStatus? fromValueOrNull(String? value,) {
     switch (value) {
-      case 'init':
-        return init;
-      case 'waitingForCode':
-        return waitingForCode;
-      case 'success':
-        return success;
-      case 'error':
-        return error;
+case 'init':
+return init;
+case 'waitingForCode':
+return waitingForCode;
+case 'success':
+return success;
+case 'error':
+return error;
       default:
         return null;
     }
   }
+
 
   T map<T>({
     required T Function() init,
@@ -82,6 +75,7 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
     }
   }
 
+
   T mapValue<T>({
     required T init,
     required T waitingForCode,
@@ -100,6 +94,7 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
     }
   }
 
+
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? init,
@@ -108,11 +103,12 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
     T Function()? error,
   }) =>
       map<T>(
-        init: init ?? orElse,
-        waitingForCode: waitingForCode ?? orElse,
-        success: success ?? orElse,
-        error: error ?? orElse,
+      init: init ?? orElse,
+      waitingForCode: waitingForCode ?? orElse,
+      success: success ?? orElse,
+      error: error ?? orElse,
       );
+
 
   T maybeMapValue<T>({
     required T orElse,
@@ -122,11 +118,12 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
     T? error,
   }) =>
       mapValue<T>(
-        init: init ?? orElse,
-        waitingForCode: waitingForCode ?? orElse,
-        success: success ?? orElse,
-        error: error ?? orElse,
+      init: init ?? orElse,
+      waitingForCode: waitingForCode ?? orElse,
+      success: success ?? orElse,
+      error: error ?? orElse,
       );
+
 
   T? maybeMapOrNull<T>({
     T Function()? init,
@@ -142,6 +139,7 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
         error: error,
       );
 
+
   T? maybeMapOrNullValue<T>({
     T? init,
     T? waitingForCode,
@@ -156,16 +154,21 @@ enum EnumSmsStatus implements Comparable<EnumSmsStatus> {
         error: error,
       );
 
-  static List<String> getListValue() =>
-      EnumSmsStatus.values.map((e) => e.value).toList();
+
+  static List<String> getListValue() => EnumSmsStatus.values.map((e) => e.value).toList();
+
 
   @override
   int compareTo(EnumSmsStatus other) => index.compareTo(other.index);
+
+ 
+
+
+}
+extension $EnumSmsStatus on EnumSmsStatus {
+bool get isInit => this == EnumSmsStatus.init;
+bool get isWaitingForCode => this == EnumSmsStatus.waitingForCode;
+bool get isSuccess => this == EnumSmsStatus.success;
+bool get isError => this == EnumSmsStatus.error;
 }
 
-extension $EnumSmsStatus on EnumSmsStatus {
-  bool get isInit => this == EnumSmsStatus.init;
-  bool get isWaitingForCode => this == EnumSmsStatus.waitingForCode;
-  bool get isSuccess => this == EnumSmsStatus.success;
-  bool get isError => this == EnumSmsStatus.error;
-}

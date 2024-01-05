@@ -21,8 +21,10 @@ import 'package:kidneysmart/core/storage/local_storage.dart';
 import 'package:kidneysmart/core/widgets/app_error_widget.dart';
 
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
+import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
+import 'package:kidneysmart/feature/welcome/view/welcome_page.dart';
 
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -92,6 +94,8 @@ class DebugMenuPage extends ConsumerWidget {
               const Wrap(
                 children: [
                   _ItemPage(name: 'splash', nameRoute: SplashPage.name),
+                  _ItemPage(name: 'welcome', nameRoute: WelcomePage.name),
+                  _ItemPage(name: 'setting', nameRoute: SettingPage.name),
                 ],
               ),
               const SizedBox(height: 30),

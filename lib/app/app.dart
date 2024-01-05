@@ -8,9 +8,11 @@ import 'package:kidneysmart/app/app_lifecycle_manager.dart';
 import 'package:kidneysmart/app/app_theme.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/feature/overlay/view/overlay_widget.dart';
+import 'package:kidneysmart/feature/setting/enum/enum_theme.dart';
+import 'package:kidneysmart/feature/setting/notifier/setting_notifier.dart';
 import 'package:kidneysmart/l10n/app_localizations.dart';
 import 'package:kidneysmart/l10n/l10n.dart';
-import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/navigation/app_router.dart';
 import 'package:flash/flash.dart';
 import 'package:flash/flash_helper.dart';
 
@@ -74,7 +76,9 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
     debugPaintSizeEnabled = ref.watch(
       debugNotifierProvider.select((it) => it.isShowPaintSizeEnabled),
     );
-
+    final enumTheme = ref.watch(
+      settingNotifierProvider.select((it) => it.enumTheme),
+    );
     return AppLifecycleManager(
       child: BetterFeedback(
         child: MaterialApp.router(
@@ -85,10 +89,14 @@ class __MobileAppState extends ConsumerState<_MobileApp> {
             return OverlayWidget(child: child!);
           },
           onGenerateTitle: (context) => AppLocalizations.of(context).app_name,
-          theme: AppThemeFlex.lightThemeData(context)
-              .copyWith(extensions: [const FlashToastTheme(), const FlashBarTheme()]),
+          theme: AppThemeFlex.lightThemeData(context).copyWith(
+            extensions: [const FlashToastTheme(), const FlashBarTheme()],
+          ),
+          darkTheme: AppThemeFlex.darkThemeData(context).copyWith(
+            extensions: [const FlashToastTheme(), const FlashBarTheme()],
+          ),
           title: 'Kidneysmart',
-          themeMode: ThemeMode.light,
+          themeMode: enumTheme.isDark ? ThemeMode.light : ThemeMode.dark,
           locale: const Locale('ru', 'RU'),
           localizationsDelegates: const [
             AppLocalizations.delegate,

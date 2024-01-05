@@ -2,6 +2,8 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_page_status.dart';
+import 'package:kidneysmart/feature/welcome/view/welcome_page.dart';
+import 'package:kidneysmart/navigation/app_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'splash_notifier.freezed.dart';
@@ -16,41 +18,13 @@ class SplashNotifier extends _$SplashNotifier {
     return const SplashState();
   }
 
-  // late final _client = ref.read(apiClientProvider);
-  // late final _appSettingState = ref.read(appSettingNotifierProvider);
-
-  // late final _appSettingNotifier =
-  // ref.read(appSettingNotifierProvider.notifier);
-
   Future<void> load() async {
-    await Future<void>.delayed(const Duration(seconds: 3));
     state = state.copyWith(enumStatus: EnumStatus.load);
-    await Future<void>.delayed(const Duration(seconds: 3));
+
+    await Future<void>.delayed(const Duration(seconds: 2));
+
     state = state.copyWith(enumStatus: EnumStatus.success);
-    await Future<void>.delayed(const Duration(seconds: 3));
-    state = state.copyWith(enumStatus: EnumStatus.error);
-    await Future<void>.delayed(const Duration(seconds: 3));
-    throw Exception('Unable to load');
 
-    // final req = ApiAppUpdateCheckReq(
-    // versionCode: await AboutDevice.getAppBuildNumber(),
-    // versionName: await AboutDevice.getAppVersion(),
-    // packageName: await AboutDevice.getPackageName(),
-    // installerPackageName: await AboutDevice.getInstallerStore(),
-    // );
-//
-    // final appUpdateClient = AppUpdateClient(baseUrl: EnumProject.prod.api);
-
-    // final response = await appUpdateClient.checkForUpdates(req);
-
-    // response.when(
-    // success: (api) {
-    // _appSettingNotifier.state =
-    // _appSettingState.copyWith(apiAppUpdateCheckResSuccess: api);
-    // },
-    // error: (v) {},
-    // );
-//
-    // state = state.copyWith(enumStatus: EnumPageStatus.success);
+    ref.read(appRouterProvider).router.goNamed(WelcomePage.name);
   }
 }

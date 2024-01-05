@@ -1,3 +1,4 @@
+
 // turnGen
 /// An type representing the different states of a page.
 ///
@@ -28,45 +29,37 @@ enum EnumStatus implements Comparable<EnumStatus> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumStatus fromDesc(
-    String? desc, {
-    EnumStatus? fallback,
-  }) {
+  static EnumStatus fromDesc(String? desc, {EnumStatus? fallback,}) {
     switch (desc) {
-      case 'Запуск...':
-        return init;
-      case 'Загрузка данных...':
-        return load;
-      case 'Данные успешно загружены!':
-        return success;
-      case 'Упс! Что-то пошло не так.':
-        return error;
+case 'Запуск...':
+return init;
+case 'Загрузка данных...':
+return load;
+case 'Данные успешно загружены!':
+return success;
+case 'Упс! Что-то пошло не так.':
+return error;
       default:
-        return fallback ??
-            (throw ArgumentError.value(
-              desc,
-              'desc',
-              'Value not found in EnumStatus',
-            ));
+        return fallback ?? (throw ArgumentError.value(
+          desc, 'desc', 'Value not found in EnumStatus',));
     }
   }
 
-  static EnumStatus? fromDescOrNull(
-    String? desc,
-  ) {
+  static EnumStatus? fromDescOrNull(String? desc,) {
     switch (desc) {
-      case 'Запуск...':
-        return init;
-      case 'Загрузка данных...':
-        return load;
-      case 'Данные успешно загружены!':
-        return success;
-      case 'Упс! Что-то пошло не так.':
-        return error;
+case 'Запуск...':
+return init;
+case 'Загрузка данных...':
+return load;
+case 'Данные успешно загружены!':
+return success;
+case 'Упс! Что-то пошло не так.':
+return error;
       default:
         return null;
     }
   }
+
 
   T map<T>({
     required T Function() init,
@@ -86,6 +79,7 @@ enum EnumStatus implements Comparable<EnumStatus> {
     }
   }
 
+
   T mapValue<T>({
     required T init,
     required T load,
@@ -104,6 +98,7 @@ enum EnumStatus implements Comparable<EnumStatus> {
     }
   }
 
+
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? init,
@@ -112,11 +107,12 @@ enum EnumStatus implements Comparable<EnumStatus> {
     T Function()? error,
   }) =>
       map<T>(
-        init: init ?? orElse,
-        load: load ?? orElse,
-        success: success ?? orElse,
-        error: error ?? orElse,
+      init: init ?? orElse,
+      load: load ?? orElse,
+      success: success ?? orElse,
+      error: error ?? orElse,
       );
+
 
   T maybeMapValue<T>({
     required T orElse,
@@ -126,11 +122,12 @@ enum EnumStatus implements Comparable<EnumStatus> {
     T? error,
   }) =>
       mapValue<T>(
-        init: init ?? orElse,
-        load: load ?? orElse,
-        success: success ?? orElse,
-        error: error ?? orElse,
+      init: init ?? orElse,
+      load: load ?? orElse,
+      success: success ?? orElse,
+      error: error ?? orElse,
       );
+
 
   T? maybeMapOrNull<T>({
     T Function()? init,
@@ -146,6 +143,7 @@ enum EnumStatus implements Comparable<EnumStatus> {
         error: error,
       );
 
+
   T? maybeMapOrNullValue<T>({
     T? init,
     T? load,
@@ -160,16 +158,21 @@ enum EnumStatus implements Comparable<EnumStatus> {
         error: error,
       );
 
-  static List<String> getListDesc() =>
-      EnumStatus.values.map((e) => e.desc).toList();
+
+  static List<String> getListDesc() => EnumStatus.values.map((e) => e.desc).toList();
+
 
   @override
   int compareTo(EnumStatus other) => index.compareTo(other.index);
+
+ 
+
+
+}
+extension $EnumStatus on EnumStatus {
+bool get isInit => this == EnumStatus.init;
+bool get isLoad => this == EnumStatus.load;
+bool get isSuccess => this == EnumStatus.success;
+bool get isError => this == EnumStatus.error;
 }
 
-extension $EnumStatus on EnumStatus {
-  bool get isInit => this == EnumStatus.init;
-  bool get isLoad => this == EnumStatus.load;
-  bool get isSuccess => this == EnumStatus.success;
-  bool get isError => this == EnumStatus.error;
-}

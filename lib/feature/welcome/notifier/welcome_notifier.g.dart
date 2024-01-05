@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'splash_notifier.dart';
+part of 'welcome_notifier.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SplashStateImpl _$$SplashStateImplFromJson(Map<String, dynamic> json) =>
-    _$SplashStateImpl(
+_$WelcomeStateImpl _$$WelcomeStateImplFromJson(Map<String, dynamic> json) =>
+    _$WelcomeStateImpl(
       enumStatus:
           $enumDecodeNullable(_$EnumStatusEnumMap, json['enumStatus']) ??
               EnumStatus.init,
     );
 
-Map<String, dynamic> _$$SplashStateImplToJson(_$SplashStateImpl instance) =>
+Map<String, dynamic> _$$WelcomeStateImplToJson(_$WelcomeStateImpl instance) =>
     <String, dynamic>{
       'enumStatus': _$EnumStatusEnumMap[instance.enumStatus]!,
     };
@@ -29,21 +29,21 @@ const _$EnumStatusEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$splashNotifierHash() => r'809c6535f639c98b316870dd93e105786e8769a4';
+String _$welcomeNotifierHash() => r'db456fab8a99d1f306784ad4f00eb9f8686fd6b2';
 
-/// See also [SplashNotifier].
-@ProviderFor(SplashNotifier)
-final splashNotifierProvider =
-    AutoDisposeNotifierProvider<SplashNotifier, SplashState>.internal(
-  SplashNotifier.new,
-  name: r'splashNotifierProvider',
+/// See also [WelcomeNotifier].
+@ProviderFor(WelcomeNotifier)
+final welcomeNotifierProvider =
+    AutoDisposeNotifierProvider<WelcomeNotifier, WelcomeState>.internal(
+  WelcomeNotifier.new,
+  name: r'welcomeNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$splashNotifierHash,
+      : _$welcomeNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$SplashNotifier = AutoDisposeNotifier<SplashState>;
+typedef _$WelcomeNotifier = AutoDisposeNotifier<WelcomeState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -9,7 +9,7 @@ import 'package:kidneysmart/feature/overlay/view/app_update_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/http_btn_log.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/no_internet_widget.dart';
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
-import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/navigation/app_router.dart';
 
 class OverlayWidget extends ConsumerStatefulWidget {
   const OverlayWidget({

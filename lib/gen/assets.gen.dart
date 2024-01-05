@@ -14,16 +14,35 @@ class AssetPaths {
   /// * File path: _assets/svg/load.svg
   static const String loadSvg = 'assets/svg/load.svg';
 
+  /// * Size:	14.9 KB
+  /// * File path: _assets/svg/logo.svg
+  static const String logoSvg = 'assets/svg/logo.svg';
+
   /// * Size:	6.8 KB
   /// * File path: _assets/svg/no_internet.svg
   static const String noInternetSvg = 'assets/svg/no_internet.svg';
+
+  /// * Size:	25.1 KB
+  /// * File path: _assets/svg/remind_you.svg
+  static const String remindYouSvg = 'assets/svg/remind_you.svg';
 
   /// List of PNG assets
   static const List<String> valuesPNG = [logoImage];
 
   /// List of SVG assets
-  static const List<String> valuesSVG = [loadSvg, noInternetSvg];
+  static const List<String> valuesSVG = [
+    loadSvg,
+    logoSvg,
+    noInternetSvg,
+    remindYouSvg
+  ];
 
   /// List of all assets
-  static const List<String> valuesAll = [logoImage, loadSvg, noInternetSvg];
+  static const List<String> valuesAll = [
+    logoImage,
+    loadSvg,
+    logoSvg,
+    noInternetSvg,
+    remindYouSvg
+  ];
 }

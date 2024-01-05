@@ -35,7 +35,7 @@ const _$EnumStatusEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appUpdateNotifierHash() => r'fe5a3189a7bdb676f8e76a7b19c228c8220d2389';
+String _$appUpdateNotifierHash() => r'2b756086ca712d10533623c5d3c6e1ceb1d4ec4b';
 
 /// See also [AppUpdateNotifier].
 @ProviderFor(AppUpdateNotifier)

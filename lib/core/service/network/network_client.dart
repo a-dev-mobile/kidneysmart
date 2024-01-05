@@ -7,7 +7,7 @@ import 'package:kidneysmart/core/service/network/dio_log/interceptor/dio_log_int
 import 'package:kidneysmart/core/service/network/interceptor/accept_interceptor.dart';
 import 'package:kidneysmart/core/service/network/interceptor/content_type_interceptor.dart';
 import 'package:kidneysmart/core/service/network/interceptor/user_agent_interceptor.dart';
-import 'package:kidneysmart/navigation/navigation.dart';
+import 'package:kidneysmart/navigation/app_router.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'network_client.g.dart';

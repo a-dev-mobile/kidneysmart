@@ -1,3 +1,4 @@
+
 // turnGen
 enum EnumLogLevel implements Comparable<EnumLogLevel> {
   info('info'),
@@ -16,45 +17,37 @@ enum EnumLogLevel implements Comparable<EnumLogLevel> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumLogLevel fromValue(
-    String? value, {
-    EnumLogLevel? fallback,
-  }) {
+  static EnumLogLevel fromValue(String? value, {EnumLogLevel? fallback,}) {
     switch (value) {
-      case 'info':
-        return info;
-      case 'debug':
-        return debug;
-      case 'error':
-        return error;
-      case 'warning':
-        return warning;
+case 'info':
+return info;
+case 'debug':
+return debug;
+case 'error':
+return error;
+case 'warning':
+return warning;
       default:
-        return fallback ??
-            (throw ArgumentError.value(
-              value,
-              'value',
-              'Value not found in EnumLogLevel',
-            ));
+        return fallback ?? (throw ArgumentError.value(
+          value, 'value', 'Value not found in EnumLogLevel',));
     }
   }
 
-  static EnumLogLevel? fromValueOrNull(
-    String? value,
-  ) {
+  static EnumLogLevel? fromValueOrNull(String? value,) {
     switch (value) {
-      case 'info':
-        return info;
-      case 'debug':
-        return debug;
-      case 'error':
-        return error;
-      case 'warning':
-        return warning;
+case 'info':
+return info;
+case 'debug':
+return debug;
+case 'error':
+return error;
+case 'warning':
+return warning;
       default:
         return null;
     }
   }
+
 
   T map<T>({
     required T Function() info,
@@ -74,6 +67,7 @@ enum EnumLogLevel implements Comparable<EnumLogLevel> {
     }
   }
 
+
   T mapValue<T>({
     required T info,
     required T debug,
@@ -92,6 +86,7 @@ enum EnumLogLevel implements Comparable<EnumLogLevel> {
     }
   }
 
+
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? info,
@@ -100,11 +95,12 @@ enum EnumLogLevel implements Comparable<EnumLogLevel> {
     T Function()? warning,
   }) =>
       map<T>(
-        info: info ?? orElse,
-        debug: debug ?? orElse,
-        error: error ?? orElse,
-        warning: warning ?? orElse,
+      info: info ?? orElse,
+      debug: debug ?? orElse,
+      error: error ?? orElse,
+      warning: warning ?? orElse,
       );
+
 
   T maybeMapValue<T>({
     required T orElse,
@@ -114,11 +110,12 @@ enum EnumLogLevel implements Comparable<EnumLogLevel> {
     T? warning,
   }) =>
       mapValue<T>(
-        info: info ?? orElse,
-        debug: debug ?? orElse,
-        error: error ?? orElse,
-        warning: warning ?? orElse,
+      info: info ?? orElse,
+      debug: debug ?? orElse,
+      error: error ?? orElse,
+      warning: warning ?? orElse,
       );
+
 
   T? maybeMapOrNull<T>({
     T Function()? info,
@@ -134,6 +131,7 @@ enum EnumLogLevel implements Comparable<EnumLogLevel> {
         warning: warning,
       );
 
+
   T? maybeMapOrNullValue<T>({
     T? info,
     T? debug,
@@ -148,16 +146,21 @@ enum EnumLogLevel implements Comparable<EnumLogLevel> {
         warning: warning,
       );
 
-  static List<String> getListValue() =>
-      EnumLogLevel.values.map((e) => e.value).toList();
+
+  static List<String> getListValue() => EnumLogLevel.values.map((e) => e.value).toList();
+
 
   @override
   int compareTo(EnumLogLevel other) => index.compareTo(other.index);
+
+ 
+
+
+}
+extension $EnumLogLevel on EnumLogLevel {
+bool get isInfo => this == EnumLogLevel.info;
+bool get isDebug => this == EnumLogLevel.debug;
+bool get isError => this == EnumLogLevel.error;
+bool get isWarning => this == EnumLogLevel.warning;
 }
 
-extension $EnumLogLevel on EnumLogLevel {
-  bool get isInfo => this == EnumLogLevel.info;
-  bool get isDebug => this == EnumLogLevel.debug;
-  bool get isError => this == EnumLogLevel.error;
-  bool get isWarning => this == EnumLogLevel.warning;
-}

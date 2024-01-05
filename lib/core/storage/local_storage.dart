@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:dartlog/dartlog.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
+import 'package:kidneysmart/feature/setting/notifier/setting_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -44,6 +45,19 @@ class LocalStorage {
 
   void setDebugState(DebugState value) {
     return setJson(key: _debugState, value: value.toJson());
+  }
+
+// ******************************
+// ******************************
+// ******************************
+  static const _settingState = '_settingState';
+
+  SettingState getSettingState() {
+    return SettingState.fromJson(getJson(key: _settingState));
+  }
+
+  void setSettingState(SettingState value) {
+    return setJson(key: _settingState, value: value.toJson());
   }
 
 // ******************************
