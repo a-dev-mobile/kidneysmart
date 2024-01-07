@@ -82,7 +82,7 @@ Future<void> initializeApp() async {
 
     _networkClient = NetworkClient(
       userAgent: _appDevice.userAgent,
-      baseUrl: '',
+
       router: _appRouter,
     );
   } catch (e, s) {

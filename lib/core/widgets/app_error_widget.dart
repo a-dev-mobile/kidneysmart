@@ -18,9 +18,7 @@ class AppErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const DefaultAppBar(
-        title: '',
-      ),
+    
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Center(

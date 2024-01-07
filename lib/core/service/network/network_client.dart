@@ -18,7 +18,6 @@ NetworkClient networkClient(NetworkClientRef ref) =>
 
 class NetworkClient {
   NetworkClient({
-    required String baseUrl,
     required AppRouter router,
     required String userAgent,
     Duration connectTimeout = const Duration(seconds: 30),
@@ -26,7 +25,6 @@ class NetworkClient {
   })  : _go = router,
         _dio = Dio(
           BaseOptions(
-            baseUrl: baseUrl,
             connectTimeout: connectTimeout,
             receiveTimeout: receiveTimeout,
           ),
@@ -45,7 +43,7 @@ class NetworkClient {
 
   Future<Response<T>> request<T>({
     required EnumHttpMethod method,
-    required String endPoint,
+    required String url,
     Map<String, dynamic>? params,
     Options? options,
     dynamic body,
@@ -54,61 +52,81 @@ class NetworkClient {
       switch (method) {
         case EnumHttpMethod.post:
           return await _dio.post<T>(
-            endPoint,
+            url,
             queryParameters: params,
             options: options,
             data: body,
           );
         case EnumHttpMethod.get:
           return await _dio.get<T>(
-            endPoint,
+            url,
             queryParameters: params,
             options: options,
           );
         case EnumHttpMethod.patch:
           return await _dio.patch<T>(
-            endPoint,
+            url,
             queryParameters: params,
             options: options,
             data: body,
           );
       }
     } on DioException catch (e) {
-      return _handleDioException(e, endPoint);
+      return _handleDioException(e, url);
       // Return an empty Response<T> in case of an error
     } catch (e, stackTrace) {
-      return _handleGenericException(e, stackTrace, endPoint);
+      return _handleGenericException(e, stackTrace, url);
       // Re-throw or handle generic exceptions
     }
   }
 
   Response<T> _handleDioException<T>(DioException e, String endPoint) {
-    // Report the error to Firebase Crashlytics
-    // ErrorHandler()
-    // .reportError(e, e.stackTrace, severity: ErrorSeverity.warning);
+    // Log and report the error
+    Logger.debug(endPoint, e.error, e.stackTrace);
+    // ErrorHandler().reportError(e, e.stackTrace, severity: ErrorSeverity.warning);
 
-    // Log the error for debugging purposes
-    Logger.debug(
-      endPoint,
-      e.error,
-      e.stackTrace,
-    );
+    // Default values for Response
+    var statusCode = 500; // Default status code for errors without a response
+    String? statusMessage = 'No response received';
+    T? responseData;
+
+    // Check if the response is available
+    if (e.response != null) {
+      statusCode = e.response!.statusCode ?? statusCode;
+      statusMessage = e.response!.statusMessage ?? statusMessage;
+
+      // Check if the data is of type T and assign it
+      if (e.response!.data != null && e.response!.data is T) {
+        responseData = e.response!.data as T;
+      } else {
+        // Handle cases where data is not of type T
+        // For example, log this situation or assign a default value
+      }
+    }
 
     // Handle specific DioException types
     if (e.type == DioExceptionType.connectionTimeout) {
       // Handle connection timeout
-      _showError(); // Or any other appropriate action
+      _showError();
     } else if (e.type == DioExceptionType.receiveTimeout) {
       // Handle receive timeout
-      _showError(); // Or any other appropriate action
-    } else {
       _showError();
-    }
-    // Return a Response object indicating an error
+    } 
+
+    // Return the Response object with appropriate data
     return Response<T>(
       requestOptions: RequestOptions(path: endPoint),
-      statusCode: e.response?.statusCode,
+      statusCode: statusCode,
+      statusMessage: statusMessage,
+      data: responseData,
     );
+  }
+
+  Future<void> _showError() async {
+    // Implement error display logic here
+    // For example, show an error message or navigate to an error page
+    await Future<void>.delayed(const Duration(seconds: 0));
+    // _go.router.goNamed(FailureInternet.name);
   }
 
   Response<T> _handleGenericException<T>(
@@ -135,11 +153,5 @@ class NetworkClient {
     return Response<T>(
       requestOptions: RequestOptions(path: endPoint),
     );
-  }
-
-  Future<void> _showError() async {
-    // Show error message or navigate to error page
-    await Future<void>.delayed(const Duration(seconds: 3));
-    // _go.router.goNamed(FailureInternet.name);
   }
 }

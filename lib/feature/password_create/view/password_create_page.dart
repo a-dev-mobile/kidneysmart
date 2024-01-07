@@ -9,20 +9,21 @@ import 'package:kidneysmart/feature/login/view/login_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
 
-import 'package:kidneysmart/feature/welcome/notifier/welcome_notifier.dart';
+
+import 'package:kidneysmart/feature/password_create/notifier/password_create_notifier.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key});
+class PasswordCreatePage extends StatelessWidget {
+  const PasswordCreatePage({super.key});
 
-  static const path = '/WelcomePage';
-  static const name = 'WelcomePage';
+  static const path = '/PasswordCreatePage';
+  static const name = 'PasswordCreatePage';
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBar(title: 'Добро пожаловать'),
+      appBar: CustomAppBar(title: 'Создать новый пароль'),
       body: _View(),
     );
   }
@@ -32,35 +33,26 @@ class _View extends ConsumerWidget {
   const _View();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(welcomeNotifierProvider);
+    final state = ref.watch(passwordCreateNotifierProvider);
     final widthScreen = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         ListView(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Питание при ХБП',
-                  style: AppTextStyle.s30w400h40,
-                ),
-                SvgPicture.asset(AssetPaths.logoSvg),
-              ],
-            ),
-            const Text(
-              '(ХБП - хроническая болезнь почек)',
-              style: AppTextStyle.s14w500h16,
-            ),
+         
+          
             const SizedBox(height: 16),
-            const Text(
-              'Поздравляем! Вы сделали новый шаг на пути к более здоровому образу жизни',
-            ),
             SvgPicture.asset(
               AssetPaths.remindYouSvg,
               width: 200,
             ),
-            const SizedBox(height: 150),
+                const Text(
+                  'Пожалуйста введите новый пароль',
+                  style: AppTextStyle.s30w400h40,
+                ),
+            TextField(),
+            TextField(),
+            const SizedBox(height: 100),
           ],
         ),
         Positioned(
@@ -71,10 +63,7 @@ class _View extends ConsumerWidget {
             color: Theme.of(context).colorScheme.background,
             child: Column(
               children: [
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('Политика конфиденциальности'),
-                ),
+              
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -84,7 +73,7 @@ class _View extends ConsumerWidget {
                           .router
                           .pushNamed<void>(LoginPage.name);
                     },
-                    child: const Text('Начать'),
+                    child: const Text('Проверить'),
                   ),
                 ),
               ],

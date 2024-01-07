@@ -10,9 +10,12 @@ import 'package:kidneysmart/feature/login/view/login_page.dart';
 import 'package:kidneysmart/feature/overlay/view/app_update_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/no_internet_widget.dart';
+import 'package:kidneysmart/feature/password_create/view/password_create_page.dart';
+import 'package:kidneysmart/feature/password_entry/view/password_entry_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
+import 'package:kidneysmart/feature/verification_code/view/verification_code_page.dart';
 import 'package:kidneysmart/feature/welcome/view/welcome_page.dart';
 import 'package:kidneysmart/navigation/custom_router_observer.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -76,6 +79,33 @@ class AppRouter {
             key: state.pageKey,
             name: state.name,
             child: const DebugMenuPage(),
+          ),
+        ),
+        GoRoute(
+          path: PasswordCreatePage.path,
+          name: PasswordCreatePage.name,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.name,
+            child: const PasswordCreatePage(),
+          ),
+        ),
+           GoRoute(
+          path: PasswordEntryPage.path,
+          name: PasswordEntryPage.name,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.name,
+            child: const PasswordEntryPage(),
+          ),
+        ),
+          GoRoute(
+          path: VerificationCodePage.path,
+          name: VerificationCodePage.name,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.name,
+            child: const VerificationCodePage(),
           ),
         ),
         GoRoute(

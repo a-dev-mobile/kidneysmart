@@ -96,6 +96,7 @@ dependencies:
     # path: c:/DEV/MY/MY_GITHUB/apk_opener_plugin
 
 
+  flutter_keyboard_visibility: ^6.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -110,7 +111,6 @@ dev_dependencies:
   freezed: ^2.4.6
   build_runner: ^2.4.7
   json_serializable: ^6.7.1
-
 
   turn_gen: ^2.1.1
   # turn_gen:

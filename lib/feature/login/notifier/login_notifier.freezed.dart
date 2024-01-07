@@ -21,6 +21,7 @@ LoginState _$LoginStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LoginState {
   EnumStatus get enumStatus => throw _privateConstructorUsedError;
+  ResponseLogin get response => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,9 @@ abstract class $LoginStateCopyWith<$Res> {
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call({EnumStatus enumStatus, ResponseLogin response});
+
+  $ResponseLoginCopyWith<$Res> get response;
 }
 
 /// @nodoc
@@ -51,13 +54,26 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @override
   $Res call({
     Object? enumStatus = null,
+    Object? response = null,
   }) {
     return _then(_value.copyWith(
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
               as EnumStatus,
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as ResponseLogin,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResponseLoginCopyWith<$Res> get response {
+    return $ResponseLoginCopyWith<$Res>(_value.response, (value) {
+      return _then(_value.copyWith(response: value) as $Val);
+    });
   }
 }
 
@@ -69,7 +85,10 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       __$$LoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call({EnumStatus enumStatus, ResponseLogin response});
+
+  @override
+  $ResponseLoginCopyWith<$Res> get response;
 }
 
 /// @nodoc
@@ -84,12 +103,17 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? enumStatus = null,
+    Object? response = null,
   }) {
     return _then(_$LoginStateImpl(
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
               as EnumStatus,
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as ResponseLogin,
     ));
   }
 }
@@ -97,7 +121,9 @@ class __$$LoginStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LoginStateImpl implements _LoginState {
-  const _$LoginStateImpl({this.enumStatus = EnumStatus.init});
+  const _$LoginStateImpl(
+      {this.enumStatus = EnumStatus.init,
+      this.response = const ResponseLogin()});
 
   factory _$LoginStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginStateImplFromJson(json);
@@ -105,10 +131,13 @@ class _$LoginStateImpl implements _LoginState {
   @override
   @JsonKey()
   final EnumStatus enumStatus;
+  @override
+  @JsonKey()
+  final ResponseLogin response;
 
   @override
   String toString() {
-    return 'LoginState(enumStatus: $enumStatus)';
+    return 'LoginState(enumStatus: $enumStatus, response: $response)';
   }
 
   @override
@@ -117,12 +146,14 @@ class _$LoginStateImpl implements _LoginState {
         (other.runtimeType == runtimeType &&
             other is _$LoginStateImpl &&
             (identical(other.enumStatus, enumStatus) ||
-                other.enumStatus == enumStatus));
+                other.enumStatus == enumStatus) &&
+            (identical(other.response, response) ||
+                other.response == response));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, enumStatus);
+  int get hashCode => Object.hash(runtimeType, enumStatus, response);
 
   @JsonKey(ignore: true)
   @override
@@ -139,13 +170,17 @@ class _$LoginStateImpl implements _LoginState {
 }
 
 abstract class _LoginState implements LoginState {
-  const factory _LoginState({final EnumStatus enumStatus}) = _$LoginStateImpl;
+  const factory _LoginState(
+      {final EnumStatus enumStatus,
+      final ResponseLogin response}) = _$LoginStateImpl;
 
   factory _LoginState.fromJson(Map<String, dynamic> json) =
       _$LoginStateImpl.fromJson;
 
   @override
   EnumStatus get enumStatus;
+  @override
+  ResponseLogin get response;
   @override
   @JsonKey(ignore: true)
   _$$LoginStateImplCopyWith<_$LoginStateImpl> get copyWith =>

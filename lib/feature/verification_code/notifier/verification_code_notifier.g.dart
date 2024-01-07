@@ -1,25 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_notifier.dart';
+part of 'verification_code_notifier.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LoginStateImpl _$$LoginStateImplFromJson(Map<String, dynamic> json) =>
-    _$LoginStateImpl(
+_$VerificationCodeStateImpl _$$VerificationCodeStateImplFromJson(
+        Map<String, dynamic> json) =>
+    _$VerificationCodeStateImpl(
       enumStatus:
           $enumDecodeNullable(_$EnumStatusEnumMap, json['enumStatus']) ??
               EnumStatus.init,
-      response: json['response'] == null
-          ? const ResponseLogin()
-          : ResponseLogin.fromJson(json['response'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$LoginStateImplToJson(_$LoginStateImpl instance) =>
+Map<String, dynamic> _$$VerificationCodeStateImplToJson(
+        _$VerificationCodeStateImpl instance) =>
     <String, dynamic>{
       'enumStatus': _$EnumStatusEnumMap[instance.enumStatus]!,
-      'response': instance.response,
     };
 
 const _$EnumStatusEnumMap = {
@@ -33,21 +31,22 @@ const _$EnumStatusEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loginNotifierHash() => r'a5b6b682099f5f96d046b463fab17b356c541830';
+String _$verificationCodeNotifierHash() =>
+    r'cddf578fe54cff439de3ef72a1cc1660c73905b0';
 
-/// See also [LoginNotifier].
-@ProviderFor(LoginNotifier)
-final loginNotifierProvider =
-    AutoDisposeNotifierProvider<LoginNotifier, LoginState>.internal(
-  LoginNotifier.new,
-  name: r'loginNotifierProvider',
+/// See also [VerificationCodeNotifier].
+@ProviderFor(VerificationCodeNotifier)
+final verificationCodeNotifierProvider = AutoDisposeNotifierProvider<
+    VerificationCodeNotifier, VerificationCodeState>.internal(
+  VerificationCodeNotifier.new,
+  name: r'verificationCodeNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$loginNotifierHash,
+      : _$verificationCodeNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$LoginNotifier = AutoDisposeNotifier<LoginState>;
+typedef _$VerificationCodeNotifier = AutoDisposeNotifier<VerificationCodeState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
