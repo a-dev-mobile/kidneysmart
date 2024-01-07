@@ -248,6 +248,7 @@ class DebugMenuPage extends ConsumerWidget {
                       // if (go.router.canPop()) {
                       // go.router.pop();
                       // }
+                      Navigator.of(context).pop();
 
                       BetterFeedback.of(context).show(
                         (feedback) async {
