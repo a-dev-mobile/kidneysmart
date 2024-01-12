@@ -8,15 +8,15 @@ import 'package:kidneysmart/feature/setting/notifier/setting_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-part 'local_storage.g.dart';
+part 'app_storage.g.dart';
 
 @Riverpod(keepAlive: true)
-LocalStorage localStorage(LocalStorageRef ref) {
+AppStorage appStorage(AppStorageRef ref) {
   return throw UnimplementedError('init with override');
 }
 
-class LocalStorage {
-  LocalStorage({
+class AppStorage {
+  AppStorage({
     required SharedPreferences sharedPreferences,
     bool isShowLog = false,
   })  : _prefs = sharedPreferences,
@@ -34,6 +34,18 @@ class LocalStorage {
 
   void setAppId(String? value) {
     setString(key: _appId, value: value ?? '');
+  }
+
+// ******************************  
+//// ******************************
+  static const _email = '_email';
+
+  String getEmail() {
+    return getString(key: _email);
+  }
+
+  void setEmail(String? value) {
+    setString(key: _email, value: value ?? '');
   }
 
 // ******************************
@@ -182,12 +194,13 @@ class LocalStorage {
     return json.decode(jsonString) as Map<String, dynamic>;
   }
 
-  void clearAll() {
+  Future<void> clearAll() async {
     try {
-      _prefs.clear();
+      await _prefs.clear();
       _log('CLEAR', 'All Data', 'All data cleared');
     } catch (e, s) {
       _recordError(e, s, 'CLEAR', 'All Data', 'Failed to clear all data');
     }
   }
+
 }

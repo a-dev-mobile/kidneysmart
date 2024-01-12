@@ -20,7 +20,9 @@ LoginState _$LoginStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LoginState {
-  EnumStatus get enumStatus => throw _privateConstructorUsedError;
+  EnumStatus get enumScreenStatus => throw _privateConstructorUsedError;
+  EnumStatus get enumResultStatus => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   ResponseLogin get response => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +37,11 @@ abstract class $LoginStateCopyWith<$Res> {
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call({EnumStatus enumStatus, ResponseLogin response});
+  $Res call(
+      {EnumStatus enumScreenStatus,
+      EnumStatus enumResultStatus,
+      String email,
+      ResponseLogin response});
 
   $ResponseLoginCopyWith<$Res> get response;
 }
@@ -53,14 +59,24 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enumStatus = null,
+    Object? enumScreenStatus = null,
+    Object? enumResultStatus = null,
+    Object? email = null,
     Object? response = null,
   }) {
     return _then(_value.copyWith(
-      enumStatus: null == enumStatus
-          ? _value.enumStatus
-          : enumStatus // ignore: cast_nullable_to_non_nullable
+      enumScreenStatus: null == enumScreenStatus
+          ? _value.enumScreenStatus
+          : enumScreenStatus // ignore: cast_nullable_to_non_nullable
               as EnumStatus,
+      enumResultStatus: null == enumResultStatus
+          ? _value.enumResultStatus
+          : enumResultStatus // ignore: cast_nullable_to_non_nullable
+              as EnumStatus,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
       response: null == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -85,7 +101,11 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       __$$LoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EnumStatus enumStatus, ResponseLogin response});
+  $Res call(
+      {EnumStatus enumScreenStatus,
+      EnumStatus enumResultStatus,
+      String email,
+      ResponseLogin response});
 
   @override
   $ResponseLoginCopyWith<$Res> get response;
@@ -102,14 +122,24 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enumStatus = null,
+    Object? enumScreenStatus = null,
+    Object? enumResultStatus = null,
+    Object? email = null,
     Object? response = null,
   }) {
     return _then(_$LoginStateImpl(
-      enumStatus: null == enumStatus
-          ? _value.enumStatus
-          : enumStatus // ignore: cast_nullable_to_non_nullable
+      enumScreenStatus: null == enumScreenStatus
+          ? _value.enumScreenStatus
+          : enumScreenStatus // ignore: cast_nullable_to_non_nullable
               as EnumStatus,
+      enumResultStatus: null == enumResultStatus
+          ? _value.enumResultStatus
+          : enumResultStatus // ignore: cast_nullable_to_non_nullable
+              as EnumStatus,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
       response: null == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -122,7 +152,9 @@ class __$$LoginStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LoginStateImpl implements _LoginState {
   const _$LoginStateImpl(
-      {this.enumStatus = EnumStatus.init,
+      {this.enumScreenStatus = EnumStatus.init,
+      this.enumResultStatus = EnumStatus.init,
+      this.email = '',
       this.response = const ResponseLogin()});
 
   factory _$LoginStateImpl.fromJson(Map<String, dynamic> json) =>
@@ -130,14 +162,20 @@ class _$LoginStateImpl implements _LoginState {
 
   @override
   @JsonKey()
-  final EnumStatus enumStatus;
+  final EnumStatus enumScreenStatus;
+  @override
+  @JsonKey()
+  final EnumStatus enumResultStatus;
+  @override
+  @JsonKey()
+  final String email;
   @override
   @JsonKey()
   final ResponseLogin response;
 
   @override
   String toString() {
-    return 'LoginState(enumStatus: $enumStatus, response: $response)';
+    return 'LoginState(enumScreenStatus: $enumScreenStatus, enumResultStatus: $enumResultStatus, email: $email, response: $response)';
   }
 
   @override
@@ -145,15 +183,19 @@ class _$LoginStateImpl implements _LoginState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginStateImpl &&
-            (identical(other.enumStatus, enumStatus) ||
-                other.enumStatus == enumStatus) &&
+            (identical(other.enumScreenStatus, enumScreenStatus) ||
+                other.enumScreenStatus == enumScreenStatus) &&
+            (identical(other.enumResultStatus, enumResultStatus) ||
+                other.enumResultStatus == enumResultStatus) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.response, response) ||
                 other.response == response));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, enumStatus, response);
+  int get hashCode => Object.hash(
+      runtimeType, enumScreenStatus, enumResultStatus, email, response);
 
   @JsonKey(ignore: true)
   @override
@@ -171,14 +213,20 @@ class _$LoginStateImpl implements _LoginState {
 
 abstract class _LoginState implements LoginState {
   const factory _LoginState(
-      {final EnumStatus enumStatus,
+      {final EnumStatus enumScreenStatus,
+      final EnumStatus enumResultStatus,
+      final String email,
       final ResponseLogin response}) = _$LoginStateImpl;
 
   factory _LoginState.fromJson(Map<String, dynamic> json) =
       _$LoginStateImpl.fromJson;
 
   @override
-  EnumStatus get enumStatus;
+  EnumStatus get enumScreenStatus;
+  @override
+  EnumStatus get enumResultStatus;
+  @override
+  String get email;
   @override
   ResponseLogin get response;
   @override

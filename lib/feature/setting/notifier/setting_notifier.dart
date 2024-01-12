@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_page_status.dart';
-import 'package:kidneysmart/core/storage/local_storage.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:kidneysmart/feature/setting/enum/enum_theme.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -12,7 +12,7 @@ part 'setting_state.dart';
 
 @Riverpod(keepAlive: true)
 class SettingNotifier extends _$SettingNotifier {
-  late final _storage = ref.read(localStorageProvider);
+  late final _storage = ref.read(appStorageProvider);
   @override
   SettingState build() {
     return _storage.getSettingState();

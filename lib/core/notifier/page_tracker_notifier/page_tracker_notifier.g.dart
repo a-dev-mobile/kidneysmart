@@ -23,7 +23,7 @@ Map<String, dynamic> _$$PageTrackerStateImplToJson(
 // **************************************************************************
 
 String _$pageTrackerNotifierHash() =>
-    r'ba37ba8f7566738c859f28846476286fec8803c5';
+    r'b5965ec61a2c9bcc6e60bf33495d0badb8239a98';
 
 /// See also [PageTrackerNotifier].
 @ProviderFor(PageTrackerNotifier)

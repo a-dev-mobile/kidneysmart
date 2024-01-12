@@ -1,7 +1,7 @@
 // ignore_for_file: noop_primitive_operations, avoid_print
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kidneysmart/core/storage/local_storage.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'page_tracker_notifier.freezed.dart';
@@ -21,7 +21,7 @@ class PageTrackerNotifier extends _$PageTrackerNotifier {
     return const PageTrackerState();
   }
 
-  late final _storage = ref.read(localStorageProvider);
+  late final _storage = ref.read(appStorageProvider);
   void setPage(String? page) {
     state = state.copyWith(page: page);
 

@@ -8,9 +8,13 @@ part of 'login_notifier.dart';
 
 _$LoginStateImpl _$$LoginStateImplFromJson(Map<String, dynamic> json) =>
     _$LoginStateImpl(
-      enumStatus:
-          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumStatus']) ??
+      enumScreenStatus:
+          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumScreenStatus']) ??
               EnumStatus.init,
+      enumResultStatus:
+          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumResultStatus']) ??
+              EnumStatus.init,
+      email: json['email'] as String? ?? '',
       response: json['response'] == null
           ? const ResponseLogin()
           : ResponseLogin.fromJson(json['response'] as Map<String, dynamic>),
@@ -18,7 +22,9 @@ _$LoginStateImpl _$$LoginStateImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$LoginStateImplToJson(_$LoginStateImpl instance) =>
     <String, dynamic>{
-      'enumStatus': _$EnumStatusEnumMap[instance.enumStatus]!,
+      'enumScreenStatus': _$EnumStatusEnumMap[instance.enumScreenStatus]!,
+      'enumResultStatus': _$EnumStatusEnumMap[instance.enumResultStatus]!,
+      'email': instance.email,
       'response': instance.response,
     };
 
@@ -33,7 +39,7 @@ const _$EnumStatusEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loginNotifierHash() => r'a5b6b682099f5f96d046b463fab17b356c541830';
+String _$loginNotifierHash() => r'60eec63ce35572d4a1c5a06892b724c5e8abe328';
 
 /// See also [LoginNotifier].
 @ProviderFor(LoginNotifier)

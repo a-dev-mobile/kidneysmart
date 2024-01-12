@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_project.dart';
 import 'package:kidneysmart/core/enum/enum_store.dart';
 import 'package:dartlog/dartlog.dart';
-import 'package:kidneysmart/core/storage/local_storage.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
 
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -19,7 +19,7 @@ part 'debug_notifier.freezed.dart';
 
 @Riverpod(keepAlive: true)
 class DebugNotifier extends _$DebugNotifier {
-  late final _storage = ref.read(localStorageProvider);
+  late final _storage = ref.read(appStorageProvider);
 
   @override
   DebugState build() {

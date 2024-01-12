@@ -4,15 +4,15 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:kidneysmart/core/service/network/network.dart';
-import 'package:kidneysmart/core/storage/local_storage.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
 
 class ApiClient {
   ApiClient({
     required NetworkClient client,
-    required LocalStorage storage,
+    required AppStorage storage,
   })  : _client = client,
         _storage = storage;
-  final LocalStorage _storage;
+  final AppStorage _storage;
   final NetworkClient _client;
 
   Future<void> uploadImage({

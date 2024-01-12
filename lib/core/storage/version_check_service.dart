@@ -1,13 +1,13 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:dartlog/dartlog.dart';
-import 'package:kidneysmart/core/storage/local_storage.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:path_provider/path_provider.dart';
 
 class VersionCheckService {
-  VersionCheckService({required LocalStorage storage}) : _storage = storage;
+  VersionCheckService({required AppStorage storage}) : _storage = storage;
 
-  final LocalStorage _storage;
+  final AppStorage _storage;
 
   // Method for checking and updating the version
   Future<void> checkVersionAndUpdateIfNeeded(String currentVersion) async {

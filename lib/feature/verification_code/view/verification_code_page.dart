@@ -9,7 +9,6 @@ import 'package:kidneysmart/feature/login/view/login_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
 
-
 import 'package:kidneysmart/feature/verification_code/notifier/verification_code_notifier.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
@@ -49,7 +48,6 @@ class _View extends ConsumerWidget {
                 SvgPicture.asset(AssetPaths.logoSvg),
               ],
             ),
-          
             const SizedBox(height: 16),
             SvgPicture.asset(
               AssetPaths.remindYouSvg,
@@ -67,7 +65,6 @@ class _View extends ConsumerWidget {
             color: Theme.of(context).colorScheme.background,
             child: Column(
               children: [
-              
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(

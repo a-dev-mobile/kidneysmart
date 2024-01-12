@@ -16,12 +16,12 @@ import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_not
 import 'package:kidneysmart/core/observer/provider_observer.dart';
 import 'package:kidneysmart/core/service/app_device/app_device.dart';
 import 'package:kidneysmart/core/service/network/network.dart';
-import 'package:kidneysmart/core/storage/local_storage.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:kidneysmart/firebase_options.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-late final LocalStorage _localStorage;
+late final AppStorage _localStorage;
 late final PageTrackerNotifier _pageTrackerNotifier;
 late final AppRouter _appRouter;
 late final AppDevice _appDevice;
@@ -45,7 +45,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
             overrides: [
               pageTrackerNotifierProvider
                   .overrideWith(() => _pageTrackerNotifier),
-              localStorageProvider.overrideWithValue(_localStorage),
+              appStorageProvider.overrideWithValue(_localStorage),
               appRouterProvider.overrideWithValue(_appRouter),
               networkClientProvider.overrideWithValue(_networkClient),
               appDeviceProvider.overrideWithValue(_appDevice),
@@ -73,7 +73,7 @@ Future<void> initializeApp() async {
     final sharedPreferences = await SharedPreferences.getInstance();
 
     _localStorage =
-        LocalStorage(sharedPreferences: sharedPreferences, isShowLog: true);
+        AppStorage(sharedPreferences: sharedPreferences, isShowLog: true);
     _pageTrackerNotifier = PageTrackerNotifier();
     _appRouter = AppRouter(_pageTrackerNotifier);
     // Создание и инициализация AboutDeviceNotifier
@@ -82,7 +82,6 @@ Future<void> initializeApp() async {
 
     _networkClient = NetworkClient(
       userAgent: _appDevice.userAgent,
-
       router: _appRouter,
     );
   } catch (e, s) {

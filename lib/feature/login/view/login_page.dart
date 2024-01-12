@@ -1,12 +1,15 @@
+import 'package:dartlog/dartlog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
 import 'package:kidneysmart/core/extension/common.dart';
+import 'package:kidneysmart/core/widgets/app_load_widget.dart';
 import 'package:kidneysmart/core/widgets/clean_focus.dart';
 import 'package:kidneysmart/core/widgets/default_app_bar.dart';
 import 'package:kidneysmart/core/widgets/keyboard_auto_scroll_widget.dart';
+import 'package:kidneysmart/feature/login/view/widget/field_email.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
 
@@ -22,21 +25,73 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const ClearFocus(
+    final status =
+        ref.watch(loginNotifierProvider.select((it) => it.enumScreenStatus));
+    return ClearFocus(
       child: Scaffold(
-        appBar: CustomAppBar(title: 'Войти/регистрация'),
-        body: _View(),
+        appBar: const CustomAppBar(title: 'Войти/регистрация'),
+        body: status.mapValue(
+            init: const AppLoadWidget(),
+            load: const AppLoadWidget(),
+            success: const _View(),
+            error: const AppLoadWidget()),
       ),
     );
   }
 }
 
-class _View extends ConsumerWidget {
-  const _View();
+/// {@template login_page}
+/// _View widget
+/// {@endtemplate}
+class _View extends ConsumerStatefulWidget {
+  /// {@macro login_page}
+  const _View({super.key});
+
+  static const path = '/_View';
+  static const name = '_View';
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(loginNotifierProvider);
+  ConsumerState<ConsumerStatefulWidget> createState() => __ViewState();
+}
+
+/// State for widget _View
+class __ViewState extends ConsumerState<_View> {
+  /* #region Lifecycle */
+  @override
+  void initState() {
+    super.initState();
+    // Initial state initialization
+  }
+
+  @override
+  void didUpdateWidget(_View oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Widget configuration changed
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // The configuration of InheritedWidgets has changed
+    // Also called after initState but before build
+  }
+
+  @override
+  void dispose() {
+    // Permanent removal of a tree stent
+    super.dispose();
+  }
+
+  /* #endregion */
+  final GlobalKey<FieldEmailState> _emailFieldKey = GlobalKey();
+  @override
+  Widget build(BuildContext context) {
+    final status =
+        ref.watch(loginNotifierProvider.select((it) => it.enumResultStatus));
+
+    final state = ref.read(loginNotifierProvider);
     final notifier = ref.read(loginNotifierProvider.notifier);
+    
     final widthScreen = MediaQuery.of(context).size.width;
 
     final scrollController = ScrollController();
@@ -61,12 +116,21 @@ class _View extends ConsumerWidget {
               ),
               // Email TextField
               const SizedBox(height: 16),
-              const TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  hintText: 'Введите ваш email',
-                ),
-                keyboardType: TextInputType.emailAddress,
+              const SizedBox(height: 16),
+              const SizedBox(height: 16),
+              const SizedBox(height: 16),
+              const SizedBox(height: 16),
+              const SizedBox(height: 16),
+              const SizedBox(height: 16),
+              const SizedBox(height: 16),
+              const SizedBox(height: 16),
+              const SizedBox(height: 16),
+              const SizedBox(height: 16),
+
+              FieldEmail(
+                key: _emailFieldKey,
+                initialValue: state.email,
+                onChanged: notifier.saveEmailLocal,
               ),
 
               TextButton(onPressed: () {}, child: const Text('Пропустить')),
@@ -85,7 +149,12 @@ class _View extends ConsumerWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        notifier.login(email: 'dev.mobile@yandex.ru');
+                        final isValid =
+                            _emailFieldKey.currentState?.validate() ?? false;
+                        if (isValid) {
+                          // Если валидация успешна, продолжаем обработку
+                          notifier.login();
+                        }
                       },
                       child: const Text('Продолжить'),
                     ),

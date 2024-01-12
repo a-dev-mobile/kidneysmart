@@ -90,7 +90,7 @@ class AppRouter {
             child: const PasswordCreatePage(),
           ),
         ),
-           GoRoute(
+        GoRoute(
           path: PasswordEntryPage.path,
           name: PasswordEntryPage.name,
           pageBuilder: (context, state) => MaterialPage(
@@ -99,7 +99,7 @@ class AppRouter {
             child: const PasswordEntryPage(),
           ),
         ),
-          GoRoute(
+        GoRoute(
           path: VerificationCodePage.path,
           name: VerificationCodePage.name,
           pageBuilder: (context, state) => MaterialPage(

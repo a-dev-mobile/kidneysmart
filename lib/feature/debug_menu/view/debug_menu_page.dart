@@ -16,7 +16,7 @@ import 'package:kidneysmart/core/enum/enum_store.dart';
 import 'package:kidneysmart/core/notifier/app_update_check/app_update_notifier.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
-import 'package:kidneysmart/core/storage/local_storage.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
 
 import 'package:kidneysmart/core/widgets/app_error_widget.dart';
 
@@ -25,6 +25,7 @@ import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
 import 'package:kidneysmart/feature/welcome/view/welcome_page.dart';
+import 'package:kidneysmart/navigation/app_router.dart';
 
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -266,17 +267,13 @@ class DebugMenuPage extends ConsumerWidget {
                   ),
                   OutlinedButton(
                     onPressed: () async {
-                      // await _cleanCash(storage);
+                      await savingDebugStateAndCleanLocalStorage(ref);
 
-                      // await remoteCubit.load();
-                      // ignore: use_build_context_synchronously
-                      Navigator.of(context).pop();
-                      // ignore: use_build_context_synchronously
-                      // await context.read<AppRouter>().toAutoRouter(
-                      // storage: storage,
-                      // ignore: use_build_context_synchronously
-                      // client: context.read(),
-                      // );
+                      ref
+                          .read(appRouterProvider)
+                          .router
+                          .goNamed(SplashPage.name);
+                      // await _cleanCash(storage);
                     },
                     child: const Text('RESTART'),
                   ),
@@ -289,12 +286,20 @@ class DebugMenuPage extends ConsumerWidget {
     );
   }
 
+  Future<void> savingDebugStateAndCleanLocalStorage(WidgetRef ref) async {
+    final storage = ref.read(appStorageProvider);
+
+    final debugState = storage.getDebugState();
+    await storage.clearAll();
+    storage.setDebugState(debugState);
+  }
+
   String _getNameStore(EnumStore enumStore) {
     return '${enumStore.name} ${enumStore.vendor}';
   }
 
   void _showCustomDialog(
-    LocalStorage storage,
+    AppStorage storage,
     BuildContext context,
     String title,
   ) {

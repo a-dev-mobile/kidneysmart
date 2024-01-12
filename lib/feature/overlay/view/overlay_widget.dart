@@ -8,6 +8,7 @@ import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
 import 'package:kidneysmart/feature/overlay/view/app_update_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/http_btn_log.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/no_internet_widget.dart';
+import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
@@ -111,7 +112,8 @@ class _BtnActivateDebug extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final page = ref.watch(pageTrackerNotifierProvider).page;
-    final isActiveClickDebug = page == SplashPage.name;
+    final isActiveClickDebug =
+        page == SplashPage.name || page == SettingPage.name;
 
     if (!isActiveClickDebug) return const SizedBox.shrink();
     return GestureDetector(

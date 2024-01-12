@@ -9,7 +9,6 @@ import 'package:kidneysmart/feature/login/view/login_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
 
-
 import 'package:kidneysmart/feature/password_create/notifier/password_create_notifier.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
@@ -39,17 +38,15 @@ class _View extends ConsumerWidget {
       children: [
         ListView(
           children: [
-         
-          
             const SizedBox(height: 16),
             SvgPicture.asset(
               AssetPaths.remindYouSvg,
               width: 200,
             ),
-                const Text(
-                  'Пожалуйста введите новый пароль',
-                  style: AppTextStyle.s30w400h40,
-                ),
+            const Text(
+              'Пожалуйста введите новый пароль',
+              style: AppTextStyle.s30w400h40,
+            ),
             TextField(),
             TextField(),
             const SizedBox(height: 100),
@@ -63,7 +60,6 @@ class _View extends ConsumerWidget {
             color: Theme.of(context).colorScheme.background,
             child: Column(
               children: [
-              
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
