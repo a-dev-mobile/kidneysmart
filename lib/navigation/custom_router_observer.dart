@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:dartlog/dartlog.dart';
 
-import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
+
+import 'package:kidneysmart/core/notifier/screen_tracker_notifier/screen_tracker_notifier.dart';
 
 class CustomRouterObserver extends NavigatorObserver {
-  CustomRouterObserver(this.pageTrackerNotifier);
-  final PageTrackerNotifier pageTrackerNotifier;
+  CustomRouterObserver(this.screenTrackerNotifier);
+  final ScreenTrackerNotifier screenTrackerNotifier;
 
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
@@ -40,7 +41,7 @@ class CustomRouterObserver extends NavigatorObserver {
       try {
         final currentPageName = route.settings.name;
         if (currentPageName != null) {
-          pageTrackerNotifier.setPage(currentPageName);
+          screenTrackerNotifier.setScreen(currentPageName);
         } else {
           Logger.warning('CustomRouterObserver: Route name is null.');
         }

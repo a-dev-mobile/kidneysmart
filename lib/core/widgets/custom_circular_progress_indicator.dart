@@ -4,11 +4,11 @@ class CustomCircularProgressIndicator extends StatelessWidget {
   const CustomCircularProgressIndicator({
     super.key,
     this.strokeWidth = 4.0,
-    this.color = Colors.blue,
+    this.color,
     this.value,
   });
   final double strokeWidth;
-  final Color color;
+  final Color? color;
   final double? value;
 
   @override
@@ -17,7 +17,7 @@ class CustomCircularProgressIndicator extends StatelessWidget {
       child: CircularProgressIndicator(
         strokeWidth: strokeWidth,
         value: value,
-        valueColor: AlwaysStoppedAnimation<Color>(color),
+        valueColor: AlwaysStoppedAnimation<Color>(color??Theme.of(context).colorScheme.primary),
       ),
     );
   }

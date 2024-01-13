@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-/// {@template field_email}
-/// FieldEmail widget with email validation and custom error messages.
+/// {@template field_code}
+/// FieldCode widget for 4-digit code input with custom error messages.
 /// {@endtemplate}
-class FieldEmail extends StatefulWidget {
-  /// {@macro field_email}
-  const FieldEmail({
+class FieldCode extends StatefulWidget {
+  /// {@macro field_code}
+  const FieldCode({
     required this.onChanged,
     super.key,
     this.initialValue,
     this.customError,
   });
 
-  /// Initial value for the email field.
+  /// Initial value for the code field.
   final String? initialValue;
 
   /// Custom error message for validation.
@@ -22,10 +22,10 @@ class FieldEmail extends StatefulWidget {
   final ValueChanged<String> onChanged;
 
   @override
-  FieldEmailState createState() => FieldEmailState();
+  FieldCodeState createState() => FieldCodeState();
 }
 
-class FieldEmailState extends State<FieldEmail> {
+class FieldCodeState extends State<FieldCode> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late TextEditingController _controller;
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
@@ -62,8 +62,8 @@ class FieldEmailState extends State<FieldEmail> {
           }
         },
         decoration: const InputDecoration(
-          labelText: 'Email',
-          hintText: 'Enter your email',
+          labelText: 'Code',
+          hintText: 'Enter your 4-digit code',
         ),
         validator: (value) {
           // Check for custom error first
@@ -71,16 +71,17 @@ class FieldEmailState extends State<FieldEmail> {
               value == widget.initialValue) {
             return widget.customError;
           }
-          // Standard validation
+          // Standard validation for 4-digit code
           if (value == null || value.isEmpty) {
-            return 'Please enter an email';
+            return 'Please enter a code';
           }
-          if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-            return 'Please enter a valid email address';
+          if (!RegExp(r'^\d{4}$').hasMatch(value)) {
+            return 'Please enter a valid 4-digit code';
           }
           return null;
         },
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.number,
+        maxLength: 4,
         autovalidateMode: _autovalidateMode,
       ),
     );

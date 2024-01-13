@@ -10,11 +10,15 @@ class AssetPaths {
   /// * File path: _assets/image/logo.png
   static const String logoImage = 'assets/image/logo.png';
 
+  /// * Size:	14.9 KB
+  /// * File path: _assets/svg/Bored.svg
+  static const String boredSvg = 'assets/svg/Bored.svg';
+
   /// * Size:	5.2 KB
   /// * File path: _assets/svg/load.svg
   static const String loadSvg = 'assets/svg/load.svg';
 
-  /// * Size:	14.9 KB
+  /// * Size:	15.0 KB
   /// * File path: _assets/svg/logo.svg
   static const String logoSvg = 'assets/svg/logo.svg';
 
@@ -22,7 +26,7 @@ class AssetPaths {
   /// * File path: _assets/svg/no_internet.svg
   static const String noInternetSvg = 'assets/svg/no_internet.svg';
 
-  /// * Size:	25.1 KB
+  /// * Size:	25.2 KB
   /// * File path: _assets/svg/remind_you.svg
   static const String remindYouSvg = 'assets/svg/remind_you.svg';
 
@@ -31,6 +35,7 @@ class AssetPaths {
 
   /// List of SVG assets
   static const List<String> valuesSVG = [
+    boredSvg,
     loadSvg,
     logoSvg,
     noInternetSvg,
@@ -40,6 +45,7 @@ class AssetPaths {
   /// List of all assets
   static const List<String> valuesAll = [
     logoImage,
+    boredSvg,
     loadSvg,
     logoSvg,
     noInternetSvg,

@@ -14,7 +14,7 @@ import (
 )
 
 const updateDescription = `
-🎉 новые страницы ееее 🎄
+🎉 Добавил новое 🎄
 `
 func main() {
     fmt.Println("Starting APK upload process...")

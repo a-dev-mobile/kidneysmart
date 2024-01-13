@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:dartlog/dartlog.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
+import 'package:kidneysmart/core/notifier/screen_tracker_notifier/screen_tracker_notifier.dart';
 import 'package:kidneysmart/feature/setting/notifier/setting_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,7 +37,7 @@ class AppStorage {
     setString(key: _appId, value: value ?? '');
   }
 
-// ******************************  
+// ******************************
 //// ******************************
   static const _email = '_email';
 
@@ -46,6 +47,17 @@ class AppStorage {
 
   void setEmail(String? value) {
     setString(key: _email, value: value ?? '');
+  }
+
+//// ******************************
+  static const _ScreenTrackerState = '_ScreenTrackerState';
+
+  ScreenTrackerState getScreenTrackerState() {
+    return ScreenTrackerState.fromJson(getJson(key: _ScreenTrackerState));
+  }
+
+  void setScreenTrackerState(ScreenTrackerState value) {
+    return setJson(key: _ScreenTrackerState, value: value.toJson());
   }
 
 // ******************************
@@ -202,5 +214,4 @@ class AppStorage {
       _recordError(e, s, 'CLEAR', 'All Data', 'Failed to clear all data');
     }
   }
-
 }

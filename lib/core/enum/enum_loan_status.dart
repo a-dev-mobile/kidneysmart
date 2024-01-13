@@ -1,4 +1,3 @@
-
 // turnGen
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
@@ -38,101 +37,109 @@ enum EnumLoanStatus implements Comparable<EnumLoanStatus> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumLoanStatus fromId(int? id, {EnumLoanStatus? fallback,}) {
+  static EnumLoanStatus fromId(
+    int? id, {
+    EnumLoanStatus? fallback,
+  }) {
     switch (id) {
-case -1:
-return unknown;
-case 777:
-return test_user;
-case 0:
-return request;
-case 1:
-return confirmed;
-case 2:
-return active;
-case 3:
-return returned;
-case 4:
-return denied;
-case 5:
-return terminated;
-case 10:
-return processing;
-case 20:
-return extended;
-case 21:
-return overdue;
-case 22:
-return customer_confirmation;
-case 26:
-return awaiting_customer_confirmation;
-case 27:
-return sold;
-case 29:
-return judicial_recovery_starting;
-case 30:
-return judicial_recovery_in_progress;
-case 31:
-return judicial_recovery_finish;
-case 33:
-return judicial_enforcement_proceedings;
-case 35:
-return verification_problem;
-case 36:
-return pco_select_sum;
+      case -1:
+        return unknown;
+      case 777:
+        return test_user;
+      case 0:
+        return request;
+      case 1:
+        return confirmed;
+      case 2:
+        return active;
+      case 3:
+        return returned;
+      case 4:
+        return denied;
+      case 5:
+        return terminated;
+      case 10:
+        return processing;
+      case 20:
+        return extended;
+      case 21:
+        return overdue;
+      case 22:
+        return customer_confirmation;
+      case 26:
+        return awaiting_customer_confirmation;
+      case 27:
+        return sold;
+      case 29:
+        return judicial_recovery_starting;
+      case 30:
+        return judicial_recovery_in_progress;
+      case 31:
+        return judicial_recovery_finish;
+      case 33:
+        return judicial_enforcement_proceedings;
+      case 35:
+        return verification_problem;
+      case 36:
+        return pco_select_sum;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          id, 'id', 'Value not found in EnumLoanStatus',));
+        return fallback ??
+            (throw ArgumentError.value(
+              id,
+              'id',
+              'Value not found in EnumLoanStatus',
+            ));
     }
   }
 
-  static EnumLoanStatus? fromIdOrNull(int? id,) {
+  static EnumLoanStatus? fromIdOrNull(
+    int? id,
+  ) {
     switch (id) {
-case -1:
-return unknown;
-case 777:
-return test_user;
-case 0:
-return request;
-case 1:
-return confirmed;
-case 2:
-return active;
-case 3:
-return returned;
-case 4:
-return denied;
-case 5:
-return terminated;
-case 10:
-return processing;
-case 20:
-return extended;
-case 21:
-return overdue;
-case 22:
-return customer_confirmation;
-case 26:
-return awaiting_customer_confirmation;
-case 27:
-return sold;
-case 29:
-return judicial_recovery_starting;
-case 30:
-return judicial_recovery_in_progress;
-case 31:
-return judicial_recovery_finish;
-case 33:
-return judicial_enforcement_proceedings;
-case 35:
-return verification_problem;
-case 36:
-return pco_select_sum;
+      case -1:
+        return unknown;
+      case 777:
+        return test_user;
+      case 0:
+        return request;
+      case 1:
+        return confirmed;
+      case 2:
+        return active;
+      case 3:
+        return returned;
+      case 4:
+        return denied;
+      case 5:
+        return terminated;
+      case 10:
+        return processing;
+      case 20:
+        return extended;
+      case 21:
+        return overdue;
+      case 22:
+        return customer_confirmation;
+      case 26:
+        return awaiting_customer_confirmation;
+      case 27:
+        return sold;
+      case 29:
+        return judicial_recovery_starting;
+      case 30:
+        return judicial_recovery_in_progress;
+      case 31:
+        return judicial_recovery_finish;
+      case 33:
+        return judicial_enforcement_proceedings;
+      case 35:
+        return verification_problem;
+      case 36:
+        return pco_select_sum;
       default:
         return null;
     }
   }
-
 
   T map<T>({
     required T Function() unknown,
@@ -200,7 +207,6 @@ return pco_select_sum;
     }
   }
 
-
   T mapValue<T>({
     required T unknown,
     required T test_user,
@@ -267,7 +273,6 @@ return pco_select_sum;
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? unknown,
@@ -292,28 +297,29 @@ return pco_select_sum;
     T Function()? pco_select_sum,
   }) =>
       map<T>(
-      unknown: unknown ?? orElse,
-      test_user: test_user ?? orElse,
-      request: request ?? orElse,
-      confirmed: confirmed ?? orElse,
-      active: active ?? orElse,
-      returned: returned ?? orElse,
-      denied: denied ?? orElse,
-      terminated: terminated ?? orElse,
-      processing: processing ?? orElse,
-      extended: extended ?? orElse,
-      overdue: overdue ?? orElse,
-      customer_confirmation: customer_confirmation ?? orElse,
-      awaiting_customer_confirmation: awaiting_customer_confirmation ?? orElse,
-      sold: sold ?? orElse,
-      judicial_recovery_starting: judicial_recovery_starting ?? orElse,
-      judicial_recovery_in_progress: judicial_recovery_in_progress ?? orElse,
-      judicial_recovery_finish: judicial_recovery_finish ?? orElse,
-      judicial_enforcement_proceedings: judicial_enforcement_proceedings ?? orElse,
-      verification_problem: verification_problem ?? orElse,
-      pco_select_sum: pco_select_sum ?? orElse,
+        unknown: unknown ?? orElse,
+        test_user: test_user ?? orElse,
+        request: request ?? orElse,
+        confirmed: confirmed ?? orElse,
+        active: active ?? orElse,
+        returned: returned ?? orElse,
+        denied: denied ?? orElse,
+        terminated: terminated ?? orElse,
+        processing: processing ?? orElse,
+        extended: extended ?? orElse,
+        overdue: overdue ?? orElse,
+        customer_confirmation: customer_confirmation ?? orElse,
+        awaiting_customer_confirmation:
+            awaiting_customer_confirmation ?? orElse,
+        sold: sold ?? orElse,
+        judicial_recovery_starting: judicial_recovery_starting ?? orElse,
+        judicial_recovery_in_progress: judicial_recovery_in_progress ?? orElse,
+        judicial_recovery_finish: judicial_recovery_finish ?? orElse,
+        judicial_enforcement_proceedings:
+            judicial_enforcement_proceedings ?? orElse,
+        verification_problem: verification_problem ?? orElse,
+        pco_select_sum: pco_select_sum ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -339,28 +345,29 @@ return pco_select_sum;
     T? pco_select_sum,
   }) =>
       mapValue<T>(
-      unknown: unknown ?? orElse,
-      test_user: test_user ?? orElse,
-      request: request ?? orElse,
-      confirmed: confirmed ?? orElse,
-      active: active ?? orElse,
-      returned: returned ?? orElse,
-      denied: denied ?? orElse,
-      terminated: terminated ?? orElse,
-      processing: processing ?? orElse,
-      extended: extended ?? orElse,
-      overdue: overdue ?? orElse,
-      customer_confirmation: customer_confirmation ?? orElse,
-      awaiting_customer_confirmation: awaiting_customer_confirmation ?? orElse,
-      sold: sold ?? orElse,
-      judicial_recovery_starting: judicial_recovery_starting ?? orElse,
-      judicial_recovery_in_progress: judicial_recovery_in_progress ?? orElse,
-      judicial_recovery_finish: judicial_recovery_finish ?? orElse,
-      judicial_enforcement_proceedings: judicial_enforcement_proceedings ?? orElse,
-      verification_problem: verification_problem ?? orElse,
-      pco_select_sum: pco_select_sum ?? orElse,
+        unknown: unknown ?? orElse,
+        test_user: test_user ?? orElse,
+        request: request ?? orElse,
+        confirmed: confirmed ?? orElse,
+        active: active ?? orElse,
+        returned: returned ?? orElse,
+        denied: denied ?? orElse,
+        terminated: terminated ?? orElse,
+        processing: processing ?? orElse,
+        extended: extended ?? orElse,
+        overdue: overdue ?? orElse,
+        customer_confirmation: customer_confirmation ?? orElse,
+        awaiting_customer_confirmation:
+            awaiting_customer_confirmation ?? orElse,
+        sold: sold ?? orElse,
+        judicial_recovery_starting: judicial_recovery_starting ?? orElse,
+        judicial_recovery_in_progress: judicial_recovery_in_progress ?? orElse,
+        judicial_recovery_finish: judicial_recovery_finish ?? orElse,
+        judicial_enforcement_proceedings:
+            judicial_enforcement_proceedings ?? orElse,
+        verification_problem: verification_problem ?? orElse,
+        pco_select_sum: pco_select_sum ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? unknown,
@@ -408,7 +415,6 @@ return pco_select_sum;
         pco_select_sum: pco_select_sum,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? unknown,
     T? test_user,
@@ -455,37 +461,39 @@ return pco_select_sum;
         pco_select_sum: pco_select_sum,
       );
 
-
-  static List<int> getListId() => EnumLoanStatus.values.map((e) => e.id).toList();
-
+  static List<int> getListId() =>
+      EnumLoanStatus.values.map((e) => e.id).toList();
 
   @override
   int compareTo(EnumLoanStatus other) => index.compareTo(other.index);
-
- 
-
-
 }
+
 extension $EnumLoanStatus on EnumLoanStatus {
-bool get isUnknown => this == EnumLoanStatus.unknown;
-bool get is_test_user => this == EnumLoanStatus.test_user;
-bool get isRequest => this == EnumLoanStatus.request;
-bool get isConfirmed => this == EnumLoanStatus.confirmed;
-bool get isActive => this == EnumLoanStatus.active;
-bool get isReturned => this == EnumLoanStatus.returned;
-bool get isDenied => this == EnumLoanStatus.denied;
-bool get isTerminated => this == EnumLoanStatus.terminated;
-bool get isProcessing => this == EnumLoanStatus.processing;
-bool get isExtended => this == EnumLoanStatus.extended;
-bool get isOverdue => this == EnumLoanStatus.overdue;
-bool get is_customer_confirmation => this == EnumLoanStatus.customer_confirmation;
-bool get is_awaiting_customer_confirmation => this == EnumLoanStatus.awaiting_customer_confirmation;
-bool get isSold => this == EnumLoanStatus.sold;
-bool get is_judicial_recovery_starting => this == EnumLoanStatus.judicial_recovery_starting;
-bool get is_judicial_recovery_in_progress => this == EnumLoanStatus.judicial_recovery_in_progress;
-bool get is_judicial_recovery_finish => this == EnumLoanStatus.judicial_recovery_finish;
-bool get is_judicial_enforcement_proceedings => this == EnumLoanStatus.judicial_enforcement_proceedings;
-bool get is_verification_problem => this == EnumLoanStatus.verification_problem;
-bool get is_pco_select_sum => this == EnumLoanStatus.pco_select_sum;
+  bool get isUnknown => this == EnumLoanStatus.unknown;
+  bool get is_test_user => this == EnumLoanStatus.test_user;
+  bool get isRequest => this == EnumLoanStatus.request;
+  bool get isConfirmed => this == EnumLoanStatus.confirmed;
+  bool get isActive => this == EnumLoanStatus.active;
+  bool get isReturned => this == EnumLoanStatus.returned;
+  bool get isDenied => this == EnumLoanStatus.denied;
+  bool get isTerminated => this == EnumLoanStatus.terminated;
+  bool get isProcessing => this == EnumLoanStatus.processing;
+  bool get isExtended => this == EnumLoanStatus.extended;
+  bool get isOverdue => this == EnumLoanStatus.overdue;
+  bool get is_customer_confirmation =>
+      this == EnumLoanStatus.customer_confirmation;
+  bool get is_awaiting_customer_confirmation =>
+      this == EnumLoanStatus.awaiting_customer_confirmation;
+  bool get isSold => this == EnumLoanStatus.sold;
+  bool get is_judicial_recovery_starting =>
+      this == EnumLoanStatus.judicial_recovery_starting;
+  bool get is_judicial_recovery_in_progress =>
+      this == EnumLoanStatus.judicial_recovery_in_progress;
+  bool get is_judicial_recovery_finish =>
+      this == EnumLoanStatus.judicial_recovery_finish;
+  bool get is_judicial_enforcement_proceedings =>
+      this == EnumLoanStatus.judicial_enforcement_proceedings;
+  bool get is_verification_problem =>
+      this == EnumLoanStatus.verification_problem;
+  bool get is_pco_select_sum => this == EnumLoanStatus.pco_select_sum;
 }
-

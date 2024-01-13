@@ -162,7 +162,8 @@ mixin _$ResponseLogin {
       name: 'status',
       toJson: _loginStatusToJson,
       fromJson: _loginStatusFromJson)
-  EnumLoginStatus? get enumLoginStatus => throw _privateConstructorUsedError;
+  EnumResponseLoginStatus? get enumResponseLoginStatus =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -182,7 +183,7 @@ abstract class $ResponseLoginCopyWith<$Res> {
           name: 'status',
           toJson: _loginStatusToJson,
           fromJson: _loginStatusFromJson)
-      EnumLoginStatus? enumLoginStatus});
+      EnumResponseLoginStatus? enumResponseLoginStatus});
 }
 
 /// @nodoc
@@ -199,17 +200,17 @@ class _$ResponseLoginCopyWithImpl<$Res, $Val extends ResponseLogin>
   @override
   $Res call({
     Object? message = freezed,
-    Object? enumLoginStatus = freezed,
+    Object? enumResponseLoginStatus = freezed,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      enumLoginStatus: freezed == enumLoginStatus
-          ? _value.enumLoginStatus
-          : enumLoginStatus // ignore: cast_nullable_to_non_nullable
-              as EnumLoginStatus?,
+      enumResponseLoginStatus: freezed == enumResponseLoginStatus
+          ? _value.enumResponseLoginStatus
+          : enumResponseLoginStatus // ignore: cast_nullable_to_non_nullable
+              as EnumResponseLoginStatus?,
     ) as $Val);
   }
 }
@@ -228,7 +229,7 @@ abstract class _$$ResponseLoginImplCopyWith<$Res>
           name: 'status',
           toJson: _loginStatusToJson,
           fromJson: _loginStatusFromJson)
-      EnumLoginStatus? enumLoginStatus});
+      EnumResponseLoginStatus? enumResponseLoginStatus});
 }
 
 /// @nodoc
@@ -243,17 +244,17 @@ class __$$ResponseLoginImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
-    Object? enumLoginStatus = freezed,
+    Object? enumResponseLoginStatus = freezed,
   }) {
     return _then(_$ResponseLoginImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      enumLoginStatus: freezed == enumLoginStatus
-          ? _value.enumLoginStatus
-          : enumLoginStatus // ignore: cast_nullable_to_non_nullable
-              as EnumLoginStatus?,
+      enumResponseLoginStatus: freezed == enumResponseLoginStatus
+          ? _value.enumResponseLoginStatus
+          : enumResponseLoginStatus // ignore: cast_nullable_to_non_nullable
+              as EnumResponseLoginStatus?,
     ));
   }
 }
@@ -267,7 +268,7 @@ class _$ResponseLoginImpl implements _ResponseLogin {
           name: 'status',
           toJson: _loginStatusToJson,
           fromJson: _loginStatusFromJson)
-      this.enumLoginStatus});
+      this.enumResponseLoginStatus});
 
   factory _$ResponseLoginImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResponseLoginImplFromJson(json);
@@ -279,11 +280,11 @@ class _$ResponseLoginImpl implements _ResponseLogin {
       name: 'status',
       toJson: _loginStatusToJson,
       fromJson: _loginStatusFromJson)
-  final EnumLoginStatus? enumLoginStatus;
+  final EnumResponseLoginStatus? enumResponseLoginStatus;
 
   @override
   String toString() {
-    return 'ResponseLogin(message: $message, enumLoginStatus: $enumLoginStatus)';
+    return 'ResponseLogin(message: $message, enumResponseLoginStatus: $enumResponseLoginStatus)';
   }
 
   @override
@@ -292,13 +293,15 @@ class _$ResponseLoginImpl implements _ResponseLogin {
         (other.runtimeType == runtimeType &&
             other is _$ResponseLoginImpl &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.enumLoginStatus, enumLoginStatus) ||
-                other.enumLoginStatus == enumLoginStatus));
+            (identical(
+                    other.enumResponseLoginStatus, enumResponseLoginStatus) ||
+                other.enumResponseLoginStatus == enumResponseLoginStatus));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, message, enumLoginStatus);
+  int get hashCode =>
+      Object.hash(runtimeType, message, enumResponseLoginStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -316,12 +319,13 @@ class _$ResponseLoginImpl implements _ResponseLogin {
 
 abstract class _ResponseLogin implements ResponseLogin {
   const factory _ResponseLogin(
-      {final String? message,
-      @JsonKey(
-          name: 'status',
-          toJson: _loginStatusToJson,
-          fromJson: _loginStatusFromJson)
-      final EnumLoginStatus? enumLoginStatus}) = _$ResponseLoginImpl;
+          {final String? message,
+          @JsonKey(
+              name: 'status',
+              toJson: _loginStatusToJson,
+              fromJson: _loginStatusFromJson)
+          final EnumResponseLoginStatus? enumResponseLoginStatus}) =
+      _$ResponseLoginImpl;
 
   factory _ResponseLogin.fromJson(Map<String, dynamic> json) =
       _$ResponseLoginImpl.fromJson;
@@ -333,7 +337,7 @@ abstract class _ResponseLogin implements ResponseLogin {
       name: 'status',
       toJson: _loginStatusToJson,
       fromJson: _loginStatusFromJson)
-  EnumLoginStatus? get enumLoginStatus;
+  EnumResponseLoginStatus? get enumResponseLoginStatus;
   @override
   @JsonKey(ignore: true)
   _$$ResponseLoginImplCopyWith<_$ResponseLoginImpl> get copyWith =>

@@ -17,8 +17,8 @@ import 'package:kidneysmart/core/notifier/app_update_check/app_update_notifier.d
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
 import 'package:kidneysmart/core/storage/app_storage.dart';
+import 'package:kidneysmart/core/widgets/app_error_screen.dart';
 
-import 'package:kidneysmart/core/widgets/app_error_widget.dart';
 
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
@@ -97,6 +97,7 @@ class DebugMenuPage extends ConsumerWidget {
                   _ItemPage(name: 'splash', nameRoute: SplashPage.name),
                   _ItemPage(name: 'welcome', nameRoute: WelcomePage.name),
                   _ItemPage(name: 'setting', nameRoute: SettingPage.name),
+                  _ItemPage(name: 'error', nameRoute: AppErrorScreen.name),
                 ],
               ),
               const SizedBox(height: 30),
@@ -135,12 +136,8 @@ class DebugMenuPage extends ConsumerWidget {
                     name: 'Общие документы',
                     onPressed: () {},
                   ),
-                  _ItemPage(
-                    name: 'Ошибка доступа',
-                    onPressed: () {
-                      GoRouter.of(context).pushNamed<void>(AppErrorWidget.name);
-                    },
-                  ),
+                  
+                  
                   // const _ItemPage(
                   // name: 'Soft Обновление',
                   // nameRoute: UpdateSoftAppPage.name,
@@ -267,12 +264,11 @@ class DebugMenuPage extends ConsumerWidget {
                   ),
                   OutlinedButton(
                     onPressed: () async {
-                      await savingDebugStateAndCleanLocalStorage(ref);
+                      final go = ref.read(appRouterProvider);
 
-                      ref
-                          .read(appRouterProvider)
-                          .router
-                          .goNamed(SplashPage.name);
+                      await go.savingDebugStateAndCleanLocalStorage(ref);
+
+                      go.router.goNamed(SplashPage.name);
                       // await _cleanCash(storage);
                     },
                     child: const Text('RESTART'),
@@ -284,14 +280,6 @@ class DebugMenuPage extends ConsumerWidget {
         ],
       ),
     );
-  }
-
-  Future<void> savingDebugStateAndCleanLocalStorage(WidgetRef ref) async {
-    final storage = ref.read(appStorageProvider);
-
-    final debugState = storage.getDebugState();
-    await storage.clearAll();
-    storage.setDebugState(debugState);
   }
 
   String _getNameStore(EnumStore enumStore) {

@@ -1,4 +1,3 @@
-
 // turnGen
 
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
@@ -20,37 +19,45 @@ enum EnumPaymentSystem implements Comparable<EnumPaymentSystem> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumPaymentSystem fromFirstNumber(String? firstNumber, {EnumPaymentSystem? fallback,}) {
+  static EnumPaymentSystem fromFirstNumber(
+    String? firstNumber, {
+    EnumPaymentSystem? fallback,
+  }) {
     switch (firstNumber) {
-case '2':
-return mir;
-case '4':
-return visa;
-case '5':
-return mastercard;
-case '1':
-return other;
+      case '2':
+        return mir;
+      case '4':
+        return visa;
+      case '5':
+        return mastercard;
+      case '1':
+        return other;
       default:
-        return fallback ?? (throw ArgumentError.value(
-          firstNumber, 'firstNumber', 'Value not found in EnumPaymentSystem',));
+        return fallback ??
+            (throw ArgumentError.value(
+              firstNumber,
+              'firstNumber',
+              'Value not found in EnumPaymentSystem',
+            ));
     }
   }
 
-  static EnumPaymentSystem? fromFirstNumberOrNull(String? firstNumber,) {
+  static EnumPaymentSystem? fromFirstNumberOrNull(
+    String? firstNumber,
+  ) {
     switch (firstNumber) {
-case '2':
-return mir;
-case '4':
-return visa;
-case '5':
-return mastercard;
-case '1':
-return other;
+      case '2':
+        return mir;
+      case '4':
+        return visa;
+      case '5':
+        return mastercard;
+      case '1':
+        return other;
       default:
         return null;
     }
   }
-
 
   T map<T>({
     required T Function() mir,
@@ -70,7 +77,6 @@ return other;
     }
   }
 
-
   T mapValue<T>({
     required T mir,
     required T visa,
@@ -89,7 +95,6 @@ return other;
     }
   }
 
-
   T maybeMap<T>({
     required T Function() orElse,
     T Function()? mir,
@@ -98,12 +103,11 @@ return other;
     T Function()? other,
   }) =>
       map<T>(
-      mir: mir ?? orElse,
-      visa: visa ?? orElse,
-      mastercard: mastercard ?? orElse,
-      other: other ?? orElse,
+        mir: mir ?? orElse,
+        visa: visa ?? orElse,
+        mastercard: mastercard ?? orElse,
+        other: other ?? orElse,
       );
-
 
   T maybeMapValue<T>({
     required T orElse,
@@ -113,12 +117,11 @@ return other;
     T? other,
   }) =>
       mapValue<T>(
-      mir: mir ?? orElse,
-      visa: visa ?? orElse,
-      mastercard: mastercard ?? orElse,
-      other: other ?? orElse,
+        mir: mir ?? orElse,
+        visa: visa ?? orElse,
+        mastercard: mastercard ?? orElse,
+        other: other ?? orElse,
       );
-
 
   T? maybeMapOrNull<T>({
     T Function()? mir,
@@ -134,7 +137,6 @@ return other;
         other: other,
       );
 
-
   T? maybeMapOrNullValue<T>({
     T? mir,
     T? visa,
@@ -149,21 +151,16 @@ return other;
         other: other,
       );
 
-
-  static List<String> getListFirstNumber() => EnumPaymentSystem.values.map((e) => e.firstNumber).toList();
-
+  static List<String> getListFirstNumber() =>
+      EnumPaymentSystem.values.map((e) => e.firstNumber).toList();
 
   @override
   int compareTo(EnumPaymentSystem other) => index.compareTo(other.index);
-
- 
-
-
 }
+
 extension $EnumPaymentSystem on EnumPaymentSystem {
-bool get isMir => this == EnumPaymentSystem.mir;
-bool get isVisa => this == EnumPaymentSystem.visa;
-bool get isMastercard => this == EnumPaymentSystem.mastercard;
-bool get isOther => this == EnumPaymentSystem.other;
+  bool get isMir => this == EnumPaymentSystem.mir;
+  bool get isVisa => this == EnumPaymentSystem.visa;
+  bool get isMastercard => this == EnumPaymentSystem.mastercard;
+  bool get isOther => this == EnumPaymentSystem.other;
 }
-

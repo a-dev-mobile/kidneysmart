@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
-import 'package:kidneysmart/core/extension/common.dart';
+import 'package:kidneysmart/core/extension/gorouter_extension.dart';
 import 'package:kidneysmart/core/widgets/default_app_bar.dart';
 import 'package:kidneysmart/feature/login/view/login_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';

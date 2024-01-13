@@ -1,7 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kidneysmart/feature/login/enum/enum_login.dart';
+import 'package:kidneysmart/feature/login/enum/enum_response_login.dart';
 
 part 'req_res_login.freezed.dart';
 part 'req_res_login.g.dart';
@@ -25,15 +25,15 @@ class ResponseLogin with _$ResponseLogin {
       toJson: _loginStatusToJson,
       fromJson: _loginStatusFromJson,
     )
-    EnumLoginStatus? enumLoginStatus,
+    EnumResponseLoginStatus? enumResponseLoginStatus,
   }) = _ResponseLogin;
 
   factory ResponseLogin.fromJson(Map<String, Object?> json) =>
       _$ResponseLoginFromJson(json);
 }
 
-String? _loginStatusToJson(EnumLoginStatus? status) => status?.name;
+String? _loginStatusToJson(EnumResponseLoginStatus? status) => status?.name;
 
-EnumLoginStatus? _loginStatusFromJson(String? value) {
-  return EnumLoginStatus.fromNameOrNull(value);
+EnumResponseLoginStatus? _loginStatusFromJson(String? value) {
+  return EnumResponseLoginStatus.fromNameOrNull(value);
 }

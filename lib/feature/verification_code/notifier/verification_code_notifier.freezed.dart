@@ -21,7 +21,10 @@ VerificationCodeState _$VerificationCodeStateFromJson(
 
 /// @nodoc
 mixin _$VerificationCodeState {
-  EnumStatus get enumStatus => throw _privateConstructorUsedError;
+  EnumStatus get enumScreenStatus => throw _privateConstructorUsedError;
+  EnumStatus get enumResultStatus => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  ResponseVerificationCode get response => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +38,13 @@ abstract class $VerificationCodeStateCopyWith<$Res> {
           $Res Function(VerificationCodeState) then) =
       _$VerificationCodeStateCopyWithImpl<$Res, VerificationCodeState>;
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call(
+      {EnumStatus enumScreenStatus,
+      EnumStatus enumResultStatus,
+      String email,
+      ResponseVerificationCode response});
+
+  $ResponseVerificationCodeCopyWith<$Res> get response;
 }
 
 /// @nodoc
@@ -52,14 +61,37 @@ class _$VerificationCodeStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enumStatus = null,
+    Object? enumScreenStatus = null,
+    Object? enumResultStatus = null,
+    Object? email = null,
+    Object? response = null,
   }) {
     return _then(_value.copyWith(
-      enumStatus: null == enumStatus
-          ? _value.enumStatus
-          : enumStatus // ignore: cast_nullable_to_non_nullable
+      enumScreenStatus: null == enumScreenStatus
+          ? _value.enumScreenStatus
+          : enumScreenStatus // ignore: cast_nullable_to_non_nullable
               as EnumStatus,
+      enumResultStatus: null == enumResultStatus
+          ? _value.enumResultStatus
+          : enumResultStatus // ignore: cast_nullable_to_non_nullable
+              as EnumStatus,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as ResponseVerificationCode,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResponseVerificationCodeCopyWith<$Res> get response {
+    return $ResponseVerificationCodeCopyWith<$Res>(_value.response, (value) {
+      return _then(_value.copyWith(response: value) as $Val);
+    });
   }
 }
 
@@ -72,7 +104,14 @@ abstract class _$$VerificationCodeStateImplCopyWith<$Res>
       __$$VerificationCodeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call(
+      {EnumStatus enumScreenStatus,
+      EnumStatus enumResultStatus,
+      String email,
+      ResponseVerificationCode response});
+
+  @override
+  $ResponseVerificationCodeCopyWith<$Res> get response;
 }
 
 /// @nodoc
@@ -87,13 +126,28 @@ class __$$VerificationCodeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enumStatus = null,
+    Object? enumScreenStatus = null,
+    Object? enumResultStatus = null,
+    Object? email = null,
+    Object? response = null,
   }) {
     return _then(_$VerificationCodeStateImpl(
-      enumStatus: null == enumStatus
-          ? _value.enumStatus
-          : enumStatus // ignore: cast_nullable_to_non_nullable
+      enumScreenStatus: null == enumScreenStatus
+          ? _value.enumScreenStatus
+          : enumScreenStatus // ignore: cast_nullable_to_non_nullable
               as EnumStatus,
+      enumResultStatus: null == enumResultStatus
+          ? _value.enumResultStatus
+          : enumResultStatus // ignore: cast_nullable_to_non_nullable
+              as EnumStatus,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as ResponseVerificationCode,
     ));
   }
 }
@@ -101,18 +155,31 @@ class __$$VerificationCodeStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$VerificationCodeStateImpl implements _VerificationCodeState {
-  const _$VerificationCodeStateImpl({this.enumStatus = EnumStatus.init});
+  const _$VerificationCodeStateImpl(
+      {this.enumScreenStatus = EnumStatus.init,
+      this.enumResultStatus = EnumStatus.init,
+      this.email = '',
+      this.response = const ResponseVerificationCode()});
 
   factory _$VerificationCodeStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$VerificationCodeStateImplFromJson(json);
 
   @override
   @JsonKey()
-  final EnumStatus enumStatus;
+  final EnumStatus enumScreenStatus;
+  @override
+  @JsonKey()
+  final EnumStatus enumResultStatus;
+  @override
+  @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
+  final ResponseVerificationCode response;
 
   @override
   String toString() {
-    return 'VerificationCodeState(enumStatus: $enumStatus)';
+    return 'VerificationCodeState(enumScreenStatus: $enumScreenStatus, enumResultStatus: $enumResultStatus, email: $email, response: $response)';
   }
 
   @override
@@ -120,13 +187,19 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VerificationCodeStateImpl &&
-            (identical(other.enumStatus, enumStatus) ||
-                other.enumStatus == enumStatus));
+            (identical(other.enumScreenStatus, enumScreenStatus) ||
+                other.enumScreenStatus == enumScreenStatus) &&
+            (identical(other.enumResultStatus, enumResultStatus) ||
+                other.enumResultStatus == enumResultStatus) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.response, response) ||
+                other.response == response));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, enumStatus);
+  int get hashCode => Object.hash(
+      runtimeType, enumScreenStatus, enumResultStatus, email, response);
 
   @JsonKey(ignore: true)
   @override
@@ -144,14 +217,23 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
 }
 
 abstract class _VerificationCodeState implements VerificationCodeState {
-  const factory _VerificationCodeState({final EnumStatus enumStatus}) =
-      _$VerificationCodeStateImpl;
+  const factory _VerificationCodeState(
+      {final EnumStatus enumScreenStatus,
+      final EnumStatus enumResultStatus,
+      final String email,
+      final ResponseVerificationCode response}) = _$VerificationCodeStateImpl;
 
   factory _VerificationCodeState.fromJson(Map<String, dynamic> json) =
       _$VerificationCodeStateImpl.fromJson;
 
   @override
-  EnumStatus get enumStatus;
+  EnumStatus get enumScreenStatus;
+  @override
+  EnumStatus get enumResultStatus;
+  @override
+  String get email;
+  @override
+  ResponseVerificationCode get response;
   @override
   @JsonKey(ignore: true)
   _$$VerificationCodeStateImplCopyWith<_$VerificationCodeStateImpl>

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
-import 'package:kidneysmart/core/extension/common.dart';
+import 'package:kidneysmart/core/extension/gorouter_extension.dart';
 import 'package:kidneysmart/core/utils/enum_utils.dart';
 import 'package:kidneysmart/core/widgets/btn_toggle_text.dart';
 import 'package:kidneysmart/feature/setting/enum/enum_theme.dart';

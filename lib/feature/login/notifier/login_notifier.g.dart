@@ -39,7 +39,7 @@ const _$EnumStatusEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loginNotifierHash() => r'60eec63ce35572d4a1c5a06892b724c5e8abe328';
+String _$loginNotifierHash() => r'094098e1b706ec85fd7e250754648ff43b3b10d5';
 
 /// See also [LoginNotifier].
 @ProviderFor(LoginNotifier)

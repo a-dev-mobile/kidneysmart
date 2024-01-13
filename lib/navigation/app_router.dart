@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
+import 'package:kidneysmart/core/notifier/screen_tracker_notifier/screen_tracker_notifier.dart';
 
 import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
+import 'package:kidneysmart/core/widgets/app_error_screen.dart';
 import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
 import 'package:kidneysmart/feature/login/view/login_page.dart';
 import 'package:kidneysmart/feature/overlay/view/app_update_page.dart';
@@ -28,11 +31,11 @@ AppRouter appRouter(AppRouterRef ref) {
 }
 
 class AppRouter {
-  AppRouter(this.pageTrackerNotifier) {
+  AppRouter(this.screenTrackerNotifier) {
     router = _createRouter();
   }
   late final GoRouter router;
-  final PageTrackerNotifier pageTrackerNotifier;
+  final ScreenTrackerNotifier screenTrackerNotifier;
   GoRouter _createRouter() {
     return GoRouter(
       errorPageBuilder: (context, state) => MaterialPage<void>(
@@ -40,7 +43,9 @@ class AppRouter {
         child: Center(child: Text(state.error.toString())),
       ),
       initialLocation: SplashPage.path,
-      observers: <NavigatorObserver>[CustomRouterObserver(pageTrackerNotifier)],
+      observers: <NavigatorObserver>[
+        CustomRouterObserver(screenTrackerNotifier),
+      ],
       debugLogDiagnostics: true,
       routes: [
         GoRoute(
@@ -70,6 +75,20 @@ class AppRouter {
             name: state.name,
             child: const LoginPage(),
           ),
+        ),
+        GoRoute(
+          path: AppErrorScreen.path,
+          name: AppErrorScreen.name,
+          pageBuilder: (context, state) {
+            final error = state.extra;
+            return MaterialPage(
+              key: state.pageKey,
+              name: state.name,
+              child: AppErrorScreen(
+                error: error,
+              ),
+            );
+          },
         ),
 
         GoRoute(
@@ -154,6 +173,25 @@ class AppRouter {
         // ),
       ],
     );
+  }
+
+  Future<void> savingDebugStateAndCleanLocalStorage(WidgetRef ref) async {
+    final storage = ref.read(appStorageProvider);
+
+    final debugState = storage.getDebugState();
+    await storage.clearAll();
+    storage.setDebugState(debugState);
+  }
+
+  void clearAndNavigate(String name) {
+    while (router.canPop() == true) {
+      router.pop();
+    }
+    router.pushReplacementNamed(name);
+  }
+
+  void pushErrorScreen({Object? extra}) {
+    router.pushNamed(AppErrorScreen.name, extra: extra);
   }
 
   Future<void> toAutoRouter() async {

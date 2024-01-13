@@ -9,15 +9,26 @@ part of 'verification_code_notifier.dart';
 _$VerificationCodeStateImpl _$$VerificationCodeStateImplFromJson(
         Map<String, dynamic> json) =>
     _$VerificationCodeStateImpl(
-      enumStatus:
-          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumStatus']) ??
+      enumScreenStatus:
+          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumScreenStatus']) ??
               EnumStatus.init,
+      enumResultStatus:
+          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumResultStatus']) ??
+              EnumStatus.init,
+      email: json['email'] as String? ?? '',
+      response: json['response'] == null
+          ? const ResponseVerificationCode()
+          : ResponseVerificationCode.fromJson(
+              json['response'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$VerificationCodeStateImplToJson(
         _$VerificationCodeStateImpl instance) =>
     <String, dynamic>{
-      'enumStatus': _$EnumStatusEnumMap[instance.enumStatus]!,
+      'enumScreenStatus': _$EnumStatusEnumMap[instance.enumScreenStatus]!,
+      'enumResultStatus': _$EnumStatusEnumMap[instance.enumResultStatus]!,
+      'email': instance.email,
+      'response': instance.response,
     };
 
 const _$EnumStatusEnumMap = {
@@ -32,7 +43,7 @@ const _$EnumStatusEnumMap = {
 // **************************************************************************
 
 String _$verificationCodeNotifierHash() =>
-    r'cddf578fe54cff439de3ef72a1cc1660c73905b0';
+    r'87b9dc5ab05c57b1b2ec63389b19c274842ae85d';
 
 /// See also [VerificationCodeNotifier].
 @ProviderFor(VerificationCodeNotifier)

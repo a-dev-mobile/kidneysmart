@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
-import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
+import 'package:kidneysmart/core/notifier/screen_tracker_notifier/screen_tracker_notifier.dart';
+
 import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.dart';
 import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
 import 'package:kidneysmart/feature/overlay/view/app_update_page.dart';
@@ -92,14 +93,14 @@ class RouteNameWidget extends ConsumerWidget {
       debugNotifierProvider.select((it) => it.isDebugMenuEnabled),
     );
 
-    final page = ref.watch(pageTrackerNotifierProvider).page;
+    final screen = ref.watch(screenTrackerNotifierProvider).current;
 
-    if (page == null || page.isEmpty || !isDebugMenuEnabled) {
+    if (screen == null || screen.isEmpty || !isDebugMenuEnabled) {
       return const SizedBox.shrink();
     }
     return Material(
       child: Text(
-        page,
+        screen,
         style: AppTextStyle.s12w700h16,
       ),
     );
@@ -111,9 +112,9 @@ class _BtnActivateDebug extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final page = ref.watch(pageTrackerNotifierProvider).page;
+    final screen = ref.watch(screenTrackerNotifierProvider).current;
     final isActiveClickDebug =
-        page == SplashPage.name || page == SettingPage.name;
+        screen == SplashPage.name || screen == SettingPage.name;
 
     if (!isActiveClickDebug) return const SizedBox.shrink();
     return GestureDetector(

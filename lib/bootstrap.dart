@@ -11,8 +11,9 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/app/app.dart';
 import 'package:dartlog/dartlog.dart';
+import 'package:kidneysmart/core/notifier/screen_tracker_notifier/screen_tracker_notifier.dart';
 
-import 'package:kidneysmart/core/notifier/page_tracker_notifier/page_tracker_notifier.dart';
+
 import 'package:kidneysmart/core/observer/provider_observer.dart';
 import 'package:kidneysmart/core/service/app_device/app_device.dart';
 import 'package:kidneysmart/core/service/network/network.dart';
@@ -22,7 +23,7 @@ import 'package:kidneysmart/navigation/app_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late final AppStorage _localStorage;
-late final PageTrackerNotifier _pageTrackerNotifier;
+late final ScreenTrackerNotifier _screenTrackerNotifier;
 late final AppRouter _appRouter;
 late final AppDevice _appDevice;
 late final NetworkClient _networkClient;
@@ -43,8 +44,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() app) async {
         runApp(
           ProviderScope(
             overrides: [
-              pageTrackerNotifierProvider
-                  .overrideWith(() => _pageTrackerNotifier),
+              screenTrackerNotifierProvider
+                  .overrideWith(() => _screenTrackerNotifier),
               appStorageProvider.overrideWithValue(_localStorage),
               appRouterProvider.overrideWithValue(_appRouter),
               networkClientProvider.overrideWithValue(_networkClient),
@@ -74,8 +75,8 @@ Future<void> initializeApp() async {
 
     _localStorage =
         AppStorage(sharedPreferences: sharedPreferences, isShowLog: true);
-    _pageTrackerNotifier = PageTrackerNotifier();
-    _appRouter = AppRouter(_pageTrackerNotifier);
+    _screenTrackerNotifier = ScreenTrackerNotifier();
+    _appRouter = AppRouter(_screenTrackerNotifier);
     // Создание и инициализация AboutDeviceNotifier
     _appDevice = AppDevice();
     await _appDevice.load();
