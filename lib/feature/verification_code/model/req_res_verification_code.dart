@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kidneysmart/api/utils/helper_for_json.dart';
 
 import 'package:kidneysmart/feature/verification_code/enum/enum_response_verification_code.dart';
 
@@ -11,6 +12,7 @@ part 'req_res_verification_code.g.dart';
 class RequestVerificationCode with _$RequestVerificationCode {
   const factory RequestVerificationCode({
     required String email,
+    required String code,
   }) = _RequestVerificationCode;
 
   factory RequestVerificationCode.fromJson(Map<String, Object?> json) =>
@@ -21,6 +23,14 @@ class RequestVerificationCode with _$RequestVerificationCode {
 class ResponseVerificationCode with _$ResponseVerificationCode {
   const factory ResponseVerificationCode({
     String? message,
+    String? accessToken,
+    String? refreshToken,
+     @JsonKey(
+      name: 'expiresIn',
+      toJson: dateTimeToJson,
+      fromJson: dateTimeFromJson,
+    )
+    DateTime? expiresIn,
     @JsonKey(
       name: 'status',
       toJson: _verificationCodeStatusToJson,
@@ -33,8 +43,14 @@ class ResponseVerificationCode with _$ResponseVerificationCode {
       _$ResponseVerificationCodeFromJson(json);
 }
 
+
+
+
+
 String? _verificationCodeStatusToJson(EnumResponseVerificationCodeStatus? status) => status?.name;
 
 EnumResponseVerificationCodeStatus? _verificationCodeStatusFromJson(String? value) {
   return EnumResponseVerificationCodeStatus.fromNameOrNull(value);
 }
+
+

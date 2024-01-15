@@ -8,6 +8,7 @@ sealed class VerificationCodeState with _$VerificationCodeState {
     @Default(EnumStatus.init) EnumStatus enumScreenStatus,
     @Default(EnumStatus.init) EnumStatus enumResultStatus,
     @Default('') String email,
+    @Default('') String code,
     @Default(ResponseVerificationCode()) ResponseVerificationCode response,
   }) = _VerificationCodeState;
 

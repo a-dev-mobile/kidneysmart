@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
 import 'package:kidneysmart/core/extension/gorouter_extension.dart';
+import 'package:kidneysmart/core/widgets/clean_focus.dart';
 import 'package:kidneysmart/core/widgets/default_app_bar.dart';
 import 'package:kidneysmart/feature/login/view/login_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
@@ -21,9 +22,11 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(title: 'Добро пожаловать'),
-      body: _View(),
+    return const ClearFocus(
+      child: Scaffold(
+        appBar: CustomAppBar(title: 'Добро пожаловать'),
+        body: _View(),
+      ),
     );
   }
 }

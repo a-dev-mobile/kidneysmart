@@ -29,11 +29,13 @@ class FieldCodeState extends State<FieldCode> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late TextEditingController _controller;
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
-
+  String? _customError;
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController(text: widget.initialValue);
+    _customError = widget
+        .customError; // Initialize _customError with the widget's custom error
   }
 
   @override
@@ -41,7 +43,15 @@ class FieldCodeState extends State<FieldCode> {
     _controller.dispose();
     super.dispose();
   }
-
+  @override
+  void didUpdateWidget(covariant FieldCode oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.customError != oldWidget.customError) {
+      setState(() {
+        _customError = widget.customError;
+      });
+    }
+  }
   bool validate() {
     setState(() {
       _autovalidateMode = AutovalidateMode.always;
@@ -57,26 +67,34 @@ class FieldCodeState extends State<FieldCode> {
         controller: _controller,
         onChanged: (value) {
           widget.onChanged(value);
+          // Reset the custom error when the text changes
+          if (_customError != null) {
+            setState(() {
+              _customError = null;
+            });
+          }
           if (_autovalidateMode == AutovalidateMode.always) {
             _formKey.currentState?.validate();
           }
         },
+        textAlign: TextAlign.center,
         decoration: const InputDecoration(
-          labelText: 'Code',
-          hintText: 'Enter your 4-digit code',
+          labelText: 'Код',
+          hintText: 'Введите 4 цифры',
+          errorMaxLines: 5,
+           
         ),
         validator: (value) {
           // Check for custom error first
-          if ((widget.customError?.isNotEmpty ?? false) &&
-              value == widget.initialValue) {
-            return widget.customError;
+          if (_customError?.isNotEmpty ?? false) {
+            return _customError;
           }
           // Standard validation for 4-digit code
           if (value == null || value.isEmpty) {
-            return 'Please enter a code';
+            return 'Введите код';
           }
           if (!RegExp(r'^\d{4}$').hasMatch(value)) {
-            return 'Please enter a valid 4-digit code';
+            return 'Пожалуйста, введите 4-х значный код';
           }
           return null;
         },

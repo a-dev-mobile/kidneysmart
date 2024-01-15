@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_http_method.dart';
 import 'package:kidneysmart/core/enum/enum_page_status.dart';
+import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/network/network_client.dart';
 import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:kidneysmart/core/widgets/app_error_screen.dart';
@@ -24,6 +25,7 @@ class LoginNotifier extends _$LoginNotifier {
   late final _storage = ref.read(appStorageProvider);
   late final _client = ref.read(networkClientProvider);
   late final _go = ref.read(appRouterProvider);
+  late final _debugState = ref.read(debugNotifierProvider);
   @override
   LoginState build() {
     Future.microtask(load);
@@ -48,7 +50,7 @@ class LoginNotifier extends _$LoginNotifier {
 
       final responseRaw = await _client.request<dynamic>(
         method: EnumHttpMethod.post,
-        url: 'https://wayofdt.com/kidneysmart-auth/v1/login',
+        url: '${_debugState.enumProject.api}/kidneysmart-auth/v1/login',
         body: req.toJson(),
       );
 

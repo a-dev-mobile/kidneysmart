@@ -16,6 +16,7 @@ _$VerificationCodeStateImpl _$$VerificationCodeStateImplFromJson(
           $enumDecodeNullable(_$EnumStatusEnumMap, json['enumResultStatus']) ??
               EnumStatus.init,
       email: json['email'] as String? ?? '',
+      code: json['code'] as String? ?? '',
       response: json['response'] == null
           ? const ResponseVerificationCode()
           : ResponseVerificationCode.fromJson(
@@ -28,6 +29,7 @@ Map<String, dynamic> _$$VerificationCodeStateImplToJson(
       'enumScreenStatus': _$EnumStatusEnumMap[instance.enumScreenStatus]!,
       'enumResultStatus': _$EnumStatusEnumMap[instance.enumResultStatus]!,
       'email': instance.email,
+      'code': instance.code,
       'response': instance.response,
     };
 
@@ -43,7 +45,7 @@ const _$EnumStatusEnumMap = {
 // **************************************************************************
 
 String _$verificationCodeNotifierHash() =>
-    r'87b9dc5ab05c57b1b2ec63389b19c274842ae85d';
+    r'd074f48f16bcf73ffe15512860a26e35966154e4';
 
 /// See also [VerificationCodeNotifier].
 @ProviderFor(VerificationCodeNotifier)

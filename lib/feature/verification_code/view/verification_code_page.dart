@@ -57,7 +57,7 @@ class _ViewState extends ConsumerState<_View> {
     final state = ref.read(verificationCodeNotifierProvider);
     final notifier = ref.read(verificationCodeNotifierProvider.notifier);
 
-    final widthScreen = MediaQuery.of(context).size.width;
+    final sizeScreen = MediaQuery.of(context).size;
     final scrollController = ScrollController();
     return KeyboardAutoScrollWidget(
       scrollController: scrollController,
@@ -65,69 +65,108 @@ class _ViewState extends ConsumerState<_View> {
         isLoad: status.isLoad,
         child: Stack(
           children: [
-            ListView(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Пожалуйста введите 4 цифры, которые мы  отправили на почту a.dev.mobile.kz@gmail.com',
-                      style: AppTextStyle.s30w400h40,
-                    ),
-                    SvgPicture.asset(AssetPaths.logoSvg),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                SvgPicture.asset(
-                  AssetPaths.remindYouSvg,
-                  width: 200,
-                ),
-                FieldCode(
-                  key: _codeFieldKey,
-                  initialValue: state.email,
-                  onChanged: notifier.saveCodeLocal,
-                  customError: _getCustomErrorFromBackend(
-                    state.response.enumResponseVerificationCodeStatus,
-                  ),
-                ),
-                const SizedBox(height: 150),
-              ],
-            ),
-            Positioned(
-              bottom: 0,
-              child: Container(
-                width: widthScreen,
-                padding: const EdgeInsets.all(8),
-                color: Theme.of(context).colorScheme.background,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(appRouterProvider)
-                              .router
-                              .pushNamed<void>(LoginPage.name);
-                        },
-                        child: const Text('Проверить'),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            _buildListView(scrollController, sizeScreen, state, notifier),
+            _buildBottomButton(sizeScreen.width, context, notifier),
           ],
         ),
       ),
     );
   }
 
-  String? _getCustomErrorFromBackend(
-    EnumResponseVerificationCodeStatus? enumResponseLoginStatus,
+  ListView _buildListView(
+    ScrollController scrollController,
+    Size sizeScreen,
+    VerificationCodeState state,
+    VerificationCodeNotifier notifier,
   ) {
-    switch (enumResponseLoginStatus) {
+    return ListView(
+      controller: scrollController,
+      children: [
+        SvgPicture.asset(
+          AssetPaths.checkEmailSvg,
+          width: sizeScreen.width / 2,
+          height: sizeScreen.height / 2,
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'Пожалуйста введите 4 цифры, которые мы  отправили на почту ${state.email}',
+        ),
+        const SizedBox(height: 16),
+        FieldCode(
+          key: _codeFieldKey,
+          onChanged: notifier.setCode,
+          customError: _getCustomErrorFromBackend(
+            state.response.enumResponseVerificationCodeStatus,
+          ),
+        ),
+        const SizedBox(height: 16),
+        TextButton(
+          onPressed: () {},
+          child: const Text('Повторно отправить код'),
+        ),
+        const SizedBox(height: 150),
+      ],
+    );
+  }
+
+  Widget _buildBottomButton(
+    double widthScreen,
+    BuildContext context,
+    VerificationCodeNotifier notifier,
+  ) {
+    return Positioned(
+      bottom: 0,
+      child: Container(
+        width: widthScreen,
+        padding: const EdgeInsets.all(8),
+        color: Theme.of(context).colorScheme.background,
+        child: _continueButton(notifier),
+      ),
+    );
+  }
+
+  Widget _continueButton(VerificationCodeNotifier notifier) {
+    return Column(
+      children: [
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: () {
+              final isValid = _codeFieldKey.currentState?.validate() ?? false;
+              if (isValid) {
+                // Если валидация успешна, продолжаем обработку
+                notifier.verificationCode();
+              }
+            },
+            child: const Text('Продолжить'),
+          ),
+        ),
+      ],
+    );
+  }
+
+  String? _getCustomErrorFromBackend(
+    EnumResponseVerificationCodeStatus? enumResponseVerificationCodeStatus,
+  ) {
+    switch (enumResponseVerificationCodeStatus) {
+      case EnumResponseVerificationCodeStatus.invalidCode:
       case EnumResponseVerificationCodeStatus.invalidRequestBody:
+      case EnumResponseVerificationCodeStatus.invalidParameters:
+        return 'Неверный код';
+
+      case EnumResponseVerificationCodeStatus.tooManyAttempts:
+        return 'Слишком много попыток, попробуйте позже';
+      case EnumResponseVerificationCodeStatus.validationFailed:
+        return 'Неправильный формат, пожалуйста введите 4 цифры';
+
+      case EnumResponseVerificationCodeStatus.accessTokenGenerationFailed:
+      case EnumResponseVerificationCodeStatus.emailAlreadyVerified:
+      case EnumResponseVerificationCodeStatus.refreshTokenGenerationFailed:
+      case EnumResponseVerificationCodeStatus.refreshTokenSavingFailed:
+      case EnumResponseVerificationCodeStatus.updateVerificationStatusFailed:
+      case EnumResponseVerificationCodeStatus.userNotFound:
+        return 'Неизвестная ошибка';
+      case EnumResponseVerificationCodeStatus.verificationSuccessful:
       case null:
     }
     return null;

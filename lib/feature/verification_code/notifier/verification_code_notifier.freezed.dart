@@ -24,6 +24,7 @@ mixin _$VerificationCodeState {
   EnumStatus get enumScreenStatus => throw _privateConstructorUsedError;
   EnumStatus get enumResultStatus => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get code => throw _privateConstructorUsedError;
   ResponseVerificationCode get response => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,6 +43,7 @@ abstract class $VerificationCodeStateCopyWith<$Res> {
       {EnumStatus enumScreenStatus,
       EnumStatus enumResultStatus,
       String email,
+      String code,
       ResponseVerificationCode response});
 
   $ResponseVerificationCodeCopyWith<$Res> get response;
@@ -64,6 +66,7 @@ class _$VerificationCodeStateCopyWithImpl<$Res,
     Object? enumScreenStatus = null,
     Object? enumResultStatus = null,
     Object? email = null,
+    Object? code = null,
     Object? response = null,
   }) {
     return _then(_value.copyWith(
@@ -78,6 +81,10 @@ class _$VerificationCodeStateCopyWithImpl<$Res,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
               as String,
       response: null == response
           ? _value.response
@@ -108,6 +115,7 @@ abstract class _$$VerificationCodeStateImplCopyWith<$Res>
       {EnumStatus enumScreenStatus,
       EnumStatus enumResultStatus,
       String email,
+      String code,
       ResponseVerificationCode response});
 
   @override
@@ -129,6 +137,7 @@ class __$$VerificationCodeStateImplCopyWithImpl<$Res>
     Object? enumScreenStatus = null,
     Object? enumResultStatus = null,
     Object? email = null,
+    Object? code = null,
     Object? response = null,
   }) {
     return _then(_$VerificationCodeStateImpl(
@@ -143,6 +152,10 @@ class __$$VerificationCodeStateImplCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
               as String,
       response: null == response
           ? _value.response
@@ -159,6 +172,7 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
       {this.enumScreenStatus = EnumStatus.init,
       this.enumResultStatus = EnumStatus.init,
       this.email = '',
+      this.code = '',
       this.response = const ResponseVerificationCode()});
 
   factory _$VerificationCodeStateImpl.fromJson(Map<String, dynamic> json) =>
@@ -175,11 +189,14 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
   final String email;
   @override
   @JsonKey()
+  final String code;
+  @override
+  @JsonKey()
   final ResponseVerificationCode response;
 
   @override
   String toString() {
-    return 'VerificationCodeState(enumScreenStatus: $enumScreenStatus, enumResultStatus: $enumResultStatus, email: $email, response: $response)';
+    return 'VerificationCodeState(enumScreenStatus: $enumScreenStatus, enumResultStatus: $enumResultStatus, email: $email, code: $code, response: $response)';
   }
 
   @override
@@ -192,6 +209,7 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
             (identical(other.enumResultStatus, enumResultStatus) ||
                 other.enumResultStatus == enumResultStatus) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.code, code) || other.code == code) &&
             (identical(other.response, response) ||
                 other.response == response));
   }
@@ -199,7 +217,7 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, enumScreenStatus, enumResultStatus, email, response);
+      runtimeType, enumScreenStatus, enumResultStatus, email, code, response);
 
   @JsonKey(ignore: true)
   @override
@@ -221,6 +239,7 @@ abstract class _VerificationCodeState implements VerificationCodeState {
       {final EnumStatus enumScreenStatus,
       final EnumStatus enumResultStatus,
       final String email,
+      final String code,
       final ResponseVerificationCode response}) = _$VerificationCodeStateImpl;
 
   factory _VerificationCodeState.fromJson(Map<String, dynamic> json) =
@@ -232,6 +251,8 @@ abstract class _VerificationCodeState implements VerificationCodeState {
   EnumStatus get enumResultStatus;
   @override
   String get email;
+  @override
+  String get code;
   @override
   ResponseVerificationCode get response;
   @override

@@ -22,6 +22,7 @@ RequestVerificationCode _$RequestVerificationCodeFromJson(
 /// @nodoc
 mixin _$RequestVerificationCode {
   String get email => throw _privateConstructorUsedError;
+  String get code => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $RequestVerificationCodeCopyWith<$Res> {
           $Res Function(RequestVerificationCode) then) =
       _$RequestVerificationCodeCopyWithImpl<$Res, RequestVerificationCode>;
   @useResult
-  $Res call({String email});
+  $Res call({String email, String code});
 }
 
 /// @nodoc
@@ -53,11 +54,16 @@ class _$RequestVerificationCodeCopyWithImpl<$Res,
   @override
   $Res call({
     Object? email = null,
+    Object? code = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -72,7 +78,7 @@ abstract class _$$RequestVerificationCodeImplCopyWith<$Res>
       __$$RequestVerificationCodeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email});
+  $Res call({String email, String code});
 }
 
 /// @nodoc
@@ -89,11 +95,16 @@ class __$$RequestVerificationCodeImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? email = null,
+    Object? code = null,
   }) {
     return _then(_$RequestVerificationCodeImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -102,17 +113,20 @@ class __$$RequestVerificationCodeImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RequestVerificationCodeImpl implements _RequestVerificationCode {
-  const _$RequestVerificationCodeImpl({required this.email});
+  const _$RequestVerificationCodeImpl(
+      {required this.email, required this.code});
 
   factory _$RequestVerificationCodeImpl.fromJson(Map<String, dynamic> json) =>
       _$$RequestVerificationCodeImplFromJson(json);
 
   @override
   final String email;
+  @override
+  final String code;
 
   @override
   String toString() {
-    return 'RequestVerificationCode(email: $email)';
+    return 'RequestVerificationCode(email: $email, code: $code)';
   }
 
   @override
@@ -120,12 +134,13 @@ class _$RequestVerificationCodeImpl implements _RequestVerificationCode {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RequestVerificationCodeImpl &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.code, code) || other.code == code));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, email);
+  int get hashCode => Object.hash(runtimeType, email, code);
 
   @JsonKey(ignore: true)
   @override
@@ -143,14 +158,17 @@ class _$RequestVerificationCodeImpl implements _RequestVerificationCode {
 }
 
 abstract class _RequestVerificationCode implements RequestVerificationCode {
-  const factory _RequestVerificationCode({required final String email}) =
-      _$RequestVerificationCodeImpl;
+  const factory _RequestVerificationCode(
+      {required final String email,
+      required final String code}) = _$RequestVerificationCodeImpl;
 
   factory _RequestVerificationCode.fromJson(Map<String, dynamic> json) =
       _$RequestVerificationCodeImpl.fromJson;
 
   @override
   String get email;
+  @override
+  String get code;
   @override
   @JsonKey(ignore: true)
   _$$RequestVerificationCodeImplCopyWith<_$RequestVerificationCodeImpl>
@@ -165,6 +183,11 @@ ResponseVerificationCode _$ResponseVerificationCodeFromJson(
 /// @nodoc
 mixin _$ResponseVerificationCode {
   String? get message => throw _privateConstructorUsedError;
+  String? get accessToken => throw _privateConstructorUsedError;
+  String? get refreshToken => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'expiresIn', toJson: dateTimeToJson, fromJson: dateTimeFromJson)
+  DateTime? get expiresIn => throw _privateConstructorUsedError;
   @JsonKey(
       name: 'status',
       toJson: _verificationCodeStatusToJson,
@@ -186,6 +209,11 @@ abstract class $ResponseVerificationCodeCopyWith<$Res> {
   @useResult
   $Res call(
       {String? message,
+      String? accessToken,
+      String? refreshToken,
+      @JsonKey(
+          name: 'expiresIn', toJson: dateTimeToJson, fromJson: dateTimeFromJson)
+      DateTime? expiresIn,
       @JsonKey(
           name: 'status',
           toJson: _verificationCodeStatusToJson,
@@ -208,6 +236,9 @@ class _$ResponseVerificationCodeCopyWithImpl<$Res,
   @override
   $Res call({
     Object? message = freezed,
+    Object? accessToken = freezed,
+    Object? refreshToken = freezed,
+    Object? expiresIn = freezed,
     Object? enumResponseVerificationCodeStatus = freezed,
   }) {
     return _then(_value.copyWith(
@@ -215,6 +246,18 @@ class _$ResponseVerificationCodeCopyWithImpl<$Res,
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      expiresIn: freezed == expiresIn
+          ? _value.expiresIn
+          : expiresIn // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       enumResponseVerificationCodeStatus: freezed ==
               enumResponseVerificationCodeStatus
           ? _value.enumResponseVerificationCodeStatus
@@ -235,6 +278,11 @@ abstract class _$$ResponseVerificationCodeImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? message,
+      String? accessToken,
+      String? refreshToken,
+      @JsonKey(
+          name: 'expiresIn', toJson: dateTimeToJson, fromJson: dateTimeFromJson)
+      DateTime? expiresIn,
       @JsonKey(
           name: 'status',
           toJson: _verificationCodeStatusToJson,
@@ -256,6 +304,9 @@ class __$$ResponseVerificationCodeImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
+    Object? accessToken = freezed,
+    Object? refreshToken = freezed,
+    Object? expiresIn = freezed,
     Object? enumResponseVerificationCodeStatus = freezed,
   }) {
     return _then(_$ResponseVerificationCodeImpl(
@@ -263,6 +314,18 @@ class __$$ResponseVerificationCodeImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      accessToken: freezed == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refreshToken: freezed == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      expiresIn: freezed == expiresIn
+          ? _value.expiresIn
+          : expiresIn // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       enumResponseVerificationCodeStatus: freezed ==
               enumResponseVerificationCodeStatus
           ? _value.enumResponseVerificationCodeStatus
@@ -277,6 +340,11 @@ class __$$ResponseVerificationCodeImplCopyWithImpl<$Res>
 class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
   const _$ResponseVerificationCodeImpl(
       {this.message,
+      this.accessToken,
+      this.refreshToken,
+      @JsonKey(
+          name: 'expiresIn', toJson: dateTimeToJson, fromJson: dateTimeFromJson)
+      this.expiresIn,
       @JsonKey(
           name: 'status',
           toJson: _verificationCodeStatusToJson,
@@ -289,6 +357,14 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
   @override
   final String? message;
   @override
+  final String? accessToken;
+  @override
+  final String? refreshToken;
+  @override
+  @JsonKey(
+      name: 'expiresIn', toJson: dateTimeToJson, fromJson: dateTimeFromJson)
+  final DateTime? expiresIn;
+  @override
   @JsonKey(
       name: 'status',
       toJson: _verificationCodeStatusToJson,
@@ -297,7 +373,7 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
 
   @override
   String toString() {
-    return 'ResponseVerificationCode(message: $message, enumResponseVerificationCodeStatus: $enumResponseVerificationCodeStatus)';
+    return 'ResponseVerificationCode(message: $message, accessToken: $accessToken, refreshToken: $refreshToken, expiresIn: $expiresIn, enumResponseVerificationCodeStatus: $enumResponseVerificationCodeStatus)';
   }
 
   @override
@@ -306,6 +382,12 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
         (other.runtimeType == runtimeType &&
             other is _$ResponseVerificationCodeImpl &&
             (identical(other.message, message) || other.message == message) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken) &&
+            (identical(other.expiresIn, expiresIn) ||
+                other.expiresIn == expiresIn) &&
             (identical(other.enumResponseVerificationCodeStatus,
                     enumResponseVerificationCodeStatus) ||
                 other.enumResponseVerificationCodeStatus ==
@@ -314,8 +396,8 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, message, enumResponseVerificationCodeStatus);
+  int get hashCode => Object.hash(runtimeType, message, accessToken,
+      refreshToken, expiresIn, enumResponseVerificationCodeStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -335,6 +417,11 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
 abstract class _ResponseVerificationCode implements ResponseVerificationCode {
   const factory _ResponseVerificationCode(
       {final String? message,
+      final String? accessToken,
+      final String? refreshToken,
+      @JsonKey(
+          name: 'expiresIn', toJson: dateTimeToJson, fromJson: dateTimeFromJson)
+      final DateTime? expiresIn,
       @JsonKey(
           name: 'status',
           toJson: _verificationCodeStatusToJson,
@@ -347,6 +434,14 @@ abstract class _ResponseVerificationCode implements ResponseVerificationCode {
 
   @override
   String? get message;
+  @override
+  String? get accessToken;
+  @override
+  String? get refreshToken;
+  @override
+  @JsonKey(
+      name: 'expiresIn', toJson: dateTimeToJson, fromJson: dateTimeFromJson)
+  DateTime? get expiresIn;
   @override
   @JsonKey(
       name: 'status',

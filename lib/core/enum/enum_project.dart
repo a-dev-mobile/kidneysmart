@@ -4,11 +4,11 @@
 
 enum EnumProject implements Comparable<EnumProject> {
   prod(
-    api: 'https://wayofdt.com/',
+    api: 'https://wayofdt.com',
     name: 'Prod',
   ),
   dev(
-    api: 'https:/localhost/',
+    api: 'http://192.168.31.22:80',
     name: 'Dev',
   );
 
@@ -29,9 +29,9 @@ enum EnumProject implements Comparable<EnumProject> {
     EnumProject? fallback,
   }) {
     switch (api) {
-      case 'https://wayofdt.com/':
+      case 'https://wayofdt.com':
         return prod;
-      case 'https:/localhost/':
+      case 'http://192.168.31.22:80':
         return dev;
       default:
         return fallback ??
@@ -66,9 +66,9 @@ enum EnumProject implements Comparable<EnumProject> {
     String? api,
   ) {
     switch (api) {
-      case 'https://wayofdt.com/':
+      case 'https://wayofdt.com':
         return prod;
-      case 'https:/localhost/':
+      case 'http://192.168.31.22:80':
         return dev;
       default:
         return null;
