@@ -28,7 +28,7 @@ _$ResponseVerificationCodeImpl _$$ResponseVerificationCodeImplFromJson(
       refreshToken: json['refreshToken'] as String?,
       expiresIn: dateTimeFromJson(json['expiresIn'] as String?),
       enumBackendStatusVerificationCode:
-          _verificationCodeStatusFromJson(json['status'] as String?),
+          _statusFromJson(json['status'] as String?),
     );
 
 Map<String, dynamic> _$$ResponseVerificationCodeImplToJson(

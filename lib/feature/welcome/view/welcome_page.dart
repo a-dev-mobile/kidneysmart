@@ -6,7 +6,7 @@ import 'package:kidneysmart/core/constants/app_text_styles.dart';
 import 'package:kidneysmart/core/extension/gorouter_extension.dart';
 import 'package:kidneysmart/core/widgets/clean_focus.dart';
 import 'package:kidneysmart/core/widgets/default_app_bar.dart';
-import 'package:kidneysmart/feature/login/view/login_page.dart';
+import 'package:kidneysmart/feature/login/view/login_screen.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
 
@@ -85,7 +85,7 @@ class _View extends ConsumerWidget {
                       ref
                           .read(appRouterProvider)
                           .router
-                          .pushNamed<void>(LoginPage.name);
+                          .pushNamed<void>(LoginScreen.name);
                     },
                     child: const Text('Начать'),
                   ),

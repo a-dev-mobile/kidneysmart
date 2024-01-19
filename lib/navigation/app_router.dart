@@ -9,16 +9,16 @@ import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.da
 import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:kidneysmart/core/widgets/app_error_screen.dart';
 import 'package:kidneysmart/feature/debug_menu/view/debug_menu_page.dart';
-import 'package:kidneysmart/feature/login/view/login_page.dart';
+import 'package:kidneysmart/feature/login/view/login_screen.dart';
 import 'package:kidneysmart/feature/overlay/view/app_update_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
 import 'package:kidneysmart/feature/overlay/view/widget/no_internet_widget.dart';
-import 'package:kidneysmart/feature/password_create/view/password_create_page.dart';
+import 'package:kidneysmart/feature/password_create/view/password_create_screen.dart';
 import 'package:kidneysmart/feature/password_entry/view/password_entry_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 
 import 'package:kidneysmart/feature/splash/view/splash_page.dart';
-import 'package:kidneysmart/feature/verification_code/view/verification_code_page.dart';
+import 'package:kidneysmart/feature/verification_code/view/verification_code_screen.dart';
 import 'package:kidneysmart/feature/welcome/view/welcome_page.dart';
 import 'package:kidneysmart/navigation/custom_router_observer.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -68,12 +68,12 @@ class AppRouter {
           ),
         ),
         GoRoute(
-          path: LoginPage.path,
-          name: LoginPage.name,
+          path: LoginScreen.path,
+          name: LoginScreen.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             name: state.name,
-            child: const LoginPage(),
+            child: const LoginScreen(),
           ),
         ),
         GoRoute(
@@ -101,30 +101,30 @@ class AppRouter {
           ),
         ),
         GoRoute(
-          path: PasswordCreatePage.path,
-          name: PasswordCreatePage.name,
+          path: PasswordCreateScreen.path,
+          name: PasswordCreateScreen.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             name: state.name,
-            child: const PasswordCreatePage(),
+            child: const PasswordCreateScreen(),
           ),
         ),
         GoRoute(
-          path: PasswordEntryPage.path,
-          name: PasswordEntryPage.name,
+          path: PasswordEntryScreen.path,
+          name: PasswordEntryScreen.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             name: state.name,
-            child: const PasswordEntryPage(),
+            child: const PasswordEntryScreen(),
           ),
         ),
         GoRoute(
-          path: VerificationCodePage.path,
-          name: VerificationCodePage.name,
+          path: VerificationCodeScreen.path,
+          name: VerificationCodeScreen.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             name: state.name,
-            child: const VerificationCodePage(),
+            child: const VerificationCodeScreen(),
           ),
         ),
         GoRoute(

@@ -191,7 +191,7 @@ mixin _$ResponseVerificationCode {
   @JsonKey(
       name: 'status',
       toJson: _verificationCodeStatusToJson,
-      fromJson: _verificationCodeStatusFromJson)
+      fromJson: _statusFromJson)
   EnumBackendStatusVerificationCode? get enumBackendStatusVerificationCode =>
       throw _privateConstructorUsedError;
 
@@ -217,7 +217,7 @@ abstract class $ResponseVerificationCodeCopyWith<$Res> {
       @JsonKey(
           name: 'status',
           toJson: _verificationCodeStatusToJson,
-          fromJson: _verificationCodeStatusFromJson)
+          fromJson: _statusFromJson)
       EnumBackendStatusVerificationCode? enumBackendStatusVerificationCode});
 }
 
@@ -286,7 +286,7 @@ abstract class _$$ResponseVerificationCodeImplCopyWith<$Res>
       @JsonKey(
           name: 'status',
           toJson: _verificationCodeStatusToJson,
-          fromJson: _verificationCodeStatusFromJson)
+          fromJson: _statusFromJson)
       EnumBackendStatusVerificationCode? enumBackendStatusVerificationCode});
 }
 
@@ -348,7 +348,7 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
       @JsonKey(
           name: 'status',
           toJson: _verificationCodeStatusToJson,
-          fromJson: _verificationCodeStatusFromJson)
+          fromJson: _statusFromJson)
       this.enumBackendStatusVerificationCode});
 
   factory _$ResponseVerificationCodeImpl.fromJson(Map<String, dynamic> json) =>
@@ -368,7 +368,7 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
   @JsonKey(
       name: 'status',
       toJson: _verificationCodeStatusToJson,
-      fromJson: _verificationCodeStatusFromJson)
+      fromJson: _statusFromJson)
   final EnumBackendStatusVerificationCode? enumBackendStatusVerificationCode;
 
   @override
@@ -425,7 +425,7 @@ abstract class _ResponseVerificationCode implements ResponseVerificationCode {
       @JsonKey(
           name: 'status',
           toJson: _verificationCodeStatusToJson,
-          fromJson: _verificationCodeStatusFromJson)
+          fromJson: _statusFromJson)
       final EnumBackendStatusVerificationCode?
           enumBackendStatusVerificationCode}) = _$ResponseVerificationCodeImpl;
 
@@ -446,7 +446,7 @@ abstract class _ResponseVerificationCode implements ResponseVerificationCode {
   @JsonKey(
       name: 'status',
       toJson: _verificationCodeStatusToJson,
-      fromJson: _verificationCodeStatusFromJson)
+      fromJson: _statusFromJson)
   EnumBackendStatusVerificationCode? get enumBackendStatusVerificationCode;
   @override
   @JsonKey(ignore: true)

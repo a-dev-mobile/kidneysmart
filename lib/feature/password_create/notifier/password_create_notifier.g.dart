@@ -9,15 +9,30 @@ part of 'password_create_notifier.dart';
 _$PasswordCreateStateImpl _$$PasswordCreateStateImplFromJson(
         Map<String, dynamic> json) =>
     _$PasswordCreateStateImpl(
-      enumStatus:
-          $enumDecodeNullable(_$EnumScreenStatusEnumMap, json['enumStatus']) ??
-              EnumScreenStatus.init,
+      enumScreenStatus: $enumDecodeNullable(
+              _$EnumScreenStatusEnumMap, json['enumScreenStatus']) ??
+          EnumScreenStatus.init,
+      enumFrontendStatus: $enumDecodeNullable(
+              _$EnumFrontendStatusPasswordCreateEnumMap,
+              json['enumFrontendStatus']) ??
+          EnumFrontendStatusPasswordCreate.init,
+      email: json['email'] as String?,
+      code: json['code'] as String?,
+      response: json['response'] == null
+          ? const ResponsePasswordCreate()
+          : ResponsePasswordCreate.fromJson(
+              json['response'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$PasswordCreateStateImplToJson(
         _$PasswordCreateStateImpl instance) =>
     <String, dynamic>{
-      'enumStatus': _$EnumScreenStatusEnumMap[instance.enumStatus]!,
+      'enumScreenStatus': _$EnumScreenStatusEnumMap[instance.enumScreenStatus]!,
+      'enumFrontendStatus': _$EnumFrontendStatusPasswordCreateEnumMap[
+          instance.enumFrontendStatus]!,
+      'email': instance.email,
+      'code': instance.code,
+      'response': instance.response,
     };
 
 const _$EnumScreenStatusEnumMap = {
@@ -27,12 +42,19 @@ const _$EnumScreenStatusEnumMap = {
   EnumScreenStatus.error: 'error',
 };
 
+const _$EnumFrontendStatusPasswordCreateEnumMap = {
+  EnumFrontendStatusPasswordCreate.init: 'init',
+  EnumFrontendStatusPasswordCreate.load: 'load',
+  EnumFrontendStatusPasswordCreate.emailIsNull: 'emailIsNull',
+  EnumFrontendStatusPasswordCreate.success: 'success',
+};
+
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
 String _$passwordCreateNotifierHash() =>
-    r'38eed0a96ea9362f11d6fc4a2d140f20e377b42c';
+    r'9350faba0e9bee9d43279c3c68aac69a466e84bd';
 
 /// See also [PasswordCreateNotifier].
 @ProviderFor(PasswordCreateNotifier)

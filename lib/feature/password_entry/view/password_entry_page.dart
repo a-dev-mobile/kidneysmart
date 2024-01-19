@@ -5,19 +5,19 @@ import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
 import 'package:kidneysmart/core/extension/gorouter_extension.dart';
 import 'package:kidneysmart/core/widgets/default_app_bar.dart';
-import 'package:kidneysmart/feature/login/view/login_page.dart';
-import 'package:kidneysmart/feature/setting/view/setting_page.dart';
+import 'package:kidneysmart/feature/login/view/login_screen.dart';
+
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
 
 import 'package:kidneysmart/feature/password_entry/notifier/password_entry_notifier.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
-class PasswordEntryPage extends StatelessWidget {
-  const PasswordEntryPage({super.key});
+class PasswordEntryScreen extends StatelessWidget {
+  const PasswordEntryScreen({super.key});
 
-  static const path = '/PasswordEntryPage';
-  static const name = 'PasswordEntryPage';
+  static const path = '/PasswordEntryScreen';
+  static const name = 'PasswordEntryScreen';
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _View extends ConsumerWidget {
                       ref
                           .read(appRouterProvider)
                           .router
-                          .pushNamed<void>(LoginPage.name);
+                          .pushNamed<void>(LoginScreen.name);
                     },
                     child: const Text('Войти'),
                   ),

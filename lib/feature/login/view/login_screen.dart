@@ -11,25 +11,26 @@ import 'package:kidneysmart/core/widgets/app_load_widget.dart';
 import 'package:kidneysmart/core/widgets/clean_focus.dart';
 import 'package:kidneysmart/core/widgets/default_app_bar.dart';
 import 'package:kidneysmart/core/widgets/keyboard_auto_scroll_widget.dart';
-import 'package:kidneysmart/core/widgets/load_next_page.dart';
+import 'package:kidneysmart/core/widgets/load_next_screen.dart';
+import 'package:kidneysmart/core/widgets/load_next_screen.dart';
 import 'package:kidneysmart/feature/login/enum/enum_backend_status_login.dart';
 import 'package:kidneysmart/feature/login/enum/enum_frontend_status_login.dart';
 import 'package:kidneysmart/feature/login/view/widget/field_email.dart';
-import 'package:kidneysmart/feature/password_create/view/password_create_page.dart';
+import 'package:kidneysmart/feature/password_create/view/password_create_screen.dart';
 import 'package:kidneysmart/feature/password_entry/view/password_entry_page.dart';
-import 'package:kidneysmart/feature/setting/view/setting_page.dart';
+
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
 
 import 'package:kidneysmart/feature/login/notifier/login_notifier.dart';
-import 'package:kidneysmart/feature/verification_code/view/verification_code_page.dart';
+import 'package:kidneysmart/feature/verification_code/view/verification_code_screen.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
-class LoginPage extends ConsumerWidget {
-  const LoginPage({super.key});
+class LoginScreen extends ConsumerWidget {
+  const LoginScreen({super.key});
 
-  static const path = '/LoginPage';
-  static const name = 'LoginPage';
+  static const path = '/LoginScreen';
+  static const name = 'LoginScreen';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,11 +48,11 @@ class LoginPage extends ConsumerWidget {
   }
 }
 
-/// {@template login_page}
+/// {@template login_screen}
 /// _View widget
 /// {@endtemplate}
 class _View extends ConsumerStatefulWidget {
-  /// {@macro login_page}
+  /// {@macro login_screen}
   const _View({super.key});
 
   @override
@@ -77,7 +78,7 @@ class _ViewState extends ConsumerState<_View> {
     final scrollController = ScrollController();
     return KeyboardAutoScrollWidget(
       scrollController: scrollController,
-      child: LoadNextPage(
+      child: LoadNextScreen(
         isLoad: status.isLoad,
         child: Stack(
           children: [
@@ -178,11 +179,11 @@ class _ViewState extends ConsumerState<_View> {
         _customErrorFromBackend = 'Ошибка создания пользователя';
       case EnumBackendStatusLogin.emailVerificationRequired:
       case EnumBackendStatusLogin.registrationSuccessful:
-        _navigateAfterBuild(VerificationCodePage.name);
+        _navigateAfterBuild(VerificationCodeScreen.name);
       case EnumBackendStatusLogin.passwordSetRequired:
-        _navigateAfterBuild(PasswordCreatePage.name);
+        _navigateAfterBuild(PasswordCreateScreen.name);
       case EnumBackendStatusLogin.passwordEntryRequired:
-        _navigateAfterBuild(PasswordEntryPage.name);
+        _navigateAfterBuild(PasswordEntryScreen.name);
       case null:
         _customErrorFromBackend = null;
     }

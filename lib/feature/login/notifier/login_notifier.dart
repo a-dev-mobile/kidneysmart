@@ -10,9 +10,9 @@ import 'package:kidneysmart/core/widgets/app_error_screen.dart';
 import 'package:kidneysmart/feature/login/enum/enum_backend_status_login.dart';
 import 'package:kidneysmart/feature/login/enum/enum_frontend_status_login.dart';
 import 'package:kidneysmart/feature/login/model/req_res_login.dart';
-import 'package:kidneysmart/feature/password_create/view/password_create_page.dart';
-import 'package:kidneysmart/feature/password_entry/view/password_entry_page.dart';
-import 'package:kidneysmart/feature/verification_code/view/verification_code_page.dart';
+import 'package:kidneysmart/feature/password_create/view/password_create_screen.dart';
+
+import 'package:kidneysmart/feature/verification_code/view/verification_code_screen.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -45,10 +45,9 @@ class LoginNotifier extends _$LoginNotifier {
   Future<void> login() async {
     state = state.copyWith(
       enumFrontendStatus: EnumFrontendStatusLogin.load,
-
       response: const ResponseLogin(),
     );
-    await Future<void>.delayed(const Duration(seconds: 3));
+    // await Future<void>.delayed(const Duration(seconds: 3));
 
     final email = state.email;
     if (email == null) {

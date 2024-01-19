@@ -54,7 +54,7 @@ const _$EnumFrontendStatusVerificationCodeEnumMap = {
 // **************************************************************************
 
 String _$verificationCodeNotifierHash() =>
-    r'6d9f5e17f4c4b0195045b251e7c067251badba30';
+    r'07beb08157508f31a7716e990f583c129eaf388d';
 
 /// See also [VerificationCodeNotifier].
 @ProviderFor(VerificationCodeNotifier)

@@ -121,7 +121,7 @@ class AppStorage {
   // ******************************
   void _log(String action, String key, dynamic value) {
     if (_isShowLog) {
-      Logger.info('$action > $key, Value: $value');
+      Logger.debug('$action > $key, Value: $value');
     }
   }
 
@@ -141,7 +141,9 @@ class AppStorage {
 
   String? getString({required String key}) {
     try {
-      return _prefs.getString(key);
+      final value = _prefs.getString(key);
+      _log('GET', key, value);
+      return value;
     } catch (e, s) {
       Logger.error('GET', e, s);
       return null;

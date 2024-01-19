@@ -20,7 +20,12 @@ PasswordCreateState _$PasswordCreateStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PasswordCreateState {
-  EnumScreenStatus get enumStatus => throw _privateConstructorUsedError;
+  EnumScreenStatus get enumScreenStatus => throw _privateConstructorUsedError;
+  EnumFrontendStatusPasswordCreate get enumFrontendStatus =>
+      throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get code => throw _privateConstructorUsedError;
+  ResponsePasswordCreate get response => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +39,14 @@ abstract class $PasswordCreateStateCopyWith<$Res> {
           PasswordCreateState value, $Res Function(PasswordCreateState) then) =
       _$PasswordCreateStateCopyWithImpl<$Res, PasswordCreateState>;
   @useResult
-  $Res call({EnumScreenStatus enumStatus});
+  $Res call(
+      {EnumScreenStatus enumScreenStatus,
+      EnumFrontendStatusPasswordCreate enumFrontendStatus,
+      String? email,
+      String? code,
+      ResponsePasswordCreate response});
+
+  $ResponsePasswordCreateCopyWith<$Res> get response;
 }
 
 /// @nodoc
@@ -50,14 +62,42 @@ class _$PasswordCreateStateCopyWithImpl<$Res, $Val extends PasswordCreateState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enumStatus = null,
+    Object? enumScreenStatus = null,
+    Object? enumFrontendStatus = null,
+    Object? email = freezed,
+    Object? code = freezed,
+    Object? response = null,
   }) {
     return _then(_value.copyWith(
-      enumStatus: null == enumStatus
-          ? _value.enumStatus
-          : enumStatus // ignore: cast_nullable_to_non_nullable
+      enumScreenStatus: null == enumScreenStatus
+          ? _value.enumScreenStatus
+          : enumScreenStatus // ignore: cast_nullable_to_non_nullable
               as EnumScreenStatus,
+      enumFrontendStatus: null == enumFrontendStatus
+          ? _value.enumFrontendStatus
+          : enumFrontendStatus // ignore: cast_nullable_to_non_nullable
+              as EnumFrontendStatusPasswordCreate,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      code: freezed == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String?,
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as ResponsePasswordCreate,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResponsePasswordCreateCopyWith<$Res> get response {
+    return $ResponsePasswordCreateCopyWith<$Res>(_value.response, (value) {
+      return _then(_value.copyWith(response: value) as $Val);
+    });
   }
 }
 
@@ -69,7 +109,15 @@ abstract class _$$PasswordCreateStateImplCopyWith<$Res>
       __$$PasswordCreateStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EnumScreenStatus enumStatus});
+  $Res call(
+      {EnumScreenStatus enumScreenStatus,
+      EnumFrontendStatusPasswordCreate enumFrontendStatus,
+      String? email,
+      String? code,
+      ResponsePasswordCreate response});
+
+  @override
+  $ResponsePasswordCreateCopyWith<$Res> get response;
 }
 
 /// @nodoc
@@ -83,13 +131,33 @@ class __$$PasswordCreateStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? enumStatus = null,
+    Object? enumScreenStatus = null,
+    Object? enumFrontendStatus = null,
+    Object? email = freezed,
+    Object? code = freezed,
+    Object? response = null,
   }) {
     return _then(_$PasswordCreateStateImpl(
-      enumStatus: null == enumStatus
-          ? _value.enumStatus
-          : enumStatus // ignore: cast_nullable_to_non_nullable
+      enumScreenStatus: null == enumScreenStatus
+          ? _value.enumScreenStatus
+          : enumScreenStatus // ignore: cast_nullable_to_non_nullable
               as EnumScreenStatus,
+      enumFrontendStatus: null == enumFrontendStatus
+          ? _value.enumFrontendStatus
+          : enumFrontendStatus // ignore: cast_nullable_to_non_nullable
+              as EnumFrontendStatusPasswordCreate,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      code: freezed == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String?,
+      response: null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as ResponsePasswordCreate,
     ));
   }
 }
@@ -97,18 +165,33 @@ class __$$PasswordCreateStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PasswordCreateStateImpl implements _PasswordCreateState {
-  const _$PasswordCreateStateImpl({this.enumStatus = EnumScreenStatus.init});
+  const _$PasswordCreateStateImpl(
+      {this.enumScreenStatus = EnumScreenStatus.init,
+      this.enumFrontendStatus = EnumFrontendStatusPasswordCreate.init,
+      this.email,
+      this.code,
+      this.response = const ResponsePasswordCreate()});
 
   factory _$PasswordCreateStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$PasswordCreateStateImplFromJson(json);
 
   @override
   @JsonKey()
-  final EnumScreenStatus enumStatus;
+  final EnumScreenStatus enumScreenStatus;
+  @override
+  @JsonKey()
+  final EnumFrontendStatusPasswordCreate enumFrontendStatus;
+  @override
+  final String? email;
+  @override
+  final String? code;
+  @override
+  @JsonKey()
+  final ResponsePasswordCreate response;
 
   @override
   String toString() {
-    return 'PasswordCreateState(enumStatus: $enumStatus)';
+    return 'PasswordCreateState(enumScreenStatus: $enumScreenStatus, enumFrontendStatus: $enumFrontendStatus, email: $email, code: $code, response: $response)';
   }
 
   @override
@@ -116,13 +199,20 @@ class _$PasswordCreateStateImpl implements _PasswordCreateState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PasswordCreateStateImpl &&
-            (identical(other.enumStatus, enumStatus) ||
-                other.enumStatus == enumStatus));
+            (identical(other.enumScreenStatus, enumScreenStatus) ||
+                other.enumScreenStatus == enumScreenStatus) &&
+            (identical(other.enumFrontendStatus, enumFrontendStatus) ||
+                other.enumFrontendStatus == enumFrontendStatus) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.response, response) ||
+                other.response == response));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, enumStatus);
+  int get hashCode => Object.hash(
+      runtimeType, enumScreenStatus, enumFrontendStatus, email, code, response);
 
   @JsonKey(ignore: true)
   @override
@@ -140,14 +230,26 @@ class _$PasswordCreateStateImpl implements _PasswordCreateState {
 }
 
 abstract class _PasswordCreateState implements PasswordCreateState {
-  const factory _PasswordCreateState({final EnumScreenStatus enumStatus}) =
-      _$PasswordCreateStateImpl;
+  const factory _PasswordCreateState(
+      {final EnumScreenStatus enumScreenStatus,
+      final EnumFrontendStatusPasswordCreate enumFrontendStatus,
+      final String? email,
+      final String? code,
+      final ResponsePasswordCreate response}) = _$PasswordCreateStateImpl;
 
   factory _PasswordCreateState.fromJson(Map<String, dynamic> json) =
       _$PasswordCreateStateImpl.fromJson;
 
   @override
-  EnumScreenStatus get enumStatus;
+  EnumScreenStatus get enumScreenStatus;
+  @override
+  EnumFrontendStatusPasswordCreate get enumFrontendStatus;
+  @override
+  String? get email;
+  @override
+  String? get code;
+  @override
+  ResponsePasswordCreate get response;
   @override
   @JsonKey(ignore: true)
   _$$PasswordCreateStateImplCopyWith<_$PasswordCreateStateImpl> get copyWith =>

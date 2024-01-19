@@ -6,8 +6,8 @@ import 'package:kidneysmart/core/widgets/app_load_widget.dart';
 /// {@template load_page}
 /// Widget with disabling user action during load
 /// {@endtemplate}
-class LoadNextPage extends StatelessWidget {
-  const LoadNextPage({
+class LoadNextScreen extends StatelessWidget {
+  const LoadNextScreen({
     required this.child,
     super.key,
     this.isLoad = false,

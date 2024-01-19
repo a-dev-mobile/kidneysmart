@@ -34,7 +34,7 @@ class ResponseVerificationCode with _$ResponseVerificationCode {
     @JsonKey(
       name: 'status',
       toJson: _verificationCodeStatusToJson,
-      fromJson: _verificationCodeStatusFromJson,
+      fromJson: _statusFromJson,
     )
     EnumBackendStatusVerificationCode? enumBackendStatusVerificationCode,
   }) = _ResponseVerificationCode;
@@ -48,7 +48,7 @@ String? _verificationCodeStatusToJson(
 ) =>
     status?.name;
 
-EnumBackendStatusVerificationCode? _verificationCodeStatusFromJson(
+EnumBackendStatusVerificationCode? _statusFromJson(
   String? value,
 ) {
   return EnumBackendStatusVerificationCode.fromNameOrNull(value);
