@@ -1,10 +1,10 @@
 // turnGen
-enum EnumStateButton implements Comparable<EnumStateButton> {
+enum EnumButtonStatus implements Comparable<EnumButtonStatus> {
   init('init'),
   standard('standard'),
   loading('loading');
 
-  const EnumStateButton(this.value);
+  const EnumButtonStatus(this.value);
   final String value;
 
 // end
@@ -15,9 +15,9 @@ enum EnumStateButton implements Comparable<EnumStateButton> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumStateButton fromValue(
+  static EnumButtonStatus fromValue(
     String? value, {
-    EnumStateButton? fallback,
+    EnumButtonStatus? fallback,
   }) {
     switch (value) {
       case 'init':
@@ -31,12 +31,12 @@ enum EnumStateButton implements Comparable<EnumStateButton> {
             (throw ArgumentError.value(
               value,
               'value',
-              'Value not found in EnumStateButton',
+              'Value not found in EnumButtonStatus',
             ));
     }
   }
 
-  static EnumStateButton? fromValueOrNull(
+  static EnumButtonStatus? fromValueOrNull(
     String? value,
   ) {
     switch (value) {
@@ -57,11 +57,11 @@ enum EnumStateButton implements Comparable<EnumStateButton> {
     required T Function() loading,
   }) {
     switch (this) {
-      case EnumStateButton.init:
+      case EnumButtonStatus.init:
         return init();
-      case EnumStateButton.standard:
+      case EnumButtonStatus.standard:
         return standard();
-      case EnumStateButton.loading:
+      case EnumButtonStatus.loading:
         return loading();
     }
   }
@@ -72,11 +72,11 @@ enum EnumStateButton implements Comparable<EnumStateButton> {
     required T loading,
   }) {
     switch (this) {
-      case EnumStateButton.init:
+      case EnumButtonStatus.init:
         return init;
-      case EnumStateButton.standard:
+      case EnumButtonStatus.standard:
         return standard;
-      case EnumStateButton.loading:
+      case EnumButtonStatus.loading:
         return loading;
     }
   }
@@ -130,14 +130,14 @@ enum EnumStateButton implements Comparable<EnumStateButton> {
       );
 
   static List<String> getListValue() =>
-      EnumStateButton.values.map((e) => e.value).toList();
+      EnumButtonStatus.values.map((e) => e.value).toList();
 
   @override
-  int compareTo(EnumStateButton other) => index.compareTo(other.index);
+  int compareTo(EnumButtonStatus other) => index.compareTo(other.index);
 }
 
-extension $EnumStateButton on EnumStateButton {
-  bool get isInit => this == EnumStateButton.init;
-  bool get isStandard => this == EnumStateButton.standard;
-  bool get isLoading => this == EnumStateButton.loading;
+extension $EnumButtonStatus on EnumButtonStatus {
+  bool get isInit => this == EnumButtonStatus.init;
+  bool get isStandard => this == EnumButtonStatus.standard;
+  bool get isLoading => this == EnumButtonStatus.loading;
 }

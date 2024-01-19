@@ -20,7 +20,7 @@ WelcomeState _$WelcomeStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WelcomeState {
-  EnumStatus get enumStatus => throw _privateConstructorUsedError;
+  EnumScreenStatus get enumStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $WelcomeStateCopyWith<$Res> {
           WelcomeState value, $Res Function(WelcomeState) then) =
       _$WelcomeStateCopyWithImpl<$Res, WelcomeState>;
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call({EnumScreenStatus enumStatus});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$WelcomeStateCopyWithImpl<$Res, $Val extends WelcomeState>
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
+              as EnumScreenStatus,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$WelcomeStateImplCopyWith<$Res>
       __$$WelcomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call({EnumScreenStatus enumStatus});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$WelcomeStateImplCopyWithImpl<$Res>
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
+              as EnumScreenStatus,
     ));
   }
 }
@@ -97,14 +97,14 @@ class __$$WelcomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$WelcomeStateImpl implements _WelcomeState {
-  const _$WelcomeStateImpl({this.enumStatus = EnumStatus.init});
+  const _$WelcomeStateImpl({this.enumStatus = EnumScreenStatus.init});
 
   factory _$WelcomeStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$WelcomeStateImplFromJson(json);
 
   @override
   @JsonKey()
-  final EnumStatus enumStatus;
+  final EnumScreenStatus enumStatus;
 
   @override
   String toString() {
@@ -139,14 +139,14 @@ class _$WelcomeStateImpl implements _WelcomeState {
 }
 
 abstract class _WelcomeState implements WelcomeState {
-  const factory _WelcomeState({final EnumStatus enumStatus}) =
+  const factory _WelcomeState({final EnumScreenStatus enumStatus}) =
       _$WelcomeStateImpl;
 
   factory _WelcomeState.fromJson(Map<String, dynamic> json) =
       _$WelcomeStateImpl.fromJson;
 
   @override
-  EnumStatus get enumStatus;
+  EnumScreenStatus get enumStatus;
   @override
   @JsonKey(ignore: true)
   _$$WelcomeStateImplCopyWith<_$WelcomeStateImpl> get copyWith =>

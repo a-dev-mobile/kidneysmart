@@ -9,8 +9,8 @@ part of 'app_update_notifier.dart';
 _$AppUpdateStateImpl _$$AppUpdateStateImplFromJson(Map<String, dynamic> json) =>
     _$AppUpdateStateImpl(
       enumStatus:
-          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumStatus']) ??
-              EnumStatus.init,
+          $enumDecodeNullable(_$EnumScreenStatusEnumMap, json['enumStatus']) ??
+              EnumScreenStatus.init,
       apiAppUpdateCheckRes: json['apiAppUpdateCheckRes'] == null
           ? const ApiAppUpdateCheckRes.init()
           : ApiAppUpdateCheckRes.fromJson(
@@ -20,15 +20,15 @@ _$AppUpdateStateImpl _$$AppUpdateStateImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$AppUpdateStateImplToJson(
         _$AppUpdateStateImpl instance) =>
     <String, dynamic>{
-      'enumStatus': _$EnumStatusEnumMap[instance.enumStatus]!,
+      'enumStatus': _$EnumScreenStatusEnumMap[instance.enumStatus]!,
       'apiAppUpdateCheckRes': instance.apiAppUpdateCheckRes,
     };
 
-const _$EnumStatusEnumMap = {
-  EnumStatus.init: 'init',
-  EnumStatus.load: 'load',
-  EnumStatus.success: 'success',
-  EnumStatus.error: 'error',
+const _$EnumScreenStatusEnumMap = {
+  EnumScreenStatus.init: 'init',
+  EnumScreenStatus.load: 'load',
+  EnumScreenStatus.success: 'success',
+  EnumScreenStatus.error: 'error',
 };
 
 // **************************************************************************

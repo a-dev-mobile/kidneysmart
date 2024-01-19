@@ -21,10 +21,11 @@ VerificationCodeState _$VerificationCodeStateFromJson(
 
 /// @nodoc
 mixin _$VerificationCodeState {
-  EnumStatus get enumScreenStatus => throw _privateConstructorUsedError;
-  EnumStatus get enumResultStatus => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get code => throw _privateConstructorUsedError;
+  EnumScreenStatus get enumScreenStatus => throw _privateConstructorUsedError;
+  EnumFrontendStatusVerificationCode get enumFrontendStatus =>
+      throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get code => throw _privateConstructorUsedError;
   ResponseVerificationCode get response => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,10 +41,10 @@ abstract class $VerificationCodeStateCopyWith<$Res> {
       _$VerificationCodeStateCopyWithImpl<$Res, VerificationCodeState>;
   @useResult
   $Res call(
-      {EnumStatus enumScreenStatus,
-      EnumStatus enumResultStatus,
-      String email,
-      String code,
+      {EnumScreenStatus enumScreenStatus,
+      EnumFrontendStatusVerificationCode enumFrontendStatus,
+      String? email,
+      String? code,
       ResponseVerificationCode response});
 
   $ResponseVerificationCodeCopyWith<$Res> get response;
@@ -64,28 +65,28 @@ class _$VerificationCodeStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? enumScreenStatus = null,
-    Object? enumResultStatus = null,
-    Object? email = null,
-    Object? code = null,
+    Object? enumFrontendStatus = null,
+    Object? email = freezed,
+    Object? code = freezed,
     Object? response = null,
   }) {
     return _then(_value.copyWith(
       enumScreenStatus: null == enumScreenStatus
           ? _value.enumScreenStatus
           : enumScreenStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
-      enumResultStatus: null == enumResultStatus
-          ? _value.enumResultStatus
-          : enumResultStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
-      email: null == email
+              as EnumScreenStatus,
+      enumFrontendStatus: null == enumFrontendStatus
+          ? _value.enumFrontendStatus
+          : enumFrontendStatus // ignore: cast_nullable_to_non_nullable
+              as EnumFrontendStatusVerificationCode,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
+              as String?,
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       response: null == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -112,10 +113,10 @@ abstract class _$$VerificationCodeStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {EnumStatus enumScreenStatus,
-      EnumStatus enumResultStatus,
-      String email,
-      String code,
+      {EnumScreenStatus enumScreenStatus,
+      EnumFrontendStatusVerificationCode enumFrontendStatus,
+      String? email,
+      String? code,
       ResponseVerificationCode response});
 
   @override
@@ -135,28 +136,28 @@ class __$$VerificationCodeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? enumScreenStatus = null,
-    Object? enumResultStatus = null,
-    Object? email = null,
-    Object? code = null,
+    Object? enumFrontendStatus = null,
+    Object? email = freezed,
+    Object? code = freezed,
     Object? response = null,
   }) {
     return _then(_$VerificationCodeStateImpl(
       enumScreenStatus: null == enumScreenStatus
           ? _value.enumScreenStatus
           : enumScreenStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
-      enumResultStatus: null == enumResultStatus
-          ? _value.enumResultStatus
-          : enumResultStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
-      email: null == email
+              as EnumScreenStatus,
+      enumFrontendStatus: null == enumFrontendStatus
+          ? _value.enumFrontendStatus
+          : enumFrontendStatus // ignore: cast_nullable_to_non_nullable
+              as EnumFrontendStatusVerificationCode,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
+              as String?,
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       response: null == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -169,10 +170,10 @@ class __$$VerificationCodeStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$VerificationCodeStateImpl implements _VerificationCodeState {
   const _$VerificationCodeStateImpl(
-      {this.enumScreenStatus = EnumStatus.init,
-      this.enumResultStatus = EnumStatus.init,
-      this.email = '',
-      this.code = '',
+      {this.enumScreenStatus = EnumScreenStatus.init,
+      this.enumFrontendStatus = EnumFrontendStatusVerificationCode.init,
+      this.email,
+      this.code,
       this.response = const ResponseVerificationCode()});
 
   factory _$VerificationCodeStateImpl.fromJson(Map<String, dynamic> json) =>
@@ -180,23 +181,21 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
 
   @override
   @JsonKey()
-  final EnumStatus enumScreenStatus;
+  final EnumScreenStatus enumScreenStatus;
   @override
   @JsonKey()
-  final EnumStatus enumResultStatus;
+  final EnumFrontendStatusVerificationCode enumFrontendStatus;
   @override
-  @JsonKey()
-  final String email;
+  final String? email;
   @override
-  @JsonKey()
-  final String code;
+  final String? code;
   @override
   @JsonKey()
   final ResponseVerificationCode response;
 
   @override
   String toString() {
-    return 'VerificationCodeState(enumScreenStatus: $enumScreenStatus, enumResultStatus: $enumResultStatus, email: $email, code: $code, response: $response)';
+    return 'VerificationCodeState(enumScreenStatus: $enumScreenStatus, enumFrontendStatus: $enumFrontendStatus, email: $email, code: $code, response: $response)';
   }
 
   @override
@@ -206,8 +205,8 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
             other is _$VerificationCodeStateImpl &&
             (identical(other.enumScreenStatus, enumScreenStatus) ||
                 other.enumScreenStatus == enumScreenStatus) &&
-            (identical(other.enumResultStatus, enumResultStatus) ||
-                other.enumResultStatus == enumResultStatus) &&
+            (identical(other.enumFrontendStatus, enumFrontendStatus) ||
+                other.enumFrontendStatus == enumFrontendStatus) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.response, response) ||
@@ -217,7 +216,7 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, enumScreenStatus, enumResultStatus, email, code, response);
+      runtimeType, enumScreenStatus, enumFrontendStatus, email, code, response);
 
   @JsonKey(ignore: true)
   @override
@@ -236,23 +235,23 @@ class _$VerificationCodeStateImpl implements _VerificationCodeState {
 
 abstract class _VerificationCodeState implements VerificationCodeState {
   const factory _VerificationCodeState(
-      {final EnumStatus enumScreenStatus,
-      final EnumStatus enumResultStatus,
-      final String email,
-      final String code,
+      {final EnumScreenStatus enumScreenStatus,
+      final EnumFrontendStatusVerificationCode enumFrontendStatus,
+      final String? email,
+      final String? code,
       final ResponseVerificationCode response}) = _$VerificationCodeStateImpl;
 
   factory _VerificationCodeState.fromJson(Map<String, dynamic> json) =
       _$VerificationCodeStateImpl.fromJson;
 
   @override
-  EnumStatus get enumScreenStatus;
+  EnumScreenStatus get enumScreenStatus;
   @override
-  EnumStatus get enumResultStatus;
+  EnumFrontendStatusVerificationCode get enumFrontendStatus;
   @override
-  String get email;
+  String? get email;
   @override
-  String get code;
+  String? get code;
   @override
   ResponseVerificationCode get response;
   @override

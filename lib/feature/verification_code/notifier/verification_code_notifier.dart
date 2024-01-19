@@ -1,11 +1,14 @@
 import 'package:dartlog/dartlog.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_http_method.dart';
-import 'package:kidneysmart/core/enum/enum_page_status.dart';
+import 'package:kidneysmart/core/enum/enum_screen_state.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/network/network_client.dart';
 import 'package:kidneysmart/core/storage/app_storage.dart';
-import 'package:kidneysmart/feature/verification_code/enum/enum_response_verification_code.dart';
+import 'package:kidneysmart/feature/password_create/view/password_create_page.dart';
+import 'package:kidneysmart/feature/password_entry/view/password_entry_page.dart';
+import 'package:kidneysmart/feature/verification_code/enum/enum_backend_status_verification_code.dart';
+import 'package:kidneysmart/feature/verification_code/enum/enum_frontend_status_verification_code.dart';
 import 'package:kidneysmart/feature/verification_code/model/req_res_verification_code.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
@@ -28,20 +31,30 @@ class VerificationCodeNotifier extends _$VerificationCodeNotifier {
   }
 
   Future<void> load() async {
-    state = state.copyWith(enumScreenStatus: EnumStatus.load);
+    state = state.copyWith(enumScreenStatus: EnumScreenStatus.load);
     // await Future<void>.delayed(const Duration(seconds: 3));
     state = state.copyWith(email: _storage.getEmail());
-    state = state.copyWith(enumScreenStatus: EnumStatus.success);
+    state = state.copyWith(enumScreenStatus: EnumScreenStatus.success);
   }
 
   Future<void> verificationCode() async {
     state = state.copyWith(
-      enumResultStatus: EnumStatus.load,
+      enumFrontendStatus: EnumFrontendStatusVerificationCode.load,
       response: const ResponseVerificationCode(),
     );
-    // await Future<void>.delayed(const Duration(seconds: 3));
+
+    final email = state.email;
+    final code = state.code;
+
+    if (email == null || code == null) {
+      state = state.copyWith(
+        enumFrontendStatus: EnumFrontendStatusVerificationCode.emailOrCodeNull,
+      );
+      return;
+    }
+
     try {
-      final req = RequestVerificationCode(email: state.email, code: state.code);
+      final req = RequestVerificationCode(email: email, code: code);
 
       final responseRaw = await _client.request<dynamic>(
         method: EnumHttpMethod.post,
@@ -50,13 +63,15 @@ class VerificationCodeNotifier extends _$VerificationCodeNotifier {
       );
 
       final response = ResponseVerificationCode.fromJson(
-          responseRaw.data as Map<String, dynamic>);
+        responseRaw.data as Map<String, dynamic>,
+      );
 
       state = state.copyWith(
-        enumResultStatus: EnumStatus.success,
+        enumFrontendStatus: EnumFrontendStatusVerificationCode.success,
         response: response,
       );
 
+  
     } on Object catch (e, s) {
       Logger.error('error kidneysmart-auth/v1/verify-code', e, s);
       _go.pushErrorScreen(extra: e);

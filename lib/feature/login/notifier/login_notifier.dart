@@ -2,12 +2,13 @@ import 'package:dartlog/dartlog.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kidneysmart/core/enum/enum_http_method.dart';
-import 'package:kidneysmart/core/enum/enum_page_status.dart';
+import 'package:kidneysmart/core/enum/enum_screen_state.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/network/network_client.dart';
 import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:kidneysmart/core/widgets/app_error_screen.dart';
-import 'package:kidneysmart/feature/login/enum/enum_response_login.dart';
+import 'package:kidneysmart/feature/login/enum/enum_backend_status_login.dart';
+import 'package:kidneysmart/feature/login/enum/enum_frontend_status_login.dart';
 import 'package:kidneysmart/feature/login/model/req_res_login.dart';
 import 'package:kidneysmart/feature/password_create/view/password_create_page.dart';
 import 'package:kidneysmart/feature/password_entry/view/password_entry_page.dart';
@@ -33,20 +34,32 @@ class LoginNotifier extends _$LoginNotifier {
   }
 
   Future<void> load() async {
-    state = state.copyWith(enumScreenStatus: EnumStatus.load);
+    state = state.copyWith(enumScreenStatus: EnumScreenStatus.load);
     // await Future<void>.delayed(const Duration(seconds: 3));
-    state = state.copyWith(email: _storage.getEmail());
-    state = state.copyWith(enumScreenStatus: EnumStatus.success);
+    final email = _storage.getEmail();
+
+    state = state.copyWith(email: email);
+    state = state.copyWith(enumScreenStatus: EnumScreenStatus.success);
   }
 
   Future<void> login() async {
     state = state.copyWith(
-      enumResultStatus: EnumStatus.load,
+      enumFrontendStatus: EnumFrontendStatusLogin.load,
+
       response: const ResponseLogin(),
     );
-    // await Future<void>.delayed(const Duration(seconds: 3));
+    await Future<void>.delayed(const Duration(seconds: 3));
+
+    final email = state.email;
+    if (email == null) {
+      state = state.copyWith(
+        enumFrontendStatus: EnumFrontendStatusLogin.emailIsNull,
+      );
+      return;
+    }
+
     try {
-      final req = RequestLogin(email: state.email);
+      final req = RequestLogin(email: email);
 
       final responseRaw = await _client.request<dynamic>(
         method: EnumHttpMethod.post,
@@ -58,27 +71,9 @@ class LoginNotifier extends _$LoginNotifier {
           ResponseLogin.fromJson(responseRaw.data as Map<String, dynamic>);
 
       state = state.copyWith(
-        enumResultStatus: EnumStatus.success,
+        enumFrontendStatus: EnumFrontendStatusLogin.success,
         response: response,
       );
-
-      switch (response.enumResponseLoginStatus) {
-        case EnumResponseLoginStatus.registrationSuccessful:
-        case EnumResponseLoginStatus.emailVerificationRequired:
-          await _go.router.pushNamed(VerificationCodePage.name);
-        case EnumResponseLoginStatus.passwordSetRequired:
-          await _go.router.pushNamed(PasswordCreatePage.name);
-        case EnumResponseLoginStatus.passwordEntryRequired:
-          await _go.router.pushNamed(PasswordEntryPage.name);
-
-        case EnumResponseLoginStatus.emailSendFailed:
-        case EnumResponseLoginStatus.internalError:
-        case EnumResponseLoginStatus.invalidEmailFormat:
-        case EnumResponseLoginStatus.invalidParameters:
-        case EnumResponseLoginStatus.invalidRequestBody:
-        case EnumResponseLoginStatus.userCreationFailed:
-        case null:
-      }
     } on Object catch (e, s) {
       Logger.error('error kidneysmart-auth/v1/login', e, s);
       _go.pushErrorScreen(extra: e);

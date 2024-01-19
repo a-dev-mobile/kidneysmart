@@ -10,7 +10,7 @@ enum EnumStore implements Comparable<EnumStore> {
       'com.apple.testflight',
       'com.apple.simulator',
     ],
-    url: 'https://apps.apple.com/us/app/надо-денег-деньги-онлайн/id1663823713',
+    url: '',
     name: 'AppStore',
     vendor: '(apple)',
   ),
@@ -18,7 +18,7 @@ enum EnumStore implements Comparable<EnumStore> {
     packageId: [
       'com.android.vending',
     ],
-    url: 'https://play.google.com/store/apps/details?id=ru.nadodeneg.mobile',
+    url: '',
     name: 'GooglePlay',
     vendor: '(google)',
   ),
@@ -26,7 +26,7 @@ enum EnumStore implements Comparable<EnumStore> {
     packageId: [
       'com.xiaomi.mipicks',
     ],
-    url: 'https://global.app.mi.com/details?id=ru.nadodeneg.mobile&lo=RU&la=en',
+    url: '',
     name: 'GetApps',
     vendor: '(xiaomi)',
   ),
@@ -44,7 +44,7 @@ enum EnumStore implements Comparable<EnumStore> {
     packageId: [
       'ru.vk.store',
     ],
-    url: 'https://apps.rustore.ru/app/ru.nadodeneg.mobile',
+    url: '',
     name: 'RuStore',
     vendor: '(vk)',
   ),
@@ -52,7 +52,7 @@ enum EnumStore implements Comparable<EnumStore> {
     packageId: [
       'com.huawei.appmarket',
     ],
-    url: 'https://appgallery.huawei.com/app/C109195729',
+    url: '',
     name: 'AppGallery',
     vendor: '(huawei)',
   ),
@@ -122,17 +122,17 @@ enum EnumStore implements Comparable<EnumStore> {
     EnumStore? fallback,
   }) {
     switch (url) {
-      case 'https://apps.apple.com/us/app/надо-денег-деньги-онлайн/id1663823713':
+      case '':
         return appStore;
-      case 'https://play.google.com/store/apps/details?id=ru.nadodeneg.mobile':
+      case '':
         return googlePlay;
-      case 'https://global.app.mi.com/details?id=ru.nadodeneg.mobile&lo=RU&la=en':
+      case '':
         return getApps;
       case '':
         return packageInstaller;
-      case 'https://apps.rustore.ru/app/ru.nadodeneg.mobile':
+      case '':
         return ruStore;
-      case 'https://appgallery.huawei.com/app/C109195729':
+      case '':
         return appGallery;
       case '':
         return other;
@@ -226,17 +226,17 @@ enum EnumStore implements Comparable<EnumStore> {
     String? url,
   ) {
     switch (url) {
-      case 'https://apps.apple.com/us/app/надо-денег-деньги-онлайн/id1663823713':
+      case '':
         return appStore;
-      case 'https://play.google.com/store/apps/details?id=ru.nadodeneg.mobile':
+      case '':
         return googlePlay;
-      case 'https://global.app.mi.com/details?id=ru.nadodeneg.mobile&lo=RU&la=en':
+      case '':
         return getApps;
       case '':
         return packageInstaller;
-      case 'https://apps.rustore.ru/app/ru.nadodeneg.mobile':
+      case '':
         return ruStore;
-      case 'https://appgallery.huawei.com/app/C109195729':
+      case '':
         return appGallery;
       case '':
         return other;

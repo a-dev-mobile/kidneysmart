@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
-import 'package:kidneysmart/core/enum/enum_page_status.dart';
+import 'package:kidneysmart/core/enum/enum_screen_state.dart';
 import 'package:kidneysmart/core/extension/gorouter_extension.dart';
 import 'package:kidneysmart/core/widgets/app_load_widget.dart';
 import 'package:kidneysmart/core/widgets/clean_focus.dart';
@@ -11,9 +11,12 @@ import 'package:kidneysmart/core/widgets/default_app_bar.dart';
 import 'package:kidneysmart/core/widgets/keyboard_auto_scroll_widget.dart';
 import 'package:kidneysmart/core/widgets/load_next_page.dart';
 import 'package:kidneysmart/feature/login/view/login_page.dart';
+import 'package:kidneysmart/feature/password_create/view/password_create_page.dart';
+import 'package:kidneysmart/feature/password_entry/view/password_entry_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
-import 'package:kidneysmart/feature/verification_code/enum/enum_response_verification_code.dart';
+import 'package:kidneysmart/feature/verification_code/enum/enum_backend_status_verification_code.dart';
+import 'package:kidneysmart/feature/verification_code/enum/enum_frontend_status_verification_code.dart';
 
 import 'package:kidneysmart/feature/verification_code/notifier/verification_code_notifier.dart';
 import 'package:kidneysmart/feature/verification_code/view/widget/field_code.dart';
@@ -29,7 +32,8 @@ class VerificationCodePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final status = ref.watch(
-        verificationCodeNotifierProvider.select((it) => it.enumScreenStatus));
+      verificationCodeNotifierProvider.select((it) => it.enumScreenStatus),
+    );
     return ClearFocus(
       child: Scaffold(
         appBar: const CustomAppBar(title: 'Проверьте почту'),
@@ -50,15 +54,19 @@ class _View extends ConsumerStatefulWidget {
 
 class _ViewState extends ConsumerState<_View> {
   final GlobalKey<FieldCodeState> _codeFieldKey = GlobalKey();
+  String? _customErrorFromBackend;
   @override
   Widget build(BuildContext context) {
     final status = ref.watch(
-        verificationCodeNotifierProvider.select((it) => it.enumResultStatus));
+      verificationCodeNotifierProvider.select((it) => it.enumFrontendStatus),
+    );
     final state = ref.read(verificationCodeNotifierProvider);
     final notifier = ref.read(verificationCodeNotifierProvider.notifier);
 
     final sizeScreen = MediaQuery.of(context).size;
+    _handleBackendStatus(state.response.enumBackendStatusVerificationCode);
     final scrollController = ScrollController();
+
     return KeyboardAutoScrollWidget(
       scrollController: scrollController,
       child: LoadNextPage(
@@ -95,9 +103,7 @@ class _ViewState extends ConsumerState<_View> {
         FieldCode(
           key: _codeFieldKey,
           onChanged: notifier.setCode,
-          customError: _getCustomErrorFromBackend(
-            state.response.enumResponseVerificationCodeStatus,
-          ),
+          customError: _customErrorFromBackend,
         ),
         const SizedBox(height: 16),
         TextButton(
@@ -145,30 +151,41 @@ class _ViewState extends ConsumerState<_View> {
     );
   }
 
-  String? _getCustomErrorFromBackend(
-    EnumResponseVerificationCodeStatus? enumResponseVerificationCodeStatus,
+  void _handleBackendStatus(
+    EnumBackendStatusVerificationCode? enumResponseVerificationCodeStatus,
   ) {
+    _customErrorFromBackend = null;
     switch (enumResponseVerificationCodeStatus) {
-      case EnumResponseVerificationCodeStatus.invalidCode:
-      case EnumResponseVerificationCodeStatus.invalidRequestBody:
-      case EnumResponseVerificationCodeStatus.invalidParameters:
-        return 'Неверный код';
+      case EnumBackendStatusVerificationCode.invalidCode:
+      case EnumBackendStatusVerificationCode.invalidRequestBody:
+      case EnumBackendStatusVerificationCode.invalidParameters:
+        _customErrorFromBackend = 'Неверный код';
 
-      case EnumResponseVerificationCodeStatus.tooManyAttempts:
-        return 'Слишком много попыток, попробуйте позже';
-      case EnumResponseVerificationCodeStatus.validationFailed:
-        return 'Неправильный формат, пожалуйста введите 4 цифры';
+      case EnumBackendStatusVerificationCode.tooManyAttempts:
+        _customErrorFromBackend = 'Слишком много попыток, попробуйте позже';
+      case EnumBackendStatusVerificationCode.validationFailed:
+        _customErrorFromBackend =
+            'Неправильный формат, пожалуйста введите 4 цифры';
 
-      case EnumResponseVerificationCodeStatus.accessTokenGenerationFailed:
-      case EnumResponseVerificationCodeStatus.emailAlreadyVerified:
-      case EnumResponseVerificationCodeStatus.refreshTokenGenerationFailed:
-      case EnumResponseVerificationCodeStatus.refreshTokenSavingFailed:
-      case EnumResponseVerificationCodeStatus.updateVerificationStatusFailed:
-      case EnumResponseVerificationCodeStatus.userNotFound:
-        return 'Неизвестная ошибка';
-      case EnumResponseVerificationCodeStatus.verificationSuccessful:
+      case EnumBackendStatusVerificationCode.accessTokenGenerationFailed:
+      case EnumBackendStatusVerificationCode.refreshTokenGenerationFailed:
+      case EnumBackendStatusVerificationCode.refreshTokenSavingFailed:
+      case EnumBackendStatusVerificationCode.updateVerificationStatusFailed:
+      case EnumBackendStatusVerificationCode.userNotFound:
+        _customErrorFromBackend = 'Неизвестная ошибка';
+      case EnumBackendStatusVerificationCode.verificationSuccessful:
+      case EnumBackendStatusVerificationCode.emailVerifiedPasswordNotSet:
+        _navigateAfterBuild(PasswordCreatePage.name);
+      case EnumBackendStatusVerificationCode.emailAndPasswordVerified:
+        _navigateAfterBuild(PasswordEntryPage.name);
       case null:
+        _customErrorFromBackend = null;
     }
-    return null;
+  }
+
+  void _navigateAfterBuild(String routeName) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      GoRouter.of(context).pushNamed(routeName);
+    });
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kidneysmart/core/enum/enum_page_status.dart';
+import 'package:kidneysmart/core/enum/enum_screen_state.dart';
 import 'package:kidneysmart/core/extension/gorouter_extension.dart';
 import 'package:kidneysmart/core/widgets/app_load_widget.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';

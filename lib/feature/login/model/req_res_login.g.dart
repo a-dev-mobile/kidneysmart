@@ -19,11 +19,11 @@ Map<String, dynamic> _$$RequestLoginImplToJson(_$RequestLoginImpl instance) =>
 _$ResponseLoginImpl _$$ResponseLoginImplFromJson(Map<String, dynamic> json) =>
     _$ResponseLoginImpl(
       message: json['message'] as String?,
-      enumResponseLoginStatus: _loginStatusFromJson(json['status'] as String?),
+      enumBackendStatusLogin: _loginStatusFromJson(json['status'] as String?),
     );
 
 Map<String, dynamic> _$$ResponseLoginImplToJson(_$ResponseLoginImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
-      'status': _loginStatusToJson(instance.enumResponseLoginStatus),
+      'status': _loginStatusToJson(instance.enumBackendStatusLogin),
     };

@@ -1,12 +1,13 @@
 // turnGen
 
-enum EnumResponseVerificationCodeStatus
-    implements Comparable<EnumResponseVerificationCodeStatus> {
+enum EnumBackendStatusVerificationCode
+    implements Comparable<EnumBackendStatusVerificationCode> {
   invalidRequestBody('INVALID_REQUEST_BODY'),
   invalidParameters('INVALID_PARAMETERS'),
   validationFailed('VALIDATION_FAILED'),
   userNotFound('USER_NOT_FOUND'),
-  emailAlreadyVerified('EMAIL_ALREADY_VERIFIED'),
+  emailVerifiedPasswordNotSet('EMAIL_VERIFIED_PASSWORD_NOT_SET'),
+  emailAndPasswordVerified('EMAIL_AND_PASSWORD_VERIFIED'),
   invalidCode('INVALID_CODE'),
   updateVerificationStatusFailed('UPDATE_VERIFICATION_STATUS_FAILED'),
   accessTokenGenerationFailed('ACCESS_TOKEN_GENERATION_FAILED'),
@@ -15,7 +16,7 @@ enum EnumResponseVerificationCodeStatus
   tooManyAttempts('TOO_MANY_ATTEMPTS'),
   verificationSuccessful('VERIFICATION_SUCCESSFUL');
 
-  const EnumResponseVerificationCodeStatus(this.name);
+  const EnumBackendStatusVerificationCode(this.name);
   final String name;
 
 // end
@@ -26,9 +27,9 @@ enum EnumResponseVerificationCodeStatus
 //         GENERATED CODE
 //  *************************************
 
-  static EnumResponseVerificationCodeStatus fromName(
+  static EnumBackendStatusVerificationCode fromName(
     String? name, {
-    EnumResponseVerificationCodeStatus? fallback,
+    EnumBackendStatusVerificationCode? fallback,
   }) {
     switch (name) {
       case 'INVALID_REQUEST_BODY':
@@ -39,8 +40,10 @@ enum EnumResponseVerificationCodeStatus
         return validationFailed;
       case 'USER_NOT_FOUND':
         return userNotFound;
-      case 'EMAIL_ALREADY_VERIFIED':
-        return emailAlreadyVerified;
+      case 'EMAIL_VERIFIED_PASSWORD_NOT_SET':
+        return emailVerifiedPasswordNotSet;
+      case 'EMAIL_AND_PASSWORD_VERIFIED':
+        return emailAndPasswordVerified;
       case 'INVALID_CODE':
         return invalidCode;
       case 'UPDATE_VERIFICATION_STATUS_FAILED':
@@ -60,12 +63,12 @@ enum EnumResponseVerificationCodeStatus
             (throw ArgumentError.value(
               name,
               'name',
-              'Value not found in EnumResponseVerificationCodeStatus',
+              'Value not found in EnumBackendStatusVerificationCode',
             ));
     }
   }
 
-  static EnumResponseVerificationCodeStatus? fromNameOrNull(
+  static EnumBackendStatusVerificationCode? fromNameOrNull(
     String? name,
   ) {
     switch (name) {
@@ -77,8 +80,10 @@ enum EnumResponseVerificationCodeStatus
         return validationFailed;
       case 'USER_NOT_FOUND':
         return userNotFound;
-      case 'EMAIL_ALREADY_VERIFIED':
-        return emailAlreadyVerified;
+      case 'EMAIL_VERIFIED_PASSWORD_NOT_SET':
+        return emailVerifiedPasswordNotSet;
+      case 'EMAIL_AND_PASSWORD_VERIFIED':
+        return emailAndPasswordVerified;
       case 'INVALID_CODE':
         return invalidCode;
       case 'UPDATE_VERIFICATION_STATUS_FAILED':
@@ -103,7 +108,8 @@ enum EnumResponseVerificationCodeStatus
     required T Function() invalidParameters,
     required T Function() validationFailed,
     required T Function() userNotFound,
-    required T Function() emailAlreadyVerified,
+    required T Function() emailVerifiedPasswordNotSet,
+    required T Function() emailAndPasswordVerified,
     required T Function() invalidCode,
     required T Function() updateVerificationStatusFailed,
     required T Function() accessTokenGenerationFailed,
@@ -113,29 +119,31 @@ enum EnumResponseVerificationCodeStatus
     required T Function() verificationSuccessful,
   }) {
     switch (this) {
-      case EnumResponseVerificationCodeStatus.invalidRequestBody:
+      case EnumBackendStatusVerificationCode.invalidRequestBody:
         return invalidRequestBody();
-      case EnumResponseVerificationCodeStatus.invalidParameters:
+      case EnumBackendStatusVerificationCode.invalidParameters:
         return invalidParameters();
-      case EnumResponseVerificationCodeStatus.validationFailed:
+      case EnumBackendStatusVerificationCode.validationFailed:
         return validationFailed();
-      case EnumResponseVerificationCodeStatus.userNotFound:
+      case EnumBackendStatusVerificationCode.userNotFound:
         return userNotFound();
-      case EnumResponseVerificationCodeStatus.emailAlreadyVerified:
-        return emailAlreadyVerified();
-      case EnumResponseVerificationCodeStatus.invalidCode:
+      case EnumBackendStatusVerificationCode.emailVerifiedPasswordNotSet:
+        return emailVerifiedPasswordNotSet();
+      case EnumBackendStatusVerificationCode.emailAndPasswordVerified:
+        return emailAndPasswordVerified();
+      case EnumBackendStatusVerificationCode.invalidCode:
         return invalidCode();
-      case EnumResponseVerificationCodeStatus.updateVerificationStatusFailed:
+      case EnumBackendStatusVerificationCode.updateVerificationStatusFailed:
         return updateVerificationStatusFailed();
-      case EnumResponseVerificationCodeStatus.accessTokenGenerationFailed:
+      case EnumBackendStatusVerificationCode.accessTokenGenerationFailed:
         return accessTokenGenerationFailed();
-      case EnumResponseVerificationCodeStatus.refreshTokenGenerationFailed:
+      case EnumBackendStatusVerificationCode.refreshTokenGenerationFailed:
         return refreshTokenGenerationFailed();
-      case EnumResponseVerificationCodeStatus.refreshTokenSavingFailed:
+      case EnumBackendStatusVerificationCode.refreshTokenSavingFailed:
         return refreshTokenSavingFailed();
-      case EnumResponseVerificationCodeStatus.tooManyAttempts:
+      case EnumBackendStatusVerificationCode.tooManyAttempts:
         return tooManyAttempts();
-      case EnumResponseVerificationCodeStatus.verificationSuccessful:
+      case EnumBackendStatusVerificationCode.verificationSuccessful:
         return verificationSuccessful();
     }
   }
@@ -145,7 +153,8 @@ enum EnumResponseVerificationCodeStatus
     required T invalidParameters,
     required T validationFailed,
     required T userNotFound,
-    required T emailAlreadyVerified,
+    required T emailVerifiedPasswordNotSet,
+    required T emailAndPasswordVerified,
     required T invalidCode,
     required T updateVerificationStatusFailed,
     required T accessTokenGenerationFailed,
@@ -155,29 +164,31 @@ enum EnumResponseVerificationCodeStatus
     required T verificationSuccessful,
   }) {
     switch (this) {
-      case EnumResponseVerificationCodeStatus.invalidRequestBody:
+      case EnumBackendStatusVerificationCode.invalidRequestBody:
         return invalidRequestBody;
-      case EnumResponseVerificationCodeStatus.invalidParameters:
+      case EnumBackendStatusVerificationCode.invalidParameters:
         return invalidParameters;
-      case EnumResponseVerificationCodeStatus.validationFailed:
+      case EnumBackendStatusVerificationCode.validationFailed:
         return validationFailed;
-      case EnumResponseVerificationCodeStatus.userNotFound:
+      case EnumBackendStatusVerificationCode.userNotFound:
         return userNotFound;
-      case EnumResponseVerificationCodeStatus.emailAlreadyVerified:
-        return emailAlreadyVerified;
-      case EnumResponseVerificationCodeStatus.invalidCode:
+      case EnumBackendStatusVerificationCode.emailVerifiedPasswordNotSet:
+        return emailVerifiedPasswordNotSet;
+      case EnumBackendStatusVerificationCode.emailAndPasswordVerified:
+        return emailAndPasswordVerified;
+      case EnumBackendStatusVerificationCode.invalidCode:
         return invalidCode;
-      case EnumResponseVerificationCodeStatus.updateVerificationStatusFailed:
+      case EnumBackendStatusVerificationCode.updateVerificationStatusFailed:
         return updateVerificationStatusFailed;
-      case EnumResponseVerificationCodeStatus.accessTokenGenerationFailed:
+      case EnumBackendStatusVerificationCode.accessTokenGenerationFailed:
         return accessTokenGenerationFailed;
-      case EnumResponseVerificationCodeStatus.refreshTokenGenerationFailed:
+      case EnumBackendStatusVerificationCode.refreshTokenGenerationFailed:
         return refreshTokenGenerationFailed;
-      case EnumResponseVerificationCodeStatus.refreshTokenSavingFailed:
+      case EnumBackendStatusVerificationCode.refreshTokenSavingFailed:
         return refreshTokenSavingFailed;
-      case EnumResponseVerificationCodeStatus.tooManyAttempts:
+      case EnumBackendStatusVerificationCode.tooManyAttempts:
         return tooManyAttempts;
-      case EnumResponseVerificationCodeStatus.verificationSuccessful:
+      case EnumBackendStatusVerificationCode.verificationSuccessful:
         return verificationSuccessful;
     }
   }
@@ -188,7 +199,8 @@ enum EnumResponseVerificationCodeStatus
     T Function()? invalidParameters,
     T Function()? validationFailed,
     T Function()? userNotFound,
-    T Function()? emailAlreadyVerified,
+    T Function()? emailVerifiedPasswordNotSet,
+    T Function()? emailAndPasswordVerified,
     T Function()? invalidCode,
     T Function()? updateVerificationStatusFailed,
     T Function()? accessTokenGenerationFailed,
@@ -202,7 +214,8 @@ enum EnumResponseVerificationCodeStatus
         invalidParameters: invalidParameters ?? orElse,
         validationFailed: validationFailed ?? orElse,
         userNotFound: userNotFound ?? orElse,
-        emailAlreadyVerified: emailAlreadyVerified ?? orElse,
+        emailVerifiedPasswordNotSet: emailVerifiedPasswordNotSet ?? orElse,
+        emailAndPasswordVerified: emailAndPasswordVerified ?? orElse,
         invalidCode: invalidCode ?? orElse,
         updateVerificationStatusFailed:
             updateVerificationStatusFailed ?? orElse,
@@ -219,7 +232,8 @@ enum EnumResponseVerificationCodeStatus
     T? invalidParameters,
     T? validationFailed,
     T? userNotFound,
-    T? emailAlreadyVerified,
+    T? emailVerifiedPasswordNotSet,
+    T? emailAndPasswordVerified,
     T? invalidCode,
     T? updateVerificationStatusFailed,
     T? accessTokenGenerationFailed,
@@ -233,7 +247,8 @@ enum EnumResponseVerificationCodeStatus
         invalidParameters: invalidParameters ?? orElse,
         validationFailed: validationFailed ?? orElse,
         userNotFound: userNotFound ?? orElse,
-        emailAlreadyVerified: emailAlreadyVerified ?? orElse,
+        emailVerifiedPasswordNotSet: emailVerifiedPasswordNotSet ?? orElse,
+        emailAndPasswordVerified: emailAndPasswordVerified ?? orElse,
         invalidCode: invalidCode ?? orElse,
         updateVerificationStatusFailed:
             updateVerificationStatusFailed ?? orElse,
@@ -249,7 +264,8 @@ enum EnumResponseVerificationCodeStatus
     T Function()? invalidParameters,
     T Function()? validationFailed,
     T Function()? userNotFound,
-    T Function()? emailAlreadyVerified,
+    T Function()? emailVerifiedPasswordNotSet,
+    T Function()? emailAndPasswordVerified,
     T Function()? invalidCode,
     T Function()? updateVerificationStatusFailed,
     T Function()? accessTokenGenerationFailed,
@@ -264,7 +280,8 @@ enum EnumResponseVerificationCodeStatus
         invalidParameters: invalidParameters,
         validationFailed: validationFailed,
         userNotFound: userNotFound,
-        emailAlreadyVerified: emailAlreadyVerified,
+        emailVerifiedPasswordNotSet: emailVerifiedPasswordNotSet,
+        emailAndPasswordVerified: emailAndPasswordVerified,
         invalidCode: invalidCode,
         updateVerificationStatusFailed: updateVerificationStatusFailed,
         accessTokenGenerationFailed: accessTokenGenerationFailed,
@@ -279,7 +296,8 @@ enum EnumResponseVerificationCodeStatus
     T? invalidParameters,
     T? validationFailed,
     T? userNotFound,
-    T? emailAlreadyVerified,
+    T? emailVerifiedPasswordNotSet,
+    T? emailAndPasswordVerified,
     T? invalidCode,
     T? updateVerificationStatusFailed,
     T? accessTokenGenerationFailed,
@@ -294,7 +312,8 @@ enum EnumResponseVerificationCodeStatus
         invalidParameters: invalidParameters,
         validationFailed: validationFailed,
         userNotFound: userNotFound,
-        emailAlreadyVerified: emailAlreadyVerified,
+        emailVerifiedPasswordNotSet: emailVerifiedPasswordNotSet,
+        emailAndPasswordVerified: emailAndPasswordVerified,
         invalidCode: invalidCode,
         updateVerificationStatusFailed: updateVerificationStatusFailed,
         accessTokenGenerationFailed: accessTokenGenerationFailed,
@@ -305,37 +324,39 @@ enum EnumResponseVerificationCodeStatus
       );
 
   static List<String> getListName() =>
-      EnumResponseVerificationCodeStatus.values.map((e) => e.name).toList();
+      EnumBackendStatusVerificationCode.values.map((e) => e.name).toList();
 
   @override
-  int compareTo(EnumResponseVerificationCodeStatus other) =>
+  int compareTo(EnumBackendStatusVerificationCode other) =>
       index.compareTo(other.index);
 }
 
-extension $EnumResponseVerificationCodeStatus
-    on EnumResponseVerificationCodeStatus {
+extension $EnumBackendStatusVerificationCode
+    on EnumBackendStatusVerificationCode {
   bool get isInvalidRequestBody =>
-      this == EnumResponseVerificationCodeStatus.invalidRequestBody;
+      this == EnumBackendStatusVerificationCode.invalidRequestBody;
   bool get isInvalidParameters =>
-      this == EnumResponseVerificationCodeStatus.invalidParameters;
+      this == EnumBackendStatusVerificationCode.invalidParameters;
   bool get isValidationFailed =>
-      this == EnumResponseVerificationCodeStatus.validationFailed;
+      this == EnumBackendStatusVerificationCode.validationFailed;
   bool get isUserNotFound =>
-      this == EnumResponseVerificationCodeStatus.userNotFound;
-  bool get isEmailAlreadyVerified =>
-      this == EnumResponseVerificationCodeStatus.emailAlreadyVerified;
+      this == EnumBackendStatusVerificationCode.userNotFound;
+  bool get isEmailVerifiedPasswordNotSet =>
+      this == EnumBackendStatusVerificationCode.emailVerifiedPasswordNotSet;
+  bool get isEmailAndPasswordVerified =>
+      this == EnumBackendStatusVerificationCode.emailAndPasswordVerified;
   bool get isInvalidCode =>
-      this == EnumResponseVerificationCodeStatus.invalidCode;
+      this == EnumBackendStatusVerificationCode.invalidCode;
   bool get isUpdateVerificationStatusFailed =>
-      this == EnumResponseVerificationCodeStatus.updateVerificationStatusFailed;
+      this == EnumBackendStatusVerificationCode.updateVerificationStatusFailed;
   bool get isAccessTokenGenerationFailed =>
-      this == EnumResponseVerificationCodeStatus.accessTokenGenerationFailed;
+      this == EnumBackendStatusVerificationCode.accessTokenGenerationFailed;
   bool get isRefreshTokenGenerationFailed =>
-      this == EnumResponseVerificationCodeStatus.refreshTokenGenerationFailed;
+      this == EnumBackendStatusVerificationCode.refreshTokenGenerationFailed;
   bool get isRefreshTokenSavingFailed =>
-      this == EnumResponseVerificationCodeStatus.refreshTokenSavingFailed;
+      this == EnumBackendStatusVerificationCode.refreshTokenSavingFailed;
   bool get isTooManyAttempts =>
-      this == EnumResponseVerificationCodeStatus.tooManyAttempts;
+      this == EnumBackendStatusVerificationCode.tooManyAttempts;
   bool get isVerificationSuccessful =>
-      this == EnumResponseVerificationCodeStatus.verificationSuccessful;
+      this == EnumBackendStatusVerificationCode.verificationSuccessful;
 }

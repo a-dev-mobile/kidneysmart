@@ -10,21 +10,21 @@ _$PasswordEntryStateImpl _$$PasswordEntryStateImplFromJson(
         Map<String, dynamic> json) =>
     _$PasswordEntryStateImpl(
       enumStatus:
-          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumStatus']) ??
-              EnumStatus.init,
+          $enumDecodeNullable(_$EnumScreenStatusEnumMap, json['enumStatus']) ??
+              EnumScreenStatus.init,
     );
 
 Map<String, dynamic> _$$PasswordEntryStateImplToJson(
         _$PasswordEntryStateImpl instance) =>
     <String, dynamic>{
-      'enumStatus': _$EnumStatusEnumMap[instance.enumStatus]!,
+      'enumStatus': _$EnumScreenStatusEnumMap[instance.enumStatus]!,
     };
 
-const _$EnumStatusEnumMap = {
-  EnumStatus.init: 'init',
-  EnumStatus.load: 'load',
-  EnumStatus.success: 'success',
-  EnumStatus.error: 'error',
+const _$EnumScreenStatusEnumMap = {
+  EnumScreenStatus.init: 'init',
+  EnumScreenStatus.load: 'load',
+  EnumScreenStatus.success: 'success',
+  EnumScreenStatus.error: 'error',
 };
 
 // **************************************************************************
@@ -32,7 +32,7 @@ const _$EnumStatusEnumMap = {
 // **************************************************************************
 
 String _$passwordEntryNotifierHash() =>
-    r'c050d7a3a02da8a3a22d3a785d9404fa9f897df5';
+    r'd811b1bf32d9ec3a2ad6d93e876f8d7f35b9f9f8';
 
 /// See also [PasswordEntryNotifier].
 @ProviderFor(PasswordEntryNotifier)

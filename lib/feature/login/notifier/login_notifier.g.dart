@@ -8,13 +8,13 @@ part of 'login_notifier.dart';
 
 _$LoginStateImpl _$$LoginStateImplFromJson(Map<String, dynamic> json) =>
     _$LoginStateImpl(
-      enumScreenStatus:
-          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumScreenStatus']) ??
-              EnumStatus.init,
-      enumResultStatus:
-          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumResultStatus']) ??
-              EnumStatus.init,
-      email: json['email'] as String? ?? '',
+      enumScreenStatus: $enumDecodeNullable(
+              _$EnumScreenStatusEnumMap, json['enumScreenStatus']) ??
+          EnumScreenStatus.init,
+      enumFrontendStatus: $enumDecodeNullable(
+              _$EnumFrontendStatusLoginEnumMap, json['enumFrontendStatus']) ??
+          EnumFrontendStatusLogin.init,
+      email: json['email'] as String?,
       response: json['response'] == null
           ? const ResponseLogin()
           : ResponseLogin.fromJson(json['response'] as Map<String, dynamic>),
@@ -22,24 +22,32 @@ _$LoginStateImpl _$$LoginStateImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$LoginStateImplToJson(_$LoginStateImpl instance) =>
     <String, dynamic>{
-      'enumScreenStatus': _$EnumStatusEnumMap[instance.enumScreenStatus]!,
-      'enumResultStatus': _$EnumStatusEnumMap[instance.enumResultStatus]!,
+      'enumScreenStatus': _$EnumScreenStatusEnumMap[instance.enumScreenStatus]!,
+      'enumFrontendStatus':
+          _$EnumFrontendStatusLoginEnumMap[instance.enumFrontendStatus]!,
       'email': instance.email,
       'response': instance.response,
     };
 
-const _$EnumStatusEnumMap = {
-  EnumStatus.init: 'init',
-  EnumStatus.load: 'load',
-  EnumStatus.success: 'success',
-  EnumStatus.error: 'error',
+const _$EnumScreenStatusEnumMap = {
+  EnumScreenStatus.init: 'init',
+  EnumScreenStatus.load: 'load',
+  EnumScreenStatus.success: 'success',
+  EnumScreenStatus.error: 'error',
+};
+
+const _$EnumFrontendStatusLoginEnumMap = {
+  EnumFrontendStatusLogin.init: 'init',
+  EnumFrontendStatusLogin.load: 'load',
+  EnumFrontendStatusLogin.emailIsNull: 'emailIsNull',
+  EnumFrontendStatusLogin.success: 'success',
 };
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loginNotifierHash() => r'4894931f2e29d6be0e1305b2ee0d041b7b2c86fd';
+String _$loginNotifierHash() => r'37d57f3d0e5a78eef766ecb77f725e269a472643';
 
 /// See also [LoginNotifier].
 @ProviderFor(LoginNotifier)

@@ -5,7 +5,7 @@ sealed class PasswordCreateState with _$PasswordCreateState {
   // const SplashState._();
 
   const factory PasswordCreateState({
-    @Default(EnumStatus.init) EnumStatus enumStatus,
+    @Default(EnumScreenStatus.init) EnumScreenStatus enumStatus,
   }) = _PasswordCreateState;
 
   factory PasswordCreateState.fromJson(Map<String, Object?> json) =>

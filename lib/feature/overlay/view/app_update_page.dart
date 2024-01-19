@@ -1,4 +1,3 @@
-
 import 'package:app_updater/src/models/api_app_update_check_res.dart';
 import 'package:dartlog/dartlog.dart';
 import 'package:flash/flash.dart';
@@ -32,10 +31,7 @@ class _AppUpdatePageState extends ConsumerState<AppUpdatePage> {
     );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      apiAppUpdateCheckRes.map(
-        init: (_) {
-          const SizedBox.shrink();
-        },
+      apiAppUpdateCheckRes.mapOrNull(
         success: (v) {
           v.successResponse.enumAppUpdateType.map(
             hard: () {
@@ -48,9 +44,6 @@ class _AppUpdatePageState extends ConsumerState<AppUpdatePage> {
               _showSoftUpdateBottomSheet(context, v.successResponse);
             },
           );
-        },
-        error: (v) {
-          const SizedBox.shrink();
         },
       );
     });

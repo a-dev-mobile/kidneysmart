@@ -5,10 +5,11 @@ sealed class VerificationCodeState with _$VerificationCodeState {
   // const SplashState._();
 
   const factory VerificationCodeState({
-    @Default(EnumStatus.init) EnumStatus enumScreenStatus,
-    @Default(EnumStatus.init) EnumStatus enumResultStatus,
-    @Default('') String email,
-    @Default('') String code,
+    @Default(EnumScreenStatus.init) EnumScreenStatus enumScreenStatus,
+    @Default(EnumFrontendStatusVerificationCode.init)
+    EnumFrontendStatusVerificationCode enumFrontendStatus,
+    String? email,
+    String? code,
     @Default(ResponseVerificationCode()) ResponseVerificationCode response,
   }) = _VerificationCodeState;
 

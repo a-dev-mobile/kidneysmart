@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidneysmart/core/constants/app_text_styles.dart';
-import 'package:kidneysmart/core/enum/enum_page_status.dart';
+import 'package:kidneysmart/core/enum/enum_screen_state.dart';
 import 'package:kidneysmart/core/extension/gorouter_extension.dart';
 import 'package:kidneysmart/core/widgets/app_error_screen.dart';
 import 'package:kidneysmart/core/widgets/app_load_widget.dart';
@@ -12,12 +12,16 @@ import 'package:kidneysmart/core/widgets/clean_focus.dart';
 import 'package:kidneysmart/core/widgets/default_app_bar.dart';
 import 'package:kidneysmart/core/widgets/keyboard_auto_scroll_widget.dart';
 import 'package:kidneysmart/core/widgets/load_next_page.dart';
-import 'package:kidneysmart/feature/login/enum/enum_response_login.dart';
+import 'package:kidneysmart/feature/login/enum/enum_backend_status_login.dart';
+import 'package:kidneysmart/feature/login/enum/enum_frontend_status_login.dart';
 import 'package:kidneysmart/feature/login/view/widget/field_email.dart';
+import 'package:kidneysmart/feature/password_create/view/password_create_page.dart';
+import 'package:kidneysmart/feature/password_entry/view/password_entry_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 import 'package:kidneysmart/feature/splash/notifier/splash_notifier.dart';
 
 import 'package:kidneysmart/feature/login/notifier/login_notifier.dart';
+import 'package:kidneysmart/feature/verification_code/view/verification_code_page.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
@@ -56,17 +60,19 @@ class _View extends ConsumerStatefulWidget {
 
 /// State for widget _View
 class _ViewState extends ConsumerState<_View> {
-  /* #endregion */
+  String? _customErrorFromBackend;
+
   final GlobalKey<FieldEmailState> _emailFieldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     final status =
-        ref.watch(loginNotifierProvider.select((it) => it.enumResultStatus));
-
+        ref.watch(loginNotifierProvider.select((it) => it.enumFrontendStatus));
     final state = ref.read(loginNotifierProvider);
     final notifier = ref.read(loginNotifierProvider.notifier);
 
     final widthScreen = MediaQuery.of(context).size.width;
+
+    _handleBackendStatus(state.response.enumBackendStatusLogin);
 
     final scrollController = ScrollController();
     return KeyboardAutoScrollWidget(
@@ -147,9 +153,7 @@ class _ViewState extends ConsumerState<_View> {
           key: _emailFieldKey,
           initialValue: state.email,
           onChanged: notifier.saveEmailLocal,
-          customError: _getCustomErrorFromBackend(
-            state.response.enumResponseLoginStatus,
-          ),
+          customError: _customErrorFromBackend,
         ),
 
         TextButton(onPressed: () {}, child: const Text('Пропустить')),
@@ -158,26 +162,35 @@ class _ViewState extends ConsumerState<_View> {
     );
   }
 
-  String? _getCustomErrorFromBackend(
-    EnumResponseLoginStatus? enumResponseLoginStatus,
-  ) {
-    switch (enumResponseLoginStatus) {
-      case EnumResponseLoginStatus.invalidEmailFormat:
-      case EnumResponseLoginStatus.invalidParameters:
-        return 'Неверный e-mail адрес';
-      case EnumResponseLoginStatus.emailSendFailed:
-      case EnumResponseLoginStatus.invalidRequestBody:
-      case EnumResponseLoginStatus.internalError:
-        return 'Ошибка отправки e-mail адреса';
-      case EnumResponseLoginStatus.userCreationFailed:
-        return 'Ошибка создания пользователя';
+  void _handleBackendStatus(EnumBackendStatusLogin? status) {
+    _customErrorFromBackend = null;
+    switch (status) {
+      case EnumBackendStatusLogin.invalidEmailFormat:
+      case EnumBackendStatusLogin.invalidParameters:
+        _customErrorFromBackend = 'Неверный e-mail адрес';
 
-      case EnumResponseLoginStatus.registrationSuccessful:
-      case EnumResponseLoginStatus.emailVerificationRequired:
-      case EnumResponseLoginStatus.passwordSetRequired:
-      case EnumResponseLoginStatus.passwordEntryRequired:
+      case EnumBackendStatusLogin.emailSendFailed:
+      case EnumBackendStatusLogin.invalidRequestBody:
+      case EnumBackendStatusLogin.internalError:
+        _customErrorFromBackend = 'Ошибка отправки e-mail адреса';
+
+      case EnumBackendStatusLogin.userCreationFailed:
+        _customErrorFromBackend = 'Ошибка создания пользователя';
+      case EnumBackendStatusLogin.emailVerificationRequired:
+      case EnumBackendStatusLogin.registrationSuccessful:
+        _navigateAfterBuild(VerificationCodePage.name);
+      case EnumBackendStatusLogin.passwordSetRequired:
+        _navigateAfterBuild(PasswordCreatePage.name);
+      case EnumBackendStatusLogin.passwordEntryRequired:
+        _navigateAfterBuild(PasswordEntryPage.name);
       case null:
+        _customErrorFromBackend = null;
     }
-    return null;
+  }
+
+  void _navigateAfterBuild(String routeName) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      GoRouter.of(context).pushNamed(routeName);
+    });
   }
 }

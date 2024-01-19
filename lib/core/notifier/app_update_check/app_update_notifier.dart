@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:app_updater/app_updater.dart';
 import 'package:dartlog/dartlog.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kidneysmart/core/enum/enum_page_status.dart';
+import 'package:kidneysmart/core/enum/enum_screen_state.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/app_device/app_device.dart';
 

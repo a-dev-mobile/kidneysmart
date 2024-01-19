@@ -9,14 +9,15 @@ part of 'verification_code_notifier.dart';
 _$VerificationCodeStateImpl _$$VerificationCodeStateImplFromJson(
         Map<String, dynamic> json) =>
     _$VerificationCodeStateImpl(
-      enumScreenStatus:
-          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumScreenStatus']) ??
-              EnumStatus.init,
-      enumResultStatus:
-          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumResultStatus']) ??
-              EnumStatus.init,
-      email: json['email'] as String? ?? '',
-      code: json['code'] as String? ?? '',
+      enumScreenStatus: $enumDecodeNullable(
+              _$EnumScreenStatusEnumMap, json['enumScreenStatus']) ??
+          EnumScreenStatus.init,
+      enumFrontendStatus: $enumDecodeNullable(
+              _$EnumFrontendStatusVerificationCodeEnumMap,
+              json['enumFrontendStatus']) ??
+          EnumFrontendStatusVerificationCode.init,
+      email: json['email'] as String?,
+      code: json['code'] as String?,
       response: json['response'] == null
           ? const ResponseVerificationCode()
           : ResponseVerificationCode.fromJson(
@@ -26,18 +27,26 @@ _$VerificationCodeStateImpl _$$VerificationCodeStateImplFromJson(
 Map<String, dynamic> _$$VerificationCodeStateImplToJson(
         _$VerificationCodeStateImpl instance) =>
     <String, dynamic>{
-      'enumScreenStatus': _$EnumStatusEnumMap[instance.enumScreenStatus]!,
-      'enumResultStatus': _$EnumStatusEnumMap[instance.enumResultStatus]!,
+      'enumScreenStatus': _$EnumScreenStatusEnumMap[instance.enumScreenStatus]!,
+      'enumFrontendStatus': _$EnumFrontendStatusVerificationCodeEnumMap[
+          instance.enumFrontendStatus]!,
       'email': instance.email,
       'code': instance.code,
       'response': instance.response,
     };
 
-const _$EnumStatusEnumMap = {
-  EnumStatus.init: 'init',
-  EnumStatus.load: 'load',
-  EnumStatus.success: 'success',
-  EnumStatus.error: 'error',
+const _$EnumScreenStatusEnumMap = {
+  EnumScreenStatus.init: 'init',
+  EnumScreenStatus.load: 'load',
+  EnumScreenStatus.success: 'success',
+  EnumScreenStatus.error: 'error',
+};
+
+const _$EnumFrontendStatusVerificationCodeEnumMap = {
+  EnumFrontendStatusVerificationCode.init: 'init',
+  EnumFrontendStatusVerificationCode.load: 'load',
+  EnumFrontendStatusVerificationCode.emailOrCodeNull: 'emailOrCodeNull',
+  EnumFrontendStatusVerificationCode.success: 'success',
 };
 
 // **************************************************************************
@@ -45,7 +54,7 @@ const _$EnumStatusEnumMap = {
 // **************************************************************************
 
 String _$verificationCodeNotifierHash() =>
-    r'd074f48f16bcf73ffe15512860a26e35966154e4';
+    r'6d9f5e17f4c4b0195045b251e7c067251badba30';
 
 /// See also [VerificationCodeNotifier].
 @ProviderFor(VerificationCodeNotifier)

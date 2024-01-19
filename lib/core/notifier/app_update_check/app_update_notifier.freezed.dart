@@ -20,7 +20,7 @@ AppUpdateState _$AppUpdateStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppUpdateState {
-  EnumStatus get enumStatus => throw _privateConstructorUsedError;
+  EnumScreenStatus get enumStatus => throw _privateConstructorUsedError;
   ApiAppUpdateCheckRes get apiAppUpdateCheckRes =>
       throw _privateConstructorUsedError;
 
@@ -36,7 +36,8 @@ abstract class $AppUpdateStateCopyWith<$Res> {
           AppUpdateState value, $Res Function(AppUpdateState) then) =
       _$AppUpdateStateCopyWithImpl<$Res, AppUpdateState>;
   @useResult
-  $Res call({EnumStatus enumStatus, ApiAppUpdateCheckRes apiAppUpdateCheckRes});
+  $Res call(
+      {EnumScreenStatus enumStatus, ApiAppUpdateCheckRes apiAppUpdateCheckRes});
 
   $ApiAppUpdateCheckResCopyWith<$Res> get apiAppUpdateCheckRes;
 }
@@ -61,7 +62,7 @@ class _$AppUpdateStateCopyWithImpl<$Res, $Val extends AppUpdateState>
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
+              as EnumScreenStatus,
       apiAppUpdateCheckRes: null == apiAppUpdateCheckRes
           ? _value.apiAppUpdateCheckRes
           : apiAppUpdateCheckRes // ignore: cast_nullable_to_non_nullable
@@ -87,7 +88,8 @@ abstract class _$$AppUpdateStateImplCopyWith<$Res>
       __$$AppUpdateStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EnumStatus enumStatus, ApiAppUpdateCheckRes apiAppUpdateCheckRes});
+  $Res call(
+      {EnumScreenStatus enumStatus, ApiAppUpdateCheckRes apiAppUpdateCheckRes});
 
   @override
   $ApiAppUpdateCheckResCopyWith<$Res> get apiAppUpdateCheckRes;
@@ -111,7 +113,7 @@ class __$$AppUpdateStateImplCopyWithImpl<$Res>
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
+              as EnumScreenStatus,
       apiAppUpdateCheckRes: null == apiAppUpdateCheckRes
           ? _value.apiAppUpdateCheckRes
           : apiAppUpdateCheckRes // ignore: cast_nullable_to_non_nullable
@@ -124,7 +126,7 @@ class __$$AppUpdateStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AppUpdateStateImpl implements _AppUpdateState {
   const _$AppUpdateStateImpl(
-      {this.enumStatus = EnumStatus.init,
+      {this.enumStatus = EnumScreenStatus.init,
       this.apiAppUpdateCheckRes = const ApiAppUpdateCheckRes.init()});
 
   factory _$AppUpdateStateImpl.fromJson(Map<String, dynamic> json) =>
@@ -132,7 +134,7 @@ class _$AppUpdateStateImpl implements _AppUpdateState {
 
   @override
   @JsonKey()
-  final EnumStatus enumStatus;
+  final EnumScreenStatus enumStatus;
   @override
   @JsonKey()
   final ApiAppUpdateCheckRes apiAppUpdateCheckRes;
@@ -175,14 +177,14 @@ class _$AppUpdateStateImpl implements _AppUpdateState {
 
 abstract class _AppUpdateState implements AppUpdateState {
   const factory _AppUpdateState(
-      {final EnumStatus enumStatus,
+      {final EnumScreenStatus enumStatus,
       final ApiAppUpdateCheckRes apiAppUpdateCheckRes}) = _$AppUpdateStateImpl;
 
   factory _AppUpdateState.fromJson(Map<String, dynamic> json) =
       _$AppUpdateStateImpl.fromJson;
 
   @override
-  EnumStatus get enumStatus;
+  EnumScreenStatus get enumStatus;
   @override
   ApiAppUpdateCheckRes get apiAppUpdateCheckRes;
   @override

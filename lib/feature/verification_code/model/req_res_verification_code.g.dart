@@ -27,7 +27,7 @@ _$ResponseVerificationCodeImpl _$$ResponseVerificationCodeImplFromJson(
       accessToken: json['accessToken'] as String?,
       refreshToken: json['refreshToken'] as String?,
       expiresIn: dateTimeFromJson(json['expiresIn'] as String?),
-      enumResponseVerificationCodeStatus:
+      enumBackendStatusVerificationCode:
           _verificationCodeStatusFromJson(json['status'] as String?),
     );
 
@@ -39,5 +39,5 @@ Map<String, dynamic> _$$ResponseVerificationCodeImplToJson(
       'refreshToken': instance.refreshToken,
       'expiresIn': dateTimeToJson(instance.expiresIn),
       'status': _verificationCodeStatusToJson(
-          instance.enumResponseVerificationCodeStatus),
+          instance.enumBackendStatusVerificationCode),
     };

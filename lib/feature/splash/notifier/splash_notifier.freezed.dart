@@ -20,7 +20,7 @@ SplashState _$SplashStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SplashState {
-  EnumStatus get enumStatus => throw _privateConstructorUsedError;
+  EnumScreenStatus get enumStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $SplashStateCopyWith<$Res> {
           SplashState value, $Res Function(SplashState) then) =
       _$SplashStateCopyWithImpl<$Res, SplashState>;
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call({EnumScreenStatus enumStatus});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
+              as EnumScreenStatus,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$SplashStateImplCopyWith<$Res>
       __$$SplashStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call({EnumScreenStatus enumStatus});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$SplashStateImplCopyWithImpl<$Res>
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
+              as EnumScreenStatus,
     ));
   }
 }
@@ -97,14 +97,14 @@ class __$$SplashStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SplashStateImpl implements _SplashState {
-  const _$SplashStateImpl({this.enumStatus = EnumStatus.init});
+  const _$SplashStateImpl({this.enumStatus = EnumScreenStatus.init});
 
   factory _$SplashStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$SplashStateImplFromJson(json);
 
   @override
   @JsonKey()
-  final EnumStatus enumStatus;
+  final EnumScreenStatus enumStatus;
 
   @override
   String toString() {
@@ -139,13 +139,14 @@ class _$SplashStateImpl implements _SplashState {
 }
 
 abstract class _SplashState implements SplashState {
-  const factory _SplashState({final EnumStatus enumStatus}) = _$SplashStateImpl;
+  const factory _SplashState({final EnumScreenStatus enumStatus}) =
+      _$SplashStateImpl;
 
   factory _SplashState.fromJson(Map<String, dynamic> json) =
       _$SplashStateImpl.fromJson;
 
   @override
-  EnumStatus get enumStatus;
+  EnumScreenStatus get enumStatus;
   @override
   @JsonKey(ignore: true)
   _$$SplashStateImplCopyWith<_$SplashStateImpl> get copyWith =>

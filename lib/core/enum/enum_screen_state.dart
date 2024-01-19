@@ -1,24 +1,18 @@
 // turnGen
-/// An type representing the different states of a page.
-///
-/// These states can be used to track the loading and display state of data in a UI.
-enum EnumStatus implements Comparable<EnumStatus> {
-  // Initial state, before any data loading has begun
-  init(desc: 'Запуск...'),
-  // When data is currently being loaded
-  load(desc: 'Загрузка данных...'),
-  // When data loading has failed
-  success(desc: 'Данные успешно загружены!'),
-  // When data has been successfully loaded
-  error(desc: 'Упс! Что-то пошло не так.');
 
-  /// A constructor that initializes the enum with a given value.
-  const EnumStatus({required this.desc});
+enum EnumScreenStatus implements Comparable<EnumScreenStatus> {
+  init('init'),
 
-  /// The textual representation of the enum value.
-  ///
-  /// This can be useful for debugging, logging or display purposes.
-  final String desc;
+  load('load'),
+
+  success('success'),
+
+  error('error');
+
+
+  const EnumScreenStatus(this.value);
+
+  final String value;
 
 // end
 
@@ -28,40 +22,40 @@ enum EnumStatus implements Comparable<EnumStatus> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumStatus fromDesc(
-    String? desc, {
-    EnumStatus? fallback,
+  static EnumScreenStatus fromValue(
+    String? value, {
+    EnumScreenStatus? fallback,
   }) {
-    switch (desc) {
-      case 'Запуск...':
+    switch (value) {
+      case 'init':
         return init;
-      case 'Загрузка данных...':
+      case 'load':
         return load;
-      case 'Данные успешно загружены!':
+      case 'success':
         return success;
-      case 'Упс! Что-то пошло не так.':
+      case 'error':
         return error;
       default:
         return fallback ??
             (throw ArgumentError.value(
-              desc,
-              'desc',
-              'Value not found in EnumStatus',
+              value,
+              'value',
+              'Value not found in EnumScreenStatus',
             ));
     }
   }
 
-  static EnumStatus? fromDescOrNull(
-    String? desc,
+  static EnumScreenStatus? fromValueOrNull(
+    String? value,
   ) {
-    switch (desc) {
-      case 'Запуск...':
+    switch (value) {
+      case 'init':
         return init;
-      case 'Загрузка данных...':
+      case 'load':
         return load;
-      case 'Данные успешно загружены!':
+      case 'success':
         return success;
-      case 'Упс! Что-то пошло не так.':
+      case 'error':
         return error;
       default:
         return null;
@@ -75,13 +69,13 @@ enum EnumStatus implements Comparable<EnumStatus> {
     required T Function() error,
   }) {
     switch (this) {
-      case EnumStatus.init:
+      case EnumScreenStatus.init:
         return init();
-      case EnumStatus.load:
+      case EnumScreenStatus.load:
         return load();
-      case EnumStatus.success:
+      case EnumScreenStatus.success:
         return success();
-      case EnumStatus.error:
+      case EnumScreenStatus.error:
         return error();
     }
   }
@@ -93,13 +87,13 @@ enum EnumStatus implements Comparable<EnumStatus> {
     required T error,
   }) {
     switch (this) {
-      case EnumStatus.init:
+      case EnumScreenStatus.init:
         return init;
-      case EnumStatus.load:
+      case EnumScreenStatus.load:
         return load;
-      case EnumStatus.success:
+      case EnumScreenStatus.success:
         return success;
-      case EnumStatus.error:
+      case EnumScreenStatus.error:
         return error;
     }
   }
@@ -160,16 +154,16 @@ enum EnumStatus implements Comparable<EnumStatus> {
         error: error,
       );
 
-  static List<String> getListDesc() =>
-      EnumStatus.values.map((e) => e.desc).toList();
+  static List<String> getListValue() =>
+      EnumScreenStatus.values.map((e) => e.value).toList();
 
   @override
-  int compareTo(EnumStatus other) => index.compareTo(other.index);
+  int compareTo(EnumScreenStatus other) => index.compareTo(other.index);
 }
 
-extension $EnumStatus on EnumStatus {
-  bool get isInit => this == EnumStatus.init;
-  bool get isLoad => this == EnumStatus.load;
-  bool get isSuccess => this == EnumStatus.success;
-  bool get isError => this == EnumStatus.error;
+extension $EnumScreenStatus on EnumScreenStatus {
+  bool get isInit => this == EnumScreenStatus.init;
+  bool get isLoad => this == EnumScreenStatus.load;
+  bool get isSuccess => this == EnumScreenStatus.success;
+  bool get isError => this == EnumScreenStatus.error;
 }

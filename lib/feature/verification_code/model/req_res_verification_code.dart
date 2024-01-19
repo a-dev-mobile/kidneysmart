@@ -1,9 +1,9 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kidneysmart/api/utils/helper_for_json.dart';
+import 'package:kidneysmart/core/utils/json_serializable_util.dart';
 
-import 'package:kidneysmart/feature/verification_code/enum/enum_response_verification_code.dart';
+import 'package:kidneysmart/feature/verification_code/enum/enum_backend_status_verification_code.dart';
 
 part 'req_res_verification_code.freezed.dart';
 part 'req_res_verification_code.g.dart';
@@ -25,7 +25,7 @@ class ResponseVerificationCode with _$ResponseVerificationCode {
     String? message,
     String? accessToken,
     String? refreshToken,
-     @JsonKey(
+    @JsonKey(
       name: 'expiresIn',
       toJson: dateTimeToJson,
       fromJson: dateTimeFromJson,
@@ -36,21 +36,20 @@ class ResponseVerificationCode with _$ResponseVerificationCode {
       toJson: _verificationCodeStatusToJson,
       fromJson: _verificationCodeStatusFromJson,
     )
-    EnumResponseVerificationCodeStatus? enumResponseVerificationCodeStatus,
+    EnumBackendStatusVerificationCode? enumBackendStatusVerificationCode,
   }) = _ResponseVerificationCode;
 
   factory ResponseVerificationCode.fromJson(Map<String, Object?> json) =>
       _$ResponseVerificationCodeFromJson(json);
 }
 
+String? _verificationCodeStatusToJson(
+  EnumBackendStatusVerificationCode? status,
+) =>
+    status?.name;
 
-
-
-
-String? _verificationCodeStatusToJson(EnumResponseVerificationCodeStatus? status) => status?.name;
-
-EnumResponseVerificationCodeStatus? _verificationCodeStatusFromJson(String? value) {
-  return EnumResponseVerificationCodeStatus.fromNameOrNull(value);
+EnumBackendStatusVerificationCode? _verificationCodeStatusFromJson(
+  String? value,
+) {
+  return EnumBackendStatusVerificationCode.fromNameOrNull(value);
 }
-
-

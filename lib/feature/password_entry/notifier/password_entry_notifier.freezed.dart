@@ -20,7 +20,7 @@ PasswordEntryState _$PasswordEntryStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PasswordEntryState {
-  EnumStatus get enumStatus => throw _privateConstructorUsedError;
+  EnumScreenStatus get enumStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $PasswordEntryStateCopyWith<$Res> {
           PasswordEntryState value, $Res Function(PasswordEntryState) then) =
       _$PasswordEntryStateCopyWithImpl<$Res, PasswordEntryState>;
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call({EnumScreenStatus enumStatus});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$PasswordEntryStateCopyWithImpl<$Res, $Val extends PasswordEntryState>
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
+              as EnumScreenStatus,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$PasswordEntryStateImplCopyWith<$Res>
       __$$PasswordEntryStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EnumStatus enumStatus});
+  $Res call({EnumScreenStatus enumStatus});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$PasswordEntryStateImplCopyWithImpl<$Res>
       enumStatus: null == enumStatus
           ? _value.enumStatus
           : enumStatus // ignore: cast_nullable_to_non_nullable
-              as EnumStatus,
+              as EnumScreenStatus,
     ));
   }
 }
@@ -97,14 +97,14 @@ class __$$PasswordEntryStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PasswordEntryStateImpl implements _PasswordEntryState {
-  const _$PasswordEntryStateImpl({this.enumStatus = EnumStatus.init});
+  const _$PasswordEntryStateImpl({this.enumStatus = EnumScreenStatus.init});
 
   factory _$PasswordEntryStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$PasswordEntryStateImplFromJson(json);
 
   @override
   @JsonKey()
-  final EnumStatus enumStatus;
+  final EnumScreenStatus enumStatus;
 
   @override
   String toString() {
@@ -140,14 +140,14 @@ class _$PasswordEntryStateImpl implements _PasswordEntryState {
 }
 
 abstract class _PasswordEntryState implements PasswordEntryState {
-  const factory _PasswordEntryState({final EnumStatus enumStatus}) =
+  const factory _PasswordEntryState({final EnumScreenStatus enumStatus}) =
       _$PasswordEntryStateImpl;
 
   factory _PasswordEntryState.fromJson(Map<String, dynamic> json) =
       _$PasswordEntryStateImpl.fromJson;
 
   @override
-  EnumStatus get enumStatus;
+  EnumScreenStatus get enumStatus;
   @override
   @JsonKey(ignore: true)
   _$$PasswordEntryStateImplCopyWith<_$PasswordEntryStateImpl> get copyWith =>

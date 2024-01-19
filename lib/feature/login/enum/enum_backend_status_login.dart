@@ -1,6 +1,6 @@
 // turnGen
 
-enum EnumResponseLoginStatus implements Comparable<EnumResponseLoginStatus> {
+enum EnumBackendStatusLogin implements Comparable<EnumBackendStatusLogin> {
   invalidRequestBody('INVALID_REQUEST_BODY'),
   invalidParameters('INVALID_PARAMETERS'),
   invalidEmailFormat('INVALID_EMAIL_FORMAT'),
@@ -12,7 +12,7 @@ enum EnumResponseLoginStatus implements Comparable<EnumResponseLoginStatus> {
   emailSendFailed('EMAIL_SEND_FAILED'),
   registrationSuccessful('REGISTRATION_SUCCESSFUL');
 
-  const EnumResponseLoginStatus(this.name);
+  const EnumBackendStatusLogin(this.name);
   final String name;
 
 // end
@@ -23,9 +23,9 @@ enum EnumResponseLoginStatus implements Comparable<EnumResponseLoginStatus> {
 //         GENERATED CODE
 //  *************************************
 
-  static EnumResponseLoginStatus fromName(
+  static EnumBackendStatusLogin fromName(
     String? name, {
-    EnumResponseLoginStatus? fallback,
+    EnumBackendStatusLogin? fallback,
   }) {
     switch (name) {
       case 'INVALID_REQUEST_BODY':
@@ -53,12 +53,12 @@ enum EnumResponseLoginStatus implements Comparable<EnumResponseLoginStatus> {
             (throw ArgumentError.value(
               name,
               'name',
-              'Value not found in EnumResponseLoginStatus',
+              'Value not found in EnumBackendStatusLogin',
             ));
     }
   }
 
-  static EnumResponseLoginStatus? fromNameOrNull(
+  static EnumBackendStatusLogin? fromNameOrNull(
     String? name,
   ) {
     switch (name) {
@@ -100,25 +100,25 @@ enum EnumResponseLoginStatus implements Comparable<EnumResponseLoginStatus> {
     required T Function() registrationSuccessful,
   }) {
     switch (this) {
-      case EnumResponseLoginStatus.invalidRequestBody:
+      case EnumBackendStatusLogin.invalidRequestBody:
         return invalidRequestBody();
-      case EnumResponseLoginStatus.invalidParameters:
+      case EnumBackendStatusLogin.invalidParameters:
         return invalidParameters();
-      case EnumResponseLoginStatus.invalidEmailFormat:
+      case EnumBackendStatusLogin.invalidEmailFormat:
         return invalidEmailFormat();
-      case EnumResponseLoginStatus.internalError:
+      case EnumBackendStatusLogin.internalError:
         return internalError();
-      case EnumResponseLoginStatus.emailVerificationRequired:
+      case EnumBackendStatusLogin.emailVerificationRequired:
         return emailVerificationRequired();
-      case EnumResponseLoginStatus.passwordSetRequired:
+      case EnumBackendStatusLogin.passwordSetRequired:
         return passwordSetRequired();
-      case EnumResponseLoginStatus.passwordEntryRequired:
+      case EnumBackendStatusLogin.passwordEntryRequired:
         return passwordEntryRequired();
-      case EnumResponseLoginStatus.userCreationFailed:
+      case EnumBackendStatusLogin.userCreationFailed:
         return userCreationFailed();
-      case EnumResponseLoginStatus.emailSendFailed:
+      case EnumBackendStatusLogin.emailSendFailed:
         return emailSendFailed();
-      case EnumResponseLoginStatus.registrationSuccessful:
+      case EnumBackendStatusLogin.registrationSuccessful:
         return registrationSuccessful();
     }
   }
@@ -136,25 +136,25 @@ enum EnumResponseLoginStatus implements Comparable<EnumResponseLoginStatus> {
     required T registrationSuccessful,
   }) {
     switch (this) {
-      case EnumResponseLoginStatus.invalidRequestBody:
+      case EnumBackendStatusLogin.invalidRequestBody:
         return invalidRequestBody;
-      case EnumResponseLoginStatus.invalidParameters:
+      case EnumBackendStatusLogin.invalidParameters:
         return invalidParameters;
-      case EnumResponseLoginStatus.invalidEmailFormat:
+      case EnumBackendStatusLogin.invalidEmailFormat:
         return invalidEmailFormat;
-      case EnumResponseLoginStatus.internalError:
+      case EnumBackendStatusLogin.internalError:
         return internalError;
-      case EnumResponseLoginStatus.emailVerificationRequired:
+      case EnumBackendStatusLogin.emailVerificationRequired:
         return emailVerificationRequired;
-      case EnumResponseLoginStatus.passwordSetRequired:
+      case EnumBackendStatusLogin.passwordSetRequired:
         return passwordSetRequired;
-      case EnumResponseLoginStatus.passwordEntryRequired:
+      case EnumBackendStatusLogin.passwordEntryRequired:
         return passwordEntryRequired;
-      case EnumResponseLoginStatus.userCreationFailed:
+      case EnumBackendStatusLogin.userCreationFailed:
         return userCreationFailed;
-      case EnumResponseLoginStatus.emailSendFailed:
+      case EnumBackendStatusLogin.emailSendFailed:
         return emailSendFailed;
-      case EnumResponseLoginStatus.registrationSuccessful:
+      case EnumBackendStatusLogin.registrationSuccessful:
         return registrationSuccessful;
     }
   }
@@ -264,29 +264,29 @@ enum EnumResponseLoginStatus implements Comparable<EnumResponseLoginStatus> {
       );
 
   static List<String> getListName() =>
-      EnumResponseLoginStatus.values.map((e) => e.name).toList();
+      EnumBackendStatusLogin.values.map((e) => e.name).toList();
 
   @override
-  int compareTo(EnumResponseLoginStatus other) => index.compareTo(other.index);
+  int compareTo(EnumBackendStatusLogin other) => index.compareTo(other.index);
 }
 
-extension $EnumResponseLoginStatus on EnumResponseLoginStatus {
+extension $EnumBackendStatusLogin on EnumBackendStatusLogin {
   bool get isInvalidRequestBody =>
-      this == EnumResponseLoginStatus.invalidRequestBody;
+      this == EnumBackendStatusLogin.invalidRequestBody;
   bool get isInvalidParameters =>
-      this == EnumResponseLoginStatus.invalidParameters;
+      this == EnumBackendStatusLogin.invalidParameters;
   bool get isInvalidEmailFormat =>
-      this == EnumResponseLoginStatus.invalidEmailFormat;
-  bool get isInternalError => this == EnumResponseLoginStatus.internalError;
+      this == EnumBackendStatusLogin.invalidEmailFormat;
+  bool get isInternalError => this == EnumBackendStatusLogin.internalError;
   bool get isEmailVerificationRequired =>
-      this == EnumResponseLoginStatus.emailVerificationRequired;
+      this == EnumBackendStatusLogin.emailVerificationRequired;
   bool get isPasswordSetRequired =>
-      this == EnumResponseLoginStatus.passwordSetRequired;
+      this == EnumBackendStatusLogin.passwordSetRequired;
   bool get isPasswordEntryRequired =>
-      this == EnumResponseLoginStatus.passwordEntryRequired;
+      this == EnumBackendStatusLogin.passwordEntryRequired;
   bool get isUserCreationFailed =>
-      this == EnumResponseLoginStatus.userCreationFailed;
-  bool get isEmailSendFailed => this == EnumResponseLoginStatus.emailSendFailed;
+      this == EnumBackendStatusLogin.userCreationFailed;
+  bool get isEmailSendFailed => this == EnumBackendStatusLogin.emailSendFailed;
   bool get isRegistrationSuccessful =>
-      this == EnumResponseLoginStatus.registrationSuccessful;
+      this == EnumBackendStatusLogin.registrationSuccessful;
 }

@@ -192,7 +192,7 @@ mixin _$ResponseVerificationCode {
       name: 'status',
       toJson: _verificationCodeStatusToJson,
       fromJson: _verificationCodeStatusFromJson)
-  EnumResponseVerificationCodeStatus? get enumResponseVerificationCodeStatus =>
+  EnumBackendStatusVerificationCode? get enumBackendStatusVerificationCode =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -218,7 +218,7 @@ abstract class $ResponseVerificationCodeCopyWith<$Res> {
           name: 'status',
           toJson: _verificationCodeStatusToJson,
           fromJson: _verificationCodeStatusFromJson)
-      EnumResponseVerificationCodeStatus? enumResponseVerificationCodeStatus});
+      EnumBackendStatusVerificationCode? enumBackendStatusVerificationCode});
 }
 
 /// @nodoc
@@ -239,7 +239,7 @@ class _$ResponseVerificationCodeCopyWithImpl<$Res,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
     Object? expiresIn = freezed,
-    Object? enumResponseVerificationCodeStatus = freezed,
+    Object? enumBackendStatusVerificationCode = freezed,
   }) {
     return _then(_value.copyWith(
       message: freezed == message
@@ -258,11 +258,11 @@ class _$ResponseVerificationCodeCopyWithImpl<$Res,
           ? _value.expiresIn
           : expiresIn // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      enumResponseVerificationCodeStatus: freezed ==
-              enumResponseVerificationCodeStatus
-          ? _value.enumResponseVerificationCodeStatus
-          : enumResponseVerificationCodeStatus // ignore: cast_nullable_to_non_nullable
-              as EnumResponseVerificationCodeStatus?,
+      enumBackendStatusVerificationCode: freezed ==
+              enumBackendStatusVerificationCode
+          ? _value.enumBackendStatusVerificationCode
+          : enumBackendStatusVerificationCode // ignore: cast_nullable_to_non_nullable
+              as EnumBackendStatusVerificationCode?,
     ) as $Val);
   }
 }
@@ -287,7 +287,7 @@ abstract class _$$ResponseVerificationCodeImplCopyWith<$Res>
           name: 'status',
           toJson: _verificationCodeStatusToJson,
           fromJson: _verificationCodeStatusFromJson)
-      EnumResponseVerificationCodeStatus? enumResponseVerificationCodeStatus});
+      EnumBackendStatusVerificationCode? enumBackendStatusVerificationCode});
 }
 
 /// @nodoc
@@ -307,7 +307,7 @@ class __$$ResponseVerificationCodeImplCopyWithImpl<$Res>
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
     Object? expiresIn = freezed,
-    Object? enumResponseVerificationCodeStatus = freezed,
+    Object? enumBackendStatusVerificationCode = freezed,
   }) {
     return _then(_$ResponseVerificationCodeImpl(
       message: freezed == message
@@ -326,11 +326,11 @@ class __$$ResponseVerificationCodeImplCopyWithImpl<$Res>
           ? _value.expiresIn
           : expiresIn // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      enumResponseVerificationCodeStatus: freezed ==
-              enumResponseVerificationCodeStatus
-          ? _value.enumResponseVerificationCodeStatus
-          : enumResponseVerificationCodeStatus // ignore: cast_nullable_to_non_nullable
-              as EnumResponseVerificationCodeStatus?,
+      enumBackendStatusVerificationCode: freezed ==
+              enumBackendStatusVerificationCode
+          ? _value.enumBackendStatusVerificationCode
+          : enumBackendStatusVerificationCode // ignore: cast_nullable_to_non_nullable
+              as EnumBackendStatusVerificationCode?,
     ));
   }
 }
@@ -349,7 +349,7 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
           name: 'status',
           toJson: _verificationCodeStatusToJson,
           fromJson: _verificationCodeStatusFromJson)
-      this.enumResponseVerificationCodeStatus});
+      this.enumBackendStatusVerificationCode});
 
   factory _$ResponseVerificationCodeImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResponseVerificationCodeImplFromJson(json);
@@ -369,11 +369,11 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
       name: 'status',
       toJson: _verificationCodeStatusToJson,
       fromJson: _verificationCodeStatusFromJson)
-  final EnumResponseVerificationCodeStatus? enumResponseVerificationCodeStatus;
+  final EnumBackendStatusVerificationCode? enumBackendStatusVerificationCode;
 
   @override
   String toString() {
-    return 'ResponseVerificationCode(message: $message, accessToken: $accessToken, refreshToken: $refreshToken, expiresIn: $expiresIn, enumResponseVerificationCodeStatus: $enumResponseVerificationCodeStatus)';
+    return 'ResponseVerificationCode(message: $message, accessToken: $accessToken, refreshToken: $refreshToken, expiresIn: $expiresIn, enumBackendStatusVerificationCode: $enumBackendStatusVerificationCode)';
   }
 
   @override
@@ -388,16 +388,16 @@ class _$ResponseVerificationCodeImpl implements _ResponseVerificationCode {
                 other.refreshToken == refreshToken) &&
             (identical(other.expiresIn, expiresIn) ||
                 other.expiresIn == expiresIn) &&
-            (identical(other.enumResponseVerificationCodeStatus,
-                    enumResponseVerificationCodeStatus) ||
-                other.enumResponseVerificationCodeStatus ==
-                    enumResponseVerificationCodeStatus));
+            (identical(other.enumBackendStatusVerificationCode,
+                    enumBackendStatusVerificationCode) ||
+                other.enumBackendStatusVerificationCode ==
+                    enumBackendStatusVerificationCode));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, message, accessToken,
-      refreshToken, expiresIn, enumResponseVerificationCodeStatus);
+      refreshToken, expiresIn, enumBackendStatusVerificationCode);
 
   @JsonKey(ignore: true)
   @override
@@ -426,8 +426,8 @@ abstract class _ResponseVerificationCode implements ResponseVerificationCode {
           name: 'status',
           toJson: _verificationCodeStatusToJson,
           fromJson: _verificationCodeStatusFromJson)
-      final EnumResponseVerificationCodeStatus?
-          enumResponseVerificationCodeStatus}) = _$ResponseVerificationCodeImpl;
+      final EnumBackendStatusVerificationCode?
+          enumBackendStatusVerificationCode}) = _$ResponseVerificationCodeImpl;
 
   factory _ResponseVerificationCode.fromJson(Map<String, dynamic> json) =
       _$ResponseVerificationCodeImpl.fromJson;
@@ -447,7 +447,7 @@ abstract class _ResponseVerificationCode implements ResponseVerificationCode {
       name: 'status',
       toJson: _verificationCodeStatusToJson,
       fromJson: _verificationCodeStatusFromJson)
-  EnumResponseVerificationCodeStatus? get enumResponseVerificationCodeStatus;
+  EnumBackendStatusVerificationCode? get enumBackendStatusVerificationCode;
   @override
   @JsonKey(ignore: true)
   _$$ResponseVerificationCodeImplCopyWith<_$ResponseVerificationCodeImpl>

@@ -9,27 +9,27 @@ part of 'welcome_notifier.dart';
 _$WelcomeStateImpl _$$WelcomeStateImplFromJson(Map<String, dynamic> json) =>
     _$WelcomeStateImpl(
       enumStatus:
-          $enumDecodeNullable(_$EnumStatusEnumMap, json['enumStatus']) ??
-              EnumStatus.init,
+          $enumDecodeNullable(_$EnumScreenStatusEnumMap, json['enumStatus']) ??
+              EnumScreenStatus.init,
     );
 
 Map<String, dynamic> _$$WelcomeStateImplToJson(_$WelcomeStateImpl instance) =>
     <String, dynamic>{
-      'enumStatus': _$EnumStatusEnumMap[instance.enumStatus]!,
+      'enumStatus': _$EnumScreenStatusEnumMap[instance.enumStatus]!,
     };
 
-const _$EnumStatusEnumMap = {
-  EnumStatus.init: 'init',
-  EnumStatus.load: 'load',
-  EnumStatus.success: 'success',
-  EnumStatus.error: 'error',
+const _$EnumScreenStatusEnumMap = {
+  EnumScreenStatus.init: 'init',
+  EnumScreenStatus.load: 'load',
+  EnumScreenStatus.success: 'success',
+  EnumScreenStatus.error: 'error',
 };
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$welcomeNotifierHash() => r'db456fab8a99d1f306784ad4f00eb9f8686fd6b2';
+String _$welcomeNotifierHash() => r'280926a8539026a9e875941c4a3c11d6d08b3301';
 
 /// See also [WelcomeNotifier].
 @ProviderFor(WelcomeNotifier)

@@ -1,8 +1,8 @@
 // ignore_for_file: constant_identifier_names
 
 import 'dart:convert';
-
 import 'package:dartlog/dartlog.dart';
+import 'package:kidneysmart/core/models/auth_token.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/notifier/screen_tracker_notifier/screen_tracker_notifier.dart';
 import 'package:kidneysmart/feature/setting/notifier/setting_notifier.dart';
@@ -29,87 +29,93 @@ class AppStorage {
   // ******************************
   static const _appId = '_appId';
 
-  String getAppId() {
+  String? getAppId() {
     return getString(key: _appId);
   }
 
   void setAppId(String? value) {
-    setString(key: _appId, value: value ?? '');
+    setString(key: _appId, value: value);
   }
 
-// ******************************
-//// ******************************
+  // ******************************
   static const _email = '_email';
 
-  String getEmail() {
+  String? getEmail() {
     return getString(key: _email);
   }
 
   void setEmail(String? value) {
-    setString(key: _email, value: value ?? '');
+    setString(key: _email, value: value);
   }
 
-//// ******************************
+  // ******************************
   static const _ScreenTrackerState = '_ScreenTrackerState';
 
   ScreenTrackerState getScreenTrackerState() {
-    return ScreenTrackerState.fromJson(getJson(key: _ScreenTrackerState));
+    return ScreenTrackerState.fromJson(getJson(key: _ScreenTrackerState) ?? {});
   }
 
   void setScreenTrackerState(ScreenTrackerState value) {
-    return setJson(key: _ScreenTrackerState, value: value.toJson());
+    setJson(key: _ScreenTrackerState, value: value.toJson());
   }
 
-// ******************************
+  // ******************************
   static const _debugState = '_debugState';
 
   DebugState getDebugState() {
-    return DebugState.fromJson(getJson(key: _debugState));
+    return DebugState.fromJson(getJson(key: _debugState) ?? {});
   }
 
   void setDebugState(DebugState value) {
-    return setJson(key: _debugState, value: value.toJson());
+    setJson(key: _debugState, value: value.toJson());
   }
 
-// ******************************
-// ******************************
-// ******************************
+  // ******************************
   static const _settingState = '_settingState';
 
   SettingState getSettingState() {
-    return SettingState.fromJson(getJson(key: _settingState));
+    return SettingState.fromJson(getJson(key: _settingState) ?? {});
   }
 
   void setSettingState(SettingState value) {
-    return setJson(key: _settingState, value: value.toJson());
+    setJson(key: _settingState, value: value.toJson());
   }
 
-// ******************************
-// ******************************
+  // ******************************
+  static const _authTokenKey = '_authToken';
+
+  AuthToken? getAuthToken() {
+    final json = getJson(key: _authTokenKey);
+    if (json != null) {
+      return AuthToken.fromJson(json);
+    }
+    return null;
+  }
+
+  void setAuthToken(AuthToken value) {
+    setJson(key: _authTokenKey, value: value.toJson());
+  }
 
   // ******************************
   static const _userAgent = 'userAgent';
 
-  String getUserAgent() {
+  String? getUserAgent() {
     return getString(key: _userAgent);
   }
 
   void setUserAgent(String? value) {
-    setString(key: _userAgent, value: value ?? '');
+    setString(key: _userAgent, value: value);
   }
 
   // ******************************
   static const _TargetUrl = '_TargetUrl';
 
-  String getTargetUrl() {
-    return getString(
-      key: _TargetUrl,
-      defaultValue: 'https://unknow.com?utm_source=organic_mob',
-    );
+  String? getTargetUrl() {
+    return getString(key: _TargetUrl);
   }
 
   void setTargetUrl(String? value) {
-    setString(key: _TargetUrl, value: value ?? '');
+    setString(key: _TargetUrl, value: value);
   }
 
   // ******************************
@@ -119,99 +125,56 @@ class AppStorage {
     }
   }
 
-  void _recordError(
-    Object exception,
-    StackTrace stackTrace,
-    String action,
-    String key,
-    dynamic value,
-  ) {
-    Logger.error(
-      '$action > $key, Value: $value',
-      exception,
-      stackTrace,
-    );
-  }
-
-  void setString({required String key, required String value}) {
+  void setString({required String key, String? value}) {
     try {
-      _prefs.setString(key, value);
-
-      _log('SET', key, value);
+      if (value != null) {
+        _prefs.setString(key, value);
+        _log('SET', key, value);
+      } else {
+        _prefs.remove(key);
+        _log('REMOVE', key, 'null');
+      }
     } catch (e, s) {
-      _recordError(e, s, 'SET', key, value);
+      Logger.error('SET/REMOVE', e, s);
     }
   }
 
-  String getString({required String key, String defaultValue = ''}) {
+  String? getString({required String key}) {
     try {
-      return _prefs.getString(key) ?? defaultValue;
+      return _prefs.getString(key);
     } catch (e, s) {
-      _recordError(e, s, 'GET', key, defaultValue);
-      return defaultValue;
+      Logger.error('GET', e, s);
+      return null;
     }
   }
 
-  // Continuation of the LocalStorage class
-
-  bool getBool({required String key, bool defaultValue = false}) {
-    try {
-      return _prefs.getBool(key) ?? defaultValue;
-    } catch (e, s) {
-      _recordError(
-        e,
-        s,
-        'GET',
-        key,
-        defaultValue,
-      );
-      return defaultValue;
-    }
-  }
-
-  int getInt({required String key, int defaultValue = 0}) {
-    try {
-      return _prefs.getInt(key) ?? defaultValue;
-    } catch (e, s) {
-      _recordError(e, s, 'GET', key, defaultValue);
-      return defaultValue;
-    }
-  }
-
-  double getDouble({required String key, double defaultValue = 0.0}) {
-    try {
-      return _prefs.getDouble(key) ?? defaultValue;
-    } catch (e, s) {
-      _recordError(e, s, 'GET', key, defaultValue);
-      return defaultValue;
-    }
-  }
-
-  List<String> getStringList({required String key}) {
-    try {
-      return _prefs.getStringList(key) ?? [];
-    } catch (e, s) {
-      _recordError(e, s, 'GET', key, []);
-      return [];
-    }
-  }
+  // Остальные методы класса AppStorage ...
 
   void setJson({required String key, required Map<String, dynamic> value}) {
     final jsonString = json.encode(value);
     setString(key: key, value: jsonString);
   }
 
-  Map<String, dynamic> getJson({required String key}) {
-    final jsonString = getString(key: key, defaultValue: '{}');
-    return json.decode(jsonString) as Map<String, dynamic>;
+  Map<String, dynamic>? getJson({required String key}) {
+    try {
+      final jsonString = getString(key: key);
+      if (jsonString != null && jsonString.isNotEmpty) {
+        return json.decode(jsonString) as Map<String, dynamic>;
+      }
+    } catch (e, s) {
+      Logger.error('Error decoding JSON for key $key:', e, s);
+    }
+    return null;
   }
+
+  // Остальные методы для работы с SharedPreferences...
 
   Future<void> clearAll() async {
     try {
       await _prefs.clear();
       _log('CLEAR', 'All Data', 'All data cleared');
     } catch (e, s) {
-      _recordError(e, s, 'CLEAR', 'All Data', 'Failed to clear all data');
+      Logger.error('Failed to clear all data', e, s);
     }
   }
 }
