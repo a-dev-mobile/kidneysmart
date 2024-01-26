@@ -8,18 +8,17 @@ class FieldPassword extends StatefulWidget {
   const FieldPassword({
     required this.onChanged,
     super.key,
-    this.initialValue,
     this.customError,
+    this.isConfirmation = false,
   });
-
-  /// Initial value for the code field.
-  final String? initialValue;
 
   /// Custom error message for validation.
   final String? customError;
 
   /// Callback function that returns the entered text.
   final ValueChanged<String> onChanged;
+
+  final bool isConfirmation;
 
   @override
   FieldPasswordState createState() => FieldPasswordState();
@@ -30,11 +29,11 @@ class FieldPasswordState extends State<FieldPassword> {
   late TextEditingController _controller;
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   String? _customError;
-
+  bool _isPasswordVisible = false;
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController(text: widget.initialValue);
+    _controller = TextEditingController();
     _customError = widget.customError;
   }
 
@@ -47,7 +46,7 @@ class FieldPasswordState extends State<FieldPassword> {
   @override
   void didUpdateWidget(covariant FieldPassword oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.customError != oldWidget.customError) {
+    if (widget.customError != oldWidget.customError||_customError != widget.customError) {
       setState(() {
         _customError = widget.customError;
       });
@@ -67,6 +66,7 @@ class FieldPasswordState extends State<FieldPassword> {
       key: _formKey,
       child: TextFormField(
         controller: _controller,
+        obscureText: !_isPasswordVisible,
         onChanged: (value) {
           widget.onChanged(value);
           if (_customError != null) {
@@ -79,10 +79,21 @@ class FieldPasswordState extends State<FieldPassword> {
           }
         },
         textAlign: TextAlign.center,
-        decoration: const InputDecoration(
-          labelText: 'Пароль',
+        decoration: InputDecoration(
+          labelText:
+              widget.isConfirmation ? 'Подтвердите пароль' : 'Введите пароль',
           hintText: 'Введите 6 цифр',
           errorMaxLines: 5,
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+            ),
+            onPressed: () {
+              setState(() {
+                _isPasswordVisible = !_isPasswordVisible;
+              });
+            },
+          ),
         ),
         validator: (value) {
           if (_customError?.isNotEmpty ?? false) {
@@ -91,9 +102,14 @@ class FieldPasswordState extends State<FieldPassword> {
           if (value == null || value.isEmpty) {
             return 'Введите пароль';
           }
+          // Проверка на то, что введенные символы - только цифры
+          if (!RegExp(r'^\d+$').hasMatch(value)) {
+            return 'Пароль должен содержать только цифры';
+          }
           if (!RegExp(r'^\d{6}$').hasMatch(value)) {
             return 'Пожалуйста, введите 6-значный пароль';
           }
+
           return null;
         },
         keyboardType: TextInputType.number,

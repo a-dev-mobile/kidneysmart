@@ -4,7 +4,7 @@ enum EnumFrontendStatusPasswordCreate
     implements Comparable<EnumFrontendStatusPasswordCreate> {
   init('init'),
   load('load'),
-  emailIsNull('emailIsNull'),
+  passwordMismatch('passwordMismatch'),
   success('success');
 
   const EnumFrontendStatusPasswordCreate(this.name);
@@ -27,8 +27,8 @@ enum EnumFrontendStatusPasswordCreate
         return init;
       case 'load':
         return load;
-      case 'emailIsNull':
-        return emailIsNull;
+      case 'passwordMismatch':
+        return passwordMismatch;
       case 'success':
         return success;
       default:
@@ -49,8 +49,8 @@ enum EnumFrontendStatusPasswordCreate
         return init;
       case 'load':
         return load;
-      case 'emailIsNull':
-        return emailIsNull;
+      case 'passwordMismatch':
+        return passwordMismatch;
       case 'success':
         return success;
       default:
@@ -61,7 +61,7 @@ enum EnumFrontendStatusPasswordCreate
   T map<T>({
     required T Function() init,
     required T Function() load,
-    required T Function() emailIsNull,
+    required T Function() passwordMismatch,
     required T Function() success,
   }) {
     switch (this) {
@@ -69,8 +69,8 @@ enum EnumFrontendStatusPasswordCreate
         return init();
       case EnumFrontendStatusPasswordCreate.load:
         return load();
-      case EnumFrontendStatusPasswordCreate.emailIsNull:
-        return emailIsNull();
+      case EnumFrontendStatusPasswordCreate.passwordMismatch:
+        return passwordMismatch();
       case EnumFrontendStatusPasswordCreate.success:
         return success();
     }
@@ -79,7 +79,7 @@ enum EnumFrontendStatusPasswordCreate
   T mapValue<T>({
     required T init,
     required T load,
-    required T emailIsNull,
+    required T passwordMismatch,
     required T success,
   }) {
     switch (this) {
@@ -87,8 +87,8 @@ enum EnumFrontendStatusPasswordCreate
         return init;
       case EnumFrontendStatusPasswordCreate.load:
         return load;
-      case EnumFrontendStatusPasswordCreate.emailIsNull:
-        return emailIsNull;
+      case EnumFrontendStatusPasswordCreate.passwordMismatch:
+        return passwordMismatch;
       case EnumFrontendStatusPasswordCreate.success:
         return success;
     }
@@ -98,13 +98,13 @@ enum EnumFrontendStatusPasswordCreate
     required T Function() orElse,
     T Function()? init,
     T Function()? load,
-    T Function()? emailIsNull,
+    T Function()? passwordMismatch,
     T Function()? success,
   }) =>
       map<T>(
         init: init ?? orElse,
         load: load ?? orElse,
-        emailIsNull: emailIsNull ?? orElse,
+        passwordMismatch: passwordMismatch ?? orElse,
         success: success ?? orElse,
       );
 
@@ -112,41 +112,41 @@ enum EnumFrontendStatusPasswordCreate
     required T orElse,
     T? init,
     T? load,
-    T? emailIsNull,
+    T? passwordMismatch,
     T? success,
   }) =>
       mapValue<T>(
         init: init ?? orElse,
         load: load ?? orElse,
-        emailIsNull: emailIsNull ?? orElse,
+        passwordMismatch: passwordMismatch ?? orElse,
         success: success ?? orElse,
       );
 
   T? maybeMapOrNull<T>({
     T Function()? init,
     T Function()? load,
-    T Function()? emailIsNull,
+    T Function()? passwordMismatch,
     T Function()? success,
   }) =>
       maybeMap<T?>(
         orElse: () => null,
         init: init,
         load: load,
-        emailIsNull: emailIsNull,
+        passwordMismatch: passwordMismatch,
         success: success,
       );
 
   T? maybeMapOrNullValue<T>({
     T? init,
     T? load,
-    T? emailIsNull,
+    T? passwordMismatch,
     T? success,
   }) =>
       maybeMapValue<T?>(
         orElse: null,
         init: init,
         load: load,
-        emailIsNull: emailIsNull,
+        passwordMismatch: passwordMismatch,
         success: success,
       );
 
@@ -162,7 +162,7 @@ extension $EnumFrontendStatusPasswordCreate
     on EnumFrontendStatusPasswordCreate {
   bool get isInit => this == EnumFrontendStatusPasswordCreate.init;
   bool get isLoad => this == EnumFrontendStatusPasswordCreate.load;
-  bool get isEmailIsNull =>
-      this == EnumFrontendStatusPasswordCreate.emailIsNull;
+  bool get isPasswordMismatch =>
+      this == EnumFrontendStatusPasswordCreate.passwordMismatch;
   bool get isSuccess => this == EnumFrontendStatusPasswordCreate.success;
 }

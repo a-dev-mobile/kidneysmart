@@ -15,10 +15,12 @@ part 'password_create_state.dart';
 
 @riverpod
 class PasswordCreateNotifier extends _$PasswordCreateNotifier {
-    late final _storage = ref.read(appStorageProvider);
+  late final _storage = ref.read(appStorageProvider);
   late final _client = ref.read(networkClientProvider);
   late final _go = ref.read(appRouterProvider);
   late final _debugState = ref.read(debugNotifierProvider);
+  String? _primaryPassword;
+  String? _confirmationPassword;
   @override
   PasswordCreateState build() {
     Future.microtask(load);
@@ -32,20 +34,26 @@ class PasswordCreateNotifier extends _$PasswordCreateNotifier {
     state = state.copyWith(enumScreenStatus: EnumScreenStatus.success);
   }
 
-  void verificationPassword() {}
-
-
-
-
-
-
-
-
-
-
-  void setPassword1(String value) {
+  void setPassword() {
+    state = state.copyWith(
+      enumFrontendStatus: EnumFrontendStatusPasswordCreate.init,
+    );
+    if (_primaryPassword != _confirmationPassword) {
+      state = state.copyWith(
+        enumFrontendStatus: EnumFrontendStatusPasswordCreate.passwordMismatch,
+      );
+      return;
+    }
+    // state = state.copyWith(
+    //   enumFrontendStatus: EnumFrontendStatusPasswordCreate.load,
+    // );
   }
 
-  void setPassword2(String value) {
+  void savePassword({required String value, bool isConfirmation = false}) {
+    if (isConfirmation) {
+      _confirmationPassword = value;
+    } else {
+      _primaryPassword = value;
+    }
   }
 }

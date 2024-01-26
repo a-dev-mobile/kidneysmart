@@ -51,7 +51,8 @@ class _View extends ConsumerStatefulWidget {
 
 class _ViewState extends ConsumerState<_View> {
   final GlobalKey<FieldPasswordState> _passwordFieldKey = GlobalKey();
-  String? _customErrorFromBackend;
+  final GlobalKey<FieldPasswordState> _confirmPasswordFieldKey = GlobalKey();
+  String? _customError;
   @override
   Widget build(BuildContext context) {
     final status = ref.watch(
@@ -62,6 +63,7 @@ class _ViewState extends ConsumerState<_View> {
 
     final sizeScreen = MediaQuery.of(context).size;
     _handleBackendStatus(state.response.enumBackendStatus);
+    _handleFrontendStatus(state.enumFrontendStatus);
     final scrollController = ScrollController();
 
     return KeyboardAutoScrollWidget(
@@ -94,25 +96,31 @@ class _ViewState extends ConsumerState<_View> {
         ),
         const SizedBox(height: 16),
         const Text(
-          'Пожалуйста введите новый пароль11',
+          'Пожалуйста введите новый пароль',
         ),
         const SizedBox(height: 16),
         FieldPassword(
           key: _passwordFieldKey,
-          onChanged: notifier.setPassword1,
-          customError: _customErrorFromBackend,
+          onChanged: (val) {
+            _customError = null;
+            notifier.savePassword(value: val);
+          },
         ),
         FieldPassword(
-          key: _passwordFieldKey,
-          onChanged: notifier.setPassword2,
-          customError: _customErrorFromBackend,
+          key: _confirmPasswordFieldKey,
+          customError: _customError,
+          onChanged: (val) {
+            _customError = null;
+            notifier.savePassword(value: val, isConfirmation: true);
+          },
+          isConfirmation: true,
         ),
         const SizedBox(height: 16),
         TextButton(
           onPressed: () {},
           child: const Text('Повторно отправить код'),
         ),
-        const SizedBox(height: 150),
+        const SizedBox(height: 20),
       ],
     );
   }
@@ -140,11 +148,12 @@ class _ViewState extends ConsumerState<_View> {
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () {
-              final isValid =
+              final isPrimaryPasswordValid =
                   _passwordFieldKey.currentState?.validate() ?? false;
-              if (isValid) {
-                // Если валидация успешна, продолжаем обработку
-                notifier.verificationPassword();
+              final isConfirmPasswordValid =
+                  _confirmPasswordFieldKey.currentState?.validate() ?? false;
+              if (isPrimaryPasswordValid && isConfirmPasswordValid) {
+                notifier.setPassword();
               }
             },
             child: const Text('Продолжить'),
@@ -154,19 +163,30 @@ class _ViewState extends ConsumerState<_View> {
     );
   }
 
-  void _handleBackendStatus(
-    EnumBackendStatusPasswordCreate? enumBackendStatus,
+  void _handleFrontendStatus(
+    EnumFrontendStatusPasswordCreate? status,
   ) {
-    _customErrorFromBackend = null;
-    switch (enumBackendStatus) {
+    switch (status) {
+      case EnumFrontendStatusPasswordCreate.passwordMismatch:
+        _customError = 'Пароли не совпадают';
+      case EnumFrontendStatusPasswordCreate.init:
+      case EnumFrontendStatusPasswordCreate.load:
+      case EnumFrontendStatusPasswordCreate.success:
+      case null:
+    }
+  }
+
+  void _handleBackendStatus(
+    EnumBackendStatusPasswordCreate? status,
+  ) {
+    switch (status) {
       case EnumBackendStatusPasswordCreate.invalidEmailFormat:
       case EnumBackendStatusPasswordCreate.invalidRequestBody:
       case EnumBackendStatusPasswordCreate.invalidParameters:
         _navigateAfterBuild(PasswordCreateScreen.name);
-        _customErrorFromBackend = 'Неверный код';
+        _customError = 'Неверный код';
 
       case null:
-        _customErrorFromBackend = null;
     }
   }
 
