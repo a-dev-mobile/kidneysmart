@@ -5,6 +5,7 @@ import 'package:kidneysmart/core/enum/enum_http_method.dart';
 import 'package:dartlog/dartlog.dart';
 import 'package:kidneysmart/core/service/network/dio_log/interceptor/dio_log_interceptor.dart';
 import 'package:kidneysmart/core/service/network/interceptor/accept_interceptor.dart';
+import 'package:kidneysmart/core/service/network/interceptor/auth_error/auth_error_interceptor.dart';
 import 'package:kidneysmart/core/service/network/interceptor/content_type_interceptor.dart';
 import 'package:kidneysmart/core/service/network/interceptor/user_agent_interceptor.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
@@ -32,6 +33,7 @@ class NetworkClient {
             DioLogInterceptor(),
             ContentTypeInterceptor(),
             AcceptInterceptor(),
+            AuthErrorInterceptor(router),
             UserAgentInterceptor(userAgent),
           ]);
 

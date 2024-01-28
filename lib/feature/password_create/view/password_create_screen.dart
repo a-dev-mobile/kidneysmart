@@ -52,7 +52,7 @@ class _View extends ConsumerStatefulWidget {
 class _ViewState extends ConsumerState<_View> {
   final GlobalKey<FieldPasswordState> _passwordFieldKey = GlobalKey();
   final GlobalKey<FieldPasswordState> _confirmPasswordFieldKey = GlobalKey();
-  String? _customError;
+  String? _customErrorConfirmPasswordField;
   @override
   Widget build(BuildContext context) {
     final status = ref.watch(
@@ -102,15 +102,15 @@ class _ViewState extends ConsumerState<_View> {
         FieldPassword(
           key: _passwordFieldKey,
           onChanged: (val) {
-            _customError = null;
+            _customErrorConfirmPasswordField = null;
             notifier.savePassword(value: val);
           },
         ),
         FieldPassword(
           key: _confirmPasswordFieldKey,
-          customError: _customError,
+          customError: _customErrorConfirmPasswordField,
           onChanged: (val) {
-            _customError = null;
+            _customErrorConfirmPasswordField = null;
             notifier.savePassword(value: val, isConfirmation: true);
           },
           isConfirmation: true,
@@ -168,11 +168,13 @@ class _ViewState extends ConsumerState<_View> {
   ) {
     switch (status) {
       case EnumFrontendStatusPasswordCreate.passwordMismatch:
-        _customError = 'Пароли не совпадают';
+        _customErrorConfirmPasswordField = 'Пароли не совпадают';
       case EnumFrontendStatusPasswordCreate.init:
       case EnumFrontendStatusPasswordCreate.load:
       case EnumFrontendStatusPasswordCreate.success:
       case null:
+      case EnumFrontendStatusPasswordCreate.emailOrPasswordIsNull:
+        // TODO: Handle this case.
     }
   }
 
@@ -184,7 +186,7 @@ class _ViewState extends ConsumerState<_View> {
       case EnumBackendStatusPasswordCreate.invalidRequestBody:
       case EnumBackendStatusPasswordCreate.invalidParameters:
         _navigateAfterBuild(PasswordCreateScreen.name);
-        _customError = 'Неверный код';
+        _customErrorConfirmPasswordField = 'Неверный код';
 
       case null:
     }

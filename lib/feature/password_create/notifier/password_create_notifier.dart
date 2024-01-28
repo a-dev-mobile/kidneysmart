@@ -1,4 +1,6 @@
+import 'package:dartlog/dartlog.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kidneysmart/core/enum/enum_http_method.dart';
 import 'package:kidneysmart/core/enum/enum_screen_state.dart';
 import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/service/network/network_client.dart';
@@ -34,7 +36,7 @@ class PasswordCreateNotifier extends _$PasswordCreateNotifier {
     state = state.copyWith(enumScreenStatus: EnumScreenStatus.success);
   }
 
-  void setPassword() {
+  Future<void> setPassword() async {
     state = state.copyWith(
       enumFrontendStatus: EnumFrontendStatusPasswordCreate.init,
     );
@@ -44,6 +46,39 @@ class PasswordCreateNotifier extends _$PasswordCreateNotifier {
       );
       return;
     }
+    final email = state.email;
+    final password = _primaryPassword;
+    if (email == null || password == null) {
+      state = state.copyWith(
+        enumFrontendStatus:
+            EnumFrontendStatusPasswordCreate.emailOrPasswordIsNull,
+      );
+      return;
+    }
+
+    final endpoint =
+        '${_debugState.enumProject.api}/kidneysmart-auth/v1/set-password';
+    try {
+      final req = RequestPasswordCreate(email: email, password: password);
+      final responseRaw = await _client.request<dynamic>(
+        method: EnumHttpMethod.post,
+        url: endpoint,
+        body: req.toJson(),
+      );
+
+      final response = ResponsePasswordCreate.fromJson(
+        responseRaw.data as Map<String, dynamic>,
+      );
+
+      state = state.copyWith(
+        enumFrontendStatus: EnumFrontendStatusPasswordCreate.success,
+        response: response,
+      );
+    } on Object catch (e, s) {
+      Logger.error(endpoint, e, s);
+      _go.pushErrorScreen(extra: e);
+    }
+
     // state = state.copyWith(
     //   enumFrontendStatus: EnumFrontendStatusPasswordCreate.load,
     // );

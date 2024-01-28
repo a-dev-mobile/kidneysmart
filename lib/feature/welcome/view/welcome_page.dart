@@ -14,8 +14,8 @@ import 'package:kidneysmart/feature/welcome/notifier/welcome_notifier.dart';
 import 'package:kidneysmart/gen/assets.gen.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key});
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
   static const path = '/WelcomePage';
   static const name = 'WelcomePage';

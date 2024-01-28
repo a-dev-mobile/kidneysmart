@@ -19,7 +19,6 @@ import 'package:kidneysmart/core/service/network/dio_log/http_log_list_widget.da
 import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:kidneysmart/core/widgets/app_error_screen.dart';
 
-
 import 'package:kidneysmart/feature/overlay/view/widget/app_update_hard_page.dart';
 import 'package:kidneysmart/feature/setting/view/setting_page.dart';
 
@@ -95,7 +94,7 @@ class DebugMenuPage extends ConsumerWidget {
               const Wrap(
                 children: [
                   _ItemPage(name: 'splash', nameRoute: SplashPage.name),
-                  _ItemPage(name: 'welcome', nameRoute: WelcomePage.name),
+                  _ItemPage(name: 'welcome', nameRoute: WelcomeScreen.name),
                   _ItemPage(name: 'setting', nameRoute: SettingPage.name),
                   _ItemPage(name: 'error', nameRoute: AppErrorScreen.name),
                 ],
@@ -136,8 +135,7 @@ class DebugMenuPage extends ConsumerWidget {
                     name: 'Общие документы',
                     onPressed: () {},
                   ),
-                  
-                  
+
                   // const _ItemPage(
                   // name: 'Soft Обновление',
                   // nameRoute: UpdateSoftAppPage.name,

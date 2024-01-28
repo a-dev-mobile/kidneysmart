@@ -25,6 +25,6 @@ class SplashNotifier extends _$SplashNotifier {
 
     state = state.copyWith(enumStatus: EnumScreenStatus.success);
 
-    ref.read(appRouterProvider).router.goNamed(WelcomePage.name);
+    ref.read(appRouterProvider).router.goNamed(WelcomeScreen.name);
   }
 }

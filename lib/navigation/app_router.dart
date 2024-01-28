@@ -128,12 +128,12 @@ class AppRouter {
           ),
         ),
         GoRoute(
-          path: WelcomePage.path,
-          name: WelcomePage.name,
+          path: WelcomeScreen.path,
+          name: WelcomeScreen.name,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             name: state.name,
-            child: const WelcomePage(),
+            child: const WelcomeScreen(),
           ),
         ),
         GoRoute(
