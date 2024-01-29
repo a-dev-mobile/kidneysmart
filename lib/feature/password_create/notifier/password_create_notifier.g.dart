@@ -46,6 +46,8 @@ const _$EnumFrontendStatusPasswordCreateEnumMap = {
   EnumFrontendStatusPasswordCreate.init: 'init',
   EnumFrontendStatusPasswordCreate.load: 'load',
   EnumFrontendStatusPasswordCreate.passwordMismatch: 'passwordMismatch',
+  EnumFrontendStatusPasswordCreate.emailOrPasswordIsNull:
+      'emailOrPasswordIsNull',
   EnumFrontendStatusPasswordCreate.success: 'success',
 };
 
@@ -54,7 +56,7 @@ const _$EnumFrontendStatusPasswordCreateEnumMap = {
 // **************************************************************************
 
 String _$passwordCreateNotifierHash() =>
-    r'6b82a63abba1e1d49291db77186a3b49a16ae46f';
+    r'cbe61498da3d28f35d1d0ce6d6a2ec4481049587';
 
 /// See also [PasswordCreateNotifier].
 @ProviderFor(PasswordCreateNotifier)

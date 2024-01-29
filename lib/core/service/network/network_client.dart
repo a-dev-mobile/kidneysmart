@@ -4,10 +4,12 @@ import 'package:dio/dio.dart';
 import 'package:kidneysmart/core/enum/enum_http_method.dart';
 import 'package:dartlog/dartlog.dart';
 import 'package:kidneysmart/core/service/network/dio_log/interceptor/dio_log_interceptor.dart';
-import 'package:kidneysmart/core/service/network/interceptor/accept_interceptor.dart';
-import 'package:kidneysmart/core/service/network/interceptor/auth_error/auth_error_interceptor.dart';
-import 'package:kidneysmart/core/service/network/interceptor/content_type_interceptor.dart';
-import 'package:kidneysmart/core/service/network/interceptor/user_agent_interceptor.dart';
+import 'package:kidneysmart/core/service/network/interceptor/auth/auth_interceptor.dart';
+import 'package:kidneysmart/core/service/network/interceptor/headers/accept_interceptor.dart';
+import 'package:kidneysmart/core/service/network/interceptor/error_handling/auth_error_interceptor.dart';
+import 'package:kidneysmart/core/service/network/interceptor/headers/content_type_interceptor.dart';
+import 'package:kidneysmart/core/service/network/interceptor/headers/user_agent_interceptor.dart';
+import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -18,27 +20,50 @@ NetworkClient networkClient(NetworkClientRef ref) =>
     throw UnimplementedError('init with override');
 
 class NetworkClient {
+  late final Dio _dio;
+  late final Dio _dio2;
+
+  final AppRouter _go;
+  final AppStorage _storage;
+
   NetworkClient({
     required AppRouter router,
     required String userAgent,
+    required AppStorage storage,
     Duration connectTimeout = const Duration(seconds: 30),
     Duration receiveTimeout = const Duration(seconds: 55),
   })  : _go = router,
-        _dio = Dio(
-          BaseOptions(
-            connectTimeout: connectTimeout,
-            receiveTimeout: receiveTimeout,
-          ),
-        )..interceptors.addAll([
-            DioLogInterceptor(),
-            ContentTypeInterceptor(),
-            AcceptInterceptor(),
-            AuthErrorInterceptor(router),
-            UserAgentInterceptor(userAgent),
-          ]);
+        _storage = storage {
+    // Initialize _dio2 here
+    _dio2 = Dio(
+      BaseOptions(
+        connectTimeout: connectTimeout,
+        receiveTimeout: receiveTimeout,
+      ),
+    )..interceptors.addAll([
+        DioLogInterceptor(),
+        ContentTypeInterceptor(),
+        AcceptInterceptor(),
+        UserAgentInterceptor(userAgent),
+      ]);
 
-  final Dio _dio;
-  final AppRouter _go;
+    // Now that _dio2 is initialized, you can use it for _dio initialization
+    _dio = Dio(
+      BaseOptions(
+        connectTimeout: connectTimeout,
+        receiveTimeout: receiveTimeout,
+      ),
+    )..interceptors.addAll([
+        DioLogInterceptor(),
+        ContentTypeInterceptor(),
+        AcceptInterceptor(),
+        AuthErrorInterceptor(
+            router, _dio2, storage), // Here _dio2 is already initialized
+        AuthInterceptor(storage),
+        UserAgentInterceptor(userAgent),
+      ]);
+  }
+
   Dio get dio => _dio;
   // ignore: avoid_setters_without_getters
   set isShowHttpInLog(bool value) => DioLogInterceptor.enablePrintLog = value;
@@ -113,7 +138,7 @@ class NetworkClient {
     } else if (e.type == DioExceptionType.receiveTimeout) {
       // Handle receive timeout
       _showError();
-    } 
+    }
 
     // Return the Response object with appropriate data
     return Response<T>(

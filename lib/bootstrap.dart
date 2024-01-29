@@ -11,12 +11,13 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kidneysmart/app/app.dart';
 import 'package:dartlog/dartlog.dart';
+import 'package:kidneysmart/core/notifier/debug_notifier/debug_notifier.dart';
 import 'package:kidneysmart/core/notifier/screen_tracker_notifier/screen_tracker_notifier.dart';
-
 
 import 'package:kidneysmart/core/observer/provider_observer.dart';
 import 'package:kidneysmart/core/service/app_device/app_device.dart';
-import 'package:kidneysmart/core/service/network/network.dart';
+import 'package:kidneysmart/core/service/network/network_client.dart';
+
 import 'package:kidneysmart/core/storage/app_storage.dart';
 import 'package:kidneysmart/firebase_options.dart';
 import 'package:kidneysmart/navigation/app_router.dart';
@@ -84,6 +85,7 @@ Future<void> initializeApp() async {
     _networkClient = NetworkClient(
       userAgent: _appDevice.userAgent,
       router: _appRouter,
+      storage: _localStorage,
     );
   } catch (e, s) {
     handleError('initializeApp', e, s);

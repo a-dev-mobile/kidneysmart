@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:kidneysmart/core/service/network/interceptor/auth_error/enum_auth_error.dart';
+import 'package:kidneysmart/core/service/network/interceptor/error_handling/enum_auth_error.dart';
 
 void showAuthErrorSnackBar(BuildContext context, EnumAuthError error) {
-  String message;
+  var message =
+      ''; // Инициализируем пустым строковым значением для безопасности
   switch (error) {
     case EnumAuthError.authorizationRequired:
       message = 'Authorization is required.';
+
     case EnumAuthError.tokenExpired:
       message = 'Your session has expired.';
     case EnumAuthError.invalidToken:
@@ -15,7 +17,11 @@ void showAuthErrorSnackBar(BuildContext context, EnumAuthError error) {
     case EnumAuthError.invalidTokenFormat:
       message = 'Invalid token format.';
     case EnumAuthError.userIdNotFound:
-      message = 'UserID not found in token';
+      message = 'UserID not found in token.';
+    case EnumAuthError.invalidTokenType:
+      message = 'Invalid token type.';
+    case EnumAuthError.invalidTokenSignature:
+      message = 'Invalid token signature.';
   }
 
   final snackBar = SnackBar(content: Text(message));
