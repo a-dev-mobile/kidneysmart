@@ -1,0 +1,18 @@
+environment: dev
+logging:
+  level: debug
+  fileOutput:
+    filePath: 
+
+grpcServer:
+  port: ""
+  maxConcurrentStreams: 
+
+
+smtpProviders:
+  - name: 
+    smtpHost: 
+    smtpPort:
+    login:
+    password: 
+    fromEmail: 
