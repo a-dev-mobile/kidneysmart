@@ -1,0 +1,139 @@
+name: kidneysmart
+description: A new Flutter project.
+publish_to: none
+
+version: 1.0.0+21
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  # state manager
+
+
+  # SDK extensions
+  meta: ^1.10.0
+  collection: ^1.18.0
+  async: ^2.11.0
+  # System
+  path_provider: ^2.1.2
+  path: ^1.8.3
+  platform_info: ^4.0.2
+  device_info_plus: ^9.1.1
+  package_info_plus: ^5.0.1
+  connectivity_plus: ^5.0.2
+
+  # ******************************
+  # BLoC
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+
+  # Helper BLoC
+
+  # Code generation
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+
+  # Internationalization
+  intl: ^0.18.1
+  flutter_localizations:
+    sdk: flutter
+
+  # local storage
+  shared_preferences: ^2.2.2
+  # HTTP
+  dio: ^5.4.0
+
+  google_fonts: ^6.1.0
+  # parser html
+  html: ^0.15.4
+  # Navigation
+  go_router: ^13.0.1
+  # Native
+  permission_handler: ^11.2.0
+
+  url_launcher: ^6.2.3
+  share_plus: ^7.2.1
+
+  webview_flutter: ^4.4.4
+
+  # syncfusion_flutter_pdfviewer: ^23.1.44
+  flutter_native_splash: ^2.3.9
+
+  # Helper for UI
+  flutter_svg: ^2.0.9
+  flex_color_scheme: ^7.3.1
+  # fl_chart: ^0.64.0
+  # TEST
+  device_preview: ^1.1.0
+  feedback: ^3.0.0
+  flash: ^3.1.0
+  # firebase
+  firebase_core: ^2.24.2
+  firebase_crashlytics: ^3.4.9
+  firebase_messaging: ^14.7.10
+  firebase_analytics: ^10.8.0
+
+
+  # ******************************
+  #  local packages
+  # ******************************
+  app_updater:
+    path: c:/DEV/MY/MY_GITHUB/app_updater
+    # git:
+      # url: https://github.com/a-dev-mobile/app_updater.git
+      # ref: release/1.0.0
+  dartlog:
+    path: c:/DEV/MY/MY_GITHUB/dartlog
+    # git:
+      # url: https://github.com/a-dev-mobile/dartlog.git
+      # ref: release/1.0.0
+  # apk_opener_plugin:
+    # path: c:/DEV/MY/MY_GITHUB/apk_opener_plugin
+
+
+  flutter_keyboard_visibility: ^6.0.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Analyzer extensions
+
+  riverpod_generator: ^2.3.9
+  custom_lint: ^0.5.8
+  riverpod_lint: ^2.3.7
+  very_good_analysis: ^5.1.0
+  # Code generation
+  freezed: ^2.4.6
+  build_runner: ^2.4.8
+  json_serializable: ^6.7.1
+
+  turn_gen: ^2.1.1
+  # turn_gen:
+    # path: c:/DEV/MY/MY_GITHUB/turn_gen
+flutter:
+  # generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/svg/
+    - assets/image/
+
+# dart run turn_gen
+turn_gen:
+  assets_output: "lib/gen/"
+
+
+# flutter pub get && flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  android: true
+  ios: true
+  web: true
+
+  color: "#ECE3F7"
+  color_dark: "#473261"
+  image: assets/image/logo.png
