@@ -83,12 +83,12 @@ dependencies:
   #  local packages
   # ******************************
   app_updater:
-    path: c:/DEV/MY/MY_GITHUB/app_updater
+    path: ./packages/app_updater
     # git:
       # url: https://github.com/a-dev-mobile/app_updater.git
       # ref: release/1.0.0
   dartlog:
-    path: c:/DEV/MY/MY_GITHUB/dartlog
+    path: ./packages/dartlog
     # git:
       # url: https://github.com/a-dev-mobile/dartlog.git
       # ref: release/1.0.0

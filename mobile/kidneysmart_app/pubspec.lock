@@ -44,8 +44,8 @@ packages:
   app_updater:
     dependency: "direct main"
     description:
-      path: "c:/DEV/MY/MY_GITHUB/app_updater"
-      relative: false
+      path: "packages/app_updater"
+      relative: true
     source: path
     version: "1.0.0"
   archive:
@@ -291,8 +291,8 @@ packages:
   dartlog:
     dependency: "direct main"
     description:
-      path: "c:/DEV/MY/MY_GITHUB/dartlog"
-      relative: false
+      path: "packages/dartlog"
+      relative: true
     source: path
     version: "1.0.0"
   dbus:
