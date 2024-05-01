@@ -19,10 +19,21 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Extract version from Dockerfile or set to latest
+        id: get_version
+        run: |
+          VERSION=$(grep 'ARG VERSION=' ./backend/${{ matrix.service }}/Dockerfile | awk -F'=' '{print $2}')
+          if [[ -z "$VERSION" ]]; then
+            echo "VERSION not found, setting to 'latest'"
+            VERSION='latest'
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./backend/${{ matrix.service }}
           file: ./backend/${{ matrix.service }}/Dockerfile
           push: true
-          tags: wayofdt/kidneysmart-${{ matrix.service }}:dev
+          tags: wayofdt/kidneysmart-${{ matrix.service }}:$VERSION
