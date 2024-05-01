@@ -16,6 +16,7 @@ var users = []User{
     {ID: "2", Name: "Bob"},
 }
 
+
 func main() {
     router := gin.Default()
 
