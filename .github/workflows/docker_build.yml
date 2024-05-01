@@ -16,18 +16,21 @@ jobs:
         id: files
         run: |
           echo "Checking for modified files in backend/api-log/"
-          # Проверяем наличие предыдущего коммита
           if git rev-parse --verify HEAD^ >/dev/null 2>&1; then
               CHANGED_FILES=$(git diff --name-only HEAD^ HEAD -- 'backend/api-log/')
           else
               CHANGED_FILES=$(git show --name-only -- 'backend/api-log/')
           fi
-    
           if [ -n "$CHANGED_FILES" ]; then
             echo "::set-output name=trigger::true"
           else
             echo "::set-output name=trigger::false"
           fi
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Build and push if changes in api-log
         if: steps.files.outputs.trigger == 'true'
         uses: docker/build-push-action@v5
