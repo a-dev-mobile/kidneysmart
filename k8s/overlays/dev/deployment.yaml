@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: api-log
-        image: wayofdt/kidneysmart-api-log:latest
+        image: wayofdt/kidneysmart-api-log:v0.0.3
         ports:
         - containerPort: 8001
         imagePullPolicy: Always

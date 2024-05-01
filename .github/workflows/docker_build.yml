@@ -13,7 +13,7 @@ jobs:
       matrix:
         service:
           - name: api-log
-            version: v0.0.2
+            version: v0.0.3
           - name: api-auth
             version: v0.0.1
     steps:
