@@ -33,6 +33,9 @@ func main() {
     router.Run(":8001")
 }
 
+
+
+
 // Получить список всех пользователей
 func getUsers(c *gin.Context) {
     c.IndentedJSON(http.StatusOK, users)
