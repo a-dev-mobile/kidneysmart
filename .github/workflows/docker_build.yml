@@ -9,7 +9,6 @@ on:
 
 jobs:
   build_and_push_api_logs:
-    # if: contains(github.event.head_commit.modified, 'backend/api-log/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
