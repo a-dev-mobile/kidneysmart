@@ -4,13 +4,11 @@ metadata:
   name: api-log-ingress
   namespace: kidneysmart
 spec:
-  ingressClassName: nginx
   tls:
   - hosts:
-    - logs-kidneysmart.wayofdt.com
-    secretName: secret-tls
+    - logs-dev-kidneysmart.wayofdt.com
   rules:
-  - host: logs-kidneysmart.wayofdt.com
+  - host: logs-dev-kidneysmart.wayofdt.com
     http:
       paths:
       - path: /

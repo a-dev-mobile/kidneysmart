@@ -4,18 +4,8 @@ metadata:
   name: api-log-deployment
   namespace: kidneysmart
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: api-log
   template:
-    metadata:
-      labels:
-        app: api-log
     spec:
       containers:
       - name: api-log
         image: wayofdt/kidneysmart-api-log:latest
-        ports:
-        - containerPort: 8001
-        imagePullPolicy: Always
