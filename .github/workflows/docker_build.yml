@@ -25,4 +25,4 @@ jobs:
           context: ./backend/${{ matrix.service }}
           file: ./backend/${{ matrix.service }}/Dockerfile
           push: true
-          tags: wayofdt/kidneysmart-${{ matrix.service }}:latest
+          tags: wayofdt/kidneysmart-${{ matrix.service }}:dev

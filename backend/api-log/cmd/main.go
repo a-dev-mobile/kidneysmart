@@ -12,7 +12,7 @@ type User struct {
 }
 
 var users = []User{
-    {ID: "1", Name: "Alice"},
+    {ID: "1", Name: "devAlice"},
     {ID: "2", Name: "Bob"},
 }
 
