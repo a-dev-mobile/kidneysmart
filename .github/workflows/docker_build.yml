@@ -22,7 +22,7 @@ jobs:
           context: ./backend/api-log
           file: ./backend/api-log/Dockerfile
           push: true
-          tags: kidneysmart/api-log:latest
+          tags: wayofdt/kidneysmart-api-log:latest
 
   build_and_push_api_auth:
     if: contains(github.event.head_commit.modified, 'backend/api-auth/')
@@ -39,7 +39,7 @@ jobs:
           context: ./backend/api-auth
           file: ./backend/api-auth/Dockerfile
           push: true
-          tags: kidneysmart/api-auth:latest
+          tags: wayofdt/kidneysmart-api-auth:latest
 
   build_and_push_api_gateway:
     if: contains(github.event.head_commit.modified, 'backend/api-gateway/')
@@ -56,4 +56,4 @@ jobs:
           context: ./backend/api-gateway
           file: ./backend/api-gateway/Dockerfile
           push: true
-          tags: kidneysmart/api-gateway:latest
+          tags: wayofdt/kidneysmart-api-gateway:latest
