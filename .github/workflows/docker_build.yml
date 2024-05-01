@@ -16,7 +16,13 @@ jobs:
         id: files
         run: |
           echo "Checking for modified files in backend/api-log/"
-          CHANGED_FILES=$(git diff --name-only ${{ github.sha }}^ ${{ github.sha }} | grep 'backend/api-log/')
+          # Проверяем наличие предыдущего коммита
+          if git rev-parse --verify HEAD^ >/dev/null 2>&1; then
+              CHANGED_FILES=$(git diff --name-only HEAD^ HEAD -- 'backend/api-log/')
+          else
+              CHANGED_FILES=$(git show --name-only -- 'backend/api-log/')
+          fi
+    
           if [ -n "$CHANGED_FILES" ]; then
             echo "::set-output name=trigger::true"
           else
