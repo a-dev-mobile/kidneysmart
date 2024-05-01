@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-log-deployment
-  namespace: kidneysmart
+  namespace: kidneysmart-prod
 spec:
   replicas: 1
   selector:

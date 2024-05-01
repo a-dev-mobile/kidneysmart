@@ -2,13 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: api-log-ingress
-  namespace: kidneysmart
+  namespace: kidneysmart-dev
 spec:
+  ingressClassName: nginx
   tls:
   - hosts:
-    - logs-dev-kidneysmart.wayofdt.com
+    - kidneysmart-dev-log.wayofdt.com
+    secretName: secret-tls
   rules:
-  - host: logs-dev-kidneysmart.wayofdt.com
+  - host: kidneysmart-dev-log.wayofdt.com
     http:
       paths:
       - path: /
