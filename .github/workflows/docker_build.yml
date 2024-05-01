@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [api-log, api-auth]
+        service:
+          - name: api-log
+            version: v0.0.2
+          - name: api-auth
+            version: v0.0.1
     steps:
       - uses: actions/checkout@v4
       - name: Log in to Docker Hub
@@ -19,21 +23,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
-      - name: Extract version from Dockerfile or set to latest
-        id: get_version
-        run: |
-          VERSION=$(grep 'ARG VERSION=' ./backend/${{ matrix.service }}/Dockerfile | awk -F'=' '{print $2}')
-          if [[ -z "$VERSION" ]]; then
-            echo "VERSION not found, setting to 'latest'"
-            VERSION='latest'
-          fi
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./backend/${{ matrix.service }}
-          file: ./backend/${{ matrix.service }}/Dockerfile
+          context: ./backend/${{ matrix.service.name }}
+          file: ./backend/${{ matrix.service.name }}/Dockerfile
           push: true
-          tags: wayofdt/kidneysmart-${{ matrix.service }}:$VERSION
+          tags: wayofdt/kidneysmart-${{ matrix.service.name }}:${{ matrix.service.version }}

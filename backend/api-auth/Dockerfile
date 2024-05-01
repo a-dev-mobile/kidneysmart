@@ -1,8 +1,5 @@
 FROM golang:1.21.4
 
-# Добавляем аргумент с версией микросервиса
-ARG VERSION=0.0.2
-
 WORKDIR /app
 
 COPY go.mod go.sum ./
