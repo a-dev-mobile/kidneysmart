@@ -17,10 +17,11 @@ var users = []User{
 }
 
 
+
 func main() {
     router := gin.Default()
 
-    router.GET("/users", getUsers)
+    router.GET("/users1", getUsers)
     router.GET("/api/v1/logs", getUsers)
 
     router.POST("/users", createUser)
