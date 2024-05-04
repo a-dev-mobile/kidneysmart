@@ -11,12 +11,16 @@ kubectl wait --for=delete pod --selector=app.kubernetes.io/name=kafka --namespac
 echo "Очистка меток с узлов..."
 kubectl label nodes k8s-worker-1 kafka-node-
 
-# echo "Удаление PVC..."
-# kubectl delete pvc --namespace $NAMESPACE -l app.kubernetes.io/instance=$KAFKA_RELEASE_NAME
-# kubectl wait --for=delete pvc --namespace $NAMESPACE -l app.kubernetes.io/instance=$KAFKA_RELEASE_NAME --timeout=60s
+echo "Удаление PVC..."
+kubectl delete -n kidneysmart-dev persistentvolumeclaim data-kafka-controller-0
+kubectl delete -n kidneysmart-dev persistentvolumeclaim data-kafka-controller-1
+kubectl delete -n kidneysmart-dev persistentvolumeclaim data-kafka-controller-2
 
-# echo "Удаление PV..."
-# kubectl delete pv --namespace $NAMESPACE -l app.kubernetes.io/instance=$KAFKA_RELEASE_NAME
-# kubectl wait --for=delete pv --namespace $NAMESPACE -l app.kubernetes.io/instance=$KAFKA_RELEASE_NAME --timeout=60s
+
+echo "Удаление PV..."
+kubectl delete persistentvolume kafka-pv-0
+kubectl delete persistentvolume kafka-pv-1
+kubectl delete persistentvolume kafka-pv-2
+
 
 echo "Удаление завершено."

@@ -6,9 +6,9 @@ STORAGE_SIZE="10Gi"
 
 echo "Проверка наличия узла $NODE_NAME..."
 kubectl get node $NODE_NAME
-if [ $? -ne 0 ]; then
-    echo "Узел $NODE_NAME не найден."
-    exit 1
+if ! kubectl get node $NODE_NAME > /dev/null 2>&1; then
+  echo "Узел $NODE_NAME не найден."
+  exit 1
 fi
 
 echo "Добавление метки к узлу..."
