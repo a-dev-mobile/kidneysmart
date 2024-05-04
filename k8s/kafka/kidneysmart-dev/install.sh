@@ -3,6 +3,8 @@
 
 NODE_NAME="k8s-worker-1"
 STORAGE_SIZE="10Gi"
+NAMESPACE="kidneysmart-dev"
+KAFKA_RELEASE_NAME="kafka"
 
 echo "Проверка наличия узла $NODE_NAME..."
 kubectl get node $NODE_NAME
@@ -14,15 +16,22 @@ fi
 echo "Добавление метки к узлу..."
 kubectl label nodes $NODE_NAME kafka-node=1 --overwrite
 
+
+echo "Проверка наличия пространства имён $NAMESPACE..."
+kubectl get namespace $NAMESPACE &>/dev/null || kubectl create namespace $NAMESPACE
+
+
 echo "Применение конфигурации PV и PVC..."
 kubectl apply -f yaml/kafka-pv.yaml
 kubectl apply -f yaml/kafka-pvc.yaml
 
-NAMESPACE="kidneysmart-dev"
-KAFKA_RELEASE_NAME="kafka"
 
-echo "Проверка наличия пространства имён $NAMESPACE..."
-kubectl get namespace $NAMESPACE &>/dev/null || kubectl create namespace $NAMESPACE
+
+echo "Применение namespace=$NODE_NAME"
+kubectl config set-context --current --namespace=$NODE_NAME
+
+
+
 
 echo "Добавление репозитория Helm и обновление индекса..."
 helm repo add bitnami https://charts.bitnami.com/bitnami
