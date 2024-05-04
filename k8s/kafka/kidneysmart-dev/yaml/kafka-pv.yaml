@@ -1,0 +1,25 @@
+
+# Создание PersistentVolume
+# YAML файл, в котором опишите PersistentVolume, привязанный к конкретному узлу через nodeAffinity:
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kafka-pv
+spec:
+  capacity:
+    storage: 10Gi  # Задайте подходящий размер
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /data/kafka/kidneysmart-dev  # Укажите путь к директории на узле
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: "kafka-node"
+              operator: In
+              values:
+                - "1"

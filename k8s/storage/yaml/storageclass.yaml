@@ -1,0 +1,7 @@
+# ssh -p 2222 dmitriy@91.223.70.72 "cd /home/dmitriy/project/kidneysmart/k8s/kafka/kidneysmart-dev/ && chmod +x install_kafka.sh && ./install_kafka.sh"
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
