@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: elasticsearch-pv-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /data/elasticsearch/kidneysmart-dev-0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: "elk-node"
+              operator: In
+              values:
+                - "1"
+
+---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: elasticsearch-pv-1
+# spec:
+#   capacity:
+#     storage: 30Gi
+#   accessModes:
+#     - ReadWriteOnce
+#   persistentVolumeReclaimPolicy: Retain
+#   storageClassName: local-storage
+#   local:
+#     path: /data/elasticsearch/kidneysmart-dev-1
+#   nodeAffinity:
+#     required:
+#       nodeSelectorTerms:
+#         - matchExpressions:
+#             - key: "elk-node"
+#               operator: In
+#               values:
+#                 - "1"
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: elasticsearch-pv-2
+# spec:
+#   capacity:
+#     storage: 30Gi
+#   accessModes:
+#     - ReadWriteOnce
+#   persistentVolumeReclaimPolicy: Retain
+#   storageClassName: local-storage
+#   local:
+#     path: /data/elasticsearch/kidneysmart-dev-2
+#   nodeAffinity:
+#     required:
+#       nodeSelectorTerms:
+#         - matchExpressions:
+#             - key: "elk-node"
+#               operator: In
+#               values:
+#                 - "1"

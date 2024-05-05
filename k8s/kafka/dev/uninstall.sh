@@ -2,10 +2,10 @@
 #!/bin/bash
 
 NAMESPACE="kidneysmart-dev"
-KAFKA_RELEASE_NAME="kafka"
+RELEASE_NAME="kafka"
 
 echo "Удаление Kafka..."
-helm uninstall $KAFKA_RELEASE_NAME --namespace $NAMESPACE
+helm uninstall $RELEASE_NAME --namespace $NAMESPACE
 kubectl wait --for=delete pod --selector=app.kubernetes.io/name=kafka --namespace $NAMESPACE --timeout=120s
 
 echo "Очистка меток с узлов..."

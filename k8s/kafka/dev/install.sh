@@ -4,7 +4,7 @@
 NODE_NAME="k8s-worker-1"
 STORAGE_SIZE="10Gi"
 NAMESPACE="kidneysmart-dev"
-KAFKA_RELEASE_NAME="kafka"
+RELEASE_NAME="kafka"
 
 echo "Проверка наличия узла $NODE_NAME..."
 kubectl get node $NODE_NAME
@@ -22,8 +22,8 @@ kubectl get namespace $NAMESPACE &>/dev/null || kubectl create namespace $NAMESP
 
 
 echo "Применение конфигурации PV и PVC..."
-kubectl apply -f yaml/kafka-pv.yaml
-kubectl apply -f yaml/kafka-pvc.yaml
+kubectl apply -f yaml/pv.yaml
+kubectl apply -f yaml/pvc.yaml
 
 
 
@@ -38,7 +38,7 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
 
 echo "Установка Kafka..."
-helm install $KAFKA_RELEASE_NAME bitnami/kafka --namespace $NAMESPACE \
+helm install $RELEASE_NAME bitnami/kafka --namespace $NAMESPACE \
   --set persistence.enabled=true \
   --set persistence.existingClaim=kafka-pvc \
   --set nodeSelector."kafka-node"=1 \
