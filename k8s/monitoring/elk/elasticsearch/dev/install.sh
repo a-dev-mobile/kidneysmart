@@ -1,5 +1,5 @@
 # ssh -p 2222 dmitriy@91.223.70.72 "cd /home/dmitriy/project/kidneysmart/k8s/monitoring/elk/elasticsearch/dev/ && chmod +x install.sh && ./install.sh"
-
+# k8s\monitoring\elk\elasticsearch\dev\install.sh
 # k8s\monitoring\elk\elasticsearch\dev\install.sh
 #!/bin/bash
 
@@ -12,7 +12,8 @@ NAMESPACE="kidneysmart-dev"
 RELEASE_NAME="elk"
 
 # Путь к локальному Helm чарту
-CHART_DIR="/home/dmitriy/project/kidneysmart/k8s/monitoring/elk/elasticsearch/elasticsearch"
+
+CHART_DIR="/home/dmitriy/project/kidneysmart/k8s/monitoring/elk/elasticsearch/local_helm"
 # Путь к файлу values.yaml
 VALUES_FILE="$CHART_DIR/values.yaml"
 
