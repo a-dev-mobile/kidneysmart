@@ -1,0 +1,34 @@
+import 'package:flutter/widgets.dart';
+
+class ClearFocus extends StatelessWidget {
+  const ClearFocus({
+    required this.child,
+    super.key,
+  });
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      // behavior: HitTestBehavior.translucent,
+      // сбросить фокус при нажатии на любую часть экрана
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode())
+      // final focusScope = FocusScope.of(context);
+
+      // Wrong way
+      // focusScope.unfocus();
+
+      // Method1
+      // if (!focusScope.hasPrimaryFocus) {
+      //   focusScope.focusedChild?.unfocus();
+      // }
+
+      // Method2
+
+      // Method3
+      // WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus();
+      ,
+      child: child,
+    );
+  }
+}

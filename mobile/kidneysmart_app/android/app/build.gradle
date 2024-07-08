@@ -63,7 +63,7 @@ applicationVariants.all { variant ->
         def appId = variant.applicationId
 
         // Структурированный формат с использованием разделителей
-        outputFileName = "KidneySmart-ID_${appId}-Ver_${versionName}-Code_${versionCode}-Installer_apk-Var_${variantName}.apk"
+        outputFileName = "KidneySmart-id_${appId}-ver_${versionName}-code_${versionCode}-type_apk-var_${variantName}.apk"
     }
 }
 
